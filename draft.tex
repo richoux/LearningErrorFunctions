@@ -1,0 +1,87 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{graphicx} 
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{fourier}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+
+\title{Draft v1 - Learning Cost Functions}
+%\author{}
+\date{\today}
+ 
+\begin{document}
+\maketitle
+
+\includegraphics[width=\linewidth,angle=180]{20190529_whiteboard}
+
+\section{Main ideas}
+
+\begin{enumerate}
+\item The user must first provide for each constraint type a function $b(\vec{x}) = \left\{
+  \begin{array}{rl}
+    0 & \text{if } x \text{ is a solution}\\
+    1 & y\text{otherwise}
+  \end{array} \right.$
+\item The goal is to learn $f(\vec x)$ such that the cost function is defined by $b(\vec x) . f(\vec x)$.
+
+\item Find a metric $|.|_l$ in the constraint configuration space. (\danger Space liked to the constraint, since depending one the variables and their domains.)
+\item Project the current configuration $\vec{x}$ on the closest solution $\vec{s}$, giving $f(\vec x) = |\vec{s}-\vec{x}|_l$. Need to search for this closest $\vec{s}$ (n-dimensional Voronoï cells?).
+\item Fourier transform of the cost function $f'$ of a well-known constraint like all-diff or equality to compare 'hand-designed' harmonics and learned ones.
+\item Possible metrics:
+  \begin{itemize}
+  \item Manhattan: $\sum\limits_i |s[i] - x[i]|$
+  \item Hamming: number of variables to change to get a solution (ideal for local search)
+  \item Number of swaps of values to get a solution (ideal for permutation constraints).
+  \item Manhattan/Hamming mix: Hamming first, then Manhattan as a tie-breaker.
+  \end{itemize}
+\item Brute-force solution search on small spaces: from a configuration $\vec{x}$, try all possible combinations and test if it is a solution. Early-stop: once we have found a solution, no need to continue the search.
+\item The idea is to characterize the cost functions over small instances (few variables/small domains) to make it scale over larger instances.
+\item Multivariate interpolation to find a scalable formula for $f$ (chebpol).
+\item Use of Genetic Algorithms/Programming, other Evolutionary Computation, Reinforcement learning, Supervised learning?
+\end{enumerate}
+
+\section{Sidekick ideas}
+
+\begin{itemize}
+\item[1 bis] The user provides some examples $\vec{x}$ 1. near to be a solution, 2. not a solution but not ridiculous and 3. being a really bad configuration.
+\item[3 bis] Could be simplified by a linear transform contracting the constraint configuration space on the manyfold of solutions (so det = 0). Only possible if the manyfold is linear?
+\item[5 bis] Random draw of solutions to estimate a projection. Need to know and save solutions somewhere (or to be able to find them quickly).
+\item [6 bis] See also Kantorovich functional distance from~\cite{StochCP}. See also~\cite{metrics}.
+\item [8 bis] Generate training examples and do reinforcement learning/supervised learning (regression problem)? keeping in mind we look for a function based over the sum of harmonics.
+\end{itemize}
+
+\section{To explore}
+\begin{itemize}
+\item Can the Johnson-Lindenstrauss Lemma be useful here?
+\item Dichotomy (!?)
+\item Constraint classification regarding their cost function.
+\item Compute the cost function of the main global constraints.
+\item Study the robustness of the cost function regarding the ratio $\frac{|Domain|}{\# vars}$. Does normalization change something?
+\item Compositional pattern-producing network (CPPN~\cite{CPPN}) instead of the sum of harmonics.
+\end{itemize}
+
+\section{Questions / issues}
+\begin{itemize}
+\item Discrete case of trigonometric functions.
+\item How to scale over more variables, like $\text{all-diff}(x, y, z) \rightarrow \text{all-diff}(x_1, \ldots, x_n)$
+\end{itemize}
+
+
+\bibliographystyle{alpha}
+\bibliography{draft}
+
+\end{document}
