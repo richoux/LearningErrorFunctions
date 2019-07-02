@@ -9,10 +9,12 @@
 #include "subghost/variable.hpp"
 #include "subghost/constraint.hpp"
 
-#define NB_ALLDIFF 8
+#define NB_ALLDIFF 3
 
 int main( int argc, char **argv )
 {
+	cout << "Let's begin: " << NB_ALLDIFF << "\n\n";
+	
 	// Create NB_ALLDIFF variables
 	vector<Variable> variables;
 	for( int i = 0 ; i < NB_ALLDIFF ; ++i )
@@ -21,32 +23,39 @@ int main( int argc, char **argv )
 	vector<reference_wrapper<Variable>> variables_ref( variables.begin(), variables.end() );
 
 	// Initialize all variables to 0
-	for( auto &var : variables_ref )
-		var.set_value( 0 );
+	for( auto var : variables_ref )
+		var.get().set_value( 0 );
 
-	vector<Variable> backup( variables.size() );
+	vector<int> backup( variables.size() );
 	
 	// Create the all-different constraint
 	shared_ptr<Constraint>alldiff = make_shared<AllDiff>( variables_ref );
 
+	cout << "vec size: " << variables_ref.size() << "\n";
+	
 	// Big f*cking loop
 	// while all variable values are equal to NB_ALLDIFF - 1
-	while( std::all_of( variables_ref.begin(),
-	                    variables_ref.end(),
-	                    [](auto &var){ return var.get_value() == NB_ALLDIFF - 1; } ) )
+	while( !std::all_of( variables_ref.begin(),
+	                     variables_ref.end(),
+	                     [](auto var){ return var.get().get_value() == NB_ALLDIFF - 1; } ) )
 	{
 		// backup since metrics need to change variables value.
-		std::copy( variables_ref.begin(), variables_ref.end(), backup.begin() );
-		
-		for( auto &var : variables_ref )
-			cout << var.get_value() << " ";
-		cout << ":= " << manhattan( alldiff, variables_ref ) << "\n";
+		std::transform( variables_ref.begin(),
+		                variables_ref.end(),
+		                backup.begin(),
+		                [](auto var){ return var.get().get_value(); } );
 
-		// roll-back
-		for( int i = 0 ; int i < backup.size() ; ++i )
-			variables_ref[ i ].set_value( backup[ i ].get_value() );
+		for( auto var : variables_ref )
+			cout << var.get().get_value() << " ";
+		cout << ":= " << manhattan( alldiff, variables_ref, NB_ALLDIFF ) << "\n";
+
+		break;
 		
-		increment( variables_ref, NB_ALLDIFF );
+		// // roll-back
+		// for( int i = 0 ; i < backup.size() ; ++i )
+		// 	variables_ref[ i ].get().set_value( backup[ i ] );
+		
+		// increment( variables_ref, NB_ALLDIFF );
 	}
 	
 	return EXIT_SUCCESS;

@@ -12,8 +12,8 @@ double AllDiff::required_cost() const
 	// If we have two variables sharing the same value, return 1 (not a solution)
 	// otherwise, return 0.
 	for( int i = 0 ; i < variables.size() ; ++i )
-		if( !bitvec[ variables[i].get_value() ] )
-			bitvec[ variables[i].get_value() ] = true;
+		if( !bitvec[ variables[i].get().get_value() ] )
+			bitvec[ variables[i].get().get_value() ] = true;
 		else
 			return 1;
 	

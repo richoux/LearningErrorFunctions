@@ -1,3 +1,7 @@
+#code
+code/obj/*
+code/bin/*
+
 # PDF
 *.pdf
 

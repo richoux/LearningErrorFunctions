@@ -10,10 +10,13 @@ using namespace std;
 using namespace ghost;
 
 double manhattan( const shared_ptr<Constraint> constraint,
-                  const vector< reference_wrapper<Variable> >& variables );
+                  const vector< reference_wrapper<Variable> >& variables,
+                  int max_value );
 
 double hamming( const shared_ptr<Constraint> constraint,
-                const vector< reference_wrapper<Variable> >& variables );
+                const vector< reference_wrapper<Variable> >& variables,
+                int max_value );
 
 double man_ham( const shared_ptr<Constraint> constraint,
-                const vector< reference_wrapper<Variable> >& variables );
+                const vector< reference_wrapper<Variable> >& variables,
+                int max_value );
