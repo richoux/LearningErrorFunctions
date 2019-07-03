@@ -132,6 +132,26 @@ namespace ghost
 		}
 
 		/*!
+		 * Return the minimal value in the domain.
+		 *
+		 * \return An int corresponding to the minimal value in the domain.
+		 */
+		inline int get_min_value() const
+		{
+			return _minValue;
+		}
+
+		/*!
+		 * Return the maximal value in the domain.
+		 *
+		 * \return An int corresponding to the maximal value in the domain.
+		 */
+		inline int get_max_value() const
+		{
+			return _maxValue;
+		}
+
+		/*!
 		 * Return the number of values currently composing the domain.
 		 *
 		 * \return A size_t corresponding to the size of the domain.

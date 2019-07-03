@@ -1,4 +1,5 @@
-EXEC=all-diff
+EXEC_ALLDIFF=all-diff
+EXEC_LESS=less_than
 
 # Compiler flags
 CXXFIRSTFLAGS= -Ofast -DBENCH -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter
@@ -24,7 +25,12 @@ BINDIR=bin
 
 # Files
 SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+SOURCES_ALLDIFF=$(filter-out ./less_than.cpp ./main_less_than.cpp, $(SOURCES))
+SOURCES_LESS=$(filter-out ./all-diff.cpp ./main_all-diff.cpp, $(SOURCES))
+
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
+OBJECTS_ALLDIFF=$(filter-out $(OBJDIR)/less_than.o $(OBJDIR)/main_less_than.o, $(OBJECTS))
+OBJECTS_LESS=$(filter-out $(OBJDIR)/all-diff.o $(OBJDIR)/main_all-diff.o, $(OBJECTS))
 
 # For rm
 SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
@@ -37,12 +43,19 @@ vpath %.cpp $(SRCDIR)
 # $< is the first item in the dependencies list
 
 # Rules
-all: $(BINDIR)/$(EXEC)
+all: $(BINDIR)/$(EXEC_ALLDIFF) $(BINDIR)/$(EXEC_LESS)
 
 debug: CXXFLAGS= $(CXXFLAGSDEBUG)
-debug: $(BINDIR)/$(EXEC)
+debug: $(BINDIR)/$(EXEC_ALLDIFF) $(BINDIR)/$(EXEC_LESS)
 
-$(BINDIR)/$(EXEC): $(OBJECTS)
+alldiff: $(BINDIR)/$(EXEC_ALLDIFF)
+
+lessthan: $(BINDIR)/$(EXEC_LESS)
+
+$(BINDIR)/$(EXEC_ALLDIFF): $(OBJECTS_ALLDIFF)
+	$(CXX) -o  $@ $^ $(LDFLAGS)
+
+$(BINDIR)/$(EXEC_LESS): $(OBJECTS_LESS)
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
@@ -51,4 +64,4 @@ $(OBJDIR)/%.o: %.cpp
 .PHONY: clean 
 
 clean:
-	rm -fr core *~ $(BINDIR)/$(EXEC) $(OBJECTS) $(SOURCESTILDE) 
+	rm -fr core *~ $(BINDIR)/$(EXEC_ALLDIFF) $(BINDIR)/$(EXEC_LESS) $(OBJECTS) $(SOURCESTILDE) 

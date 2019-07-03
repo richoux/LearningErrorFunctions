@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 
-#include "all-diff.hpp"
+#include "less_than.hpp"
 #include "metrics.hpp"
 #include "increment.hpp"
 #include "subghost/variable.hpp"
@@ -14,16 +14,16 @@ int main( int argc, char **argv )
 {
 	int nb_vars;
 	if( argc <= 1 )
-		nb_vars = 4;
+		nb_vars = 3;
 	else
 		nb_vars = std::stoi( string( argv[1] ) );
 	
-	cout << "Number of variables for AllDiff: " << nb_vars << "\n\n";
+	cout << "Number of variables for LessThan: " << nb_vars << "\n\n";
 	
 	// Create nb_vars variables
 	vector<Variable> variables;
 	for( int i = 0 ; i < nb_vars ; ++i )
-		variables.push_back( Variable( std::string("v"+i), std::string("v"+i), 0, nb_vars ) );
+		variables.push_back( Variable( std::string("v"+i), std::string("v"+i), 0, (int)( nb_vars * 1.5 ) ) );
 
 	vector<reference_wrapper<Variable>> variables_ref( variables.begin(), variables.end() );
 
@@ -34,11 +34,11 @@ int main( int argc, char **argv )
 	vector<int> backup( variables.size() );
 	
 	// Create the all-different constraint
-	shared_ptr<Constraint>alldiff = make_shared<AllDiff>( variables_ref );
+	shared_ptr<Constraint>lessthan = make_shared<LessThan>( variables_ref );
 
 	for( auto var : variables_ref )
 		cout << var.get().get_value() << " ";
-	cout << ":= " << manhattan( alldiff, variables_ref ) << "\n";
+	cout << ":= " << manhattan( lessthan, variables_ref ) << "\n";
 
 	// Re-initialize all variables to 0
 	for( auto var : variables_ref )
@@ -60,7 +60,7 @@ int main( int argc, char **argv )
 
 		for( auto var : variables_ref )
 			cout << var.get().get_value() << " ";
-		cout << ":= " << manhattan( alldiff, variables_ref ) << "\n";
+		cout << ":= " << manhattan( lessthan, variables_ref ) << "\n";
 
 		// roll-back
 		for( int i = 0 ; i < backup.size() ; ++i )

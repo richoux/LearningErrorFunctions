@@ -13,8 +13,7 @@
 // WARNING: this function assumes that all variables share the same domain [0, k-1]
 double search_nearest_solution( const shared_ptr<Constraint> constraint,
                                 const vector< reference_wrapper<Variable> > &variables,
-                                const vector< int > &vars_to_search,
-                                int max_value )
+                                const vector< int > &vars_to_search )
 {
 	bool solution_found = false;
 	bool reach_last_value = false;
@@ -33,13 +32,12 @@ double search_nearest_solution( const shared_ptr<Constraint> constraint,
 	
 	while( !solution_found && !reach_last_value )
 	{
-		increment_some_vars( variables, max_value, vars_to_search );
+		increment_some_vars( variables, vars_to_search );
 		
 		if( constraint->cost() == 0 )
 			solution_found = true;
-		
-		if( variables[ vars_to_search.back() ].get().get_value() == max_value - 1 )
-			reach_last_value = true;
+
+		reach_last_value = std::all_of( vars_to_search.begin(), vars_to_search.end(), [&]( auto index ){ return variables[index].get().get_value() == variables[index].get().get_domain_max_value(); } );
 	};
 	
 	// roll-back and compute the sum of absolute differences of values
@@ -65,8 +63,7 @@ double search_nearest_solution( const shared_ptr<Constraint> constraint,
 
 // Limited to 20 variables so far
 double manhattan( const shared_ptr<Constraint> constraint,
-                  const vector< reference_wrapper<Variable> >& variables,
-                  int max_value )
+                  const vector< reference_wrapper<Variable> >& variables )
 {
 	if( constraint->cost() == 0 )
 		return 0;
@@ -75,7 +72,7 @@ double manhattan( const shared_ptr<Constraint> constraint,
 		long counter_limit = (long)std::pow( 2, variables.size() ) - 1;
 		vector<int> vars_to_search;
 
-		for( long counter = 1 ; counter < counter_limit ; ++counter )
+		for( long counter = 1 ; counter <= counter_limit ; ++counter )
 		{
 			vars_to_search.clear();
 			bitset<20> to_convert( counter );
@@ -89,7 +86,7 @@ double manhattan( const shared_ptr<Constraint> constraint,
 			// 	std::cout << v << " ";
 			// std::cout << "\n";
 
-			if( search_nearest_solution( constraint, variables, vars_to_search, max_value ) != -1 )
+			if( search_nearest_solution( constraint, variables, vars_to_search ) != -1 )
 				return vars_to_search.size();
 		}
 		
@@ -98,16 +95,14 @@ double manhattan( const shared_ptr<Constraint> constraint,
 }
 
 double hamming( const shared_ptr<Constraint> constraint,
-                const vector< reference_wrapper<Variable> >& variables,
-                int max_value )
+                const vector< reference_wrapper<Variable> >& variables )
 {
 	// TODO
 	return 0.;
 }
 
 double man_ham( const shared_ptr<Constraint> constraint,
-                const vector< reference_wrapper<Variable> >& variables,
-                int max_value )
+                const vector< reference_wrapper<Variable> >& variables )
 {
 	// TODO, return man.ham
 	return 0.;

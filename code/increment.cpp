@@ -1,36 +1,32 @@
 #include "increment.hpp"
 
-void increment( const vector<reference_wrapper<Variable>> &variables,
-                const int limit )
+void increment( const vector<reference_wrapper<Variable>> &variables )
 {
-	increment( variables, limit, variables.size() - 1 );
+	increment( variables, variables.size() - 1 );
 }
 
 void increment( const vector<reference_wrapper<Variable>> &variables,
-                const int limit,
                 const int index )
 {
 	if( index < 0 )
 		return;
 	
-	if( variables[ index ].get().get_value() < limit - 1 )
+	if( variables[ index ].get().get_value() < variables[ index ].get().get_domain_max_value() )
 		variables[ index ].get().set_value( variables[ index ].get().get_value() + 1 );
 	else
 	{
 		variables[ index ].get().set_value( 0 );
-		increment( variables, limit, index - 1 );
+		increment( variables, index - 1 );
 	}
 }
 
 void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
-                          const int limit,
                           const vector<int> &vars_index )
 {
-	increment_some_vars( variables, limit, vars_index, 0 );
+	increment_some_vars( variables, vars_index, 0 );
 }
 
 void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
-                          const int limit,
                           const vector<int> &vars_index,
                           const int index )
 {
@@ -39,11 +35,11 @@ void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
 
 	int current_var_index = vars_index[ index ];
 	
-	if( variables[ current_var_index ].get().get_value() < limit - 1 )
+	if( variables[ current_var_index ].get().get_value() < variables[ current_var_index ].get().get_domain_max_value() )
 		variables[ current_var_index ].get().set_value( variables[ current_var_index ].get().get_value() + 1 );
 	else
 	{
 		variables[ current_var_index ].get().set_value( 0 );
-		increment_some_vars( variables, limit, vars_index, index + 1 );
+		increment_some_vars( variables, vars_index, index + 1 );
 	}
 }
