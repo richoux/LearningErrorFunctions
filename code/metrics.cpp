@@ -10,15 +10,16 @@
  * Local functions
  */
 
-// WARNING: this function assumes that all variables share the same domain [0, k-1]
+// TODO and WARNING: this function assumes that all variables share the same domain [0, k-1]
 double search_nearest_solution( const shared_ptr<Constraint> constraint,
                                 const vector< reference_wrapper<Variable> > &variables,
                                 const vector< int > &vars_to_search )
+//TODO: should add a boolean 'search_for_best' here (false by default) for Hamming, to tell if we must continue to search for a better solution
 {
 	bool solution_found = false;
 	bool reach_last_value = false;
 	double difference = 0.;
-
+//TODO: min sol
 	
 	vector<int> backup;
 	for( int i = 0 ; i < vars_to_search.size() ; ++i )
@@ -29,14 +30,16 @@ double search_nearest_solution( const shared_ptr<Constraint> constraint,
 
 	if( constraint->cost() == 0 )
 		solution_found = true;
-	
+
+	//TODO: while ( (!sol || search_for_best) && !last)
 	while( !solution_found && !reach_last_value )
 	{
 		increment_some_vars( variables, vars_to_search );
 		
 		if( constraint->cost() == 0 )
 			solution_found = true;
-
+//TODO: if search_for_best then compare with min sol 
+		
 		reach_last_value = std::all_of( vars_to_search.begin(), vars_to_search.end(), [&]( auto index ){ return variables[index].get().get_value() == variables[index].get().get_domain_max_value(); } );
 	};
 	
@@ -45,7 +48,7 @@ double search_nearest_solution( const shared_ptr<Constraint> constraint,
 	{
 		int index = vars_to_search[ i ];
 
-		// WARNING: will not work for Hamming distance. We need to check ALL possible solutions
+		// TODO and WARNING: will not work for Hamming distance. We need to check ALL possible solutions
 		// and to keep the closest one. Early stopping with the first solution will not work here.
 		if( solution_found )
 			difference += std::abs( variables[ index ].get().get_value() - backup[ i ] );
@@ -62,6 +65,7 @@ double search_nearest_solution( const shared_ptr<Constraint> constraint,
 ///////////////
 
 // Limited to 20 variables so far
+// TODO: something cleaner without this 20 vars limitation
 double manhattan( const shared_ptr<Constraint> constraint,
                   const vector< reference_wrapper<Variable> >& variables )
 {
@@ -80,11 +84,6 @@ double manhattan( const shared_ptr<Constraint> constraint,
 			for( int i = 0 ; i < 20 ; ++i )
 				if( to_convert[ i ] == 1 )
 					vars_to_search.push_back( i );
-
-			// std::cout << counter << "/" << counter_limit << " " << to_convert << "\n";
-			// for( auto &v : vars_to_search )
-			// 	std::cout << v << " ";
-			// std::cout << "\n";
 
 			if( search_nearest_solution( constraint, variables, vars_to_search ) != -1 )
 				return vars_to_search.size();
