@@ -22,6 +22,7 @@ int main( int argc, char **argv )
 	
 	// Create nb_vars variables
 	vector<Variable> variables;
+	//TODO: names are weird
 	for( int i = 0 ; i < nb_vars ; ++i )
 		variables.push_back( Variable( std::string("v"+i), std::string("v"+i), 0, (int)( nb_vars * 1.5 ) ) );
 
@@ -38,7 +39,9 @@ int main( int argc, char **argv )
 
 	for( auto var : variables_ref )
 		cout << var.get().get_value() << " ";
-	cout << ":= " << manhattan( lessthan, variables_ref ) << "\n";
+	cout << "\nManhattan := " << manhattan( lessthan, variables_ref )
+	     << "\nHamming := " << hamming( lessthan, variables_ref )
+	     << "\nMix := " << man_ham( lessthan, variables_ref ) << "\n\n";
 
 	// Re-initialize all variables to 0
 	for( auto var : variables_ref )
@@ -60,8 +63,10 @@ int main( int argc, char **argv )
 
 		for( auto var : variables_ref )
 			cout << var.get().get_value() << " ";
-		cout << ":= " << manhattan( lessthan, variables_ref ) << "\n";
-
+		cout << "\nManhattan := " << manhattan( lessthan, variables_ref )
+		     << "\nHamming := " << hamming( lessthan, variables_ref )
+		     << "\nMix := " << man_ham( lessthan, variables_ref ) << "\n\n";
+		
 		// roll-back
 		for( int i = 0 ; i < backup.size() ; ++i )
 			variables_ref[ i ].get().set_value( backup[ i ] );		
