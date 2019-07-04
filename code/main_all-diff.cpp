@@ -17,14 +17,13 @@ int main( int argc, char **argv )
 		nb_vars = 4;
 	else
 		nb_vars = std::stoi( string( argv[1] ) );
-	
+
 	cout << "Number of variables for AllDiff: " << nb_vars << "\n\n";
-	
+
 	// Create nb_vars variables
 	vector<Variable> variables;
-	//TODO: names are weird
 	for( int i = 0 ; i < nb_vars ; ++i )
-		variables.emplace_back( std::string("v"+i), std::string("v"+i), 0, nb_vars );
+		variables.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, nb_vars );
 
 	vector<reference_wrapper<Variable>> variables_ref( variables.begin(), variables.end() );
 
@@ -33,7 +32,7 @@ int main( int argc, char **argv )
 		var.get().set_value( 0 );
 
 	vector<int> backup( variables.size() );
-	
+
 	// Create the all-different constraint
 	shared_ptr<Constraint>alldiff = make_shared<AllDiff>( variables_ref );
 
@@ -46,7 +45,7 @@ int main( int argc, char **argv )
 	// Re-initialize all variables to 0
 	for( auto var : variables_ref )
 		var.get().set_value( 0 );
-	
+
 	// Big f*cking loop
 	// while all variable values are not equal to max_value
 	while( !std::all_of( variables_ref.begin(),
@@ -69,7 +68,7 @@ int main( int argc, char **argv )
 
 		// roll-back
 		for( int i = 0 ; i < backup.size() ; ++i )
-			variables_ref[ i ].get().set_value( backup[ i ] );		
+			variables_ref[ i ].get().set_value( backup[ i ] );
 	};
 
 	return EXIT_SUCCESS;

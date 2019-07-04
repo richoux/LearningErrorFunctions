@@ -61,7 +61,7 @@ $(BINDIR)/$(EXEC_LESS): $(OBJECTS_LESS)
 $(OBJDIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY: clean 
+.PHONY: clean
 
 clean:
 	rm -fr core *~ $(BINDIR)/$(EXEC_ALLDIFF) $(BINDIR)/$(EXEC_LESS) $(OBJECTS) $(SOURCESTILDE) 

@@ -10,6 +10,7 @@
 /*
  * Local functions
  */
+
 // double convert_to_fractional( int number )
 // {
 // 	double frac = number;
@@ -20,6 +21,37 @@
 // 	return frac;
 // }
 
+// vector<bool> convert_to_binary( int number )
+// {
+// 	vector<bool> binary;
+	
+// 	do
+// 	{
+// 		binary.push_back( number % 2 );
+// 		number /= 2;
+// 	}
+// 	while( number > 0 );
+
+// 	return binary;
+// }
+
+// vector<int> compute_variables_to_search( long counter )
+// {
+// 	int counter_index = 0;
+// 	vector<int> vars_to_search;
+
+// 	do
+// 	{
+// 		if( ( counter % 2 ) == 1 )
+// 			vars_to_search.push_back( counter_index );
+
+// 		counter /= 2;
+// 		++counter_index;
+// 	}
+// 	while( counter > 0 );
+
+// 	return vars_to_search;
+// }
 
 // TODO and WARNING: this function assumes that all variables share the same domain [0, k-1]
 int search_nearest_solution( const shared_ptr<Constraint> constraint,
@@ -46,7 +78,7 @@ int search_nearest_solution( const shared_ptr<Constraint> constraint,
 		for( auto &original_value : backup )
 			min_diff += original_value;
 	}
-	
+
 	while( ( !solution_found || search_for_best ) && !reach_last_value )
 	{
 		increment_some_vars( variables, vars_to_search );
@@ -54,6 +86,7 @@ int search_nearest_solution( const shared_ptr<Constraint> constraint,
 		if( constraint->cost() == 0 )
 		{
 			solution_found = true;
+			difference = 0;
 
 			for( int i = 0 ; i < vars_to_search.size() ; ++i )
 				difference += std::abs( variables[ vars_to_search[ i ] ].get().get_value() - backup[ i ] );
@@ -80,8 +113,6 @@ int search_nearest_solution( const shared_ptr<Constraint> constraint,
 
 ///////////////
 
-// Limited to 20 variables so far
-// TODO: something cleaner without this 20 vars limitation
 double manhattan( const shared_ptr<Constraint> constraint,
                   const vector< reference_wrapper<Variable> >& variables )
 {
@@ -89,28 +120,27 @@ double manhattan( const shared_ptr<Constraint> constraint,
 		return 0;
 	else
 	{
-		long counter_limit = (long)std::pow( 2, variables.size() ) - 1;
+		vector<bool> counter( variables.size(), false );
 		vector<int> vars_to_search;
 
-		for( long counter = 1 ; counter <= counter_limit ; ++counter )
+		do
 		{
+			increment_boolean_vector( counter );
 			vars_to_search.clear();
-			bitset<20> to_convert( counter );
 
-			for( int i = 0 ; i < 20 ; ++i )
-				if( to_convert[ i ] == 1 )
+			for( int i = 0 ; i < variables.size() ; ++i )
+				if( counter[i] )
 					vars_to_search.push_back( i );
 
 			if( search_nearest_solution( constraint, variables, vars_to_search ) != -1 )
 				return vars_to_search.size();
 		}
+		while( !std::all_of( counter.begin(), counter.end(), [](auto b){ return b; } ) );
 
 		return -1;
 	}
 }
 
-// Limited to 20 variables so far
-// TODO: something cleaner without this 20 vars limitation
 double hamming( const shared_ptr<Constraint> constraint,
                 const vector< reference_wrapper<Variable> >& variables )
 {
@@ -118,18 +148,19 @@ double hamming( const shared_ptr<Constraint> constraint,
 		return 0;
 	else
 	{
-		long counter_limit = (long)std::pow( 2, variables.size() ) - 1;
-		vector<int> vars_to_search;
 		int diff = 0;
 		int min_diff = std::numeric_limits<int>::max();
-		
-		for( long counter = 1 ; counter <= counter_limit ; ++counter )
-		{
-			vars_to_search.clear();
-			bitset<20> to_convert( counter );
 
-			for( int i = 0 ; i < 20 ; ++i )
-				if( to_convert[ i ] == 1 )
+		vector<bool> counter( variables.size(), false );
+		vector<int> vars_to_search;
+
+		do
+		{
+			increment_boolean_vector( counter );
+			vars_to_search.clear();
+
+			for( int i = 0 ; i < variables.size() ; ++i )
+				if( counter[i] )
 					vars_to_search.push_back( i );
 
 			diff = search_nearest_solution( constraint, variables, vars_to_search, true );
@@ -137,7 +168,8 @@ double hamming( const shared_ptr<Constraint> constraint,
 			if( diff != -1 && min_diff > diff )
 				min_diff = diff;
 		}
-				
+		while( !std::all_of( counter.begin(), counter.end(), [](auto b){ return b; } ) );
+
 		if( min_diff < std::numeric_limits<int>::max() )
 			return min_diff;
 		else
@@ -145,8 +177,6 @@ double hamming( const shared_ptr<Constraint> constraint,
 	}
 }
 
-// Limited to 20 variables so far
-// TODO: something cleaner without this 20 vars limitation
 double man_ham( const shared_ptr<Constraint> constraint,
                 const vector< reference_wrapper<Variable> >& variables )
 {
@@ -154,19 +184,21 @@ double man_ham( const shared_ptr<Constraint> constraint,
 		return 0;
 	else
 	{
-		long counter_limit = (long)std::pow( 2, variables.size() ) - 1;
-		vector<int> vars_to_search;
 		int diff = 0;
 		int min_diff = std::numeric_limits<int>::max();
 		int number_vars_to_check = std::numeric_limits<int>::max();
-		
-		for( long counter = 1 ; counter <= counter_limit ; ++counter )
-		{
-			vars_to_search.clear();
-			bitset<20> to_convert( counter );
+		int number_of_true = 0;
 
-			for( int i = 0 ; i < 20 ; ++i )
-				if( to_convert[ i ] == 1 )
+		vector<bool> counter( variables.size(), false );
+		vector<int> vars_to_search;
+
+		do
+		{
+			increment_boolean_vector( counter );
+			vars_to_search.clear();
+
+			for( int i = 0 ; i < variables.size() ; ++i )
+				if( counter[i] )
 					vars_to_search.push_back( i );
 
 			diff = search_nearest_solution( constraint, variables, vars_to_search, true );
@@ -180,14 +212,16 @@ double man_ham( const shared_ptr<Constraint> constraint,
 				}
 				else
 					if( min_diff > diff )
-						min_diff = diff;						
+						min_diff = diff;
 			}
+
+			number_of_true = std::count_if( counter.begin(), counter.end(), [](auto b){ return b; } );
 		}
+		while( number_of_true <= number_vars_to_check && number_of_true < variables.size() );
 
 		if( number_vars_to_check < std::numeric_limits<int>::max() )
 			// return #vars.min_diff
 			return number_vars_to_check + ( (double)min_diff / ( std::pow( 10, std::floor( std::log10( min_diff ) ) + 1 ) ) );
-			// return number_vars_to_check + convert_to_fractional( min_diff );
 		else
 			return -1;
 	}
