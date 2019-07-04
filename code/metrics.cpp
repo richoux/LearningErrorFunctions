@@ -135,7 +135,7 @@ double hamming( const shared_ptr<Constraint> constraint,
 			if( search_nearest_solution( constraint, variables, vars_to_search ) != -1 )
 				return vars_to_search.size();
 		}
-		while( !std::all_of( counter.begin(), counter.end(), [](auto b){ return b; } ) );
+		while( std::any_of( counter.begin(), counter.end(), [](auto b){ return !b; } ) );
 
 		return -1;
 	}
@@ -168,7 +168,7 @@ double manhattan( const shared_ptr<Constraint> constraint,
 			if( diff != -1 && min_diff > diff )
 				min_diff = diff;
 		}
-		while( !std::all_of( counter.begin(), counter.end(), [](auto b){ return b; } ) );
+		while( std::any_of( counter.begin(), counter.end(), [](auto b){ return !b; } ) );
 
 		if( min_diff < std::numeric_limits<int>::max() )
 			return min_diff;
