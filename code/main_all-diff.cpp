@@ -38,9 +38,9 @@ int main( int argc, char **argv )
 
 	for( auto var : variables_ref )
 		cout << var.get().get_value() << " ";
-	cout << "\nManhattan := " << manhattan( alldiff, variables_ref )
-	     << "\nHamming := " << hamming( alldiff, variables_ref )
-	     << "\nMix := " << man_ham( alldiff, variables_ref ) << "\n\n";
+	cout << "\nHamming := " << hamming( alldiff, variables_ref )
+	     << "\nManhattan := " << manhattan( alldiff, variables_ref )
+	     << "\nMix := " << ham_man( alldiff, variables_ref ) << "\n\n";
 
 	// Re-initialize all variables to 0
 	for( auto var : variables_ref )
@@ -62,9 +62,9 @@ int main( int argc, char **argv )
 
 		for( auto var : variables_ref )
 			cout << var.get().get_value() << " ";
-		cout << "\nManhattan := " << manhattan( alldiff, variables_ref )
-		     << "\nHamming := " << hamming( alldiff, variables_ref )
-		     << "\nMix := " << man_ham( alldiff, variables_ref ) << "\n\n";
+		cout << "\nHamming := " << hamming( alldiff, variables_ref )
+		     << "\nManhattan := " << manhattan( alldiff, variables_ref )
+		     << "\nMix := " << ham_man( alldiff, variables_ref ) << "\n\n";
 
 		// roll-back
 		for( int i = 0 ; i < backup.size() ; ++i )

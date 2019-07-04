@@ -113,8 +113,8 @@ int search_nearest_solution( const shared_ptr<Constraint> constraint,
 
 ///////////////
 
-double manhattan( const shared_ptr<Constraint> constraint,
-                  const vector< reference_wrapper<Variable> >& variables )
+double hamming( const shared_ptr<Constraint> constraint,
+                const vector< reference_wrapper<Variable> >& variables )
 {
 	if( constraint->cost() == 0 )
 		return 0;
@@ -141,8 +141,8 @@ double manhattan( const shared_ptr<Constraint> constraint,
 	}
 }
 
-double hamming( const shared_ptr<Constraint> constraint,
-                const vector< reference_wrapper<Variable> >& variables )
+double manhattan( const shared_ptr<Constraint> constraint,
+                  const vector< reference_wrapper<Variable> >& variables )
 {
 	if( constraint->cost() == 0 )
 		return 0;
@@ -177,7 +177,7 @@ double hamming( const shared_ptr<Constraint> constraint,
 	}
 }
 
-double man_ham( const shared_ptr<Constraint> constraint,
+double ham_man( const shared_ptr<Constraint> constraint,
                 const vector< reference_wrapper<Variable> >& variables )
 {
 	if( constraint->cost() == 0 )

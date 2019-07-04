@@ -9,11 +9,11 @@
 using namespace std;
 using namespace ghost;
 
-double manhattan( const shared_ptr<Constraint> constraint,
-                  const vector< reference_wrapper<Variable> >& variables );
-
 double hamming( const shared_ptr<Constraint> constraint,
                 const vector< reference_wrapper<Variable> >& variables );
 
-double man_ham( const shared_ptr<Constraint> constraint,
+double manhattan( const shared_ptr<Constraint> constraint,
+                  const vector< reference_wrapper<Variable> >& variables );
+
+double ham_man( const shared_ptr<Constraint> constraint,
                 const vector< reference_wrapper<Variable> >& variables );
