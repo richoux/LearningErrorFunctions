@@ -53,6 +53,8 @@
 // 	return vars_to_search;
 // }
 
+/*****************************************/
+
 // TODO and WARNING: this function assumes that all variables share the same domain [0, k-1]
 int search_nearest_solution( const shared_ptr<Constraint> constraint,
                              const vector< reference_wrapper<Variable> > &variables,

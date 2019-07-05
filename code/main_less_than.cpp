@@ -7,6 +7,7 @@
 #include "less_than.hpp"
 #include "metrics.hpp"
 #include "increment.hpp"
+#include "print_csv.hpp"
 #include "subghost/variable.hpp"
 #include "subghost/constraint.hpp"
 
@@ -18,7 +19,7 @@ int main( int argc, char **argv )
 	else
 		nb_vars = std::stoi( string( argv[1] ) );
 
-	cout << "Number of variables for LessThan: " << nb_vars << "\n\n";
+	//cout << "Number of variables for LessThan: " << nb_vars << "\n\n";
 
 	// Create nb_vars variables
 	vector<Variable> variables;
@@ -36,11 +37,21 @@ int main( int argc, char **argv )
 	// Create the all-different constraint
 	shared_ptr<Constraint>lessthan = make_shared<LessThan>( variables_ref );
 
+	cout << "Hamming,Manhattan,Mix";
 	for( auto var : variables_ref )
-		cout << var.get().get_value() << " ";
-	cout << "\nHamming := " << hamming( lessthan, variables_ref )
-	     << "\nManhattan := " << manhattan( lessthan, variables_ref )
-	     << "\nMix := " << ham_man( lessthan, variables_ref ) << "\n\n";
+		cout << "," << var.get().get_name();
+	cout << "\n";
+
+	print_csv( variables_ref,
+	           hamming( lessthan, variables_ref ),
+	           manhattan( lessthan, variables_ref ),
+	           ham_man( lessthan, variables_ref ) );
+	
+	// for( auto var : variables_ref )
+	// 	cout << var.get().get_value() << " ";
+	// cout << "\nHamming := " << hamming( lessthan, variables_ref )
+	//      << "\nManhattan := " << manhattan( lessthan, variables_ref )
+	//      << "\nMix := " << ham_man( lessthan, variables_ref ) << "\n\n";
 
 	// Re-initialize all variables to 0
 	for( auto var : variables_ref )
@@ -60,11 +71,16 @@ int main( int argc, char **argv )
 		                backup.begin(),
 		                [](auto var){ return var.get().get_value(); } );
 
-		for( auto var : variables_ref )
-			cout << var.get().get_value() << " ";
-		cout << "\nHamming := " << hamming( lessthan, variables_ref )
-		     << "\nManhattan := " << manhattan( lessthan, variables_ref )
-		     << "\nMix := " << ham_man( lessthan, variables_ref ) << "\n\n";
+		print_csv( variables_ref,
+		           hamming( lessthan, variables_ref ),
+		           manhattan( lessthan, variables_ref ),
+		           ham_man( lessthan, variables_ref ) );
+		
+		// for( auto var : variables_ref )
+		// 	cout << var.get().get_value() << " ";
+		// cout << "\nHamming := " << hamming( lessthan, variables_ref )
+		//      << "\nManhattan := " << manhattan( lessthan, variables_ref )
+		//      << "\nMix := " << ham_man( lessthan, variables_ref ) << "\n\n";
 
 		// roll-back
 		for( int i = 0 ; i < backup.size() ; ++i )

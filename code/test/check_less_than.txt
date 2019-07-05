@@ -131,7 +131,7 @@ Manhattan := 2
 Mix := 1.2
 
 1 2 2 
-Hamming := 2
+Hamming := 1
 Manhattan := 1
 Mix := 1.1
 
