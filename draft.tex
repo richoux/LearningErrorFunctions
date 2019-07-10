@@ -29,7 +29,6 @@
 \includegraphics[width=\linewidth,angle=180]{20190529_whiteboard}
 
 \section{Main ideas}
-
 \begin{enumerate}
 \item The user must first provide for each constraint type a function $b(\vec{x}) = \left\{
   \begin{array}{rl}
@@ -55,13 +54,27 @@
 \end{enumerate}
 
 \section{Sidekick ideas}
-
 \begin{itemize}
 \item[1 bis] The user provides some examples $\vec{x}$ 1. near to be a solution, 2. not a solution but not ridiculous and 3. being a really bad configuration.
 \item[3 bis] Could be simplified by a linear transform contracting the constraint configuration space on the manyfold of solutions (so det = 0). Only possible if the manyfold is linear?
 \item[5 bis] Random draw of solutions to estimate a projection. Need to know and save solutions somewhere (or to be able to find them quickly).
 \item [6 bis] See also Kantorovich functional distance from~\cite{StochCP}. See also~\cite{metrics}.
 \item [8 bis] Generate training examples and do reinforcement learning/supervised learning (regression problem)? keeping in mind we look for a function based over the sum of harmonics.
+\end{itemize}
+
+\section{Formalization}
+Define WCSP and CFN such that:
+\begin{itemize}
+\item  WCSP is  considering soft  constraints, where  a constraint  is
+  unsatisfyed iif its associated cost function outputs a value below a
+  given threshold $k$ (can be infinite).
+\item  CFN  is  considering  hard constraints  only.  Like  constraint
+  networks helping solvers to find  solutions by giving a structure of
+  the problem,  CFN gives,  in addition of  the constraint  network, a
+  structure on  configurations to help  the solver to determine  if an
+  unsatisfying configuration is near to be a solution or not.
+\item Expressiveness: CFN-sat $<$ WCSP $<$ CFN-opt
+\item Reductions/transformation: WCSP $\Rightarrow$ CFN-opt
 \end{itemize}
 
 \section{To explore}
