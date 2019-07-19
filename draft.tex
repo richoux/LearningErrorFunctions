@@ -11,6 +11,7 @@
 \usepackage{eurosym}
 \usepackage{amsmath}
 \usepackage{fourier}
+\usepackage[normalem]{ulem}
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
@@ -35,6 +36,7 @@
     0 & \text{if } x \text{ is a solution}\\
     1 & y\text{otherwise}
   \end{array} \right.$
+$b$ is called ``concept'' in some papers.
 \item The goal is to learn $f(\vec x)$ such that the cost function is defined by $b(\vec x) . f(\vec x)$.
 
 \item Find a metric $|.|_l$ in the constraint configuration space. (\danger Space liked to the constraint, since depending one the variables and their domains.)
@@ -49,7 +51,8 @@
   \end{itemize}
 \item Brute-force solution search on small spaces: from a configuration $\vec{x}$, try all possible combinations and test if it is a solution. Early-stop: once we have found a solution, no need to continue the search.
 \item The idea is to characterize the cost functions over small instances (few variables/small domains) to make it scale over larger instances.
-\item Multivariate interpolation to find a scalable formula for $f$ (chebpol).
+\item Multivariate  interpolation to find  a scalable formula  for $f$
+  (\sout{chebpol} splinter).
 \item Use of Genetic Algorithms/Programming, other Evolutionary Computation, Reinforcement learning, Supervised learning?
 \end{enumerate}
 
@@ -60,6 +63,21 @@
 \item[5 bis] Random draw of solutions to estimate a projection. Need to know and save solutions somewhere (or to be able to find them quickly).
 \item [6 bis] See also Kantorovich functional distance from~\cite{StochCP}. See also~\cite{metrics}.
 \item [8 bis] Generate training examples and do reinforcement learning/supervised learning (regression problem)? keeping in mind we look for a function based over the sum of harmonics.
+\end{itemize}
+
+\section{Processing data}
+\begin{itemize}
+\item Normalize samples or apply  a $log_2(x+2)-1$ scaling function to
+  diminish potential gaps, in particular  when we have solutions (cost
+  = 0).
+\item Idea of backward JLL or ``kind of kernel trick'':
+  \begin{enumerate}
+  \item The user furnishes constraint concepts.
+  \item We apply JLL to reduce the space size.
+  \item We learn our cost function on this space.
+  \item  We apply  some  ``backward  JLL'' to  this  cost function  to
+    preserve its properties on the original space.
+  \end{enumerate}
 \end{itemize}
 
 \section{Formalization}
