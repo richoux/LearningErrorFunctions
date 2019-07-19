@@ -104,8 +104,12 @@ int main(int argc, char *argv[])
 		auto y_bs = bspline.eval(x).at(0);
 		auto y_ps = pspline.eval(x).at(0);
 
-		cout << "Diff Quadratic B-spline at x:          " << y - y_bs              << endl;
-		cout << "Diff P-spline at x:                 " << y - y_ps               << endl;
+		for( auto v : x )
+			cout << v << " ";
+		cout << "\n";
+		cout << "Diff Quadratic B-spline at x:          " << y - y_bs              << "\n";
+		cout << "Diff P-spline at x:                 " << y - y_ps               << "\n";
+		cout << "P-spline at x:                 " << y_ps               << "\n\n";
 	}
 	
 	return 0;
