@@ -1,6 +1,8 @@
 #code
 code/obj/*
 code/bin/*
+code/csv/splinter
+code/csv/splinter.o
 
 # PDF
 *.pdf

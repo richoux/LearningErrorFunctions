@@ -53,7 +53,9 @@ $b$ is called ``concept'' in some papers.
 \item The idea is to characterize the cost functions over small instances (few variables/small domains) to make it scale over larger instances.
 \item Multivariate  interpolation to find  a scalable formula  for $f$
   (\sout{chebpol} splinter).
-\item Use of Genetic Algorithms/Programming, other Evolutionary Computation, Reinforcement learning, Supervised learning?
+\item  Use  of   Genetic  Algorithms/Programming,  other  Evolutionary
+  Computation,    Reinforcement    learning,   Supervised    learning?
+  $\Rightarrow$ iterative building of cost functions.
 \end{enumerate}
 
 \section{Sidekick ideas}
@@ -61,7 +63,17 @@ $b$ is called ``concept'' in some papers.
 \item[1 bis] The user provides some examples $\vec{x}$ 1. near to be a solution, 2. not a solution but not ridiculous and 3. being a really bad configuration.
 \item[3 bis] Could be simplified by a linear transform contracting the constraint configuration space on the manyfold of solutions (so det = 0). Only possible if the manyfold is linear?
 \item[5 bis] Random draw of solutions to estimate a projection. Need to know and save solutions somewhere (or to be able to find them quickly).
-\item [6 bis] See also Kantorovich functional distance from~\cite{StochCP}. See also~\cite{metrics}.
+\item   [6    bis]   See   also   Kantorovich    functional   distance
+  from~\cite{StochCP}. See also~\cite{metrics}.
+\item [7 bis] Random samplings of the configuration space:
+  \begin{enumerate}
+  \item Draw a configuration.
+  \item Scan all neighbors (with simple '1 variable' neighborhood), or
+    sample neighbors (this can be parallelized).
+  \item Cost  = numbers of or  mean of neighbors with  a cost strictly
+    lesser. Problem: what  are those costs? We are trying  to build it
+    actually. Only for iterative processes?
+  \end{enumerate}
 \item [8 bis] Generate training examples and do reinforcement learning/supervised learning (regression problem)? keeping in mind we look for a function based over the sum of harmonics.
 \end{itemize}
 
@@ -102,7 +114,13 @@ Define WCSP and CFN such that:
 \item Constraint classification regarding their cost function.
 \item Compute the cost function of the main global constraints.
 \item Study the robustness of the cost function regarding the ratio $\frac{|Domain|}{\# vars}$. Does normalization change something?
-\item Compositional pattern-producing network (CPPN~\cite{CPPN}) instead of the sum of harmonics.
+\item   Compositional  pattern-producing   network  (CPPN~\cite{CPPN})
+  instead of the sum of harmonics.
+\item For iterative  building (or maybe not):  symmetries detection (=
+  free  samples,  see  2.7bis)  should  make  cost  function  building
+  faster/easier.
+\item Decomposing  complex context  functions given  by the  user into
+  some simple functions.
 \end{itemize}
 
 \section{Questions / issues}
@@ -118,6 +136,7 @@ Define WCSP and CFN such that:
     function over samples
   \item interpoled function vs. hand-designed function.
   \end{itemize}
+\item Examples of constraints with local minimum? (good to know for cost function iterative building)
 \end{itemize}
 
 
