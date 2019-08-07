@@ -3,6 +3,7 @@ code/obj/*
 code/bin/*
 code/csv/splinter
 code/csv/splinter.o
+code/eo/learn_with_genetic_algo
 
 # PDF
 *.pdf
