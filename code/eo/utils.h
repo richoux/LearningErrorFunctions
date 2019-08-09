@@ -1,12 +1,22 @@
 #include <vector>
 #include <string>
-#include <cmath>
 #include <fstream>
 #include <iostream>
-#include <istream>
 #include <sstream>
-#include <stdlib.h>
 #include <utility>
+#include <iterator>
+#include <algorithm>
+
+struct ConfigCost
+{
+	std::vector<double> configuration;
+	double cost;
+
+	ConfigCost( const std::vector<double>& configuration, double cost )
+		: configuration(configuration),
+		  cost(cost)
+	{ }
+};
 
 std::vector<std::string> get_next_line_and_split_into_tokens( std::istream &str )
 {
@@ -31,12 +41,12 @@ std::vector<std::string> get_next_line_and_split_into_tokens( std::istream &str 
 
 // Get the cost for each configuration.
 // Our goal is to learn a function outputting something close to these costs.
-std::vector< std::pair<std::vector<double>, double>> fetch_data( const std::string& filename )
+std::vector< ConfigCost > fetch_data( const std::string& filename )
 {
 	std::ifstream file( filename );
   auto dummy = get_next_line_and_split_into_tokens( file );
   
-  std::vector< std::pair<std::vector<double>, double>> data;
+  std::vector< ConfigCost > data;
   
   while( file.good() )
   {
@@ -44,10 +54,12 @@ std::vector< std::pair<std::vector<double>, double>> fetch_data( const std::stri
 	  std::vector<double> x;
 	  double y = std::stod( tokens[2] );
 
-	  for( auto it = tokens.begin() + 3; it < tokens.end(); ++it )
-		  x.push_back( std::stod( *it ) );
-
-	  data.push_back( std::make_pair( x, y ) );
+	  std::transform( tokens.begin() + 3,
+	                  tokens.end(),
+	                  std::back_inserter( x ),
+	                  [](auto i){ return std::stod( i ); } );
+	  
+	  data.emplace_back( x, y );
   }
 
   return data;
