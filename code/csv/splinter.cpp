@@ -2,9 +2,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-#include <istream>
 #include <sstream>
-#include <stdlib.h>
 #include <string>
 
 using std::cout;
@@ -39,7 +37,7 @@ int main(int argc, char *argv[]) {
   // Create new DataTable to manage samples
   DataTable samples;
 
-  std::ifstream file("less_than_5.csv");
+  std::ifstream file("less_than_4.csv");
   auto dummy = get_next_line_and_split_into_tokens(file);
 
   while (file.good()) {
@@ -107,7 +105,7 @@ int main(int argc, char *argv[]) {
    * vector (in this case of size 1)
    */
 
-  std::ifstream file2("less_than_5.csv");
+  std::ifstream file2("less_than_4.csv");
   dummy = get_next_line_and_split_into_tokens(file2);
 
   while (file2.good()) {
@@ -124,10 +122,12 @@ int main(int argc, char *argv[]) {
 
     for (auto v : x)
       cout << v << " ";
-    cout << "\n";
-    cout << "Diff Quadratic B-spline at x:          " << y - y_bs << "\n";
-    cout << "Diff P-spline at x:                 " << y - y_ps << "\n";
-    cout << "P-spline at x:                 " << y_ps << "\n\n";
+
+    cout << "\nGround truth:                 " << y << "\n"
+         << "B-spline at x:                " << y_bs << "\n"
+         << "Diff Quadratic B-spline at x: " << y - y_bs << "\n"
+         << "P-spline at x:                " << y_ps << "\n"
+         << "Diff P-spline at x:           " << y - y_ps << "\n\n";
   }
 
   return 0;
