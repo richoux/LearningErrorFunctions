@@ -12,6 +12,8 @@
 \usepackage{amsmath}
 \usepackage{fourier}
 \usepackage[normalem]{ulem}
+\usepackage{pifont}
+\usepackage{xcolor}
 
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
@@ -19,6 +21,9 @@
   linkcolor    = blue, %Colour of internal links
   citecolor   = blue %Colour of citations
 }
+
+\newcommand{\cmark}{\textcolor{green!80!black}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}
 
 \title{Draft v1 - Learning Cost Functions}
 %\author{}
@@ -143,23 +148,23 @@ can lead to solutions on $k$ variables.
 
 Classic global constraints in XCSP3-core:
 \begin{itemize}
-\item regular: incremental OK.
+\item regular: \cmark
 \item mdd: more a representation than a constraint.
-\item allDifferent: incremental OK.
-\item allEqual: incremental OK.
-\item ordered (lessThan extension): incremental OK.
-\item sum: FAIL
-\item count: FAIL
-\item nValues: FAIL
-\item cardinality: FAIL
-\item minimum: FAIL
-\item maximum: FAIL
-\item element: OK with the index version, FAIL with the membership-only version.
-\item channel:  incremental OK but only  adding a variable at  the end
+\item allDifferent: \cmark
+\item allEqual: \cmark
+\item ordered (lessThan extension): \cmark
+\item sum: \xmark
+\item count: \xmark
+\item nValues: \xmark
+\item cardinality: \xmark
+\item minimum: \xmark
+\item maximum: \xmark
+\item element: \cmark~for the index version, \xmark~for the membership-only version.
+\item channel:  \cmark~but only  adding a variable at  the end
   can lead to solutions.
 \item stretch: ???
-\item noOverlap: incremental OK
-\item cumulative: FAIL
+\item noOverlap: \cmark
+\item cumulative: \xmark
 \end{itemize}
 
 \section{To explore}
