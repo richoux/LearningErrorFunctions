@@ -132,11 +132,35 @@ Bonus: what is the point to learn a function if we cannot extend it to
 higher spaces?  Computing a  metric on  all points  (or being  able to
 compute it on-the-fly quickly) is sufficient.
 
-Also: construct  solutions incrementally: if $(x_1,  \ldots, x_{k-1})$
-is a solution,  then try all values of $x_k$  with $(x_k, x_1, \ldots,
-x_{k-1})$,  $(x_1, x_k,  \ldots, x_{k-1})$,  $\ldots$, $(x_1,  \ldots,
-x_{k-1}, x_k)$. It does not  work with all constraints (constraint 'sum
-= constant' for instance), so with which ones it is OK?
+\subsection{Build solutions incrementally}
+If $(x_1,  \ldots, x_{k-1})$  is a  solution, then  try all  values of
+$x_k$       with       $(x_k,      x_1,       \ldots,       x_{k-1})$,
+$(x_1,         x_k,        \ldots,         x_{k-1})$,        $\ldots$,
+$(x_1, \ldots, x_{k-1},  x_k)$. It does not work  with all constraints
+(constraint 'sum =  constant' for instance), so with which  ones it is
+OK? Being incremental  here means only solutions  on $k-1$ variables
+can lead to solutions on $k$ variables.
+
+Classic global constraints in XCSP3-core:
+\begin{itemize}
+\item regular: incremental OK.
+\item mdd: more a representation than a constraint.
+\item allDifferent: incremental OK.
+\item allEqual: incremental OK.
+\item ordered (lessThan extension): incremental OK.
+\item sum: FAIL
+\item count: FAIL
+\item nValues: FAIL
+\item cardinality: FAIL
+\item minimum: FAIL
+\item maximum: FAIL
+\item element: OK with the index version, FAIL with the membership-only version.
+\item channel:  incremental OK but only  adding a variable at  the end
+  can lead to solutions.
+\item stretch: ???
+\item noOverlap: incremental OK
+\item cumulative: FAIL
+\end{itemize}
 
 \section{To explore}
 \begin{itemize}
