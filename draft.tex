@@ -107,6 +107,37 @@ Define WCSP and CFN such that:
 \item Reductions/transformation: WCSP $\Rightarrow$ CFN-opt
 \end{itemize}
 
+\section{Scaling-related problems}
+Several ways to handle scaling.
+\begin{enumerate}
+\item Learn a function on a small  space and expend it to the original
+  space.
+\item Draw some samples from the original space
+\item Detect and apply symmetries in the original space.
+\item Apply JLL to reduce to  original space. maps solutions from this
+  space to the compact one, and compute a metric on that compact space
+  (eventually learn a function on it).
+\end{enumerate}
+
+Problems with those methods so far:
+\begin{enumerate}
+\item We have no idea how to extend functions with higher cardinality
+\item Draw  some samples  does not work  well for  interpolation (10\%
+  does not give good results)
+\item It is hard to detect AND to correctly apply symmetries.
+\item Maybe the solution.
+\end{enumerate}
+
+Bonus: what is the point to learn a function if we cannot extend it to
+higher spaces?  Computing a  metric on  all points  (or being  able to
+compute it on-the-fly quickly) is sufficient.
+
+Also: construct  solutions incrementally: if $(x_1,  \ldots, x_{k-1})$
+is a solution,  then try all values of $x_k$  with $(x_k, x_1, \ldots,
+x_{k-1})$,  $(x_1, x_k,  \ldots, x_{k-1})$,  $\ldots$, $(x_1,  \ldots,
+x_{k-1}, x_k)$. It does not  work with all constraints (constraint 'sum
+= constant' for instance), so with which ones it is OK?
+
 \section{To explore}
 \begin{itemize}
 \item Can the Johnson-Lindenstrauss Lemma be useful here?
