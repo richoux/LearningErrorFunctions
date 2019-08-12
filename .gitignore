@@ -4,6 +4,7 @@ code/bin/*
 code/csv/splinter
 code/csv/splinter.o
 code/eo/learn_with_genetic_algo
+code/test-eigen/test
 
 # PDF
 *.pdf
