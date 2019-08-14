@@ -39,7 +39,9 @@ int main(int argc, char *argv[]) {
         // Create new DataTable to manage samples
         DataTable samples;
 
-        std::ifstream file("less_than_4.csv");
+        //std::ifstream file("less_than_4.csv");
+        std::ifstream file("all-diff_JLL_6.csv");
+        
         auto dummy = get_next_line_and_split_into_tokens(file);
 
         while (file.good()) {
@@ -107,7 +109,8 @@ int main(int argc, char *argv[]) {
          * vector (in this case of size 1)
          */
 
-        std::ifstream file2("less_than_4.csv");
+        //std::ifstream file2("less_than_4.csv");
+        std::ifstream file2("all-diff_JLL_6.csv");
         dummy = get_next_line_and_split_into_tokens(file2);
 
         while (file2.good()) {
