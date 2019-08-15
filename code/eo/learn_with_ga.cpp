@@ -32,7 +32,16 @@ constexpr int MAX_DOMAIN = 3;
 constexpr unsigned int NBER_VAR = 4; // 4
 constexpr unsigned int NBER_FREQ = 10; // Number of frequencies composing our Fourier series
 constexpr unsigned int VEC_SIZE = NBER_FREQ * NBER_VAR; // Number of object variables in genotypes
-constexpr int LENGTH_RANDOM_WALK = floor( sqrt( NBER_VAR * MAX_DOMAIN ) ) + 1;
+
+
+/***
+ * The learned function is VERY sensitive to the length of the random walk!
+ */
+constexpr int LENGTH_RANDOM_WALK = /*  <<- Add/remove one '/' here to toggle active code block
+    floor( sqrt( NBER_VAR * NBER_VAR ) ) + 1;
+    /*/
+    2*NBER_VAR;
+    //*/
 
 //-----------------------------------------------------------------------------
 // Variables and target constraint 
@@ -81,9 +90,17 @@ double real_value( const Indi& indi )
 	// random starting point
 	for( auto v : variables_ref )
 		v.get().set_value( uniform_value( gen ) );
+
+	int number_of_non_solutions = 0;
+	//std::cout << "Start!\n";
 	
 	for( int i = 0; i < LENGTH_RANDOM_WALK; ++i )
 	{
+		// Trace of the random walk
+		// for( auto v : variables_ref )
+		// 	std::cout << v.get().get_value() << " ";
+		// std::cout << "\n";
+				
 		// evaluate g(x)
 		double g_x = 0.;
 		for( auto v : variables_ref )
@@ -93,11 +110,15 @@ double real_value( const Indi& indi )
 					g_x += ( indi[k] * cosine( v.get().get_value(), k, MAX_DOMAIN ) );
 				else
 					g_x += ( indi[k] * sine( v.get().get_value(), k, MAX_DOMAIN ) );
-
-			g_outputs[ i ] = std::abs( g_x );
-			f_outputs[ i ] = std::abs( g_x ) * alldiff.cost();
 		}
 
+		g_outputs[ i ] = std::abs( g_x );
+		f_outputs[ i ] += std::abs( g_x ) * alldiff.cost();
+		if( f_outputs[ i ] != 0 )
+			++number_of_non_solutions;
+
+		// cout << "f["<<i<<"]="<<f_outputs[ i ]<<"\n";
+		
 		// new point from a random walk (local move)
 		int var_to_change = uniform_variable( gen );
 		int value_to_change;
@@ -105,35 +126,42 @@ double real_value( const Indi& indi )
 		variables_ref[ var_to_change ].get().set_value( value_to_change );
 	}
 
-	double mean_g = std::accumulate( g_outputs.begin(), g_outputs.end(), 0 ) / LENGTH_RANDOM_WALK;
-	double mean_g_without_f0 = 0.;
-	int number_g_without_f0 = 0;
-	
+	double mean;// = std::accumulate( f_outputs.begin(), f_outputs.end(), 0 ) / LENGTH_RANDOM_WALK;
+	double sum = 0.;
 	for( int i = 0; i < LENGTH_RANDOM_WALK; ++i )
-		if( f_outputs[ i ] != 0 )
-		{
-			mean_g_without_f0 += g_outputs[ i ];
-			++number_g_without_f0;
-		}
+		sum += f_outputs[ i ];
+	mean = sum / LENGTH_RANDOM_WALK;
 
-	mean_g_without_f0 /= number_g_without_f0;
-
-	double sum_g_diff_mean = 0.;
-	double sum_g_diff_square = 0.;
+	
+	double mean_without_solutions = 0.;
+	
+	if( number_of_non_solutions == 0 )
+		mean_without_solutions = mean;
+	else
+		//mean_f_without_solutions = std::accumulate( f_outputs.begin(), f_outputs.end(), 0 ) / number_f_without_solutions;
+		mean_without_solutions = sum / number_of_non_solutions;
+	
+	// cout << "mean="<<mean_f<<"\nmean_f0=" << mean_f_without_solutions << "\n";
+	
+	
+	double sum_diff_mean = 0.;
+	double sum_diff_square = 0.;
 	for( int i = 0; i < LENGTH_RANDOM_WALK - 1; ++i )
 	{
-		sum_g_diff_mean += ( ( g_outputs[ i ] - mean_g ) * ( g_outputs[ i + 1 ] - mean_g ) );
-		sum_g_diff_square += std::pow( ( g_outputs[ i ] - mean_g ), 2 );
+		sum_diff_mean += ( ( f_outputs[ i ] - mean ) * ( f_outputs[ i + 1 ] - mean ) );
+		sum_diff_square += std::pow( ( f_outputs[ i ] - mean ), 2 );
 	}
 
-	sum_g_diff_square += std::pow( ( g_outputs[ LENGTH_RANDOM_WALK - 1 ] - mean_g ), 2 );
+	sum_diff_square += std::pow( ( f_outputs[ LENGTH_RANDOM_WALK - 1 ] - mean ), 2 );
 	
-	double empirical_autocorrelation_num = sum_g_diff_mean / ( LENGTH_RANDOM_WALK - 1 );
-	double empirical_autocorrelation_den = sum_g_diff_square / LENGTH_RANDOM_WALK;
+	double empirical_autocorrelation_num = sum_diff_mean / ( LENGTH_RANDOM_WALK - 1 );
+	double empirical_autocorrelation_den = sum_diff_square / LENGTH_RANDOM_WALK;
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 	double l = 1. / std::log( std::abs( empirical_autocorrelation ) );
+
+	// cout << "l=" << l << "\n";
 	
-	return l * mean_g_without_f0;
+	return l * mean_without_solutions;
 }
 
 // GENERAL
@@ -142,14 +170,14 @@ void main_function( int argc, char **argv )
 {
 // PARAMETRES
 	// all parameters are hard-coded!
-	// const unsigned int SEED = 42; // seed for random number generator
+	// const unsigned int SEED = 42;   // seed for random number generator
 	const unsigned int SEED = time(0);
 	const unsigned int POP_SIZE = 100; // Size of population
-	const unsigned int T_SIZE = 3; // size for tournament selection
+	const unsigned int T_SIZE = 3;     // size for tournament selection
 	const unsigned int MAX_GEN = 2000; // Maximum number of generation before STOP
-	const float CROSS_RATE = 0.8; // Crossover rate. Origin: 0.8
-	const double EPSILON = 0.01;  // range for real uniform mutation. Origin: 0.01
-	const float MUT_RATE = 0.5;   // mutation rate. Origin: 0.5 
+	const float CROSS_RATE = 0.8;      // Crossover rate. Origin: 0.8
+	const double EPSILON = 0.01;       // range for real uniform mutation. Origin: 0.01
+	const float MUT_RATE = 0.5;        // mutation rate. Origin: 0.5 
 
 	const int RANGE = 2; // random in [-RANGE, RANGE)
 
