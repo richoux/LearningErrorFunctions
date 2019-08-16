@@ -28,7 +28,7 @@ typedef eoReal<double> Indi;
 constexpr double PI = std::acos(-1);
 constexpr double TWO_PI = 2*PI;
 
-constexpr int MAX_DOMAIN = 8;
+constexpr int MAX_DOMAIN = 8; // 3
 constexpr unsigned int NBER_VAR = 9; // 4
 constexpr unsigned int NBER_FREQ = 10; // Number of frequencies composing our Fourier series
 constexpr unsigned int VEC_SIZE = NBER_FREQ * NBER_VAR; // Number of object variables in genotypes
@@ -40,7 +40,7 @@ constexpr unsigned int VEC_SIZE = NBER_FREQ * NBER_VAR; // Number of object vari
 constexpr int LENGTH_RANDOM_WALK = /*  <<- Add/remove one '/' here to toggle active code block
     floor( sqrt( NBER_VAR * NBER_VAR ) ) + 1;
     /*/
-    2*NBER_VAR;
+    3*NBER_VAR;
     //*/
 
 //-----------------------------------------------------------------------------
@@ -54,7 +54,8 @@ AllDiff alldiff( variables_ref );
 // Distributions
 std::random_device rd{};
 std::mt19937 gen{ rd() };
-std::normal_distribution<> gaussian{ 0, std::sqrt( NBER_VAR ) };
+std::normal_distribution<> gaussian{ 0, NBER_VAR };
+//std::normal_distribution<> gaussian{ 0, std::sqrt( NBER_VAR ) };
 std::uniform_int_distribution<> uniform_value{ 0, MAX_DOMAIN };
 std::uniform_int_distribution<> uniform_variable{ 0, NBER_VAR - 1 };
 
@@ -167,7 +168,7 @@ void main_function( int argc, char **argv )
 	const unsigned int SEED = time(0);
 	const unsigned int POP_SIZE = 100; // Size of population
 	const unsigned int T_SIZE = 3;     // size for tournament selection
-	const unsigned int MAX_GEN = 5000; // Maximum number of generation before STOP
+	const unsigned int MAX_GEN = 5000; // Maximum number of generation before STOP. Origin: 2000
 	const float CROSS_RATE = 0.8;      // Crossover rate. Origin: 0.8
 	const double EPSILON = 0.01;       // range for real uniform mutation. Origin: 0.01
 	const float MUT_RATE = 0.5;        // mutation rate. Origin: 0.5 
