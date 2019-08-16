@@ -28,8 +28,8 @@ typedef eoReal<double> Indi;
 constexpr double PI = std::acos(-1);
 constexpr double TWO_PI = 2*PI;
 
-constexpr int MAX_DOMAIN = 3;
-constexpr unsigned int NBER_VAR = 4; // 4
+constexpr int MAX_DOMAIN = 8;
+constexpr unsigned int NBER_VAR = 9; // 4
 constexpr unsigned int NBER_FREQ = 10; // Number of frequencies composing our Fourier series
 constexpr unsigned int VEC_SIZE = NBER_FREQ * NBER_VAR; // Number of object variables in genotypes
 
@@ -174,7 +174,7 @@ void main_function( int argc, char **argv )
 	const unsigned int SEED = time(0);
 	const unsigned int POP_SIZE = 100; // Size of population
 	const unsigned int T_SIZE = 3;     // size for tournament selection
-	const unsigned int MAX_GEN = 2000; // Maximum number of generation before STOP
+	const unsigned int MAX_GEN = 5000; // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;      // Crossover rate. Origin: 0.8
 	const double EPSILON = 0.01;       // range for real uniform mutation. Origin: 0.01
 	const float MUT_RATE = 0.5;        // mutation rate. Origin: 0.5 
@@ -294,56 +294,56 @@ void main_function( int argc, char **argv )
 	     << pop[1] << "\n"
 	     << pop[2] << "\n";
 
-	// Re-initialize all variables to 0
-	for( auto var : variables_ref )
-		var.get().set_value( 0 );
+	// // Re-initialize all variables to 0
+	// for( auto var : variables_ref )
+	// 	var.get().set_value( 0 );
 
-	double g_x, f_x = 0.;
+	// double g_x, f_x = 0.;
 	
-	for( unsigned int k = 0; k < NBER_FREQ; ++k )
-		if( k%2 != 0 )
-			g_x += pop[0][k+2];
+	// for( unsigned int k = 0; k < NBER_FREQ; ++k )
+	// 	if( k%2 != 0 )
+	// 		g_x += pop[0][k+2];
 
-	f_x = std::abs( g_x ) * alldiff.cost();
+	// f_x = std::abs( g_x ) * alldiff.cost();
 
-	auto data = fetch_data( "../csv/all-diff_4.csv" );
+	// auto data = fetch_data( "../csv/all-diff_4.csv" );
 
-	for( auto var : variables_ref )
-		std::cout << var.get().get_value() << " ";
+	// for( auto var : variables_ref )
+	// 	std::cout << var.get().get_value() << " ";
 
-	std::cout << "\nHand-made metric: " << data[0].cost
-	          << "\nLearned function: " << f_x << "\n\n";
+	// std::cout << "\nHand-made metric: " << data[0].cost
+	//           << "\nLearned function: " << f_x << "\n\n";
 
-	int counter = 0;
+	// int counter = 0;
 	
-	// Big f*cking loop
-	// while all variable values are not equal to max_value
-	while( !std::all_of( variables_ref.begin(),
-	                     variables_ref.end(),
-	                     [&](auto var){ return var.get().get_value() == var.get().get_domain_max_value(); } ) )
-	{
-		increment( variables_ref );
-		++counter;
+	// // Big f*cking loop
+	// // while all variable values are not equal to max_value
+	// while( !std::all_of( variables_ref.begin(),
+	//                      variables_ref.end(),
+	//                      [&](auto var){ return var.get().get_value() == var.get().get_domain_max_value(); } ) )
+	// {
+	// 	increment( variables_ref );
+	// 	++counter;
 
-		g_x = 0.;
+	// 	g_x = 0.;
 		
-		for( auto v : variables_ref )
-		{
-			for( unsigned int k = 0; k < NBER_FREQ; ++k )
-				if( k%2 == 0 )
-					g_x += ( pop[0][k+2] * cosine( v.get().get_value(), k, MAX_DOMAIN ) );
-				else
-					g_x += ( pop[0][k+2] * sine( v.get().get_value(), k, MAX_DOMAIN ) );
-		}
+	// 	for( auto v : variables_ref )
+	// 	{
+	// 		for( unsigned int k = 0; k < NBER_FREQ; ++k )
+	// 			if( k%2 == 0 )
+	// 				g_x += ( pop[0][k+2] * cosine( v.get().get_value(), k, MAX_DOMAIN ) );
+	// 			else
+	// 				g_x += ( pop[0][k+2] * sine( v.get().get_value(), k, MAX_DOMAIN ) );
+	// 	}
 		
-		f_x = std::abs( g_x ) * alldiff.cost();
+	// 	f_x = std::abs( g_x ) * alldiff.cost();
 
-		for( auto var : variables_ref )
-			std::cout << var.get().get_value() << " ";
+	// 	for( auto var : variables_ref )
+	// 		std::cout << var.get().get_value() << " ";
 		
-		std::cout << "\nHand-made metric: " << data[counter].cost
-		          << "\nLearned function: " << f_x << "\n\n";
-	}
+	// 	std::cout << "\nHand-made metric: " << data[counter].cost
+	// 	          << "\nLearned function: " << f_x << "\n\n";
+	// }
 }
 
 // A main that catches the exceptions
