@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 #include <ghost/solver.hpp>
 #include <ghost/variable.hpp>
@@ -11,6 +12,80 @@
 
 using namespace ghost;
 using namespace std;
+
+void print_solution( vector<int> solution )
+{
+	int nb_vars = solution.size();
+	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
+	int size_side_small_square = static_cast<int>( std::sqrt( size_side ) );
+	
+	cout << "Solution:";
+	
+	for( int i = 0; i < nb_vars; ++i )
+	{
+		if( i%size_side == 0 )
+		{
+			if( i != 0 )
+				cout << "||";
+			
+			cout << "\n";
+
+			for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
+				cout << "-";
+
+			cout << "\n";
+		}
+
+		if( i%size_side_small_square == 0 )
+				cout << "|";
+
+		cout << "|" << solution[i] + 1;
+	}
+
+	cout << "||\n";
+
+	for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
+		cout << "-";
+	
+	cout << "\n";
+}
+
+void print_variables( const vector<Variable>& variables )
+{
+	int nb_vars = variables.size();
+	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
+	int size_side_small_square = static_cast<int>( std::sqrt( size_side ) );
+
+	cout << "Variables:";
+	
+	for( int i = 0; i < nb_vars; ++i )
+	{
+		if( i%size_side == 0 )
+		{
+			if( i != 0 )
+				cout << "||";
+			
+			cout << "\n";
+
+			for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
+				cout << "-";
+
+			cout << "\n";
+		}
+
+		if( i%size_side_small_square == 0 )
+				cout << "|";
+
+		cout << "|" << variables[i].get_value() + 1;
+	}
+
+	cout << "||\n";
+
+	for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
+		cout << "-";
+	
+	cout << "\n";
+}
 
 int main( int argc, char **argv )
 {
@@ -23,9 +98,9 @@ int main( int argc, char **argv )
   for( int i = 0; i < nb_vars; ++i )
 		variables.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, size_side );
 
-  for( auto& var : variables )
-	  var.do_random_initialization();
-  
+  for( int i = 0; i < nb_vars; ++i )
+	  variables[i].set_value( i % size_side );
+	  
   vector< vector< reference_wrapper<Variable> > > rows( size_side );
   vector< vector< reference_wrapper<Variable> > > columns( size_side );
   vector< vector< reference_wrapper<Variable> > > squares( size_side );
@@ -50,7 +125,6 @@ int main( int argc, char **argv )
 			                                     + ( line * size_side ) ),
 			               size_side_small_square,
 			               std::back_inserter( squares[ ( s_r * size_side_small_square ) + s_c ] ) );
-
   
   vector< shared_ptr< Constraint >> constraint_rows;
   vector< shared_ptr< Constraint >> constraint_columns;
@@ -58,6 +132,19 @@ int main( int argc, char **argv )
   
   for( int i = 0; i < size_side; ++i )
   {
+	  //cout << rows[i].size() << " " << columns[i].size() << " " << squares[i].size() << "\n";
+	  // for( auto& v : rows[i] )
+		//   cout << v.get().get_name() << " ";
+	  // cout << "\n";
+	  
+	  // for( auto& v : columns[i] )
+		//   cout << v.get().get_name() << " ";
+	  // cout << "\n";
+
+	  // for( auto& v : squares[i] )
+		//   cout << v.get().get_name() << " ";
+	  // cout << "\n";
+
 	  constraint_rows.push_back( make_shared< AllDiff >( rows[i] ) );
 	  constraint_columns.push_back( make_shared< AllDiff >( columns[i] ) );
 	  constraint_squares.push_back( make_shared< AllDiff >( squares[i] ) );
@@ -77,17 +164,20 @@ int main( int argc, char **argv )
              constraint_squares.end(),
              std::back_inserter( constraints ) );
 
-  Solver solver( variables, constraints );
+  cout << "Constraint size: " << constraints.size() << "\n";
+  
+  print_variables( variables );
+
+  // true means it is a permutation problem
+  Solver solver( variables, constraints, true );
 
   double cost = 0.;
 	vector<int> solution( variables.size(), 0 );
 
-	solver.solve( cost, solution, 30, 300 );
+	solver.solve( cost, solution, 100000, 500000 );
 
-	cout << "Cost: " << cost << "\nSolution:";
-	for( auto v : solution )
-		cout << " " << v;
-	cout << "\n";
+	cout << "Cost: " << cost << "\n";
+	print_solution( solution );
 	
   return EXIT_SUCCESS;
 }
