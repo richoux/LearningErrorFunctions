@@ -117,8 +117,6 @@ double real_value( const Indi& indi )
 		if( f_outputs[ i ] != 0 )
 			++number_of_non_solutions;
 
-		// cout << "f["<<i<<"]="<<f_outputs[ i ]<<"\n";
-		
 		// new point from a random walk (local move)
 		int var_to_change = uniform_variable( gen );
 		int value_to_change;
@@ -126,7 +124,7 @@ double real_value( const Indi& indi )
 		variables_ref[ var_to_change ].get().set_value( value_to_change );
 	}
 
-	double mean;// = std::accumulate( f_outputs.begin(), f_outputs.end(), 0 ) / LENGTH_RANDOM_WALK;
+	double mean;
 	double sum = 0.;
 	for( int i = 0; i < LENGTH_RANDOM_WALK; ++i )
 		sum += f_outputs[ i ];
@@ -138,11 +136,7 @@ double real_value( const Indi& indi )
 	if( number_of_non_solutions == 0 )
 		mean_without_solutions = mean;
 	else
-		//mean_f_without_solutions = std::accumulate( f_outputs.begin(), f_outputs.end(), 0 ) / number_f_without_solutions;
 		mean_without_solutions = sum / number_of_non_solutions;
-	
-	// cout << "mean="<<mean_f<<"\nmean_f0=" << mean_f_without_solutions << "\n";
-	
 	
 	double sum_diff_mean = 0.;
 	double sum_diff_square = 0.;
@@ -159,9 +153,8 @@ double real_value( const Indi& indi )
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 	double l = 1. / std::log( std::abs( empirical_autocorrelation ) );
 
-	// cout << "l=" << l << "\n";
-	
-	return l * mean_without_solutions;
+	//return l * mean_without_solutions;
+	return l;
 }
 
 // GENERAL
@@ -289,10 +282,11 @@ void main_function( int argc, char **argv )
 	pop.sort();
 // GENERAL
 
-	cout << "\nTop 3 FINAL Population\n"
-	     << pop[0] << "\n"
-	     << pop[1] << "\n"
-	     << pop[2] << "\n";
+	cout << "\nBest population\n" << pop[0] << "\n";
+	// cout << "\nTop 3 FINAL population\n"
+	//      << pop[0] << "\n"
+	//      << pop[1] << "\n"
+	//      << pop[2] << "\n";
 
 	// // Re-initialize all variables to 0
 	// for( auto var : variables_ref )
