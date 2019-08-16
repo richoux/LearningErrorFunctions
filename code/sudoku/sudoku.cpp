@@ -25,61 +25,22 @@ void print_solution( vector<int> solution )
 	{
 		if( i%size_side == 0 )
 		{
-			if( i != 0 )
-				cout << "||";
-			
 			cout << "\n";
 
-			for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
-				cout << "-";
+			if( ( i/size_side) % size_side_small_square == 0 )
+				for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
+					cout << "-";
 
 			cout << "\n";
 		}
 
-		if( i%size_side_small_square == 0 )
-				cout << "|";
-
-		cout << "|" << solution[i] + 1;
+		if( i%size_side_small_square == 0 && i%size_side != 0)
+				cout << "   " << solution[i] + 1;
+		else
+			cout << " " << solution[i] + 1;
 	}
 
-	cout << "||\n";
-
-	for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
-		cout << "-";
-	
 	cout << "\n";
-}
-
-void print_variables( const vector<Variable>& variables )
-{
-	int nb_vars = variables.size();
-	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
-	int size_side_small_square = static_cast<int>( std::sqrt( size_side ) );
-
-	cout << "Variables:";
-	
-	for( int i = 0; i < nb_vars; ++i )
-	{
-		if( i%size_side == 0 )
-		{
-			if( i != 0 )
-				cout << "||";
-			
-			cout << "\n";
-
-			for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
-				cout << "-";
-
-			cout << "\n";
-		}
-
-		if( i%size_side_small_square == 0 )
-				cout << "|";
-
-		cout << "|" << variables[i].get_value() + 1;
-	}
-
-	cout << "||\n";
 
 	for( int j = 0; j <= 2*size_side + size_side_small_square + 1; ++j )
 		cout << "-";
@@ -166,8 +127,6 @@ int main( int argc, char **argv )
 
   cout << "Constraint size: " << constraints.size() << "\n";
   
-  print_variables( variables );
-
   // true means it is a permutation problem
   Solver solver( variables, constraints, true );
 
