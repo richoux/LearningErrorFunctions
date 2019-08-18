@@ -8,7 +8,7 @@
 
 #include <ghost/solver.hpp>
 #include <ghost/variable.hpp>
-#include "all-diff.hpp"
+#include "../constraints/all-diff.hpp"
 
 using namespace ghost;
 using namespace std;
@@ -50,7 +50,12 @@ void print_solution( vector<int> solution )
 
 int main( int argc, char **argv )
 {
-	int size_side_small_square = std::stoi( argv[1] );
+	int size_side_small_square;
+	if( argc == 1 )
+		size_side_small_square = 3;
+	else
+		size_side_small_square = std::stoi( argv[1] );
+	
 	int size_side = size_side_small_square * size_side_small_square;
 	int nb_vars = size_side * size_side;
   

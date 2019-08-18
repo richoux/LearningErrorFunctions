@@ -1,11 +1,11 @@
 #code
-code/obj/*
-code/bin/*
 code/csv/splinter
 code/csv/splinter.o
 code/eo/learn_with_ga
 code/eo/interpolate_with_ga
 code/test-eigen/test
+code/cfn/test_latin
+code/sudoku/sudoku
 
 # PDF
 *.pdf

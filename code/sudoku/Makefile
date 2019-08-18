@@ -19,7 +19,8 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=.
+SRCDIR=. ../constraints/
+HPPDIR=../constraints/
 OBJDIR=obj
 BINDIR=bin
 
@@ -44,7 +45,7 @@ debug: CXXFLAGS= $(CXXFLAGSDEBUG)
 debug: $(BINDIR)/$(EXEC)
 
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	$(CXX) -o  $@ $^ $(LDFLAGS)
+	$(CXX) -I$(HPPDIR) -o  $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
