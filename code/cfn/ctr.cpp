@@ -18,7 +18,8 @@ double Ctr::required_cost() const
 
 	for( const auto& s : samples )
 	{
-		double g_x = g( variables, s, std::max_element( begin(s), end(s) ) );
+		int max = *( std::max_element( begin(s), end(s) ) );
+		double g_x = g( variables, s, max );
 		if( !concept( s ) && g_x < 1 )
 			counter += g_x;
 	}		

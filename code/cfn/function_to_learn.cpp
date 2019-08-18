@@ -22,18 +22,42 @@ double cosine( double x, unsigned int k, int max )
 		return cos( TWO_PI*k*x/max );
 }
 
+// Hacky, to fix: we should have just one version
+
+// ref_wrapper<Variable> version
 double g( const vector< reference_wrapper<Variable> >& coeff, const vector<int>& vars, int max_domain )
 {
 	double g_x = 0.;
 	
 	int nb_freq = coeff.size() / vars.size();
-
-	for( int i = 0; i < var.size(); ++i )
+	int offset = coeff[0].get().get_domain_size() / 2;
+	
+	for( int i = 0; i < vars.size(); ++i )
 	{
 		for( int k = 0; k < nb_freq / 2; ++k )
 		{
-			g_x += coeff[ ( i * nb_freq ) + 2*k ].get().get_value() * cosine( var[i], k, max_domain );
-			g_x += coeff[ ( i * nb_freq ) + 2*k + 1 ].get().get_value() * sine( var[i], k, max_domain );
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k ].get().get_value() - offset ) * cosine( vars[i], k, max_domain );
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k + 1 ].get().get_value() - offset ) * sine( vars[i], k, max_domain );
+		}
+	}
+	
+	return std::abs( g_x );	
+}
+
+// Variable version
+double g( const vector< Variable >& coeff, const vector<int>& vars, int max_domain )
+{
+	double g_x = 0.;
+	
+	int nb_freq = coeff.size() / vars.size();
+	int offset = coeff[0].get_domain_size() / 2;
+	
+	for( int i = 0; i < vars.size(); ++i )
+	{
+		for( int k = 0; k < nb_freq / 2; ++k )
+		{
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k ].get_value() - offset ) * cosine( vars[i], k, max_domain );
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k + 1 ].get_value() - offset ) * sine( vars[i], k, max_domain );
 		}
 	}
 	

@@ -5,7 +5,7 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-Obj_ECL::Obj_ECL( double length, int nb_vars, int max_value )
+Obj_ECL::Obj_ECL( int length, int nb_vars, int max_value )
 	: Objective( "Max ECL" ),
 	  _length( length ),
 	  _nb_vars( nb_vars ),
@@ -20,20 +20,15 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	std::uniform_int_distribution<> uniform_value{ 0, _max_value };
 	std::uniform_int_distribution<> uniform_variable{ 0, _nb_vars - 1 };
 
-	int nb_freq = variables.size() / nb_vars;
-	
 	vector<double> g_outputs( _length );
 	vector<double> f_outputs( _length );
 
 	vector<int> walk( _length );
 	
 	// random starting point
-	for( auto w : walk )
-		w = uniform_value( gen );
+	for( int i = 0; i < walk.size(); ++i )
+		walk[i] = uniform_value( gen );
 
-	int number_of_non_solutions = 0;
-	//std::cout << "Start!\n";
-	
 	for( int i = 0; i < _length; ++i )
 	{
 		g_outputs[ i ] = std::abs( g( variables, walk, _max_value ) );

@@ -11,11 +11,11 @@ using namespace ghost;
 
 class Obj_ECL : public Objective
 {
-	double _length;
-	int _nb_vars;
-	int _max_value;
+	int _length; // random walk length
+	int _nb_vars;   
+	int _max_value; // max value in variables' domain (we assume it is the same for each variable)
 	
 	double required_cost( const vector< Variable >& ) const override;
 public:
-	Obj_ECL( double, int, int );
+	Obj_ECL( int, int, int );
 };
