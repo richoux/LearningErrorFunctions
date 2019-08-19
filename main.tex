@@ -14,6 +14,10 @@
 \setlength{\pdfpagewidth}{8.5in}  % DO NOT CHANGE THIS
 \setlength{\pdfpageheight}{11in}  % DO NOT CHANGE THIS
 
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+
 %PDF Info Is REQUIRED.
 % For /Author, add all authors within the parentheses, separated by commas. No accents or commands.
 % For /Title, add Title in Mixed Case. No accents or commands. Retain the parentheses.
@@ -103,6 +107,25 @@ jf@baffier.fr % email address must be in roman text type, not monospace or sans 
 \begin{abstract}
 A formidable abstract that shows off how much our contribution is efficient and user-friendly. Oh, and we have impressive experiments too. Be sure to subcribe our GitHub repository.
 \end{abstract}
+
+\section{Thèmes à aborder}
+
+\begin{enumerate}
+\item Formalisation WCSP vs CFN (section 5 du draft). Mettre les refs.
+\item CP est  difficile à modéliser, CFN ajoute une  structure utile au
+  solveur  mais est  également  difficile à  modéliser  (même plus)  :
+  apprendre  automatiquement   les  CF  pour  aider   l'utilisateur  à
+  modéliser  son problème.  Pour palier  à la  modélisation CP,  on se
+  repose sur  l'utilisation de méta-heuristiques qui  n'ont pas besoin
+  d'une sélection fine des bonnes contraintes.
+\item Description d'une CF comme  somme d'harmoniques, et recherche de
+  la CF en  cherchant les bons coefficients  des harmoniques. Regarder
+  si on peut se passer des cosinus pour n'avoir que des sinus ?
+\item Verrous techniques (section 6)  sur comment passer à l'échelle :
+  4 propositions et 4 inconvénients/impossibilités.
+\item Modèle CFN + XP si j'arrive à quelque chose en pratique.
+\item CSP $<$ CFN-auto $\leq$ CFN-manuel
+\end{enumerate}
 
 \section{Introduction}\label{sec:introduction}
 List of the thing to say:

@@ -34,7 +34,7 @@ std::vector<std::string> get_next_line_and_split_into_tokens( std::istream &str 
 
 int main( int argc, char *argv[] )
 {
-	std::ifstream file( "all-diff_6.csv" );
+	std::ifstream file( "../csv/all-diff_6.csv" );
 	auto dummy = get_next_line_and_split_into_tokens( file );
 	int number_dimension = dummy.size() - 3;
 	

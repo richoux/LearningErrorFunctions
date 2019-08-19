@@ -35,7 +35,7 @@ int main( int argc, char **argv )
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
 	for( int i = 0; i < nb_coeff; ++i )
-		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 5 );
+		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, max_value + 1 );
 
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 		
@@ -52,7 +52,7 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	solver.solve( cost, solution, 30, 300 );
+	solver.solve( cost, solution, 1000000, 10000000 );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
