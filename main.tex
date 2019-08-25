@@ -82,22 +82,22 @@
 %
 \setlength\titlebox{2.5in} % If your paper contains an overfull \vbox too high warning at the beginning of the document, use this
 % command to correct it. You may not alter the value below 2.5 in
-\title{Learning Cost Functions}
+\title{Automatic Cost Function Generation}
 %Your title must be in mixed case, not sentence case.
 % That means all verbs (including short verbs like be, is, using,and go),
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
 % articles, conjunctions, and prepositions are lower case unless they
 % directly follow a colon or long dash
-\author{Florian Richoux\textsuperscript{\rm 1}\thanks{Financement pour Florian}\\
-\textsuperscript{\rm 1}National Institute for Informatics\\ %If you have multiple authors and multiple affiliations
+\author{Florian Richoux\textsuperscript{\rm 1,2}\\
+  \textsuperscript{\rm 1}JFLI, CNRS, NII\\
+  \textsuperscript{\rm 2}LS2N, Université de Nantes\\
+  % If you have multiple authors and multiple affiliations
 % use superscripts in text and roman font to identify them. For example, Sunil Issar,\textsuperscript{\rm 2} J. Scott Penberthy\textsuperscript{\rm 3} George Ferguson,\textsuperscript{\rm 4} Hans Guesgen\textsuperscript{\rm 5}. Note that the comma should be placed BEFORE the superscript for optimum readability
-2275 East Bayshore Road, Suite 160\\
-Palo Alto, California 94303\\
-publications19@aaai.org % email address must be in roman text type, not monospace or sans serif
-\And Jean-Fran\c{c}ois Baffier\textsuperscript{\rm 2}\thanks{Financement pour Jeff}\\
-\textsuperscript{\rm 2}RIKEN AIP\\
-2275 East Bayshore Road, Suite 160\\
-Palo Alto, California 94303\\
+florian.richoux@univ-nantes.fr % email address must be in roman text type, not monospace or sans serif
+\And Jean-Fran\c{c}ois Baffier\textsuperscript{\rm 3}\thanks{Financement pour Jeff}\\
+\textsuperscript{\rm 3}RIKEN AIP\\
+%2275 East Bayshore Road, Suite 160\\
+%Palo Alto, California 94303\\
 jf@baffier.fr % email address must be in roman text type, not monospace or sans serif
 }
  \begin{document}
@@ -111,14 +111,14 @@ A formidable abstract that shows off how much our contribution is efficient and 
 \section{Thèmes à aborder}
 
 \begin{enumerate}
-\item     Formalisation    WCSP     vs    CFN     (section    5     du
-  draft). \cite{Bessiere2011,LK2014}
 \item CP est difficile à modéliser~\cite{Puget2004,Wallace2003}, CFN ajoute une structure utile au
   solveur  mais est  également  difficile à  modéliser  (même plus)  :
   apprendre  automatiquement   les  CF  pour  aider   l'utilisateur  à
   modéliser  son problème.  Pour palier  à la  modélisation CP,  on se
   repose sur  l'utilisation de méta-heuristiques qui  n'ont pas besoin
   d'une sélection fine des bonnes contraintes. \cite{AMJFH2011,Bessiere2015}
+\item     Formalisation    WCSP     vs    CFN     (section    5     du
+  draft). \cite{Bessiere2011,LK2014}
 \item Description d'une CF comme  somme d'harmoniques, et recherche de
   la CF en  cherchant les bons coefficients  des harmoniques. Regarder
   si on peut se passer des cosinus pour n'avoir que des sinus ?
