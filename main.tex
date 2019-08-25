@@ -1,7 +1,7 @@
-\def\year{2019}\relax
+\def\year{2020}\relax
 %File: formatting-instruction.tex
 \documentclass[letterpaper]{article} % DO NOT CHANGE THIS
-\usepackage{aaai19}  % DO NOT CHANGE THIS
+\usepackage{aaai20}  % DO NOT CHANGE THIS
 \usepackage{times}  % DO NOT CHANGE THIS
 \usepackage{helvet} % DO NOT CHANGE THIS
 \usepackage{courier}  % DO NOT CHANGE THIS
@@ -14,6 +14,12 @@
 \setlength{\pdfpagewidth}{8.5in}  % DO NOT CHANGE THIS
 \setlength{\pdfpageheight}{11in}  % DO NOT CHANGE THIS
 
+\usepackage{xspace}
+\usepackage[dvipsnames, table]{xcolor}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
@@ -22,7 +28,7 @@
 % For /Author, add all authors within the parentheses, separated by commas. No accents or commands.
 % For /Title, add Title in Mixed Case. No accents or commands. Retain the parentheses.
  \pdfinfo{
-/Title (Learning Cost Functions)
+/Title (Automatic Cost Function Generation)
 /Author (Florian Richoux, Jean-Fran\c{c}ois Baffier)
 } %Leave this
 % /Title ()
@@ -100,7 +106,16 @@ florian.richoux@univ-nantes.fr % email address must be in roman text type, not m
 %Palo Alto, California 94303\\
 jf@baffier.fr % email address must be in roman text type, not monospace or sans serif
 }
- \begin{document}
+
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\cp}{\textsc{CP}\xspace}
+\newcommand{\csp}{\textsc{CSP}\xspace}
+\newcommand{\cop}{\textsc{COP}\xspace}
+\newcommand{\cfn}{\textsc{CFN}\xspace}
+\newcommand{\wcsp}{\textsc{WCSP}\xspace}
+\newcommand{\ghost}{\textsc{GHOST}\xspace}
+
+\begin{document}
 
 \maketitle
 
@@ -113,10 +128,10 @@ A formidable abstract that shows off how much our contribution is efficient and 
 \begin{enumerate}
 \item CP est difficile à modéliser~\cite{Puget2004,Wallace2003}, CFN ajoute une structure utile au
   solveur  mais est  également  difficile à  modéliser  (même plus)  :
-  apprendre  automatiquement   les  CF  pour  aider   l'utilisateur  à
+  générer  automatiquement   les  CF  pour  aider   l'utilisateur  à
   modéliser  son problème.  Pour palier  à la  modélisation CP,  on se
   repose sur  l'utilisation de méta-heuristiques qui  n'ont pas besoin
-  d'une sélection fine des bonnes contraintes. \cite{AMJFH2011,Bessiere2015}
+  d'une sélection fine des bonnes contraintes. \cite{AMJFH2011,Bessiere2015,CBLS}
 \item     Formalisation    WCSP     vs    CFN     (section    5     du
   draft). \cite{Bessiere2011,LK2014}
 \item Description d'une CF comme  somme d'harmoniques, et recherche de
@@ -129,19 +144,20 @@ A formidable abstract that shows off how much our contribution is efficient and 
 \end{enumerate}
 
 \section{Introduction}\label{sec:introduction}
-List of the thing to say:
+List of things to say:
 \begin{itemize}
   \item Introduce the domain
   \item Present weighted CSP and Cost Function Networks
-  \item GHOST is so cool
   \item Summary of the article
 \end{itemize}
+
+\section{Differentiating \wcsp and \cfn}
+plop
 
 \section{Preliminaries}\label{sec:preliminaries}
 If relevant, separate the technical preliminaries from the introduction before boing deep into our contributions.
 
 \section{Theoretical Design}\label{sec:theory}
-
 From head to toes, how our framework is designed (interpolation, pre-processing and such) to fit a solver (here GHOST).
 
 \section{Experimental Results}\label{sec:xp}
