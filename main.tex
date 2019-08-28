@@ -21,7 +21,7 @@
 \usepackage[ruled,linesnumbered]{algorithm2e}
 
 \usepackage[english]{babel}
-\usepackage[T1]{fontenc} 
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
 %PDF Info Is REQUIRED.
@@ -151,14 +151,61 @@ List of things to say:
   \item Summary of the article
 \end{itemize}
 
-\section{Differentiating \wcsp and \cfn}
-plop
+\subsection{Differentiating \wcsp and \cfn}
+\wcsp and \cfn are defined by close but different flavors throughout the litterature. To make the most of both, we chose to consider the following definitions for those two concepts.
+
+\paragraph{\wcsp} is  considering soft  constraints, where  a constraint  is
+  unsatisfyed iif its associated cost function outputs a value below a
+  given threshold $k$ (can be infinite).
+
+\paragraph{\cfn} is  considering  hard constraints  only.  Like  constraint
+  networks helping solvers to find  solutions by giving a structure of
+  the problem,  CFN gives,  in addition of  the constraint  network, a
+  structure on  configurations to help  the solver to determine  if an
+  unsatisfying configuration is near to be a solution or not.
+
+From those definition, we can consider \wcsp and the \cfn variants (satisfaction and optimization) to have different expressiveness: \cfn-sat $<$ \wcsp $<$ \cfn-opt
+
+In this study, we deliberately chose to focus on \cfn as we can naturally transform any \wcsp into \cfn-opt.
+
+\subsection{Of the interest of \cfn over classic CSP}
+As shown in [previous studies], using a cost function to guide a CSP solver, even for a satisfaction problem, generally greatly improve the convergence speed to a solution.
+It is important to note that using a \cfn with a manual input of the cost functions (that is the current general usage of such solvers) greatly increase the difficulty for the user.
+
+The aim of this research is to provide a set of tools to compute or estimate those cost functions in a way that provides the user the following guarantees:
+CSP $<$ CFN-auto $\leq$ CFN-manual.
+
+We hope to eventually provides methods that can lead to CFN-manual $\leq$ CFN-auto for some (if not not most) families of constraints.
+
+
 
 \section{Preliminaries}\label{sec:preliminaries}
 If relevant, separate the technical preliminaries from the introduction before boing deep into our contributions.
 
 \section{Theoretical Design}\label{sec:theory}
 From head to toes, how our framework is designed (interpolation, pre-processing and such) to fit a solver (here GHOST).
+
+\subsection{Scaling Issues}\label{subsec:issues}
+Scaling our results on small instances is challenging. In this subsection we cover 4 possible approaches that are either unsuccessful or not yet efficient.
+
+\paragraph{Learning a cost function on small space}
+For general constraints, there is no generic idea to extend a known cost
+function from a small space to a higher dimension one.
+
+\paragraph{Interpolation from samples}
+Although such idea seems attractive, we show in our experiments that even a high
+sampling rate, such as 10\%, is not enough. Produce table.
+
+It is important to note that our experiments are currently based on spline interpolation that might be unneficient specifically for the constraints evaluated here.
+Intuitively, the spline interpolation fails to interpolate accurately the local spike in the cost function that are, for instance, uniformly distributed in the all-diff constraint.
+
+\paragraph{Detect and apply symmetries}
+It is hard to detect and apply symmetry for a generic constraint. We can consider some user input to provide symmmetries, but this go against the principle of user-friendly solver. The user might as well provide an efficient cost function.
+On the long term, detecting and applying symmetries for classical constraints is a possibility.
+
+\paragraph{Johnson-Lidenstrauss Lemma (JLL)}
+The JLL provides a theoretical guarantee that some random projections to lower dimension preserve (with a high probability) the distance between points. One can apply the JLL to reduce the original space to a more compact one, and map solutions to that space, then compute a metric in the compact space.
+Although this approach might be a good solution, it is not yet practical.
 
 \section{Experimental Results}\label{sec:xp}
 Presenting the aim of those experiments, the choice of the datasets, and the results itself.
