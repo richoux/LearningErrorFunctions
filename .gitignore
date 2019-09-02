@@ -6,6 +6,8 @@ code/eo/interpolate_with_ga
 code/test-eigen/test
 code/cfn/test_latin
 code/sudoku/sudoku
+code/constraints/test/test
+code/constraints/test/random_draw
 
 # PDF
 *.pdf

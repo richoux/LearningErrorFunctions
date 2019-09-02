@@ -23,10 +23,10 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	vector<double> g_outputs( _length );
 	vector<double> f_outputs( _length );
 
-	vector<int> walk( _length );
+	vector<int> walk( _nb_vars );
 	
 	// random starting point
-	for( int i = 0; i < walk.size(); ++i )
+	for( int i = 0; i < _nb_vars; ++i )
 		walk[i] = uniform_value( gen );
 
 	for( int i = 0; i < _length; ++i )

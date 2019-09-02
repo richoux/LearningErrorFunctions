@@ -67,17 +67,17 @@ AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 //////////////////////////////////////////////////////
 
 // SOFT_ALLDIFF cost function (Petit et al. 2001)
-double AllDiff::required_cost() const
-{
-	double counter = 0;
+// double AllDiff::required_cost() const
+// {
+// 	double counter = 0;
 	
-	for( int i = 0 ; i < variables.size() - 1 ; ++i )
-		for( int j = i + 1 ; j < variables.size() ; ++j )
-			if( variables[i].get().get_value() == variables[j].get().get_value() )
-				++counter;
+// 	for( int i = 0 ; i < variables.size() - 1 ; ++i )
+// 		for( int j = i + 1 ; j < variables.size() ; ++j )
+// 			if( variables[i].get().get_value() == variables[j].get().get_value() )
+// 				++counter;
 
-	return counter;
-}
+// 	return counter;
+// }
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
@@ -136,29 +136,30 @@ double AllDiff::required_cost() const
 //////////////////////////////////////////////////////
 
 // Learned cost function with CFN for all-diff 9
-// double AllDiff::required_cost() const
-// {
-// 	if( alldiff_concept( variables ) )
-// 		return 0.;
+double AllDiff::required_cost() const
+{
+	if( alldiff_concept( variables ) )
+		return 0.;
 	
-// 	constexpr int MAX_DOMAIN = 8;
+	constexpr int MAX_DOMAIN = 8;
 
-// 	double g_x = 0.;
+	double g_x = 0.;
 
-// 	// l
-// 	vector<double> coeff{2, 8, 8, 4, 0, 5, 4, 1, 0, 7, 5, 3, 7, 3, 5, 0, 4, 4, 4, 4, 3, 7, 1, 3, 2, 6, 1, 3, 3, 2, 3, 0, 6, 1, 3, 6, 1, 7, 4, 2, 6, 4, 2, 8, 2, 1, 0, 7, 8, 7, 6, 0, 8, 5, 7, 4, 2, 5, 5, 6, 3, 8, 4, 7, 0, 6, 1, 3, 6, 7, 0, 2, 4, 6, 7, 7, 1, 8, 1, 6, 6, 0, 6, 7, 1, 1, 7, 7, 8, 6};
+	// l
+	vector<double> coeff{8, 6, 2, 5, 4, 2, 6, 8, 5, 3, 4, 6, 0, 1, 7, 3, 1, 6, 5, 3, 7, 6, 3, 8, 6, 7, 0, 4, 2, 5, 6, 5, 1, 1, 0, 7, 5, 8, 1, 5, 7, 2, 0, 5, 5, 5, 4, 3, 8, 3, 8, 1, 3, 5, 2, 0, 3, 7, 0, 8, 7, 1, 8, 6, 0, 3, 8, 7, 8, 1, 3, 2, 8, 2, 6, 1, 0, 0, 6, 5, 4, 8, 4, 6, 5, 5, 7, 5, 7, 7};
 	
-// 	int nb_freq = 10;
+	int nb_freq = 10;
 
-// 	for( int i = 0; i < variables.size(); ++i )
-// 	{
-// 		int value = variables[i].get().get_value();
-// 		for( int k = 0; k < nb_freq / 2; ++k )
-// 		{
-// 			g_x += ( coeff[ ( i * nb_freq ) + 2*k] - ( MAX_DOMAIN / 2 ) ) * cosine( value, k, MAX_DOMAIN );
-// 			g_x += ( coeff[ ( i * nb_freq ) + 2*k + 1] - ( MAX_DOMAIN / 2 ) ) * sine( value, k, MAX_DOMAIN );
-// 		}
-// 	}
+	for( int i = 0; i < variables.size(); ++i )
+	{
+		int value = variables[i].get().get_value();
+		for( int k = 0; k < nb_freq / 2; ++k )
+		{
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k] - ( MAX_DOMAIN / 2 ) ) * cosine( value, k, MAX_DOMAIN );
+			g_x += ( coeff[ ( i * nb_freq ) + 2*k + 1] - ( MAX_DOMAIN / 2 ) ) * sine( value, k, MAX_DOMAIN );
+		}
+	}
 	
-// 	return std::abs( g_x );
-// }
+	return std::abs( g_x );
+}
+
