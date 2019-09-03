@@ -7,7 +7,7 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-constexpr int ITER=100;
+constexpr int ITER=10;
 
 Ctr::Ctr( const vector< reference_wrapper<Variable> >& variables, const std::mt19937& gen )
 	: Constraint (variables),
