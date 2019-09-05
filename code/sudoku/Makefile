@@ -1,7 +1,7 @@
 EXEC=sudoku
 
 # Compiler flags
-CXXFIRSTFLAGS= -Ofast -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
+CXXFIRSTFLAGS= -Ofast -DCFN -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
 CXXFIRSTFLAGSDEBUG= -g -O0 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter 
 
 UNAME_S := $(shell uname -s)
@@ -39,9 +39,10 @@ vpath %.cpp $(SRCDIR)
 # $< is the first item in the dependencies list
 
 # Rules
+
 all: $(BINDIR)/$(EXEC)
 
-debug: CXXFLAGS= $(CXXFLAGSDEBUG)
+debug: CXXFLAGS=$(CXXFLAGSDEBUG)
 debug: $(BINDIR)/$(EXEC)
 
 $(BINDIR)/$(EXEC): $(OBJECTS)

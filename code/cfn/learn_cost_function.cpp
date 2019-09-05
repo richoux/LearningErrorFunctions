@@ -38,13 +38,19 @@ int main( int argc, char **argv )
 	mt19937 gen( seq );
 	
 	int nb_vars = stoi( argv[1] ); // not the size the vector<Variable>, see below
+
+	// Again, we assume here that all variables share the same domain,
+	// and that this domain contains all numbers from 0 to max_value 
 	int max_value = stoi( argv[2] );
+
 	int random_walk_length = stoi( argv[3] );
 
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
+
+	// coefficients can take values from 0 to 9.
 	for( int i = 0; i < nb_coeff; ++i )
-		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, max_value + 1 );
+		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 10 );
 
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 
@@ -72,13 +78,13 @@ int main( int argc, char **argv )
 			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
 	}
 
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr >( coeff_ref, gen );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr >( coeff_first_half, gen );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr >( coeff_second_half, gen );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr >( coeff_2_by_2_1, gen );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr >( coeff_2_by_2_2, gen );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr >( coeff_1_by_1_1, gen );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, gen );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr >( coeff_ref, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr >( coeff_first_half, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr >( coeff_second_half, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr >( coeff_2_by_2_1, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr >( coeff_2_by_2_2, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr >( coeff_1_by_1_1, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, nb_vars, max_value, gen );
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( random_walk_length, nb_vars, max_value );
