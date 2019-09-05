@@ -48,9 +48,9 @@ int main( int argc, char **argv )
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
 
-	// coefficients can take values from 0 to 9.
+	// coefficients can take values from -5 to 5, with strides of 0.1.
 	for( int i = 0; i < nb_coeff; ++i )
-		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 10 );
+		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 100 );
 
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 

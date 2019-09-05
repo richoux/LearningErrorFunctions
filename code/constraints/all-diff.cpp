@@ -155,7 +155,7 @@ double AllDiff::required_cost() const
 	double g_x = 0.;
 
 	// l
-	vector<double> coeff{2, 9, 3, 9, 0, 1, 4, 5, 2, 9, 1, 7, 6, 4, 7, 6, 6, 1, 7, 4, 0, 5, 5, 5, 8, 4, 9, 9, 2, 8, 6, 6, 1, 6, 1, 6, 8, 8, 7, 6, 2, 2, 9, 1, 4, 5, 9, 4, 8, 2, 0, 6, 1, 8, 0, 5, 7, 7, 4, 7, 7, 3, 1, 6, 0, 1, 3, 4, 2, 7, 6, 3, 5, 8, 4, 9, 0, 1, 9, 3, 3, 8, 7, 7, 6, 9, 3, 3, 3, 4};
+	vector<double> coeff{70, 31, 5, 22, 96, 96, 96, 64, 3, 18, 75, 50, 76, 47, 45, 84, 45, 7, 44, 31, 69, 57, 46, 23, 37, 40, 70, 2, 17, 20, 12, 53, 32, 87, 94, 35, 85, 34, 22, 85, 14, 73, 68, 11, 48, 35, 1, 19, 72, 77, 7, 31, 22, 5, 84, 99, 47, 50, 86, 80, 90, 14, 81, 3, 15, 3, 74, 55, 36, 22, 19, 88, 62, 82, 47, 22, 47, 70, 77, 62, 25, 1, 85, 24, 33, 23, 39, 98, 69, 27};
 	
 	int nb_freq = 10;
 
@@ -164,8 +164,8 @@ double AllDiff::required_cost() const
 		int value = variables[i].get().get_value();
 		for( int k = 0; k < nb_freq / 2; ++k )
 		{
-			g_x += ( coeff[ ( i * nb_freq ) + 2*k] - ( MAX_DOMAIN / 2 ) ) * cosine( value, k, MAX_DOMAIN );
-			g_x += ( coeff[ ( i * nb_freq ) + 2*k + 1] - ( MAX_DOMAIN / 2 ) ) * sine( value, k, MAX_DOMAIN );
+			g_x += ( ( coeff[ ( i * nb_freq ) + 2*k] - ( MAX_DOMAIN / 2 ) ) / 10 ) * cosine( value, k, MAX_DOMAIN );
+			g_x += ( ( coeff[ ( i * nb_freq ) + 2*k + 1] - ( MAX_DOMAIN / 2 ) ) / 10 ) * sine( value, k, MAX_DOMAIN );
 		}
 	}
 	
