@@ -36,6 +36,8 @@ int main( int argc, char **argv )
 	generate_n( seed_data.data(), seed_data.size(), std::ref( r ) );
 	seed_seq seq( seed_data.begin(), seed_data.end() );
 	mt19937 gen( seq );
+	// To have a random initialization of coefficients in [-1, 1]
+	uniform_int_distribution<> initialization( 40, 60 );
 	
 	int nb_vars = stoi( argv[1] ); // not the size the vector<Variable>, see below
 
@@ -52,6 +54,10 @@ int main( int argc, char **argv )
 	for( int i = 0; i < nb_coeff; ++i )
 		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 100 );
 
+	// all coefficients fixed at 1
+	for( auto& c : coefficients )
+		c.set_value( initialization( gen ) );
+	
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 
 	vector< reference_wrapper< Variable > > coeff_ref( coefficients.begin(), coefficients.end() );
@@ -94,7 +100,7 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000000, 100000000 );
+	solver.solve( cost, solution, 10000000, 100000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )

@@ -1,0 +1,10 @@
+Random::Random: 128
+Domain::Domain(: 108
+Variable::Variable(: 112
+Variable, std::allocator<: 162
+Variable>, std::allocator<std::reference_wrapper<: 120
+Constraint::cost: 120
+Solver::simulate_local_move_cost: 93
+Solver::compute_variables_costs(std::vector<double, std::allocator<double> > const&, std::vector<double, std::allocator<double> >&, std::vector<double, std::allocator<double> >&, double) const: 93
+Solver::solve(double&, std::vector<int, std::allocator<int> >&, double, double, bool): 120
+Solver::compute_constraints_costs: 27
