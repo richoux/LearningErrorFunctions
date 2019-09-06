@@ -19,13 +19,13 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=.
+SRCDIR=. ../latin/
 OBJDIR=obj
 BINDIR=bin
+INCDIR=../latin/
 
 # Files
-SOURCE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
-SOURCES=$(filter-out ./test_latin.cpp, $(SOURCE))
+SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 # For rm
@@ -48,7 +48,7 @@ $(BINDIR)/$(EXEC): $(OBJECTS)
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) -I$(INCDIR) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 

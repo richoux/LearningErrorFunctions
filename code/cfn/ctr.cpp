@@ -22,7 +22,7 @@ double Ctr::required_cost() const
 	// Do not get confused between variables of our model (the coefficients) and variables of the configuration search space
 	auto& coefficients = variables;
 	
-	auto samples = LHS( nb_vars, var_max_value );
+	auto samples = LHS( nb_vars, var_max_value, gen );
 	
 	double g_x, mean, diff, std_dev;
 
