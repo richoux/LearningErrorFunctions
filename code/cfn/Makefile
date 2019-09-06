@@ -25,7 +25,8 @@ BINDIR=bin
 INCDIR=../latin/
 
 # Files
-SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+SOURCE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+SOURCES=$(filter-out ./random_draw.cpp, $(SOURCE))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 # For rm
