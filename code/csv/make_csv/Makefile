@@ -19,9 +19,10 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=. subghost
+SRCDIR=. subghost ../../utils/
 OBJDIR=obj
 BINDIR=bin
+INCDIR=../../utils/
 
 # Files
 SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
@@ -59,7 +60,7 @@ $(BINDIR)/$(EXEC_LESS): $(OBJECTS_LESS)
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) -I$(INCDIR) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 

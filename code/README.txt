@@ -10,5 +10,5 @@ JLL: everything related to JLL
 latin: for Latin Hypercube Sampling
 sudoku: Sudoku benchmark
 test-eigen: some tests about the Eigen lib
-
+utils: get next configuration, random lib
 

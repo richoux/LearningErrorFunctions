@@ -6,11 +6,11 @@
  * Local functions
  */
 
-void increment( const vector<reference_wrapper<Variable>> &variables,
+bool increment( const vector<reference_wrapper<Variable>> &variables,
                 const int index )
 {
 	if( index < 0 )
-		return;
+		return false;
 
 	if( variables[ index ].get().get_value() < variables[ index ].get().get_domain_max_value() )
 		variables[ index ].get().set_value( variables[ index ].get().get_value() + 1 );
@@ -19,6 +19,8 @@ void increment( const vector<reference_wrapper<Variable>> &variables,
 		variables[ index ].get().set_value( 0 );
 		increment( variables, index - 1 );
 	}
+
+	return true;
 }
 
 void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
@@ -30,7 +32,7 @@ void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
 
 	int current_var_index = vars_index[ index ];
 
-	if( variables[ current_var_index ].get().get_value() < variables[ current_var_index ].get().get_domain_max_value() )
+	if( variables[ current_var_index ].get().get_value() < variables.size() - 1 )
 		variables[ current_var_index ].get().set_value( variables[ current_var_index ].get().get_value() + 1 );
 	else
 	{
@@ -85,9 +87,9 @@ void shift_right( vector<bool> &vec,
 
 /*****************************************/
 
-void increment( const vector<reference_wrapper<Variable>> &variables )
+bool increment( const vector<reference_wrapper<Variable>> &variables )
 {
-	increment( variables, variables.size() - 1 );
+	return increment( variables, variables.size() - 1 );
 }
 
 void increment_some_vars( const vector<reference_wrapper<Variable>> &variables,
