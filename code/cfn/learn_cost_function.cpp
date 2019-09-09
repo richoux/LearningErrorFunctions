@@ -100,7 +100,8 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000000, 100000000, true );
+	solver.solve( cost, solution, 10000, 100000, true );
+	//solver.solve( cost, solution, 10000000, 100000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
