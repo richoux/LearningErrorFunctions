@@ -13,6 +13,7 @@
 
 #include "ctr.hpp"
 #include "obj_ecl.hpp"
+#include "random_draw.hpp"
 
 #include "../utils/randutils.hpp"
 
@@ -21,12 +22,12 @@ using namespace ghost;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE RANDOM_WALK_LENGTH\n";
+	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE\n";
 }
 
 int main( int argc, char **argv )
 {
-	if( argc != 4 )
+	if( argc != 3 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
@@ -49,8 +50,8 @@ int main( int argc, char **argv )
 	// and that this domain contains all numbers from 0 to max_value 
 	int max_value = stoi( argv[2] );
 
-	int random_walk_length = stoi( argv[3] );
-
+	auto random_solutions = random_draw( nb_vars, max_value );
+	
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
 
@@ -98,7 +99,7 @@ int main( int argc, char **argv )
 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, nb_vars, max_value );
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
-	shared_ptr< Objective > objective = make_shared< Obj_ECL >( random_walk_length, nb_vars, max_value );
+	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
 	
 	Solver solver( coefficients, constraints, objective );
 	

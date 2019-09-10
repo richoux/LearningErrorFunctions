@@ -9,12 +9,15 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-Obj_ECL::Obj_ECL( int length, int nb_vars, int max_value )
+Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
 	: Objective( "Max ECL" ),
-	  _length( length ),
 	  _nb_vars( nb_vars ),
-	  _max_value( max_value )
-{ }
+	  _max_value( max_value ),
+	  _random_sol( random_solutions ),
+	  _index( vector<int>(_random_sol.size() ) )
+{
+	std::iota( _index.begin(), _index.end(), 0 );
+}
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 {
@@ -22,45 +25,45 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	auto start = std::chrono::steady_clock::now();
 #endif
 	
-	vector<double> g_outputs( _length );
-	vector<double> f_outputs( _length );
-
-	vector<int> walk( _nb_vars );
+	vector<double> g_outputs;
+	vector<double> f_outputs;
 	
-	// random starting point
-	for( int i = 0; i < _nb_vars; ++i )
-		walk[i] = _rng.uniform( 0, _max_value );
+	_rng.shuffle( _index ); 
+	vector<int> current = _random_sol[ _index[0] ];
 
-	for( int i = 0; i < _length; ++i )
+	for( int i = 0; i < (int)_index.size(); )
 	{
-		g_outputs[ i ] = std::abs( g( variables, walk, _max_value ) );
-		f_outputs[ i ] = concept( walk ) ? 0 : g_outputs[ i ];
-		
-		// new point from a random walk (local move)
-		int var_to_change = _rng.uniform( 0, _nb_vars - 1 );
-		int value_to_change;
-		while( ( value_to_change = _rng.uniform( 0, _max_value ) ) == walk[ var_to_change ] ) {} // get a new value
-		walk[ var_to_change ] = value_to_change;
+		auto output = std::abs( g( variables, current, _max_value ) );
+		g_outputs.push_back( output );
+		f_outputs.push_back( concept( current ) ? 0 : output );
+
+		auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
+		if( diff.first == current.end() )
+			++i;
+		else
+			*(diff.first) = *(diff.second);
 	}
 
+	int length = (int)g_outputs.size();
+	
 	double mean;
 	double sum = 0.;
-	for( int i = 0; i < _length; ++i )
+	for( int i = 0; i < length; ++i )
 		sum += f_outputs[ i ];
-	mean = sum / _length;
+	mean = sum / length;
 	
 	double sum_diff_mean = 0.;
 	double sum_diff_square = 0.;
-	for( int i = 0; i < _length - 1; ++i )
+	for( int i = 0; i < length - 1; ++i )
 	{
 		sum_diff_mean += ( ( f_outputs[ i ] - mean ) * ( f_outputs[ i + 1 ] - mean ) );
 		sum_diff_square += std::pow( ( f_outputs[ i ] - mean ), 2 );
 	}
 
-	sum_diff_square += std::pow( ( f_outputs[ _length - 1 ] - mean ), 2 );
+	sum_diff_square += std::pow( ( f_outputs[ length - 1 ] - mean ), 2 );
 	
-	double empirical_autocorrelation_num = sum_diff_mean / ( _length - 1 );
-	double empirical_autocorrelation_den = sum_diff_square / _length;
+	double empirical_autocorrelation_num = sum_diff_mean / ( length - 1 );
+	double empirical_autocorrelation_den = sum_diff_square / length;
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 
 #if defined CHRONO

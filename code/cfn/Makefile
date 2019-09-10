@@ -24,8 +24,8 @@ OBJDIR=obj
 BINDIR=bin
 
 # Files
-SOURCE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
-SOURCES=$(filter-out ./random_draw.cpp, $(SOURCE))
+SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+#SOURCES=$(filter-out ./random_draw.cpp, $(SOURCE))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 # For rm
