@@ -1,6 +1,10 @@
 #include <random>
 #include <cmath>
 
+#if defined CHRONO
+#include <chrono>
+#endif
+
 #include "obj_ecl.hpp"
 #include "function_to_learn.hpp"
 #include "concept.hpp"
@@ -14,6 +18,10 @@ Obj_ECL::Obj_ECL( int length, int nb_vars, int max_value )
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 {
+#if defined CHRONO
+	auto start = std::chrono::steady_clock::now();
+#endif
+	
 	vector<double> g_outputs( _length );
 	vector<double> f_outputs( _length );
 
@@ -54,5 +62,11 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	double empirical_autocorrelation_num = sum_diff_mean / ( _length - 1 );
 	double empirical_autocorrelation_den = sum_diff_square / _length;
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
+
+#if defined CHRONO
+	auto end = std::chrono::steady_clock::now();
+	cerr << "Obj_ECL::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+#endif
+	
 	return 1. / std::log( std::abs( empirical_autocorrelation ) );
 }
