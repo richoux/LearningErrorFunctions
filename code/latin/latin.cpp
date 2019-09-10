@@ -6,7 +6,7 @@
 #include "latin.hpp"
 
 // We assume that the domain of each variable starts at 0
-vector< vector<int> > LHS( const vector< Variable >& variables, std::mt19937& gen )
+vector< vector<int> > LHS::sample( const vector< Variable >& variables ) const
 {
 	map< int, vector<int> > domains;
 	for( auto v : variables )
@@ -24,9 +24,8 @@ vector< vector<int> > LHS( const vector< Variable >& variables, std::mt19937& ge
 
 		for( int v = 0; v < variables.size(); ++v )
 		{
-			uniform_int_distribution<> unif( 0, domains[ variables[v].get_id() ].size() - 1 );
 			auto &vec = domains[ variables[v].get_id() ];
-			sample[v] = vec[unif( gen )];
+			sample[v] = _rng.pick( vec );
 			vec.erase( find( vec.begin(), vec.end(), sample[v] ) );			
 		}
 
@@ -37,16 +36,16 @@ vector< vector<int> > LHS( const vector< Variable >& variables, std::mt19937& ge
 }
 
 // We assume that the domain of each variable starts at 0
-vector< vector<int> > LHS( const vector< reference_wrapper<Variable> >& variables, std::mt19937& gen )
+vector< vector<int> > LHS::sample( const vector< reference_wrapper<Variable> >& variables ) const
 {
 	vector< Variable > vars;
 	std::transform( variables.begin(), variables.end(), std::back_inserter( vars ), []( auto& v ){ return v.get(); } );
 
-	return LHS( vars, gen );
+	return LHS::sample( vars );
 }
 
 // We assume that the domain of each variable is the same and starts at 0
-vector< vector<int> > LHS( int nb_vars, int var_max_value, std::mt19937& gen )
+vector< vector<int> > LHS::sample( int nb_vars, int var_max_value ) const
 {
 	map< int, vector<int> > domains;
 	for( int i = 0; i < nb_vars; ++i )
@@ -66,9 +65,8 @@ vector< vector<int> > LHS( int nb_vars, int var_max_value, std::mt19937& gen )
 
 		for( int v = 0; v < nb_vars; ++v )
 		{
-			uniform_int_distribution<> unif( 0, domains[ v ].size() - 1 );
 			auto &vec = domains[ v ];
-			sample[v] = vec[unif( gen )];
+			sample[v] = _rng.pick( vec );
 			vec.erase( find( vec.begin(), vec.end(), sample[v] ) );			
 		}
 

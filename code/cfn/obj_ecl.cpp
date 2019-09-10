@@ -14,12 +14,6 @@ Obj_ECL::Obj_ECL( int length, int nb_vars, int max_value )
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 {
-	std::random_device rd{};
-	std::mt19937 gen{rd()};
-
-	std::uniform_int_distribution<> uniform_value{ 0, _max_value };
-	std::uniform_int_distribution<> uniform_variable{ 0, _nb_vars - 1 };
-
 	vector<double> g_outputs( _length );
 	vector<double> f_outputs( _length );
 
@@ -27,7 +21,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	
 	// random starting point
 	for( int i = 0; i < _nb_vars; ++i )
-		walk[i] = uniform_value( gen );
+		walk[i] = _rng.uniform( 0, _max_value );
 
 	for( int i = 0; i < _length; ++i )
 	{
@@ -35,9 +29,9 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		f_outputs[ i ] = concept( walk ) ? 0 : g_outputs[ i ];
 		
 		// new point from a random walk (local move)
-		int var_to_change = uniform_variable( gen );
+		int var_to_change = _rng.uniform( 0, _nb_vars - 1 );
 		int value_to_change;
-		while( ( value_to_change = uniform_value( gen ) ) == walk[ var_to_change ] ) {} // get a new value
+		while( ( value_to_change = _rng.uniform( 0, _max_value ) ) == walk[ var_to_change ] ) {} // get a new value
 		walk[ var_to_change ] = value_to_change;
 	}
 

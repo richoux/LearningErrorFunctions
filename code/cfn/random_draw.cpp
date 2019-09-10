@@ -5,7 +5,9 @@
 #include <cmath>
 
 #include <ghost/variable.hpp>
-#include "latin.hpp"
+
+#include "../latin/latin.hpp"
+#include "../utils/randutils.hpp"
 
 using namespace ghost;
 using namespace std;
@@ -56,10 +58,8 @@ int main( int argc, char** argv )
 		nb_vars *= nb_vars;
 	}
 
-	std::random_device rd{};
-	std::mt19937 gen{rd()};
-#if not defined LATIN
-	std::uniform_int_distribution<> uniform{ 0, nb_vars - 1 };
+#if defined LATIN
+	LHS latin;
 #endif
 	
   // Create variables
@@ -74,9 +74,9 @@ int main( int argc, char** argv )
   unsigned long long int one_percent = static_cast<unsigned long long int>( std::pow( domain_size, nb_vars ) / 100 );
   //cout << "1% -> " << one_percent << "\n";
   
-  auto latin_draws = LHS( variables, gen );
-  
 #if defined LATIN
+  auto latin_draws = latin.sample( variables, gen );
+
   for( unsigned long long int i = 0; i < one_percent; i += domain_size )
 #else
 	for( unsigned long long int i = 0; i < one_percent; ++i )
@@ -86,12 +86,11 @@ int main( int argc, char** argv )
 	  for( auto& sample : latin_draws )
 		  if( alldiff_concept( sample ) )
 			  ++counter;
-	  latin_draws = LHS( variables, gen );
+	  latin_draws = latin.sample( variables, gen );
 #else
 	  for( auto& var : variables )
 	  {
-		  value = uniform( gen );
-		  var.set_value( value );
+		  var.pick_random_value();
 		  //cout << value << " ";
 	  }
 	  //cout << "\n";

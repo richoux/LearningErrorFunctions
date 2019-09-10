@@ -14,6 +14,8 @@
 #include "ctr.hpp"
 #include "obj_ecl.hpp"
 
+#include "../utils/randutils.hpp"
+
 using namespace std;
 using namespace ghost;
 
@@ -31,13 +33,15 @@ int main( int argc, char **argv )
 	}
 
 	// Proper way to initialize a Mersenne Twister
-	array<int, mt19937::state_size> seed_data;
-	random_device r;
-	generate_n( seed_data.data(), seed_data.size(), std::ref( r ) );
-	seed_seq seq( seed_data.begin(), seed_data.end() );
-	mt19937 gen( seq );
-	// To have a random initialization of coefficients in [-1, 1]
-	uniform_int_distribution<> initialization( 40, 60 );
+	// array<int, mt19937::state_size> seed_data;
+	// random_device r;
+	// generate_n( seed_data.data(), seed_data.size(), std::ref( r ) );
+	// seed_seq seq( seed_data.begin(), seed_data.end() );
+	// mt19937 gen( seq );
+	// // To have a random initialization of coefficients in [-1, 1]
+	// uniform_int_distribution<> initialization( 40, 60 );
+
+	randutils::mt19937_rng rng;
 	
 	int nb_vars = stoi( argv[1] ); // not the size the vector<Variable>, see below
 
@@ -56,7 +60,8 @@ int main( int argc, char **argv )
 
 	// all coefficients fixed at 1
 	for( auto& c : coefficients )
-		c.set_value( initialization( gen ) );
+		c.set_value( rng.uniform( 40, 60 ) );
+		//c.set_value( initialization( gen ) );
 	
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 
@@ -84,13 +89,13 @@ int main( int argc, char **argv )
 			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
 	}
 
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr >( coeff_ref, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr >( coeff_first_half, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr >( coeff_second_half, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr >( coeff_2_by_2_1, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr >( coeff_2_by_2_2, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr >( coeff_1_by_1_1, nb_vars, max_value, gen );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, nb_vars, max_value, gen );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr >( coeff_ref, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr >( coeff_first_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr >( coeff_second_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr >( coeff_2_by_2_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr >( coeff_2_by_2_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr >( coeff_1_by_1_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, nb_vars, max_value );
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( random_walk_length, nb_vars, max_value );

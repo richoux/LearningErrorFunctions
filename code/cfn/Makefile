@@ -22,7 +22,6 @@ endif
 SRCDIR=. ../latin/
 OBJDIR=obj
 BINDIR=bin
-INCDIR=../latin/
 
 # Files
 SOURCE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
@@ -49,7 +48,7 @@ $(BINDIR)/$(EXEC): $(OBJECTS)
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.cpp
-	$(CXX) -I$(INCDIR) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 

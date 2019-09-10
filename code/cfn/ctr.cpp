@@ -4,17 +4,14 @@
 #include <numeric>
 
 #include "ctr.hpp"
-#include "latin.hpp"
+#include "../latin/latin.hpp"
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-Ctr::Ctr( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, const mt19937& gen )
+Ctr::Ctr( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value )
 	: Constraint (coefficients),
-	  gen (gen),
-	  rand_var (uniform_int_distribution<>{ 0, nb_vars -1 }),
-	  rand_val (uniform_int_distribution<>{ 0, var_max_value }),
-	  nb_vars (nb_vars),
-	  var_max_value (var_max_value)
+	  _nb_vars (nb_vars),
+	  _var_max_value (var_max_value)
 { }
 
 double Ctr::required_cost() const
@@ -22,12 +19,12 @@ double Ctr::required_cost() const
 	// Do not get confused between variables of our model (the coefficients) and variables of the configuration search space
 	auto& coefficients = variables;
 	
-	auto samples = LHS( nb_vars, var_max_value, gen );
+	auto samples = _latin.sample( _nb_vars, _var_max_value );
 	
 	double g_x, mean, diff, std_dev;
 
 	// iterations = 25% of the neighborhood size
-	int iter = ( ( var_max_value - 1 ) * nb_vars ) / 4; 
+	int iter = ( ( _var_max_value - 1 ) * _nb_vars ) / 4; 
 	
 	vector<double> g_outputs( iter );
 	int index, value;
@@ -38,7 +35,7 @@ double Ctr::required_cost() const
 	{
 		if( !concept( s ) )
 		{
-			g_x = g( coefficients, s, var_max_value );
+			g_x = g( coefficients, s, _var_max_value );
 
 			for( int i = 0; i < iter; ++i )
 			{
@@ -46,13 +43,13 @@ double Ctr::required_cost() const
 				
 				do
 				{
-					index = rand_var( gen );
-					value = rand_val( gen );
+					index = _rng.uniform( 0, _nb_vars - 1 );
+					value = _rng.uniform( 0, _var_max_value );
 				}
 				while( neighbor[ index ] == value );
 				neighbor[ index ] = value;
 
-				g_outputs[i] = g( coefficients, neighbor, var_max_value );
+				g_outputs[i] = g( coefficients, neighbor, _var_max_value );
 			}
 
 			mean = std::accumulate( g_outputs.begin(), g_outputs.end(), 0. ) / iter;

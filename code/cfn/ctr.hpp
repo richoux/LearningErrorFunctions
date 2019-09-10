@@ -6,20 +6,22 @@
 #include <ghost/variable.hpp>
 #include <ghost/constraint.hpp>
 
+#include "../latin/latin.hpp"
+#include "../utils/randutils.hpp"
+
 using namespace std;
 using namespace ghost;
 
 class Ctr : public Constraint
 {
-	mutable std::mt19937 gen;
-	mutable uniform_int_distribution<> rand_var;
-	mutable uniform_int_distribution<> rand_val;
+	int _nb_vars;
+	int _var_max_value;
 
-	int nb_vars;
-	int var_max_value;
+	LHS _latin;
+	mutable randutils::mt19937_rng _rng;
 	
 	double required_cost() const override;
 
 public:
-	Ctr( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, const std::mt19937& gen );
+	Ctr( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value );
 };
