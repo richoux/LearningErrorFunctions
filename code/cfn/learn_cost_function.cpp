@@ -89,13 +89,13 @@ int main( int argc, char **argv )
 			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
 	}
 
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr >( coeff_ref, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr >( coeff_first_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr >( coeff_second_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr >( coeff_2_by_2_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr >( coeff_2_by_2_2, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr >( coeff_1_by_1_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr >( coeff_1_by_1_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( coeff_ref, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_smooth >( coeff_first_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_smooth >( coeff_second_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_smooth >( coeff_2_by_2_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_smooth >( coeff_2_by_2_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
