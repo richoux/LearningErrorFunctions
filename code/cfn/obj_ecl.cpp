@@ -9,6 +9,10 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
+#if defined DEBUG
+static bool first = true;
+#endif
+
 Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
 	: Objective( "Max ECL" ),
 	  _nb_vars( nb_vars ),
@@ -25,26 +29,68 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	auto start = std::chrono::steady_clock::now();
 #endif
 	
-	vector<double> g_outputs;
 	vector<double> f_outputs;
-	
-	_rng.shuffle( _index ); 
-	vector<int> current = _random_sol[ _index[0] ];
 
+	// prepare the random walk: we will visit solutions in random_solutions in a random order.
+	_rng.shuffle( _index );
+	
+	// random starting point, since computing the empirical_autocorrelation assumes 
+	// the space to be isotropic, ie, the starting point should not have any influence
+	// on the statistical information obtained from the random walk.
+	vector<int> current( _nb_vars );
+	_rng.generate( current, 0, _max_value );
+
+#if defined DEBUG
+	if( first )
+	{
+		for( auto&c : current )
+			cerr << c << " ";
+		cerr << "Sol\n";
+	}
+#endif
+	
 	for( int i = 0; i < (int)_index.size(); )
 	{
 		auto output = std::abs( g( variables, current, _max_value ) );
-		g_outputs.push_back( output );
 		f_outputs.push_back( concept( current ) ? 0 : output );
-
+		
+	skip_compute_g:
 		auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
 		if( diff.first == current.end() )
+		{
 			++i;
+#if defined DEBUG
+			if( first )
+			{
+				for( auto&c : current )
+					cerr << c << " ";
+				cerr << "Sol\n";
+			}
+#endif
+			if( i == (int)_index.size() )
+				break;
+			else
+				goto skip_compute_g;
+		}
 		else
+		{
 			*(diff.first) = *(diff.second);
+#if defined DEBUG
+			if( first )
+			{
+				for( auto&c : current )
+					cerr << c << " ";
+				cerr << "\n";
+			}
+#endif
+		}
 	}
 
-	int length = (int)g_outputs.size();
+#if defined DEBUG
+	first = false;
+#endif
+	
+	int length = (int)f_outputs.size();
 	
 	double mean;
 	double sum = 0.;

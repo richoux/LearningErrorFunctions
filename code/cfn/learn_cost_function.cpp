@@ -62,7 +62,6 @@ int main( int argc, char **argv )
 	// all coefficients fixed at 1
 	for( auto& c : coefficients )
 		c.set_value( rng.uniform( 40, 60 ) );
-		//c.set_value( initialization( gen ) );
 	
 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
 
@@ -107,7 +106,7 @@ int main( int argc, char **argv )
 	vector<int> solution( coeff_ref.size(), 0 );
 
 	//solver.solve( cost, solution, 10000, 100000, true );
-	solver.solve( cost, solution, 10000000, 100000000, true );
+	solver.solve( cost, solution, 10000000, 1000000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
