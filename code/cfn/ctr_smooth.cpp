@@ -29,14 +29,17 @@ double Ctr_smooth::required_cost() const
 
 	//LHS super slow!!
 	// auto samples = _latin.sample( _nb_vars, _var_max_value );
-	vector< vector<int> > samples( _nb_vars );
+	vector< vector<int> > samples( _var_max_value + 1 );
 	for( int i = 0; i < _nb_vars; ++i )
+	{
+		samples[i] = vector<int>( _nb_vars );
 		_rng.generate( samples[i], 0, _var_max_value );
+	}
 	
 	double g_x, mean, diff, std_dev;
 
 	// iterations = 25% of the neighborhood size
-	int iter = ( ( _var_max_value - 1 ) * _nb_vars ) / 4; 
+	int iter = _var_max_value * _nb_vars / 4; 
 	
 	vector<double> g_outputs( iter );
 	int index, value;

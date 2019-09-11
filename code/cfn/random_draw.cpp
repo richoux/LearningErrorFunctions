@@ -40,7 +40,6 @@ vector< vector<int> > random_draw( int nb_vars, int max_value )
 #endif
 
 	unsigned int counter = 0;
-  int value;
 
 #if not defined LATIN
   vector<int> configuration( nb_vars );

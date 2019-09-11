@@ -11,8 +11,16 @@
 #include <ghost/objective.hpp>
 #include <ghost/solver.hpp>
 
-#include "ctr.hpp"
+#if defined SMOOTH_CTR
+// Constraints aiming for smooth function, so objective function aiming for max function outputs
+#include "ctr_smooth.hpp"
+#include "obj_max_outputs.hpp"
+#else
+// Constraints aiming for max function outputs, so objective function aiming for smooth function
+#include "ctr_high_outputs.hpp"
 #include "obj_ecl.hpp"
+#endif
+
 #include "random_draw.hpp"
 
 #include "../utils/randutils.hpp"
@@ -50,7 +58,9 @@ int main( int argc, char **argv )
 	// and that this domain contains all numbers from 0 to max_value 
 	int max_value = stoi( argv[2] );
 
-	auto random_solutions = random_draw( nb_vars, max_value );
+#if not defined SMOOTH_CTR
+	auto random_solutions { random_draw( nb_vars, max_value ) };
+#endif
 	
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
@@ -89,6 +99,7 @@ int main( int argc, char **argv )
 			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
 	}
 
+#if defined SMOOTH_CTR
 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( coeff_ref, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_smooth >( coeff_first_half, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_smooth >( coeff_second_half, nb_vars, max_value );
@@ -96,10 +107,24 @@ int main( int argc, char **argv )
 	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_smooth >( coeff_2_by_2_2, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
+#else
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value );
+#endif
+	
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
+#if defined SMOOTH_CTR
+	shared_ptr< Objective > objective = make_shared< Obj_MO >( nb_vars, max_value );
+#else
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
-	
+#endif
+
 	Solver solver( coefficients, constraints, objective );
 	
 	double cost = 0.;
