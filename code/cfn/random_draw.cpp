@@ -25,12 +25,12 @@ bool alldiff_concept( const vector< int >& variables )
 	return true;
 }
 
-vector< vector<int> > random_draw( const vector< Variable >& variables )
+void random_draw( const vector< Variable >& variables, vector< vector<int> >& solutions, vector< vector<int> >& not_solutions, double percent )
 {
-	return random_draw( (int)variables.size(), (int)variables[0].get_domain_size() - 1 );
+	random_draw( (int)variables.size(), (int)variables[0].get_domain_size() - 1, solutions, not_solutions, percent );
 }
 
-vector< vector<int> > random_draw( int nb_vars, int max_value )
+void random_draw( int nb_vars, int max_value, vector< vector<int> >& solutions, vector< vector<int> >& not_solutions, double percent )
 {
 
 #if defined LATIN
@@ -44,17 +44,15 @@ vector< vector<int> > random_draw( int nb_vars, int max_value )
 #if not defined LATIN
   vector<int> configuration( nb_vars );
 #endif
-	vector< vector<int> > samples;
-
-  unsigned long long int one_percent = static_cast<unsigned long long int>( std::pow( max_value + 1, nb_vars ) / 100 );
-  //cout << "1% -> " << one_percent << "\n";
+  unsigned long long int sampling_size = static_cast<unsigned long long int>( percent * std::pow( max_value + 1, nb_vars ) / 100 );
+  //cout << "1% -> " << sampling_size << "\n";
   
 #if defined LATIN
   auto latin_draws = latin.sample( variables );
 
-  for( unsigned long long int i = 0; i < one_percent; i += ( max_value + 1 ) )
+  for( unsigned long long int i = 0; i < sampling_size; i += ( max_value + 1 ) )
 #else
-	for( unsigned long long int i = 0; i < one_percent; ++i )
+	for( unsigned long long int i = 0; i < sampling_size; ++i )
 #endif
   {
 #if defined LATIN
@@ -62,8 +60,11 @@ vector< vector<int> > random_draw( int nb_vars, int max_value )
 		  if( alldiff_concept( sample ) )
 		  {
 			  ++counter;
-			  samples.push_back( sample );
+			  solutions.push_back( sample );
 		  }
+		  else
+			  not_solutions.push_back( sample );
+			  
 	  latin_draws = latin.sample( variables, gen );
 #else
 	  for( int i = 0; i < nb_vars; ++i )
@@ -72,12 +73,12 @@ vector< vector<int> > random_draw( int nb_vars, int max_value )
 	  if( alldiff_concept( configuration ) )
 	  {
 		  ++counter;
-		  samples.push_back( configuration );
+		  solutions.push_back( configuration );
 	  }
+	  else
+		  not_solutions.push_back( configuration );		  
 #endif
   }
 
-  // cout << "Density of solutions: " << ( static_cast<double>(counter) * 100 ) / one_percent << "%\n";
-  
-  return samples;
+  // cout << "Density of solutions: " << ( static_cast<double>(counter) * 100 ) / sampling_size << "%\n";
 }

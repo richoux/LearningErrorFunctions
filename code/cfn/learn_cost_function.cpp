@@ -59,7 +59,8 @@ int main( int argc, char **argv )
 	int max_value = stoi( argv[2] );
 
 #if not defined SMOOTH_CTR
-	auto random_solutions { random_draw( nb_vars, max_value ) };
+	vector< vector<int> > random_solutions;
+	random_draw( nb_vars, max_value, random_solutions, vector< vector<int> >() );
 #endif
 	
 	int nb_coeff = nb_vars * 10;
@@ -130,8 +131,8 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	//solver.solve( cost, solution, 10000, 100000, true );
-	solver.solve( cost, solution, 10000000, 1000000000, true );
+	solver.solve( cost, solution, 10000, 100000, true );
+	//solver.solve( cost, solution, 10000000, 1000000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
