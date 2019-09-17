@@ -16,12 +16,14 @@ class Ctr_HO : public Constraint
 {
 	int _nb_vars;
 	int _var_max_value;
-
+	vector< vector<int> > _random_configurations;
+	map<string, double> _cost_map;
+	
 	LHS _latin;
 	mutable randutils::mt19937_rng _rng;
 	
 	double required_cost() const override;
 
 public:
-	Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value );
+	Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, vector< vector<int> > random_configurations, map<string, double> cost_map );
 };

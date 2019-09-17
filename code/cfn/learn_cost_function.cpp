@@ -5,6 +5,7 @@
 #include <string>
 #include <random>
 #include <algorithm>
+#include <map>
 
 #include <ghost/variable.hpp>
 #include <ghost/constraint.hpp>
@@ -24,18 +25,64 @@
 #include "random_draw.hpp"
 
 #include "../utils/randutils.hpp"
+#include "../utils/convert.hpp"
 
 using namespace std;
 using namespace ghost;
+
+double hamming_manhattan_metric( const vector<int>& configuration,
+                                 const vector<int>& solution,
+                                 int nb_vars )
+{
+	double cost = 0.;
+
+	for( int i = 0; i < nb_vars; ++i )
+		if( configuration[i] != solution[i] )
+		{
+			double diff = std::abs( solution[i] - configuration[i] );
+			cost += 1 + ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
+		}
+
+	return cost;
+}
+
+map<string, double> compute_metric( const vector< vector<int> >& random_solutions,
+                                    const vector< vector<int> >& random_configurations,
+                                    int nb_vars )
+{
+	map<string, double> costs;
+
+	for( auto& s : random_solutions )
+		costs[ convert( s ) ] = 0.;
+	
+	for( auto& c : random_configurations )
+	{
+		double cost;
+		double min_cost = std::numeric_limits<double>::max();
+				
+		for( auto& s : random_solutions )
+		{
+			cost = hamming_manhattan_metric( c, s, nb_vars );
+			if( cost < min_cost )
+				min_cost = cost;
+		}
+
+		costs[ convert( c ) ] = min_cost;		
+	}
+
+	return costs;
+}
 
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE\n";
 }
 
+//////////////////////////////////
+
 int main( int argc, char **argv )
 {
-	if( argc != 3 )
+	if( argc < 3 || argc > 4 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
@@ -60,7 +107,13 @@ int main( int argc, char **argv )
 
 #if not defined SMOOTH_CTR
 	vector< vector<int> > random_solutions;
-	random_draw( nb_vars, max_value, random_solutions, vector< vector<int> >() );
+	vector< vector<int> > random_configurations;
+	if( argc == 4 )
+		random_draw( nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
+	else
+		random_draw( nb_vars, max_value, random_solutions, random_configurations );
+
+	auto cost_map = compute_metric( random_solutions, random_configurations, nb_vars );	
 #endif
 	
 	int nb_coeff = nb_vars * 10;
@@ -109,13 +162,13 @@ int main( int argc, char **argv )
 	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
 #else
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value, random_solutions, cost_map );
 #endif
 	
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };

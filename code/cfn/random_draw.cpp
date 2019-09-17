@@ -48,7 +48,7 @@ void random_draw( int nb_vars, int max_value, vector< vector<int> >& solutions, 
   //cout << "1% -> " << sampling_size << "\n";
   
 #if defined LATIN
-  auto latin_draws = latin.sample( variables );
+  auto latin_draws = latin.sample( nb_vars, max_value );
 
   for( unsigned long long int i = 0; i < sampling_size; i += ( max_value + 1 ) )
 #else
@@ -56,7 +56,7 @@ void random_draw( int nb_vars, int max_value, vector< vector<int> >& solutions, 
 #endif
   {
 #if defined LATIN
-	  for( auto& sample : latin_draws )
+	  for( auto sample : latin_draws )
 		  if( alldiff_concept( sample ) )
 		  {
 			  ++counter;
@@ -65,7 +65,7 @@ void random_draw( int nb_vars, int max_value, vector< vector<int> >& solutions, 
 		  else
 			  not_solutions.push_back( sample );
 			  
-	  latin_draws = latin.sample( variables, gen );
+	  latin_draws = latin.sample( nb_vars, max_value );
 #else
 	  for( int i = 0; i < nb_vars; ++i )
 		  configuration[i] = rng.uniform( 0, max_value );

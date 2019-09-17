@@ -19,7 +19,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=. ../latin/
+SRCDIR=. ../latin/ ../utils
 OBJDIR=obj
 BINDIR=bin
 
