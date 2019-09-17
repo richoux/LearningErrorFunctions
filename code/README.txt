@@ -9,6 +9,6 @@ eo: searching for cost functions through genetic algorithms
 JLL: everything related to JLL
 latin: for Latin Hypercube Sampling
 sudoku: Sudoku benchmark
-test-eigen: some tests about the Eigen lib
+tests: handmade test files (not well-defined unit tests)
 utils: get next configuration, random lib
 
