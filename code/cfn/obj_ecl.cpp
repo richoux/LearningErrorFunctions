@@ -1,6 +1,8 @@
 #include <random>
 #include <cmath>
 
+#include <iterator>
+
 #if defined CHRONO
 #include <chrono>
 #endif
@@ -19,7 +21,7 @@ Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solution
 	  _nb_vars( nb_vars ),
 	  _max_value( max_value ),
 	  _random_sol( random_solutions ),
-	  _index( vector<int>( _random_sol.size() ) )
+	  _index( vector<int>( _random_sol.size() / nb_vars ) )
 {
 	std::iota( _index.begin(), _index.end(), 0 );
 }
@@ -66,12 +68,14 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	skip_compute_g:
 		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
 		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
-		if( diff.first == current.end() )
+		if( diff.first == current.end() || diff.second == _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars )
 		{
 			++i;
 #if defined DEBUG
 			if( first )
 			{
+				cerr << "Distances: " << distance( current.begin(), current.end() ) << " " << distance( _random_sol.begin(), _random_sol.end() ) << " " << _nb_vars << "\n";
+				
 				for( auto&c : current )
 					cerr << c << " ";
 				cerr << "Sol\n";
@@ -84,13 +88,14 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		}
 		else
 		{
-			
 			*(diff.first) = *(diff.second);
 #if defined DEBUG
 			if( first )
 			{
+				cerr << "Distances: " << distance( current.begin(), current.end() ) << " " << distance( _random_sol.begin(), _random_sol.end() ) << " " << _index.size() << " " << _nb_vars << "\n";
+				
 				cerr << "diff.first: " << *(diff.first)
-				     << "\ndiff.second" << *(diff.second) << "\n";
+				     << "\ndiff.second " << *(diff.second) << "\n";
 				for( auto&c : current )
 					cerr << c << " ";
 				cerr << "\n";

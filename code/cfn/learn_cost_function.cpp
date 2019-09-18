@@ -160,11 +160,10 @@ int main( int argc, char **argv )
 	
 	vector<int> few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
 	//vector< vector<int> > few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
+	//auto cost_map = compute_metric( random_solutions, random_configurations, nb_vars );
 	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars );
-#if defined CHRONO
-	cout << "number of solutions: " << random_solutions.size() << "\n"
-	     << "cost_map size: " << cost_map.size() << "\n";
-#endif	
+	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
+	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 #endif
 
 	int nb_coeff = nb_vars * 10;
@@ -213,13 +212,13 @@ int main( int argc, char **argv )
 	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
 #else
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value, random_solutions, cost_map );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value, random_solutions, cost_map );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value, few_configurations, cost_map );
 #endif
 	
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
@@ -236,7 +235,7 @@ int main( int argc, char **argv )
 	vector<int> solution( coeff_ref.size(), 0 );
 
 	//solver.solve( cost, solution, 10000, 100000, true );
-	solver.solve( cost, solution, 100000, 10000000, true );
+	solver.solve( cost, solution, 1000000, 100000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
