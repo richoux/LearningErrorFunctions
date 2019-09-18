@@ -64,7 +64,8 @@ class LHS
 public:
 	LHS() = default;
 	
-	vector< vector<int> > sample( const vector< Variable >& variables ) const;
-	vector< vector<int> > sample( const vector< reference_wrapper<Variable> >& variables ) const;
-	vector< vector<int> > sample( int nb_vars, int var_max_value ) const;
+	//vector< vector<int> > sample( const vector< Variable >& variables ) const;
+	//vector< vector<int> > sample( const vector< reference_wrapper<Variable> >& variables ) const;
+	//vector< vector<int> > sample( int nb_vars, int var_max_value ) const;
+	vector<int> sample( int nb_vars, int var_max_value ) const;
 };

@@ -15,3 +15,19 @@ std::string convert( const std::vector<int>& vec )
 
 	return key;
 }
+
+std::string convert( const std::vector<int>& vec, int start, int end )
+{
+	std::string key = "";
+	// sum is to limit possible collisions
+	int sum = 0;
+	
+	for( int i = start; i < end; ++i )
+	{
+		key += std::to_string( vec[i] );
+		sum += vec[i];
+	}
+	key += std::to_string( sum );
+
+	return key;
+}

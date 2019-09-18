@@ -32,46 +32,89 @@ using namespace ghost;
 
 double hamming_manhattan_metric( const vector<int>& configuration,
                                  const vector<int>& solution,
+                                 int start_config,
+                                 int start_sol,
                                  int nb_vars )
 {
 	double cost = 0.;
 
 	for( int i = 0; i < nb_vars; ++i )
-		if( configuration[i] != solution[i] )
+		if( configuration[ start_config + i ] != solution[ start_sol + i ] )
 		{
-			double diff = std::abs( solution[i] - configuration[i] );
+			double diff = std::abs( solution[ start_sol + i ] - configuration[ start_config + i ] );
 			cost += 1 + ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
 		}
 
 	return cost;
 }
+// double hamming_manhattan_metric( const vector<int>& configuration,
+//                                  const vector<int>& solution,
+//                                  int nb_vars )
+// {
+// 	double cost = 0.;
 
-map<string, double> compute_metric( const vector< vector<int> >& random_solutions,
-                                    const vector< vector<int> >& random_configurations,
+// 	for( int i = 0; i < nb_vars; ++i )
+// 		if( configuration[i] != solution[i] )
+// 		{
+// 			double diff = std::abs( solution[i] - configuration[i] );
+// 			cost += 1 + ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
+// 		}
+
+// 	return cost;
+// }
+
+map<string, double> compute_metric( const vector<int>& random_solutions,
+                                    const vector<int>& random_configurations,
                                     int nb_vars )
 {
 	map<string, double> costs;
 
-	for( auto& s : random_solutions )
-		costs[ convert( s ) ] = 0.;
+	for( int s = 0; s < (int)random_solutions.size(); s += nb_vars )
+		costs[ convert( random_solutions, s, s + nb_vars ) ] = 0.;
 	
-	for( auto& c : random_configurations )
+	for( int c = 0; c < (int)random_configurations.size(); c += nb_vars )
 	{
 		double cost;
 		double min_cost = std::numeric_limits<double>::max();
 				
-		for( auto& s : random_solutions )
+		for( int s = 0; s < (int)random_solutions.size(); s += nb_vars )
 		{
-			cost = hamming_manhattan_metric( c, s, nb_vars );
+			cost = hamming_manhattan_metric( random_configurations, random_solutions, c, s, nb_vars );
 			if( cost < min_cost )
 				min_cost = cost;
 		}
 
-		costs[ convert( c ) ] = min_cost;		
+		costs[ convert( random_configurations, c, c + nb_vars ) ] = min_cost;		
 	}
 
 	return costs;
 }
+// map<string, double> compute_metric( const vector< vector<int> >& random_solutions,
+//                                     const vector< vector<int> >& random_configurations,
+//                                     int nb_vars )
+// {
+// 	map<string, double> costs;
+
+// 	for( auto& s : random_solutions )
+// 		costs[ convert( s ) ] = 0.;
+	
+// 	for( auto& c : random_configurations )
+// 	{
+// 		double cost;
+// 		double min_cost = std::numeric_limits<double>::max();
+				
+// 		for( auto& s : random_solutions )
+// 		{
+// 			cost = hamming_manhattan_metric( c, s, nb_vars );
+// 			if( cost < min_cost )
+// 				min_cost = cost;
+// 		}
+
+// 		costs[ convert( c ) ] = min_cost;		
+// 	}
+
+// 	return costs;
+// }
 
 void usage( char **argv )
 {
@@ -106,16 +149,24 @@ int main( int argc, char **argv )
 	int max_value = stoi( argv[2] );
 
 #if not defined SMOOTH_CTR
-	vector< vector<int> > random_solutions;
-	vector< vector<int> > random_configurations;
+	vector<int> random_solutions;
+	vector<int> random_configurations;
+	// vector< vector<int> > random_solutions;
+	// vector< vector<int> > random_configurations;
 	if( argc == 4 )
 		random_draw( nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
 	else
 		random_draw( nb_vars, max_value, random_solutions, random_configurations );
-
-	auto cost_map = compute_metric( random_solutions, random_configurations, nb_vars );	
-#endif
 	
+	vector<int> few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
+	//vector< vector<int> > few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
+	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars );
+#if defined CHRONO
+	cout << "number of solutions: " << random_solutions.size() << "\n"
+	     << "cost_map size: " << cost_map.size() << "\n";
+#endif	
+#endif
+
 	int nb_coeff = nb_vars * 10;
 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
 

@@ -9,16 +9,17 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-#if defined DEBUG
+#if defined DEBUG or CHRONO
 static bool first = true;
 #endif
 
-Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
+//Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
+Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions )
 	: Objective( "Max ECL" ),
 	  _nb_vars( nb_vars ),
 	  _max_value( max_value ),
 	  _random_sol( random_solutions ),
-	  _index( vector<int>(_random_sol.size() ) )
+	  _index( vector<int>( _random_sol.size() ) )
 {
 	std::iota( _index.begin(), _index.end(), 0 );
 }
@@ -43,9 +44,17 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 #if defined DEBUG
 	if( first )
 	{
+		for( int i = 0; i < (int)_random_sol.size(); ++i)
+		{
+			if( i != 0 && i % _nb_vars == 0 )
+				cerr << "\n";
+			cerr << _random_sol[i] << " ";
+		}
+		cerr << "\n/////////////\n";
+		
 		for( auto&c : current )
 			cerr << c << " ";
-		cerr << "Sol\n";
+		cerr << "\n";
 	}
 #endif
 	
@@ -55,7 +64,8 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		f_outputs.push_back( concept( current ) ? 0 : output );
 		
 	skip_compute_g:
-		auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
+		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
+		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
 		if( diff.first == current.end() )
 		{
 			++i;
@@ -74,10 +84,13 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		}
 		else
 		{
+			
 			*(diff.first) = *(diff.second);
 #if defined DEBUG
 			if( first )
 			{
+				cerr << "diff.first: " << *(diff.first)
+				     << "\ndiff.second" << *(diff.second) << "\n";
 				for( auto&c : current )
 					cerr << c << " ";
 				cerr << "\n";
@@ -113,8 +126,12 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 
 #if defined CHRONO
-	auto end = std::chrono::steady_clock::now();
-	cerr << "Obj_ECL::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+	if( first )
+	{
+		auto end = std::chrono::steady_clock::now();
+		cerr << "Obj_ECL::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+		first = false;
+	}
 #endif
 	
 	return 1. / std::log( std::abs( empirical_autocorrelation ) );

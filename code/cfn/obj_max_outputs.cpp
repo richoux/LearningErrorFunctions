@@ -9,6 +9,10 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
+#if defined CHRONO
+static bool first = true;
+#endif
+
 Obj_MO::Obj_MO( int nb_vars, int max_value )
 	: Objective( "Max Outputs" ),
 	  _nb_vars( nb_vars ),
@@ -29,8 +33,12 @@ double Obj_MO::required_cost( const vector< Variable >& variables ) const
 		total += g( variables, sample, _max_value );
 
 #if defined CHRONO
-	auto end = std::chrono::steady_clock::now();
-	cerr << "Obj_MO::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+	if( first )
+	{
+		auto end = std::chrono::steady_clock::now();
+		cerr << "Obj_MO::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+		first = false;
+	}
 #endif
 	
 	return total;

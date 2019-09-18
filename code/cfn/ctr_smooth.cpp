@@ -12,6 +12,10 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
+#if defined CHRONO
+static bool first = true;
+#endif
+
 Ctr_smooth::Ctr_smooth( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value )
 	: Constraint (coefficients),
 	  _nb_vars (nb_vars),
@@ -83,8 +87,12 @@ double Ctr_smooth::required_cost() const
 	}
 	
 #if defined CHRONO
-	auto end = std::chrono::steady_clock::now();
-	cerr << "Ctr_smooth::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+	if( first )
+	{
+		auto end = std::chrono::steady_clock::now();
+		cerr << "Ctr_smooth::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+		first = false;
+	}
 #endif
 	return max_diff;
 }

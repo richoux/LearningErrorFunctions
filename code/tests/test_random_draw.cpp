@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "random_draw.hpp"
+#include "../cfn/random_draw.hpp"
 
 #include "../utils/randutils.hpp"
 
