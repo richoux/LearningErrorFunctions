@@ -235,7 +235,8 @@ int main( int argc, char **argv )
 	vector<int> solution( coeff_ref.size(), 0 );
 
 	//solver.solve( cost, solution, 10000, 100000, true );
-	solver.solve( cost, solution, 1000000, 100000000, true );
+	// 3600000000 microseconds = 1h
+	solver.solve( cost, solution, 100000000, 96*3600000000, true );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
