@@ -37,14 +37,16 @@ double hamming_manhattan_metric( const vector<int>& configuration,
                                  int nb_vars )
 {
 	double cost = 0.;
+	double diff = 0.;
 
 	for( int i = 0; i < nb_vars; ++i )
 		if( configuration[ start_config + i ] != solution[ start_sol + i ] )
 		{
-			double diff = std::abs( solution[ start_sol + i ] - configuration[ start_config + i ] );
-			cost += 1 + ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
+			cost += 1;
+			diff += std::abs( solution[ start_sol + i ] - configuration[ start_config + i ] );
 		}
 
+	cost += ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
 	return cost;
 }
 // double hamming_manhattan_metric( const vector<int>& configuration,
@@ -76,15 +78,32 @@ map<string, double> compute_metric( const vector<int>& random_solutions,
 	{
 		double cost;
 		double min_cost = std::numeric_limits<double>::max();
-				
+
+#if defined DEBUG
+		int copy_s;
+#endif				
 		for( int s = 0; s < (int)random_solutions.size(); s += nb_vars )
 		{
 			cost = hamming_manhattan_metric( random_configurations, random_solutions, c, s, nb_vars );
 			if( cost < min_cost )
+			{
 				min_cost = cost;
+				copy_s = s;
+			}
 		}
 
-		costs[ convert( random_configurations, c, c + nb_vars ) ] = min_cost;		
+		costs[ convert( random_configurations, c, c + nb_vars ) ] = min_cost;
+#if defined DEBUG
+		cerr << "Configuration: ";
+		for( int j = c; j < c + nb_vars; ++j )
+			cerr << random_configurations[j] << " ";
+		
+		cerr << "\nClosest sol:   ";
+		for( int j = copy_s; j < copy_s + nb_vars; ++j )
+			cerr << random_solutions[j] << " ";
+		cerr << "\nMetric: " << min_cost << "\n";
+#endif
+
 	}
 
 	return costs;
@@ -162,6 +181,27 @@ int main( int argc, char **argv )
 	//vector< vector<int> > few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
 	//auto cost_map = compute_metric( random_solutions, random_configurations, nb_vars );
 	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars );
+
+#if defined DEBUG
+	cerr << "Solutions:\n";
+	for( int i = 0; i < (int)random_solutions.size(); ++i )
+	{
+		if( i != 0 && i % 9 == 0 )
+			cerr << "\n" << convert( random_solutions, i-9, i ) << "\n";
+		cerr << random_solutions[i] << " ";
+	}
+	
+	cerr << "\n///////////////\nNot solutions:\n";
+	for( int i = 0; i < (int)few_configurations.size(); ++i )
+	{
+		if( i != 0 && i % 9 == 0 )
+			cerr << "\n" << convert( few_configurations, i-9, i ) << "\n";
+		cerr << few_configurations[i] << " ";
+	}
+	
+	cerr << "\n";
+#endif
+
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 #endif

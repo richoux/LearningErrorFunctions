@@ -15,7 +15,7 @@
 #include "function_to_learn.hpp"
 #include "concept.hpp"
 
-#if defined CHRONO
+#if defined CHRONO or DEBUG
 static bool first = true;
 #endif
 
@@ -57,7 +57,6 @@ double Ctr_HO::required_cost() const
 	double g_x;
 	double cost = 0.;
 
-	int cpt = 0;
 	double precomputed_metric;
 	
 	//for( const auto& c : _random_configurations )
@@ -71,16 +70,27 @@ double Ctr_HO::required_cost() const
 			if( g_x < precomputed_metric )
 				cost += ( precomputed_metric - g_x );
 		}
-		++cpt;
-#if defined CHRONO
-		if( first && cpt == 10)
+	
+#if defined DEBUG
+		if( first )
 		{
-			auto end = std::chrono::steady_clock::now();
-			cerr << "Ctr_HO::10 loops: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
+			cerr << "Configuration: ";
+				for( int j = i; j < i + _nb_vars; ++j )
+					cerr << _random_configurations[j] << " ";
+			
+			cerr << "\nPrecomputed metric: " << precomputed_metric
+			     << ", local cost: " << g_x
+			     << ", global cost: " << cost << "\n";
 		}
 #endif
-
 	}
+
+#if defined DEBUG
+	if( first )
+	{
+		first = false;
+	}
+#endif
 	
 #if defined CHRONO
 	if( first )

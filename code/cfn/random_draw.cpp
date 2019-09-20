@@ -178,7 +178,7 @@ void random_draw( int nb_vars, int max_value, vector<int>& solutions, vector<int
 		  not_solutions.insert( not_solutions.end(), configuration.begin(), configuration.end() );
 #endif
   }
-
+  
 #if defined CHRONO
 	if( first )
 	{

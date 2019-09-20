@@ -12,7 +12,7 @@
 #include "concept.hpp"
 
 #if defined DEBUG or CHRONO
-static bool first = true;
+static bool first2 = true;
 #endif
 
 //Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
@@ -44,9 +44,9 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	_rng.generate( current, 0, _max_value );
 
 #if defined DEBUG
-	if( first )
+	if( first2 )
 	{
-		for( int i = 0; i < (int)_random_sol.size(); ++i)
+		for( int i = 0; i < (int)_random_sol.size(); ++i )
 		{
 			if( i != 0 && i % _nb_vars == 0 )
 				cerr << "\n";
@@ -68,17 +68,18 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	skip_compute_g:
 		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
 		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
-		if( diff.first == current.end() || diff.second == _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars )
+		if( diff.first == current.end() )
 		{
 			++i;
 #if defined DEBUG
-			if( first )
+			if( first2 )
 			{
-				cerr << "Distances: " << distance( current.begin(), current.end() ) << " " << distance( _random_sol.begin(), _random_sol.end() ) << " " << _nb_vars << "\n";
-				
 				for( auto&c : current )
 					cerr << c << " ";
-				cerr << "Sol\n";
+				cerr << "Sol\nTarget: ";
+				for( int j = _index[i] * _nb_vars; j < ( _index[i] + 1 ) * _nb_vars; ++j )
+					cerr << _random_sol[j] << " ";
+				cerr << "\n";
 			}
 #endif
 			if( i == (int)_index.size() )
@@ -90,12 +91,10 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		{
 			*(diff.first) = *(diff.second);
 #if defined DEBUG
-			if( first )
+			if( first2 )
 			{
-				cerr << "Distances: " << distance( current.begin(), current.end() ) << " " << distance( _random_sol.begin(), _random_sol.end() ) << " " << _index.size() << " " << _nb_vars << "\n";
+				cerr << "Distances: " << distance( current.begin(), diff.first ) << "\n";
 				
-				cerr << "diff.first: " << *(diff.first)
-				     << "\ndiff.second " << *(diff.second) << "\n";
 				for( auto&c : current )
 					cerr << c << " ";
 				cerr << "\n";
@@ -105,7 +104,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	}
 
 #if defined DEBUG
-	first = false;
+	first2 = false;
 #endif
 	
 	int length = (int)f_outputs.size();
@@ -131,11 +130,11 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 
 #if defined CHRONO
-	if( first )
+	if( first2 )
 	{
 		auto end = std::chrono::steady_clock::now();
 		cerr << "Obj_ECL::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
-		first = false;
+		first2 = false;
 	}
 #endif
 	
