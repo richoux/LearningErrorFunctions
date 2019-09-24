@@ -1,5 +1,6 @@
 #include <random>
 #include <cmath>
+#include <algorithm>
 
 #include <iterator>
 
@@ -16,14 +17,16 @@ static bool first2 = true;
 #endif
 
 //Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
-Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions )
+//Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions )
+Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& samples )
 	: Objective( "Max ECL" ),
 	  _nb_vars( nb_vars ),
 	  _max_value( max_value ),
-	  _random_sol( random_solutions ),
-	  _index( vector<int>( _random_sol.size() / nb_vars ) )
+	  _samples( samples )
+	  //_random_sol( random_solutions ),
+	  //_index( vector<int>( _random_sol.size() / nb_vars ) )
 {
-	std::iota( _index.begin(), _index.end(), 0 );
+	//std::iota( _index.begin(), _index.end(), 0 );
 }
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
@@ -35,14 +38,15 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	vector<double> f_outputs;
 
 	// prepare the random walk: we will visit solutions in random_solutions in a random order.
-	_rng.shuffle( _index );
+	//_rng.shuffle( _index );
 	
 	// random starting point, since computing the empirical_autocorrelation assumes 
 	// the space to be isotropic, ie, the starting point should not have any influence
 	// on the statistical information obtained from the random walk.
 	vector<int> current( _nb_vars );
-	_rng.generate( current, 0, _max_value );
-
+	double output;
+	int backup;
+	
 #if defined DEBUG
 	if( first2 )
 	{
@@ -60,48 +64,64 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	}
 #endif
 	
-	for( int i = 0; i < (int)_index.size(); )
+	for( int i = 0; i < (int)_samples.size(); i+=_nb_vars )
 	{
-		auto output = std::abs( g( variables, current, _max_value ) );
-		f_outputs.push_back( concept( current ) ? 0 : output );
+		std::copy( _samples.begin() + i, _samples.begin() + i + _nb_vars, current.begin() );
 		
-	skip_compute_g:
-		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
-		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
-		if( diff.first == current.end() )
+		for( int v = 0; v < _nb_vars; ++v )
 		{
-			++i;
-#if defined DEBUG
-			if( first2 )
+			backup = current[v];
+			for( int val = 0; val < _max_value; ++val )
 			{
-				for( auto&c : current )
-					cerr << c << " ";
-				cerr << "Sol\nTarget: ";
-				for( int j = _index[i] * _nb_vars; j < ( _index[i] + 1 ) * _nb_vars; ++j )
-					cerr << _random_sol[j] << " ";
-				cerr << "\n";
+				current[v] = val;
+				output = std::abs( g( variables, current, _max_value ) );
+				f_outputs.push_back( concept( current ) ? 0 : output );
 			}
-#endif
-			if( i == (int)_index.size() )
-				break;
-			else
-				goto skip_compute_g;
-		}
-		else
-		{
-			*(diff.first) = *(diff.second);
-#if defined DEBUG
-			if( first2 )
-			{
-				cerr << "Distances: " << distance( current.begin(), diff.first ) << "\n";
-				
-				for( auto&c : current )
-					cerr << c << " ";
-				cerr << "\n";
-			}
-#endif
-		}
+			current[v] = backup;			
+		}		
 	}
+// 	for( int i = 0; i < (int)_index.size(); )
+// 	{
+// 		auto output = std::abs( g( variables, current, _max_value ) );
+// 		f_outputs.push_back( concept( current ) ? 0 : output );
+		
+// 	skip_compute_g:
+// 		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
+// 		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
+// 		if( diff.first == current.end() )
+// 		{
+// 			++i;
+// #if defined DEBUG
+// 			if( first2 )
+// 			{
+// 				for( auto&c : current )
+// 					cerr << c << " ";
+// 				cerr << "Sol\nTarget: ";
+// 				for( int j = _index[i] * _nb_vars; j < ( _index[i] + 1 ) * _nb_vars; ++j )
+// 					cerr << _random_sol[j] << " ";
+// 				cerr << "\n";
+// 			}
+// #endif
+// 			if( i == (int)_index.size() )
+// 				break;
+// 			else
+// 				goto skip_compute_g;
+// 		}
+// 		else
+// 		{
+// 			*(diff.first) = *(diff.second);
+// #if defined DEBUG
+// 			if( first2 )
+// 			{
+// 				cerr << "Distances: " << distance( current.begin(), diff.first ) << "\n";
+				
+// 				for( auto&c : current )
+// 					cerr << c << " ";
+// 				cerr << "\n";
+// 			}
+// #endif
+// 		}
+// 	}
 
 #if defined DEBUG
 	first2 = false;

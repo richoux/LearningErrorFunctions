@@ -268,7 +268,8 @@ int main( int argc, char **argv )
 #if defined SMOOTH_CTR
 	shared_ptr< Objective > objective = make_shared< Obj_MO >( nb_vars, max_value );
 #else
-	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
+	//shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
+	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, few_configurations );
 #endif
 
 	Solver solver( coefficients, constraints, objective );
@@ -276,7 +277,7 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000, 100000, true );
+	solver.solve( cost, solution, 1000000, 10000000, true );
 	// 3600000000 microseconds = 1h
 	//solver.solve( cost, solution, 100000000, 3600000000, true );
 
