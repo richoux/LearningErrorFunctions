@@ -277,7 +277,7 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( coeff_ref.size(), 0 );
 
-	solver.solve( cost, solution, 1000000, 10000000, true );
+	solver.solve( cost, solution, 10000000, 60000000, true );
 	// 3600000000 microseconds = 1h
 	//solver.solve( cost, solution, 100000000, 3600000000, true );
 

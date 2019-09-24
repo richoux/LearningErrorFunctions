@@ -127,6 +127,9 @@ double compute_local_correlation( int size, double& smooth, double& not_so_smoot
 	double tmp_smooth;
 	double tmp_not_so_smooth;
 	double tmp_random;
+
+	smooth = 0.;
+	not_so_smooth = 0.;
 	
 	for( int i = 0; i < ITER; ++i )
 	{
@@ -149,7 +152,7 @@ double compute_local_correlation( int size, double& smooth, double& not_so_smoot
 		}
 		
 		int length = (int)smooth_outputs.size();
-		
+			
 		double mean_smooth;
 		double mean_not_so_smooth;
 		double mean_random;
@@ -199,18 +202,21 @@ double compute_local_correlation( int size, double& smooth, double& not_so_smoot
 		double empirical_autocorrelation_num_not_so_smooth = sum_diff_mean_not_so_smooth / ( length - 1 );
 		double empirical_autocorrelation_den_not_so_smooth = sum_diff_square_not_so_smooth / length;
 		double empirical_autocorrelation_not_so_smooth = empirical_autocorrelation_num_not_so_smooth / empirical_autocorrelation_den_not_so_smooth;
-
+		
 		double empirical_autocorrelation_num_random = sum_diff_mean_random / ( length - 1 );
 		double empirical_autocorrelation_den_random = sum_diff_square_random / length;
 		double empirical_autocorrelation_random = empirical_autocorrelation_num_random / empirical_autocorrelation_den_random;
+		
+		tmp_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_smooth ) ) );
+		tmp_not_so_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) ) );
+		tmp_random += ( 1. / std::log( std::abs( empirical_autocorrelation_random ) ) );
 
-		tmp_smooth += 1. / std::log( std::abs( empirical_autocorrelation_smooth ) );
-		tmp_not_so_smooth += 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) );
-		tmp_random += 1. / std::log( std::abs( empirical_autocorrelation_random ) );
+		smooth += std::abs( tmp_smooth );	
+		not_so_smooth += std::abs( tmp_not_so_smooth );
 	}
 
-	smooth = std::abs( tmp_smooth );
-	not_so_smooth = std::abs( tmp_not_so_smooth );
+	smooth /= ITER;
+	not_so_smooth /= ITER;
 
 	return std::abs( tmp_random );
 	

@@ -46,7 +46,17 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	vector<int> current( _nb_vars );
 	double output;
 	int backup;
+	int length;
 	
+	double mean;
+	double sum;
+	double sum_diff_mean;
+	double sum_diff_square;
+	double empirical_autocorrelation_num;
+	double empirical_autocorrelation_den;
+	double empirical_autocorrelation;
+	double total = 0.;
+
 #if defined DEBUG
 	if( first2 )
 	{
@@ -66,6 +76,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	
 	for( int i = 0; i < (int)_samples.size(); i+=_nb_vars )
 	{
+		f_outputs.clear();
 		std::copy( _samples.begin() + i, _samples.begin() + i + _nb_vars, current.begin() );
 		
 		for( int v = 0; v < _nb_vars; ++v )
@@ -78,8 +89,8 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 				f_outputs.push_back( concept( current ) ? 0 : output );
 			}
 			current[v] = backup;			
-		}		
-	}
+		}
+
 // 	for( int i = 0; i < (int)_index.size(); )
 // 	{
 // 		auto output = std::abs( g( variables, current, _max_value ) );
@@ -123,32 +134,33 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 // 		}
 // 	}
 
-#if defined DEBUG
-	first2 = false;
-#endif
+// #if defined DEBUG
+// 	first2 = false;
+// #endif
 	
-	int length = (int)f_outputs.size();
+		length = (int)f_outputs.size();
 	
-	double mean;
-	double sum = 0.;
-	for( int i = 0; i < length; ++i )
-		sum += f_outputs[ i ];
-	mean = sum / length;
-	
-	double sum_diff_mean = 0.;
-	double sum_diff_square = 0.;
-	for( int i = 0; i < length - 1; ++i )
-	{
-		sum_diff_mean += ( ( f_outputs[ i ] - mean ) * ( f_outputs[ i + 1 ] - mean ) );
-		sum_diff_square += std::pow( ( f_outputs[ i ] - mean ), 2 );
+		sum = 0.;
+		for( int i = 0; i < length; ++i )
+			sum += f_outputs[ i ];
+		mean = sum / length;
+		
+		sum_diff_mean = 0.;
+		sum_diff_square = 0.;
+		for( int i = 0; i < length - 1; ++i )
+		{
+			sum_diff_mean += ( ( f_outputs[ i ] - mean ) * ( f_outputs[ i + 1 ] - mean ) );
+			sum_diff_square += std::pow( ( f_outputs[ i ] - mean ), 2 );
+		}
+		
+		sum_diff_square += std::pow( ( f_outputs[ length - 1 ] - mean ), 2 );
+		
+		empirical_autocorrelation_num = sum_diff_mean / ( length - 1 );
+		empirical_autocorrelation_den = sum_diff_square / length;
+		empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
+		total += ( 1. / std::log( std::abs( empirical_autocorrelation ) ) );
 	}
-
-	sum_diff_square += std::pow( ( f_outputs[ length - 1 ] - mean ), 2 );
 	
-	double empirical_autocorrelation_num = sum_diff_mean / ( length - 1 );
-	double empirical_autocorrelation_den = sum_diff_square / length;
-	double empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
-
 #if defined CHRONO
 	if( first2 )
 	{
@@ -158,5 +170,6 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	}
 #endif
 	
-	return 1. / std::log( std::abs( empirical_autocorrelation ) );
+	//return 1. / std::log( std::abs( empirical_autocorrelation ) );
+	return total / ( (int)_samples.size() / _nb_vars );
 }
