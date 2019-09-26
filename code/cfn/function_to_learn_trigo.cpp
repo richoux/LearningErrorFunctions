@@ -5,7 +5,7 @@
 #include <chrono>
 #endif
 
-#include "function_to_learn.hpp"
+#include "function_to_learn_trigo.hpp"
 
 #if defined CHRONO
 static bool first = true;

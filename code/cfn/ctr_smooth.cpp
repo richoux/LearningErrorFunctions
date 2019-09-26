@@ -9,7 +9,7 @@
 
 #include "ctr_smooth.hpp"
 #include "../latin/latin.hpp"
-#include "function_to_learn.hpp"
+#include "function_to_learn_trigo.hpp"
 #include "concept.hpp"
 
 #if defined CHRONO

@@ -9,7 +9,7 @@
 #endif
 
 #include "obj_ecl.hpp"
-#include "function_to_learn.hpp"
+#include "function_to_learn_trigo.hpp"
 #include "concept.hpp"
 
 #if defined DEBUG or CHRONO
