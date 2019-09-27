@@ -27,7 +27,10 @@ Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int n
 	  _var_max_value (var_max_value),
 	  _random_configurations (random_configurations),
 	  _cost_map (cost_map)
-{ }
+{
+	_weights.reserve( coefficients.size() + 7 );
+	_inputs.reserve( nb_vars );
+}
 
 double Ctr_HO::required_cost() const
 {
@@ -59,12 +62,46 @@ double Ctr_HO::required_cost() const
 	double cost = 0.;
 
 	double precomputed_metric;
+
+	// only with function_to_learn_cppn
+#if defined DEBUG
+	cout << "Capacity: " << _weights.capacity() << "\n";
+#endif
+	_weights.resize( _weights.capacity() );
+	std::transform( coefficients.begin(), coefficients.end(), _weights.begin(), [&]( auto w ){ return w.get().get_value(); } );
+	_weights[ coefficients.size() ] = 1;
+	for( int i = (int)coefficients.size() + 1; i < (int)coefficients.size() + 7; ++i )
+		_weights[i] = 0;
+	//std::fill( _weights.begin() + ( coefficients.size() + 1 ), _weights.end(), 0 );
 	
 	//for( const auto& c : _random_configurations )
 	for( int i = 0; i < (int)_random_configurations.size(); i += _nb_vars )
 	{
 		//g_x = g( coefficients, c, _var_max_value );
-		g_x = g( coefficients, _random_configurations, i, i + _nb_vars, _var_max_value );
+		// only with function_to_learn_cppn
+		_inputs.resize( _inputs.capacity() );
+		std::copy( _random_configurations.begin() + i, _random_configurations.begin() + i + _nb_vars, _inputs.begin() );
+
+#if defined DEBUG
+		cerr << "Weights: ";
+		for( auto w : _weights )
+			cerr << w << " ";
+		cerr << "\n" << _weights.size() ;
+		cerr << "\nVars: ";
+		for( auto v : variables )
+			cerr << v.get().get_value() << " ";
+		cerr << "\nCoeff: ";
+		for( auto c : coefficients )
+			cerr << c.get().get_value() << " ";
+		cerr << "\nInputs: ";
+		for( auto i : _inputs )
+			cerr << i << " ";
+		cerr << "\n" << _inputs.size() ;
+		cerr << "\n";
+#endif		
+		g_x = g( _weights, _inputs, i, i + _nb_vars, _var_max_value );
+		//g_x = g( _weights, _random_configurations, i, i + _nb_vars, _var_max_value );
+		//g_x = g( coefficients, _random_configurations, i, i + _nb_vars, _var_max_value );
 		{
 			//precomputed_metric = _cost_map.at( convert( c ) );
 			precomputed_metric = _cost_map.at( convert( _random_configurations, i, i + _nb_vars ) );

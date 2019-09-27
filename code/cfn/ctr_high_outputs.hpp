@@ -19,6 +19,8 @@ class Ctr_HO : public Constraint
 	vector<int> _random_configurations;
 	//vector< vector<int> > _random_configurations;
 	map<string, double> _cost_map;
+	mutable vector<int> _weights;
+	mutable vector<double> _inputs;
 	
 	LHS _latin;
 	mutable randutils::mt19937_rng _rng;

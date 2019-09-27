@@ -21,9 +21,9 @@ inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
 inline double gaussian( double x ) { return std::exp( - std::pow( x, 2 ) ) * 2 - 1; }
 
-vector<double> interpreter( int number, const vector<double>& inputs )
+void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
 {
-	vector<double> outputs( inputs.size() );
+	//vector<double> outputs( inputs.size() );
 	
 	switch( number )
 	{
@@ -56,8 +56,7 @@ vector<double> interpreter( int number, const vector<double>& inputs )
 		transform( inputs.begin(), inputs.end(), outputs.begin(), gaussian );
 		break;
 	}
-
-	return outputs;
+	//return outputs;
 }
 
 void parse( int LO, int& L, int& O )
@@ -66,18 +65,24 @@ void parse( int LO, int& L, int& O )
 	O = LO % 10;
 }
 
-vector<double> compute( int LO, const vector<double>& inputs, const vector<int>& weights )
+vector<double> temp_inputs( 9 );
+vector<double> temp_outputs( 9 );
+vector<double> temp_result( 9 );
+
+void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result )
 {
 	int L, O;
 	parse( LO, L, O );
 
 	if( weights[ ( L - 1 ) * 7 + O ] != 1 )
-		return vector<double>( inputs.size(), 0.0 );
+		std::fill( result.begin(), result.end(), 0.0 );
+	//return vector<double>( inputs.size(), 0.0 );
 	else
-	{	
-		vector<double> temp_inputs( inputs );
-		vector<double> temp_outputs( inputs.size() );
-		vector<double> temp_result;
+	{
+		std::copy( inputs.begin(), inputs.end(), temp_inputs.begin() );
+		// vector<double> temp_inputs( inputs );
+		// vector<double> temp_outputs( inputs.size() );
+		// vector<double> temp_result( inputs.size() );
 		
 		for( int l = 1; l < L; ++l )
 		{			
@@ -86,17 +91,19 @@ vector<double> compute( int LO, const vector<double>& inputs, const vector<int>&
 			{
 				if( weights[ ( l - 1 ) * 7 + i ] == 1 )
 				{
-					temp_result = interpreter( i, temp_inputs );
+					interpreter( i, temp_inputs, temp_result );
 					for( int j = 0; j < (int)inputs.size(); ++j )
 						temp_outputs[j] += temp_result[j];
 				}
 			}
 			std::copy( temp_outputs.begin(), temp_outputs.end(), temp_inputs.begin() );
 		}
-		
-		return interpreter( O, temp_inputs );
+
+		interpreter( O, temp_inputs, result );
 	}
 }
+
+vector<double> result( 9 );
 
 double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int var_max_value )
 {
@@ -104,8 +111,8 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 	auto start_clock = std::chrono::steady_clock::now();
 #endif
 	int LO = ( weights.size() / 7 ) * 10;
-	
-	auto result = compute( LO, inputs, weights );
+	//vector<double> result( inputs.size() );
+	compute( LO, inputs, weights, result );
 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
 	
 	double max_cost = nb_vars + ( var_max_value / ( std::pow( 10, std::floor( std::log10( var_max_value ) ) + 1 ) ) );
@@ -118,6 +125,11 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 
 		for( auto w : weights )
 			cerr << w << " ";
+		
+		cerr << "\nConfiguration: ";
+
+		for( auto i : inputs )
+			cerr << i << " ";
 		
 		cerr << "\nIntermediate result: ";
 
@@ -138,7 +150,7 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 #endif
 
 #if defined CHRONO or DEBUG
-	first = false;
+	//first = false;
 #endif
 	
 	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
@@ -184,4 +196,10 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	std::fill( weights_int.begin() + weights.size() + 1, weights_int.end(), 0 );
 
 	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
+}
+
+// Int vector version
+double g( const vector< int >& weights, const vector<double>& vars, int start, int end, int var_max_value )
+{
+	return intermediate_g( weights, vars, end - start, var_max_value );
 }
