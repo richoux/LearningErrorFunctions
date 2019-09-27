@@ -9,7 +9,8 @@
 #endif
 
 #include "obj_ecl.hpp"
-#include "function_to_learn_trigo.hpp"
+#include "function_to_learn_cppn.hpp"
+//#include "function_to_learn_trigo.hpp"
 #include "concept.hpp"
 
 #if defined DEBUG or CHRONO
@@ -57,23 +58,6 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	double empirical_autocorrelation;
 	double total = 0.;
 
-#if defined DEBUG
-	if( first2 )
-	{
-		for( int i = 0; i < (int)_random_sol.size(); ++i )
-		{
-			if( i != 0 && i % _nb_vars == 0 )
-				cerr << "\n";
-			cerr << _random_sol[i] << " ";
-		}
-		cerr << "\n/////////////\n";
-		
-		for( auto&c : current )
-			cerr << c << " ";
-		cerr << "\n";
-	}
-#endif
-	
 	for( int i = 0; i < (int)_samples.size(); i+=_nb_vars )
 	{
 		f_outputs.clear();

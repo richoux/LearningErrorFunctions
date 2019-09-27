@@ -26,7 +26,7 @@ BINDIR=bin
 
 # Files
 SOURCE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
-SOURCES=$(filter-out ./test_random_draw.cpp, $(SOURCE))
+SOURCES=$(filter-out ./test_random_draw.cpp ./function_to_learn_trigo.cpp, $(SOURCE))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 # For rm

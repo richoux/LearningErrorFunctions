@@ -22,6 +22,8 @@
 #include "obj_ecl.hpp"
 #endif
 
+#include "ctr_dependency.hpp"
+
 #include "random_draw.hpp"
 
 #include "../utils/randutils.hpp"
@@ -208,62 +210,113 @@ int main( int argc, char **argv )
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 #endif
 
-	int nb_coeff = nb_vars * 10;
-	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
-
-	// coefficients can take values from -5 to 5, with strides of 0.1.
-	for( int i = 0; i < nb_coeff; ++i )
-		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 100 );
-
-	// all coefficients fixed at 1
-	for( auto& c : coefficients )
-		c.set_value( rng.uniform( 40, 60 ) );
+	int number_layers = 2;
 	
-	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
+	vector< Variable > weights; // be careful: variables of our problem actually represent weights
+	for( int i = 0; i < 7 * number_layers; ++i )
+		weights.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 2 );
 
-	vector< reference_wrapper< Variable > > coeff_ref( coefficients.begin(), coefficients.end() );
-		
-	auto it_middle = coefficients.begin() + nb_coeff/2;
-	vector< reference_wrapper< Variable > > coeff_first_half( coefficients.begin(), it_middle );
-	vector< reference_wrapper< Variable > > coeff_second_half( it_middle, coefficients.end() );
-	
-	vector< reference_wrapper< Variable > > coeff_2_by_2_1( coefficients.begin(), coefficients.end() );
-	vector< reference_wrapper< Variable > > coeff_2_by_2_2( coefficients.begin(), coefficients.end() );
-	vector< reference_wrapper< Variable > > coeff_1_by_1_1( coefficients.begin(), coefficients.end() );
-	vector< reference_wrapper< Variable > > coeff_1_by_1_2( coefficients.begin(), coefficients.end() );
-	
-	for( int i = nb_coeff - 1; i >= 0; --i )
-	{
-		if( i % 2 == 0 )
-			coeff_1_by_1_2.erase( coeff_1_by_1_2.begin() + i );
-		else
-			coeff_1_by_1_1.erase( coeff_1_by_1_1.begin() + i );
+	vector< reference_wrapper< Variable > > weights_ref( weights.begin(), weights.end() );
+	vector< reference_wrapper< Variable > > dependency_id ( weights_ref.begin(), weights_ref.begin() + 8 );
+	vector< reference_wrapper< Variable > > dependency_abs ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_abs.push_back( weights_ref[8] );
 
-		if( i % 4 < 2 )
-			coeff_2_by_2_2.erase( coeff_2_by_2_2.begin() + i );
-		else
-			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
-	}
+	vector< reference_wrapper< Variable > > dependency_sin ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_sin.push_back( weights_ref[9] );
+
+	vector< reference_wrapper< Variable > > dependency_tanh ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_tanh.push_back( weights_ref[10] );
+
+	vector< reference_wrapper< Variable > > dependency_cubic_tanh ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_cubic_tanh.push_back( weights_ref[11] );
+
+	vector< reference_wrapper< Variable > > dependency_sigmoid ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_sigmoid.push_back( weights_ref[12] );
+
+	vector< reference_wrapper< Variable > > dependency_gaussian ( weights_ref.begin(), weights_ref.begin() + 7 );
+	dependency_gaussian.push_back( weights_ref[13] );
 
 #if defined SMOOTH_CTR
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( coeff_ref, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_smooth >( coeff_first_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_smooth >( coeff_second_half, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_smooth >( coeff_2_by_2_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_smooth >( coeff_2_by_2_2, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( weights_ref, nb_vars, max_value );
 #else
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value, few_configurations, cost_map );
-	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value, few_configurations, cost_map );
+	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( weights_ref, nb_vars, max_value, few_configurations, cost_map );
 #endif
+
+	// shared_ptr< Constraint > ctr_dependency_id = make_shared< Ctr_dependency >( dependency_id );
+	// shared_ptr< Constraint > ctr_dependency_abs = make_shared< Ctr_dependency >( dependency_abs );
+	// shared_ptr< Constraint > ctr_dependency_sin = make_shared< Ctr_dependency >( dependency_sin );
+	// shared_ptr< Constraint > ctr_dependency_tanh = make_shared< Ctr_dependency >( dependency_tanh );
+	// shared_ptr< Constraint > ctr_dependency_cubic_tanh = make_shared< Ctr_dependency >( dependency_cubic_tanh );
+	// shared_ptr< Constraint > ctr_dependency_sigmoid = make_shared< Ctr_dependency >( dependency_sigmoid );
+	// shared_ptr< Constraint > ctr_dependency_gaussian = make_shared< Ctr_dependency >( dependency_gaussian );
+
+	// vector< shared_ptr< Constraint >> constraints { ctr_all_var,
+	//                                                 ctr_dependency_id,
+	//                                                 ctr_dependency_sin,
+	//                                                 ctr_dependency_tanh,
+	//                                                 ctr_dependency_cubic_tanh,
+	//                                                 ctr_dependency_sigmoid,
+	//                                                 ctr_dependency_gaussian };	                                                
+
+	vector< shared_ptr< Constraint >> constraints { ctr_all_var };
+
 	
-	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
+// 	int nb_coeff = nb_vars * 10;
+// 	vector< Variable > coefficients; // be careful: variables of our problem actually represent coefficients
+
+// 	// coefficients can take values from -5 to 5, with strides of 0.1.
+// 	for( int i = 0; i < nb_coeff; ++i )
+// 		coefficients.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, 100 );
+
+// 	// all coefficients fixed at 1
+// 	for( auto& c : coefficients )
+// 		c.set_value( rng.uniform( 40, 60 ) );
+	
+// 	// Idea: we could have a larger domain and take into account coeff_value / 10 to have finer-grain and non integer coefficients.
+
+// 	vector< reference_wrapper< Variable > > coeff_ref( coefficients.begin(), coefficients.end() );
+		
+// 	auto it_middle = coefficients.begin() + nb_coeff/2;
+// 	vector< reference_wrapper< Variable > > coeff_first_half( coefficients.begin(), it_middle );
+// 	vector< reference_wrapper< Variable > > coeff_second_half( it_middle, coefficients.end() );
+	
+// 	vector< reference_wrapper< Variable > > coeff_2_by_2_1( coefficients.begin(), coefficients.end() );
+// 	vector< reference_wrapper< Variable > > coeff_2_by_2_2( coefficients.begin(), coefficients.end() );
+// 	vector< reference_wrapper< Variable > > coeff_1_by_1_1( coefficients.begin(), coefficients.end() );
+// 	vector< reference_wrapper< Variable > > coeff_1_by_1_2( coefficients.begin(), coefficients.end() );
+	
+// 	for( int i = nb_coeff - 1; i >= 0; --i )
+// 	{
+// 		if( i % 2 == 0 )
+// 			coeff_1_by_1_2.erase( coeff_1_by_1_2.begin() + i );
+// 		else
+// 			coeff_1_by_1_1.erase( coeff_1_by_1_1.begin() + i );
+
+// 		if( i % 4 < 2 )
+// 			coeff_2_by_2_2.erase( coeff_2_by_2_2.begin() + i );
+// 		else
+// 			coeff_2_by_2_1.erase( coeff_2_by_2_1.begin() + i );			
+// 	}
+
+// #if defined SMOOTH_CTR
+// 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( coeff_ref, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_smooth >( coeff_first_half, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_smooth >( coeff_second_half, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_smooth >( coeff_2_by_2_1, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_smooth >( coeff_2_by_2_2, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_smooth >( coeff_1_by_1_1, nb_vars, max_value );
+// 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_smooth >( coeff_1_by_1_2, nb_vars, max_value );
+// #else
+// 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( coeff_ref, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_first_half = make_shared< Ctr_HO >( coeff_first_half, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_second_half = make_shared< Ctr_HO >( coeff_second_half, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_2_2_1 = make_shared< Ctr_HO >( coeff_2_by_2_1, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_2_2_2 = make_shared< Ctr_HO >( coeff_2_by_2_2, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_1_1_1 = make_shared< Ctr_HO >( coeff_1_by_1_1, nb_vars, max_value, few_configurations, cost_map );
+// 	shared_ptr< Constraint > ctr_1_1_2 = make_shared< Ctr_HO >( coeff_1_by_1_2, nb_vars, max_value, few_configurations, cost_map );
+// #endif
+	
+// 	vector< shared_ptr< Constraint >> constraints { ctr_all_var, ctr_first_half, ctr_second_half, ctr_2_2_1, ctr_2_2_2, ctr_1_1_1, ctr_1_1_2 };
 	
 #if defined SMOOTH_CTR
 	shared_ptr< Objective > objective = make_shared< Obj_MO >( nb_vars, max_value );
@@ -272,14 +325,15 @@ int main( int argc, char **argv )
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, few_configurations );
 #endif
 
-	Solver solver( coefficients, constraints, objective );
+	//Solver solver( coefficients, constraints, objective );
+	Solver solver( weights, constraints, objective );
 	
 	double cost = 0.;
-	vector<int> solution( coeff_ref.size(), 0 );
+	vector<int> solution( weights_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000000, 60000000, true );
+	solver.solve( cost, solution, 10000000, 60000000 );
 	// 3600000000 microseconds = 1h
-	//solver.solve( cost, solution, 100000000, 3600000000, true );
+	//solver.solve( cost, solution, 100000000, 3600000000 );
 
 	std::cout << "Cost: " << cost << "\nSolution:";
 	for( auto v : solution )
