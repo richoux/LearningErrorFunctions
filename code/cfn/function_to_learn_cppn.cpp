@@ -12,11 +12,6 @@
 static bool first = true;
 #endif
 
-// Trigonometric functions
-//constexpr double PI = std::acos(-1);
-constexpr double PI = M_PI;
-constexpr double TWO_PI = 2*PI;
-
 inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
 inline double gaussian( double x ) { return std::exp( - std::pow( x, 2 ) ) * 2 - 1; }
