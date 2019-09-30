@@ -42,5 +42,5 @@ double Obj_MO::required_cost( const vector< Variable >& variables ) const
 	}
 #endif
 	
-	return total;
+	return - std::abs( total );
 }

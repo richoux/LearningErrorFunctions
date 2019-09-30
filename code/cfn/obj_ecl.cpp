@@ -155,5 +155,5 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 #endif
 	
 	//return 1. / std::log( std::abs( empirical_autocorrelation ) );
-	return total / ( (int)_samples.size() / _nb_vars );
+	return - std::abs( total / ( (int)_samples.size() / _nb_vars ) );
 }
