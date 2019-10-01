@@ -23,6 +23,7 @@
 #endif
 
 #include "ctr_dependency.hpp"
+#include "ctr_active_unit.hpp"
 
 #include "random_draw.hpp"
 
@@ -236,29 +237,34 @@ int main( int argc, char **argv )
 	vector< reference_wrapper< Variable > > dependency_gaussian ( weights_ref.begin(), weights_ref.begin() + 7 );
 	dependency_gaussian.push_back( weights_ref[13] );
 
+	vector< reference_wrapper< Variable > > last_layer_active_unit ( weights_ref.begin() + 7, weights_ref.end() );
+
 #if defined SMOOTH_CTR
 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_smooth >( weights_ref, nb_vars, max_value );
 #else
 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( weights_ref, nb_vars, max_value, few_configurations, cost_map );
 #endif
 
-	// shared_ptr< Constraint > ctr_dependency_id = make_shared< Ctr_dependency >( dependency_id );
-	// shared_ptr< Constraint > ctr_dependency_abs = make_shared< Ctr_dependency >( dependency_abs );
-	// shared_ptr< Constraint > ctr_dependency_sin = make_shared< Ctr_dependency >( dependency_sin );
-	// shared_ptr< Constraint > ctr_dependency_tanh = make_shared< Ctr_dependency >( dependency_tanh );
-	// shared_ptr< Constraint > ctr_dependency_cubic_tanh = make_shared< Ctr_dependency >( dependency_cubic_tanh );
-	// shared_ptr< Constraint > ctr_dependency_sigmoid = make_shared< Ctr_dependency >( dependency_sigmoid );
-	// shared_ptr< Constraint > ctr_dependency_gaussian = make_shared< Ctr_dependency >( dependency_gaussian );
+	shared_ptr< Constraint > ctr_dependency_id = make_shared< Ctr_dependency >( dependency_id );
+	shared_ptr< Constraint > ctr_dependency_abs = make_shared< Ctr_dependency >( dependency_abs );
+	shared_ptr< Constraint > ctr_dependency_sin = make_shared< Ctr_dependency >( dependency_sin );
+	shared_ptr< Constraint > ctr_dependency_tanh = make_shared< Ctr_dependency >( dependency_tanh );
+	shared_ptr< Constraint > ctr_dependency_cubic_tanh = make_shared< Ctr_dependency >( dependency_cubic_tanh );
+	shared_ptr< Constraint > ctr_dependency_sigmoid = make_shared< Ctr_dependency >( dependency_sigmoid );
+	shared_ptr< Constraint > ctr_dependency_gaussian = make_shared< Ctr_dependency >( dependency_gaussian );	
 
-	// vector< shared_ptr< Constraint >> constraints { ctr_all_var,
-	//                                                 ctr_dependency_id,
-	//                                                 ctr_dependency_sin,
-	//                                                 ctr_dependency_tanh,
-	//                                                 ctr_dependency_cubic_tanh,
-	//                                                 ctr_dependency_sigmoid,
-	//                                                 ctr_dependency_gaussian };	                                                
+	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
 
-	vector< shared_ptr< Constraint >> constraints { ctr_all_var };
+	vector< shared_ptr< Constraint >> constraints { ctr_all_var,
+	                                                ctr_dependency_id,
+	                                                ctr_dependency_sin,
+	                                                ctr_dependency_tanh,
+	                                                ctr_dependency_cubic_tanh,
+	                                                ctr_dependency_sigmoid,
+	                                                ctr_dependency_gaussian,
+	                                                ctr_last_layer_active_unit };	                                                
+
+	// vector< shared_ptr< Constraint >> constraints { ctr_all_var };
 
 	
 // 	int nb_coeff = nb_vars * 10;
@@ -322,7 +328,7 @@ int main( int argc, char **argv )
 	shared_ptr< Objective > objective = make_shared< Obj_MO >( nb_vars, max_value );
 #else
 	//shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions );
-	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, few_configurations );
+	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, max_value, random_solutions, few_configurations );
 #endif
 
 	//Solver solver( coefficients, constraints, objective );

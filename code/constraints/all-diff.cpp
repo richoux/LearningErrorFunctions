@@ -36,92 +36,8 @@ inline complex<double> expo( double x, unsigned int k, int max )
 
 ////////////////////
 
-vector<double> temp_inputs( NB_VARS );
-vector<double> temp_outputs( NB_VARS );
-vector<double> temp_result( NB_VARS );
-vector<double> result( NB_VARS );
-
-inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
-inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
-inline double gaussian( double x ) { return std::exp( - std::pow( x, 2 ) ) * 2 - 1; }
-
-void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
-{
-	//vector<double> outputs( inputs.size() );
-	
-	switch( number )
-	{
-		// Identity
-	case 0:
-		copy( inputs.begin(), inputs.end(), outputs.begin() );
-		break;
-		// Absolute value
-	case 1:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::abs(x); } );
-		break;
-		// Sine
-	case 2:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::sin(x); } );
-		break;
-		// Tanh
-	case 3:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::tanh(x); } );
-		break;
-		// Cubic Tanh
-	case 4:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), cubic_tanh );
-		break;
-		// Sigmoid
-	case 5:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), sigmoid );
-		break;
-		// Gaussian
-	case 6:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), gaussian );
-		break;
-	}
-	//return outputs;
-}
-
-void parse( int LO, int& L, int& O )
-{
-	L = LO / 10;
-	O = LO % 10;
-}
-
-void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result )
-{
-	int L, O;
-	parse( LO, L, O );
-
-	if( weights[ ( L - 1 ) * 7 + O ] != 1 )
-		std::fill( result.begin(), result.end(), 0.0 );
-	//return vector<double>( inputs.size(), 0.0 );
-	else
-	{
-		std::copy( inputs.begin(), inputs.end(), temp_inputs.begin() );
-		// vector<double> temp_inputs( inputs );
-		// vector<double> temp_outputs( inputs.size() );
-		// vector<double> temp_result( inputs.size() );
-		
-		for( int l = 1; l < L; ++l )
-		{			
-			std::fill( temp_outputs.begin(), temp_outputs.end(), 0.0 );
-			for( int i = 0; i <= 6; ++i )
-			{
-				if( weights[ ( l - 1 ) * 7 + i ] == 1 )
-				{
-					interpreter( i, temp_inputs, temp_result );
-					for( int j = 0; j < (int)inputs.size(); ++j )
-						temp_outputs[j] += temp_result[j];
-				}
-			}
-			std::copy( temp_outputs.begin(), temp_outputs.end(), temp_inputs.begin() );
-		}
-
-		interpreter( O, temp_inputs, result );
-	}
-}
+// defined in cfn/function_to_learn_cppn.cpp
+void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result );
 
 ///////////////////////////////////////////
 
@@ -281,14 +197,16 @@ double AllDiff::required_cost() const
 	if( alldiff_concept( variables ) )
 		return 0.;
 
-// CPPN  Max ECL - Ctr HO 3.40508
-	vector<int> weights{1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1};
-
-	int LO = ( weights.size() / 7 ) * 10;
+// CPPN  Max ECL - Ctr HO 0.931951
+	vector<int> weights{0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1};
+	weights.insert( weights.end(), {0,1,0,0,0,0,0} );
+	
+	int LO = ( weights.size() / 7 ) * 10 + 1;
 
 	vector<double> inputs( variables.size() );
 	std::transform( variables.begin(), variables.end(), inputs.begin(), [&]( auto v ){ return v.get().get_value(); } );
-	
+
+	vector<double> result( NB_VARS );
 	compute( LO, inputs, weights, result );
 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
 		
@@ -309,6 +227,7 @@ double AllDiff::required_cost() const
 // Max ECL - Ctr HO 7.69085
 //80, 63, 94, 85, 69, 75, 97, 18, 95, 93, 14, 99, 62, 70, 80, 60, 22, 74, 98, 26, 12, 39, 60, 33, 99, 29, 99, 77, 58, 56, 76, 99, 85, 74, 96, 86, 64, 0, 69, 21, 53, 49, 58, 24, 37, 99, 5, 50, 77, 93, 99, 97, 96, 45, 33, 28, 59, 30, 37, 38, 68, 99, 77, 38, 52, 34, 74, 74, 46, 75, 15, 99, 81, 95, 53, 7, 99, 58, 57, 98, 74, 20, 59, 34, 74, 83, 34, 26, 91, 7
 
-// CPPN  Max ECL - Ctr HO 3.40508
-// 1 0 1 0 1 1 1 1 1 1 0 0 0 1
+// CPPN  Max ECL - Ctr HO 0.931951
+// 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1
+
 

@@ -26,11 +26,15 @@ OBJDIR=obj
 BINDIR=bin
 
 # Files
-SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+#SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
+SOURCES=sudoku.cpp ../constraints/all-diff.cpp
+ifeq ($(MYFLAGS),-DCPPN)
+	SOURCES+=../cfn/function_to_learn_cppn.cpp
+endif
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 # For rm
-SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
+#SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
 
 vpath %.cpp $(SRCDIR)
 
@@ -55,4 +59,4 @@ $(OBJDIR)/%.o: %.cpp
 .PHONY: clean
 
 clean:
-	rm -fr core *~ $(BINDIR)/$(EXEC) $(OBJECTS) $(SOURCESTILDE) 
+	rm -fr core *~ $(BINDIR)/$(EXEC) $(OBJECTS) 

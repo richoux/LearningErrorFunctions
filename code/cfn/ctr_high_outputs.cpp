@@ -69,9 +69,9 @@ double Ctr_HO::required_cost() const
 #endif
 	_weights.resize( _weights.capacity() );
 	std::transform( coefficients.begin(), coefficients.end(), _weights.begin(), [&]( auto w ){ return w.get().get_value(); } );
-	_weights[ coefficients.size() ] = 1;
-	for( int i = (int)coefficients.size() + 1; i < (int)coefficients.size() + 7; ++i )
+	for( int i = (int)coefficients.size(); i < (int)coefficients.size() + 7; ++i )
 		_weights[i] = 0;
+	_weights[ coefficients.size() + 1 ] = 1;
 	//std::fill( _weights.begin() + ( coefficients.size() + 1 ), _weights.end(), 0 );
 	
 	//for( const auto& c : _random_configurations )
@@ -102,12 +102,12 @@ double Ctr_HO::required_cost() const
 		g_x = g( _weights, _inputs, i, i + _nb_vars, _var_max_value );
 		//g_x = g( _weights, _random_configurations, i, i + _nb_vars, _var_max_value );
 		//g_x = g( coefficients, _random_configurations, i, i + _nb_vars, _var_max_value );
-		{
-			//precomputed_metric = _cost_map.at( convert( c ) );
-			precomputed_metric = _cost_map.at( convert( _random_configurations, i, i + _nb_vars ) );
-			if( g_x < precomputed_metric )
-				cost += ( precomputed_metric - g_x );
-		}
+		
+		//precomputed_metric = _cost_map.at( convert( c ) );
+		precomputed_metric = _cost_map.at( convert( _random_configurations, i, i + _nb_vars ) );
+		if( g_x < precomputed_metric )
+			cost += ( precomputed_metric - g_x );
+		
 	
 #if defined DEBUG
 		if( first )

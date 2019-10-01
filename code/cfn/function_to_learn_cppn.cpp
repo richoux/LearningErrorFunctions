@@ -14,7 +14,7 @@ static bool first = true;
 
 inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
-inline double gaussian( double x ) { return std::exp( - std::pow( x, 2 ) ) * 2 - 1; }
+inline double gaussian( double x ) { return std::exp( std::pow( ( x - 1 ), 2 ) / -2 ); }
 
 void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
 {
@@ -71,13 +71,9 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 
 	if( weights[ ( L - 1 ) * 7 + O ] != 1 )
 		std::fill( result.begin(), result.end(), 0.0 );
-	//return vector<double>( inputs.size(), 0.0 );
 	else
 	{
 		std::copy( inputs.begin(), inputs.end(), temp_inputs.begin() );
-		// vector<double> temp_inputs( inputs );
-		// vector<double> temp_outputs( inputs.size() );
-		// vector<double> temp_result( inputs.size() );
 		
 		for( int l = 1; l < L; ++l )
 		{			
@@ -105,7 +101,7 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 #if defined CHRONO
 	auto start_clock = std::chrono::steady_clock::now();
 #endif
-	int LO = ( weights.size() / 7 ) * 10;
+	int LO = ( weights.size() / 7 ) * 10 + 1;
 	//vector<double> result( inputs.size() );
 	compute( LO, inputs, weights, result );
 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
@@ -159,8 +155,8 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	vector<int> weights_int( weights.size() + 7 );
 	std::copy( vars.begin(), vars.end(), inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), [&]( auto w ){ return w.get().get_value(); } );
-	weights_int[ weights.size() ] = 1;
-	std::fill( weights_int.begin() + weights.size() + 1, weights_int.end(), 0 );
+	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
+	weights_int[ weights.size() + 1 ] = 1;
 
 	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
 }
@@ -173,8 +169,8 @@ double g( const vector< Variable >& weights, const vector<int>& vars, int var_ma
 	vector<int> weights_int( weights.size() + 7 );
 	std::copy( vars.begin(), vars.end(), inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), [&]( auto w ){ return w.get_value(); } );
-	weights_int[ weights.size() ] = 1;
-	std::fill( weights_int.begin() + weights.size() + 1, weights_int.end(), 0 );
+	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
+	weights_int[ weights.size() + 1 ] = 1;
 
 	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
 }
@@ -187,8 +183,8 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	vector<int> weights_int( weights.size() + 7 );
 	std::copy( vars.begin() + start, vars.begin() + start + end, inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), [&]( auto w ){ return w.get().get_value(); } );
-	weights_int[ weights.size() ] = 1;
-	std::fill( weights_int.begin() + weights.size() + 1, weights_int.end(), 0 );
+	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
+	weights_int[ weights.size() + 1 ] = 1;
 
 	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
 }

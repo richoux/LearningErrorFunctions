@@ -34,11 +34,12 @@ double random_function( randutils::mt19937_rng& rng )
 }
 
 
-void compute_ECL( int size, double& smooth, double& not_so_smooth )
+double compute_ECL( int size, double& smooth, double& not_so_smooth )
 {
 	randutils::mt19937_rng _rng;
 	vector<double> smooth_outputs;
 	vector<double> not_so_smooth_outputs;
+	vector<double> random_outputs;
 	
 	vector<int> current( size );
 	vector<int> next_point( size );
@@ -54,6 +55,7 @@ void compute_ECL( int size, double& smooth, double& not_so_smooth )
 		{
 			smooth_outputs.push_back( smooth_function( current ) );
 			not_so_smooth_outputs.push_back( not_so_smooth_function( current ) );
+			random_outputs.push_back( random_function( _rng ) );
 			
 			diff = std::mismatch( current.begin(),
 			                      current.end(),
@@ -65,15 +67,18 @@ void compute_ECL( int size, double& smooth, double& not_so_smooth )
 
 		smooth_outputs.push_back( smooth_function( current ) );
 		not_so_smooth_outputs.push_back( not_so_smooth_function( current ) );
+		random_outputs.push_back( random_function( _rng ) );
 	}
 
 	int length = (int)smooth_outputs.size();
 	
 	double mean_smooth;
 	double mean_not_so_smooth;
-	
+	double mean_random;
+
 	double sum_smooth = 0.;
 	double sum_not_so_smooth = 0.;
+	double sum_random = 0.;
 	
 	for( int i = 0; i < length; ++i )
 	{
@@ -86,22 +91,27 @@ void compute_ECL( int size, double& smooth, double& not_so_smooth )
 	
 	double sum_diff_mean_smooth = 0.;
 	double sum_diff_mean_not_so_smooth = 0.;
+	double sum_diff_mean_random = 0.;
 	
 	double sum_diff_square_smooth = 0.;
 	double sum_diff_square_not_so_smooth = 0.;
+	double sum_diff_square_random = 0.;
 
 	for( int i = 0; i < length - 1; ++i )
 	{
-		sum_diff_mean_smooth += ( ( smooth_outputs[ i ] - mean_smooth ) * ( smooth_outputs[ i + 1 ] - mean_smooth ) );
-		sum_diff_mean_not_so_smooth += ( ( not_so_smooth_outputs[ i ] - mean_not_so_smooth ) * ( not_so_smooth_outputs[ i + 1 ] - mean_not_so_smooth ) );
-		
+		sum_diff_mean_smooth += std::abs( ( smooth_outputs[ i ] - mean_smooth ) * ( smooth_outputs[ i + 1 ] - mean_smooth ) );
+		sum_diff_mean_not_so_smooth += std::abs( ( not_so_smooth_outputs[ i ] - mean_not_so_smooth ) * ( not_so_smooth_outputs[ i + 1 ] - mean_not_so_smooth ) );
+		sum_diff_mean_random += std::abs( ( random_outputs[ i ] - mean_random ) * ( random_outputs[ i + 1 ] - mean_random ) );
+
 		sum_diff_square_smooth += std::pow( ( smooth_outputs[ i ] - mean_smooth ), 2 );
 		sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ i ] - mean_not_so_smooth ), 2 );
+		sum_diff_square_random += std::pow( ( random_outputs[ i ] - mean_random ), 2 );
 	}
 
 	sum_diff_square_smooth += std::pow( ( smooth_outputs[ length - 1 ] - mean_smooth ), 2 );
 	sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ length - 1 ] - mean_not_so_smooth ), 2 );
-	
+	sum_diff_square_random += std::pow( ( random_outputs[ length - 1 ] - mean_random ), 2 );
+
 	double empirical_autocorrelation_num_smooth = sum_diff_mean_smooth / ( length - 1 );
 	double empirical_autocorrelation_den_smooth = sum_diff_square_smooth / length;
 	double empirical_autocorrelation_smooth = empirical_autocorrelation_num_smooth / empirical_autocorrelation_den_smooth;
@@ -110,8 +120,16 @@ void compute_ECL( int size, double& smooth, double& not_so_smooth )
 	double empirical_autocorrelation_den_not_so_smooth = sum_diff_square_not_so_smooth / length;
 	double empirical_autocorrelation_not_so_smooth = empirical_autocorrelation_num_not_so_smooth / empirical_autocorrelation_den_not_so_smooth;
 
-	smooth = 1. / std::log( std::abs( empirical_autocorrelation_smooth ) );
-	not_so_smooth = 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) );
+	double empirical_autocorrelation_num_random = sum_diff_mean_random / ( length - 1 );
+	double empirical_autocorrelation_den_random = sum_diff_square_random / length;
+	double empirical_autocorrelation_random = empirical_autocorrelation_num_random / empirical_autocorrelation_den_random;
+
+	smooth = std::abs( empirical_autocorrelation_smooth );
+	not_so_smooth = std::abs( empirical_autocorrelation_not_so_smooth );
+	return std::abs( empirical_autocorrelation_random );
+
+	// smooth = 1. / std::log( std::abs( empirical_autocorrelation_smooth ) );
+	// not_so_smooth = 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) );
 }
 
 double compute_local_correlation( int size, double& smooth, double& not_so_smooth )
@@ -124,22 +142,21 @@ double compute_local_correlation( int size, double& smooth, double& not_so_smoot
 	vector<int> current( size );
 	int backup;
 
-	double tmp_smooth;
-	double tmp_not_so_smooth;
-	double tmp_random;
-
+	double tmp_random = 0.;
+	
 	smooth = 0.;
 	not_so_smooth = 0.;
 	
 	for( int i = 0; i < ITER; ++i )
 	{
 		_rng.generate( current, 0, size - 1 );
-		tmp_smooth = 0.;
-		tmp_not_so_smooth = 0.;
-		tmp_random = 0.;
-		
+
 		for( int v = 0; v < size; ++v )
 		{
+			smooth_outputs.clear();
+			not_so_smooth_outputs.clear();
+			random_outputs.clear();
+
 			backup = current[v];
 			for( int val = 0; val < size; ++val )
 			{
@@ -149,76 +166,81 @@ double compute_local_correlation( int size, double& smooth, double& not_so_smoot
 				random_outputs.push_back( random_function( _rng ) );
 			}
 			current[v] = backup;			
-		}
 		
-		int length = (int)smooth_outputs.size();
+			int length = size;
+			//int length = (int)smooth_outputs.size();
 			
-		double mean_smooth;
-		double mean_not_so_smooth;
-		double mean_random;
-		
-		double sum_smooth = 0.;
-		double sum_not_so_smooth = 0.;
-		double sum_random = 0.;
-		
-		for( int i = 0; i < length; ++i )
-		{
-			sum_smooth += smooth_outputs[ i ];
-			sum_not_so_smooth += not_so_smooth_outputs[ i ];
-			sum_random += random_outputs[ i ];
-		}
-		
-		mean_smooth = sum_smooth / length;
-		mean_not_so_smooth = sum_not_so_smooth / length;
-		mean_random = sum_random / length;
-		
-		double sum_diff_mean_smooth = 0.;
-		double sum_diff_mean_not_so_smooth = 0.;
-		double sum_diff_mean_random = 0.;
-		
-		double sum_diff_square_smooth = 0.;
-		double sum_diff_square_not_so_smooth = 0.;
-		double sum_diff_square_random = 0.;
-		
-		for( int i = 0; i < length - 1; ++i )
-		{
-			sum_diff_mean_smooth += ( ( smooth_outputs[ i ] - mean_smooth ) * ( smooth_outputs[ i + 1 ] - mean_smooth ) );
-			sum_diff_mean_not_so_smooth += ( ( not_so_smooth_outputs[ i ] - mean_not_so_smooth ) * ( not_so_smooth_outputs[ i + 1 ] - mean_not_so_smooth ) );
-			sum_diff_mean_random += ( ( random_outputs[ i ] - mean_random ) * ( random_outputs[ i + 1 ] - mean_random ) );
+			double mean_smooth;
+			double mean_not_so_smooth;
+			double mean_random;
 			
-			sum_diff_square_smooth += std::pow( ( smooth_outputs[ i ] - mean_smooth ), 2 );
-			sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ i ] - mean_not_so_smooth ), 2 );
-			sum_diff_square_random += std::pow( ( random_outputs[ i ] - mean_random ), 2 );
+			double sum_smooth = 0.;
+			double sum_not_so_smooth = 0.;
+			double sum_random = 0.;
+			
+			for( int j = 0; j < length; ++j )
+			{
+				sum_smooth += smooth_outputs[ j ];
+				sum_not_so_smooth += not_so_smooth_outputs[ j ];
+				sum_random += random_outputs[ j ];
+			}
+			
+			mean_smooth = sum_smooth / length;
+			mean_not_so_smooth = sum_not_so_smooth / length;
+			mean_random = sum_random / length;
+			
+			double sum_diff_mean_smooth = 0.;
+			double sum_diff_mean_not_so_smooth = 0.;
+			double sum_diff_mean_random = 0.;
+			
+			double sum_diff_square_smooth = 0.;
+			double sum_diff_square_not_so_smooth = 0.;
+			double sum_diff_square_random = 0.;
+			
+			for( int j = 0; j < length - 1; ++j )
+			{
+				sum_diff_mean_smooth += ( ( smooth_outputs[ j ] - mean_smooth ) * ( smooth_outputs[ j + 1 ] - mean_smooth ) );
+				sum_diff_mean_not_so_smooth += ( ( not_so_smooth_outputs[ j ] - mean_not_so_smooth ) * ( not_so_smooth_outputs[ j + 1 ] - mean_not_so_smooth ) );
+				sum_diff_mean_random += ( ( random_outputs[ j ] - mean_random ) * ( random_outputs[ j + 1 ] - mean_random ) );
+				
+				sum_diff_square_smooth += std::pow( ( smooth_outputs[ j ] - mean_smooth ), 2 );
+				sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ j ] - mean_not_so_smooth ), 2 );
+				sum_diff_square_random += std::pow( ( random_outputs[ j ] - mean_random ), 2 );
+			}
+			
+			sum_diff_square_smooth += std::pow( ( smooth_outputs[ length - 1 ] - mean_smooth ), 2 );
+			sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ length - 1 ] - mean_not_so_smooth ), 2 );
+			sum_diff_square_random += std::pow( ( random_outputs[ length - 1 ] - mean_random ), 2 );
+			
+			double empirical_autocorrelation_num_smooth = sum_diff_mean_smooth / ( length - 1 );
+			double empirical_autocorrelation_den_smooth = sum_diff_square_smooth / length;
+			double empirical_autocorrelation_smooth = empirical_autocorrelation_num_smooth / empirical_autocorrelation_den_smooth;
+			
+			double empirical_autocorrelation_num_not_so_smooth = sum_diff_mean_not_so_smooth / ( length - 1 );
+			double empirical_autocorrelation_den_not_so_smooth = sum_diff_square_not_so_smooth / length;
+			double empirical_autocorrelation_not_so_smooth = empirical_autocorrelation_num_not_so_smooth / empirical_autocorrelation_den_not_so_smooth;
+			
+			double empirical_autocorrelation_num_random = sum_diff_mean_random / ( length - 1 );
+			double empirical_autocorrelation_den_random = sum_diff_square_random / length;
+			double empirical_autocorrelation_random = empirical_autocorrelation_num_random / empirical_autocorrelation_den_random;
+		
+			tmp_random += std::abs( empirical_autocorrelation_random );
+			
+			smooth += std::abs( empirical_autocorrelation_smooth );	
+			not_so_smooth += std::abs( empirical_autocorrelation_not_so_smooth );
+			// tmp_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_smooth ) ) );
+			// tmp_not_so_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) ) );
+			// tmp_random += ( 1. / std::log( std::abs( empirical_autocorrelation_random ) ) );
+			
+			// smooth += std::abs( tmp_smooth );	
+			// not_so_smooth += std::abs( tmp_not_so_smooth );
 		}
-		
-		sum_diff_square_smooth += std::pow( ( smooth_outputs[ length - 1 ] - mean_smooth ), 2 );
-		sum_diff_square_not_so_smooth += std::pow( ( not_so_smooth_outputs[ length - 1 ] - mean_not_so_smooth ), 2 );
-		sum_diff_square_random += std::pow( ( random_outputs[ length - 1 ] - mean_random ), 2 );
-		
-		double empirical_autocorrelation_num_smooth = sum_diff_mean_smooth / ( length - 1 );
-		double empirical_autocorrelation_den_smooth = sum_diff_square_smooth / length;
-		double empirical_autocorrelation_smooth = empirical_autocorrelation_num_smooth / empirical_autocorrelation_den_smooth;
-		
-		double empirical_autocorrelation_num_not_so_smooth = sum_diff_mean_not_so_smooth / ( length - 1 );
-		double empirical_autocorrelation_den_not_so_smooth = sum_diff_square_not_so_smooth / length;
-		double empirical_autocorrelation_not_so_smooth = empirical_autocorrelation_num_not_so_smooth / empirical_autocorrelation_den_not_so_smooth;
-		
-		double empirical_autocorrelation_num_random = sum_diff_mean_random / ( length - 1 );
-		double empirical_autocorrelation_den_random = sum_diff_square_random / length;
-		double empirical_autocorrelation_random = empirical_autocorrelation_num_random / empirical_autocorrelation_den_random;
-		
-		tmp_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_smooth ) ) );
-		tmp_not_so_smooth += ( 1. / std::log( std::abs( empirical_autocorrelation_not_so_smooth ) ) );
-		tmp_random += ( 1. / std::log( std::abs( empirical_autocorrelation_random ) ) );
-
-		smooth += std::abs( tmp_smooth );	
-		not_so_smooth += std::abs( tmp_not_so_smooth );
 	}
 
-	smooth /= ITER;
-	not_so_smooth /= ITER;
+	smooth = std::abs( smooth / ( ITER * size ) );
+	not_so_smooth = std::abs( not_so_smooth / ( ITER * size ) );
 
-	return std::abs( tmp_random );
+	return std::abs( tmp_random / ( ITER * size ) );
 	
 	// smooth = tmp_smooth / ITER;
 	// not_so_smooth = tmp_not_so_smooth / ITER;
@@ -281,12 +303,14 @@ int main()
 {
 	double smooth, not_so_smooth;
 
-	compute_ECL( 9, smooth, not_so_smooth );
+	auto random = compute_ECL( 9, smooth, not_so_smooth );
 
 	cout << "ECL for a smooth function: " << smooth
-	     << "\nECL for a not-so-smooth function: " << not_so_smooth << "\n";
+	     << "\nECL for a not-so-smooth function: " << not_so_smooth
+	     << "\nECL for a random function: " << random << "\n";
 
-	auto random = compute_local_correlation( 9, smooth, not_so_smooth );
+
+	random = compute_local_correlation( 9, smooth, not_so_smooth );
 
 	cout << "\nLocal correlation for a smooth function: " << smooth
 	     << "\nLocal correlation for a not-so-smooth function: " << not_so_smooth

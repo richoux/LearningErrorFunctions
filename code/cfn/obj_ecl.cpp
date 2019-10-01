@@ -19,15 +19,19 @@ static bool first2 = true;
 
 //Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
 //Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions )
-Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& samples )
-	: Objective( "Max ECL" ),
+Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions, const vector<int>& samples )
+	: Objective( "Max empirical autocorrelation function" ),
 	  _nb_vars( nb_vars ),
 	  _max_value( max_value ),
-	  _samples( samples )
-	  //_random_sol( random_solutions ),
-	  //_index( vector<int>( _random_sol.size() / nb_vars ) )
+	  _random_sol( random_solutions ),
+	  _random_config( samples )
 {
-	//std::iota( _index.begin(), _index.end(), 0 );
+	_walk.resize( 2 * _random_sol.size() );
+	for( int i = 0; i < (int)_random_sol.size(); i+=_nb_vars )
+	{
+		std::copy( _random_config.begin() + i, _random_config.begin() + i + _nb_vars, _walk.begin() + i );
+		std::copy( _random_sol.begin() + i, _random_sol.begin() + i + _nb_vars, _walk.begin() + i + _nb_vars );		
+	}
 }
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
@@ -38,15 +42,14 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	
 	vector<double> f_outputs;
 
-	// prepare the random walk: we will visit solutions in random_solutions in a random order.
+	// prepare the random _walk: we will visit solutions in random_solutions in a random order.
 	//_rng.shuffle( _index );
 	
 	// random starting point, since computing the empirical_autocorrelation assumes 
 	// the space to be isotropic, ie, the starting point should not have any influence
-	// on the statistical information obtained from the random walk.
+	// on the statistical information obtained from the random _walk.
+	
 	vector<int> current( _nb_vars );
-	double output;
-	int backup;
 	int length;
 	
 	double mean;
@@ -56,94 +59,76 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	double empirical_autocorrelation_num;
 	double empirical_autocorrelation_den;
 	double empirical_autocorrelation;
-	double total = 0.;
 
-	for( int i = 0; i < (int)_samples.size(); i+=_nb_vars )
+	for( int i = 0; i < 2*(int)_random_sol.size() - _nb_vars; i += _nb_vars )
 	{
-		f_outputs.clear();
-		std::copy( _samples.begin() + i, _samples.begin() + i + _nb_vars, current.begin() );
-		
-		for( int v = 0; v < _nb_vars; ++v )
+		std::copy( _walk.begin() + i, _walk.begin() + i + _nb_vars, current.begin() );
+
+		auto diff = std::mismatch( current.begin(),
+		                           current.end(),
+		                           _walk.begin() + i + _nb_vars,
+		                           _walk.begin() + i + 2 * _nb_vars );
+		// cout << "Target: ";
+		// for( int j = 0; j < _nb_vars; ++j )
+		// 	cout << _walk[i + _nb_vars +j ] << " ";
+		// cout << "\n";
+
+		while( diff.first != current.end() )
 		{
-			backup = current[v];
-			for( int val = 0; val < _max_value; ++val )
-			{
-				current[v] = val;
-				output = std::abs( g( variables, current, _max_value ) );
-				f_outputs.push_back( concept( current ) ? 0 : output );
-			}
-			current[v] = backup;			
+			// cout << "Current: ";
+			// for( auto c : current )
+			// 	cout << c << " ";
+			// cout << "\n";
+
+			auto output = g( variables, current, _max_value );
+
+			// cout << "current cost: " << output << "\n";
+			
+			f_outputs.push_back( concept( current ) ? 0 : output );
+			*(diff.first) = *(diff.second);
+
+			diff = std::mismatch( current.begin(),
+			                      current.end(),
+			                      _walk.begin() + i + _nb_vars,
+			                      _walk.begin() + i + 2 * _nb_vars );
 		}
 
-// 	for( int i = 0; i < (int)_index.size(); )
-// 	{
-// 		auto output = std::abs( g( variables, current, _max_value ) );
-// 		f_outputs.push_back( concept( current ) ? 0 : output );
+		// cout << "Current (= Target?): ";
+		// for( auto c : current )
+		// 	cout << c << " ";
+		// cout << "\n";
 		
-// 	skip_compute_g:
-// 		//auto diff = std::mismatch( current.begin(), current.end(), _random_sol[ _index[i] ].begin() );
-// 		auto diff = std::mismatch( current.begin(), current.end(), _random_sol.begin() + _index[i] * _nb_vars, _random_sol.begin() + ( _index[i] + 1 ) * _nb_vars );
-// 		if( diff.first == current.end() )
-// 		{
-// 			++i;
-// #if defined DEBUG
-// 			if( first2 )
-// 			{
-// 				for( auto&c : current )
-// 					cerr << c << " ";
-// 				cerr << "Sol\nTarget: ";
-// 				for( int j = _index[i] * _nb_vars; j < ( _index[i] + 1 ) * _nb_vars; ++j )
-// 					cerr << _random_sol[j] << " ";
-// 				cerr << "\n";
-// 			}
-// #endif
-// 			if( i == (int)_index.size() )
-// 				break;
-// 			else
-// 				goto skip_compute_g;
-// 		}
-// 		else
-// 		{
-// 			*(diff.first) = *(diff.second);
-// #if defined DEBUG
-// 			if( first2 )
-// 			{
-// 				cerr << "Distances: " << distance( current.begin(), diff.first ) << "\n";
-				
-// 				for( auto&c : current )
-// 					cerr << c << " ";
-// 				cerr << "\n";
-// 			}
-// #endif
-// 		}
-// 	}
-
-// #if defined DEBUG
-// 	first2 = false;
-// #endif
-	
-		length = (int)f_outputs.size();
-	
-		sum = 0.;
-		for( int i = 0; i < length; ++i )
-			sum += f_outputs[ i ];
-		mean = sum / length;
-		
-		sum_diff_mean = 0.;
-		sum_diff_square = 0.;
-		for( int i = 0; i < length - 1; ++i )
-		{
-			sum_diff_mean += ( ( f_outputs[ i ] - mean ) * ( f_outputs[ i + 1 ] - mean ) );
-			sum_diff_square += std::pow( ( f_outputs[ i ] - mean ), 2 );
-		}
-		
-		sum_diff_square += std::pow( ( f_outputs[ length - 1 ] - mean ), 2 );
-		
-		empirical_autocorrelation_num = sum_diff_mean / ( length - 1 );
-		empirical_autocorrelation_den = sum_diff_square / length;
-		empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
-		total += ( 1. / std::log( std::abs( empirical_autocorrelation ) ) );
+		auto output = g( variables, current, _max_value );
+		f_outputs.push_back( concept( current ) ? 0 : output );
+		// cout << "target cost: " << output << "\n";
 	}
+	
+	length = (int)f_outputs.size();
+	
+	sum = 0.;
+	for( int j = 0; j < length; ++j )
+	{
+		sum += f_outputs[ j ];
+		//cerr << "f_outputs[" << j << "]=" << f_outputs[ j ] << "\n";
+	}
+	mean = sum / length;
+		
+	sum_diff_mean = 0.;
+	sum_diff_square = 0.;
+	for( int j = 0; j < length - 1; ++j )
+	{
+		sum_diff_mean += ( ( f_outputs[ j ] - mean ) * ( f_outputs[ j + 1 ] - mean ) );
+		sum_diff_square += std::pow( ( f_outputs[ j ] - mean ), 2 );
+	}
+	
+	sum_diff_square += std::pow( ( f_outputs[ length - 1 ] - mean ), 2 );
+	
+	empirical_autocorrelation_num = sum_diff_mean / ( length - 1 );
+	empirical_autocorrelation_den = sum_diff_square / length;
+		
+	empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
+	//total += ( 1. / std::log( std::abs( empirical_autocorrelation ) ) );
+	//total += empirical_autocorrelation;
 	
 #if defined CHRONO
 	if( first2 )
@@ -153,7 +138,9 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		first2 = false;
 	}
 #endif
+
+	return - empirical_autocorrelation;
 	
 	//return 1. / std::log( std::abs( empirical_autocorrelation ) );
-	return - std::abs( total / ( (int)_samples.size() / _nb_vars ) );
+	//return std::abs( total / ( (int)_random_sol.size() / _nb_vars ) );
 }
