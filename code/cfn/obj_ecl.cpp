@@ -10,19 +10,15 @@
 
 #include "obj_ecl.hpp"
 #include "function_to_learn_cppn.hpp"
-//#include "function_to_learn_trigo.hpp"
 #include "concept.hpp"
 
 #if defined DEBUG or CHRONO
 static bool first2 = true;
 #endif
 
-//Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector< vector<int> >& random_solutions )
-//Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions )
-Obj_ECL::Obj_ECL( int nb_vars, int max_value, const vector<int>& random_solutions, const vector<int>& samples )
-	: Objective( "Max empirical autocorrelation function" ),
+Obj_ECL::Obj_ECL( int nb_vars, const vector<int>& random_solutions, const vector<int>& samples )
+	: Objective( "Max empirical autocorrelation function + Max inactive units" ),
 	  _nb_vars( nb_vars ),
-	  _max_value( max_value ),
 	  _random_sol( random_solutions ),
 	  _random_config( samples )
 {
@@ -68,22 +64,11 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		                           current.end(),
 		                           _walk.begin() + i + _nb_vars,
 		                           _walk.begin() + i + 2 * _nb_vars );
-		// cout << "Target: ";
-		// for( int j = 0; j < _nb_vars; ++j )
-		// 	cout << _walk[i + _nb_vars +j ] << " ";
-		// cout << "\n";
 
 		while( diff.first != current.end() )
 		{
-			// cout << "Current: ";
-			// for( auto c : current )
-			// 	cout << c << " ";
-			// cout << "\n";
+			auto output = g( variables, current );
 
-			auto output = g( variables, current, _max_value );
-
-			// cout << "current cost: " << output << "\n";
-			
 			f_outputs.push_back( concept( current ) ? 0 : output );
 			*(diff.first) = *(diff.second);
 
@@ -93,28 +78,22 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 			                      _walk.begin() + i + 2 * _nb_vars );
 		}
 
-		// cout << "Current (= Target?): ";
-		// for( auto c : current )
-		// 	cout << c << " ";
-		// cout << "\n";
-		
-		auto output = g( variables, current, _max_value );
+		auto output = g( variables, current );
 		f_outputs.push_back( concept( current ) ? 0 : output );
-		// cout << "target cost: " << output << "\n";
 	}
 	
 	length = (int)f_outputs.size();
 	
 	sum = 0.;
+
 	for( int j = 0; j < length; ++j )
-	{
 		sum += f_outputs[ j ];
-		//cerr << "f_outputs[" << j << "]=" << f_outputs[ j ] << "\n";
-	}
+
 	mean = sum / length;
 		
 	sum_diff_mean = 0.;
 	sum_diff_square = 0.;
+
 	for( int j = 0; j < length - 1; ++j )
 	{
 		sum_diff_mean += ( ( f_outputs[ j ] - mean ) * ( f_outputs[ j + 1 ] - mean ) );
@@ -127,8 +106,6 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	empirical_autocorrelation_den = sum_diff_square / length;
 		
 	empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
-	//total += ( 1. / std::log( std::abs( empirical_autocorrelation ) ) );
-	//total += empirical_autocorrelation;
 	
 #if defined CHRONO
 	if( first2 )
@@ -139,8 +116,10 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 	}
 #endif
 
-	return - empirical_autocorrelation;
-	
-	//return 1. / std::log( std::abs( empirical_autocorrelation ) );
-	//return std::abs( total / ( (int)_random_sol.size() / _nb_vars ) );
+	int EA = static_cast<int>( std::trunc( empirical_autocorrelation * 100 ) );
+	double inactives = std::count_if( variables.begin(), variables.end(), [](const auto &v){ return v.get_value() == 0; } );
+	// normalization
+	inactives = 0.9 * ( inactives / variables.size() );
+
+	return -( EA + inactives );
 }

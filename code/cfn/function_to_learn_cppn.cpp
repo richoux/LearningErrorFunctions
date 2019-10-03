@@ -18,8 +18,6 @@ inline double gaussian( double x ) { return std::exp( std::pow( ( x - 1 ), 2 ) /
 
 void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
 {
-	//vector<double> outputs( inputs.size() );
-	
 	switch( number )
 	{
 		// Identity
@@ -51,23 +49,18 @@ void interpreter( int number, const vector<double>& inputs, vector<double>& outp
 		transform( inputs.begin(), inputs.end(), outputs.begin(), gaussian );
 		break;
 	}
-	//return outputs;
 }
-
-void parse( int LO, int& L, int& O )
-{
-	L = LO / 10;
-	O = LO % 10;
-}
-
-vector<double> temp_inputs( 9 );
-vector<double> temp_outputs( 9 );
-vector<double> temp_result( 9 );
 
 void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result )
 {
-	int L, O;
-	parse( LO, L, O );
+	int L = LO / 10;
+	int O = LO % 10;
+
+	auto inputs_size = inputs.size();
+	
+	vector<double> temp_inputs( inputs_size );
+	vector<double> temp_outputs( inputs_size );
+	vector<double> temp_result( inputs_size );
 
 	if( weights[ ( L - 1 ) * 7 + O ] != 1 )
 		std::fill( result.begin(), result.end(), 0.0 );
@@ -94,61 +87,20 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 	}
 }
 
-vector<double> result( 9 );
-
-double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int var_max_value )
+double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars )
 {
-#if defined CHRONO
-	auto start_clock = std::chrono::steady_clock::now();
-#endif
 	int LO = ( weights.size() / 7 ) * 10 + 1;
-	//vector<double> result( inputs.size() );
-	compute( LO, inputs, weights, result );
+	vector<double> result( inputs.size() );
 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
+	double max_cost = nb_vars + 0.9;
 	
-	double max_cost = nb_vars + ( var_max_value / ( std::pow( 10, std::floor( std::log10( var_max_value ) ) + 1 ) ) );
-#if defined DEBUG
-	if( first )
-	{
-		cerr << "LO: " << LO << "\n"
-		     << "number_units_last_layer: " << number_units_last_layer << "\n";
-		cerr << "Weights: ";
-
-		for( auto w : weights )
-			cerr << w << " ";
+	compute( LO, inputs, weights, result );
 		
-		cerr << "\nConfiguration: ";
-
-		for( auto i : inputs )
-			cerr << i << " ";
-		
-		cerr << "\nIntermediate result: ";
-
-		for( auto r : result )
-			cerr << r << " ";
-				
-		cerr << "\nMax cost: " << max_cost << "\n"
-		     << "g = " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n";
-	}
-#endif
-	
-#if defined CHRONO
-	if( first )
-	{
-		auto end_clock = std::chrono::steady_clock::now();
-		cerr << "g: " << std::chrono::duration_cast<std::chrono::microseconds>(end_clock - start_clock).count() << "µs\n";
-	}
-#endif
-
-#if defined CHRONO or DEBUG
-	//first = false;
-#endif
-	
 	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
 }
 
 // ref_wrapper<Variable> version
-double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int var_max_value )
+double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars )
 {
 	int nb_vars = (int)vars.size();
 	vector<double> inputs( vars.size() );
@@ -158,11 +110,11 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
 	weights_int[ weights.size() + 1 ] = 1;
 
-	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
+	return intermediate_g( weights_int, inputs, nb_vars );
 }
 
 // Variable version
-double g( const vector< Variable >& weights, const vector<int>& vars, int var_max_value )
+double g( const vector< Variable >& weights, const vector<int>& vars )
 {
 	int nb_vars = (int)vars.size();
 	vector<double> inputs( vars.size() );
@@ -172,11 +124,11 @@ double g( const vector< Variable >& weights, const vector<int>& vars, int var_ma
 	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
 	weights_int[ weights.size() + 1 ] = 1;
 
-	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
+	return intermediate_g( weights_int, inputs, nb_vars );
 }
 
 // Flat vector version
-double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int start, int end, int var_max_value )
+double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int start, int end )
 {
 	int nb_vars = end - start;
 	vector<double> inputs( nb_vars );
@@ -186,11 +138,11 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
 	weights_int[ weights.size() + 1 ] = 1;
 
-	return intermediate_g( weights_int, inputs, nb_vars, var_max_value );
+	return intermediate_g( weights_int, inputs, nb_vars );
 }
 
 // Int vector version
-double g( const vector< int >& weights, const vector<double>& vars, int start, int end, int var_max_value )
+double g( const vector< int >& weights, const vector<double>& vars, int start, int end )
 {
-	return intermediate_g( weights, vars, end - start, var_max_value );
+	return intermediate_g( weights, vars, end - start );
 }

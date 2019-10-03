@@ -13,22 +13,20 @@
 #include "../latin/latin.hpp"
 #include "../utils/convert.hpp"
 #include "function_to_learn_cppn.hpp"
-//#include "function_to_learn_trigo.hpp"
 #include "concept.hpp"
 
-#if defined CHRONO or DEBUG
+#if defined CHRONO
 static bool first = true;
 #endif
 
 //Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, vector< vector<int> > random_configurations, map<string, double> cost_map )
-Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, const vector<int>& random_configurations, const map<string, double>& cost_map )
-	: Constraint (coefficients),
-	  _nb_vars (nb_vars),
-	  _var_max_value (var_max_value),
-	  _random_configurations (random_configurations),
-	  _cost_map (cost_map)
+Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars, int nb_vars, const vector<int>& random_configurations, const map<string, double>& cost_map )
+	: Constraint( weight_vars ),
+	  _nb_vars( nb_vars ),
+	  _random_configurations( random_configurations ),
+	  _cost_map( cost_map )
 {
-	_weights.reserve( coefficients.size() + 7 );
+	_weights.reserve( weight_vars.size() + 7 );
 	_inputs.reserve( nb_vars );
 }
 
@@ -39,7 +37,7 @@ double Ctr_HO::required_cost() const
 #endif
 
 	// Do not get confused between variables of our model (the coefficients) and variables of the configuration search space
-	auto& coefficients = variables;
+	auto& weight_vars = variables;
 
 #if defined CHRONO
 	if( first )
@@ -49,87 +47,28 @@ double Ctr_HO::required_cost() const
 	}
 #endif
 
-	//LHS super slow!!
-	// auto samples = _latin.sample( _nb_vars, _var_max_value );
-	// vector< vector<int> > samples( _var_max_value );
-	// for( int i = 0; i < _nb_vars; ++i )
-	// {
-	// 	samples[i] = vector<int>( _nb_vars );
-	// 	_rng.generate( samples[i], 0, _var_max_value );
-	// }
-
 	double g_x;
 	double cost = 0.;
-
 	double precomputed_metric;
 
-	// only with function_to_learn_cppn
-#if defined DEBUG
-	cout << "Capacity: " << _weights.capacity() << "\n";
-#endif
 	_weights.resize( _weights.capacity() );
-	std::transform( coefficients.begin(), coefficients.end(), _weights.begin(), [&]( auto w ){ return w.get().get_value(); } );
-	for( int i = (int)coefficients.size(); i < (int)coefficients.size() + 7; ++i )
+	std::transform( weight_vars.begin(), weight_vars.end(), _weights.begin(), [&]( auto w ){ return w.get().get_value(); } );
+	for( int i = (int)weight_vars.size(); i < (int)weight_vars.size() + 7; ++i )
 		_weights[i] = 0;
-	_weights[ coefficients.size() + 1 ] = 1;
-	//std::fill( _weights.begin() + ( coefficients.size() + 1 ), _weights.end(), 0 );
-	
-	//for( const auto& c : _random_configurations )
+	// Add a layer with only abs() active
+	_weights[ weight_vars.size() + 1 ] = 1;
+
 	for( int i = 0; i < (int)_random_configurations.size(); i += _nb_vars )
 	{
-		//g_x = g( coefficients, c, _var_max_value );
-		// only with function_to_learn_cppn
 		_inputs.resize( _inputs.capacity() );
 		std::copy( _random_configurations.begin() + i, _random_configurations.begin() + i + _nb_vars, _inputs.begin() );
 
-#if defined DEBUG
-		cerr << "Weights: ";
-		for( auto w : _weights )
-			cerr << w << " ";
-		cerr << "\n" << _weights.size() ;
-		cerr << "\nVars: ";
-		for( auto v : variables )
-			cerr << v.get().get_value() << " ";
-		cerr << "\nCoeff: ";
-		for( auto c : coefficients )
-			cerr << c.get().get_value() << " ";
-		cerr << "\nInputs: ";
-		for( auto i : _inputs )
-			cerr << i << " ";
-		cerr << "\n" << _inputs.size() ;
-		cerr << "\n";
-#endif		
-		g_x = g( _weights, _inputs, i, i + _nb_vars, _var_max_value );
-		//g_x = g( _weights, _random_configurations, i, i + _nb_vars, _var_max_value );
-		//g_x = g( coefficients, _random_configurations, i, i + _nb_vars, _var_max_value );
-		
-		//precomputed_metric = _cost_map.at( convert( c ) );
+		g_x = g( _weights, _inputs, i, i + _nb_vars );
 		precomputed_metric = _cost_map.at( convert( _random_configurations, i, i + _nb_vars ) );
 		if( g_x < precomputed_metric )
 			cost += ( precomputed_metric - g_x );
-		
-	
-#if defined DEBUG
-		if( first )
-		{
-			cerr << "Configuration: ";
-				for( int j = i; j < i + _nb_vars; ++j )
-					cerr << _random_configurations[j] << " ";
-			
-			cerr << "\nPrecomputed metric: " << precomputed_metric
-			     << ", local cost: " << g_x
-			     << ", global cost: " << cost << "\n";
-		}
-#endif
 	}
 
-#if defined DEBUG
-	if( first )
-	{
-		first = false;
-	}
-#endif
-	
 #if defined CHRONO
 	if( first )
 	{

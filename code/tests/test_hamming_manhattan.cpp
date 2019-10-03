@@ -25,10 +25,11 @@ double hamming_manhattan_metric( const vector<int>& configuration,
 		}
 
 	// normalization
-	diff = 9 * ( diff / max_diff );
+	diff = 0.9 * ( diff / max_diff );
 
-	cost += ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
-	return cost;
+	//cost += ( diff / ( std::pow( 10, std::floor( std::log10( diff ) ) + 1 ) ) );
+	
+	return cost + diff;
 }
 
 
