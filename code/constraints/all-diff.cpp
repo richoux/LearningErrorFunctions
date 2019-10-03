@@ -197,8 +197,8 @@ double AllDiff::required_cost() const
 	if( alldiff_concept( variables ) )
 		return 0.;
 
-// CPPN  Max ECL - Ctr HO 0.931951
-	vector<int> weights{0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1};
+// CPPN  Max ECL - Ctr HO 0.960307
+	vector<int> weights{0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1};
 	weights.insert( weights.end(), {0,1,0,0,0,0,0} );
 	
 	int LO = ( weights.size() / 7 ) * 10 + 1;
@@ -227,7 +227,7 @@ double AllDiff::required_cost() const
 // Max ECL - Ctr HO 7.69085
 //80, 63, 94, 85, 69, 75, 97, 18, 95, 93, 14, 99, 62, 70, 80, 60, 22, 74, 98, 26, 12, 39, 60, 33, 99, 29, 99, 77, 58, 56, 76, 99, 85, 74, 96, 86, 64, 0, 69, 21, 53, 49, 58, 24, 37, 99, 5, 50, 77, 93, 99, 97, 96, 45, 33, 28, 59, 30, 37, 38, 68, 99, 77, 38, 52, 34, 74, 74, 46, 75, 15, 99, 81, 95, 53, 7, 99, 58, 57, 98, 74, 20, 59, 34, 74, 83, 34, 26, 91, 7
 
-// CPPN  Max ECL - Ctr HO 0.931951
-// 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1
+// CPPN  Max ECL - Ctr HO 0.960307
+// 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1
 
 
