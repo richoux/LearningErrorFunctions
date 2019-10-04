@@ -4,17 +4,13 @@
 
 LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int rv )
 	: Concept( variables ),
+	  weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 }, // all-diff weights
 	  _right_value( rv )
 { }
 
 bool LinearEq::concept( const vector<int>& var ) const
 {
 	return std::accumulate( var.begin(), var.end(), 0 ) == _right_value;
-}
-
-double LinearEq::required_cost() const
-{
-
 }
 
 
