@@ -13,7 +13,6 @@
 #include "../latin/latin.hpp"
 #include "../utils/convert.hpp"
 #include "function_to_learn_cppn.hpp"
-#include "concept.hpp"
 
 #if defined CHRONO
 static bool first = true;
