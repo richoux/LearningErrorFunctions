@@ -4,12 +4,7 @@
 
 #include "all-diff.hpp"
 
-constexpr int NB_VARS = 9;
-constexpr int MAX_DOMAIN = NB_VARS - 1;
-constexpr	double MAX_COST = NB_VARS + ( MAX_DOMAIN / ( std::pow( 10, std::floor( std::log10( MAX_DOMAIN ) ) + 1 ) ) );
-
 // Trigonometric functions
-//constexpr double PI = std::acos(-1);
 constexpr double PI = M_PI;
 constexpr double TWO_PI = 2*PI;
 
@@ -39,30 +34,30 @@ inline complex<double> expo( double x, unsigned int k, int max )
 // defined in cfn/function_to_learn_cppn.cpp
 void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result );
 
-///////////////////////////////////////////
-
-// AllDiff concept 
-bool alldiff_concept( const vector< reference_wrapper<Variable> >& variables )
-{
-	// We assume our k variables can take values in [0, k-1]
-	vector<bool> bitvec( variables.size(), false );
-
-	// If we have two variables sharing the same value, return 1 (not a solution)
-	// otherwise, return 0.
-	for( int i = 0 ; i < variables.size() ; ++i )
-		if( !bitvec[ variables[i].get().get_value() ] )
-			bitvec[ variables[i].get().get_value() ] = true;
-		else
-			return false;
-	
-	return true;
-}
-
 //////////////////////////////////////////////////////
 
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
-	: Constraint (variables)
+	: Concept( variables ),
+	  weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 }
 { }
+
+bool AllDiff::concept( const vector<int>& var ) const
+{
+	// We assume our k variables can take values in [0, k-1]
+	vector<bool> bitvec( var.size(), false );
+
+	// If we have two variables sharing the same value, return 1 (not a solution)
+	// otherwise, return 0.
+	for( int i = 0 ; i < var.size() ; ++i )
+		if( !bitvec[ var[i] ] )
+			bitvec[ var[i] ] = true;
+		else
+			return false;
+	
+	return true;	
+}
+
+//////////////////////////////////////////////////////
 
 // AllDiff concept as a cost function
 #if defined CONCEPT
@@ -147,8 +142,8 @@ double AllDiff::required_cost() const
 		int value = variables[i].get().get_value();
 		for( int k = 0; k < nb_freq / 2; ++k )			
 		{
-			g_x += coeff[ ( i * nb_freq ) + 2*k] * cosine( value, k, MAX_DOMAIN );
-			g_x += coeff[ ( i * nb_freq ) + 2*k + 1] * sine( value, k, MAX_DOMAIN );
+			g_x += coeff[ ( i * nb_freq ) + 2*k] * cosine( value, k, max_domain );
+			g_x += coeff[ ( i * nb_freq ) + 2*k + 1] * sine( value, k, max_domain );
 		}
 	}
 	
@@ -182,7 +177,7 @@ double AllDiff::required_cost() const
 		for( int k = 0; k < nb_freq / 2; ++k )
 		{
 			coefficient = complex<double>( ( coeff[ ( i * nb_freq ) + 2*k] - ( MAX_COEFF / 2 ) ) / 10, ( coeff[ ( i * nb_freq ) + 2*k + 1] - ( MAX_COEFF / 2 ) ) / 10 );
-			g_x += ( coefficient * expo( value, k, MAX_DOMAIN ) );
+			g_x += ( coefficient * expo( value, k, max_domain ) );
 		}
 	}
 	
@@ -208,11 +203,11 @@ double AllDiff::required_cost() const
 	vector<double> inputs( variables.size() );
 	std::transform( variables.begin(), variables.end(), inputs.begin(), [&]( auto v ){ return v.get().get_value(); } );
 
-	vector<double> result( NB_VARS );
+	vector<double> result( nb_vars );
 	compute( LO, inputs, weights, result );
 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
 		
-	return MAX_COST * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( NB_VARS * number_units_last_layer ) );
+	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
 }
 #endif
 

@@ -1,17 +1,13 @@
 #pragma once
 
-#include <vector>
+#include "concept.hpp"
 
-#include <ghost/variable.hpp>
-#include <ghost/constraint.hpp>
-
-using namespace std;
-using namespace ghost;
-
-class AllDiff : public Constraint
+class AllDiff : public Concept
 {
-	double required_cost() const override;
+	// double required_cost() const override;
 
 public:
 	AllDiff( const vector< reference_wrapper<Variable> >& variables );
+
+	bool concept( const vector<int>& var ) const override;
 };
