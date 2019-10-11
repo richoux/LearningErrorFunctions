@@ -32,13 +32,16 @@ inline complex<double> expo( double x, unsigned int k, int max )
 ////////////////////
 
 // defined in cfn/function_to_learn_cppn.cpp
-void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result );
+//void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result );
 
 //////////////////////////////////////////////////////
 
+//  CPPN  Max ECL+inactive - Ctr HO 97.7071
+// 	weights{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 }
+
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
-	: Concept( variables ),
-	  weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 }
+//	: Concept( variables, { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 } )
+	: Concept( variables, { 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 } )
 { }
 
 bool AllDiff::concept( const vector<int>& var ) const
@@ -53,6 +56,27 @@ bool AllDiff::concept( const vector<int>& var ) const
 			bitvec[ var[i] ] = true;
 		else
 			return false;
+	
+	return true;	
+}
+
+bool AllDiff::concept( const vector< reference_wrapper<Variable> >& var ) const
+{
+	// We assume our k variables can take values in [0, k-1]
+	vector<bool> bitvec( var.size(), false );
+
+	// If we have two variables sharing the same value, return 1 (not a solution)
+	// otherwise, return 0.
+	int value;
+	
+	for( int i = 0 ; i < var.size() ; ++i )
+	{
+		value = var[i].get().get_value();
+		if( !bitvec[ value ] )
+			bitvec[ value ] = true;
+		else
+			return false;
+	}
 	
 	return true;	
 }
@@ -186,30 +210,30 @@ double AllDiff::required_cost() const
 #endif
 
 // Learned CPPN cost function with CFN for all-diff 9
-#if defined CPPN
-double AllDiff::required_cost() const
-{
-	if( alldiff_concept( variables ) )
-		return 0.;
+// #if defined CPPN
+// double AllDiff::required_cost() const
+// {
+// 	if( alldiff_concept( variables ) )
+// 		return 0.;
 
-  // CPPN  Max ECL - Ctr HO 0.960307
-	//vector<int> weights{0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1};
-  // CPPN  Max ECL+inactive - Ctr HO 96.6429
-	vector<int> weights{0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0};
-	weights.insert( weights.end(), {0,1,0,0,0,0,0} );
+//   // CPPN  Max ECL - Ctr HO 0.960307
+// 	//vector<int> weights{0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1};
+//   // CPPN  Max ECL+inactive - Ctr HO 97.7071
+// 	vector<int> weights{0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0};
+// 	weights.insert( weights.end(), {0,1,0,0,0,0,0} );
 	
-	int LO = ( weights.size() / 7 ) * 10 + 1;
+// 	int LO = ( weights.size() / 7 ) * 10 + 1;
 
-	vector<double> inputs( variables.size() );
-	std::transform( variables.begin(), variables.end(), inputs.begin(), [&]( auto v ){ return v.get().get_value(); } );
+// 	vector<double> inputs( variables.size() );
+// 	std::transform( variables.begin(), variables.end(), inputs.begin(), [&]( auto v ){ return v.get().get_value(); } );
 
-	vector<double> result( nb_vars );
-	compute( LO, inputs, weights, result );
-	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
+// 	vector<double> result( nb_vars );
+// 	compute( LO, inputs, weights, result );
+// 	int number_units_last_layer = std::count( weights.begin() + 7, weights.begin() + 14, 1 );
 		
-	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
-}
-#endif
+// 	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
+// }
+// #endif
 
 // old 20.6355
 // 68, 45, 64, 6, 20, 52, 95, 46, 80, 23, 17, 61, 81, 65, 71, 2, 76, 30, 32, 46, 32, 19, 19, 28, 65, 32, 40, 30, 40, 12, 21, 81, 27, 94, 98, 33, 49, 10, 86, 52, 28, 44, 91, 0, 72, 10, 46, 26, 18, 15, 4, 72, 58, 60, 52, 31, 46, 47, 48, 89, 44, 36, 95, 80, 33, 90, 94, 29, 77, 6, 14, 57, 58, 43, 90, 25, 42, 25, 94, 87, 77, 51, 19, 8, 57, 96, 11, 7, 7, 51
@@ -230,4 +254,5 @@ double AllDiff::required_cost() const
 // CPPN  Max ECL+inactive - Ctr HO 96.6429
 // 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0
 
-
+// CPPN  Max ECL+inactive - Ctr HO 97.7071
+//0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0

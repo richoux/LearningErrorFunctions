@@ -3,8 +3,7 @@
 #include "less-than.hpp"
 
 LessThan::LessThan( const vector< reference_wrapper<Variable> >& variables )
-	: Concept( variables ),
-	  weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 } // all-diff weights
+	: Concept( variables, { 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 } ) // all-diff weights
 { }
 
 bool LessThan::concept( const vector<int>& var ) const

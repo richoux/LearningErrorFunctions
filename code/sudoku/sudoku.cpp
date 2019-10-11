@@ -48,11 +48,10 @@ void print_solution( const vector<int>& solution )
 	cout << "\n";
 }
 
-// definition in cfn/concept.cpp
-bool concept( const vector<int>& );
-
 void check_solution( const vector<int>& solution )
 {
+	AllDiff fake_constraint( {} );
+	
 	int nb_vars = solution.size();
 	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
 	int size_side_small_square = static_cast<int>( std::sqrt( size_side ) );
@@ -66,7 +65,7 @@ void check_solution( const vector<int>& solution )
 		           solution.begin() + ( ( i + 1 ) * size_side ),
 		           partial_sol.begin() );
 
-		if( !concept( partial_sol ) )
+		if( !fake_constraint.concept( partial_sol ) )
 		{
 			std::transform( partial_sol.begin(),
 			                partial_sol.end(),
@@ -87,7 +86,7 @@ void check_solution( const vector<int>& solution )
 		for( int j = 0; j < size_side; ++j )
 			partial_sol[j] = solution[ j * size_side + i ];
 
-		if( !concept( partial_sol ) )
+		if( !fake_constraint.concept( partial_sol ) )
 		{
 			std::transform( partial_sol.begin(),
 			                partial_sol.end(),
@@ -110,7 +109,7 @@ void check_solution( const vector<int>& solution )
 				for( int l = 0; l < size_side_small_square; ++l )
 				partial_sol[ k * size_side_small_square + l ] = solution[ i * ( size_side_small_square * size_side ) + j * size_side_small_square + k * size_side + l ];
 			
-			if( !concept( partial_sol ) )
+			if( !fake_constraint.concept( partial_sol ) )
 			{
 				std::transform( partial_sol.begin(),
 				                partial_sol.end(),

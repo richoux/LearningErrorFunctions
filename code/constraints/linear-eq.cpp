@@ -3,8 +3,7 @@
 #include "linear-eq.hpp"
 
 LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int rv )
-	: Concept( variables ),
-	  weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 }, // all-diff weights
+	: Concept( variables, { 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 } ), // all-diff weights
 	  _right_value( rv )
 { }
 
