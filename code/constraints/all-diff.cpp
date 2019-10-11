@@ -40,8 +40,8 @@ inline complex<double> expo( double x, unsigned int k, int max )
 // 	weights{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 }
 
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
-//	: Concept( variables, { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 } )
-	: Concept( variables, { 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 } )
+	: Concept( variables, { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0 } )
+//	: Concept( variables, { 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 } )
 { }
 
 bool AllDiff::concept( const vector<int>& var ) const
