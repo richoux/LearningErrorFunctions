@@ -12,7 +12,7 @@ class Concept : public Constraint
 {
 	mutable vector<int> _weights;
 
-	double required_cost() const override;
+	double required_cost() const final override;
 
 protected:
 	int nb_vars;
