@@ -8,12 +8,15 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 
 //////////////////////////////////////////////////////
 
-//  CPPN  Max ECL+inactive - Ctr HO 97.7071
-// 	weights{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 }
+// CPPN  Max ECL+inactive - Ctr HO 96.6429
+// _weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 },
+
+// CPPN  Max ECL+inactive - Ctr HO 97.7071
+// _weights{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
 
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 	: Constraint( variables ),
-	  _weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0 },
+	  _weights{ 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
 	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
@@ -46,9 +49,3 @@ double AllDiff::required_cost() const
 	
 	return _ad_concept.max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( _ad_concept.nb_vars * number_units_last_layer ) );
 }
-
-// CPPN  Max ECL+inactive - Ctr HO 96.6429
-// 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0
-
-// CPPN  Max ECL+inactive - Ctr HO 97.7071
-//0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0
