@@ -5,18 +5,10 @@
 #include <string>
 #include <cmath>
 
-#if defined CHRONO
-#include <chrono>
-#endif
-
 #include "ctr_high_outputs.hpp"
 #include "../latin/latin.hpp"
 #include "../utils/convert.hpp"
 #include "function_to_learn_cppn.hpp"
-
-#if defined CHRONO
-static bool first = true;
-#endif
 
 //Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, vector< vector<int> > random_configurations, map<string, double> cost_map )
 Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars, int nb_vars, const vector<int>& random_configurations, const map<string, double>& cost_map )
@@ -31,20 +23,8 @@ Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars, int nb
 
 double Ctr_HO::required_cost() const
 {
-#if defined CHRONO
-	auto start = std::chrono::steady_clock::now();
-#endif
-
 	// Do not get confused between variables of our model (the coefficients) and variables of the configuration search space
 	auto& weight_vars = variables;
-
-#if defined CHRONO
-	if( first )
-	{
-		auto end = std::chrono::steady_clock::now();
-		cerr << "Ctr_HO::assignement: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
-	}
-#endif
 
 	double g_x;
 	double cost = 0.;
@@ -68,14 +48,6 @@ double Ctr_HO::required_cost() const
 			cost += ( precomputed_metric - g_x );
 	}
 
-#if defined CHRONO
-	if( first )
-	{
-		auto end = std::chrono::steady_clock::now();
-		cerr << "Ctr_HO::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
-		first = false;
-	}
-#endif
 	return cost;
 }
 

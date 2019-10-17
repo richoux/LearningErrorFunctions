@@ -4,20 +4,12 @@
 
 #include <iterator>
 
-#if defined CHRONO
-#include <chrono>
-#endif
-
 #include "obj_ecl.hpp"
 #include "function_to_learn_cppn.hpp"
-#include "concept.hpp"
 
-#if defined DEBUG or CHRONO
-static bool first2 = true;
-#endif
-
-Obj_ECL::Obj_ECL( int nb_vars, const vector<int>& random_solutions, const vector<int>& samples )
+Obj_ECL::Obj_ECL( unique_ptr<Concept> concept, int nb_vars, const vector<int>& random_solutions, const vector<int>& samples )
 	: Objective( "Max empirical autocorrelation function + Max inactive units" ),
+	  _concept( std::move( concept ) ),
 	  _nb_vars( nb_vars ),
 	  _random_sol( random_solutions ),
 	  _random_config( samples )
@@ -32,10 +24,6 @@ Obj_ECL::Obj_ECL( int nb_vars, const vector<int>& random_solutions, const vector
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 {
-#if defined CHRONO
-	auto start = std::chrono::steady_clock::now();
-#endif
-	
 	vector<double> f_outputs;
 
 	// prepare the random _walk: we will visit solutions in random_solutions in a random order.
@@ -69,7 +57,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		{
 			auto output = g( variables, current );
 
-			f_outputs.push_back( concept( current ) ? 0 : output );
+			f_outputs.push_back( _concept->concept( current ) ? 0 : output );
 			*(diff.first) = *(diff.second);
 
 			diff = std::mismatch( current.begin(),
@@ -79,7 +67,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		}
 
 		auto output = g( variables, current );
-		f_outputs.push_back( concept( current ) ? 0 : output );
+		f_outputs.push_back( _concept->concept( current ) ? 0 : output );
 	}
 	
 	length = (int)f_outputs.size();
@@ -107,15 +95,6 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 		
 	empirical_autocorrelation = empirical_autocorrelation_num / empirical_autocorrelation_den;
 	
-#if defined CHRONO
-	if( first2 )
-	{
-		auto end = std::chrono::steady_clock::now();
-		cerr << "Obj_ECL::required_cost: " << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() << "µs\n";
-		first2 = false;
-	}
-#endif
-
 	int EA = static_cast<int>( std::trunc( empirical_autocorrelation * 100 ) );
 	double inactives = std::count_if( variables.begin(), variables.end(), [](const auto &v){ return v.get_value() == 0; } );
 	// normalization

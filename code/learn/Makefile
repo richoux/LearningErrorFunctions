@@ -21,12 +21,12 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=. ../latin/
+SRCDIR=.
 OBJDIR=obj
 BINDIR=bin
 
 # Files
-COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp
+COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp ../latin/latin.cpp
 COMMON=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(COMMON_SRC)))
 
 # Reminder, 'cause it is easy to forget makefile's fucked-up syntax...
@@ -36,34 +36,51 @@ COMMON=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(COMMON_SRC)))
 
 # Rules
 alldiff: $(BINDIR)/$(EXEC_AD)
+alldiff: CONSTRAINTFLAG=-DAD
+
 lineareq: $(BINDIR)/$(EXEC_LE)
+lineareq: CONSTRAINTFLAG=-DLE
+
 lessthan: $(BINDIR)/$(EXEC_LT)
+lessthan: CONSTRAINTFLAG=-DLT
 
 # Executables
-$(BINDIR)/$(EXEC_AD): $(COMMON) $(OBJDIR)/all-diff.o
+$(BINDIR)/$(EXEC_AD): $(COMMON) $(OBJDIR)/all-diff_concept.o
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
-$(BINDIR)/$(EXEC_LE): $(COMMON) $(OBJDIR)/linear-eq.o
+$(BINDIR)/$(EXEC_LE): $(COMMON) $(OBJDIR)/linear-eq_concept.o
 	$(CXX) -o  $@ $^ $(LDFLAGS)
 
-$(BINDIR)/$(EXEC_LT): $(COMMON) $(OBJDIR)/less-than.o
+$(BINDIR)/$(EXEC_LT): $(COMMON) $(OBJDIR)/less-than_concept.o
 	$(CXX) -o  $@ $^ $(LDFLAGS)
+
+# Objects of a specific contraint
+$(OBJDIR)/all-diff_concept.o: ../constraints/all-diff_concept.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/linear-eq_concept.o: ../constraints/linear-eq_concept.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/less-than_concept.o: ../constraints/less-than_concept.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Common objects
+$(OBJDIR)/learn_cost_function.o: learn_cost_function.cpp
+	$(CXX) $(CXXFLAGS) $(CONSTRAINTFLAG) -c $< -o $@
+
 $(OBJDIR)/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Objects of a specific contraint
-$(OBJDIR)/all-diff.o: ../constraints/all-diff.cpp
-	$(CXX) $(CXXFLAGS) -DCFN -c $< -o $@
+$(OBJDIR)/concept.o: ../constraints/concept.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR)/linear-eq.o: ../constraints/linear-eq.cpp
-	$(CXX) $(CXXFLAGS) -DCFN -c $< -o $@
+$(OBJDIR)/convert.o: ../utils/convert.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR)/less-than.o: ../constraints/less-than.cpp
-	$(CXX) $(CXXFLAGS) -DCFN -c $< -o $@
+$(OBJDIR)/latin.o: ../latin/latin.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 
 clean:
-	rm -fr core *~ $(BINDIR)/$(EXEC_AD) $(OBJECTS)
+	rm -fr core *~ $(BINDIR)/$(EXEC_AD) $(OBJDIR)/*.o

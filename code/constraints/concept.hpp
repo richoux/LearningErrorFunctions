@@ -16,6 +16,7 @@ public:
 
 	Concept( int nb_vars, int max_domain );
 	
-	virtual bool concept( const vector<int>& var ) const = 0;
+	bool concept( const vector<int>& var ) const;
+	virtual bool concept( const vector<int>& var, int start, int end ) const = 0;
 	virtual bool concept( const vector< reference_wrapper<Variable> >& var ) const = 0;
 };

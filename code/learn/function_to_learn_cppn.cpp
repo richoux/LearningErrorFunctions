@@ -2,15 +2,7 @@
 #include <complex>
 #include <algorithm>
 
-#if defined CHRONO
-#include <chrono>
-#endif
-
 #include "function_to_learn_cppn.hpp"
-
-#if defined CHRONO or DEBUG
-static bool first = true;
-#endif
 
 inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }

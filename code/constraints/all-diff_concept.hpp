@@ -8,6 +8,6 @@ public:
 	AllDiffConcept( int nb_vars, int max_domain );
 	AllDiffConcept();
 	
-	bool concept( const vector<int>& var ) const override;
+	bool concept( const vector<int>& var, int start, int end ) const override;
 	bool concept( const vector< reference_wrapper<Variable> >& var ) const override;
 };

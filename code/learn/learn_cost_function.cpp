@@ -20,13 +20,16 @@
 
 #include "random_draw.hpp"
 
-#include "../constraints/concept.hpp"
-
 #include "../utils/randutils.hpp"
 #include "../utils/convert.hpp"
 
+#include "../constraints/concept.hpp"
+#include "../constraints/all-diff_concept.hpp"
+
 using namespace std;
 using namespace ghost;
+
+constexpr	int number_layers = 2;
 
 double hamming_manhattan_metric( const vector<int>& configuration,
                                  const vector<int>& solution,
@@ -102,22 +105,31 @@ int main( int argc, char **argv )
 
 	// Again, we assume here that all variables share the same domain,
 	// and that this domain contains all numbers from 0 to max_value 
-	int max_value = stoi( argv[2] );
-
+	//int max_value = stoi( argv[2] );
+	int max_value = nb_vars - 1;
+		
 	vector<int> random_solutions;
 	vector<int> random_configurations;
-	if( argc == 4 )
-		random_draw( nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
+
+	unique_ptr<Concept> concept;
+#if defined AD
+	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
+#elif defined LE
+	concept = make_unique<LinearEqConcept>( nb_vars, max_value );
+#elif defined LT
+	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
+#endif
+	
+	if( argc == 3 )
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[2] ) );
 	else
-		random_draw( nb_vars, max_value, random_solutions, random_configurations );
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
 	
 	vector<int> few_configurations( random_configurations.begin(), random_configurations.begin() + random_solutions.size() );
 	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars, max_value );
 
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
-
-	int number_layers = 2;
 	
 	vector< Variable > weights; // be careful: variables of our problem actually represent weights
 	for( int i = 0; i < 7 * number_layers; ++i )
@@ -166,14 +178,14 @@ int main( int argc, char **argv )
 	                                                ctr_dependency_gaussian,
 	                                                ctr_last_layer_active_unit };	                                                
 	
-	shared_ptr< Objective > objective = make_shared< Obj_ECL >( nb_vars, random_solutions, few_configurations );
+	shared_ptr< Objective > objective = make_shared< Obj_ECL >( std::move( concept ), nb_vars, random_solutions, few_configurations );
 
 	Solver solver( weights, constraints, objective );
 	
 	double cost = 0.;
 	vector<int> solution( weights_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000000, 10000000 );
+	solver.solve( cost, solution, 10000000, 1000000 );
 	// 60000000 ms = 1m
 	//solver.solve( cost, solution, 10000000, 60000000 );
 	// 3600000000 microseconds = 1h
