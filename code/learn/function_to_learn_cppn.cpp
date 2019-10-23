@@ -6,7 +6,7 @@
 
 inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
-inline double gaussian( double x ) { return std::exp( std::pow( ( x - 1 ), 2 ) / -2 ); }
+inline double gaussian( double x ) { return std::exp( -8 * std::pow( x , 2 ) ); }
 
 void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
 {
