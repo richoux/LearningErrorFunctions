@@ -17,7 +17,7 @@ Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars, int nb
 	  _random_configurations( random_configurations ),
 	  _cost_map( cost_map )
 {
-	_weights.reserve( weight_vars.size() + 7 );
+	_weights.reserve( weight_vars.size() + number_functions );
 	_inputs.reserve( nb_vars );
 }
 
@@ -32,10 +32,10 @@ double Ctr_HO::required_cost() const
 
 	_weights.resize( _weights.capacity() );
 	std::transform( weight_vars.begin(), weight_vars.end(), _weights.begin(), [&]( auto w ){ return w.get().get_value(); } );
-	for( int i = (int)weight_vars.size(); i < (int)weight_vars.size() + 7; ++i )
-		_weights[i] = 0;
-	// Add a layer with only abs() active
-	_weights[ weight_vars.size() + 1 ] = 1;
+
+	// Last layer: identity
+	std::fill( _weights.begin() + weight_vars.size(), _weights.end(), 0 );
+	_weights[ weight_vars.size() ] = 1;
 
 	for( int i = 0; i < (int)_random_configurations.size(); i += _nb_vars )
 	{
