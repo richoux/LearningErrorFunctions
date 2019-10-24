@@ -171,9 +171,9 @@ int main( int argc, char **argv )
 	                                                              weights_ref.begin() + number_functions );
 	dependency_gaussian.push_back( weights_ref[number_functions + 6] );
 
-	vector< reference_wrapper< Variable > > dependency_normalization ( weights_ref.begin(),
-	                                                                   weights_ref.begin() + number_functions );
-	dependency_gaussian.push_back( weights_ref[number_functions + 7] );
+	// vector< reference_wrapper< Variable > > dependency_normalization ( weights_ref.begin(),
+	//                                                                    weights_ref.begin() + number_functions );
+	// dependency_gaussian.push_back( weights_ref[number_functions + 7] );
 
 	vector< reference_wrapper< Variable > > last_layer_active_unit ( weights_ref.begin() + number_functions,
 	                                                                 weights_ref.end() );
@@ -190,7 +190,7 @@ int main( int argc, char **argv )
 	shared_ptr< Constraint > ctr_dependency_cubic_tanh = make_shared< Ctr_dependency >( dependency_cubic_tanh );
 	shared_ptr< Constraint > ctr_dependency_sigmoid = make_shared< Ctr_dependency >( dependency_sigmoid );
 	shared_ptr< Constraint > ctr_dependency_gaussian = make_shared< Ctr_dependency >( dependency_gaussian );	
-	shared_ptr< Constraint > ctr_dependency_normalization = make_shared< Ctr_dependency >( dependency_normalization );
+	// shared_ptr< Constraint > ctr_dependency_normalization = make_shared< Ctr_dependency >( dependency_normalization );
 
 	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
 
@@ -201,7 +201,7 @@ int main( int argc, char **argv )
 	                                                ctr_dependency_cubic_tanh,
 	                                                ctr_dependency_sigmoid,
 	                                                ctr_dependency_gaussian,
-	                                                ctr_dependency_normalization,
+	                                                // ctr_dependency_normalization,
 	                                                ctr_last_layer_active_unit };
 	
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( std::move( concept ),

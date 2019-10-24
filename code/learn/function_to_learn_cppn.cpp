@@ -8,16 +8,19 @@ inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
 inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
 inline double gaussian( double x ) { return std::exp( -8 * std::pow( x , 2 ) ); }
 
-void normalization( const vector<double>& v, vector<double>& normalized )
-{
-	auto min = std::min_element( v.begin(), v.end() );
-	auto max = std::max_element( v.begin(), v.end() );
+// Bugged (no idea why!)
+// And wrong way to compute the norm: it shouldn't be between the min and max element in the vector,
+// but between the minimal and maximal possible values.
+// void normalization( const vector<double>& v, vector<double>& normalized )
+// {
+// 	auto min = std::min_element( v.begin(), v.end() );
+// 	auto max = std::max_element( v.begin(), v.end() );
 
-	transform( v.begin(),
-	           v.end(),
-	           normalized.begin(),
-	           [&min,&max](auto x) -> double { return (x - *min) / (*max - *min); } );
-}
+// 	transform( v.begin(),
+// 	           v.end(),
+// 	           normalized.begin(),
+// 	           [&min,&max](auto x) -> double { return (x - *min) / (*max - *min); } );
+// }
 
 void interpreter( int number, const vector<double>& inputs, vector<double>& outputs )
 {
@@ -51,10 +54,10 @@ void interpreter( int number, const vector<double>& inputs, vector<double>& outp
 	case 6:
 		transform( inputs.begin(), inputs.end(), outputs.begin(), gaussian );
 		break;
-		// Normalization
-	case 7:
-		normalization( inputs, outputs );
-		break;
+	// 	// Normalization
+	// case 7:
+	// 	normalization( inputs, outputs );
+	// 	break;
 	}
 }
 
@@ -78,7 +81,7 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 		for( int l = 1; l < L; ++l )
 		{			
 			std::fill( temp_outputs.begin(), temp_outputs.end(), 0.0 );
-			for( int i = 0; i <= number_functions - 1; ++i )
+			for( int i = 0; i < number_functions; ++i )
 			{
 				if( weights[ ( l - 1 ) * number_functions + i ] == 1 )
 				{
