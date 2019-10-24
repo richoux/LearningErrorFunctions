@@ -185,7 +185,7 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( weights_ref.size(), 0 );
 
-	solver.solve( cost, solution, 10000000, 1000000 );
+	solver.solve( cost, solution, 1000000, 10000000 );
 	// 60000000 ms = 1m
 	//solver.solve( cost, solution, 10000000, 60000000 );
 	// 3600000000 microseconds = 1h
