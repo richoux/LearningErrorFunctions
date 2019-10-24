@@ -1,7 +1,7 @@
 #include "ctr_active_unit.hpp"
 
 Ctr_active_unit::Ctr_active_unit( const vector< reference_wrapper<Variable> >& weights )
-	: Constraint (weights)
+	: Constraint ( weights )
 { }
 
 double Ctr_active_unit::required_cost() const

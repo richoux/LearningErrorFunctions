@@ -17,6 +17,7 @@
 
 #include "ctr_dependency.hpp"
 #include "ctr_active_unit.hpp"
+#include "ctr_inactive_unit.hpp"
 
 #include "random_draw.hpp"
 
@@ -135,6 +136,9 @@ int main( int argc, char **argv )
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 	
+	/*************/
+	/* Variables */
+	/*************/
 	vector< Variable > weights; // be careful: variables of our problem actually represent weights
 	for( int i = 0; i < number_functions * number_layers; ++i )
 		weights.emplace_back( std::string("v") + std::to_string(i),
@@ -144,40 +148,45 @@ int main( int argc, char **argv )
 
 	vector< reference_wrapper< Variable > > weights_ref( weights.begin(), weights.end() );
 	
-	vector< reference_wrapper< Variable > > dependency_id ( weights_ref.begin(),
-	                                                        weights_ref.begin() + number_functions + 1 );
+	vector< reference_wrapper< Variable > > dependency_id( weights_ref.begin(),
+	                                                       weights_ref.begin() + number_functions + 1 );
 	
-	vector< reference_wrapper< Variable > > dependency_abs ( weights_ref.begin(),
-	                                                         weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_abs( weights_ref.begin(),
+	                                                        weights_ref.begin() + number_functions );
 	dependency_abs.push_back( weights_ref[number_functions + 1] );
 
-	vector< reference_wrapper< Variable > > dependency_sin ( weights_ref.begin(),
-	                                                         weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_sin( weights_ref.begin(),
+	                                                        weights_ref.begin() + number_functions );
 	dependency_sin.push_back( weights_ref[number_functions + 2] );
 
-	vector< reference_wrapper< Variable > > dependency_tanh ( weights_ref.begin(),
-	                                                          weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_tanh( weights_ref.begin(),
+	                                                         weights_ref.begin() + number_functions );
 	dependency_tanh.push_back( weights_ref[number_functions + 3] );
 
-	vector< reference_wrapper< Variable > > dependency_cubic_tanh ( weights_ref.begin(),
-	                                                                weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_cubic_tanh( weights_ref.begin(),
+	                                                               weights_ref.begin() + number_functions );
 	dependency_cubic_tanh.push_back( weights_ref[number_functions + 4] );
 
-	vector< reference_wrapper< Variable > > dependency_sigmoid ( weights_ref.begin(),
-	                                                             weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_sigmoid( weights_ref.begin(),
+	                                                            weights_ref.begin() + number_functions );
 	dependency_sigmoid.push_back( weights_ref[number_functions + 5] );
 
-	vector< reference_wrapper< Variable > > dependency_gaussian ( weights_ref.begin(),
-	                                                              weights_ref.begin() + number_functions );
+	vector< reference_wrapper< Variable > > dependency_gaussian( weights_ref.begin(),
+	                                                             weights_ref.begin() + number_functions );
 	dependency_gaussian.push_back( weights_ref[number_functions + 6] );
 
-	// vector< reference_wrapper< Variable > > dependency_normalization ( weights_ref.begin(),
-	//                                                                    weights_ref.begin() + number_functions );
+	// vector< reference_wrapper< Variable > > dependency_normalization( weights_ref.begin(),
+	//                                                                   weights_ref.begin() + number_functions );
 	// dependency_gaussian.push_back( weights_ref[number_functions + 7] );
 
-	vector< reference_wrapper< Variable > > last_layer_active_unit ( weights_ref.begin() + number_functions,
-	                                                                 weights_ref.end() );
+	vector< reference_wrapper< Variable > > last_layer_active_unit( weights_ref.begin() + number_functions,
+	                                                                weights_ref.end() );
 
+	vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
+
+	/***************/
+	/* Constraints */
+	/***************/
 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( weights_ref,
 	                                                              nb_vars,
 	                                                              few_configurations,
@@ -194,6 +203,8 @@ int main( int argc, char **argv )
 
 	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
 
+	shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
+
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var,
 	                                                ctr_dependency_id,
 	                                                ctr_dependency_sin,
@@ -201,9 +212,15 @@ int main( int argc, char **argv )
 	                                                ctr_dependency_cubic_tanh,
 	                                                ctr_dependency_sigmoid,
 	                                                ctr_dependency_gaussian,
-	                                                // ctr_dependency_normalization,
+	                                                //ctr_last_layer_active_unit,
+	                                                //ctr_inactive_first_id_abs };
+
 	                                                ctr_last_layer_active_unit };
+	                                                //ctr_inactive_first_id_abs };
 	
+	/**********************/
+	/* Objective function */
+	/**********************/
 	shared_ptr< Objective > objective = make_shared< Obj_ECL >( std::move( concept ),
 	                                                            nb_vars,
 	                                                            random_solutions,
@@ -214,9 +231,9 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( weights_ref.size(), 0 );
 
-	solver.solve( cost, solution, 1000000, 10000000 );
+	//solver.solve( cost, solution, 1000000, 10000000 );
 	// 60000000 ms = 1m
-	//solver.solve( cost, solution, 10000000, 60000000 );
+	solver.solve( cost, solution, 10000000, 60000000 );
 	// 3600000000 microseconds = 1h
 	//solver.solve( cost, solution, 100000000, 3600000000 );
 
