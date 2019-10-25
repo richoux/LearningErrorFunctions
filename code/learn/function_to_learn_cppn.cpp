@@ -119,11 +119,11 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 	int O = LO % 10;
 
 	// DEBUG
-	// cout << "input: ";
-	// std::copy( inputs.begin(),
-	//            inputs.end(),
-	//            ostream_iterator<double>( cout, " " ) );
-	// cout << "\n";
+	cout << "input: ";
+	std::copy( inputs.begin(),
+	           inputs.end(),
+	           ostream_iterator<double>( cout, " " ) );
+	cout << "\n";
 	
 	auto inputs_size = inputs.size();
 	
@@ -156,28 +156,28 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 	}
 
 	// DEBUG
-	// cout << "result: ";
-	// std::copy( result.begin(),
-	//            result.end(),
-	//            ostream_iterator<double>( cout, " " ) );
-	// cout << "\n";
+	cout << "result: ";
+	std::copy( result.begin(),
+	           result.end(),
+	           ostream_iterator<double>( cout, " " ) );
+	cout << "\n";
 }
 
 double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int max )
 {
 	int LO = ( weights.size() / number_functions ) * 10;// + ( number_functions - 1 );
 	vector<double> result( nb_vars ); //inputs.size() );
-	// int number_units_last_layer = std::count( weights.begin() + number_functions, weights.begin() + 2*number_functions, 1 );
+	int number_units_last_layer = std::count( weights.begin() + number_functions, weights.begin() + 2*number_functions, 1 );
 	double max_cost = nb_vars + 0.9;
 	
 	compute( LO, inputs, weights, result, max );
 
 	// DEBUG
-	//cout << "cost: " << max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars ) << "\n\n";
+	cout << "cost: " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n\n";
 		
 	// max_cost times the sigmoid of the mean of the values in result
-	return max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars );
-	// return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
+	//return max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars );
+	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
 }
 
 // ref_wrapper<Variable> version

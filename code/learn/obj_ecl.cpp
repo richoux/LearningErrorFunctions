@@ -17,9 +17,25 @@ Obj_ECL::Obj_ECL( unique_ptr<Concept> concept, int nb_vars, const vector<int>& r
 	_walk.resize( 2 * _random_sol.size() );
 	for( int i = 0; i < (int)_random_sol.size(); i+=_nb_vars )
 	{
-		std::copy( _random_config.begin() + i, _random_config.begin() + i + _nb_vars, _walk.begin() + i );
-		std::copy( _random_sol.begin() + i, _random_sol.begin() + i + _nb_vars, _walk.begin() + i + _nb_vars );		
+		std::copy( _random_config.begin() + i, _random_config.begin() + i + _nb_vars, _walk.begin() + 2*i );
+		std::copy( _random_sol.begin() + i, _random_sol.begin() + i + _nb_vars, _walk.begin() + 2*i + _nb_vars );		
 	}
+
+	// // DEBUG
+	// for( int i = 0; i < (int)_random_sol.size(); i+=_nb_vars )
+	// {
+	// 	std::copy( _random_config.begin() + i,
+	// 	           _random_config.begin() + i + _nb_vars,
+	// 	           ostream_iterator<int>( cout, " " ) );
+	// 	std::copy( _random_sol.begin() + i,
+	// 	           _random_sol.begin() + i + _nb_vars,
+	// 	           ostream_iterator<int>( cout, " " ) );
+	// }
+	// cout << "\n";
+
+	// std::copy( _walk.begin(),
+	//            _walk.end(),
+	//            ostream_iterator<int>( cout, " " ) );	
 }
 
 double Obj_ECL::required_cost( const vector< Variable >& variables ) const
