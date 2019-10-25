@@ -96,7 +96,7 @@ void usage( char **argv )
 
 int main( int argc, char **argv )
 {
-	if( argc < 3 || argc > 4 )
+	if( argc < 3 || argc > 5 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
@@ -108,9 +108,8 @@ int main( int argc, char **argv )
 
 	// Again, we assume here that all variables share the same domain,
 	// and that this domain contains all numbers from 0 to max_value 
-	//int max_value = stoi( argv[2] );
-	int max_value = nb_vars - 1;
-		
+	int max_value = stoi( argv[2] );
+			
 	vector<int> random_solutions;
 	vector<int> random_configurations;
 
@@ -123,8 +122,8 @@ int main( int argc, char **argv )
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
 #endif
 	
-	if( argc == 3 )
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[2] ) );
+	if( argc == 4 )
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
 	else
 		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
 	
@@ -189,6 +188,7 @@ int main( int argc, char **argv )
 	/***************/
 	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( weights_ref,
 	                                                              nb_vars,
+	                                                              max_value,
 	                                                              few_configurations,
 	                                                              cost_map );
 

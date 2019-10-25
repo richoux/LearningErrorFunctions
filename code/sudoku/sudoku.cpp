@@ -51,7 +51,8 @@ void print_solution( const vector<int>& solution )
 
 void check_solution( const vector<int>& solution )
 {
-	AllDiffConcept ad_concept;
+	//AllDiffConcept ad_concept;
+	unique_ptr<Concept> ad_concept = make_unique<AllDiffConcept>();
 	
 	int nb_vars = solution.size();
 	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
@@ -66,7 +67,7 @@ void check_solution( const vector<int>& solution )
 		           solution.begin() + ( ( i + 1 ) * size_side ),
 		           partial_sol.begin() );
 
-		if( !ad_concept.concept( partial_sol ) )
+		if( !ad_concept->concept( partial_sol ) )
 		{
 			std::transform( partial_sol.begin(),
 			                partial_sol.end(),
@@ -87,7 +88,7 @@ void check_solution( const vector<int>& solution )
 		for( int j = 0; j < size_side; ++j )
 			partial_sol[j] = solution[ j * size_side + i ];
 
-		if( !ad_concept.concept( partial_sol ) )
+		if( !ad_concept->concept( partial_sol ) )
 		{
 			std::transform( partial_sol.begin(),
 			                partial_sol.end(),
@@ -110,7 +111,7 @@ void check_solution( const vector<int>& solution )
 				for( int l = 0; l < size_side_small_square; ++l )
 				partial_sol[ k * size_side_small_square + l ] = solution[ i * ( size_side_small_square * size_side ) + j * size_side_small_square + k * size_side + l ];
 			
-			if( !ad_concept.concept( partial_sol ) )
+			if( !ad_concept->concept( partial_sol ) )
 			{
 				std::transform( partial_sol.begin(),
 				                partial_sol.end(),
@@ -219,7 +220,15 @@ int main( int argc, char **argv )
 	vector<int> solution( variables.size(), 0 );
 
 	// 30s
-	solver.solve( cost, solution, 1000000, 30000000 );
+	//try
+	//{
+		solver.solve( cost, solution, 1000000, 30000000 );
+	// }
+	// catch( exception& e )
+	// {
+	// 	cout << "NAN EXCEP!\n";
+	// 	print_solution( solution );
+	// }
 	
   // 5s
 	//solver.solve( cost, solution, 1000000, 5000000 );

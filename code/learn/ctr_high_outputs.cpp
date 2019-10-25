@@ -11,9 +11,14 @@
 #include "function_to_learn_cppn.hpp"
 
 //Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& coefficients, int nb_vars, int var_max_value, vector< vector<int> > random_configurations, map<string, double> cost_map )
-Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars, int nb_vars, const vector<int>& random_configurations, const map<string, double>& cost_map )
+Ctr_HO::Ctr_HO( const vector< reference_wrapper<Variable> >& weight_vars,
+                int nb_vars,
+                int max_value,
+                const vector<int>& random_configurations,
+                const map<string, double>& cost_map )
 	: Constraint( weight_vars ),
 	  _nb_vars( nb_vars ),
+	  _max_value( max_value ),
 	  _random_configurations( random_configurations ),
 	  _cost_map( cost_map )
 {
@@ -42,7 +47,7 @@ double Ctr_HO::required_cost() const
 		_inputs.resize( _inputs.capacity() );
 		std::copy( _random_configurations.begin() + i, _random_configurations.begin() + i + _nb_vars, _inputs.begin() );
 
-		g_x = g( _weights, _inputs, i, i + _nb_vars );
+		g_x = g( _weights, _inputs, i, i + _nb_vars, _max_value );
 		precomputed_metric = _cost_map.at( convert( _random_configurations, i, i + _nb_vars ) );
 		if( g_x < precomputed_metric )
 			cost += ( precomputed_metric - g_x );
