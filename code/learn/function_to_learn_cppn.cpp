@@ -2,7 +2,7 @@
 #include <complex>
 #include <algorithm>
 
-#include <iostream>
+// #include <iostream>
 
 #include "function_to_learn_cppn.hpp"
 
@@ -119,11 +119,11 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 	int O = LO % 10;
 
 	// DEBUG
-	cout << "input: ";
-	std::copy( inputs.begin(),
-	           inputs.end(),
-	           ostream_iterator<double>( cout, " " ) );
-	cout << "\n";
+	// cout << "input: ";
+	// std::copy( inputs.begin(),
+	//            inputs.end(),
+	//            ostream_iterator<double>( cout, " " ) );
+	// cout << "\n";
 	
 	auto inputs_size = inputs.size();
 	
@@ -156,11 +156,11 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 	}
 
 	// DEBUG
-	cout << "result: ";
-	std::copy( result.begin(),
-	           result.end(),
-	           ostream_iterator<double>( cout, " " ) );
-	cout << "\n";
+	// cout << "result: ";
+	// std::copy( result.begin(),
+	//            result.end(),
+	//            ostream_iterator<double>( cout, " " ) );
+	// cout << "\n";
 }
 
 double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int max )
@@ -173,7 +173,7 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 	compute( LO, inputs, weights, result, max );
 
 	// DEBUG
-	cout << "cost: " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n\n";
+	// cout << "cost: " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n\n";
 		
 	// max_cost times the sigmoid of the mean of the values in result
 	//return max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars );

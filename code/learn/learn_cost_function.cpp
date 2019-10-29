@@ -176,12 +176,12 @@ int main( int argc, char **argv )
 
 	// vector< reference_wrapper< Variable > > dependency_normalization( weights_ref.begin(),
 	//                                                                   weights_ref.begin() + number_functions );
-	// dependency_gaussian.push_back( weights_ref[number_functions + 7] );
+	// dependency_normalization.push_back( weights_ref[number_functions + 7] );
 
 	vector< reference_wrapper< Variable > > last_layer_active_unit( weights_ref.begin() + number_functions,
 	                                                                weights_ref.end() );
 
-	vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
+	//vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
 
 	/***************/
 	/* Constraints */
@@ -203,10 +203,11 @@ int main( int argc, char **argv )
 
 	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
 
-	shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
+	//shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
 
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var,
 	                                                ctr_dependency_id,
+	                                                ctr_dependency_abs,
 	                                                ctr_dependency_sin,
 	                                                ctr_dependency_tanh,
 	                                                ctr_dependency_cubic_tanh,
@@ -231,10 +232,10 @@ int main( int argc, char **argv )
 	double cost = 0.;
 	vector<int> solution( weights_ref.size(), 0 );
 
-	solver.solve( cost, solution, 100000, 1000000 );
+	//solver.solve( cost, solution, 100000, 1000000 );
 	//solver.solve( cost, solution, 1000000, 10000000 );
 	// 60000000 ms = 1m
-	//solver.solve( cost, solution, 10000000, 60000000 );
+	solver.solve( cost, solution, 6000000, 60000000 );
 	// 3600000000 microseconds = 1h
 	//solver.solve( cost, solution, 100000000, 3600000000 );
 
