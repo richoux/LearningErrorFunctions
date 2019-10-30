@@ -27,7 +27,13 @@
 #include "../utils/convert.hpp"
 
 #include "../constraints/concept.hpp"
+#if defined AD
 #include "../constraints/all-diff_concept.hpp"
+#elif defined LE
+#include "../constraints/linear-eq_concept.hpp"
+#elif defined LT
+#include "../constraints/less-then_concept.hpp"
+#endif
 
 using namespace std;
 using namespace ghost;
@@ -96,12 +102,20 @@ void usage( char **argv )
 
 int main( int argc, char **argv )
 {
+#if defined LE
+	if( argc < 3 || argc > 6 )
+	{
+		usage( argv );
+		return EXIT_FAILURE;
+	}
+#else
 	if( argc < 3 || argc > 5 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
 	}
-
+#endif
+	
 	randutils::mt19937_rng rng;
 	
 	int nb_vars = stoi( argv[1] ); // not the size the vector<Variable>, see below
@@ -117,15 +131,23 @@ int main( int argc, char **argv )
 #if defined AD
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 #elif defined LE
-	concept = make_unique<LinearEqConcept>( nb_vars, max_value );
+	// argv[3] is the right-hand side value of the equation
+	concept = make_unique<LinearEqConcept>( nb_vars, max_value, stoi( argv[3] ) );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
 #endif
 	
+#if defined LE
+	if( argc == 5 )
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[4] ) );
+	else
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
+#else
 	if( argc == 4 )
 		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
 	else
 		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
+#endif
 	
 	vector<int> few_configurations( random_configurations.begin(),
 	                                random_configurations.begin() + random_solutions.size() );
