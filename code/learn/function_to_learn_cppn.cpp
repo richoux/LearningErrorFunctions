@@ -69,23 +69,22 @@ void interpreter( int number, const vector<double>& inputs, vector<double>& outp
 {
 	switch( number )
 	{
-	// 	// Identity
-	// case 0:
-	// 	copy( inputs.begin(), inputs.end(), outputs.begin() );
-	// 	break;
-	// 	// Absolute value
-	// case 1:
-	// 	transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::abs(x); } );
-	// 	break;
-
-		// Normalization 0_1
+		// Identity
 	case 0:
-		norm_0_1( inputs, outputs, max );
+		copy( inputs.begin(), inputs.end(), outputs.begin() );
 		break;
-		// Normalization -1_1
+		// Absolute value
 	case 1:
-		norm_minus1_1( inputs, outputs, max );
-		break;		
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::abs(x); } );
+		break;
+	// 	// Normalization 0_1
+	// case 0:
+	// 	norm_0_1( inputs, outputs, max );
+	// 	break;
+	// 	// Normalization -1_1
+	// case 1:
+	// 	norm_minus1_1( inputs, outputs, max );
+	// 	break;		
 		// Sine
 	case 2:
 		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::sin(x); } );
