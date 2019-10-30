@@ -71,7 +71,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 
 		while( diff.first != current.end() )
 		{
-			auto output = g( variables, current, _concept->max_domain );
+			auto output = g( variables, current, _concept->max_value );
 
 			f_outputs.push_back( _concept->concept( current ) ? 0 : output );
 			*(diff.first) = *(diff.second);
@@ -82,7 +82,7 @@ double Obj_ECL::required_cost( const vector< Variable >& variables ) const
 			                      _walk.begin() + i + 2 * _nb_vars );
 		}
 
-		auto output = g( variables, current, _concept->max_domain );
+		auto output = g( variables, current, _concept->max_value );
 		f_outputs.push_back( _concept->concept( current ) ? 0 : output );
 	}
 	

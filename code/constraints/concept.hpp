@@ -11,10 +11,10 @@ class Concept
 {
 public:
 	int nb_vars;
-	int max_domain;
+	int max_value;
 	double max_cost;
 
-	Concept( int nb_vars, int max_domain );
+	Concept( int nb_vars, int max_value );
 	
 	bool concept( const vector<int>& var ) const;
 	virtual bool concept( const vector<int>& var, int start, int end ) const = 0;

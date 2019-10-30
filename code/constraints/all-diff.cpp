@@ -35,5 +35,5 @@ double AllDiff::required_cost() const
 	                inputs.begin(),
 	                []( const auto& v ){ return v.get().get_value(); } );
 
-	return intermediate_g( _weights, inputs, _ad_concept.nb_vars, _ad_concept.max_domain );
+	return intermediate_g( _weights, inputs, _ad_concept.nb_vars, _ad_concept.max_value );
 }

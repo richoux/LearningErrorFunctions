@@ -5,7 +5,7 @@
 class AllDiffConcept : public Concept
 {
 public:
-	AllDiffConcept( int nb_vars, int max_domain );
+	AllDiffConcept( int nb_vars, int max_value );
 	AllDiffConcept();
 	
 	bool concept( const vector<int>& var, int start, int end ) const override;

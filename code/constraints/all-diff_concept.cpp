@@ -1,7 +1,7 @@
 #include "all-diff_concept.hpp"
 
-AllDiffConcept::AllDiffConcept( int nb_vars, int max_domain )
-	: Concept( nb_vars, max_domain )
+AllDiffConcept::AllDiffConcept( int nb_vars, int max_value )
+	: Concept( nb_vars, max_value )
 { }
 
 AllDiffConcept::AllDiffConcept()
