@@ -225,16 +225,11 @@ int main( int argc, char **argv )
   double cost = 0.;
 	vector<int> solution( variables.size(), 0 );
 
+	// 2min
+	solver.solve( cost, solution, 1000000, 120000000 );
+
 	// 30s
-	//try
-	//{
-		solver.solve( cost, solution, 1000000, 30000000 );
-	// }
-	// catch( exception& e )
-	// {
-	// 	cout << "NAN EXCEP!\n";
-	// 	print_solution( solution );
-	// }
+	// solver.solve( cost, solution, 1000000, 30000000 );
 	
   // 5s
 	//solver.solve( cost, solution, 1000000, 5000000 );
