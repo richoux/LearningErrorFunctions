@@ -12,16 +12,16 @@ vector<int> LHS::sample( int nb_vars, int var_max_value ) const
 	for( int i = 0; i < nb_vars; ++i )
 	{
 		std::iota( domains.begin() + i * value_size,
-		           domains.begin() + ( i * value_size ) + nb_vars,
+		           domains.begin() + ( i + 1 ) * value_size,
 		           0 );
-		_rng.shuffle( domains.begin() + i * value_size, domains.begin() + ( i * value_size ) + nb_vars );		
+		_rng.shuffle( domains.begin() + i * value_size, domains.begin() + ( i + 1 ) * value_size );		
 	}
 
 	vector<int> samples( nb_vars * value_size );
 	
-	for( int var = 0; var < nb_vars; ++var )
-		for( int val = 0; val < value_size; ++val )
-			samples[var + val*value_size] = domains[val + var*nb_vars];
+	for( int val = 0; val < value_size; ++val )
+		for( int var = 0; var < nb_vars; ++var )
+			samples[val*nb_vars + var] = domains[var*value_size + val];
 
 	return samples;
 }

@@ -3,7 +3,7 @@ EXEC_LE=linear_eq_cf
 EXEC_LT=less_than_cf
 
 # Compiler flags
-CXXFIRSTFLAGS= -g -O0 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
+CXXFIRSTFLAGS= -Ofast -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
 CXXFIRSTFLAGSDEBUG= -g -O0 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter 
 
 UNAME_S := $(shell uname -s)

@@ -8,14 +8,12 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 
 //////////////////////////////////////////////////////
 
-// !!! AllDiff weights !!!
-
-// CPPN Max ECL+inactive - Ctr HO from feature/new_functions 52.7071
-// _weights{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 }
+// CPPN Max ECL+inactive - Ctr HO from feature/new_functions with 4 vars = 22: 34.5143
+// _weights{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 }
 
 LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int max_value, int rhs )
 	: Constraint( variables ),
-	  _weights{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+	  _weights{ 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
 	  _rhs( rhs ),
 	  _le_concept{ (int)variables.size(), max_value, rhs }
 { }
@@ -33,4 +31,3 @@ double LinearEq::required_cost() const
 
 	return intermediate_g( _weights, inputs, _le_concept.nb_vars, _le_concept.max_value );
 }
-
