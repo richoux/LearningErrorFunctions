@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
 
-#include "../latin/latin.hpp"
+#include "../utils/latin.hpp"
 
 using namespace std;
 

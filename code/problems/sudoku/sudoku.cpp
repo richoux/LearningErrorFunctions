@@ -10,12 +10,12 @@
 #include <ghost/variable.hpp>
 
 #if defined HANDMADE
-#include "../constraints/all-diff_handmade.hpp"
+#include "../../constraints/all-diff_handmade.hpp"
 #else
-#include "../constraints/all-diff.hpp"
+#include "../../constraints/all-diff.hpp"
 #endif
 
-#include "../constraints/all-diff_concept.hpp"
+#include "../../constraints/all-diff_concept.hpp"
 
 using namespace ghost;
 using namespace std;

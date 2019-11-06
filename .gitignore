@@ -1,9 +1,8 @@
 #code
-code/csv/splinter
-code/csv/splinter.o
-code/eo/learn_with_ga
-code/eo/interpolate_with_ga
-code/sudoku/sudoku
+code/explored/csv/splinter
+code/explored/csv/splinter.o
+code/explored/eo/learn_with_ga
+code/explored/eo/interpolate_with_ga
 
 # PDF
 *.pdf

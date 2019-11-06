@@ -20,16 +20,16 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 # Directories
-SRCDIR=. ../constraints/
-HPPDIR=../constraints/
+SRCDIR=. ../../constraints/
+HPPDIR=../../constraints/
 OBJDIR=obj
 BINDIR=bin
 
 # Files
 #SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
-SOURCES=sudoku.cpp ../constraints/all-diff.cpp
+SOURCES=sudoku.cpp ../../constraints/all-diff.cpp
 ifeq ($(MYFLAGS),-DCPPN)
-	SOURCES+=../cfn/function_to_learn_cppn.cpp
+	SOURCES+=../../learn/function_to_learn_cppn.cpp
 endif
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 

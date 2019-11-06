@@ -6,7 +6,7 @@
 #include <ghost/variable.hpp>
 #include <ghost/constraint.hpp>
 
-#include "../latin/latin.hpp"
+#include "../utils/latin.hpp"
 #include "../utils/randutils.hpp"
 
 using namespace std;

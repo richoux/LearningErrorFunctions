@@ -3,7 +3,7 @@
 #include <random>
 #include <cmath>
 
-#include "../latin/latin.hpp"
+#include "../utils/latin.hpp"
 #include "random_draw.hpp"
 
 void random_draw( unique_ptr<Concept>& concept,
