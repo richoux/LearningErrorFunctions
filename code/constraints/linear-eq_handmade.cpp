@@ -6,7 +6,7 @@
 
 LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int max_value, int rhs )
 	: Constraint( variables ),
-	  _max_value( max_value + 1 ), 
+	  _max_value( max_value ),// + 1 ), 
 	  _rhs( rhs )
 {
 	// we consider all variables start from value 1
@@ -21,7 +21,7 @@ double LinearEq::required_cost() const
 	int sum = 0;
 	
 	for( auto& v : variables )
-		sum += v.get().get_value() + 1;
+		sum += v.get().get_value();// + 1;
 
 	int diff = std::abs( _rhs - sum );
 
