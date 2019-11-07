@@ -203,7 +203,7 @@ int main( int argc, char **argv )
 	vector< reference_wrapper< Variable > > last_layer_active_unit( weights_ref.begin() + number_functions,
 	                                                                weights_ref.end() );
 
-	//vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
+	vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
 
 	/***************/
 	/* Constraints */
@@ -225,7 +225,7 @@ int main( int argc, char **argv )
 
 	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
 
-	//shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
+	shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
 
 	vector< shared_ptr< Constraint >> constraints { ctr_all_var,
 	                                                ctr_dependency_id,
@@ -235,10 +235,10 @@ int main( int argc, char **argv )
 	                                                ctr_dependency_cubic_tanh,
 	                                                ctr_dependency_sigmoid,
 	                                                ctr_dependency_gaussian,
-	                                                //ctr_last_layer_active_unit,
-	                                                //ctr_inactive_first_id_abs };
+	                                                ctr_last_layer_active_unit,
+	                                                ctr_inactive_first_id_abs };
 
-	                                                ctr_last_layer_active_unit };
+	                                                //ctr_last_layer_active_unit };
 	                                                //ctr_inactive_first_id_abs };
 	
 	/**********************/

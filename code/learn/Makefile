@@ -26,7 +26,7 @@ OBJDIR=obj
 BINDIR=bin
 
 # Files
-COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp ../latin/latin.cpp
+COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp ../utils/latin.cpp
 COMMON=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(COMMON_SRC)))
 
 # Reminder, 'cause it is easy to forget makefile's fucked-up syntax...
@@ -77,7 +77,7 @@ $(OBJDIR)/concept.o: ../constraints/concept.cpp
 $(OBJDIR)/convert.o: ../utils/convert.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR)/latin.o: ../latin/latin.cpp
+$(OBJDIR)/latin.o: ../utils/latin.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
