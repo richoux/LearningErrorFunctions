@@ -10,6 +10,9 @@ using namespace ghost;
 
 class AllDiff : public Constraint
 {
+	mutable vector<int> _count;
+	mutable vector<int> _values;
+	
 	double required_cost() const override;
 
 public:

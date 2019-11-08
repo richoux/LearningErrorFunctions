@@ -195,13 +195,13 @@ int main( int argc, char **argv )
 	vector<int> solution( variables.size(), 0 );
 
 	// 2min
-	// solver.solve( cost, solution, 500000, 120000000 );
+	solver.solve( cost, solution, 500000, 120000000 );
 
 	// 30s
 	// solver.solve( cost, solution, 1000000, 30000000 );
 	
   // 5s
-	solver.solve( cost, solution, 1000000, 5000000 );
+	// solver.solve( cost, solution, 1000000, 5000000 );
 
 	// 0.5s
 	//solver.solve( cost, solution, 100000, 500000 );
