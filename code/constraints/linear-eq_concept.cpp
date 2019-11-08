@@ -14,8 +14,6 @@ LinearEqConcept::LinearEqConcept( int rhs )
 
 bool LinearEqConcept::concept( const vector<int>& var, int start, int end ) const
 {
-	// '+ ( end - start )' is equivalent to add 1 to the value of each variable.
-	// return accumulate( var.begin() + start, var.begin() + end, 0 ) + ( end - start ) == _rhs;
 	return accumulate( var.begin() + start, var.begin() + end, 0 ) == _rhs;
 }
 
@@ -24,7 +22,7 @@ bool LinearEqConcept::concept( const vector< reference_wrapper<Variable> >& var 
 	int sum = 0;
 	
 	for( auto& v : var )
-		sum += v.get().get_value();// + 1;
+		sum += v.get().get_value();
 	
 	return sum == _rhs;	
 }

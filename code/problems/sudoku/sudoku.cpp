@@ -42,9 +42,9 @@ void print_solution( const vector<int>& solution )
 		}
 
 		if( i%size_side_small_square == 0 && i%size_side != 0)
-				cout << "   " << solution[i] + 1;
+			cout << "   " << solution[i];
 		else
-			cout << " " << solution[i] + 1;
+			cout << " " << solution[i];
 	}
 
 	cout << "\n";
@@ -75,10 +75,10 @@ void check_solution( const vector<int>& solution )
 
 		if( !ad_concept->concept( partial_sol ) )
 		{
-			std::transform( partial_sol.begin(),
-			                partial_sol.end(),
-			                partial_sol.begin(),
-			                [](auto p){ return p+1;});
+			// std::transform( partial_sol.begin(),
+			//                 partial_sol.end(),
+			//                 partial_sol.begin(),
+			//                 [](auto p){ return p+1;});
 			
 			cout << "Problem in row " << i+1 << ": ";
 			std::copy( partial_sol.begin(),
@@ -96,11 +96,6 @@ void check_solution( const vector<int>& solution )
 
 		if( !ad_concept->concept( partial_sol ) )
 		{
-			std::transform( partial_sol.begin(),
-			                partial_sol.end(),
-			                partial_sol.begin(),
-			                [](auto p){ return p+1;});
-			
 			cout << "Problem in column " << i+1 << ": ";
 			std::copy( partial_sol.begin(),
 			           partial_sol.end(),
@@ -119,11 +114,6 @@ void check_solution( const vector<int>& solution )
 			
 			if( !ad_concept->concept( partial_sol ) )
 			{
-				std::transform( partial_sol.begin(),
-				                partial_sol.end(),
-				                partial_sol.begin(),
-				                [](auto p){ return p+1;});
-			
 				cout << "Problem in square (" << i+1 << "," << j+1 << "): ";
 				std::copy( partial_sol.begin(),
 				           partial_sol.end(),
@@ -149,10 +139,10 @@ int main( int argc, char **argv )
   // Create variables
   vector< Variable > variables;
   for( int i = 0; i < nb_vars; ++i )
-		variables.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 0, size_side );
+		variables.emplace_back( std::string("v") + std::to_string(i), std::string("v") + std::to_string(i), 1, size_side );
 
   for( int i = 0; i < nb_vars; ++i )
-	  variables[i].set_value( i % size_side );
+	  variables[i].set_value( ( i % size_side ) + 1 );
 	  
   vector< vector< reference_wrapper<Variable> > > rows( size_side );
   vector< vector< reference_wrapper<Variable> > > columns( size_side );

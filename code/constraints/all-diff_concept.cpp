@@ -10,13 +10,13 @@ AllDiffConcept::AllDiffConcept()
 
 bool AllDiffConcept::concept( const vector<int>& var, int start, int end ) const
 {
-	// We assume our k variables can take values in [0, k-1]
+	// We assume our k variables can take values in [1, k]
 	vector<bool> bitvec( var.size(), false );
 
 	// Returns false if and only if we have two variables sharing the same value, 
 	for( int i = start ; i < end ; ++i )
-		if( !bitvec[ var[i] ] )
-			bitvec[ var[i] ] = true;
+		if( !bitvec[ var[i]-1 ] )
+			bitvec[ var[i]-1 ] = true;
 		else
 			return false;
 	
@@ -25,7 +25,7 @@ bool AllDiffConcept::concept( const vector<int>& var, int start, int end ) const
 
 bool AllDiffConcept::concept( const vector< reference_wrapper<Variable> >& var ) const
 {
-	// We assume our k variables can take values in [0, k-1]
+	// We assume our k variables can take values in [1, k]
 	vector<bool> bitvec( var.size(), false );
 
 	// Returns false if and only if we have two variables sharing the same value, 
@@ -33,7 +33,7 @@ bool AllDiffConcept::concept( const vector< reference_wrapper<Variable> >& var )
 	
 	for( int i = 0 ; i < var.size() ; ++i )
 	{
-		value = var[i].get().get_value();
+		value = var[i].get().get_value() - 1;
 		if( !bitvec[ value ] )
 			bitvec[ value ] = true;
 		else
