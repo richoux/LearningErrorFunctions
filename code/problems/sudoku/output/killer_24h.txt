@@ -1,0 +1,44 @@
+Constraint size: 56
+############
+SATISFACTION run
+Elapsed time: 8.64e+07ms
+Satisfaction cost: 40.5895
+Number of optization loops: 8640
+Number of satisfaction loops: 71471093
+
+Cost: 40.5895
+Solution:
+-----------------------
+ 2 7 1   4 6 8   5 3 9
+
+ 3 8 6   7 9 5   1 4 2
+
+ 5 9 4   2 1 3   8 7 6
+-----------------------
+ 1 6 5   3 8 4   2 9 7
+
+ 7 4 9   6 2 1   3 5 8
+
+ 8 2 3   5 7 9   6 1 4
+-----------------------
+ 6 1 2   9 5 7   4 8 3
+
+ 4 5 7   8 3 6   9 2 1
+
+ 9 3 8   1 4 2   7 6 5
+-----------------------
+Problem in cage 0: sum of 2 7 give 9, not 3
+Problem in cage 1: sum of 1 4 6 give 11, not 15
+Problem in cage 2: sum of 8 9 5 1 give 23, not 22
+Problem in cage 3: sum of 5 1 give 6, not 4
+Problem in cage 4: sum of 3 4 give 7, not 16
+Problem in cage 5: sum of 9 2 6 7 give 24, not 15
+Problem in cage 7: sum of 6 7 give 13, not 17
+Problem in cage 10: sum of 8 7 2 give 17, not 20
+Problem in cage 11: sum of 1 7 give 8, not 6
+Problem in cage 12: sum of 6 5 give 11, not 14
+Problem in cage 15: sum of 4 9 2 give 15, not 13
+Problem in cage 21: sum of 6 1 give 7, not 6
+Problem in cage 22: sum of 5 8 3 1 give 17, not 10
+Problem in cage 25: sum of 7 8 give 15, not 16
+Problem in cage 28: sum of 6 5 give 11, not 17
