@@ -7,7 +7,8 @@ Folders:
 learn: main folder (CPPN learned via CFN)
 constraints: different constraints to study
 tests: handmade test files (not well-defined unit tests)
-utils: get next configuration, random lib, Latin Hypercube Sampling
+utils: get next configuration, random lib, Latin Hypercube Sampling, ...
+benchs: benchmarks on learned cost functions (if they scale, etc)
 
 
 \\\\\\\\\\\\\\

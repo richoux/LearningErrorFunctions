@@ -18,9 +18,18 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 // CPPN Max ECL+inactive - Ctr HO from feature/new_functions 52.7071
 // _weights{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 }
 
+// CPPN Max ECL+inactive - Ctr HO on AllDiff_5 38.5786
+// _weights{ 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 }
+
+// CPPN Max ECL+inactive - Ctr HO on AllDiff_5 new cost norm 34.7714
+// _weights{ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0 }
+
+// CPPN Max ECL+inactive - Ctr HO on AllDiff_9 new cost norm 43.3857
+// _weights{ 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0 }
+
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 	: Constraint( variables ),
-	  _weights{ 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+	  _weights{ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
 	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 

@@ -166,7 +166,12 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 {
 	int LO = ( weights.size() / number_functions ) * 10;// + ( number_functions - 1 );
 	vector<double> result( nb_vars ); //inputs.size() );
-	int number_units_last_layer = std::count( weights.begin() + number_functions, weights.begin() + 2*number_functions, 1 );
+
+	int number_units_first_layer = std::count( weights.begin(), weights.begin() + number_functions, 1 );
+	int number_units_last_layer_id_abs = std::count( weights.begin() + number_functions, weights.begin() + number_functions + 2, 1 );
+	int number_units_last_layer_last_five = std::count( weights.begin() + number_functions + 2, weights.begin() + 2*number_functions, 1 );
+	int normalization_denominator = nb_vars * ( number_units_last_layer_id_abs * number_units_first_layer + number_units_last_layer_last_five );
+
 	double max_cost = nb_vars + 0.9;
 	
 	compute( LO, inputs, weights, result, max );
@@ -176,7 +181,7 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 		
 	// max_cost times the sigmoid of the mean of the values in result
 	//return max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars );
-	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) );
+	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / normalization_denominator );
 }
 
 // ref_wrapper<Variable> version

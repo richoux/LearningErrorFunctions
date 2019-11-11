@@ -3,7 +3,7 @@ EXEC_LE=linear_eq_cf
 EXEC_LT=less_than_cf
 
 # Compiler flags
-CXXFIRSTFLAGS= -Ofast -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
+CXXFIRSTFLAGS= -O3 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter
 CXXFIRSTFLAGSDEBUG= -g -O0 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter 
 
 UNAME_S := $(shell uname -s)
@@ -26,7 +26,7 @@ OBJDIR=obj
 BINDIR=bin
 
 # Files
-COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp ../utils/latin.cpp
+COMMON_SRC=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp)) ../constraints/concept.cpp ../utils/convert.cpp ../utils/latin.cpp ../utils/metrics.cpp ../utils/random_draw.cpp
 COMMON=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(COMMON_SRC)))
 
 # Reminder, 'cause it is easy to forget makefile's fucked-up syntax...
@@ -78,6 +78,12 @@ $(OBJDIR)/convert.o: ../utils/convert.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR)/latin.o: ../utils/latin.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/metrics.o: ../utils/metrics.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJDIR)/metrics.o: ../utils/random_draw.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
