@@ -6,9 +6,28 @@
 
 #include "function_to_learn_cppn.hpp"
 
-inline double cubic_tanh( double x ) { return std::tanh( std::pow( x, 3 ) ); }
-inline double sigmoid( double x ) { return 1. / ( 1 + std::exp( -x ) ); }
-inline double gaussian( double x ) { return std::exp( -8 * std::pow( x , 2 ) ); }
+inline double sigmoid( const double& x ) { return 1. / ( 1 + std::exp( -x ) ); }
+
+double inside( double value, double lower, double upper )
+{
+	if( value >= lower )
+	{
+		if( value <= upper )
+			return 0.0;
+		else
+			return value - upper;
+	}
+	else
+		return lower - value;
+}
+
+double outside( double value, double lower, double upper )
+{
+	if( value < lower || value > upper )
+		return 0.0;
+	else
+		return std::min( value - lower, upper - value ) + 1; // +1 to avoid returning 0 if value == lower or value == upper
+}
 
 // Are we normalizing integer values from [0, max_value] or real values?
 bool integer_only( const vector<double>& vec )
@@ -65,7 +84,7 @@ void norm_minus1_1( const vector<double>& vec, vector<double>& normalized, int m
 	}
 }
 
-void interpreter( int number, const vector<double>& inputs, vector<double>& outputs, int max )
+void interpreter_transformation( int number, const vector<double>& inputs, vector<double>& outputs )
 {
 	switch( number )
 	{
@@ -73,44 +92,125 @@ void interpreter( int number, const vector<double>& inputs, vector<double>& outp
 	case 0:
 		copy( inputs.begin(), inputs.end(), outputs.begin() );
 		break;
-		// Absolute value
+		// Equals to
 	case 1:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::abs(x); } );
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count( inputs.begin(), inputs.end(), y ); } );
 		break;
-	// 	// Normalization 0_1
-	// case 0:
-	// 	norm_0_1( inputs, outputs, max );
-	// 	break;
-	// 	// Normalization -1_1
-	// case 1:
-	// 	norm_minus1_1( inputs, outputs, max );
-	// 	break;		
-		// Sine
+		// Less then
 	case 2:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::sin(x); } );
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x < y; } ); } );
 		break;
-		// Tanh
+		// Greater than
 	case 3:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](auto x) -> double { return std::tanh(x); } );
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x > y; } ); } );
 		break;
-		// Cubic Tanh
+		// Different
 	case 4:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), cubic_tanh );
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x != y; } ); } );
 		break;
-		// Sigmoid
+		// Equals to, left elements
 	case 5:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), sigmoid );
+		for( int y = 1; y < (int)inputs.size(); ++y )
+			for( int x = 0; x < y; ++x )
+				if( inputs[x] == inputs[y] )
+					++outputs[y];
 		break;
-		// Gaussian
+		// Less than, left elements
 	case 6:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), gaussian );
+		for( int y = 1; y < (int)inputs.size(); ++y )
+			for( int x = 0; x < y; ++x )
+				if( inputs[x] < inputs[y] )
+					++outputs[y];
 		break;
-	// 	// Normalization
-	// case 7:
-	// 	normalization( inputs, outputs );
-	// 	break;
+		// Greater than, left elements
+	case 7:
+		for( int y = 1; y < (int)inputs.size(); ++y )
+			for( int x = 0; x < y; ++x )
+				if( inputs[x] > inputs[y] )
+					++outputs[y];
+		break;
+		// Equals to, right elements
+	case 8:
+		for( int y = 0; y < (int)inputs.size() - 1; ++y )
+			for( int x = y + 1; x < (int)inputs.size(); ++x )
+				if( inputs[x] == inputs[y] )
+					++outputs[y];
+		break;
+		// Less than, right elements
+	case 9:
+		for( int y = 0; y < (int)inputs.size() - 1; ++y )
+			for( int x = y + 1; x < (int)inputs.size(); ++x )
+				if( inputs[x] < inputs[y] )
+					++outputs[y];
+		break;
+		// Greater than, right elements
+	case 10:
+		for( int y = 0; y < (int)inputs.size() - 1; ++y )
+			for( int x = y + 1; x < (int)inputs.size(); ++x )
+				if( inputs[x] > inputs[y] )
+					++outputs[y];
+		break;
+		// Continuous box of values
+	case 11:
+		int y = 0;
+		while( y < (int)inputs.size() )
+		{
+			int count = 1;
+			int x = y + 1;
+			while( inputs[y] == inputs[x] && x < (int)inputs.size() )
+			{
+				++count;
+				++x;
+			}
+
+			std::fill_n( outputs.begin() + y, count, count );
+			y += count;
+		}
+		break;
 	}
 }
+
+void interpreter_comparison( int number, const vector<double>& inputs, vector<double>& outputs, double parameter_1, double parameter_2 )
+{
+	switch( number )
+	{
+		// Identity
+	case 0:
+		copy( inputs.begin(), inputs.end(), outputs.begin() );
+		break;
+		// Equals to parameter
+	case 1:
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::abs( parameter_1 - y ); } );
+		break;
+		// Greater than parameter
+	case 2:
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::max( 0.0, parameter_1 - y ); } );
+		break;
+		// Less than parameter
+	case 3:
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::max( 0.0, y - parameter_1 ); } );
+		break;
+		// Inside [p1,p2]
+	case 4:
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return inside( y, parameter_1, parameter_2); } );
+		break;
+		// Outside [p1,p2]
+	case 5:
+		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return outside( y, parameter_1, parameter_2); } );
+		break;
+	}
+}
+
+vector<double> transformation_layer( const vector<double>& inputs, const vector<int>& weights )
+{
+	
+}
+
+vector<double> comparison_layer( const vector<double>& inputs, const vector<int>& weights )
+{
+	
+}
+
 
 void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result, int max )
 {
@@ -164,24 +264,29 @@ void compute( int LO, const vector<double>& inputs, const vector<int>& weights, 
 
 double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int max )
 {
-	int LO = ( weights.size() / number_functions ) * 10;// + ( number_functions - 1 );
-	vector<double> result( nb_vars ); //inputs.size() );
-
-	int number_units_first_layer = std::count( weights.begin(), weights.begin() + number_functions, 1 );
-	int number_units_last_layer_id_abs = std::count( weights.begin() + number_functions, weights.begin() + number_functions + 2, 1 );
-	int number_units_last_layer_last_five = std::count( weights.begin() + number_functions + 2, weights.begin() + 2*number_functions, 1 );
-	int normalization_denominator = nb_vars * ( number_units_last_layer_id_abs * number_units_first_layer + number_units_last_layer_last_five );
-
 	double max_cost = nb_vars + 0.9;
-	
-	compute( LO, inputs, weights, result, max );
+
+	// transformation layer
+	//        |
+	//        v
+	// comparison layer
+	//        |
+	//        v
+	//     sigmoid
+	//        |
+	//        v
+	//  normalized sum
+
+	// !!! we can have several result vectors after each layer !!!
+	auto result = transformation_layer( inputs, weights );
+	result = comparison_layer( result, weights );
+	std::transform( result.begin(), result.end(), result.begin(), [](const auto& x){ return sigmoid( x ); } );
+	double normalized_sum = std::accumulate( result.begin(), result.end(), 0.0 ) / (int)result.size();
 
 	// DEBUG
 	// cout << "cost: " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n\n";
 		
-	// max_cost times the sigmoid of the mean of the values in result
-	//return max_cost * sigmoid( std::accumulate( result.begin(), result.end(), 0.0 ) / nb_vars );
-	return max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / normalization_denominator );
+	return max_cost * normalized_sum;
 }
 
 // ref_wrapper<Variable> version
@@ -193,10 +298,6 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	std::copy( vars.begin(), vars.end(), inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
 	
-	// Last layer: identity
-	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
-	weights_int[ weights.size() ] = 1;
-
 	return intermediate_g( weights_int, inputs, nb_vars, max );
 }
 
@@ -209,10 +310,6 @@ double g( const vector< Variable >& weights, const vector<int>& vars, int max )
 	std::copy( vars.begin(), vars.end(), inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
 
-	// Last layer: identity
-	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
-	weights_int[ weights.size() ] = 1;
-
 	return intermediate_g( weights_int, inputs, nb_vars, max );
 }
 
@@ -224,10 +321,6 @@ double g( const vector< reference_wrapper<Variable> >& weights, const vector<int
 	vector<int> weights_int( weights.size() + number_functions );
 	std::copy( vars.begin() + start, vars.begin() + start + end, inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
-
-	// Last layer: identity
-	std::fill( weights_int.begin() + weights.size(), weights_int.end(), 0 );
-	weights_int[ weights.size() ] = 1;
 
 	return intermediate_g( weights_int, inputs, nb_vars, max );
 }
