@@ -1,6 +1,7 @@
 #include <cmath>
 #include <complex>
 #include <algorithm>
+#include <numeric>
 
 // #include <iostream>
 
@@ -29,129 +30,104 @@ double outside( double value, double lower, double upper )
 		return std::min( value - lower, upper - value ) + 1; // +1 to avoid returning 0 if value == lower or value == upper
 }
 
-// Are we normalizing integer values from [0, max_value] or real values?
-bool integer_only( const vector<double>& vec )
+void interpreter_transformation( int number,
+                                 const vector<double>& inputs,
+                                 vector<double>& outputs )
 {
-	double intpart;
-	for( auto& v : vec )
-		if( std::modf( v, &intpart ) != 0.0 )
-			return false;
-
-	return true;
-}
-
-void norm_0_1( const vector<double>& vec, vector<double>& normalized, int max_value )
-{
-	if( integer_only( vec ) )
-		transform( vec.begin(),
-		           vec.end(),
-		           normalized.begin(),
-		           [&max_value](auto x) -> double { return x / max_value; } );
-	else
-	{
-		auto min = std::min_element( vec.begin(), vec.end() );
-		auto max = std::max_element( vec.begin(), vec.end() );
-
-		if( min == max )
-			fill( normalized.begin(), normalized.end(), 0.5 );
-		else		
-			transform( vec.begin(),
-			           vec.end(),
-			           normalized.begin(),
-			           [&min,&max](auto x) -> double { return (x - *min) / (*max - *min); } );
-	}
-}
-
-void norm_minus1_1( const vector<double>& vec, vector<double>& normalized, int max_value )
-{
-	if( integer_only( vec ) )
-		transform( vec.begin(),
-		           vec.end(),
-		           normalized.begin(),
-		           [&max_value](auto x) -> double { return 2*x / max_value - 1; } );
-	else
-	{
-		auto min = std::min_element( vec.begin(), vec.end() );
-		auto max = std::max_element( vec.begin(), vec.end() );
-		
-		if( min == max )
-			fill( normalized.begin(), normalized.end(), 0.5 );
-		else		
-			transform( vec.begin(),
-			           vec.end(),
-			           normalized.begin(),
-			           [&min,&max](auto x) -> double { return 2*(x - *min) / (*max - *min) - 1; } );
-	}
-}
-
-void interpreter_transformation( int number, const vector<double>& inputs, vector<double>& outputs )
-{
+	int start_index_output = number * number_units_transfo;
+	
 	switch( number )
 	{
 		// Identity
 	case 0:
-		copy( inputs.begin(), inputs.end(), outputs.begin() );
+		copy( inputs.begin(), inputs.end(), outputs.begin() + start_index_output );
 		break;
 		// Equals to
 	case 1:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count( inputs.begin(), inputs.end(), y ); } );
+		std::transform( inputs.begin(),
+		                inputs.end(),
+		                outputs.begin() + start_index_output,
+		                [&inputs](const auto& y) -> double { return std::count( inputs.begin(), inputs.end(), y ); } );
 		break;
 		// Less then
 	case 2:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x < y; } ); } );
+		std::transform( inputs.begin(),
+		                inputs.end(),
+		                outputs.begin() + start_index_output,
+		                [&inputs](const auto& y) -> double
+		                {
+			                return std::count_if( inputs.begin(),
+			                                      inputs.end(),
+			                                      [&y](const auto& x){ return x < y; } );
+		                } );
 		break;
 		// Greater than
 	case 3:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x > y; } ); } );
+		std::transform( inputs.begin(),
+		                inputs.end(),
+		                outputs.begin() + start_index_output,
+		                [&inputs](const auto& y) -> double
+		                { return std::count_if( inputs.begin(),
+		                                        inputs.end(),
+		                                        [&y](const auto& x){ return x > y; } );
+		                } );
 		break;
 		// Different
 	case 4:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::count_if( inputs.begin(), inputs.end(), [&y](const auto& x){ return x != y; } ); } );
+		std::transform( inputs.begin(),
+		                inputs.end(),
+		                outputs.begin() + start_index_output,
+		                [&inputs](const auto& y) -> double
+		                { return std::count_if( inputs.begin(),
+		                                        inputs.end(),
+		                                        [&y](const auto& x){ return x != y; } );
+		                } );
 		break;
 		// Equals to, left elements
 	case 5:
 		for( int y = 1; y < (int)inputs.size(); ++y )
 			for( int x = 0; x < y; ++x )
 				if( inputs[x] == inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Less than, left elements
 	case 6:
 		for( int y = 1; y < (int)inputs.size(); ++y )
 			for( int x = 0; x < y; ++x )
 				if( inputs[x] < inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Greater than, left elements
 	case 7:
 		for( int y = 1; y < (int)inputs.size(); ++y )
 			for( int x = 0; x < y; ++x )
 				if( inputs[x] > inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Equals to, right elements
 	case 8:
 		for( int y = 0; y < (int)inputs.size() - 1; ++y )
 			for( int x = y + 1; x < (int)inputs.size(); ++x )
 				if( inputs[x] == inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Less than, right elements
 	case 9:
 		for( int y = 0; y < (int)inputs.size() - 1; ++y )
 			for( int x = y + 1; x < (int)inputs.size(); ++x )
 				if( inputs[x] < inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Greater than, right elements
 	case 10:
 		for( int y = 0; y < (int)inputs.size() - 1; ++y )
 			for( int x = y + 1; x < (int)inputs.size(); ++x )
 				if( inputs[x] > inputs[y] )
-					++outputs[y];
+					++outputs[y + start_index_output];
 		break;
 		// Continuous box of values
 	case 11:
+	{
 		int y = 0;
 		while( y < (int)inputs.size() )
 		{
@@ -163,108 +139,180 @@ void interpreter_transformation( int number, const vector<double>& inputs, vecto
 				++x;
 			}
 
-			std::fill_n( outputs.begin() + y, count, count );
+			std::fill_n( outputs.begin() + start_index_output + y, count, count );
 			y += count;
 		}
 		break;
 	}
+		// Sum
+	case 12:
+	{
+		auto sum = std::accumulate( inputs.begin(), inputs.end(), 0.0 );
+		std::fill_n( outputs.begin() + start_index_output, (int)inputs.size(), sum );
+		break;
+	}
+	}
 }
 
-void interpreter_comparison( int number, const vector<double>& inputs, vector<double>& outputs, double parameter_1, double parameter_2 )
+// Comparison operations with 1 parameter
+void interpreter_comparison( int number,
+                             const vector<double>& inputs,
+                             vector<double>& outputs,
+                             double parameter )
 {
+	int start_index_output = number * number_units_compar_1_param;
+
 	switch( number )
 	{
 		// Identity
 	case 0:
-		copy( inputs.begin(), inputs.end(), outputs.begin() );
+		copy( inputs.begin(), inputs.end(), outputs.begin() + start_index_output );
 		break;
 		// Equals to parameter
 	case 1:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::abs( parameter_1 - y ); } );
+		transform( inputs.begin(),
+		           inputs.end(),
+		           outputs.begin() + start_index_output,
+		           [&parameter](const auto& y) -> double { return std::abs( parameter - y ); } );
 		break;
 		// Greater than parameter
 	case 2:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::max( 0.0, parameter_1 - y ); } );
+		transform( inputs.begin(),
+		           inputs.end(),
+		           outputs.begin() + start_index_output,
+		           [&parameter](const auto& y) -> double { return std::max( 0.0, parameter - y ); } );
 		break;
 		// Less than parameter
 	case 3:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return std::max( 0.0, y - parameter_1 ); } );
+		transform( inputs.begin(),
+		           inputs.end(),
+		           outputs.begin() + start_index_output,
+		           [&parameter](const auto& y) -> double { return std::max( 0.0, y - parameter ); } );
+		break;
+	}
+}
+
+// Comparison operations with 2 parameters
+void interpreter_comparison( int number,
+                             const vector<double>& inputs,
+                             vector<double>& outputs,
+                             double parameter_1,
+                             double parameter_2 )
+{
+	int start_index_output = number * number_units_compar_2_params;
+
+	switch( number )
+	{
+		// Identity
+	case 0:
+		copy( inputs.begin(), inputs.end(), outputs.begin() + start_index_output );
 		break;
 		// Inside [p1,p2]
-	case 4:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return inside( y, parameter_1, parameter_2); } );
+	case 1:
+		transform( inputs.begin(),
+		           inputs.end(),
+		           outputs.begin() + start_index_output,
+		           [&](const auto& y) -> double { return inside( y, parameter_1, parameter_2); } );
 		break;
 		// Outside [p1,p2]
-	case 5:
-		transform( inputs.begin(), inputs.end(), outputs.begin(), [](const auto& y) -> double { return outside( y, parameter_1, parameter_2); } );
+	case 2:
+		transform( inputs.begin(),
+		           inputs.end(),
+		           outputs.begin() + start_index_output,
+		           [&](const auto& y) -> double { return outside( y, parameter_1, parameter_2); } );
 		break;
 	}
 }
 
-vector<double> transformation_layer( const vector<double>& inputs, const vector<int>& weights )
+void transformation_layer( const vector<double>& inputs,
+                           vector<double>& outputs,
+                           int nb_vars,
+                           int nb_params,
+                           const vector<int>& weights )
 {
-	
-}
-
-vector<double> comparison_layer( const vector<double>& inputs, const vector<int>& weights )
-{
-	
-}
-
-
-void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& result, int max )
-{
-	int L = LO / 10;
-	int O = LO % 10;
-
-	// DEBUG
-	// cout << "input: ";
-	// std::copy( inputs.begin(),
-	//            inputs.end(),
-	//            ostream_iterator<double>( cout, " " ) );
-	// cout << "\n";
-	
-	auto inputs_size = inputs.size();
-	
-	vector<double> temp_inputs( inputs_size );
-	vector<double> temp_outputs( inputs_size );
-	vector<double> temp_result( inputs_size );
-
-	if( weights[ ( L - 1 ) * number_functions + O ] != 1 )
-		std::fill( result.begin(), result.end(), 0.0 );
-	else
+	for( int op_t = 0; op_t < number_units_transfo; ++op_t )
 	{
-		std::copy( inputs.begin(), inputs.end(), temp_inputs.begin() );
+		int number_units_compar;
+		if( nb_params == 1 )
+			number_units_compar = number_units_compar_1_param;
+		else
+			number_units_compar = number_units_compar_2_params;
+
+		auto offset = op_t * number_units_compar;
 		
-		for( int l = 1; l < L; ++l )
-		{			
-			std::fill( temp_outputs.begin(), temp_outputs.end(), 0.0 );
-			for( int i = 0; i < number_functions; ++i )
+		for( int op_c = 0; op_c < number_units_compar; ++op_c )
+			if( weights[ offset + op_c ] == 1 )
 			{
-				if( weights[ ( l - 1 ) * number_functions + i ] == 1 )
-				{
-					interpreter( i, temp_inputs, temp_result, max );
-					for( int j = 0; j < (int)inputs.size(); ++j )
-						temp_outputs[j] += temp_result[j];
-				}
+				interpreter_transformation( op_t, inputs, outputs );
+				break;
 			}
-			std::copy( temp_outputs.begin(), temp_outputs.end(), temp_inputs.begin() );
+	}
+}
+
+int comparison_layer( const vector<double>& inputs,
+                      vector<double>& outputs,
+                      int nb_vars,
+                      int nb_params,
+                      const vector<int>& weights,
+                      double parameter_1,
+                      double parameter_2 )
+{
+	int nb_active_units = 0;
+	
+	int number_units_compar;
+	if( nb_params == 1 )
+		number_units_compar = number_units_compar_1_param;
+	else
+		number_units_compar = number_units_compar_2_params;
+
+	vector<double> temp_inputs( nb_vars );
+	bool need_to_compute_op_c = true; // small optimization to force triggering std::fill for the first time
+	
+	for( int op_c = 0; op_c < number_units_compar; ++op_c )
+	{
+		if( need_to_compute_op_c )
+			std::fill( temp_inputs.begin(), temp_inputs.end(), 0.0 );
+		need_to_compute_op_c = false;
+
+		for( int op_t = 0; op_t < number_units_transfo; ++op_t )
+		{
+			auto offset = op_t * number_units_compar;
+			if( weights[ offset + op_c ] == 1 )
+			{
+				for( int i = 0; i < nb_vars; ++i )
+					temp_inputs[i] += inputs[ offset + i ];
+				if( !need_to_compute_op_c )
+					need_to_compute_op_c = true;
+			}			
 		}
 
-		interpreter( O, temp_inputs, result, max );
+		if( need_to_compute_op_c )
+		{
+			++nb_active_units;
+			if( nb_params == 1 )
+				interpreter_comparison( op_c, temp_inputs, outputs, parameter_1 );
+			else
+				interpreter_comparison( op_c, temp_inputs, outputs, parameter_1, parameter_2 );				
+		}
 	}
 
-	// DEBUG
-	// cout << "result: ";
-	// std::copy( result.begin(),
-	//            result.end(),
-	//            ostream_iterator<double>( cout, " " ) );
-	// cout << "\n";
+	return nb_active_units;
 }
 
-double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int max )
+double intermediate_g( const vector<int>& weights,
+                       const vector<double>& inputs,
+                       int nb_vars,
+                       int nb_params,
+                       double parameter_1,
+                       double parameter_2 )
 {
 	double max_cost = nb_vars + 0.9;
+
+	int number_units_compar;
+	if( nb_params == 1 )
+		number_units_compar = number_units_compar_1_param;
+	else
+		number_units_compar = number_units_compar_2_params;
 
 	// transformation layer
 	//        |
@@ -277,56 +325,75 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 	//        v
 	//  normalized sum
 
-	// !!! we can have several result vectors after each layer !!!
-	auto result = transformation_layer( inputs, weights );
-	result = comparison_layer( result, weights );
-	std::transform( result.begin(), result.end(), result.begin(), [](const auto& x){ return sigmoid( x ); } );
-	double normalized_sum = std::accumulate( result.begin(), result.end(), 0.0 ) / (int)result.size();
+	vector<double> outputs_transfo( nb_vars * number_units_transfo );
+	vector<double> outputs_compar( nb_vars * number_units_compar );
+	vector<double> outputs( nb_vars * number_units_compar );
+	
+	transformation_layer( inputs, outputs_transfo, nb_vars, nb_params, weights );
 
-	// DEBUG
-	// cout << "cost: " << max_cost * ( std::accumulate( result.begin(), result.end(), 0.0 ) / ( nb_vars * number_units_last_layer ) ) << "\n\n";
-		
+	auto nb_active_units = comparison_layer( outputs_transfo,
+	                                         outputs_compar,
+	                                         nb_vars,
+	                                         nb_params,
+	                                         weights,
+	                                         parameter_1,
+	                                         parameter_2 );
+
+	std::transform( outputs_compar.begin(),
+	                outputs_compar.end(),
+	                outputs.begin(),
+	                [](const auto& x){ return sigmoid( x ); } );
+	
+	double normalized_sum = std::accumulate( outputs.begin(), outputs.end(), 0.0 ) / ( nb_active_units * nb_vars );
+
 	return max_cost * normalized_sum;
 }
 
-// ref_wrapper<Variable> version
-double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int max )
-{
-	int nb_vars = (int)vars.size();
-	vector<double> inputs( nb_vars );
-	vector<int> weights_int( weights.size() + number_functions );
-	std::copy( vars.begin(), vars.end(), inputs.begin() );
-	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
+// // ref_wrapper<Variable> version
+// double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int max )
+// {
+// 	int nb_vars = (int)vars.size();
+// 	vector<double> inputs( nb_vars );
+// 	vector<int> weights_int( weights.size() + number_functions );
+// 	std::copy( vars.begin(), vars.end(), inputs.begin() );
+// 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
 	
-	return intermediate_g( weights_int, inputs, nb_vars, max );
-}
+// 	return intermediate_g( weights_int, inputs, nb_vars, max );
+// }
 
-// Variable version
-double g( const vector< Variable >& weights, const vector<int>& vars, int max )
-{
-	int nb_vars = (int)vars.size();
-	vector<double> inputs( nb_vars );
-	vector<int> weights_int( weights.size() + number_functions );
-	std::copy( vars.begin(), vars.end(), inputs.begin() );
-	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
+// // Variable version
+// double g( const vector< Variable >& weights, const vector<int>& vars, int max )
+// {
+// 	int nb_vars = (int)vars.size();
+// 	vector<double> inputs( nb_vars );
+// 	vector<int> weights_int( weights.size() + number_functions );
+// 	std::copy( vars.begin(), vars.end(), inputs.begin() );
+// 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
 
-	return intermediate_g( weights_int, inputs, nb_vars, max );
-}
+// 	return intermediate_g( weights_int, inputs, nb_vars, max );
+// }
 
-// Flat vector version
-double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int start, int end, int max )
-{
-	int nb_vars = end - start;
-	vector<double> inputs( nb_vars );
-	vector<int> weights_int( weights.size() + number_functions );
-	std::copy( vars.begin() + start, vars.begin() + start + end, inputs.begin() );
-	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
+// // Flat vector version
+// double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int start, int end, int max )
+// {
+// 	int nb_vars = end - start;
+// 	vector<double> inputs( nb_vars );
+// 	vector<int> weights_int( weights.size() + number_functions );
+// 	std::copy( vars.begin() + start, vars.begin() + start + end, inputs.begin() );
+// 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get().get_value(); } );
 
-	return intermediate_g( weights_int, inputs, nb_vars, max );
-}
+// 	return intermediate_g( weights_int, inputs, nb_vars, max );
+// }
 
 // Int vector version
-double g( const vector< int >& weights, const vector<double>& vars, int start, int end, int max )
+double g( const vector< int >& weights,
+          const vector<double>& vars,
+          int start,
+          int end,
+          int nb_params,
+          double parameter_1,
+          double parameter_2 )
+
 {
-	return intermediate_g( weights, vars, end - start, max );
+	return intermediate_g( weights, vars, end - start, nb_params, parameter_1, parameter_2 );
 }
