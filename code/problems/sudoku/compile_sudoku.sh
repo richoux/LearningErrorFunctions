@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ -Ofast -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter sudoku.cpp ../../constraints/all-diff.cpp ../../constraints/all-diff_concept.cpp ../../constraints/concept.cpp ../../learn/function_to_learn_cppn.cpp -o bin/sudoku -lghost -pthread
+g++ -O3 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter sudoku.cpp ../../constraints/all-diff.cpp ../../constraints/all-diff_concept.cpp ../../constraints/concept.cpp ../../learn/function_to_learn_cppn.cpp ../../utils/convert.cpp -o bin/sudoku -lghost -pthread
