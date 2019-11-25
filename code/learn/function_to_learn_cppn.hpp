@@ -29,6 +29,6 @@ double g( const vector< int >& weights,
           const vector<double>& vars,
           int start,
           int end,
-          int nb_params,
-          double parameter_1,
+          int nb_params = 1,
+          double parameter_1 = 1,
           double parameter_2 = 0 );

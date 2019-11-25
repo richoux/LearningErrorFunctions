@@ -4,10 +4,20 @@
 #include <numeric>
 
 // #include <iostream>
+// #include <iterator>
 
 #include "function_to_learn_cppn.hpp"
 
-inline double sigmoid( const double& x ) { return 1. / ( 1 + std::exp( -x ) ); }
+double sigmoid( const double& x, const int& size )
+{
+	if( x < 0.0005 )
+		return 0.0;
+	else
+	// 	if( x > 0.95 )
+	// 		return 1.0;
+	// 	else
+		return 1. / ( 1 + std::exp( - ( x - size/2 ) ) );
+}
 
 double inside( double value, double lower, double upper )
 {
@@ -34,7 +44,10 @@ void interpreter_transformation( int number,
                                  const vector<double>& inputs,
                                  vector<double>& outputs )
 {
-	int start_index_output = number * number_units_transfo;
+	int start_index_output = number * (int)inputs.size();
+
+	// cout << "\nTransfo number: " << number << "\nTransfo inputs: ";
+	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
 	
 	switch( number )
 	{
@@ -152,6 +165,8 @@ void interpreter_transformation( int number,
 		break;
 	}
 	}
+	// cout << "\nTransfo ouputs: ";
+	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
 }
 
 // Comparison operations with 1 parameter
@@ -160,7 +175,10 @@ void interpreter_comparison( int number,
                              vector<double>& outputs,
                              double parameter )
 {
-	int start_index_output = number * number_units_compar_1_param;
+	int start_index_output = number * (int)inputs.size();
+
+	// cout << "\nCompar number: " << number << "\nCompar inputs: ";
+	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
 
 	switch( number )
 	{
@@ -190,6 +208,9 @@ void interpreter_comparison( int number,
 		           [&parameter](const auto& y) -> double { return std::max( 0.0, y - parameter ); } );
 		break;
 	}
+
+	// cout << "\nCompar ouputs: ";
+	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
 }
 
 // Comparison operations with 2 parameters
@@ -199,7 +220,7 @@ void interpreter_comparison( int number,
                              double parameter_1,
                              double parameter_2 )
 {
-	int start_index_output = number * number_units_compar_2_params;
+	int start_index_output = number * (int)inputs.size();
 
 	switch( number )
 	{
@@ -280,7 +301,7 @@ int comparison_layer( const vector<double>& inputs,
 			if( weights[ offset + op_c ] == 1 )
 			{
 				for( int i = 0; i < nb_vars; ++i )
-					temp_inputs[i] += inputs[ offset + i ];
+					temp_inputs[i] += inputs[ op_t * nb_vars + i ];
 				if( !need_to_compute_op_c )
 					need_to_compute_op_c = true;
 			}			
@@ -306,7 +327,7 @@ double intermediate_g( const vector<int>& weights,
                        double parameter_1,
                        double parameter_2 )
 {
-	double max_cost = nb_vars + 0.9;
+	// double max_cost = nb_vars + 0.9;
 
 	int number_units_compar;
 	if( nb_params == 1 )
@@ -327,7 +348,8 @@ double intermediate_g( const vector<int>& weights,
 
 	vector<double> outputs_transfo( nb_vars * number_units_transfo );
 	vector<double> outputs_compar( nb_vars * number_units_compar );
-	vector<double> outputs( nb_vars * number_units_compar );
+	// vector<double> outputs( nb_vars, 0.0 );
+	// vector<double> outputs( nb_vars * number_units_compar );
 	
 	transformation_layer( inputs, outputs_transfo, nb_vars, nb_params, weights );
 
@@ -339,14 +361,25 @@ double intermediate_g( const vector<int>& weights,
 	                                         parameter_1,
 	                                         parameter_2 );
 
-	std::transform( outputs_compar.begin(),
-	                outputs_compar.end(),
-	                outputs.begin(),
-	                [](const auto& x){ return sigmoid( x ); } );
-	
-	double normalized_sum = std::accumulate( outputs.begin(), outputs.end(), 0.0 ) / ( nb_active_units * nb_vars );
+	// for( int i = 0; i < (int)outputs_compar.size(); ++i )
+	// 	outputs[ i % nb_vars ] += outputs_compar[ i ];
+		
+	// std::transform( outputs_compar.begin(),
+	//                 outputs_compar.end(),
+	//                 outputs.begin(),
+	//                 [&nb_vars](const auto& x){ return sigmoid( x, nb_vars ); } );
 
-	return max_cost * normalized_sum;
+	// cout << "\nSigmoid outputs: ";
+	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+	
+	// return nb_vars * std::accumulate( outputs.begin(), outputs.end(), 0.0 ) / nb_active_units;
+	/////
+	// double normalized_sum = std::accumulate( outputs.begin(), outputs.end(), 0.0 ) / ( nb_active_units * nb_vars );
+
+	// return max_cost * normalized_sum;
+	/////
+	// return std::accumulate( outputs.begin(), outputs.end(), 0.0 ) /( (double)std::count_if( outputs.begin(), outputs.end(), [](const auto& o){ return o > 0.0; } ) / 2 );
+	return std::accumulate( outputs_compar.begin(), outputs_compar.end(), 0.0 ) / nb_active_units;
 }
 
 // // ref_wrapper<Variable> version
