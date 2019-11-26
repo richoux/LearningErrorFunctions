@@ -2,6 +2,7 @@
 #include <complex>
 #include <algorithm>
 #include <numeric>
+#include <limits>
 
 // #include <iostream>
 // #include <iterator>
@@ -329,6 +330,9 @@ double intermediate_g( const vector<int>& weights,
 {
 	// double max_cost = nb_vars + 0.9;
 
+	if( std::count( weights.begin(), weights.end(), 1 ) == 0 )
+		return std::numeric_limits<double>::max();
+	
 	int number_units_compar;
 	if( nb_params == 1 )
 		number_units_compar = number_units_compar_1_param;

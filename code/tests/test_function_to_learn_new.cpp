@@ -25,12 +25,12 @@ int main()
 	randutils::mt19937_rng rng;
 	
 	vector<double> config( 9 );
-	std::iota( config.begin(), config.end(), 1.0 );
-	cout << "Config: ";
-	std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
+	// std::iota( config.begin(), config.end(), 1.0 );
+	// cout << "Config: ";
+	// std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
 
 	// equals + less than
-	vector<int> raw_weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+	vector<int> raw_weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 };
 
 	auto weights = make_weights( raw_weights );
 	// cout << "\nWeights: ";
@@ -42,35 +42,56 @@ int main()
 	// cout << "\nOutput Transfo: ";
 	// std::copy( outputs_transfo.begin(), outputs_transfo.end(), std::ostream_iterator<double>( cout, " " ) );
 
-	auto cost = g( weights, config, 0, (int)config.size() );
-	cout << "\nCost: " <<  cost << "\n";
+	// auto cost = g( weights, config, 0, (int)config.size() );
+	// cout << "\nCost: " <<  cost << "\n";
 	
-	rng.shuffle(config);
-	cout << "\nConfig: ";
-	std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
-	cost = g( weights, config, 0, (int)config.size() );
-	cout << "\nCost: " <<  cost << "\n";
+	// rng.shuffle(config);
+	// cout << "\nConfig: ";
+	// std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
+	// cost = g( weights, config, 0, (int)config.size() );
+	// cout << "\nCost: " <<  cost << "\n";
 
-	rng.shuffle(config);
-	cout << "\nConfig: ";
-	std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
-	cost = g( weights, config, 0, (int)config.size() );
-	cout << "\nCost: " <<  cost << "\n";
+	// rng.shuffle(config);
+	// cout << "\nConfig: ";
+	// std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
+	// cost = g( weights, config, 0, (int)config.size() );
+	// cout << "\nCost: " <<  cost << "\n";
 
+	// vector<int> new_config( 9 );
+	// rng.generate<std::uniform_int_distribution>( new_config, 1, 9 );
+	// vector<double> new_config_d( new_config.begin(), new_config.end() );	
+	
+	// cout << "\nNew config: ";
+	// std::copy( new_config_d.begin(), new_config_d.end(), std::ostream_iterator<double>( cout, " " ) );
+	// cost = g( weights, new_config_d, 0, (int)new_config_d.size() );
+	// cout << "\nCost: " <<  cost << "\n";
+
+	// rng.shuffle(new_config_d);
+	// cout << "\nNew config: ";
+	// std::copy( new_config_d.begin(), new_config_d.end(), std::ostream_iterator<double>( cout, " " ) );
+	// cost = g( weights, new_config_d, 0, (int)new_config_d.size() );
+	// cout << "\nCost: " <<  cost << "\n";
+
+	double cost;
 	vector<int> new_config( 9 );
+	for( int i = 0; i < 10; ++i )
+	{
+		rng.generate<std::uniform_int_distribution>( new_config, 1, 9 );
+		std::copy( new_config.begin(), new_config.end(), config.begin() );
+		cout << "\nConfig: ";
+		std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
+		cost = g( weights, config, 0, (int)config.size() );
+		cout << "\nCost: " <<  cost << "\n";
+	}
+
+	std::fill( raw_weights.begin(), raw_weights.end(), 0 );
+	weights = make_weights( raw_weights );
 	rng.generate<std::uniform_int_distribution>( new_config, 1, 9 );
-	vector<double> new_config_d( new_config.begin(), new_config.end() );	
-	
-	cout << "\nNew config: ";
-	std::copy( new_config_d.begin(), new_config_d.end(), std::ostream_iterator<double>( cout, " " ) );
-	cost = g( weights, new_config_d, 0, (int)new_config_d.size() );
-	cout << "\nCost: " <<  cost << "\n";
-
-	rng.shuffle(new_config_d);
-	cout << "\nNew config: ";
-	std::copy( new_config_d.begin(), new_config_d.end(), std::ostream_iterator<double>( cout, " " ) );
-	cost = g( weights, new_config_d, 0, (int)new_config_d.size() );
-	cout << "\nCost: " <<  cost << "\n";
-
+	std::copy( new_config.begin(), new_config.end(), config.begin() );
+	cout << "\nConfig: ";
+	std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
+	cost = g( weights, config, 0, (int)config.size() );
+	cout << "\nCost (should be max): " <<  cost << "\n";
+		
 	return EXIT_SUCCESS;
 }
