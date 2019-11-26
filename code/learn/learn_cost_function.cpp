@@ -12,12 +12,8 @@
 #include <ghost/objective.hpp>
 #include <ghost/solver.hpp>
 
-#include "ctr_high_outputs.hpp"
+#include "ctr_no_empty_network.hpp"
 #include "obj_ecl.hpp"
-
-#include "ctr_dependency.hpp"
-#include "ctr_active_unit.hpp"
-#include "ctr_inactive_unit.hpp"
 
 #include "function_to_learn_cppn.hpp" // for number_functions
 
@@ -48,19 +44,11 @@ void usage( char **argv )
 
 int main( int argc, char **argv )
 {
-#if defined LE
-	if( argc < 3 || argc > 6 )
+	if( argc < 4 || argc > 6 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
 	}
-#else
-	if( argc < 3 || argc > 5 )
-	{
-		usage( argv );
-		return EXIT_FAILURE;
-	}
-#endif
 	
 	randutils::mt19937_rng rng;
 	
@@ -69,7 +57,18 @@ int main( int argc, char **argv )
 	// Again, we assume here that all variables share the same domain,
 	// and that this domain contains all numbers from 1 to max_value included
 	int max_value = stoi( argv[2] );
-			
+
+	double precision = stod( argv[3] );
+	
+	int param_1{1}, param_2{0}; 
+
+	if( argc > 4 )
+	{
+		param_1 = stoi( argv[4] );
+		if( argc == 6 )
+			param_2 = stoi( argv[5] );
+	}
+	
 	vector<int> random_solutions;
 	vector<int> random_configurations;
 
@@ -78,27 +77,17 @@ int main( int argc, char **argv )
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 #elif defined LE
 	// argv[3] is the right-hand side value of the equation
-	concept = make_unique<LinearEqConcept>( nb_vars, max_value, stoi( argv[3] ) );
+	concept = make_unique<LinearEqConcept>( nb_vars, max_value, param_1 );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
 #endif
 	
-#if defined LE
-	if( argc == 5 )
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[4] ) );
-	else
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
-#else
-	if( argc == 4 )
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
-	else
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
-#endif
+	random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
 	
 	vector<int> few_configurations( random_configurations.begin(),
 	                                random_configurations.begin() + random_solutions.size() );
 	
-	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars, max_value );
+	auto cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
 
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
