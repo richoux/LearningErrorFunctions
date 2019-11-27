@@ -30,11 +30,11 @@ int main()
 	// std::copy( config.begin(), config.end(), std::ostream_iterator<double>( cout, " " ) );
 
 	// equals + less than
-	vector<int> raw_weights{ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 };
+	vector<int> raw_weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 
 	auto weights = make_weights( raw_weights );
-	// cout << "\nWeights: ";
-	// std::copy( weights.begin(), weights.end(), std::ostream_iterator<double>( cout, " " ) );
+	cout << "\nWeights: ";
+	std::copy( weights.begin(), weights.end(), std::ostream_iterator<double>( cout, " " ) );
 	
 	// vector<double> outputs_transfo( 9 * number_units_transfo );
 	// transformation_layer( config, outputs_transfo, 9, 1, weights );

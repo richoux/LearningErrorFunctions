@@ -246,20 +246,32 @@ void interpreter_comparison( int number,
 	}
 }
 
+double interpreter_agregation( int number,
+                               const vector<double>& inputs )
+{
+	// cout << "\nAgreg number: " << number << "\nAgreg inputs: ";
+	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
+	
+	switch( number )
+	{
+		// Different from 0
+	case 0:
+		return count_if( inputs.begin(), inputs.end(), [](const auto& i){ return i > 0; } );
+		// Sum
+	case 1:
+		return accumulate( inputs.begin(), inputs.end(), 0.0 );
+	}
+}
+
 void transformation_layer( const vector<double>& inputs,
                            vector<double>& outputs,
+                           int number_units_compar,
                            int nb_vars,
                            int nb_params,
                            const vector<int>& weights )
 {
 	for( int op_t = 0; op_t < number_units_transfo; ++op_t )
 	{
-		int number_units_compar;
-		if( nb_params == 1 )
-			number_units_compar = number_units_compar_1_param;
-		else
-			number_units_compar = number_units_compar_2_params;
-
 		auto offset = op_t * number_units_compar;
 		
 		for( int op_c = 0; op_c < number_units_compar; ++op_c )
@@ -271,22 +283,17 @@ void transformation_layer( const vector<double>& inputs,
 	}
 }
 
-int comparison_layer( const vector<double>& inputs,
-                      vector<double>& outputs,
-                      int nb_vars,
-                      int nb_params,
-                      const vector<int>& weights,
-                      double parameter_1,
-                      double parameter_2 )
+void comparison_layer( const vector<double>& inputs,
+                       vector<double>& outputs,
+                       int number_units_compar,
+                       int nb_vars,
+                       int nb_params,
+                       const vector<int>& weights,
+                       double parameter_1,
+                       double parameter_2 )
 {
-	int nb_active_units = 0;
+	// int nb_active_units = 0;
 	
-	int number_units_compar;
-	if( nb_params == 1 )
-		number_units_compar = number_units_compar_1_param;
-	else
-		number_units_compar = number_units_compar_2_params;
-
 	vector<double> temp_inputs( nb_vars );
 	bool need_to_compute_op_c = true; // small optimization to force triggering std::fill for the first time
 	
@@ -310,7 +317,7 @@ int comparison_layer( const vector<double>& inputs,
 
 		if( need_to_compute_op_c )
 		{
-			++nb_active_units;
+			//++nb_active_units;
 			if( nb_params == 1 )
 				interpreter_comparison( op_c, temp_inputs, outputs, parameter_1 );
 			else
@@ -318,7 +325,17 @@ int comparison_layer( const vector<double>& inputs,
 		}
 	}
 
-	return nb_active_units;
+	// return nb_active_units;
+}
+
+double agregation_layer( const vector<double>& inputs, int number_units_compar, const vector<int>& weights )
+{
+	int i = 0;
+	for( ; i < number_agregation_functions; ++i )
+		if( weights[ number_units_transfo * number_units_compar + i ] == 1 )
+			break;
+
+	return interpreter_agregation( i, inputs );
 }
 
 double intermediate_g( const vector<int>& weights,
@@ -345,36 +362,34 @@ double intermediate_g( const vector<int>& weights,
 	// comparison layer
 	//        |
 	//        v
-	//     sigmoid
+	//   pairwise sum
 	//        |
 	//        v
-	//  normalized sum
+	// agregation function
+	
 
 	vector<double> outputs_transfo( nb_vars * number_units_transfo );
 	vector<double> outputs_compar( nb_vars * number_units_compar );
-	// vector<double> outputs( nb_vars, 0.0 );
+	vector<double> outputs( nb_vars, 0.0 );
 	// vector<double> outputs( nb_vars * number_units_compar );
 	
-	transformation_layer( inputs, outputs_transfo, nb_vars, nb_params, weights );
+	transformation_layer( inputs, outputs_transfo, number_units_compar, nb_vars, nb_params, weights );
+	comparison_layer( outputs_transfo, outputs_compar, number_units_compar, nb_vars, nb_params, weights, parameter_1, parameter_2 );
 
-	auto nb_active_units = comparison_layer( outputs_transfo,
-	                                         outputs_compar,
-	                                         nb_vars,
-	                                         nb_params,
-	                                         weights,
-	                                         parameter_1,
-	                                         parameter_2 );
+	// pairwise sum
+	for( int i = 0; i < (int)outputs_compar.size(); ++i )
+		outputs[ i % nb_vars ] += outputs_compar[ i ];
 
-	// for( int i = 0; i < (int)outputs_compar.size(); ++i )
-	// 	outputs[ i % nb_vars ] += outputs_compar[ i ];
-		
+	auto result = agregation_layer( outputs, number_units_compar, weights );
+	
 	// std::transform( outputs_compar.begin(),
 	//                 outputs_compar.end(),
 	//                 outputs.begin(),
 	//                 [&nb_vars](const auto& x){ return sigmoid( x, nb_vars ); } );
 
-	// cout << "\nSigmoid outputs: ";
-	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+	// cout << "\nNumber of active units: " << nb_active_units << "\n";
+	// std::copy( outputs_compar.begin(), outputs_compar.end(), ostream_iterator<double>( cout, " ") );
+	// cout << "\n";
 	
 	// return nb_vars * std::accumulate( outputs.begin(), outputs.end(), 0.0 ) / nb_active_units;
 	/////
@@ -383,7 +398,9 @@ double intermediate_g( const vector<int>& weights,
 	// return max_cost * normalized_sum;
 	/////
 	// return std::accumulate( outputs.begin(), outputs.end(), 0.0 ) /( (double)std::count_if( outputs.begin(), outputs.end(), [](const auto& o){ return o > 0.0; } ) / 2 );
-	return std::accumulate( outputs_compar.begin(), outputs_compar.end(), 0.0 ) / nb_active_units;
+	// return std::accumulate( outputs_compar.begin(), outputs_compar.end(), 0.0 ) / nb_active_units;
+
+	return result;
 }
 
 // // ref_wrapper<Variable> version
@@ -398,17 +415,23 @@ double intermediate_g( const vector<int>& weights,
 // 	return intermediate_g( weights_int, inputs, nb_vars, max );
 // }
 
-// // Variable version
-// double g( const vector< Variable >& weights, const vector<int>& vars, int max )
-// {
-// 	int nb_vars = (int)vars.size();
-// 	vector<double> inputs( nb_vars );
-// 	vector<int> weights_int( weights.size() + number_functions );
-// 	std::copy( vars.begin(), vars.end(), inputs.begin() );
-// 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
+// Variable version
+double g( const vector< Variable >& weights,
+          const vector<int>& vars,
+          int nb_vars,
+          int start,
+          int nb_params,
+          double parameter_1,
+          double parameter_2 )
+{
+	vector<double> inputs( nb_vars );
+	vector<int> weights_int( weights.size() );
+	
+	std::copy( vars.begin() + start, vars.begin() + start + nb_vars, inputs.begin() );
+	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
 
-// 	return intermediate_g( weights_int, inputs, nb_vars, max );
-// }
+	return intermediate_g( weights_int, inputs, nb_vars, nb_params, parameter_1, parameter_2 );
+}
 
 // // Flat vector version
 // double g( const vector< reference_wrapper<Variable> >& weights, const vector<int>& vars, int start, int end, int max )
