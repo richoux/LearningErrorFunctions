@@ -9,7 +9,7 @@ CXXFIRSTFLAGSDEBUG= -g -O0 -W -Wall -Wextra -Wno-sign-compare -Wno-unused-parame
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	CXX=g++
-	CXXFLAGS= -std=c++17 $(CXXFIRSTFLAGS)
+	CXXFLAGS= -std=c++17 $(CXXFIRSTFLAGS) $(MYFLAGS)
 	CXXFLAGSDEBUG= -std=c++17 $(CXXFIRSTFLAGSDEBUG)
 	LDFLAGS=-pthread -lghost
 endif
@@ -83,7 +83,7 @@ $(OBJDIR)/latin.o: ../utils/latin.cpp
 $(OBJDIR)/metrics.o: ../utils/metrics.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR)/metrics.o: ../utils/random_draw.cpp
+$(OBJDIR)/random_draw.o: ../utils/random_draw.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean

@@ -3,9 +3,15 @@
 
 #include "all-diff.hpp"
 #include "../learn/function_to_learn_cppn.hpp" // for number_functions
+#include "../utils/convert.hpp"
 
 // defined in cfn/function_to_learn_cppn.cpp
-double intermediate_g( const vector<int>& weights, const vector<double>& inputs, int nb_vars, int max );
+double intermediate_g( const vector<int>& weights,
+                       const vector<double>& inputs,
+                       int nb_vars,
+                       int nb_params = 1,
+                       double parameter_1 = 1,
+                       double parameter_2 = 0 );
 
 //////////////////////////////////////////////////////
 
@@ -27,9 +33,12 @@ double intermediate_g( const vector<int>& weights, const vector<double>& inputs,
 // CPPN Max ECL+inactive - Ctr HO on AllDiff_9 new cost norm 43.3857
 // _weights{ 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0 }
 
+// Transo+Compar AllDiff
+// raw_weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }
+
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 	: Constraint( variables ),
-	  _weights{ 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+	  _weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
@@ -38,11 +47,13 @@ double AllDiff::required_cost() const
 	if( _ad_concept.concept( variables ) )
 		return 0.;
 
+	auto weights = make_weights( _weights );
+	
 	vector<double> inputs( variables.size() );
 	std::transform( variables.begin(),
 	                variables.end(),
 	                inputs.begin(),
 	                []( const auto& v ){ return v.get().get_value(); } );
 
-	return intermediate_g( _weights, inputs, _ad_concept.nb_vars, _ad_concept.max_value );
+	return intermediate_g( weights, inputs, _ad_concept.nb_vars );
 }

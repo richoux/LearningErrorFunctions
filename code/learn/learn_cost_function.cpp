@@ -12,12 +12,9 @@
 #include <ghost/objective.hpp>
 #include <ghost/solver.hpp>
 
-#include "ctr_high_outputs.hpp"
-#include "obj_ecl.hpp"
-
-#include "ctr_dependency.hpp"
-#include "ctr_active_unit.hpp"
-#include "ctr_inactive_unit.hpp"
+#include "ctr_no_empty_network.hpp"
+#include "ctr_unique_agreg_function.hpp"
+#include "obj_hamming.hpp"
 
 #include "function_to_learn_cppn.hpp" // for number_functions
 
@@ -41,26 +38,18 @@ constexpr	int number_layers = 2;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE\n";
+	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE PRECISION [Param1] [Param2]\n";
 }
 
 //////////////////////////////////
 
 int main( int argc, char **argv )
 {
-#if defined LE
-	if( argc < 3 || argc > 6 )
+	if( argc < 4 || argc > 6 )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
 	}
-#else
-	if( argc < 3 || argc > 5 )
-	{
-		usage( argv );
-		return EXIT_FAILURE;
-	}
-#endif
 	
 	randutils::mt19937_rng rng;
 	
@@ -69,36 +58,39 @@ int main( int argc, char **argv )
 	// Again, we assume here that all variables share the same domain,
 	// and that this domain contains all numbers from 1 to max_value included
 	int max_value = stoi( argv[2] );
-			
+
+	double precision = stod( argv[3] );
+	
+	int param_1{1}, param_2{0}; 
+
+	if( argc > 4 )
+	{
+		param_1 = stoi( argv[4] );
+		if( argc == 6 )
+			param_2 = stoi( argv[5] );
+	}
+	
 	vector<int> random_solutions;
 	vector<int> random_configurations;
 
+	int number_units_compar = number_units_compar_1_param;
+	
 	unique_ptr<Concept> concept;
 #if defined AD
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 #elif defined LE
 	// argv[3] is the right-hand side value of the equation
-	concept = make_unique<LinearEqConcept>( nb_vars, max_value, stoi( argv[3] ) );
+	concept = make_unique<LinearEqConcept>( nb_vars, max_value, param_1 );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
 #endif
 	
-#if defined LE
-	if( argc == 5 )
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[4] ) );
-	else
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
-#else
-	if( argc == 4 )
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, stod( argv[3] ) );
-	else
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations );
-#endif
+	random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
 	
 	vector<int> few_configurations( random_configurations.begin(),
 	                                random_configurations.begin() + random_solutions.size() );
 	
-	auto cost_map = compute_metric( random_solutions, few_configurations, nb_vars, max_value );
+	auto cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
 
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
@@ -107,97 +99,53 @@ int main( int argc, char **argv )
 	/* Variables */
 	/*************/
 	vector< Variable > weights; // be careful: variables of our problem actually represent weights
-	for( int i = 0; i < number_functions * number_layers; ++i )
+	for( int i = 0; i < number_units_transfo * number_units_compar + number_agregation_functions; ++i )
 		weights.emplace_back( std::string("v") + std::to_string(i),
 		                      std::string("v") + std::to_string(i),
 		                      0,
 		                      2 );
 
 	vector< reference_wrapper< Variable > > weights_ref( weights.begin(), weights.end() );
+	vector< reference_wrapper< Variable > > weights_network( weights_ref.begin(), std::prev( weights_ref.end(), number_agregation_functions ) );
+	vector< reference_wrapper< Variable > > weights_agregation( std::prev( weights_ref.end(), number_agregation_functions ), weights_ref.end() );	
 	
-	vector< reference_wrapper< Variable > > dependency_id( weights_ref.begin(),
-	                                                       weights_ref.begin() + number_functions + 1 );
-	
-	vector< reference_wrapper< Variable > > dependency_abs( weights_ref.begin(),
-	                                                        weights_ref.begin() + number_functions );
-	dependency_abs.push_back( weights_ref[number_functions + 1] );
-
-	vector< reference_wrapper< Variable > > dependency_sin( weights_ref.begin(),
-	                                                        weights_ref.begin() + number_functions );
-	dependency_sin.push_back( weights_ref[number_functions + 2] );
-
-	vector< reference_wrapper< Variable > > dependency_tanh( weights_ref.begin(),
-	                                                         weights_ref.begin() + number_functions );
-	dependency_tanh.push_back( weights_ref[number_functions + 3] );
-
-	vector< reference_wrapper< Variable > > dependency_cubic_tanh( weights_ref.begin(),
-	                                                               weights_ref.begin() + number_functions );
-	dependency_cubic_tanh.push_back( weights_ref[number_functions + 4] );
-
-	vector< reference_wrapper< Variable > > dependency_sigmoid( weights_ref.begin(),
-	                                                            weights_ref.begin() + number_functions );
-	dependency_sigmoid.push_back( weights_ref[number_functions + 5] );
-
-	vector< reference_wrapper< Variable > > dependency_gaussian( weights_ref.begin(),
-	                                                             weights_ref.begin() + number_functions );
-	dependency_gaussian.push_back( weights_ref[number_functions + 6] );
-
-	// vector< reference_wrapper< Variable > > dependency_normalization( weights_ref.begin(),
-	//                                                                   weights_ref.begin() + number_functions );
-	// dependency_normalization.push_back( weights_ref[number_functions + 7] );
-
-	vector< reference_wrapper< Variable > > last_layer_active_unit( weights_ref.begin() + number_functions,
-	                                                                weights_ref.end() );
-
-	vector< reference_wrapper< Variable > > inactive_first_id_abs( weights_ref.begin(), weights_ref.begin() + 2 );
 
 	/***************/
 	/* Constraints */
 	/***************/
-	shared_ptr< Constraint > ctr_all_var = make_shared< Ctr_HO >( weights_ref,
-	                                                              nb_vars,
-	                                                              max_value,
-	                                                              few_configurations,
-	                                                              cost_map );
+	shared_ptr< Constraint > ctr_no_empty_network	= make_shared< Ctr_no_empty_network >( weights_network );
+	shared_ptr< Constraint > ctr_unique_agreg_function	= make_shared< Ctr_unique_agreg_function >( weights_agregation );
+	vector< shared_ptr< Constraint >> constraints { ctr_no_empty_network, ctr_unique_agreg_function };
 
-	shared_ptr< Constraint > ctr_dependency_id = make_shared< Ctr_dependency >( dependency_id );
-	shared_ptr< Constraint > ctr_dependency_abs = make_shared< Ctr_dependency >( dependency_abs );
-	shared_ptr< Constraint > ctr_dependency_sin = make_shared< Ctr_dependency >( dependency_sin );
-	shared_ptr< Constraint > ctr_dependency_tanh = make_shared< Ctr_dependency >( dependency_tanh );
-	shared_ptr< Constraint > ctr_dependency_cubic_tanh = make_shared< Ctr_dependency >( dependency_cubic_tanh );
-	shared_ptr< Constraint > ctr_dependency_sigmoid = make_shared< Ctr_dependency >( dependency_sigmoid );
-	shared_ptr< Constraint > ctr_dependency_gaussian = make_shared< Ctr_dependency >( dependency_gaussian );	
-	// shared_ptr< Constraint > ctr_dependency_normalization = make_shared< Ctr_dependency >( dependency_normalization );
-
-	shared_ptr< Constraint > ctr_last_layer_active_unit = make_shared< Ctr_active_unit >( last_layer_active_unit );
-
-	shared_ptr< Constraint > ctr_inactive_first_id_abs = make_shared< Ctr_inactive_unit >( inactive_first_id_abs );
-
-	vector< shared_ptr< Constraint >> constraints { ctr_all_var,
-	                                                ctr_dependency_id,
-	                                                ctr_dependency_abs,
-	                                                ctr_dependency_sin,
-	                                                ctr_dependency_tanh,
-	                                                ctr_dependency_cubic_tanh,
-	                                                ctr_dependency_sigmoid,
-	                                                ctr_dependency_gaussian,
-	                                                ctr_last_layer_active_unit,
-	                                                ctr_inactive_first_id_abs };
-
-	                                                //ctr_last_layer_active_unit };
-	                                                //ctr_inactive_first_id_abs };
-	
 	/**********************/
 	/* Objective function */
 	/**********************/
-	shared_ptr< Objective > objective = make_shared< Obj_ECL >( std::move( concept ),
-	                                                            nb_vars,
-	                                                            random_solutions,
-	                                                            few_configurations );
+	shared_ptr< Objective > objective = make_shared< Obj_hamming >( std::move( concept ),
+	                                                                nb_vars,
+	                                                                std::max(1, argc - 4),
+	                                                                param_1,
+	                                                                param_2,
+	                                                                random_solutions,
+	                                                                few_configurations,
+	                                                                cost_map );
+
+
+	double cost = 0.;
+
+	/*
+	// TESTS
+	vector<int> vec{0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0};
+	for( int i = 0; i < (int)vec.size(); ++i )
+		if( vec[i] == 1 )
+			weights[i].set_value( 1 );
+
+	cost = objective->cost( weights );
+	cout << "\nCost: " <<  cost << "\n";
+  
+  /*/
 
 	Solver solver( weights, constraints, objective );
 	
-	double cost = 0.;
 	vector<int> solution( weights_ref.size(), 0 );
 
 	//solver.solve( cost, solution, 100000, 1000000 );
@@ -211,4 +159,5 @@ int main( int argc, char **argv )
 	for( auto v : solution )
 		std::cout << " " << v;
 	std::cout << "\n";
+  //*/
 }

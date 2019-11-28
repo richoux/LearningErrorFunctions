@@ -9,10 +9,10 @@
 using namespace std;
 using namespace ghost;
 
-class Ctr_dependency : public Constraint
+class Ctr_no_empty_network : public Constraint
 {
 	double required_cost() const override;
 
 public:
-	Ctr_dependency( const vector< reference_wrapper<Variable> >& weights );
+	Ctr_no_empty_network( const vector< reference_wrapper<Variable> >& weights );
 };
