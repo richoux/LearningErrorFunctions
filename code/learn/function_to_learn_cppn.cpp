@@ -446,7 +446,7 @@ double g( const vector< Variable >& weights,
 // }
 
 // Int vector version
-double g( const vector< int >& weights,
+double g( const vector<int>& weights,
           const vector<double>& vars,
           int start,
           int end,
@@ -456,4 +456,20 @@ double g( const vector< int >& weights,
 
 {
 	return intermediate_g( weights, vars, end - start, nb_params, parameter_1, parameter_2 );
+}
+
+// Int vector with int config version
+double g( const vector<int>& weights,
+          const vector<int>& vars,
+          int start,
+          int end,
+          int nb_params,
+          double parameter_1,
+          double parameter_2 )
+
+{
+	vector<double> inputs( end - start );
+	std::copy( vars.begin() + start, vars.begin() + end, inputs.begin() );
+
+	return intermediate_g( weights, inputs, end - start, nb_params, parameter_1, parameter_2 );
 }

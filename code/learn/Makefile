@@ -1,4 +1,4 @@
-EXEC_AD=all_diff_cf
+XEC_AD=all_diff_cf
 EXEC_LE=linear_eq_cf
 EXEC_LT=less_than_cf
 
@@ -65,7 +65,7 @@ $(OBJDIR)/less-than_concept.o: ../constraints/less-than_concept.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Common objects
-$(OBJDIR)/learn_cost_function.o: learn_cost_function.cpp
+$(OBJDIR)/learn_cf_cfn.o: learn_cf_cfn.cpp
 	$(CXX) $(CXXFLAGS) $(CONSTRAINTFLAG) -c $< -o $@
 
 $(OBJDIR)/%.o: %.cpp
