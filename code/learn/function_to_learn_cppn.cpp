@@ -260,6 +260,8 @@ double interpreter_agregation( int number,
 		// Sum
 	case 1:
 		return accumulate( inputs.begin(), inputs.end(), 0.0 );
+	default:
+		return count_if( inputs.begin(), inputs.end(), [](const auto& i){ return i > 0; } );; // should not happen if possible
 	}
 }
 

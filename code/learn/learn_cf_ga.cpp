@@ -2,7 +2,6 @@
 // standard includes
 #include <stdexcept>  // runtime_error 
 #include <iostream>    // cout
-#include <strstream>  // ostrstream, istrstream
 
 #include <ctime>
 #include <vector>
@@ -22,6 +21,7 @@
 #include "../utils/randutils.hpp"
 #include "../utils/metrics.hpp"
 #include "../utils/random_draw.hpp"
+#include "../utils/convert.hpp"
 
 #include "../constraints/concept.hpp"
 #if defined AD
@@ -56,7 +56,7 @@ typedef eoBit<double> Indi;        // A bitstring with fitness double
 double fitness(const Indi& indi)
 {
 	set< pair<double, double> > costs;
-	double cost = 0.0;
+	//double sum_seconds = 0.0;	
 	vector<int> weights( indi.size(), 0 );
 	for( int i = 0; i < (int)indi.size(); ++i )
 		if( indi[i] )
@@ -64,29 +64,35 @@ double fitness(const Indi& indi)
 			
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
-		auto s = g( weights, random_solutions, i, i + nb_vars, nb_params, param_1, param_2 );
-		
+		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
+		auto s = g( weights, few_configurations, i, i + nb_vars, nb_params, param_1, param_2 );
+		costs.emplace( f, s );
+
+		//sum_seconds += s;
 #if defined DEBUG
-		std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		cout << ": (0, " << s << ")\n";
+		cout << ": (" << f << ", " << s << ")\n";
 #endif
-		if( s != 0 )
-			++cost;
 	}
 	
-	for( int i = 0; i < (int)random_configurations.size(); i += nb_vars )
+	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
 	{
-#if defined DEBUG
-		std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
-		auto s = g( weights, random_configurations, i, i + nb_vars, nb_params, param_1, param_2 );
-		cout << ": (" << f << ", " << s << ")\n";
+		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
+		auto s = g( weights, few_configurations, i, i + nb_vars, nb_params, param_1, param_2 );
 		costs.emplace( f, s );
-#else
-		costs.emplace( cost_map.at( convert( random_configurations, i, i + nb_vars ) ),
-		               g( weights, random_configurations, i, i + nb_vars, nb_params, param_1, param_2 ) );
+
+		//sum_seconds += s;
+#if defined DEBUG
+		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		cout << ": (" << f << ", " << s << ")\n";
 #endif
 	}
+
+	// compute variance
+	// double mean = sum_seconds / (int)costs.size();
+	// double variance = 0.0;
+	// for( auto c : costs )
+	// 	variance += std::pow( mean - c.second, 2 );
+	// variance /= (int)costs.size();
 	
 #if defined DEBUG
 	cout << "\n//////////////\n\n";
@@ -94,17 +100,31 @@ double fitness(const Indi& indi)
 	for( auto c : costs )
 		cout << "(" << c.first << ", " << c.second << ")\n";
 #endif
+
+	double cost_order = 0.0;
 	
 	for( auto it = costs.begin(); std::next( it ) != costs.end(); ++it )
-	{
-		if( (*it).second > (*std::next( it )).second )
-			++cost;
-	}
+		if( (*it).second >= (*std::next( it )).second )
+			++cost_order;
 
-	return cost;
+	// penalize a network vector full of zeros
+	if( std::count( weights.begin(), std::prev( weights.end(), 2 ), 1 ) == 0 )
+		cost_order += 10;
+	// penalty if no unique agregation function
+	if( std::count( std::prev( weights.end(), 2 ), weights.end(), 1 ) != 1 )
+		cost_order += 10;	
+	
+	// EO is looking for maximizing the score, and we want to minimize our score, so we multiply it by -1
+	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
+	// variance is here to forbid having all costs at the same value,
+	// and minimizing the number of 1s in individuals is to keep the CPPN as simple as possible. 
+	//return -cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
+
+	// here the cost is cost_order + (cost_order * number_1)
+	return -cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
 //-----------------------------------------------------------------------------
-void main_function(int argc, char **argv)
+int main_function(int argc, char **argv)
 {
 	if( argc < 4 || argc > 6 )
 	{
@@ -117,8 +137,8 @@ void main_function(int argc, char **argv)
 	const unsigned int SEED = time(0);
 	const unsigned int T_SIZE = 3;        // size for tournament selection
 	const unsigned int VEC_SIZE = number_units_transfo * number_units_compar + number_agregation_functions;    // Number of bits in genotypes
-	const unsigned int POP_SIZE = 20;  // Size of population
-	const unsigned int MAX_GEN = 100;  // Maximum number of generation before STOP
+	const unsigned int POP_SIZE = 100;  // Size of population
+	const unsigned int MAX_GEN = 1000;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
@@ -157,8 +177,18 @@ void main_function(int argc, char **argv)
 	few_configurations.reserve( random_solutions.size() );
 	std::copy( random_configurations.begin(),
 	           random_configurations.begin() + random_solutions.size(),
-	           few_configurations.begin() );
+	           std::back_inserter( few_configurations ) );
 
+#if defined DEBUG
+	cout << "Few config: " << few_configurations.size() << "\n";	
+	for( int i = 0; i < (int)few_configurations.size(); ++i )
+	{
+		if( i % nb_vars == 0 )
+			cout << "\n";
+		cout << few_configurations[i] << " ";
+	}
+#endif
+		
 	cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
 
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
@@ -175,7 +205,16 @@ void main_function(int argc, char **argv)
 	// declare the population
 	eoPop<Indi> pop;
 	// fill it!
-	for (unsigned int igeno=0; igeno<POP_SIZE; igeno++)
+	
+	// first individual with filled with zeros
+	Indi v;
+	for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
+		v.push_back( false );
+	eval(v);
+	pop.push_back(v);
+
+	// other individuals randomly filled.
+	for (unsigned int igeno=1; igeno<POP_SIZE; igeno++)
 	{
 		Indi v;                    // void individual, to be filled
 		for (unsigned ivar=0; ivar<VEC_SIZE; ivar++)
@@ -226,6 +265,13 @@ void main_function(int argc, char **argv)
 	// Print (sorted) intial population
 	pop.sort();
 	cout << "FINAL Population\n" << pop << endl;
+
+	cout << "Best individual\n";
+	for( const auto& v : pop[0] )
+		cout << v << ", ";
+	cout << "\n";
+
+	return EXIT_SUCCESS;
 }
 // A main that catches the exceptions
 int main(int argc, char **argv)
@@ -239,11 +285,10 @@ int main(int argc, char **argv)
 #endif
 	try
 	{
-		main_function(argc, argv);
+		return main_function(argc, argv);
 	}
 	catch(exception& e)
 	{
 		cout << "Exception: " << e.what() << '\n';
 	}
-	return 1;
 }

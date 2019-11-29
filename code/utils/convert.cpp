@@ -38,3 +38,23 @@ std::vector<int> make_weights( const std::vector<int>& raw_weights )
 	
 	return network_weights;	
 }
+
+std::vector<int> recover_raw_weights( const std::vector<int>& weights )
+{
+	int number_units_compar = ( (int)weights.size() - number_agregation_functions ) / number_units_transfo;
+	vector<int> raw_weights( number_units_compar + number_units_transfo + number_agregation_functions, 0 );
+
+	for( int c = 0; c < number_units_compar; ++c )
+		for( int t = 0; t < number_units_transfo; ++t )
+				if( weights[ t*number_units_compar + c ] == 1 )
+				{
+					raw_weights[ t ] = 1;
+					raw_weights[ number_units_transfo + c ] = 1;
+				}
+	
+	std::copy( std::prev( weights.end(), number_agregation_functions ),
+	           weights.end(),
+	           raw_weights.begin() + number_units_compar + number_units_transfo );
+	
+	return raw_weights;	
+}

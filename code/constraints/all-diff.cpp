@@ -34,11 +34,14 @@ double intermediate_g( const vector<int>& weights,
 // _weights{ 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0 }
 
 // Transo+Compar AllDiff
-// raw_weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }
+// raw_weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 }
+
+// GA cost 12
+// _weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }
 
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 	: Constraint( variables ),
-	  _weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+	  _weights{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
 	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
@@ -48,6 +51,7 @@ double AllDiff::required_cost() const
 		return 0.;
 
 	auto weights = make_weights( _weights );
+	//auto weights = _weights;
 	
 	vector<double> inputs( variables.size() );
 	std::transform( variables.begin(),
@@ -57,3 +61,4 @@ double AllDiff::required_cost() const
 
 	return intermediate_g( weights, inputs, _ad_concept.nb_vars );
 }
+

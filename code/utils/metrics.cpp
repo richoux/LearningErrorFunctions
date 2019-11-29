@@ -1,3 +1,5 @@
+#include <limits>
+
 #include "metrics.hpp"
 
 double hamming_metric( const vector<int>& configuration,
