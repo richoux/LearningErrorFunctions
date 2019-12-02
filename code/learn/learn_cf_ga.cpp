@@ -64,14 +64,14 @@ double fitness(const Indi& indi)
 			
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
-		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
-		auto s = g( weights, few_configurations, i, i + nb_vars, nb_params, param_1, param_2 );
+		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
+		auto s = g( weights, random_solutions, i, i + nb_vars, nb_params, param_1, param_2 );
 		costs.emplace( f, s );
 
 		//sum_seconds += s;
-#if defined DEBUG
-		cout << ": (" << f << ", " << s << ")\n";
-#endif
+// #if defined DEBUG
+// 		cout << ": (" << f << ", " << s << ")\n";
+// #endif
 	}
 	
 	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
@@ -81,10 +81,10 @@ double fitness(const Indi& indi)
 		costs.emplace( f, s );
 
 		//sum_seconds += s;
-#if defined DEBUG
-		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		cout << ": (" << f << ", " << s << ")\n";
-#endif
+// #if defined DEBUG
+// 		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+// 		cout << ": (" << f << ", " << s << ")\n";
+// #endif
 	}
 
 	// compute variance
@@ -104,9 +104,19 @@ double fitness(const Indi& indi)
 	double cost_order = 0.0;
 	
 	for( auto it = costs.begin(); std::next( it ) != costs.end(); ++it )
-		if( (*it).second >= (*std::next( it )).second )
+	{
+		if( (*it).first == 0 && (*it).second != 0 )
 			++cost_order;
-
+		    
+		if( (*it).second >= (*std::next( it )).second )
+		{
+#if defined DEBUG
+			cout << "it=" << (*it).second << ", it++=" << (*std::next( it )).second << " at " << std::distance( costs.begin(), it ) << "\n" ;
+#endif
+			++cost_order;
+		}
+	}
+	
 	// penalize a network vector full of zeros
 	if( std::count( weights.begin(), std::prev( weights.end(), 2 ), 1 ) == 0 )
 		cost_order += 10;
@@ -123,6 +133,8 @@ double fitness(const Indi& indi)
 	// here the cost is cost_order + (cost_order * number_1)
 	return -cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
+
+
 //-----------------------------------------------------------------------------
 int main_function(int argc, char **argv)
 {
@@ -137,8 +149,8 @@ int main_function(int argc, char **argv)
 	const unsigned int SEED = time(0);
 	const unsigned int T_SIZE = 3;        // size for tournament selection
 	const unsigned int VEC_SIZE = number_units_transfo * number_units_compar + number_agregation_functions;    // Number of bits in genotypes
-	const unsigned int POP_SIZE = 100;  // Size of population
-	const unsigned int MAX_GEN = 1000;  // Maximum number of generation before STOP
+	const unsigned int POP_SIZE = 10;  // Size of population
+	const unsigned int MAX_GEN = 100;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
@@ -179,20 +191,31 @@ int main_function(int argc, char **argv)
 	           random_configurations.begin() + random_solutions.size(),
 	           std::back_inserter( few_configurations ) );
 
-#if defined DEBUG
-	cout << "Few config: " << few_configurations.size() << "\n";	
-	for( int i = 0; i < (int)few_configurations.size(); ++i )
-	{
-		if( i % nb_vars == 0 )
-			cout << "\n";
-		cout << few_configurations[i] << " ";
-	}
-#endif
+// #if defined DEBUG
+// 	cout << "Few config: " << few_configurations.size() << "\n";	
+// 	for( int i = 0; i < (int)few_configurations.size(); ++i )
+// 	{
+// 		if( i % nb_vars == 0 )
+// 			cout << "\n";
+// 		cout << few_configurations[i] << " ";
+// 	}
+// #endif
 		
 	cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
 
 	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
+
+
+	/////////////////
+	Indi v2;
+	auto weights = make_weights( {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0} );
+	for( auto& w : weights )
+		v2.push_back( w );
+	eoEvalFuncPtr<Indi> eval2(  fitness );
+	eval2(v2);
+	cout << "Handmade individual: " << v2 << "\n";
+	/////////////////
 	
 	/////////////////////////////
 	// Fitness function
@@ -266,10 +289,12 @@ int main_function(int argc, char **argv)
 	pop.sort();
 	cout << "FINAL Population\n" << pop << endl;
 
-	cout << "Best individual\n";
-	for( const auto& v : pop[0] )
-		cout << v << ", ";
-	cout << "\n";
+	eval(pop[0]);
+	cout << "Best individual: " << pop[0] << "\n";
+	// cout << "Best individual\n";
+	// for( const auto& v : pop[0] )
+	// 	cout << v << ", ";
+	// cout << "\n";
 
 	return EXIT_SUCCESS;
 }
@@ -283,6 +308,7 @@ int main(int argc, char **argv)
 	_CrtSetDbgFlag(flag);
 //    _CrtSetBreakAlloc(100);
 #endif
+	
 	try
 	{
 		return main_function(argc, argv);
