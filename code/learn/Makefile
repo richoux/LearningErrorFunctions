@@ -1,4 +1,4 @@
-XEC_AD=all_diff_cf
+EXEC_AD=all_diff_cf
 EXEC_LE=linear_eq_cf
 EXEC_LT=less_than_cf
 

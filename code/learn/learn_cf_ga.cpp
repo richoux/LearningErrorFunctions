@@ -29,7 +29,7 @@
 #elif defined LE
 #include "../constraints/linear-eq_concept.hpp"
 #elif defined LT
-#include "../constraints/less-then_concept.hpp"
+#include "../constraints/less-than_concept.hpp"
 #endif
 
 using namespace std;
@@ -65,6 +65,9 @@ double fitness(const Indi& indi)
 			
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
+		// std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		// cout << "\n";
+		
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
 		auto s = g( weights, params, random_solutions, i, nb_vars  );
 
@@ -74,12 +77,15 @@ double fitness(const Indi& indi)
 
 		//sum_seconds += s;
 // #if defined DEBUG
-// 		cout << ": (" << f << ", " << s << ")\n";
+		// cout << "Hamming: " << f << "\n";
 // #endif
 	}
 	
 	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
 	{
+		// std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		// cout << "\n";
+
 		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
 		auto s = g( weights, params, few_configurations, i, nb_vars  );
 
@@ -88,25 +94,25 @@ double fitness(const Indi& indi)
 		// costs.emplace( f, s );
 
 // #if defined DEBUG
-// 		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-// 		cout << ": (" << f << ", " << s << ")\n";
+		// cout << "Hamming: " << f << "\n";
 // #endif
 	}
 
+	
+	
+	// penalize a network vector full of zeros
+	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
+		cost += 10;
+	// penalty if no unique agregation function
+	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
+		cost += 10;	
+
 	auto number_active_units = std::count( weights.begin(), weights.end(), 1 );
-	
 	cost += ( static_cast<double>( number_active_units ) / ( number_units_transfo + number_units_compar + 2 ) );
-	
+
 	// -cost since we want to minimize the cost.
 	return -cost;
-	
-	// // penalize a network vector full of zeros
-	// if( std::count( weights.begin(), std::prev( weights.end(), 2 ), 1 ) == 0 )
-	// 	cost_order += 10;
-	// // penalty if no unique agregation function
-	// if( std::count( std::prev( weights.end(), 2 ), weights.end(), 1 ) != 1 )
-	// 	cost_order += 10;	
-	
+
 	// EO is looking for maximizing the score, and we want to minimize our score, so we multiply it by -1
 	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
 	// variance is here to forbid having all costs at the same value,
@@ -159,7 +165,7 @@ int main_function(int argc, char **argv)
 #if defined AD
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 #elif defined LE
-	// argv[3] is the right-hand side value of the equation
+	// params[0] is the right-hand side value of the equation
 	concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
@@ -189,10 +195,13 @@ int main_function(int argc, char **argv)
 
 	/////////////////
 	// Indi v2;
-	// vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
+	// // all_diff
+	// // vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
+	// // less_than
+	// vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
 	// for( auto& w : weights )
 	// 	v2.push_back( w );
-	// eoEvalFuncPtr<Indi> eval2(  fitness );
+	// eoEvalFuncPtr<Indi> eval2( fitness );
 	// eval2(v2);
 	// cout << "Handmade individual: " << v2 << "\n";
 	// return 1;

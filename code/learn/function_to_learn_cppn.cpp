@@ -139,9 +139,6 @@ double interpreter_comparison( const int& number,
 		return std::max( 0.0, input - param );
 		break;
 	}
-
-	// cout << "\nCompar ouputs: ";
-	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
 }
 
 vector<double> layer_transformation( const vector<double>& inputs,
@@ -224,7 +221,8 @@ double intermediate_g( const vector<double>& inputs,
 
 	// auto plop = layer_comparison( output_agreg, weights, params[0] );
 	// cout << "Network output: " << plop << "\n";
-	return layer_comparison( output_agreg, weights, params[0] );
+	// return plop;
+  return layer_comparison( output_agreg, weights, params[0] );
 }
 
 // Variable version
