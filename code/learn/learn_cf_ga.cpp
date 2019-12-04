@@ -93,6 +93,10 @@ double fitness(const Indi& indi)
 // #endif
 	}
 
+	auto number_active_units = std::count( weights.begin(), weights.end(), 1 );
+	
+	cost += ( static_cast<double>( number_active_units ) / ( number_units_transfo + number_units_compar + 2 ) );
+	
 	// -cost since we want to minimize the cost.
 	return -cost;
 	
@@ -185,12 +189,13 @@ int main_function(int argc, char **argv)
 
 	/////////////////
 	// Indi v2;
-	// vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+	// vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
 	// for( auto& w : weights )
 	// 	v2.push_back( w );
 	// eoEvalFuncPtr<Indi> eval2(  fitness );
 	// eval2(v2);
 	// cout << "Handmade individual: " << v2 << "\n";
+	// return 1;
 	/////////////////
 	
 	/////////////////////////////

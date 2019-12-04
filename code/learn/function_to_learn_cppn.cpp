@@ -118,6 +118,8 @@ double interpreter_comparison( const int& number,
                                const double& input,
                                const double& param )
 {
+	// cout << "\nCompar number: " << number << "\nCompar inputs: " << input << "\n";
+
 	switch( number )
 	{
 		// Identity
@@ -187,7 +189,7 @@ double layer_comparison( const double& input,
 	//precondition: we should have exactly one 1 in weights.
 	
 	for( int i = 0; i < number_units_compar; ++i )
-		if( weights[i] == 1 )
+		if( weights[ i + number_units_transfo + 2 ] == 1 )
 			return interpreter_comparison( i, input, param );
 
 	// should never happen
@@ -219,6 +221,9 @@ double intermediate_g( const vector<double>& inputs,
 	auto output_transfo = layer_transformation( inputs, nb_vars, params, weights );
 	auto output_arith = layer_arithmetic( output_transfo, nb_vars, weights[ number_units_transfo ] );
 	auto output_agreg = layer_agregation( output_arith, weights[ number_units_transfo + 1 ] );
+
+	// auto plop = layer_comparison( output_agreg, weights, params[0] );
+	// cout << "Network output: " << plop << "\n";
 	return layer_comparison( output_agreg, weights, params[0] );
 }
 
