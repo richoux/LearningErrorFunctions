@@ -6,12 +6,10 @@
 #include "../utils/convert.hpp"
 
 // defined in cfn/function_to_learn_cppn.cpp
-double intermediate_g( const vector<int>& weights,
-                       const vector<double>& inputs,
-                       int nb_vars,
-                       int nb_params = 1,
-                       double parameter_1 = 1,
-                       double parameter_2 = 0 );
+double intermediate_g( const vector<double>& inputs,
+                       const vector<double>& params,
+                       const vector<int>& weights,
+                       const int& nb_vars );
 
 //////////////////////////////////////////////////////
 
@@ -39,9 +37,12 @@ double intermediate_g( const vector<int>& weights,
 // GA cost 12
 // _weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }
 
+// GA 4-layers cost 517.214
+// _weights{0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}
+
 AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
 	: Constraint( variables ),
-	  _weights{0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+	  _weights{0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
 	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
@@ -50,8 +51,8 @@ double AllDiff::required_cost() const
 	if( _ad_concept.concept( variables ) )
 		return 0.;
 
-	auto weights = make_weights( _weights );
-	//auto weights = _weights;
+	//auto weights = make_weights( _weights );
+	auto weights = _weights;
 	
 	vector<double> inputs( variables.size() );
 	std::transform( variables.begin(),
@@ -59,6 +60,9 @@ double AllDiff::required_cost() const
 	                inputs.begin(),
 	                []( const auto& v ){ return v.get().get_value(); } );
 
-	return intermediate_g( weights, inputs, _ad_concept.nb_vars );
+	vector<double> param{ 1 };
+	int nb_vars = _ad_concept.nb_vars;
+	
+	return intermediate_g( inputs, param, weights, nb_vars );
 }
 

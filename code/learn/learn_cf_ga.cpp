@@ -29,23 +29,23 @@
 #elif defined LE
 #include "../constraints/linear-eq_concept.hpp"
 #elif defined LT
-#include "../constraints/less-then_concept.hpp"
+#include "../constraints/less-than_concept.hpp"
 #endif
 
 using namespace std;
 
-int nb_vars, max_value, nb_params, param_1{1}, param_2{0};
+int nb_vars, max_value;
 double precision;
 vector<int> random_solutions;
 vector<int> random_configurations;
-int number_units_compar = number_units_compar_1_param;
 unique_ptr<Concept> concept;
 vector<int> few_configurations;
 map<string, double> cost_map;
+vector<double> params;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE PRECISION [Param1] [Param2]\n";
+	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE PRECISION [Param]\n";
 }
 
 //-----------------------------------------------------------------------------
@@ -55,8 +55,9 @@ typedef eoBit<double> Indi;        // A bitstring with fitness double
 
 double fitness(const Indi& indi)
 {
-	set< pair<double, double> > costs;
-	//double sum_seconds = 0.0;	
+	// set< pair<double, double> > costs;
+	double cost = 0.0;
+	
 	vector<int> weights( indi.size(), 0 );
 	for( int i = 0; i < (int)indi.size(); ++i )
 		if( indi[i] )
@@ -64,66 +65,54 @@ double fitness(const Indi& indi)
 			
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
+		// std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		// cout << "\n";
+		
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
-		auto s = g( weights, random_solutions, i, i + nb_vars, nb_params, param_1, param_2 );
-		costs.emplace( f, s );
+		auto s = g( weights, params, random_solutions, i, nb_vars  );
+
+		cost += std::abs( f - s );
+
+		// costs.emplace( f, s );
 
 		//sum_seconds += s;
 // #if defined DEBUG
-// 		cout << ": (" << f << ", " << s << ")\n";
+		// cout << "Hamming: " << f << "\n";
 // #endif
 	}
 	
 	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
 	{
-		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
-		auto s = g( weights, few_configurations, i, i + nb_vars, nb_params, param_1, param_2 );
-		costs.emplace( f, s );
+		// std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		// cout << "\n";
 
-		//sum_seconds += s;
+		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
+		auto s = g( weights, params, few_configurations, i, nb_vars  );
+
+		cost += std::abs( f - s );
+
+		// costs.emplace( f, s );
+
 // #if defined DEBUG
-// 		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-// 		cout << ": (" << f << ", " << s << ")\n";
+		// cout << "Hamming: " << f << "\n";
 // #endif
 	}
 
-	// compute variance
-	// double mean = sum_seconds / (int)costs.size();
-	// double variance = 0.0;
-	// for( auto c : costs )
-	// 	variance += std::pow( mean - c.second, 2 );
-	// variance /= (int)costs.size();
 	
-#if defined DEBUG
-	cout << "\n//////////////\n\n";
-	
-	for( auto c : costs )
-		cout << "(" << c.first << ", " << c.second << ")\n";
-#endif
-
-	double cost_order = 0.0;
-	
-	for( auto it = costs.begin(); std::next( it ) != costs.end(); ++it )
-	{
-		if( (*it).first == 0 && (*it).second != 0 )
-			++cost_order;
-		    
-		if( (*it).second >= (*std::next( it )).second )
-		{
-#if defined DEBUG
-			cout << "it=" << (*it).second << ", it++=" << (*std::next( it )).second << " at " << std::distance( costs.begin(), it ) << "\n" ;
-#endif
-			++cost_order;
-		}
-	}
 	
 	// penalize a network vector full of zeros
-	if( std::count( weights.begin(), std::prev( weights.end(), 2 ), 1 ) == 0 )
-		cost_order += 10;
+	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
+		cost += 10;
 	// penalty if no unique agregation function
-	if( std::count( std::prev( weights.end(), 2 ), weights.end(), 1 ) != 1 )
-		cost_order += 10;	
-	
+	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
+		cost += 10;	
+
+	auto number_active_units = std::count( weights.begin(), weights.end(), 1 );
+	cost += ( static_cast<double>( number_active_units ) / ( number_units_transfo + number_units_compar + 2 ) );
+
+	// -cost since we want to minimize the cost.
+	return -cost;
+
 	// EO is looking for maximizing the score, and we want to minimize our score, so we multiply it by -1
 	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
 	// variance is here to forbid having all costs at the same value,
@@ -131,7 +120,7 @@ double fitness(const Indi& indi)
 	//return -cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
 
 	// here the cost is cost_order + (cost_order * number_1)
-	return -cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
+	// return -cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
 
 
@@ -148,9 +137,9 @@ int main_function(int argc, char **argv)
 	//const unsigned int SEED = 42;          // seed for random number generator
 	const unsigned int SEED = time(0);
 	const unsigned int T_SIZE = 3;        // size for tournament selection
-	const unsigned int VEC_SIZE = number_units_transfo * number_units_compar + number_agregation_functions;    // Number of bits in genotypes
-	const unsigned int POP_SIZE = 10;  // Size of population
-	const unsigned int MAX_GEN = 100;  // Maximum number of generation before STOP
+	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + 2;    // Number of bits in genotypes
+	const unsigned int POP_SIZE = 100;  // Size of population
+	const unsigned int MAX_GEN = 1000;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
@@ -169,18 +158,15 @@ int main_function(int argc, char **argv)
 	max_value = stoi( argv[2] );
 	precision = stod( argv[3] );
 	if( argc > 4 )
-	{
-		param_1 = stoi( argv[4] );
-		if( argc == 6 )
-			param_2 = stoi( argv[5] );
-	}
-	nb_params = std::max(1, argc - 4);
+		params = vector<double>( nb_vars, stod( argv[4] ) );
+	else
+		params = vector<double>( nb_vars, 1.0 );
 	
 #if defined AD
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 #elif defined LE
-	// argv[3] is the right-hand side value of the equation
-	concept = make_unique<LinearEqConcept>( nb_vars, max_value, param_1 );
+	// params[0] is the right-hand side value of the equation
+	concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
 #endif
@@ -208,13 +194,17 @@ int main_function(int argc, char **argv)
 
 
 	/////////////////
-	Indi v2;
-	auto weights = make_weights( {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0} );
-	for( auto& w : weights )
-		v2.push_back( w );
-	eoEvalFuncPtr<Indi> eval2(  fitness );
-	eval2(v2);
-	cout << "Handmade individual: " << v2 << "\n";
+	// Indi v2;
+	// // all_diff
+	// // vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
+	// // less_than
+	// vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
+	// for( auto& w : weights )
+	// 	v2.push_back( w );
+	// eoEvalFuncPtr<Indi> eval2( fitness );
+	// eval2(v2);
+	// cout << "Handmade individual: " << v2 << "\n";
+	// return 1;
 	/////////////////
 	
 	/////////////////////////////
