@@ -7,7 +7,7 @@
 using namespace std;
 using namespace ghost;
 
-constexpr int number_units_transfo = 8;
+constexpr int number_units_transfo = 10;
 constexpr int number_units_compar = 4;
 constexpr int number_units_agreg = 2;
 constexpr int number_units_arith = 2;

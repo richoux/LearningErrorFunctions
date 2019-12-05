@@ -30,6 +30,10 @@
 #include "../constraints/linear-eq_concept.hpp"
 #elif defined LT
 #include "../constraints/less-than_concept.hpp"
+#elif defined CM
+#include "../constraints/connection-min-gt_concept.hpp"
+#elif defined OL
+#include "../constraints/overlap-1d_concept.hpp"
 #endif
 
 using namespace std;
@@ -65,8 +69,10 @@ double fitness(const Indi& indi)
 			
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
-		// std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		// cout << "\n";
+#if defined DEBUG
+		std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		cout << "\n";
+#endif
 		
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
 		auto s = g( weights, params, random_solutions, i, nb_vars  );
@@ -76,16 +82,18 @@ double fitness(const Indi& indi)
 		// costs.emplace( f, s );
 
 		//sum_seconds += s;
-// #if defined DEBUG
-		// cout << "Hamming: " << f << "\n";
-// #endif
+#if defined DEBUG
+		cout << "Hamming: " << f << "\n";
+#endif
 	}
 	
 	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
 	{
-		// std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		// cout << "\n";
-
+#if defined DEBUG
+		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		cout << "\n";
+#endif
+		
 		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
 		auto s = g( weights, params, few_configurations, i, nb_vars  );
 
@@ -93,9 +101,9 @@ double fitness(const Indi& indi)
 
 		// costs.emplace( f, s );
 
-// #if defined DEBUG
-		// cout << "Hamming: " << f << "\n";
-// #endif
+#if defined DEBUG
+		cout << "Hamming: " << f << "\n";
+#endif
 	}
 
 	
@@ -169,6 +177,10 @@ int main_function(int argc, char **argv)
 	concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 #elif defined LT
 	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
+#elif defined CM
+	concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );	
+#elif defined OL
+	concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );	
 #endif
 
 	random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
@@ -193,19 +205,24 @@ int main_function(int argc, char **argv)
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 
 
-	/////////////////
-	// Indi v2;
-	// // all_diff
-	// // vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
-	// // less_than
-	// vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
-	// for( auto& w : weights )
-	// 	v2.push_back( w );
-	// eoEvalFuncPtr<Indi> eval2( fitness );
-	// eval2(v2);
-	// cout << "Handmade individual: " << v2 << "\n";
-	// return 1;
-	/////////////////
+/////////////////
+#if defined DEBUG
+	Indi v2;
+#if defined AD
+	vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
+#elif defined LT
+	vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
+#elif defined OL
+	vector<int> weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0 };
+#endif
+	for( auto& w : weights )
+		v2.push_back( w );
+	eoEvalFuncPtr<Indi> eval2( fitness );
+	eval2(v2);
+	cout << "Handmade individual: " << v2 << "\n";
+	return 1;
+#endif
+/////////////////
 	
 	/////////////////////////////
 	// Fitness function
@@ -280,11 +297,9 @@ int main_function(int argc, char **argv)
 	cout << "FINAL Population\n" << pop << endl;
 
 	eval(pop[0]);
-	cout << "Best individual: " << pop[0] << "\n";
-	// cout << "Best individual\n";
-	// for( const auto& v : pop[0] )
-	// 	cout << v << ", ";
-	// cout << "\n";
+	cout << "Best individual: " << pop[0] << "\n"
+	     << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
+	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
 
 	return EXIT_SUCCESS;
 }

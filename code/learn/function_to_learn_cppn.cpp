@@ -15,8 +15,10 @@ void interpreter_transformation( const int& number,
                                  const int& start_index_output,
                                  vector<double>& outputs )
 {
-	// cout << "\nTransfo number: " << number << "\nTransfo inputs: ";
-	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
+#if defined DEBUG
+	cout << "\nTransfo number: " << number << "\nTransfo inputs: ";
+	std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
+#endif
 	
 	switch( number )
 	{
@@ -69,10 +71,26 @@ void interpreter_transformation( const int& number,
 		for( int y = 0; y < (int)inputs.size() - 1; ++y )
 			outputs[y + start_index_output] = std::max( 0.0, inputs[y] - inputs[y+1] );
 		break;
+		// number of elements greater than or equals to y
+	case 8:
+		for( int y = 0; y < (int)inputs.size(); ++y )
+			for( int x = 0; x < (int)inputs.size(); ++x )
+				if( x != y && inputs[x] >= inputs[y] )
+					++outputs[y + start_index_output];
+		break;
+		// number of elements greater than or equals to y AND less than or equals to y + param 
+	case 9:
+		for( int y = 0; y < (int)inputs.size(); ++y )
+			for( int x = 0; x < (int)inputs.size(); ++x )
+				if( x != y && inputs[x] >= inputs[y] && inputs[x] <= inputs[y] + params[y] )
+					++outputs[y + start_index_output];
+		break;
 	}
 
-	// cout << "\nTransfo ouputs: ";
-	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+#if defined DEBUG
+	cout << "\nTransfo ouputs: ";
+	std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+#endif
 }
 
 void interpreter_arithmetic( const int& number,
@@ -80,9 +98,11 @@ void interpreter_arithmetic( const int& number,
                              const int& size,
                              vector<double>& outputs )
 {
-	// cout << "\nArith number: " << number << "\nArith inputs: ";
-	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
-
+#if defined DEBUG
+	cout << "\nArith number: " << number << "\nArith inputs: ";
+	std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
+#endif
+	
 	std::copy_n( inputs.begin(), size, outputs.begin() );
 	
 	// addition
@@ -98,16 +118,20 @@ void interpreter_arithmetic( const int& number,
 			outputs[ i % size ] *= inputs[i];
 	}
 
-	// cout << "\nArith ouputs: ";
-	// std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+#if defined DEBUG
+	cout << "\nArith ouputs: ";
+	std::copy( outputs.begin(), outputs.end(), ostream_iterator<double>( cout, " ") );
+#endif
 }
 	
 double interpreter_agregation( const int& number,
                                const vector<double>& inputs )
 {
-	// cout << "\nAgreg number: " << number << "\nAgreg inputs: ";
-	// std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
-
+#if defined DEBUG
+	cout << "\nAgreg number: " << number << "\nAgreg inputs: ";
+	std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
+#endif
+	
 	if( number == 0 )
 		return std::count_if( inputs.begin(), inputs.end(), [](const auto& i){ return i > 0; } );
 	else
@@ -118,8 +142,10 @@ double interpreter_comparison( const int& number,
                                const double& input,
                                const double& param )
 {
-	// cout << "\nCompar number: " << number << "\nCompar inputs: " << input << "\n";
-
+#if defined DEBUG
+	cout << "\nCompar number: " << number << "\nCompar inputs: " << input << "\n";
+#endif
+	
 	switch( number )
 	{
 		// Identity
@@ -219,10 +245,13 @@ double intermediate_g( const vector<double>& inputs,
 	auto output_arith = layer_arithmetic( output_transfo, nb_vars, weights[ number_units_transfo ] );
 	auto output_agreg = layer_agregation( output_arith, weights[ number_units_transfo + 1 ] );
 
-	// auto plop = layer_comparison( output_agreg, weights, params[0] );
-	// cout << "Network output: " << plop << "\n";
-	// return plop;
-  return layer_comparison( output_agreg, weights, params[0] );
+#if defined DEBUG
+	auto plop = layer_comparison( output_agreg, weights, params[0] );
+	cout << "Network output: " << plop << "\n";
+	return plop;
+#else
+	return layer_comparison( output_agreg, weights, params[0] );
+#endif
 }
 
 // Variable version
