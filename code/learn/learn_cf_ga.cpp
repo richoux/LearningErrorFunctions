@@ -22,6 +22,7 @@
 #include "../utils/metrics.hpp"
 #include "../utils/random_draw.hpp"
 #include "../utils/convert.hpp"
+#include "../utils/randutils.hpp"
 
 #include "../constraints/concept.hpp"
 #if defined AD
@@ -47,6 +48,9 @@ vector<int> few_configurations;
 map<string, double> cost_map;
 vector<double> params;
 
+randutils::mt19937_rng rng_utils;
+
+
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE PRECISION [Param]\n";
@@ -54,10 +58,10 @@ void usage( char **argv )
 
 //-----------------------------------------------------------------------------
 // define your individuals
-typedef eoBit<double> Indi;        // A bitstring with fitness double
+typedef eoBit<eoMinimizingFitness> Indi;        // A bitstring with fitness double
 //-----------------------------------------------------------------------------
 
-double fitness(const Indi& indi)
+eoMinimizingFitness fitness(const Indi& indi)
 {
 	// set< pair<double, double> > costs;
 	double cost = 0.0;
@@ -118,19 +122,47 @@ double fitness(const Indi& indi)
 	auto number_active_units = std::count( weights.begin(), weights.end(), 1 );
 	cost += ( static_cast<double>( number_active_units ) / ( number_units_transfo + number_units_compar + 2 ) );
 
-	// -cost since we want to minimize the cost.
-	return -cost;
+	return cost;
 
-	// EO is looking for maximizing the score, and we want to minimize our score, so we multiply it by -1
 	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
 	// variance is here to forbid having all costs at the same value,
 	// and minimizing the number of 1s in individuals is to keep the CPPN as simple as possible. 
-	//return -cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
+	//return cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
 
 	// here the cost is cost_order + (cost_order * number_1)
-	// return -cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
+	// return cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
 
+// fix uncorrectly generated individuals
+void fix( Indi& indi )
+{
+	// you need at least one active transformation unit
+	if( std::count( indi.begin(), indi.begin() + number_units_transfo, 1 ) == 0 )
+	{
+		int index = rng_utils.uniform( 0, number_units_transfo - 1 );
+		indi[ index ] = true;
+	}
+
+	// you need exactly one active comparison unit
+	auto active_comparison = std::count( std::prev( indi.end(), number_units_compar ), indi.end(), 1 );
+	if( active_comparison == 0 )
+	{
+		int index = rng_utils.uniform( number_units_transfo + 2, number_units_transfo + 1 + number_units_compar );
+		indi[ index ] = true;
+	}
+	else
+		if( active_comparison > 0 )
+		{
+			vector<int> indexes;
+			for( int i = number_units_transfo + 2; i < number_units_transfo + 2 + number_units_compar; ++i )
+				if( indi[ i ] )
+					indexes.push_back( i );
+
+			std::fill( std::prev( indi.end(), number_units_compar ), indi.end(), false );
+			int index = rng_utils.pick( indexes );
+			indi[ index ] = true;
+		}
+}
 
 //-----------------------------------------------------------------------------
 int main_function(int argc, char **argv)
@@ -151,13 +183,13 @@ int main_function(int argc, char **argv)
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
-  //////////////////////////
+
+	//////////////////////////
 	//  Random seed
 	//////////////////////////
 	//reproducible random seed: if you don't change SEED above, 
 	// you'll aways get the same result, NOT a random run
 	rng.reseed(SEED);
-
 
   //////////////////////////
 	//  Initialization
@@ -229,6 +261,7 @@ int main_function(int argc, char **argv)
 	////////////////////////////
 	// Evaluation: from a plain C++ fn to an EvalFunc Object
 	eoEvalFuncPtr<Indi> eval(  fitness );
+
 	////////////////////////////////
 	// Initilisation of population
 	////////////////////////////////
@@ -240,6 +273,7 @@ int main_function(int argc, char **argv)
 	Indi v;
 	for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
 		v.push_back( false );
+	fix(v);
 	eval(v);
 	pop.push_back(v);
 
@@ -247,11 +281,14 @@ int main_function(int argc, char **argv)
 	for (unsigned int igeno=1; igeno<POP_SIZE; igeno++)
 	{
 		Indi v;                    // void individual, to be filled
+
 		for (unsigned ivar=0; ivar<VEC_SIZE; ivar++)
 		{
 			bool r = rng.flip(); // new value, random in {0,1}
 			v.push_back(r);          // append that random value to v
 		}
+
+		fix(v);		
 		eval(v);                                // evaluate it
 		pop.push_back(v);              // and put it in the population
 	}
@@ -260,14 +297,16 @@ int main_function(int argc, char **argv)
 	// Print (sorted) intial population (raw printout)
 	cout << "Initial Population" << endl;
 	cout << pop;
-	/////////////////////////////////////
+
+  /////////////////////////////////////
 	// selection and replacement
 	////////////////////////////////////
 	// The robust tournament selection
 	eoDetTournamentSelect<Indi> select(T_SIZE);  // T_SIZE in [2,POP_SIZE]
 	// The simple GA evolution engine uses generational replacement
 	// so no replacement procedure is needed
-	//////////////////////////////////////
+
+  //////////////////////////////////////
 	// The variation operators
 	//////////////////////////////////////
 	// 1-point crossover for bitstring
@@ -275,7 +314,8 @@ int main_function(int argc, char **argv)
 
 	// standard bit-flip mutation for bitstring
 	eoBitMutation<Indi>  mutation(P_MUT_PER_BIT);
-	//////////////////////////////////////
+
+  //////////////////////////////////////
 	// termination condition
 	/////////////////////////////////////
 	// stop after MAX_GEN generations
