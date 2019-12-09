@@ -441,11 +441,13 @@ int main_function(int argc, char **argv)
 	// The variation operators
 	//////////////////////////////////////
 	// 1-point crossover for bitstring
-	eo1PtBitXover<Indi> xover1;
+	//eo1PtBitXover<Indi> xover1;
+	eoCFNQuadCrossover<Indi> xover1( number_units_transfo );
 	eoPropCombinedQuadOp<Indi> xover( xover1, onePointRate );
 	
 	// standard bit-flip mutation for bitstring
-	eoBitMutation<Indi>  mutationBitFlip( P_MUT_PER_BIT );
+	//eoBitMutation<Indi>  mutationBitFlip( P_MUT_PER_BIT );
+	eoCFNMutation<Indi>  mutationBitFlip( number_units_transfo, number_units_compar, P_MUT_PER_BIT );
 	// mutate exactly 1 bit per individual
 	eoDetBitFlip<Indi> mutationOneBit;
 	// Combine them with relative rates

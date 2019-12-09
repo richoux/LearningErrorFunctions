@@ -8,7 +8,15 @@ Quadratic crossover operators modify the both genotypes
 #ifndef eoCFNQuadCrossover_H
 #define eoCFNQuadCrossover_H
 
+#include <string>
+
+#if defined DEBUG
+#include <iostream>
+#endif
+
 #include <eoOp.h>
+
+using namespace std;
 
 /**
  *  Always write a comment in this format before class definition
@@ -20,18 +28,18 @@ Quadratic crossover operators modify the both genotypes
 template<class GenotypeT>
 class eoCFNQuadCrossover: public eoQuadOp<GenotypeT>
 {
+	int _number_units_transfo;
+	int _number_units_arithmetic;
+	int _number_units_agregation;
+	int _number_units_compar;
+
 public:
   /**
    * Ctor - no requirement
    */
-// START eventually add or modify the anyVariable argument
-  eoCFNQuadCrossover()
-  //  eoCFNQuadCrossover( varType  _anyVariable) : anyVariable(_anyVariable)
-// END eventually add or modify the anyVariable argument
-  {
-    // START Code of Ctor of an eoCFNEvalFunc object
-    // END   Code of Ctor of an eoCFNEvalFunc object
-  }
+	eoCFNQuadCrossover( int number_units_transfo )
+		: _number_units_transfo( number_units_transfo )
+  { }
 
   /// The class name. Used to display statistics
   string className() const { return "eoCFNQuadCrossover"; }
@@ -42,21 +50,35 @@ public:
    * @param _genotype1 The first parent
    * @param _genotype2 The second parent
    */
-  bool operator()(GenotypeT& _genotype1, GenotypeT & _genotype2)
+  bool operator()( GenotypeT& genotype1, GenotypeT& genotype2 )
   {
-	  unsigned site = eo::rng.random(std::min(_genotype1.size(), _genotype2.size()));
-	  if (!std::equal(_genotype1.begin(), _genotype1.begin()+site, _genotype2.begin()))
+	  //unsigned site = eo::rng.random( std::min( genotype1.size(), genotype2.size() ) );
+
+	  // cross site to be only at the last transformation unit, or the arithmetic unit,
+	  // or the agregation unit, or the first comparison unit.
+	  unsigned site = _number_units_transfo + eo::rng.random( 3 );
+
+#if defined DEBUG
+	  cout << "Site of crossover: " << site << "\n";
+		cout << "Before crossover: ";
+		std::copy( genotype1.begin(), genotype1.end(), std::ostream_iterator<int>( cout, " " ) );
+		cout << "\n";
+		std::copy( genotype2.begin(), genotype2.end(), std::ostream_iterator<int>( cout, " " ) );
+		cout << "\n";
+#endif
+		
+		if( !std::equal( genotype1.begin(), genotype1.begin() + site, genotype2.begin() ) )
 	  {
-		  std::swap_ranges(_genotype1.begin(), _genotype1.begin() + site, _genotype2.begin());
+		  std::swap_ranges( genotype1.begin(), genotype1.begin() + site, genotype2.begin() );
+#if defined DEBUG
+		  cout << "After crossover:  ";
+		  std::copy( genotype1.begin(), genotype1.end(), std::ostream_iterator<int>( cout, " " ) );
+		  cout << "\n";
+#endif
 		  return true;
 	  }
 	  return false;
   }
-
-private:
-// START Private data of an eoCFNQuadCrossover object
-  //  varType anyVariable;		   // for example ...
-// END   Private data of an eoCFNQuadCrossover object
 };
 
 #endif
