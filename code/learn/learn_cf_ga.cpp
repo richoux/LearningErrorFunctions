@@ -41,6 +41,7 @@ using namespace std;
 
 int nb_vars, max_value;
 double precision;
+bool has_parameters;
 vector<int> random_solutions;
 vector<int> random_configurations;
 unique_ptr<Concept> concept;
@@ -61,7 +62,104 @@ void usage( char **argv )
 typedef eoBit<eoMinimizingFitness> Indi;        // A bitstring with fitness double
 //-----------------------------------------------------------------------------
 
-eoMinimizingFitness fitness(const Indi& indi)
+bool no_parameter_operations( const vector<int>& weights )
+{
+	// test t4, t5, t6, t9, c1, c2, c3, c4
+	return weights[4] == 0 && weights[5] == 0 && weights[6] == 0 && weights[9] == 0 && weights[13] == 0 && weights[14] == 0 && weights[15] == 0 && weights[16] == 0; 
+}
+
+string transfo_operation( int number )
+{
+	switch( number )
+	{
+	case 0:
+		return "    Identity";
+		break;
+	case 1:
+		return "Number of elements on the right equals to y";
+		break;
+	case 2:
+		return "Number of elements on the right smaller than or equals to y";
+		break;
+	case 3:
+		return "Number of elements on the right greater than or equals to y";
+		break;
+	case 4:
+		return "Number of elements smaller than or equals to y + param";
+		break;
+	case 5:
+		return "Number of elements greater than or equals to y + param";
+		break;
+	case 6:
+		return "Max(0, param - y)";
+		break;
+	case 7:
+		return "Max(0, x_i - x_i+1 )";
+		break;
+	case 8:
+		return "Number of elements greater than or equals to y";
+		break;
+	case 9:
+		return "Number of elements greater than or equals to y AND less than or equals to y + param";
+		break;
+	default:
+		return "";
+	}
+}
+
+string compar_operation( int number )
+{
+	switch( number )
+	{
+	case 0:
+		return "    Identity";
+		break;
+	case 1:
+		return "Input equals to parameter";
+		break;
+	case 2:
+		return "Input greater than or equals to parameter";
+		break;
+	case 3:
+		return "Input less than or equals to parameter";
+		break;
+	case 4:
+		return "Euclidian division of the difference between input and parameter with domain size";
+		break;
+	default:
+		return "";
+	}	
+}
+
+void print_model( const Indi& indi )
+{
+	string arith = indi[ number_units_transfo ] ? "\t x" : "\t +";
+	string agreg = indi[ number_units_transfo + 1 ] ? "    Sum" : "    Count #x > 0";
+	auto number_active_transfo_units = std::count( indi.begin(), indi.begin() + number_units_transfo, true );
+	
+	for( int i = 0; i < number_units_transfo; ++i )
+		if( indi[i] )
+		{
+			cout << transfo_operation(i) << "\n";
+			if( --number_active_transfo_units > 0 )
+				cout << arith << "\n";
+		}
+
+	cout << "\t|\n"
+	     << "\tv\n"
+	     << agreg << "\n"
+	     << "\t|\n"
+	     << "\tv\n";
+
+	for( int i = 0; i < number_units_compar; ++i )
+		if( indi[i + number_units_transfo + 2 ] )
+		{
+			cout << compar_operation(i) << "\n";
+			break;
+		}
+}
+
+eoMinimizingFitness fitness( const Indi& indi )
 {
 	// set< pair<double, double> > costs;
 	double cost = 0.0;
@@ -79,7 +177,7 @@ eoMinimizingFitness fitness(const Indi& indi)
 #endif
 		
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
-		auto s = g( weights, params, random_solutions, i, nb_vars  );
+		auto s = g( weights, params, random_solutions, max_value, i, nb_vars );
 
 		cost += std::abs( f - s );
 
@@ -99,7 +197,7 @@ eoMinimizingFitness fitness(const Indi& indi)
 #endif
 		
 		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
-		auto s = g( weights, params, few_configurations, i, nb_vars  );
+		auto s = g( weights, params, few_configurations, max_value, i, nb_vars );
 
 		cost += std::abs( f - s );
 
@@ -118,9 +216,13 @@ eoMinimizingFitness fitness(const Indi& indi)
 	// penalty if no unique agregation function
 	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
 		cost += 10;	
+	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some).
+	if( has_parameters && no_parameter_operations( weights ) )
+		cost += 1000;
 
-	auto number_active_units = std::count( weights.begin(), weights.end(), 1 );
-	cost += ( static_cast<double>( number_active_units ) / ( number_units_transfo + number_units_compar + 2 ) );
+	// favor models with few operations
+	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
+	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
 
 	return cost;
 
@@ -197,10 +299,17 @@ int main_function(int argc, char **argv)
 	nb_vars = stoi( argv[1] );
 	max_value = stoi( argv[2] );
 	precision = stod( argv[3] );
+
 	if( argc > 4 )
+	{
 		params = vector<double>( nb_vars, stod( argv[4] ) );
+		has_parameters = true;
+	}
 	else
+	{
 		params = vector<double>( nb_vars, 1.0 );
+		has_parameters = false;
+	}
 	
 #if defined AD
 	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
@@ -241,11 +350,15 @@ int main_function(int argc, char **argv)
 #if defined DEBUG
 	Indi v2;
 #if defined AD
-	vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0 };
+	vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
 #elif defined LT
-	vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
+	vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 };
+#elif defined LE
+	// weird function found with arguments "4 9 100.0 20"
+	//vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
+	vector<int> weights{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
 #elif defined OL
-	vector<int> weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0 };
+	vector<int> weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 };
 #endif
 	for( auto& w : weights )
 		v2.push_back( w );
@@ -339,7 +452,9 @@ int main_function(int argc, char **argv)
 	eval(pop[0]);
 	cout << "Best individual: " << pop[0] << "\n"
 	     << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
-	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
+	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n\nModel:\n";
+
+	print_model( pop[0] );
 
 	return EXIT_SUCCESS;
 }

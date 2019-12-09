@@ -140,6 +140,7 @@ double interpreter_agregation( const int& number,
 
 double interpreter_comparison( const int& number,
                                const double& input,
+                               const int& max_domain_value,
                                const double& param )
 {
 #if defined DEBUG
@@ -164,7 +165,17 @@ double interpreter_comparison( const int& number,
 	case 3:
 		return std::max( 0.0, input - param );
 		break;
+		// Euclidian division of the difference between input and parameter with domain size
+	case 4:
+		if( input - param == 0.0 )
+			return 0.0;
+		else
+			return 1 + ( static_cast<int>( std::abs( input - param ) ) / max_domain_value );
+		break;
 	}
+
+	// should never happen
+	return -1.0;
 }
 
 vector<double> layer_transformation( const vector<double>& inputs,
@@ -207,13 +218,14 @@ double layer_agregation( const vector<double>& inputs,
 
 double layer_comparison( const double& input,
                          const vector<int>& weights,
+                         const int& max_domain_value,
                          const double& param )
 {
 	//precondition: we should have exactly one 1 in weights.
 	
 	for( int i = 0; i < number_units_compar; ++i )
 		if( weights[ i + number_units_transfo + 2 ] == 1 )
-			return interpreter_comparison( i, input, param );
+			return interpreter_comparison( i, input, max_domain_value, param );
 
 	// should never happen
 	return -1;
@@ -222,6 +234,7 @@ double layer_comparison( const double& input,
 double intermediate_g( const vector<double>& inputs,
                        const vector<double>& params,
                        const vector<int>& weights,
+                       const int& max_domain_value,
                        const int& nb_vars )
 {
 	// heavy penalty for having 0 active transformation weights or not exactly 1 active comparison weight
@@ -246,11 +259,11 @@ double intermediate_g( const vector<double>& inputs,
 	auto output_agreg = layer_agregation( output_arith, weights[ number_units_transfo + 1 ] );
 
 #if defined DEBUG
-	auto plop = layer_comparison( output_agreg, weights, params[0] );
+	auto plop = layer_comparison( output_agreg, weights, max_domain_value, params[0] );
 	cout << "Network output: " << plop << "\n";
 	return plop;
 #else
-	return layer_comparison( output_agreg, weights, params[0] );
+	return layer_comparison( output_agreg, weights, max_domain_value, params[0] );
 #endif
 }
 
@@ -258,6 +271,7 @@ double intermediate_g( const vector<double>& inputs,
 double g( const vector< Variable >& weights,
           const vector<double>& params,
           const vector<int>& vars,
+          int max_domain_value,
           int start,
           int nb_vars )
 {
@@ -267,23 +281,25 @@ double g( const vector< Variable >& weights,
 	std::copy( vars.begin() + start, vars.begin() + start + nb_vars, inputs.begin() );
 	std::transform( weights.begin(), weights.end(), weights_int.begin(), []( auto& w ){ return w.get_value(); } );
 
-	return intermediate_g( inputs, params, weights_int, nb_vars );
+	return intermediate_g( inputs, params, weights_int, max_domain_value, nb_vars );
 }
 
 // Int vector version
 double g( const vector<int>& weights,
           const vector<double>& params,
           const vector<double>& vars,
+          int max_domain_value,
           int start,
           int end )
 {
-	return intermediate_g( vars, params, weights, end - start );
+	return intermediate_g( vars, params, weights, max_domain_value, end - start );
 }
 
 // Int vector with int config version
 double g( const vector<int>& weights,
           const vector<double>& params,
           const vector<int>& vars,
+          int max_domain_value,
           int start,
           int nb_vars )
 
@@ -291,5 +307,5 @@ double g( const vector<int>& weights,
 	vector<double> inputs( nb_vars );
 	std::copy( vars.begin() + start, vars.begin() + start + nb_vars, inputs.begin() );
 
-	return intermediate_g( inputs, params, weights, nb_vars );
+	return intermediate_g( inputs, params, weights, max_domain_value, nb_vars );
 }
