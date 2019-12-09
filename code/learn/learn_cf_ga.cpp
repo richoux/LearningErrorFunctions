@@ -134,7 +134,7 @@ string compar_operation( int number )
 void print_model( const Indi& indi )
 {
 	string arith = indi[ number_units_transfo ] ? "\t x" : "\t +";
-	string agreg = indi[ number_units_transfo + 1 ] ? "    Sum" : "    Count #x > 0";
+	string agreg = indi[ number_units_transfo + 1 ] ? "       Sum" : "   Count #x > 0";
 	auto number_active_transfo_units = std::count( indi.begin(), indi.begin() + number_units_transfo, true );
 	
 	for( int i = 0; i < number_units_transfo; ++i )
@@ -283,8 +283,12 @@ int main_function(int argc, char **argv)
 	const unsigned int POP_SIZE = 100;  // Size of population
 	const unsigned int MAX_GEN = 1000;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
+	const double onePointRate = 0.5;        // rate for 1-pt Xover
 	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
+	const float REP_RATE = 0.5;				// replacement rate
+	const double bitFlipRate = 0.5;          // rate for bit-flip mutation
+	const double oneBitRate = 0.5;            // rate for one-bit mutation
 
 	//////////////////////////
 	//  Random seed
@@ -364,7 +368,8 @@ int main_function(int argc, char **argv)
 		v2.push_back( w );
 	eoEvalFuncPtr<Indi> eval2( fitness );
 	eval2(v2);
-	cout << "Handmade individual: " << v2 << "\n";
+	cout << "Handmade individual: " << v2 << "\n\nModel:\n";
+	print_model( v2 );
 	return 1;
 #endif
 /////////////////
@@ -383,15 +388,26 @@ int main_function(int argc, char **argv)
 	// fill it!
 	
 	// first individual with filled with zeros
-	Indi v;
-	for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
-		v.push_back( false );
-	fix(v);
-	eval(v);
-	pop.push_back(v);
+	// Indi v;
+	// for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
+	// 	v.push_back( false );
+	// fix(v);
+	// eval(v);
+	// pop.push_back(v);
 
+	// // second special
+	// vector<int> special{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
+	// Indi v2;
+	// for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
+	// 	if( special[ ivar ] == 0 )
+	// 		v2.push_back( false );
+	// 	else
+	// 		v2.push_back( true );
+	// eval(v2);
+	// pop.push_back(v2);	
+	
 	// other individuals randomly filled.
-	for (unsigned int igeno=1; igeno<POP_SIZE; igeno++)
+	for( unsigned int igeno = 0; igeno < POP_SIZE; ++igeno )
 	{
 		Indi v;                    // void individual, to be filled
 
@@ -411,37 +427,53 @@ int main_function(int argc, char **argv)
 	cout << "Initial Population" << endl;
 	cout << pop;
 
-  /////////////////////////////////////
+	/////////////////////////////////////
 	// selection and replacement
 	////////////////////////////////////
 	// The robust tournament selection
-	eoDetTournamentSelect<Indi> select(T_SIZE);  // T_SIZE in [2,POP_SIZE]
-	// The simple GA evolution engine uses generational replacement
-	// so no replacement procedure is needed
-
-  //////////////////////////////////////
+	eoDetTournamentSelect<Indi> selectOne(T_SIZE);            // T_SIZE in [2,POP_SIZE]
+	// is now encapsulated in a eoSelectPerc (entage)
+	eoSelectPerc<Indi> select( selectOne );// by default rate==1
+	eoElitism<Indi> replace( REP_RATE );
+	eoDetTournamentTruncate<Indi> tournament(T_SIZE);
+	
+	//////////////////////////////////////
 	// The variation operators
 	//////////////////////////////////////
 	// 1-point crossover for bitstring
-	eo1PtBitXover<Indi> xover;
-
+	eo1PtBitXover<Indi> xover1;
+	eoPropCombinedQuadOp<Indi> xover( xover1, onePointRate );
+	
 	// standard bit-flip mutation for bitstring
-	eoBitMutation<Indi>  mutation(P_MUT_PER_BIT);
-
-  //////////////////////////////////////
-	// termination condition
+	eoBitMutation<Indi>  mutationBitFlip( P_MUT_PER_BIT );
+	// mutate exactly 1 bit per individual
+	eoDetBitFlip<Indi> mutationOneBit;
+	// Combine them with relative rates
+	eoPropCombinedMonOp<Indi> mutation( mutationBitFlip, bitFlipRate );
+	mutation.add( mutationOneBit, oneBitRate, true );
+	
+	// The operators are  encapsulated into an eoTRansform object
+	eoSGATransform<Indi> transform( xover, CROSS_RATE, mutation, MUT_RATE );
+	
+	//////////////////////////////////////
+	// termination conditions: use more than one
 	/////////////////////////////////////
 	// stop after MAX_GEN generations
-	eoGenContinue<Indi> continuator(MAX_GEN);
- 
+	eoGenContinue<Indi> genCont( MAX_GEN );
+	eoCombinedContinue<Indi> continuator( genCont );
+
 	/////////////////////////////////////////
 	// the algorithm
 	////////////////////////////////////////
+  // Easy EA requires
+  // selection, transformation, eval, replacement, and stopping criterion
+	eoEasyEA<Indi> gga( continuator, eval, select, transform, replace, tournament );
+
 	// standard Generational GA requires as parameters
 	// selection, evaluation, crossover and mutation, stopping criterion
+	// eoSGA<Indi> gga(select, xover, CROSS_RATE, mutation, MUT_RATE, 
+	//                 eval, continuator);
 
-	eoSGA<Indi> gga(select, xover, CROSS_RATE, mutation, MUT_RATE, 
-	                eval, continuator);
 	// Apply algo to pop - that's it!
 	gga(pop);
  

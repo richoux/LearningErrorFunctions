@@ -228,7 +228,9 @@ public:
 
 
     // Now OK to erase some losers
+#if defined DEGUB
     std::cout << "oldSize - _newsize: " << oldSize - _newsize << std::endl;
+#endif
     for (unsigned i=0; i<oldSize - _newsize; i++)
       {
         //OLDCODE EOT & eo = inverse_deterministic_tournament<EOT>(_newgen, t_size);
