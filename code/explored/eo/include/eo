@@ -206,6 +206,10 @@
 #include "utils/eoLogger.h"
 #include "utils/eoParallel.h"
 
+// Homemade CFN operations
+#include "eoCFNMutation.h"
+#include "eoCFNQuadCrossover.h"
+
 #endif
 
 // Local Variables:
