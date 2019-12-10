@@ -132,6 +132,8 @@ modéliser  son problème.  Pour palier  à la  modélisation CP,  on se
 repose sur  l'utilisation de méta-heuristiques qui  n'ont pas besoin
 d'une sélection fine des bonnes contraintes. \cite{AMJFH2011,Bessiere2015,CBLS}
 
+Motivation : pas forcément facile ni intuitif de trouver une bonne CF.
+
 \subsection{Of the interest of \cfn over classic CSP}
 As shown in [previous studies], using a cost function to guide a CSP solver, even for a satisfaction problem, generally greatly improve the convergence speed to a solution.
 It is important to note that using a \cfn with a manual input of the cost functions (that is the current general usage of such solvers) greatly increase the difficulty for the user.
@@ -166,6 +168,14 @@ In this study, we deliberately chose to focus on \cfn as we can naturally transf
 \section{Theoretical Design}\label{sec:theory}
 From head to toes, how our framework is designed (interpolation, pre-processing and such) to fit a solver (here GHOST).
 
+Modèles (qui n'ont pas marché) :
+\begin{itemize}
+\item CF comme combinaison linéaire de sinus
+\item CF en CPPN de fonctions simples (sinus, tanh, sigmoid, ...)
+\item CF apprise par CFN (lol) avec smoothness comme fonction objectif.
+\item Relaxation du SL en regardant seulement l'ordre de Hamming avec le modèle CPPN.
+\end{itemize}
+
 \subsection{Scaling Issues}\label{subsec:issues}
 Scaling our results on small instances is challenging. In this subsection we cover 4 possible approaches that are either unsuccessful or not yet efficient.
 
@@ -176,12 +186,37 @@ function from a small space to a higher dimension one.
 \section{Experimental Results}\label{sec:xp}
 Presenting the aim of those experiments, the choice of the datasets, and the results itself.
 
+Type des contraintes abordées. Pour l'instant : Comparison:allDiff, Comparison:ordered\_lessThan, Counting:linear\_sum, Connection:min:GT, Scheduling:noOverlap1D.
+
+Apprendre une CF sur une petit isntance, et la comparer avec 1. les métriques sur cette même instance, 2. les métriques sur une plus grande instance et 3. Une CF apprise sur une plus grande instance.
+
+Comparaison des CF obtenues avec différent pourcentage de l'espace des configurations samplée.
+
+Comparaison des CF obtenues sur des benchs avec des CF handmades et sans CF
+
+Généralisation : apprendre une CF pour une instance avec certains paramètres et tester sur d'autres paramètres (et/ou  sur d'autres tailles aussi)
+
 \subsection{Automatic Generation of Cost Functions}
 \label{subsec:xpgeneration}
 
 \subsection{Comparison with crafted cost functions}\label{subsec:xpcomparison}
 
-\section{Conclusion}\label{sec:conclusion}
+\section{Discussions}
+
+Avantage de notre modèle : les CF trouvées sont intelligibles (contrairement aux NN). On peut même les coder en dur si l'on préfère, plutôt que de calculer la CF avec un run forward du CPPN.
+
+Peut être utilisé pour de l'aide à la décision, cad aider à définir un CF à la main. 
+
+Autre avantage : les CF apprises sont robustes car indépendantes de l'instance des contraintes (taille et valeurs des paramètres)
+
+La simplification CPPN où les poids sont booléens est aussi une avantage pour simplifier la représentation (et compréhension, et reproduction) de la CF par rapport à des poids dans [0,1].
+
+CPPN facile à modifier (ses opérations, notamment) pour des besoins spécifiques, des problèmes ou des contraintes particulières.
+
+
+\section{Conclusion and perspectives}\label{sec:conclusion}
+
+Faire du RL plutôt que du SL. Pas sûr que Hamming soit une bonne métrique (voir linear\_eq). Cela permettra de trouver des CF mieux adaptées aux algos.
 
 
 % \nocite{*}
