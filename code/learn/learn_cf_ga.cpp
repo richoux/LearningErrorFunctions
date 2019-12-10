@@ -284,7 +284,7 @@ int main_function(int argc, char **argv)
 	const unsigned int MAX_GEN = 200;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double onePointRate = 0.5;        // rate for 1-pt Xover
-	const double P_MUT_PER_BIT = 0.01; // probability of bit-flip mutation
+	const double P_MUT_PER_BIT = 0.05; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
 	const float REP_RATE = 0.5;				// replacement rate
 	const double bitFlipRate = 0.5;          // rate for bit-flip mutation
