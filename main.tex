@@ -16,6 +16,7 @@
 
 \usepackage{xspace}
 \usepackage[dvipsnames, table]{xcolor}
+\usepackage{color}
 \usepackage{amsmath}
 \usepackage{adjustbox}
 \usepackage[ruled,linesnumbered]{algorithm2e}
@@ -115,6 +116,9 @@ jf@baffier.fr % email address must be in roman text type, not monospace or sans 
 \newcommand{\wcsp}{\textsc{WCSP}\xspace}
 \newcommand{\ghost}{\textsc{GHOST}\xspace}
 
+\newcommand{\flo}{\textcolor{blue}{\bf Flo}\xspace}
+\newcommand{\jf}{\textcolor{red}{\bf JF}\xspace}
+
 \begin{document}
 
 \maketitle
@@ -143,12 +147,12 @@ CSP $<$ CFN-auto $\leq$ CFN-manual.
 
 We hope to eventually provides methods that can lead to CFN-manual $\leq$ CFN-auto for some (if not not most) families of constraints.
 
-
-
 \section{Preliminaries}\label{sec:preliminaries}
 TODO: Formalisation    WCSP     vs    CFN     (section    5     du
-draft). \cite{Bessiere2011,LK2014}
-\subsection{Differentiating \wcsp and \cfn}
+draft) \flo. \cite{Bessiere2011,LK2014}
+
+Topo sur CPPN \jf \cite{CPPN}.
+\subsection{Differentiating \wcsp and \cfn \flo} 
 \wcsp and \cfn are defined by close but different flavors throughout the litterature. To make the most of both, we chose to consider the following definitions for those two concepts.
 
 \paragraph{\wcsp} is  considering soft  constraints, where  a constraint  is
@@ -165,7 +169,7 @@ From those definition, we can consider \wcsp and the \cfn variants (satisfaction
 
 In this study, we deliberately chose to focus on \cfn as we can naturally transform any \wcsp into \cfn-opt.
 
-\section{Theoretical Design}\label{sec:theory}
+\section{Theoretical Design \jf}\label{sec:theory}
 From head to toes, how our framework is designed (interpolation, pre-processing and such) to fit a solver (here GHOST).
 
 Modèles (qui n'ont pas marché) :
@@ -195,6 +199,9 @@ Comparaison des CF obtenues avec différent pourcentage de l'espace des configur
 Comparaison des CF obtenues sur des benchs avec des CF handmades et sans CF
 
 Généralisation : apprendre une CF pour une instance avec certains paramètres et tester sur d'autres paramètres (et/ou  sur d'autres tailles aussi)
+
+Présentation et analyse \flo.
+Figure et tableaux \jf.
 
 \subsection{Automatic Generation of Cost Functions}
 \label{subsec:xpgeneration}
