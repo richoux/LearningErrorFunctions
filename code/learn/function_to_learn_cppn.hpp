@@ -9,8 +9,8 @@ using namespace ghost;
 
 constexpr int number_units_transfo = 10;
 constexpr int number_units_compar = 5;
-constexpr int number_units_agreg = 2;
-constexpr int number_units_arith = 2;
+constexpr int number_units_aggreg = 1;
+constexpr int number_units_arith = 1;
 
 double g( const vector< Variable >& weights,
           const vector<double>& params,

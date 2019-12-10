@@ -124,11 +124,11 @@ void interpreter_arithmetic( const int& number,
 #endif
 }
 	
-double interpreter_agregation( const int& number,
+double interpreter_aggregation( const int& number,
                                const vector<double>& inputs )
 {
 #if defined DEBUG
-	cout << "\nAgreg number: " << number << "\nAgreg inputs: ";
+	cout << "\nAggreg number: " << number << "\nAggreg inputs: ";
 	std::copy( inputs.begin(), inputs.end(), ostream_iterator<double>( cout, " ") );
 #endif
 	
@@ -210,10 +210,10 @@ vector<double> layer_arithmetic( const vector<double>& inputs,
 	return outputs;
 }
 
-double layer_agregation( const vector<double>& inputs,
+double layer_aggregation( const vector<double>& inputs,
                          const int& weight )
 {
-	return interpreter_agregation( weight, inputs );
+	return interpreter_aggregation( weight, inputs );
 }
 
 double layer_comparison( const double& input,
@@ -249,21 +249,21 @@ double intermediate_g( const vector<double>& inputs,
 	// arithmetic layer
 	//        |
 	//        v
-	// agregation layer
+	// aggregation layer
 	//        |
 	//        v
 	// comparison layer
 
 	auto output_transfo = layer_transformation( inputs, nb_vars, params, weights );
 	auto output_arith = layer_arithmetic( output_transfo, nb_vars, weights[ number_units_transfo ] );
-	auto output_agreg = layer_agregation( output_arith, weights[ number_units_transfo + 1 ] );
+	auto output_aggreg = layer_aggregation( output_arith, weights[ number_units_transfo + 1 ] );
 
 #if defined DEBUG
-	auto plop = layer_comparison( output_agreg, weights, max_domain_value, params[0] );
+	auto plop = layer_comparison( output_aggreg, weights, max_domain_value, params[0] );
 	cout << "Network output: " << plop << "\n";
 	return plop;
 #else
-	return layer_comparison( output_agreg, weights, max_domain_value, params[0] );
+	return layer_comparison( output_aggreg, weights, max_domain_value, params[0] );
 #endif
 }
 

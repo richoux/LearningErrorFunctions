@@ -281,7 +281,7 @@ int main_function(int argc, char **argv)
 	const unsigned int T_SIZE = 3;        // size for tournament selection
 	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + 2;    // Number of bits in genotypes
 	const unsigned int POP_SIZE = 100;  // Size of population
-	const unsigned int MAX_GEN = 200;  // Maximum number of generation before STOP
+	const unsigned int MAX_GEN = 150;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const double onePointRate = 0.5;        // rate for 1-pt Xover
 	const double P_MUT_PER_BIT = 0.05; // probability of bit-flip mutation
@@ -442,7 +442,7 @@ int main_function(int argc, char **argv)
 	//////////////////////////////////////
 	// 1-point crossover for bitstring
 	//eo1PtBitXover<Indi> xover1;
-	eoCFNQuadCrossover<Indi> xover1( number_units_transfo );
+	eoCFNQuadCrossover<Indi> xover1( number_units_transfo, number_units_arith, number_units_aggreg );
 	eoPropCombinedQuadOp<Indi> xover( xover1, onePointRate );
 	
 	// standard bit-flip mutation for bitstring

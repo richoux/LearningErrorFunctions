@@ -30,15 +30,16 @@ class eoCFNQuadCrossover: public eoQuadOp<GenotypeT>
 {
 	int _number_units_transfo;
 	int _number_units_arithmetic;
-	int _number_units_agregation;
-	int _number_units_compar;
+	int _number_units_aggregation;
 
 public:
   /**
    * Ctor - no requirement
    */
-	eoCFNQuadCrossover( int number_units_transfo )
-		: _number_units_transfo( number_units_transfo )
+	eoCFNQuadCrossover( int number_units_transfo, int number_units_arith, int number_units_aggreg )
+		: _number_units_transfo( number_units_transfo ),
+		  _number_units_arithmetic( number_units_arith ),
+		  _number_units_aggregation( number_units_aggreg )
   { }
 
   /// The class name. Used to display statistics
@@ -56,7 +57,7 @@ public:
 
 	  // cross site to be only at the last transformation unit, or the arithmetic unit,
 	  // or the agregation unit, or the first comparison unit.
-	  unsigned site = _number_units_transfo + eo::rng.random( 3 );
+	  unsigned site = _number_units_transfo + eo::rng.random( _number_units_arithmetic + _number_units_aggregation + 1 );
 
 #if defined DEBUG
 	  cout << "Site of crossover: " << site << "\n";
