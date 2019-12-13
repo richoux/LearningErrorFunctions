@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 
-#include "../cfn/random_draw.hpp"
+#include "../utils/random_draw.hpp"
+#include "../constraints/concept.hpp"
+#include "../constraints/all-diff_concept.hpp"
 
 #include "../utils/randutils.hpp"
 
@@ -43,13 +45,19 @@ int main( int argc, char **argv )
 		percent = stod( argv[3] );
 	else
 		percent = 1.;
+
+	unique_ptr<Concept> concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 	
-	vector< vector<int> > solutions;
-	vector< vector<int> > not_solutions;
-	random_draw( nb_vars, max_value, solutions, not_solutions, percent );
+	vector<int> solutions;
+	vector<int> not_solutions;
+	//random_draw( concept, nb_vars, max_value, solutions, not_solutions, percent );
+	random_draw_monte_carlo( concept, nb_vars, max_value, solutions, not_solutions, percent );
 
 	int sampling_size = (int)( solutions.size() + not_solutions.size() );
 
 	cout << "Percent of search space sampled: " << percent << "\n";
+	//monte carlo
 	cout << "Density of solutions: " << ( static_cast<double>( solutions.size() ) * 100 ) / sampling_size << "%\n (" << solutions.size() << " over " << sampling_size << " samples)\n";
+	//latin
+	//cout << "Density of solutions: " << ( static_cast<double>( solutions.size() ) * 100 ) / sampling_size << "%\n (" << solutions.size() / nb_vars << " over " << sampling_size / nb_vars << " samples)\n";
 }

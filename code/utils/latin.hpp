@@ -2,16 +2,18 @@
 
 #include <vector>
 #include <functional>
-#include <ghost/variable.hpp>
+#include <random>
+#include <algorithm>
 
 #include "../utils/randutils.hpp"
 
 using namespace std;
-using namespace ghost;
 
 class LHS
 {
 	mutable randutils::mt19937_rng _rng;
+	mutable std::random_device _rd;
+	mutable std::mt19937 _rng_std;
 	
 public:
 	LHS() = default;

@@ -9,7 +9,7 @@ int main()
 {
 	LHS latin;
 	
-	vector<int> samples = latin.sample( 9, 8 );
+	vector<int> samples = latin.sample( 20, 20 );
 
 	for( int i = 0; i < (int)samples.size(); ++i )
 	{

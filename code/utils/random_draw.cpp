@@ -3,8 +3,10 @@
 #include <random>
 #include <cmath>
 
-#include "../utils/latin.hpp"
+#include "latin.hpp"
 #include "random_draw.hpp"
+
+#include "../utils/randutils.hpp"
 
 void random_draw( unique_ptr<Concept>& concept,
                   int nb_vars,
@@ -34,5 +36,27 @@ void random_draw( unique_ptr<Concept>& concept,
 			                        latin_draws.begin() + ( ( j + 1 ) * nb_vars ) );
 	  
 	  latin_draws = latin.sample( nb_vars, max_value );
+  }
+}
+
+void random_draw_monte_carlo( unique_ptr<Concept>& concept,
+                              int nb_vars,
+                              int max_value,
+                              vector<int>& solutions,
+                              vector<int>& not_solutions,
+                              double percent )
+{
+	randutils::mt19937_rng rng;
+	vector<int> configuration( nb_vars );
+  unsigned long long int sampling_size = static_cast<unsigned long long int>( percent * std::pow( max_value, nb_vars ) / 100 );
+  vector<int> sample( nb_vars );
+
+  for( unsigned long long int i = 0; i < sampling_size; i += max_value )
+  {
+	  rng.generate( sample, 1, max_value );
+	  if( concept->concept( sample ) )
+		  solutions.insert( solutions.end(), sample.begin(), sample.end() );
+	  else
+		  not_solutions.insert( not_solutions.end(), sample.begin(), sample.end() );
   }
 }
