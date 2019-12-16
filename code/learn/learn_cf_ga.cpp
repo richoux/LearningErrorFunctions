@@ -25,7 +25,6 @@
 #include "../utils/metrics.hpp"
 #include "../utils/random_draw.hpp"
 #include "../utils/convert.hpp"
-#include "../utils/randutils.hpp"
 
 #include "../constraints/concept.hpp"
 #include "../constraints/all-diff_concept.hpp"
@@ -38,12 +37,11 @@ using namespace std;
 
 string constraint;
 int nb_vars, max_value;
-double precision;
+int samplings;
 bool has_parameters;
 vector<int> random_solutions;
 vector<int> random_configurations;
 unique_ptr<Concept> concept;
-vector<int> few_configurations;
 map<string, double> cost_map;
 vector<double> params;
 double params_value;
@@ -54,14 +52,14 @@ randutils::mt19937_rng rng_utils;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s SAMPLING_PRECISION [-p PARAMETERS] [-l]\n"
+	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS [-p PARAMETERS] [-l]\n"
 	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -i INPUT_FILE [-p PARAMETERS] [-l]\n"
 	     << "Arguments:\n"
 	     << "-h, --help\n"
 	     << "-c, --constraint {ad|le|lt|ol|cm}\n"
 	     << "-n, --nb_vars NB_VARIABLES\n"
 	     << "-d, --max_domain MAX_VALUE_DOMAIN\n"
-	     << "-s, --sampling SAMPLING_PRECISION (must be between 0 and 100)\n"
+	     << "-s, --sampling NUMBER_SAMPLINGS\n"
 	     << "-i, --input INPUT_FILE\n"
 	     << "-p, --params PARAMETERS\n"
 	     << "-l, --latin\n";
@@ -199,15 +197,15 @@ eoMinimizingFitness fitness( const Indi& indi )
 #endif
 	}
 	
-	for( int i = 0; i < (int)few_configurations.size(); i += nb_vars )
+	for( int i = 0; i < (int)random_configurations.size(); i += nb_vars )
 	{
 #if defined DEBUG
-		std::copy( few_configurations.begin() + i, few_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+		std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
 		cout << "\n";
 #endif
 		
-		auto f = cost_map.at( convert( few_configurations, i, i + nb_vars ) );
-		auto s = g( weights, params, few_configurations, max_value, i, nb_vars );
+		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
+		auto s = g( weights, params, random_configurations, max_value, i, nb_vars );
 
 		cost += std::abs( f - s );
 
@@ -229,7 +227,7 @@ eoMinimizingFitness fitness( const Indi& indi )
 	if( has_parameters && no_parameter_operations( weights ) )
 		cost += 1000;
 
-	// favor models with few operations
+	// favor models with random operations
 	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
 	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
 
@@ -304,12 +302,13 @@ int main_function(int argc, char **argv)
 
 	cmdl( {"n", "nb_vars"}, 9) >> nb_vars;
 	cmdl( {"d", "max_domain"}, 9) >> max_value;
-	cmdl( {"s", "sampling"}, 0.1) >> precision;
+	cmdl( {"s", "sampling"}, 100) >> samplings;
 
-	if( cmdl( {"p", "params"}, 1.0 ) >> params_value )
+	if( cmdl( {"p", "params"} ) )
 		has_parameters = true;
 	else
 		has_parameters = false;
+	cmdl( {"p", "params"}, 1.0 ) >> params_value;
 	params = vector<double>( nb_vars, params_value );
 
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
@@ -388,36 +387,31 @@ int main_function(int argc, char **argv)
 	if( latin_sampling )
 	{
 		cout << "Perform Latin Hypercube sampling.\n";
-		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
+		cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 	else
 	{
 		cout << "Perform Monte Carlo sampling.\n";
-		random_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
+		cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 	
-	few_configurations.reserve( random_solutions.size() );
-	std::copy( random_configurations.begin(),
-	           random_configurations.begin() + random_solutions.size(),
-	           std::back_inserter( few_configurations ) );
-
 // #if defined DEBUG
-// 	cout << "Few config: " << few_configurations.size() << "\n";	
-// 	for( int i = 0; i < (int)few_configurations.size(); ++i )
+// 	cout << "Random config: " << random_configurations.size() << "\n";	
+// 	for( int i = 0; i < (int)random_configurations.size(); ++i )
 // 	{
 // 		if( i % nb_vars == 0 )
 // 			cout << "\n";
-// 		cout << few_configurations[i] << " ";
+// 		cout << random_configurations[i] << " ";
 // 	}
 // #endif
 		
-	cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
+	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
-	cout << "Number of varaibles: " << nb_vars
+	cout << "Number of variables: " << nb_vars
 	     << "\nMax domain value: " << max_value
-	     << "\nSampling precision: " << precision
+	     << "\nSampling samplings: " << samplings
 	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
+	     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
 
 /////////////////
 #if defined DEBUG
@@ -559,11 +553,12 @@ int main_function(int argc, char **argv)
 
 	eval(pop[0]);
 	cout << "Best individual: " << pop[0]
-	     << "\nNumber of varaibles: " << nb_vars
+	     << "\nHas parameters: " << has_parameters
+	     << "\nNumber of variables: " << nb_vars
 	     << "\nMax domain value: " << max_value
-	     << "\nSampling precision: " << precision
+	     << "\nNumber samplings: " << samplings
 	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n\nModel:\n";
+	     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
 
 	print_model( pop[0] );
 
