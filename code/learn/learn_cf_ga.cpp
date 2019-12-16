@@ -10,6 +10,9 @@
 #include <algorithm>
 #include <set>
 
+// Command line option management
+#include <argh.h>
+
 // the general include for eo
 #include <eo>
 #include <ga.h>
@@ -25,20 +28,15 @@
 #include "../utils/randutils.hpp"
 
 #include "../constraints/concept.hpp"
-#if defined AD
 #include "../constraints/all-diff_concept.hpp"
-#elif defined LE
 #include "../constraints/linear-eq_concept.hpp"
-#elif defined LT
 #include "../constraints/less-than_concept.hpp"
-#elif defined CM
 #include "../constraints/connection-min-gt_concept.hpp"
-#elif defined OL
 #include "../constraints/overlap-1d_concept.hpp"
-#endif
 
 using namespace std;
 
+string constraint;
 int nb_vars, max_value;
 double precision;
 bool has_parameters;
@@ -48,13 +46,25 @@ unique_ptr<Concept> concept;
 vector<int> few_configurations;
 map<string, double> cost_map;
 vector<double> params;
+double params_value;
+bool latin_sampling;
 
 randutils::mt19937_rng rng_utils;
 
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " NB_VARIABLES MAX_VALUE PRECISION [Param]\n";
+	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s SAMPLING_PRECISION [-p PARAMETERS] [-l]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -i INPUT_FILE [-p PARAMETERS] [-l]\n"
+	     << "Arguments:\n"
+	     << "-h, --help\n"
+	     << "-c, --constraint {ad|le|lt|ol|cm}\n"
+	     << "-n, --nb_vars NB_VARIABLES\n"
+	     << "-d, --max_domain MAX_VALUE_DOMAIN\n"
+	     << "-s, --sampling SAMPLING_PRECISION (must be between 0 and 100)\n"
+	     << "-i, --input INPUT_FILE\n"
+	     << "-p, --params PARAMETERS\n"
+	     << "-l, --latin\n";
 }
 
 //-----------------------------------------------------------------------------
@@ -207,7 +217,6 @@ eoMinimizingFitness fitness( const Indi& indi )
 		cout << "Hamming: " << f << "\n";
 #endif
 	}
-
 	
 	
 	// penalize a network vector full of zeros
@@ -269,11 +278,90 @@ void fix( Indi& indi )
 //-----------------------------------------------------------------------------
 int main_function(int argc, char **argv)
 {
-	if( argc < 4 || argc > 6 )
+	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
+	// argh::parser cmdl;
+	// cmdl.add_param( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
+	cmdl.parse( argc, argv );
+	
+	if( cmdl[ { "-h", "--help"} ] )
+	{
+		usage( argv );
+		return EXIT_SUCCESS;
+	}
+
+	// cout << cmdl( {"c", "constraint"} ).str() << " "
+	//      << cmdl( {"n", "nb_vars"} ).str() << " "
+	//      << cmdl( {"d", "max_domain"} ).str() << " "
+	//      << cmdl( {"s", "sampling"} ).str() << " "
+	//      << cmdl( {"p", "params"} ).str() << " "
+	//      << cmdl( {"i", "input"} ).str() << "\n";
+	
+	if( !( cmdl( {"n", "nb_vars"} ) && cmdl( {"d", "max_domain"} ) ) && !cmdl( {"i", "input"} ) )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
 	}
+
+	cmdl( {"n", "nb_vars"}, 9) >> nb_vars;
+	cmdl( {"d", "max_domain"}, 9) >> max_value;
+	cmdl( {"s", "sampling"}, 0.1) >> precision;
+
+	if( cmdl( {"p", "params"}, 1.0 ) >> params_value )
+		has_parameters = true;
+	else
+		has_parameters = false;
+	params = vector<double>( nb_vars, params_value );
+
+	if( !( cmdl( {"c", "constraint"} ) >> constraint )
+	    ||
+	    ( constraint.compare("ad") != 0
+	      && constraint.compare("le") != 0
+	      && constraint.compare("lt") != 0
+	      && constraint.compare("ol") != 0
+	      && constraint.compare("cm") != 0 ) )
+	{
+		cerr << "Must provide a valid constraint among ad, le, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
+		usage( argv );
+		return EXIT_FAILURE;
+	}
+	else
+	{
+		if( constraint.compare("ad") == 0 )
+		{
+			cout << "Constraint: AllDiff.\n";
+			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
+		}
+		
+		if( constraint.compare("le") == 0 )
+		{
+			cout << "Constraint: Linear equation.\n";
+			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
+		}
+		
+		if( constraint.compare("lt") == 0 )
+		{
+			cout << "Constraint: Less than.\n";
+			concept = make_unique<LessThanConcept>( nb_vars, max_value );
+		}
+		
+		if( constraint.compare("ol") == 0 )
+		{
+			cout << "Constraint: Overlap 1D.\n";
+			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
+		}
+		
+		if( constraint.compare("cm") == 0 )
+		{
+			cout << "Constraint: Connection Minimum (greater-than version).\n";
+			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
+		}
+	}
+	
+	if( cmdl[ { "-l", "--latin" } ] )
+		latin_sampling = true;
+	else
+		latin_sampling = false;
+	
 	
 	// all parameters are hard-coded!
 	//const unsigned int SEED = 42;          // seed for random number generator
@@ -297,38 +385,17 @@ int main_function(int argc, char **argv)
 	// you'll aways get the same result, NOT a random run
 	rng.reseed(SEED);
 
-  //////////////////////////
-	//  Initialization
-	//////////////////////////
-	nb_vars = stoi( argv[1] );
-	max_value = stoi( argv[2] );
-	precision = stod( argv[3] );
-
-	if( argc > 4 )
+	if( latin_sampling )
 	{
-		params = vector<double>( nb_vars, stod( argv[4] ) );
-		has_parameters = true;
+		cout << "Perform Latin Hypercube sampling.\n";
+		random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
 	}
 	else
 	{
-		params = vector<double>( nb_vars, 1.0 );
-		has_parameters = false;
+		cout << "Perform Monte Carlo sampling.\n";
+		random_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
 	}
 	
-#if defined AD
-	concept = make_unique<AllDiffConcept>( nb_vars, max_value );
-#elif defined LE
-	// params[0] is the right-hand side value of the equation
-	concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
-#elif defined LT
-	concept = make_unique<LessThanConcept>( nb_vars, max_value );	
-#elif defined CM
-	concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );	
-#elif defined OL
-	concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );	
-#endif
-
-	random_draw( concept, nb_vars, max_value, random_solutions, random_configurations, precision );
 	few_configurations.reserve( random_solutions.size() );
 	std::copy( random_configurations.begin(),
 	           random_configurations.begin() + random_solutions.size(),
@@ -346,24 +413,31 @@ int main_function(int argc, char **argv)
 		
 	cost_map = compute_metric_hamming_only( random_solutions, few_configurations, nb_vars );
 
-	cout << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
+	cout << "Number of varaibles: " << nb_vars
+	     << "\nMax domain value: " << max_value
+	     << "\nSampling precision: " << precision
+	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n";
-
 
 /////////////////
 #if defined DEBUG
 	Indi v2;
-#if defined AD
-	vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
-#elif defined LT
-	vector<int> weights{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 };
-#elif defined LE
-	// weird function found with arguments "4 9 100.0 20"
-	//vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
-	vector<int> weights{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
-#elif defined OL
-	vector<int> weights{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 };
-#endif
+	vector<int> weights;
+	
+	if( constraint.compare("ad") == 0 )
+		weights = vector<int>{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
+	
+	if( constraint.compare("lt") == 0 )
+		weights = vector<int>{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 };
+	
+	if( constraint.compare("le") == 0 )
+		// weird function found with arguments "4 9 100.0 20"
+		//vector<int> weights{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
+		weights = vector<int>{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
+	
+	if( constraint.compare("ol") == 0 )
+		weights = vector<int>{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0 };
+	
 	for( auto& w : weights )
 		v2.push_back( w );
 	eoEvalFuncPtr<Indi> eval2( fitness );
@@ -484,8 +558,11 @@ int main_function(int argc, char **argv)
 	cout << "FINAL Population\n" << pop << endl;
 
 	eval(pop[0]);
-	cout << "Best individual: " << pop[0] << "\n"
-	     << "number of solutions: " << random_solutions.size() / nb_vars << ", density = "
+	cout << "Best individual: " << pop[0]
+	     << "\nNumber of varaibles: " << nb_vars
+	     << "\nMax domain value: " << max_value
+	     << "\nSampling precision: " << precision
+	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 	     << random_solutions.size() * 100.0 / random_configurations.size() << "\n\nModel:\n";
 
 	print_model( pop[0] );
