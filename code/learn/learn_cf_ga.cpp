@@ -2,6 +2,7 @@
 // standard includes
 #include <stdexcept>  // runtime_error 
 #include <iostream>    // cout
+#include <sstream>
 
 #include <ctime>
 #include <vector>
@@ -46,6 +47,9 @@ map<string, double> cost_map;
 vector<double> params;
 double params_value;
 bool latin_sampling;
+string input_file_path;
+ifstream input_file;
+string line, string_number;
 
 randutils::mt19937_rng rng_utils;
 
@@ -360,7 +364,62 @@ int main_function(int argc, char **argv)
 		latin_sampling = true;
 	else
 		latin_sampling = false;
-	
+
+	if( cmdl( {"i", "input"} ) )
+	{
+		cout << "Loading data from " << input_file_path << "\n";
+
+		cmdl( {"i", "input"} ) >> input_file_path;
+		input_file.open( input_file_path );
+
+		getline( input_file, line );
+		stringstream line_stream( line );
+		int number_samplings;
+		int number;
+		line_stream >> number_samplings;
+
+		// loading solutions
+		for( int i = 0; i < number_samplings; ++i )
+		{
+			getline( input_file, line );
+			stringstream line_stream( line );
+			while( line_stream >> string_number )
+			{
+				stringstream number_stream( string_number );
+				number_stream >> number;
+				random_solutions.push_back( number );
+			}
+		}
+		
+		// loading not solutions
+		for( int i = 0; i < number_samplings; ++i )
+		{
+			getline( input_file, line );
+			stringstream line_stream( line );
+			while( line_stream >> string_number )
+			{
+				stringstream number_stream( string_number );
+				number_stream >> number;
+				random_configurations.push_back( number );
+			}
+		}
+		
+		input_file.close();
+	}
+	else
+	{
+		if( latin_sampling )
+		{
+			cout << "Perform Latin Hypercube sampling.\n";
+			cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		}
+		else
+		{
+			cout << "Perform Monte Carlo sampling.\n";
+			cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		}
+	}
+
 	
 	// all parameters are hard-coded!
 	//const unsigned int SEED = 42;          // seed for random number generator
@@ -383,17 +442,6 @@ int main_function(int argc, char **argv)
 	//reproducible random seed: if you don't change SEED above, 
 	// you'll aways get the same result, NOT a random run
 	rng.reseed(SEED);
-
-	if( latin_sampling )
-	{
-		cout << "Perform Latin Hypercube sampling.\n";
-		cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
-	}
-	else
-	{
-		cout << "Perform Monte Carlo sampling.\n";
-		cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
-	}
 	
 // #if defined DEBUG
 // 	cout << "Random config: " << random_configurations.size() << "\n";	
