@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <iterator>
+#include <chrono>
 
 // Command line option management
 #include <argh.h>
@@ -38,6 +39,10 @@ void usage( char **argv )
 
 int main( int argc, char** argv )
 {
+	chrono::duration<double,milli> elapsedTime(0);
+	chrono::time_point<chrono::steady_clock> start;
+	start = chrono::steady_clock::now();
+	
 	string constraint;
 	int nb_vars, max_value;
 	int samplings;
@@ -142,6 +147,14 @@ int main( int argc, char** argv )
 		cerr << "No solutions. Abort.\n";
 		return EXIT_FAILURE;
 	}
+
+	cout << "Number of solutions: " << samplings << "\n";
+	
+	unsigned long long int space_size = static_cast<unsigned long long int>( std::pow( max_value, nb_vars ) );
+	cout << "Space size: " << space_size << "\n";
+
+	cout << "Percent solutions: " << ( static_cast<double>( samplings ) * 100 ) / space_size << "\n";
+	cout << "Percent explored space: " << ( static_cast<double>( samplings ) * 200 ) / space_size << "\n";
 	
 	output_file.open( output_file_path );
 	output_file << (int)random_solutions.size() / nb_vars << "\n";
@@ -165,6 +178,8 @@ int main( int argc, char** argv )
 	}
 
 	output_file.close();
-	
+
+	elapsedTime = chrono::steady_clock::now() - start;
+	cout << "Elapsed time: " << elapsedTime.count() << "ms\n";
 	return EXIT_SUCCESS;
 }
