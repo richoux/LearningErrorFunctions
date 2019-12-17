@@ -316,8 +316,6 @@ void fix( Indi& indi )
 int main_function(int argc, char **argv)
 {
 	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
-	// argh::parser cmdl;
-	// cmdl.add_param( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
 	cmdl.parse( argc, argv );
 	
 	if( cmdl[ { "-h", "--help"} ] )
