@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <set>
 
-// Command line option management
+// Command line arguments manager
 #include <argh.h>
 
 // the general include for eo
@@ -50,23 +50,25 @@ bool latin_sampling;
 string input_file_path;
 ifstream input_file;
 string line, string_number;
+bool xp;
 
 randutils::mt19937_rng rng_utils;
 
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS [-p PARAMETERS] [-l]\n"
-	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -i INPUT_FILE [-p PARAMETERS] [-l]\n"
+	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS [-p PARAMETERS] [-l] [--xp]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -i INPUT_FILE [-p PARAMETERS] [-l] [--xp]\n"
 	     << "Arguments:\n"
-	     << "-h, --help\n"
-	     << "-c, --constraint {ad|le|lt|ol|cm}\n"
-	     << "-n, --nb_vars NB_VARIABLES\n"
-	     << "-d, --max_domain MAX_VALUE_DOMAIN\n"
-	     << "-s, --sampling NUMBER_SAMPLINGS\n"
-	     << "-i, --input INPUT_FILE\n"
-	     << "-p, --params PARAMETERS\n"
-	     << "-l, --latin\n";
+	     << "-h, --help, printing this message.\n"
+	     << "-c, --constraint {ad|le|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
+	     << "-n, --nb_vars NB_VARIABLES, the number of variables in the constraint.\n"
+	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take.\n"
+	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
+	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
+	     << "-p, --params PARAMETERS, the list of parameters required.\n"
+	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
+	     << "--xp to print on the screen results for experiments only.\n";
 }
 
 //-----------------------------------------------------------------------------
@@ -76,8 +78,8 @@ typedef eoBit<eoMinimizingFitness> Indi;        // A bitstring with fitness doub
 
 bool no_parameter_operations( const vector<int>& weights )
 {
-	// test t4, t5, t6, t9, c1, c2, c3, c4
-	return weights[4] == 0 && weights[5] == 0 && weights[6] == 0 && weights[9] == 0 && weights[13] == 0 && weights[14] == 0 && weights[15] == 0 && weights[16] == 0; 
+	// test t7, t8, t9, t10, t11, t17, c1, c2, c3, c4
+	return weights[7] == 0 && weights[8] == 0 && weights[9] == 0 && weights[10] == 0 && weights[11] == 0 && weights[17] == 0 && weights[21] == 0 && weights[22] == 0 && weights[23] == 0 && weights[24] == 0; 
 }
 
 string transfo_operation( int number )
@@ -91,27 +93,51 @@ string transfo_operation( int number )
 		return "Number of elements on the right equals to y";
 		break;
 	case 2:
-		return "Number of elements on the right smaller than or equals to y";
+		return "Number of elements on the right smaller than y";
 		break;
 	case 3:
-		return "Number of elements on the right greater than or equals to y";
+		return "Number of elements on the right greater than y";
 		break;
 	case 4:
-		return "Number of elements smaller than or equals to y + param";
+		return "Number of elements on the left equals to y";
 		break;
 	case 5:
-		return "Number of elements greater than or equals to y + param";
+		return "Number of elements on the left smaller than y";
 		break;
 	case 6:
-		return "Max(0, param - y)";
+		return "Number of elements on the left greater than y";
 		break;
 	case 7:
-		return "Max(0, x_i - x_i+1 )";
+		return "Number of elements equals to y + param";
 		break;
 	case 8:
-		return "Number of elements greater than or equals to y";
+		return "Number of elements smaller than y + param";
 		break;
 	case 9:
+		return "Number of elements greater than y + param";
+		break;
+	case 10:
+		return "Max(0, y - param)";
+		break;
+	case 11:
+		return "Max(0, param - y)";
+		break;
+	case 12:
+		return "Max(0, x_i - x_i+1 )";
+		break;
+	case 13:
+		return "Max(0, x_i+1 - x_i )";
+		break;
+	case 14:
+		return "Number of elements equals to y";
+		break;
+	case 15:
+		return "Number of elements greater than y";
+		break;
+	case 16:
+		return "Number of elements smaller than y";
+		break;
+	case 17:
 		return "Number of elements greater than or equals to y AND less than or equals to y + param";
 		break;
 	default:
@@ -137,6 +163,15 @@ string compar_operation( int number )
 		break;
 	case 4:
 		return "Euclidian division of the difference between input and parameter with domain size";
+		break;
+	case 5:
+		return "Input equals to the number of variables";
+		break;
+	case 6:
+		return "Input greater than or equals to the number of variables";
+		break;
+	case 7:
+		return "Input less than or equals to the number of variables";
 		break;
 	default:
 		return "";
@@ -291,13 +326,6 @@ int main_function(int argc, char **argv)
 		return EXIT_SUCCESS;
 	}
 
-	// cout << cmdl( {"c", "constraint"} ).str() << " "
-	//      << cmdl( {"n", "nb_vars"} ).str() << " "
-	//      << cmdl( {"d", "max_domain"} ).str() << " "
-	//      << cmdl( {"s", "sampling"} ).str() << " "
-	//      << cmdl( {"p", "params"} ).str() << " "
-	//      << cmdl( {"i", "input"} ).str() << "\n";
-	
 	if( !( cmdl( {"n", "nb_vars"} ) && cmdl( {"d", "max_domain"} ) ) && !cmdl( {"i", "input"} ) )
 	{
 		usage( argv );
@@ -315,6 +343,11 @@ int main_function(int argc, char **argv)
 	cmdl( {"p", "params"}, 1.0 ) >> params_value;
 	params = vector<double>( nb_vars, params_value );
 
+	if( cmdl[ { "--xp" } ] )
+		xp = true;
+	else
+		xp = false;
+	
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
 	    ||
 	    ( constraint.compare("ad") != 0
@@ -331,31 +364,36 @@ int main_function(int argc, char **argv)
 	{
 		if( constraint.compare("ad") == 0 )
 		{
-			cout << "Constraint: AllDiff.\n";
+			if( !xp )
+				cout << "Constraint: AllDiff.\n";
 			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("le") == 0 )
 		{
-			cout << "Constraint: Linear equation.\n";
+			if( !xp )
+				cout << "Constraint: Linear equation.\n";
 			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
 		{
-			cout << "Constraint: Less than.\n";
+			if( !xp )
+				cout << "Constraint: Less than.\n";
 			concept = make_unique<LessThanConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("ol") == 0 )
 		{
-			cout << "Constraint: Overlap 1D.\n";
+			if( !xp )
+				cout << "Constraint: Overlap 1D.\n";
 			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
 		}
 		
 		if( constraint.compare("cm") == 0 )
 		{
-			cout << "Constraint: Connection Minimum (greater-than version).\n";
+			if( !xp )
+				cout << "Constraint: Connection Minimum (greater-than version).\n";
 			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
 	}
@@ -367,7 +405,8 @@ int main_function(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
-		cout << "Loading data from " << input_file_path << "\n";
+		if( !xp )
+			cout << "Loading data from " << input_file_path << "\n";
 
 		cmdl( {"i", "input"} ) >> input_file_path;
 		input_file.open( input_file_path );
@@ -410,12 +449,14 @@ int main_function(int argc, char **argv)
 	{
 		if( latin_sampling )
 		{
-			cout << "Perform Latin Hypercube sampling.\n";
+			if( !xp )
+				cout << "Perform Latin Hypercube sampling.\n";
 			cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
 		else
 		{
-			cout << "Perform Monte Carlo sampling.\n";
+			if( !xp )
+				cout << "Perform Monte Carlo sampling.\n";
 			cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
 	}
@@ -443,23 +484,14 @@ int main_function(int argc, char **argv)
 	// you'll aways get the same result, NOT a random run
 	rng.reseed(SEED);
 	
-// #if defined DEBUG
-// 	cout << "Random config: " << random_configurations.size() << "\n";	
-// 	for( int i = 0; i < (int)random_configurations.size(); ++i )
-// 	{
-// 		if( i % nb_vars == 0 )
-// 			cout << "\n";
-// 		cout << random_configurations[i] << " ";
-// 	}
-// #endif
-		
 	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
-	cout << "Number of variables: " << nb_vars
-	     << "\nMax domain value: " << max_value
-	     << "\nSampling samplings: " << samplings
-	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-	     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
+	if( !xp )
+		cout << "Number of variables: " << nb_vars
+		     << "\nMax domain value: " << max_value
+		     << "\nSampling samplings: " << samplings
+		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
+		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
 
 /////////////////
 #if defined DEBUG
@@ -540,8 +572,8 @@ int main_function(int argc, char **argv)
 	// sort pop before printing it!
 	pop.sort();
 	// Print (sorted) intial population (raw printout)
-	cout << "Initial Population" << endl;
-	cout << pop;
+	if( !xp )
+		cout << "Initial Population\n" << pop;
 
 	/////////////////////////////////////
 	// selection and replacement
@@ -597,18 +629,25 @@ int main_function(int argc, char **argv)
  
 	// Print (sorted) intial population
 	pop.sort();
-	cout << "FINAL Population\n" << pop << endl;
+	if( !xp )
+		cout << "FINAL Population\n" << pop << "\n";
 
 	eval(pop[0]);
-	cout << "Best individual: " << pop[0]
-	     << "\nHas parameters: " << has_parameters
-	     << "\nNumber of variables: " << nb_vars
-	     << "\nMax domain value: " << max_value
-	     << "\nNumber samplings: " << samplings
-	     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-	     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
-
-	print_model( pop[0] );
+	
+	if( !xp )
+	{
+		cout << "Best individual: " << pop[0]
+		     << "\nHas parameters: " << has_parameters
+		     << "\nNumber of variables: " << nb_vars
+		     << "\nMax domain value: " << max_value
+		     << "\nNumber samplings: " << samplings
+		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
+		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
+	
+		print_model( pop[0] );
+	}
+	else
+		cout << pop[0] << "\n";
 
 	return EXIT_SUCCESS;
 }
