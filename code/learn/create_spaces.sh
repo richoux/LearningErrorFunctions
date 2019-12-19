@@ -1,9 +1,12 @@
 #!/bin/bash
 
 #declare -a constraints=("ad" "lt")
-declare -a constraints=("ad" "le" "lt" "ol" "cm" )
-declare -a nb_vars=(6 9 12 15)
-declare -a samplings=(100 1000 10000 100000)
+declare -a constraints=("lt" "ol" "cm" )
+declare -a nb_vars=(6 9 12)
+declare -a samplings=(100 1000 10000)
+# declare -a constraints=("ad" "le" "lt" "ol" "cm" )
+# declare -a nb_vars=(6 9 12 15)
+# declare -a samplings=(100 1000 10000 100000)
 
 for c in ${constraints[@]}; do
 		for n in ${nb_vars[@]}; do
