@@ -58,7 +58,7 @@ randutils::mt19937_rng rng_utils;
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS [-p PARAMETERS] [-l] [--xp]\n"
-	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -i INPUT_FILE [-p PARAMETERS] [-l] [--xp]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -i INPUT_FILE [-p PARAMETERS] [--xp]\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
 	     << "-c, --constraint {ad|le|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
@@ -324,7 +324,7 @@ int main_function(int argc, char **argv)
 		return EXIT_SUCCESS;
 	}
 
-	if( !( cmdl( {"n", "nb_vars"} ) && cmdl( {"d", "max_domain"} ) ) && !cmdl( {"i", "input"} ) )
+	if( !( cmdl( {"n", "nb_vars"} ) && cmdl( {"d", "max_domain"} ) ) )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
