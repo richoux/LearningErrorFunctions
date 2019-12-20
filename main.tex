@@ -18,6 +18,7 @@
 \usepackage[dvipsnames, table]{xcolor}
 \usepackage{color}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{adjustbox}
 \usepackage[ruled,linesnumbered]{algorithm2e}
 
@@ -89,7 +90,7 @@
 %
 \setlength\titlebox{2.5in} % If your paper contains an overfull \vbox too high warning at the beginning of the document, use this
 % command to correct it. You may not alter the value below 2.5 in
-\title{Automatic Cost Function Generation}
+\title{Automatic Cost Function Generation ('learning' in the title?)}
 %Your title must be in mixed case, not sentence case.
 % That means all verbs (including short verbs like be, is, using,and go),
 % nouns, adverbs, adjectives should be capitalized, including both words in hyphenated terms, while
@@ -152,18 +153,71 @@ TODO: Formalisation    WCSP     vs    CFN     (section    5     du
 draft) \flo. \cite{Bessiere2011,LK2014}
 
 Topo sur CPPN \jf \cite{CPPN}.
-\subsection{Differentiating \wcsp and \cfn \flo} 
-\wcsp and \cfn are defined by close but different flavors throughout the litterature. To make the most of both, we chose to consider the following definitions for those two concepts.
 
-\paragraph{\wcsp} is  considering soft  constraints, where  a constraint  is
-  unsatisfyed iif its associated cost function outputs a value below a
-  given threshold $k$ (can be infinite).
+In the  literature, Cost  Function Networks  (\cfn) and  Weighted \csp
+(\wcsp)  are  synonyms~\cite{Zytnicki2009,Bessiere2011}.  Some  papers
+like~\cite{Allouche2012} present  \cfn to  be the formalism  and \wcsp
+the  problem of  finding an  assignment minimizing  the combined  cost
+function of a given \cfn instance. Since  it is rarely a good think in
+Science to have two different names for the same notion, we start this
+paper by proposing clear, distinct definitions of \cfn and \wcsp.
 
-\paragraph{\cfn} is  considering  hard constraints  only.  Like  constraint
-  networks helping solvers to find  solutions by giving a structure of
-  the problem,  CFN gives,  in addition of  the constraint  network, a
-  structure on  configurations to help  the solver to determine  if an
-  unsatisfying configuration is near to be a solution or not.
+\subsection{Definitions of \wcsp and \cfn \flo} 
+
+We propose  to keep the definition  of a \wcsp from  the literature: a
+\textbf{\wcsp} is a tuple ($V$,$D$,$C$,$F$)  where $V$ is a finite set
+of variables,  $D$ a finite set  of domains, one for  each variable in
+$V$, each domain  being the set of  values a variable can  take, $C$ a
+finite set  of constraints  over variables  in $V$,  determining which
+combinations of values in $D$ are allowed or forbidden to describe our
+problem, and finally a finite set  $F$ composed of cost functions, one
+for  each constraint  in $C$.   Let's  denote by  $D_c$ the  Cartesian
+product of  the domain of  variables involved  in a constraint  $c \in
+C$. The cost function $f_c \in  F$ associated to the constraint $c$ is
+a     function     $f_c:     D_c    \rightarrow     \{0,k\}$     where
+$k \in \mathbb{N} \cup \{\infty\}$ is the special cost for assignments
+violating the  constraint $c$. Thus, an  assignment $\alpha$ satisfies
+the constraint  $c$ iff  $f_c(\alpha) < k$  holds. The  function $f_c$
+allows  us to  rank assignments  and  to express  softness within  the
+constraint $c$.
+
+A \textbf{\cfn} is also defined  by a tuple ($V$,$D$,$C$,$F$) with the
+same  sets  as   \wcsp.   The  difference  we  propose   lies  in  the
+interpretation of cost functions $f_c$.  In this paper, cost functions
+defined   in   a   \cfn    are   functions   $f_c:   D_c   \rightarrow
+\mathbb{R}^+$. An assignment $\alpha$ satisfies the constraint $c$ iff
+$f_c(\alpha) = 0$ holds. All  other strictly positive outputs of $f_c$
+lead to forbidden assignments. Therefore, \cfn is considering hard (or
+crisp) constraints  only, unlike  \wcsp. Strictly positive  outputs of
+$f_c$ are then interpreted  like preferences over invalid assignments:
+the closer $f_c(\alpha)$ is to 0, the closer $\alpha$ is to be a valid
+assignment.
+
+In the same  way a \csp instance  is a network of  constraints, \ie, a
+networks of  predicates expressing if  an assignment satisfies  or not
+each constraint, a \cfn instance  is a network of functions expressing
+if  an assignment  satisfies the  constraints or  how close  it is  to
+satisfy them. Thus,  this formalism \cfn allows us to  express a finer
+structure about the  problem, since we furnish with  cost functions an
+ordered  structure  over  invalid  assignment  a  solver  can  exploit
+efficiently   to   improve  the   search.   We   illustrate  this   in
+Section~\ref{sec:xp}.
+
+Observe we  can also deal  with optimization  problems with a  \cfn by
+adding  to  the  tuple  ($V$,$D$,$C$,$F$)  an  objective  function  to
+optimize.
+
+% \wcsp and \cfn are defined by close but different flavors throughout the litterature. To make the most of both, we chose to consider the following definitions for those two concepts.
+
+% \paragraph{\wcsp} is  considering soft  constraints, where  a constraint  is
+%   unsatisfyed iif its associated cost function outputs a value below a
+%   given threshold $k$ (can be infinite).
+
+% \paragraph{\cfn} is  considering  hard constraints  only.  Like  constraint
+%   networks helping solvers to find  solutions by giving a structure of
+%   the problem,  CFN gives,  in addition of  the constraint  network, a
+%   structure on  configurations to help  the solver to determine  if an
+%   unsatisfying configuration is near to be a solution or not.
 
 From those definition, we can consider \wcsp and the \cfn variants (satisfaction and optimization) to have different expressiveness: \cfn-sat $<$ \wcsp $<$ \cfn-opt
 
