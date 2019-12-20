@@ -1,0 +1,4 @@
+Constraint: Overlap 1D.
+Number of solutions: 316631
+Number of samplings: 1000000000
+Estimated percent solutions: 0.0316631

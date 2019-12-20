@@ -1,0 +1,7 @@
+Constraint: Overlap 1D.
+Perform Latin Hypercube sampling.
+Number of solutions: 10000
+Space size: 34012224
+Percent solutions: 0.0294012
+Percent explored space: 0.0588024
+Elapsed time: 10.4215ms
