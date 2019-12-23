@@ -46,6 +46,7 @@ string input_file_path;
 ifstream input_file;
 string line, string_number;
 bool xp;
+bool debug;
 string function_representation;
 vector<int> cost_function;
 
@@ -65,7 +66,8 @@ void usage( char **argv )
 	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
-	     << "--xp to print on the screen results for experiments only.\n";
+	     << "--xp to print on the screen results for experiments only.\n"
+	     << "--debug.\n";
 }
 
 bool no_parameter_operations( const vector<int>& weights )
@@ -80,10 +82,11 @@ double fitness( const vector<int>& weights )
 	
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
-#if defined DEBUG
-		std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		cout << "\n";
-#endif
+		if( debug )
+		{
+			std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+			cout << "\n";
+		}
 		
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
 		auto s = g( weights, params, random_solutions, max_value, i, nb_vars );
@@ -93,17 +96,20 @@ double fitness( const vector<int>& weights )
 		// costs.emplace( f, s );
 
 		//sum_seconds += s;
-#if defined DEBUG
-		cout << "Hamming: " << f << "\n";
-#endif
+		if( debug )
+		{
+			cout << "Hamming: " << f << "\n"
+			     << "Score:   " << s << "\n\n";
+		}
 	}
 	
 	for( int i = 0; i < (int)random_configurations.size(); i += nb_vars )
 	{
-#if defined DEBUG
-		std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
-		cout << "\n";
-#endif
+		if( debug )
+		{
+			std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+			cout << "\n";
+		}
 		
 		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
 		auto s = g( weights, params, random_configurations, max_value, i, nb_vars );
@@ -112,9 +118,11 @@ double fitness( const vector<int>& weights )
 
 		// costs.emplace( f, s );
 
-#if defined DEBUG
-		cout << "Hamming: " << f << "\n";
-#endif
+		if( debug )
+		{
+			cout << "Hamming: " << f << "\n"
+			     << "Score:   " << s << "\n\n";
+		}
 	}
 	
 	
@@ -180,7 +188,12 @@ int main(int argc, char **argv)
 		xp = true;
 	else
 		xp = false;
-	
+
+	if( cmdl[ { "--debug" } ] )
+		debug = true;
+	else
+		debug = false;
+
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
 	    ||
 	    ( constraint.compare("ad") != 0
