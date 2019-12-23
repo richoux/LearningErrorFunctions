@@ -38,10 +38,6 @@ sort -n -k1)
 
 echo "${sorted_solutions[@]}"
 
-# for sol in "${!solutions[@]}"; do
-# 		echo "$sol: ${solutions[$sol]}";
-# done
-
 med=$(echo ${costs[@]} | sort | awk -f median.awk)
 echo "Median: $med"
 
