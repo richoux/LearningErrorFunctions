@@ -13,7 +13,6 @@ do
 		beginning_sol=$(echo ${words[2]} | cut -c1-18)
 		nb_ones=$(awk -F"1" '{print NF-1}' <<< "${beginning_sol}")
 		if [ $nb_ones == 1 ]; then
-				end_sol=$(echo ${words[2]} | cut -c20-28)
 				to_consider="${words[2]:0:18}0${words[2]:19}"
 		else
 				to_consider=${words[2]}
@@ -22,12 +21,11 @@ do
 		# echo "original:    ${words[2]}"
 		# echo "transformed: $to_consider"
 		
-		if [ ${solutions[$to_consider]+0} ]; then
+		if [ ${solutions[$to_consider]} ]; then
 				solutions[$to_consider]=$((${solutions[$to_consider]}+1))
 		else
 				solutions[$to_consider]=1
 		fi
-
 done < "$1"
 
 sorted_solutions=$(for k in "${!solutions[@]}"
