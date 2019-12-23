@@ -41,3 +41,18 @@ echo "Median: $med"
 
 cost=$(echo "scale=3; $sum/100" | bc)
 echo "Mean: $cost"
+
+split=(${sorted_solutions[@]})
+echo 
+echo "//////////"
+echo "Model of the most commun cost function ${split[0]}:"
+echo 
+./bin/print_model "${split[0]}"
+
+if [[ ${split[2]} ]]; then
+		echo 
+		echo "//////////"
+		echo "Model of the second most commun cost function ${split[2]}:"
+		echo 
+		./bin/print_model "${split[2]}"
+fi
