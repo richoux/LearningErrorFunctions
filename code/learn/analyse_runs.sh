@@ -34,7 +34,7 @@ sorted_solutions=$(for k in "${!solutions[@]}"
 do
     echo $k ${solutions[$k]}
 done |
-sort -n -k1)
+sort -rn -k2)
 
 echo "${sorted_solutions[@]}"
 
