@@ -8,11 +8,9 @@ $> ./compile_learn_ga.sh
 $> (in learn folder)
 $> ./bin/learn_cf_ga (and many options, type -h first to have them)
 
-3. Run the main program to learn Cost Functions using precomputed
-constraint spaces.
+3. Run the main program to learn Cost Functions using precomputed constraint spaces.
 $> (in learn folder)
-$> ./bin/learn_cf_ga -i spaces/the_file_you_want (plus  many  other
-options, type -h first to have them)
+$> ./bin/learn_cf_ga -i spaces/the_file_you_want (plus many other options, type -h first to have them)
 
 4. Re-run our experiments
 $> (in learn folder)
@@ -55,5 +53,5 @@ chebpol: interpolation
 csv: to make CSV files and interpolate cost functions from them
 eigen: Eigen lib
 eo: searching for cost functions through genetic algorithms
-JLL: everything related to JLL
+JLL: everything related to the Johnson–Lindenstrauss Lemma 
 
