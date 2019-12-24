@@ -356,7 +356,7 @@ void lt()
 			write( 0, config );
 		}
 
-		for( int i = 0; i < 75; ++i )
+ 		for( int i = 0; i < 75; ++i )
 		{
 			rng.shuffle( start_config );
 			std::copy( start_config.begin(), start_config.end(), config.begin() );
@@ -412,12 +412,46 @@ void lt()
 
 void cm()
 {
+	if( test )
+	{
+		for( auto tuple : cost_map )
+		{
+			auto config = revert( tuple.first );
+			auto cost = cost_cm( config );
+			if( cost != static_cast<int>( tuple.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
+			}
+		}
+	}
+	else
+	{
 
+	}
 }
 
 void ol()
 {
+	if( test )
+	{
+		for( auto tuple : cost_map )
+		{
+			auto config = revert( tuple.first );
+			auto cost = cost_ol( config );
+			if( cost != static_cast<int>( tuple.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
+			}
+		}
+	}
+	else
+	{
 
+	}
 }
 
 //-----------------------------------------------------------------------------
