@@ -58,7 +58,7 @@ randutils::mt19937_rng rng_utils;
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS [-p PARAMETERS] [-l] [--xp]\n"
-	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -i INPUT_FILE [-p PARAMETERS] [--xp]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -i INPUT_FILE -ci COMPLETE_INPUT_FILE [-p PARAMETERS] [--xp]\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
 	     << "-c, --constraint {ad|le|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
@@ -66,6 +66,7 @@ void usage( char **argv )
 	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take.\n"
 	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
 	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
+	     << "-ci, --complete_input COMPLETE_INPUT_FILE containing the full configuration space.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n";
@@ -191,7 +192,7 @@ void fix( Indi& indi )
 //-----------------------------------------------------------------------------
 int main_function(int argc, char **argv)
 {
-	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
+	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-ci", "--complete_input", "-p", "--params" } );
 	cmdl.parse( argc, argv );
 	
 	if( cmdl[ { "-h", "--help"} ] )
@@ -202,6 +203,13 @@ int main_function(int argc, char **argv)
 
 	if( !( cmdl( {"n", "nb_vars"} ) && cmdl( {"d", "max_domain"} ) ) )
 	{
+		usage( argv );
+		return EXIT_FAILURE;
+	}
+
+	if( cmdl( {"i", "input"} ) && cmdl( {"ci", "complete_input"} ) )
+	{
+		cerr << "You cannot provide both an input file and a complete input file at the same time.\n";
 		usage( argv );
 		return EXIT_FAILURE;
 	}
@@ -317,6 +325,37 @@ int main_function(int argc, char **argv)
 			}
 		}
 		
+		input_file.close();
+	}
+	else if( cmdl( {"ci", "complete_input"} ) )
+	{
+		if( !xp )
+			cout << "Loading data from " << input_file_path << "\n";
+
+		cmdl( {"ci", "complete_input"} ) >> input_file_path;
+		input_file.open( input_file_path );
+
+		int number;
+		
+		// loading solutions/configurations
+		while( getline( input_file, line ) )
+		{
+			auto delimiter = line.find(" : ");
+			std::string solution_token = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 3 );
+			
+			stringstream line_stream( line );
+			while( line_stream >> string_number )
+			{
+				stringstream number_stream( string_number );
+				number_stream >> number;
+				if( solution_token.compare("1") == 0 )
+					random_solutions.push_back( number );
+				else
+					random_configurations.push_back( number );					
+			}
+		}		
+
 		input_file.close();
 	}
 	else

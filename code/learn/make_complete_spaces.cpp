@@ -116,7 +116,7 @@ int main( int argc, char** argv )
 	vector<int> configurations( nb_vars, 1 );
 	do
 	{
-		output_file << concept->concept( configurations ) << ": ";
+		output_file << concept->concept( configurations ) << " : ";
 		
 		std::copy( configurations.begin(),
 		           configurations.end(),
@@ -127,7 +127,7 @@ int main( int argc, char** argv )
 	} while( std::any_of( configurations.begin(), configurations.end(), [&max_value](auto& c){ return c != max_value; } ) );
 
 	// last round
-	output_file << concept->concept( configurations ) << ": ";
+	output_file << concept->concept( configurations ) << " : ";
 	
 	std::copy( configurations.begin(),
 	           configurations.end(),

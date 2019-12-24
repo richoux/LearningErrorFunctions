@@ -21,6 +21,23 @@ std::string convert( const std::vector<int>& vec, int start, int end )
 	return key;
 }
 
+std::vector<int> revert( std::string s )
+{
+	std::vector<int> vec;
+
+	size_t pos = 0;
+	std::string token;
+	while( ( pos = s.find( "_" ) ) != std::string::npos )
+	{
+		token = s.substr(0, pos);
+		vec.push_back( std::stoi( token ) );
+    s.erase(0, pos + 1);
+	}
+	
+	return vec;
+}
+
+
 std::vector<int> make_weights( const std::vector<int>& raw_weights )
 {
 	int number_units_compar = ( (int)raw_weights.size() - number_units_aggreg ) - number_units_transfo;

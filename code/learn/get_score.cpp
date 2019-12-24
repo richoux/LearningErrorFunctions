@@ -55,7 +55,7 @@ randutils::mt19937_rng rng_utils;
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS -f FUNCTION [-p PARAMETERS] [-l] [--xp]\n"
-	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -f FUNCTION -i INPUT_FILE [-p PARAMETERS] [--xp]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -f FUNCTION -i INPUT_FILE -hi HAMMING_INPUT_FILE [-p PARAMETERS] [--xp]\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
 	     << "-c, --constraint {ad|le|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
@@ -64,6 +64,7 @@ void usage( char **argv )
 	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
 	     << "-f, --function FUNCTION, the series of bits representing a cost function.\n"
 	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
+	     << "-hi, --hamming_input HAMMING_INPUT_FILE containing sampled configurations with their true Hamming cost.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n"
@@ -82,14 +83,14 @@ double fitness( const vector<int>& weights )
 	
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
+		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
+		auto s = g( weights, params, random_solutions, max_value, i, nb_vars );
+
 		if( debug )
 		{
 			std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
 			cout << "\n";
 		}
-		
-		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
-		auto s = g( weights, params, random_solutions, max_value, i, nb_vars );
 
 		cost += std::abs( f - s );
 
@@ -105,14 +106,14 @@ double fitness( const vector<int>& weights )
 	
 	for( int i = 0; i < (int)random_configurations.size(); i += nb_vars )
 	{
+		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
+		auto s = g( weights, params, random_configurations, max_value, i, nb_vars );
+
 		if( debug )
 		{
 			std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
 			cout << "\n";
 		}
-		
-		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
-		auto s = g( weights, params, random_configurations, max_value, i, nb_vars );
 
 		cost += std::abs( f - s );
 
@@ -125,36 +126,13 @@ double fitness( const vector<int>& weights )
 		}
 	}
 	
-	
-	// penalize a network vector full of zeros
-	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
-		cost += 10;
-	// penalty if no unique agregation function
-	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
-		cost += 10;	
-	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some).
-	if( has_parameters && no_parameter_operations( weights ) )
-		cost += 1000;
-
-	// favor models with random operations
-	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
-	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
-
 	return cost;
-
-	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
-	// variance is here to forbid having all costs at the same value,
-	// and minimizing the number of 1s in individuals is to keep the CPPN as simple as possible. 
-	//return cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
-
-	// here the cost is cost_order + (cost_order * number_1)
-	// return cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
 
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-f", "--function", "-s", "--sampling", "-i", "--input", "-p", "--params" } );
+	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-f", "--function", "-s", "--sampling", "-i", "--input", "-hi", "--hamming_input", "-p", "--params" } );
 	cmdl.parse( argc, argv );
 	
 	if( cmdl[ { "-h", "--help"} ] )
@@ -169,6 +147,13 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
+	if( cmdl( {"i", "input"} ) && cmdl( {"hi", "hamming_input"} ) )
+	{
+		cerr << "You cannot provide both an input file and a Hamming input file at the same time.\n";
+		usage( argv );
+		return EXIT_FAILURE;
+	}
+	
 	cmdl( {"n", "nb_vars"}, 9) >> nb_vars;
 	cmdl( {"d", "max_domain"}, 9) >> max_value;
 	cmdl( {"f", "function"} ) >> function_representation;
@@ -291,7 +276,40 @@ int main(int argc, char **argv)
 		
 		input_file.close();
 	}
-	else
+	else if( cmdl( {"hi", "hamming_input"} ) )
+	{
+		if( !xp )
+			cout << "Loading data from " << input_file_path << "\n";
+
+		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
+		input_file.open( input_file_path );
+
+		int number;
+		int index = 0;
+		
+		// loading solutions
+		for( int i = 0; i < 100; ++i )
+		{
+			getline( input_file, line );
+			auto delimiter = line.find(" : ");
+			std::string cost_token = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 3 );
+			
+			stringstream line_stream( line );
+			while( line_stream >> string_number )
+			{
+				stringstream number_stream( string_number );
+				number_stream >> number;
+				random_solutions.push_back( number );
+			}
+
+			cost_map.insert({ convert( random_solutions, index, index + nb_vars ), std::stod( cost_token ) });
+			index += nb_vars;
+		}		
+
+		input_file.close();
+	}
+	else		
 	{
 		if( latin_sampling )
 		{
@@ -307,7 +325,8 @@ int main(int argc, char **argv)
 		}
 	}
 
-	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+	if( !cmdl( {"hi", "hamming_input"} ) )
+	    cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 	
 	if( !xp )
 	{
