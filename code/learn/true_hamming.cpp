@@ -214,8 +214,7 @@ int cost_lt( vector<int> input )
 
 int cost_cm( const vector<int>& input )
 {
-	int cost = 0;
-	return cost;
+	return std::count_if( input.begin(), input.end(), [](auto& v){ return v < params_value; } );
 }
 
 int cost_ol( const vector<int>& input )
