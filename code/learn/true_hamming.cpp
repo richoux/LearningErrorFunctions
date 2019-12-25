@@ -108,6 +108,7 @@ int cost_le( vector<int> input )
 	return cost;
 }
 
+// Warning! This is an approximation.
 int cost_lt( vector<int> input )
 {
 	int cost = 0;
@@ -127,7 +128,7 @@ int cost_lt( vector<int> input )
 		if( input[i] > input[i+1] )
 		{
 			int j = i+1;
-			while( j <= nb_vars - 1 && input[j-1] > input[j] )
+			while( j <= nb_vars - 1 && input[j-1] >= input[j] )
 				++j;
 			cascade_j = j;
 
@@ -169,7 +170,8 @@ int cost_lt( vector<int> input )
 				cout << "\nconfig[" << i << "]=" << input[i]
 				     << ", config[" << i+1 << "]=" << input[i+1]
 				     << ", cost_right=" << cost_right << ", cost_left=" << cost_left
-				     << ", min_val=" << min_val << ", max_val=" << max_val << "\n";
+				     << ", min_val=" << min_val << ", max_val=" << max_val
+				     << ", min_j=" << min_j << ", max_j=" << max_j << ", cascade_j=" << cascade_j << "\n";
 			}
 
 			if( cost_right == cost_left )
@@ -223,6 +225,7 @@ int cost_cm( const vector<int>& input )
 	return std::count_if( input.begin(), input.end(), [](auto& v){ return v < params_value; } );
 }
 
+// Warning! This is an approximation.
 int cost_ol( const vector<int>& input )
 {
 	int cost = 0;
@@ -383,10 +386,16 @@ void lt()
 			write( cost_lt( config ), config );
 		}
 
-		config = {2,1,8,6,7,3,4,2,1};
+		cout << "/////////////////\n";
+		config = {8,8,8,7,7,5,6};
 		cout << cost_lt( config ) << " : ";
 		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
 		cout << "\n";
+
+		// config = {2,1,8,6,7,3,4,2,1};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
 		// config = {4,3,1,1,2};
 		// cout << cost_lt( config ) << " : ";
