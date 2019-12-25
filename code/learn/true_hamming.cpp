@@ -122,10 +122,16 @@ int cost_lt( vector<int> input )
 
 		int min_j = 0;
 		int max_j = 0;
+		int cascade_j = 0;
 		
 		if( input[i] > input[i+1] )
 		{
 			int j = i+1;
+			while( j <= nb_vars - 1 && input[j-1] > input[j] )
+				++j;
+			cascade_j = j;
+
+			j = i+1;
 			while( j <= nb_vars - 1 && input[i] > input[j] )
 			{
 				++j;
@@ -187,17 +193,17 @@ int cost_lt( vector<int> input )
 					cost += cost_right;
 				}
 			}
-			else if( cost_right > cost_left )
-			{
-				for( j = 0; j < cost_left; ++j )
-					input[ i - j ] = min_val;
-				cost += cost_left;
-			}
-			else
+			else if( cost_right < cost_left || ( max_j >= nb_vars - 1 && cascade_j == max_j ) )
 			{
 				for( j = 0; j < cost_right; ++j )
 					input[ i + 1 + j ] = max_val;
 				cost += cost_right;
+			}
+			else
+			{
+				for( j = 0; j < cost_left; ++j )
+					input[ i - j ] = min_val;
+				cost += cost_left;
 			}
 
 			if( !test )
@@ -220,7 +226,17 @@ int cost_cm( const vector<int>& input )
 int cost_ol( const vector<int>& input )
 {
 	int cost = 0;
-	return cost;	
+
+	for( int i = 0; i < (int)input.size(); ++i )
+		for( int j = 0; j < (int)input.size(); ++j )
+			if( i != j && input[j] >= input[i] + params_value  )
+				++cost;
+
+	int series = 0;
+	for( int i = 1; i < nb_vars; ++i )
+		series += i;
+	
+	return std::abs( cost - series );	
 }
 
 ////////////////
@@ -367,45 +383,50 @@ void lt()
 			write( cost_lt( config ), config );
 		}
 
-		config = {4,3,1,1,2};
+		config = {2,1,8,6,7,3,4,2,1};
 		cout << cost_lt( config ) << " : ";
 		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
 		cout << "\n";
+
+		// config = {4,3,1,1,2};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 	
-		config = {2,2,1,3,1};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {2,2,1,3,1};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {4,1,4,2,3};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {4,1,4,2,3};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {3,4,2,1,5};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {3,4,2,1,5};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {1,3,3,2,1};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {1,3,3,2,1};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {2,1,8,1,1};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {2,1,8,1,1};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {3,3,2,1,3};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {3,3,2,1,3};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
-		config = {4,4,3,2,1};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// config = {4,4,3,2,1};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 	}
 }
 
