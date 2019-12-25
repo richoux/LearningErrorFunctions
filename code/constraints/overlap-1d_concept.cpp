@@ -16,7 +16,7 @@ bool Overlap1DConcept::concept( const vector<int>& var, int start, int end ) con
 {
 	for( int i = start; i < end; ++i )
 		for( int j = start; j < end; ++j )
-			if( j != i && var[j] >= var[i] && var[j] <= var[i] + _params[i] )
+			if( j != i && var[j] + _params[j] > var[i] && var[i] + _params[i] > var[j] )
 				return false;
 
 	return true;
@@ -28,9 +28,9 @@ bool Overlap1DConcept::concept( const vector< reference_wrapper<Variable> >& var
 		for( int j = 0; i < (int)var.size(); ++j )
 			if( j != i
 			    &&
-			    var[j].get().get_value() >= var[i].get().get_value()
+			    var[j].get().get_value() + _params[j] > var[i].get().get_value()
 			    &&
-			    var[j].get().get_value() <= var[i].get().get_value() + _params[i] )
+			    var[i].get().get_value() + _params[i] > var[j].get().get_value() )
 				return false;
 
 	return true;
