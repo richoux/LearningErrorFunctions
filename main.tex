@@ -59,6 +59,7 @@ jf@baffier.fr
 \newcommand{\csp}{\textsc{CSP}\xspace}
 \newcommand{\cop}{\textsc{COP}\xspace}
 \newcommand{\cfn}{\textsc{CFN}\xspace}
+\newcommand{\cf}{\textsc{cf}\xspace}
 \newcommand{\wcsp}{\textsc{WCSP}\xspace}
 \newcommand{\ghost}{\textsc{GHOST}\xspace}
 
@@ -75,22 +76,21 @@ jf@baffier.fr
   problems.   By associating  a function  to each  constraint type  to
   evaluate the quality of an assignment, we extend the expressivity of
   regular \csp/\cop  formalisms but  at a price  of making  harder the
-  problem modeling.  Indeed, in addition of regular sets of variables,
-  domains and constraints one has to  describe, one must now provide a
-  set of cost  functions which are not always easy  to define. Here we
-  propose  a  method to  automatically  learn  a  cost function  of  a
-  constraint given  its concept  only, \ie,  the function  deciding if
-  assignments satisfy or  not the constraint.  This is to  the best of
-  our  knowledge  the  first   attempt  to  automatically  learn  cost
-  functions.  Our method aims to  learn cost functions in a supervised
-  fashion,  trying  to reproduce  the  Hamming  distance, by  using  a
-  variation of neural networks allowing us to get explainable results,
-  unlike regular  artificial neural networks.   We experiment it  on 5
-  different  constraints to  show its  versatility.  Experiments  show
-  that functions learned on small dimensions scale on high dimensions,
+  problem    modeling.     Indeed,     in    addition    of    regular
+  variables/domains/constraints sets,  one must provide a  set of cost
+  functions  (\cf) which  are  not  always easy  to  define.  Here  we
+  propose a method to automatically learn a \cf of a constraint, given
+  a function deciding if assignments are valid or not.  This is to the
+  best  of our  knowledge  the first  attempt  to automatically  learn
+  $\cf$s.  Our  method aims to  learn $\cf$s in a  supervised fashion,
+  trying to  reproduce the Hamming  distance, by using a  variation of
+  neural  networks  allowing us  to  get  explainable results,  unlike
+  regular artificial neural networks.  We experiment it on 5 different
+  constraints  to   show  its  versatility.   Experiments   show  that
+  functions  learned on  small  dimensions scale  on high  dimensions,
   outputting a  perfect or near-perfect Hamming  distance.  Our method
-  can be used to automatically generate cost functions and then having
-  the  expressivity of  \cfn with  the same  modeling effort  than for
+  can be  used to  automatically generate $\cf$s  and then  having the
+  expressivity  of  \cfn  with  the  same  modeling  effort  than  for
   \csp/\cop.
 \end{abstract}
 
