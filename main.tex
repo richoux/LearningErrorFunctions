@@ -28,6 +28,13 @@
 \usepackage{amsfonts}
 \usepackage{adjustbox}
 %\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
 
 \title{Automatic Cost Function Generation ('learning' in the title?)}
 
@@ -197,9 +204,42 @@ or not yet efficient.
 For general constraints, there is no generic idea to extend a known cost
 function from a small space to a higher dimension one.
 
-\section{Experimental Results}\label{sec:xp}
-Presenting the aim  of those experiments, the choice  of the datasets,
-and the results itself.
+\section{Experimentations}\label{sec:xp}
+
+To  show  the versatility  of  our  method, we  tested  it  on 5  very
+different constraints:  AllDifferent, Ordered,  LinearSum, NoOverlap1D
+and                Minimum.                According                to
+\href{http://xcsp.org/specifications}{xcsp.org/specifications},  those
+global  constraints   below  to   4  different   families:  Comparison
+(AllDifferent    and     Ordered),    Counting/Summing    (LinearSum),
+Packing/Scheduling  (NoOverlap1D)  and Connection  (Minimum).   Always
+according to XCSP specifications, these 5 constraints are among the 20
+most popular  and common constraints.  We give a brief  description of
+those 5 constraints below:
+
+\paragraph{AllDifferent} ensures  that variables must all  be assigned
+to different values.
+\paragraph{Ordered} ensures  that an  assignment of variables  must be
+ordered, given a total order. In this paper, we choose the total order
+$\leq$. Thus, for all indexes $i,j \in \{1,n\}$ with $n$ the number of
+variables, $i < j$ implies $x_i \leq x_j$.
+\paragraph{LinearSum}       ensures       that      the       equation
+$x_1 + x_2 +  \ldots + x_n = p$ holds, with the  parameter $p$ a given
+integer.
+\paragraph{NoOverlap1D}  is considering  variables as  tasks, starting
+from a  certain time (their  value) and each  with a given  length $p$
+(their  parameter).    The  constraint  ensures  that   no  tasks  are
+overlapping,  \ie, for  all indexes  $i,j  \in \{1,n\}$  with $n$  the
+number   of   variables,  we   have   $x_i   +   p_i  \leq   x_j$   or
+$x_j + p_j \leq  x_i$.  To have a simpler code,  we have considered in
+this paper that all tasks have the same length $p$.
+\paragraph{Minimum} ensures  that the  minimum value of  an assignment
+verifies  a given  numerical condition.  In this  paper, we  choose to
+consider that  the minimum value must  be greater than or  equals to a
+given parameter $p$.
+
+
+\subsection{Experimental protocol}
 
 Type des  contraintes abordées.  Pour l'instant  : Comparison:allDiff,
 Comparison:ordered\_lessThan, Counting:linear\_sum, Connection:min:GT,
@@ -222,12 +262,17 @@ tailles aussi)
 Présentation et analyse \flo.
 Figure et tableaux \jf.
 
+\subsection{Results}
+
 \subsection{Automatic Generation of Cost Functions}
 \label{subsec:xpgeneration}
 
 \subsection{Comparison with crafted cost functions}\label{subsec:xpcomparison}
 
 \section{Discussions}
+
+Résultats améliorables  (notamment en  terme de  stabilité d'obtention
+d'une CF optimale) en optimisant le GA, ce que nous n'avons pas fait.
 
 Avantage  de  notre  modèle  :  les  CF  trouvées  sont  intelligibles
 (contrairement aux NN). On peut même les coder en dur si l'on préfère,
