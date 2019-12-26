@@ -74,13 +74,13 @@ jf@baffier.fr
   Cost  Function  Networks  (\cfn)   are  a  formalism  in  Constraint
   Programming  to  model  combinatorial satisfaction  or  optimization
   problems.   By associating  a function  to each  constraint type  to
-  evaluate the quality of an assignment, we extend the expressivity of
-  regular \csp/\cop  formalisms but  at a price  of making  harder the
+  evaluate the quality  of an assignment, it  extends the expressivity
+  of regular \csp/\cop formalisms but at  a price of making harder the
   problem    modeling.     Indeed,     in    addition    to    regular
   variables/domains/constraints sets,  one must provide a  set of cost
-  functions  (\cf) that  are  not  always easy  to  define.  Here  we
-  propose a method to automatically learn a \cf of a constraint, given
-  a function deciding if assignments are valid or not.  This is to the
+  functions (\cf) that are not always easy to define.  Here we propose
+  a  method to  automatically learn  a \cf  of a  constraint, given  a
+  function deciding if  assignments are valid or not.  This  is to the
   best  of our  knowledge  the first  attempt  to automatically  learn
   $\cf$s.  Our  method aims to  learn $\cf$s in a  supervised fashion,
   trying to  reproduce the Hamming  distance, by using a  variation of
@@ -123,9 +123,6 @@ We hope  to eventually  provides methods that  can lead  to CFN-manual
 $\leq$ CFN-auto for some (if not not most) families of constraints.
 
 \section{Preliminaries}\label{sec:preliminaries}
-TODO: Formalisation    WCSP     vs    CFN     (section    5     du
-draft) \flo. \cite{Bessiere2011,LK2014}
-
 Topo sur CPPN \jf \cite{CPPN}.
 
 In the  literature, Cost  Function Networks  (\cfn) and  Weighted \csp
@@ -136,7 +133,7 @@ function of a given \cfn instance. Since  it is rarely a good think in
 Science to have two different names for the same notion, we start this
 paper by proposing clear, distinct definitions of \cfn and \wcsp.
 
-\subsection{Definitions of \wcsp and \cfn \flo} 
+\subsection{Definitions of \wcsp and \cfn} 
 
 We propose  to keep the definition  of a \wcsp from  the literature: a
 \textbf{\wcsp} is a tuple ($V$,$D$,$C$,$F$)  where $V$ is a finite set
@@ -153,7 +150,7 @@ $k \in \mathbb{N} \cup \{\infty\}$ is the special cost for assignments
 violating the  constraint $c$. Thus, an  assignment $\alpha$ satisfies
 the constraint  $c$ iff  $f_c(\alpha) < k$  holds. The  function $f_c$
 allows  us to  rank assignments  and  to express  softness within  the
-constraint $c$.
+constraint~$c$.
 
 A \textbf{\cfn} is also defined  by a tuple ($V$,$D$,$C$,$F$) with the
 same  sets  as   \wcsp.   The  difference  we  propose   lies  in  the
@@ -215,6 +212,15 @@ Modèles (qui n'ont pas marché) :
 \item Relaxation du SL en regardant seulement l'ordre de Hamming avec le modèle CPPN.
 \end{itemize}
 
+\flo: insister  sur le  fait que, malgrè  le fait  que l'apprentissage
+supervisé se fait à proprement  parlé sur des données ``configurations
++ coût de Hamming'' (réel ou estimé), un utilisateur ne fournit QUE le
+concept  de   la  contrainte  visée,   et  non  pas  ces   données  en
+question.  Nous  fournissons  les  outils pour  produire  les  données
+``configurations + coût  de Hamming'' à partir d'un  concept, et cette
+production peut être automatiser dans la procédure d'apprentissage, et
+donc transparente à l'utilisateur.
+
 \subsection{Scaling Issues}\label{subsec:issues}
 Scaling  our  results  on  small instances  is  challenging.  In  this
 subsection we cover 4 possible approaches that are either unsuccessful
@@ -258,33 +264,119 @@ verifies  a given  numerical condition.  In this  paper, we  choose to
 consider that  the minimum value must  be greater than or  equals to a
 given parameter $p$.
 
-\subsection{Experimental protocol}
+\subsection{Experimental protocols}
 
+To have  experimental evidences  of the efficiency  of our  method, we
+conducted several different experiments.
 
+\subsubsection{Experiment 1: scaling}
 
-Apprendre une  CF sur une petit  instance, et la comparer  avec 1. les
+The first one consists in learning cost functions on a small, complete
+constraint  space  (\flo:  on  doit définir  ce  qu'est  cet  espace),
+composed  of  about  500  configurations (\flo:  être  clair  sur  les
+définitions de  configuration et  solution).  It  is then  possible to
+compute  the  Hamming distance  between  each  configuration with  its
+closest  solution,  \ie, the  solution  that  requires to  modify  the
+smallest number  of variables  from the considered  configuration. The
+goal of this  experiment is to show that learned  cost functions scale
+to  high-dimensional constraints,  making  sufficient the  use of  our
+method on small  constraint instances to get  efficient cost functions
+on any number of variables.
+
+We run  100 cost  function learnings on  the same  complete constraint
+space, for each of the 5  constraints presented above. We then analyze
+the frequency of  cost functions we get and  compute the discrepancies
+of the  most frequent ones to  the Hamming distance, over  100 sampled
+configurations  composed of  100  variables on  domains  of size  100,
+belonging  to  constraint  spaces   of  size  $10^{200}$  (compare  to
+constraint spaces of size around 500 used to learn cost functions).
+
+\flo: Apprendre une CF sur une petit instance, et la comparer avec 1. les
 métriques  sur cette  même instance,  2.  les métriques  sur une  plus
 grande instance et 3. Une CF apprise sur une plus grande instance.
 
-Comparaison des CF obtenues avec différent pourcentage de l'espace des
+\subsubsection{Experiment 2: learning over incomplete spaces}
+
+If, for any reasons, it is not possible to build a complete constraint
+space, a robust system must be  able to learn effective cost functions
+on  large,  incomplete spaces  where  the  exact Hamming  cost  (\flo:
+Hamming cost of config $c$ =  Hamming distance of $c$ with its closest
+solution) of their configurations is unknown.
+
+In this experiment,  we sample $k$ solutions and  $k$ non-solutions on
+large  constraint  spaces,  approximate   the  Hamming  cost  of  each
+non-solution  by computing  their  Hamming distance  with the  closest
+solution among  the $k$ ones, and  learn cost functions on  these $2k$
+configurations and their estimated Hamming  cost. Then, we compare the
+frequency of cost  functions we obtain this way with  the frequency of
+cost functions  learned on  small and  complete constraint  spaces, as
+well as the discrepancies of the most frequent cost functions obtained
+both ways to the real Hamming  distance. \flo: pas super clair ; faire
+un  effort pour  mieux  présenter  la métrique  de  réussite de  cette
+expérimentation. 
+
+\flo: Comparaison des CF obtenues avec différent pourcentage de l'espace des
 configurations samplée.
 
-Comparaison des  CF obtenues sur des  benchs avec des CF  handmades et
-sans CF
-
-Généralisation  : apprendre  une CF  pour une  instance avec  certains
+\flo: Généralisation  : apprendre  une CF  pour une  instance avec  certains
 paramètres  et  tester sur  d'autres  paramètres  (et/ou sur  d'autres
 tailles aussi)
 
-Présentation et analyse \flo.
+\subsubsection{Experiment 3: using learned $\cf$s to solve problems}
+
+Here, we use learned cost  functions for AllDifferent and LinearSum in
+\cfn modeling  3 problems:  Sudoku (using AllDifferent),  Magic Square
+(using  LinearSum)  and Killer  Sudoku  (using  both AllDifferent  and
+LinearSum). We use  a local search solver to solve  these problems and
+consider the mean run-time as a metric to compare pure \csp models (so
+without cost functions),  \cfn models with learned  cost functions and
+\cfn models with handmade cost functions.
+
+\paragraph{Sudoku} is a puzzle game presented like a $9 \times 9$ grid
+where each cell of the grid must be  filled up with a number from 1 to
+9,  such that  each row  and each  column contains  exactly once  each
+number. In addition, the grid is composed of 9 smaller squares of size
+$3  \times 3$  which  must also  be filled  with  each number  exactly
+once. In other words, all numbers  of each row, column and square must
+be  different,   which  is  perfectly  modeled   by  the  AllDifferent
+constraint.   Usually, the  grid  is pre-filled  with  a few  numbers,
+preventing from  finding a trivial  solution.  In this paper,  to have
+randomly  generated Sudoku  instances, we  have pre-filled  the entire
+grid randomly with the expected total number of 1s, 2s, and so on, and
+ask  the solver  to  find a  permutation  satisfying all  AllDifferent
+constraints described above.
+
+\paragraph{Magic Square} is a $n \times n$ grid that must be filled up
+with all number from 1 to $n^2$ (thus, all numbers must appear exactly
+once in the grid), such that the  sum of each row, each column and the
+two diagonals must be equal to a constant $c$.  We can avoid using the
+AllDifferent  constraint by  randomly  filling up  the  grid with  all
+expected numbers and ask the solver to find a correct permutation. The
+constraints over  the rows, columns  and the two diagonal  are modeled
+with LinearSum,  since the  value of  $c$ only depends  on $n$  and is
+known to be $c = n(n^2 + 1)/2$.
+
+\paragraph{Killer Sudoku}  is the same than  Sudoku but in such  a way
+that the  grid is  paved with  blocks of  cells, named  cages, usually
+composed of 2, 3  or 4 cells.  To each cage  is associated an integer,
+and  the sum  of  numbers in  theirs  cells must  be  equals to  their
+integer. A  killer Sudoku  instance starts with  an empty  grid, cages
+preventing from  trivial solutions. AllDifferent constraints  are used
+to model  the regular Sudoku rules  of this puzzle game  and LinearSum
+constraints are modeling cages.
+
+\flo: Comparaison des  CF obtenues sur des  benchs avec des CF  handmades et
+sans CF
+
+
 Figure et tableaux \jf.
 
 \subsection{Results}
 
-\subsection{Automatic Generation of Cost Functions}
-\label{subsec:xpgeneration}
+\subsubsection{Experiment 1}
+\subsubsection{Experiment 2}
+\subsubsection{Experiment 3}
 
-\subsection{Comparison with crafted cost functions}\label{subsec:xpcomparison}
 
 \section{Discussions}
 
