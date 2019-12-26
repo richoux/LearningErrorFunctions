@@ -36,7 +36,8 @@
   citecolor   = blue %Colour of citations
 }
 
-\title{Automatic Cost Function Generation ('learning' in the title?)}
+%\title{Automatic Cost Function Generation ('learning' in the title?)}
+\title{Automatic Learning of Cost Functions to Help Modeling Cost Function Networks}
 
 \iffalse
 \author{
@@ -69,9 +70,28 @@ jf@baffier.fr
 \maketitle
 
 \begin{abstract}
-  A formidable  abstract that shows  off how much our  contribution is
-  efficient and user-friendly. Oh,  and we have impressive experiments
-  too. Be sure to subcribe our GitHub repository.
+  Cost  Function  Networks  (\cfn)   are  a  formalism  in  Constraint
+  Programming  to  model  combinatorial satisfaction  or  optimization
+  problems.   By associating  a function  to each  constraint type  to
+  evaluate the quality of an assignment, we extend the expressivity of
+  regular \csp/\cop  formalisms but  at a price  of making  harder the
+  problem modeling.  Indeed, in addition of regular sets of variables,
+  domains and constraints one has to  describe, one must now provide a
+  set of cost  functions which are not always easy  to define. Here we
+  propose  a  method to  automatically  learn  a  cost function  of  a
+  constraint given  its concept  only, \ie,  the function  deciding if
+  assignments satisfy or  not the constraint.  This is to  the best of
+  our  knowledge  the  first   attempt  to  automatically  learn  cost
+  functions.  Our method aims to  learn cost functions in a supervised
+  fashion,  trying  to reproduce  the  Hamming  distance, by  using  a
+  variation of neural networks allowing us to get explainable results,
+  unlike regular  artificial neural networks.   We experiment it  on 5
+  different  constraints to  show its  versatility.  Experiments  show
+  that functions learned on small dimensions scale on high dimensions,
+  outputting a  perfect or near-perfect Hamming  distance.  Our method
+  can be used to automatically generate cost functions and then having
+  the  expressivity of  \cfn with  the same  modeling effort  than for
+  \csp/\cop.
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
@@ -204,7 +224,7 @@ or not yet efficient.
 For general constraints, there is no generic idea to extend a known cost
 function from a small space to a higher dimension one.
 
-\section{Experimentations}\label{sec:xp}
+\section{Experiments}\label{sec:xp}
 
 To  show  the versatility  of  our  method, we  tested  it  on 5  very
 different constraints:  AllDifferent, Ordered,  LinearSum, NoOverlap1D
