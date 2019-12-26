@@ -213,13 +213,13 @@ Modèles (qui n'ont pas marché) :
 \end{itemize}
 
 \flo: insister  sur le  fait que, malgrè  le fait  que l'apprentissage
-supervisé se fait à proprement  parlé sur des données ``configurations
-+ coût de Hamming'' (réel ou estimé), un utilisateur ne fournit QUE le
-concept  de   la  contrainte  visée,   et  non  pas  ces   données  en
-question.  Nous  fournissons  les  outils pour  produire  les  données
-``configurations + coût  de Hamming'' à partir d'un  concept, et cette
-production peut être automatiser dans la procédure d'apprentissage, et
-donc transparente à l'utilisateur.
+supervisé   se   fasse   à   proprement   parler   sur   des   données
+``configurations + coût de Hamming''  (réel ou estimé), un utilisateur
+ne  fournit QUE  le concept  de la  contrainte visée,  et non  pas ces
+données en  question.  Nous fournissons  les outils pour  produire les
+données ``configurations + coût de Hamming'' à partir d'un concept, et
+cette   production   peut   être   automatisée   dans   la   procédure
+d'apprentissage, et est donc transparente à l'utilisateur.
 
 \subsection{Scaling Issues}\label{subsec:issues}
 Scaling  our  results  on  small instances  is  challenging.  In  this
@@ -234,13 +234,13 @@ function from a small space to a higher dimension one.
 
 To  show  the versatility  of  our  method, we  tested  it  on 5  very
 different constraints:  AllDifferent, Ordered,  LinearSum, NoOverlap1D
-and                Minimum.                According                to
-\href{http://xcsp.org/specifications}{xcsp.org/specifications},  those
+and Minimum.   According to XCSP specifications~\cite{xcsp}  (see also
+\href{http://xcsp.org/specifications}{xcsp.org/specifications}), those
 global  constraints   below  to   4  different   families:  Comparison
 (AllDifferent    and     Ordered),    Counting/Summing    (LinearSum),
 Packing/Scheduling  (NoOverlap1D)  and Connection  (Minimum).   Always
 according to XCSP specifications, these 5 constraints are among the 20
-most popular  and common constraints.  We give a brief  description of
+most popular and  common constraints.  We give a  brief description of
 those 5 constraints below:
 
 \paragraph{AllDifferent} ensures  that variables must all  be assigned
@@ -368,15 +368,17 @@ constraints are modeling cages.
 \flo: Comparaison des  CF obtenues sur des  benchs avec des CF  handmades et
 sans CF
 
-
+\subsection{Results}
 Figure et tableaux \jf.
 
-\subsection{Results}
-
 \subsubsection{Experiment 1}
-\subsubsection{Experiment 2}
-\subsubsection{Experiment 3}
 
+\subsubsection{Experiment 2}
+
+\subsubsection{Experiment 3}
+\flo:  dire que  le but  ici  n'est pas  de  casser du  bench mais  de
+comparer, même avec un solver  pas optimisé, les temps de résolutions
+sans \cf, avec \cf apprise et avec \cf maison.
 
 \section{Discussions}
 
