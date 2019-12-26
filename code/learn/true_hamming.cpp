@@ -457,7 +457,33 @@ void cm()
 	}
 	else
 	{
+		vector<int> config( nb_vars );
 
+		output_file.open( output_file_path );
+
+		for( int i = 0; i < 25; ++i )
+		{
+			rng.generate( config, 1, max_value );
+			std::transform( config.begin(),
+			                config.end(),
+			                config.begin(),
+			                [&](auto& c){ return c < params_value ? rng.uniform( params_value, max_value ) : c; } );
+			write( 0, config );
+		}
+
+		for( int i = 0; i < 75; ++i )
+		{
+			rng.generate( config, 1, max_value );
+			int nb_changes = rng.uniform( 1, 30 );
+			for( int j = 0; j < nb_changes; ++j )
+			{
+				int bad = rng.uniform( 1, params_value - 1 );
+				int index = rng.uniform( 0, nb_vars - 1 );
+				config[ index ] = bad;
+			}
+
+			write( cost_cm( config ), config );
+		}
 	}
 }
 
