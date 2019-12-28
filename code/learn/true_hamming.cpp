@@ -374,23 +374,127 @@ void lt()
 			write( 0, config );
 		}
 
- 		for( int i = 0; i < 75; ++i )
+		// cost 1
+ 		for( int i = 0; i < 10; ++i )
 		{
-			rng.shuffle( start_config );
 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int nb_changes = rng.uniform( 1, 30 );
-			for( int j = 0; j < nb_changes; ++j )
-				config[ rng.uniform( 0, nb_vars - 1 ) ] = rng.uniform( 1, nb_vars );
+			int index = rng.uniform( 0, nb_vars - 2 );
+			config[ index ] = config[ index + 1 ] + 1;
 
-			write( cost_lt( config ), config );
+			write( 1, config );
 		}
 
-		cout << "/////////////////\n";
-		config = {8,8,8,7,7,5,6};
-		cout << cost_lt( config ) << " : ";
-		std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		cout << "\n";
+		// cost 2
+ 		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 4 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+
+			write( 2, config );
+		}
+
+		// cost 3
+ 		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 6 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+
+			write( 3, config );
+		}
+
+		// cost 4
+ 		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 8 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+			config[ index + 6 ] = config[ index + 7 ] + 1;
+
+			write( 4, config );
+		}
+
+		// cost 5
+ 		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 10 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+			config[ index + 6 ] = config[ index + 7 ] + 1;
+			config[ index + 8 ] = config[ index + 9 ] + 1;
+
+			write( 5, config );
+		}
+
+		// cost 6
+		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 12 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+			config[ index + 6 ] = config[ index + 7 ] + 1;
+			config[ index + 8 ] = config[ index + 9 ] + 1;
+			config[ index + 10 ] = config[ index + 11 ] + 1;
+
+			write( 6, config );
+		}
+
+		// cost 7
+		for( int i = 0; i < 10; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 14 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+			config[ index + 6 ] = config[ index + 7 ] + 1;
+			config[ index + 8 ] = config[ index + 9 ] + 1;
+			config[ index + 10 ] = config[ index + 11 ] + 1;
+			config[ index + 12 ] = config[ index + 13 ] + 1;
+
+			write( 7, config );
+		}
+
+		// cost 8
+		for( int i = 0; i < 5; ++i )
+		{
+			std::copy( start_config.begin(), start_config.end(), config.begin() );
+		
+			int index = rng.uniform( 0, nb_vars - 16 );
+			config[ index ] = config[ index + 1 ] + 1;
+			config[ index + 2 ] = config[ index + 3 ] + 1;
+			config[ index + 4 ] = config[ index + 5 ] + 1;
+			config[ index + 6 ] = config[ index + 7 ] + 1;
+			config[ index + 8 ] = config[ index + 9 ] + 1;
+			config[ index + 10 ] = config[ index + 11 ] + 1;
+			config[ index + 12 ] = config[ index + 13 ] + 1;
+			config[ index + 14 ] = config[ index + 15 ] + 1;
+
+			write( 8, config );
+		}
+
+		// cout << "/////////////////\n";
+		// config = {8,8,8,7,7,5,6};
+		// cout << cost_lt( config ) << " : ";
+		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+		// cout << "\n";
 
 		// config = {2,1,8,6,7,3,4,2,1};
 		// cout << cost_lt( config ) << " : ";
@@ -457,7 +561,33 @@ void cm()
 	}
 	else
 	{
+		vector<int> config( nb_vars );
 
+		output_file.open( output_file_path );
+
+		for( int i = 0; i < 25; ++i )
+		{
+			rng.generate( config, 1, max_value );
+			std::transform( config.begin(),
+			                config.end(),
+			                config.begin(),
+			                [&](auto& c){ return c < params_value ? rng.uniform( params_value, max_value ) : c; } );
+			write( 0, config );
+		}
+
+		for( int i = 0; i < 75; ++i )
+		{
+			rng.generate( config, 1, max_value );
+			int nb_changes = rng.uniform( 1, 30 );
+			for( int j = 0; j < nb_changes; ++j )
+			{
+				int bad = rng.uniform( 1, params_value - 1 );
+				int index = rng.uniform( 0, nb_vars - 1 );
+				config[ index ] = bad;
+			}
+
+			write( cost_cm( config ), config );
+		}
 	}
 }
 
@@ -479,7 +609,7 @@ void ol()
 	}
 	else
 	{
-
+		
 	}
 }
 

@@ -56,3 +56,11 @@ if [[ ${split[2]} ]]; then
 		echo 
 		./bin/print_model "${split[2]}"
 fi
+
+if [[ ${split[4]} ]]; then
+		echo 
+		echo "//////////"
+		echo "Model of the third most commun cost function ${split[4]}:"
+		echo 
+		./bin/print_model "${split[4]}"
+fi
