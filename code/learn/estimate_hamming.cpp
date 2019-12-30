@@ -71,9 +71,9 @@ int main(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
+		cmdl( {"i", "input"} ) >> input_file_path;
 		cout << "Loading data from " << input_file_path << "\n";
 
-		cmdl( {"i", "input"} ) >> input_file_path;
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
@@ -143,8 +143,11 @@ int main(int argc, char **argv)
 	// 	input_file.close();
 	// }
 
+	cout << "Loading data done. Start estimating Hamming distances.\n";
 	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
-	
+
+	cmdl( {"o", "output"} ) >> output_file_path;
+	cout << "Estimation done. Writing it in " << output_file_path << "\n";
 	output_file.open( output_file_path );
 
 	for( auto tuple : cost_map )

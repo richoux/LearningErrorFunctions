@@ -16,7 +16,7 @@ bool Overlap1DConcept::concept( const vector<int>& var, int start, int end ) con
 {
 	for( int i = start; i < end; ++i )
 		for( int j = start; j < end; ++j )
-			if( j != i && var[j] + _params[j] > var[i] && var[i] + _params[i] > var[j] )
+			if( j != i && var[j] + _params[j-start] > var[i] && var[i] + _params[i-start] > var[j] )
 				return false;
 
 	return true;
