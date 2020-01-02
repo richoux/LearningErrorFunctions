@@ -218,23 +218,30 @@ double interpreter_comparison( const int& number,
 	case 3:
 		return std::max( 0.0, input - param );
 		break;
-		// Euclidian division of the difference between input and parameter with domain size
+		// Euclidian division of the difference between input and parameter by the domain size
 	case 4:
 		if( input - param == 0.0 )
 			return 0.0;
 		else
 			return 1 + ( static_cast<int>( std::abs( input - param ) ) / max_domain_value );
 		break;
+		// Euclidian division of the input by the domain size
+	case 5:
+		if( input == 0.0 )
+			return 0.0;
+		else
+			return 1 + ( static_cast<int>( input ) / max_domain_value );
+		break;
 		// input equals to the number of variables
-	case 5:		
+	case 6:		
 		return std::abs( input - nb_vars );
 		break;
 		// input greater than or equals to the number of variables
-	case 6:
+	case 7:
 		return std::max( 0.0, nb_vars - input );
 		break;
 		// input less than or equals to the number of variables
-	case 7:
+	case 8:
 		return std::max( 0.0, input - nb_vars );
 		break;
 	}
