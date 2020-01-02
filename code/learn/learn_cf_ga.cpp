@@ -139,8 +139,9 @@ eoMinimizingFitness fitness( const Indi& indi )
 	// penalty if no unique agregation function
 	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
 		cost += 10;	
-	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some).
-	if( has_parameters && no_parameter_operations( weights ) )
+	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some),
+	// or if there is at least one operation with parameters although the user did not provide any.
+	if( ( has_parameters && no_parameter_operations( weights ) ) || ( !has_parameters && !no_parameter_operations( weights ) ) )
 		cost += 1000;
 
 	// favor models with random operations
