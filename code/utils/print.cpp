@@ -83,15 +83,18 @@ string compar_operation( int number )
 		return "Input less than or equals to parameter";
 		break;
 	case 4:
-		return "Euclidian division of the difference between input and parameter with domain size";
+		return "Euclidian division of the difference between input and parameter by the domain size";
 		break;
 	case 5:
-		return "Input equals to the number of variables";
+		return "Euclidian division of the input by the domain size";
 		break;
 	case 6:
-		return "Input greater than or equals to the number of variables";
+		return "Input equals to the number of variables";
 		break;
 	case 7:
+		return "Input greater than or equals to the number of variables";
+		break;
+	case 8:
 		return "Input less than or equals to the number of variables";
 		break;
 	default:

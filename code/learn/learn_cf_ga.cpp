@@ -149,14 +149,6 @@ eoMinimizingFitness fitness( const Indi& indi )
 	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
 
 	return cost;
-
-	// our score is cost_order + (cost_order / (variance+1)) + (cost_order * number_1), since cost_order is the most important metric
-	// variance is here to forbid having all costs at the same value,
-	// and minimizing the number of 1s in individuals is to keep the CPPN as simple as possible. 
-	//return cost_order * (1 + 1.0/(1 + variance) + std::count( weights.begin(), weights.end(), 1) );
-
-	// here the cost is cost_order + (cost_order * number_1)
-	// return cost_order * (1 + std::count( weights.begin(), weights.end(), 1) );
 }
 
 // fix uncorrectly generated individuals
@@ -377,19 +369,14 @@ int main_function(int argc, char **argv)
 
 	
 	// all parameters are hard-coded!
-	//const unsigned int SEED = 42;          // seed for random number generator
 	const unsigned int SEED = time(0);
 	const unsigned int T_SIZE = 3;        // size for tournament selection
 	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + 2;    // Number of bits in genotypes
 	const unsigned int POP_SIZE = 100;  // Size of population
 	const unsigned int MAX_GEN = 400;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
-	const double onePointRate = 0.5;        // rate for 1-pt Xover
-	const double P_MUT_PER_BIT = 0.05; // probability of bit-flip mutation
 	const float MUT_RATE = 1.0;              // mutation rate
-	const float REP_RATE = 0.5;				// replacement rate
-	const double bitFlipRate = 0.5;          // rate for bit-flip mutation
-	const double oneBitRate = 0.5;            // rate for one-bit mutation
+	const float REP_RATE = 0.05;				// replacement rate
 
 	//////////////////////////
 	//  Random seed
@@ -449,26 +436,6 @@ int main_function(int argc, char **argv)
 	eoPop<Indi> pop;
 	// fill it!
 	
-	// first individual with filled with zeros
-	// Indi v;
-	// for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
-	// 	v.push_back( false );
-	// fix(v);
-	// eval(v);
-	// pop.push_back(v);
-
-	// // second special
-	// vector<int> special{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
-	// Indi v2;
-	// for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
-	// 	if( special[ ivar ] == 0 )
-	// 		v2.push_back( false );
-	// 	else
-	// 		v2.push_back( true );
-	// eval(v2);
-	// pop.push_back(v2);	
-	
-	// other individuals randomly filled.
 	for( unsigned int igeno = 0; igeno < POP_SIZE; ++igeno )
 	{
 		Indi v;                    // void individual, to be filled
@@ -503,21 +470,13 @@ int main_function(int argc, char **argv)
 	// The variation operators
 	//////////////////////////////////////
 	// 1-point crossover for bitstring
-	//eo1PtBitXover<Indi> xover1;
-	eoCFNQuadCrossover<Indi> xover1( number_units_transfo, number_units_arith, number_units_aggreg );
-	eoPropCombinedQuadOp<Indi> xover( xover1, onePointRate );
+	eoCFNQuadCrossover<Indi> xover( number_units_transfo, number_units_arith, number_units_aggreg );
 	
-	// standard bit-flip mutation for bitstring
-	//eoBitMutation<Indi>  mutationBitFlip( P_MUT_PER_BIT );
-	eoCFNMutation<Indi>  mutationBitFlip( number_units_transfo, number_units_compar, P_MUT_PER_BIT );
-	// mutate exactly 1 bit per individual
-	eoDetBitFlip<Indi> mutationOneBit;
-	// Combine them with relative rates
-	eoPropCombinedMonOp<Indi> mutation( mutationBitFlip, bitFlipRate );
-	mutation.add( mutationOneBit, oneBitRate, true );
+	// homemade bit-flip mutation for bitstring to satify some constraints
+	eoCFNMutation<Indi>  mutationBitFlip( number_units_transfo, number_units_compar );
 	
 	// The operators are  encapsulated into an eoTRansform object
-	eoSGATransform<Indi> transform( xover, CROSS_RATE, mutation, MUT_RATE );
+	eoSGATransform<Indi> transform( xover, CROSS_RATE, mutationBitFlip, MUT_RATE );
 	
 	//////////////////////////////////////
 	// termination conditions: use more than one
@@ -532,11 +491,6 @@ int main_function(int argc, char **argv)
   // Easy EA requires
   // selection, transformation, eval, replacement, and stopping criterion
 	eoEasyEA<Indi> gga( continuator, eval, select, transform, replace, tournament );
-
-	// standard Generational GA requires as parameters
-	// selection, evaluation, crossover and mutation, stopping criterion
-	// eoSGA<Indi> gga(select, xover, CROSS_RATE, mutation, MUT_RATE, 
-	//                 eval, continuator);
 
 	// Apply algo to pop - that's it!
 	gga(pop);

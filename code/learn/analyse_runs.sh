@@ -1,14 +1,13 @@
 #!/bin/bash
 
 sum=0
-declare -a costs
 declare -A solutions
 
 while IFS= read -r line
 do
 		words=($line)
 		sum=$(echo "$sum + ${words[0]}" | bc)
-		costs+=(${words[0]})
+		echo "${words[0]}" >> costfile
 
 		beginning_sol=$(echo ${words[2]} | cut -c1-18)
 		nb_ones=$(awk -F"1" '{print NF-1}' <<< "${beginning_sol}")
@@ -36,8 +35,9 @@ sort -rn -k2)
 
 echo "${sorted_solutions[@]}"
 
-med=$(echo ${costs[@]} | sort | awk -f median.awk)
+med=$(sort costfile | awk -f median.awk)
 echo "Median: $med"
+rm -f costfile
 
 cost=$(echo "scale=3; $sum/100" | bc)
 echo "Mean: $cost"
