@@ -200,7 +200,9 @@ From those  definition, we  can consider \wcsp  and the  \cfn variants
 In  this study,  we deliberately  chose  to focus  on \cfn  as we  can
 naturally transform any \wcsp into \cfn-opt.
 
-\section{Theoretical Design \jf}\label{sec:theory}
+\section{Method design \jf}\label{sec:method}
+\flo{Préciser ce qu'est notre la loss function}
+
 From  head to  toes,  how our  framework  is designed  (interpolation,
 pre-processing and such) to fit a solver (here GHOST).
 
@@ -284,7 +286,9 @@ method on small  constraint instances to get  efficient cost functions
 on any number of variables.
 
 We run  100 cost  function learnings on  the same  complete constraint
-space, for each of the 5  constraints presented above. We then analyze
+space, for  each of  the 5 constraints  presented above  (\flo: écrire
+dans  la section  3 que  la loss  est la  différence entre  le Hamming
+estimé et le Hamming réel). We then analyze
 the frequency of  cost functions we get and  compute the discrepancies
 of the  most frequent ones to  the Hamming distance, over  100 sampled
 configurations  composed of  100  variables on  domains  of size  100,
@@ -371,7 +375,78 @@ sans CF
 \subsection{Results}
 Figure et tableaux \jf.
 
+In this part, we  will denote by $n$ the number  of variables, $d$ the
+domain size  and $p$  the value of  an eventual  parameter. Constraint
+instances are denoted by \textit{name-n-d[-p]}.
+
 \subsubsection{Experiment 1}
+
+% Since many different cost functions can be learn over 100 runs for the
+% same constraint instance, we will only consider cost functions learned
+% at least 10\% of the time.
+
+Like  written in  Section~\ref{sec:method}, our  loss function  is the
+absolute value of the difference  between the expected Hamming cost of
+a  configuration $c$  and  the  Hamming cost  estimated  for the  cost
+function on $c$. The loss function is then normalized with the size of
+the constraint  space used  for the learning,  giving us  the training
+error over all configurations used to train the cost function.
+
+% In  this experiment,  we  learn 100  times a  cost  function for  each
+% constraint instance, and  we compute the mean of  their training error
+% over  the  whole  configuration  space.  The  training  error  is  the
+% difference between the expected Hamming cost and the estimated Hamming
+% cost over a  configuration from the configuration space  used to train
+% the  function.  For instance,  if  a  cost  function  outputs 5  on  a
+% configuration $c$  when the expected  Hamming cost  of $c$ is  3, this
+% function has an error of 2. 
+
+In  this experiment,  we  learn 100  times a  cost  function for  each
+constraint instance. Table\ref{tab:cf_small} shows for each constraint
+instance the median  and mean training errors of the  100 learned cost
+functions,  as well  as  the  training error  of  the most  frequently
+learned  cost function,  and its  frequency in  parenthesis. The  most
+frequently  learned cost  function is  not necessarily  the best  one,
+although it  is usually  the case except  for minimum-4-5-3  where the
+best cost function was the second  most frequent, learned 23 times and
+making no mistakes (perfect estimation of the Hamming cost).
+
+Due to space  limitation, learned cost functions will  not be detailed
+in this  paper.  We  invite the  reader to  look at  them in  the code
+repository                                                          at
+\href{https://anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef/}{anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef}
+by following the procedure described in the README file.
+
+% \paragraph{all\_diff-4-5} Two cost functions were 
+
+% \paragraph{ordered-4-5} 
+
+% \paragraph{linear\_sum-3-8-12}
+
+% \paragraph{no\_overlap-3-8-2}
+
+% \paragraph{minimum-4-5-3}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+  Constraint instances & med. error & mean error & most freq.\\
+  \hline
+all\_diff-4-5 & 0 & 0.13 & 0 (93)\\
+ordered-4-5 & 0.08 & 0.09 & 0.08 (87)\\
+linear\_sum-3-8-12 & 0.17 & 0.12 & 0.01 (34)\\
+no\_overlap-3-8-2 & 0.31 & 0.22 & 0.11 (30)\\
+minimum-4-5-3 & 0.44 & 0.34 & 0.44 (57)\\
+\hline
+\end{tabular}
+\caption{Exp. 1: Median, mean and most frequent training error (with
+  frequency  in  parenthesis) of  learned  cost  functions over  small
+  complete constraint spaces.}
+\label{tab:cf_small}
+\end{table}
+
+
 
 \subsubsection{Experiment 2}
 
