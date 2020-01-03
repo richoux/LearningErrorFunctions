@@ -377,8 +377,8 @@ int main_function(int argc, char **argv)
 	
 	// all parameters are hard-coded!
 	const unsigned int SEED = time(0);
-	const unsigned int T_SIZE = 3;        // size for tournament selection
-	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + 2;    // Number of bits in genotypes
+	const unsigned int T_SIZE = 2;        // size for tournament selection
+	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + number_units_aggreg + number_units_arith;    // Number of bits in genotypes
 	const unsigned int POP_SIZE = debug ? 10 : 100;  // Size of population
 	const unsigned int MAX_GEN = debug ? 100 : 400;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
