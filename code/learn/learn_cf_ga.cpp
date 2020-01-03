@@ -52,6 +52,7 @@ string input_file_path;
 ifstream input_file;
 string line, string_number;
 bool xp;
+bool debug;
 
 randutils::mt19937_rng rng_utils;
 
@@ -69,7 +70,8 @@ void usage( char **argv )
 	     << "-ci, --complete_input COMPLETE_INPUT_FILE containing the full configuration space.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
-	     << "--xp to print on the screen results for experiments only.\n";
+	     << "--xp to print on the screen results for experiments only.\n"
+	     << "--debug.\n";
 }
 
 //-----------------------------------------------------------------------------
@@ -222,7 +224,12 @@ int main_function(int argc, char **argv)
 		xp = true;
 	else
 		xp = false;
-	
+
+	if( cmdl[ { "--debug" } ] )
+		debug = true;
+	else
+		debug = false;
+
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
 	    ||
 	    ( constraint.compare("ad") != 0
@@ -372,8 +379,8 @@ int main_function(int argc, char **argv)
 	const unsigned int SEED = time(0);
 	const unsigned int T_SIZE = 3;        // size for tournament selection
 	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + 2;    // Number of bits in genotypes
-	const unsigned int POP_SIZE = 100;  // Size of population
-	const unsigned int MAX_GEN = 400;  // Maximum number of generation before STOP
+	const unsigned int POP_SIZE = debug ? 10 : 100;  // Size of population
+	const unsigned int MAX_GEN = debug ? 100 : 400;  // Maximum number of generation before STOP
 	const float CROSS_RATE = 0.8;          // Crossover rate
 	const float MUT_RATE = 1.0;              // mutation rate
 	const float REP_RATE = 0.05;				// replacement rate
@@ -485,11 +492,77 @@ int main_function(int argc, char **argv)
 	eoGenContinue<Indi> genCont( MAX_GEN );
 	eoCombinedContinue<Indi> continuator( genCont );
 
+	if( debug )
+	{
+		// but now you want to make many different things every generation 
+		// (e.g. statistics, plots, ...).
+		// the class eoCheckPoint is dedicated to just that:
+		// Declare a checkpoint (from a continuator: an eoCheckPoint 
+		// IS AN eoContinue and will be called in the loop of all algorithms)
+		eoCheckPoint<Indi> checkpoint(continuator);
+
+		// Create a counter parameter
+		eoValueParam<unsigned> generationCounter(0, "Gen.");
+
+		// Create an incrementor (sub-class of eoUpdater). Note that the 
+		// parameter's value is passed by reference, 
+		// so every time the incrementer is updated (every generation),
+		// the data in generationCounter will change.
+		eoIncrementor<unsigned> increment(generationCounter.value());
+		// Add it to the checkpoint, 
+		// so the counter is updated (here, incremented) every generation
+		checkpoint.add(increment);
+		// now some statistics on the population:
+		// Best fitness in population
+		eoBestFitnessStat<Indi> bestStat;
+		// Second moment stats: average and stdev
+		eoSecondMomentStats<Indi> SecondStat;
+		// Add them to the checkpoint to get them called at the appropriate time
+		checkpoint.add(bestStat);
+		checkpoint.add(SecondStat);
+		// // The Stdout monitor will print parameters to the screen ...
+		// eoStdoutMonitor monitor();
+
+		// // when called by the checkpoint (i.e. at every generation)
+		// checkpoint.add(monitor);
+		// // the monitor will output a series of parameters: add them 
+		// monitor.add(generationCounter);
+		// monitor.add(eval); // because now eval is an eoEvalFuncCounter!
+		// monitor.add(bestStat);
+		// monitor.add(SecondStat);
+		// A file monitor: will print parameters to ... a File, yes, you got it!
+		eoFileMonitor fileMonitor("stats.xg", " ");
+
+		// the checkpoint mechanism can handle multiple monitors
+		checkpoint.add(fileMonitor);
+		// the fileMonitor can monitor parameters, too, but you must tell it!
+		fileMonitor.add(generationCounter);
+		fileMonitor.add(bestStat);
+		fileMonitor.add(SecondStat);
+		// Last type of item the eoCheckpoint can handle: state savers:
+		eoState outState;
+		// Register the algorithm into the state
+		outState.registerObject(pop);
+		outState.registerObject(rng);
+		// and feed the state to state savers
+    // save state every 40th  generation
+		eoCountedStateSaver stateSaver1(50, outState, "generation"); 
+		// save state every 1 seconds 
+		eoTimedStateSaver    stateSaver2(1, outState, "time"); 
+		// Don't forget to add the two savers to the checkpoint
+		checkpoint.add(stateSaver1);
+		checkpoint.add(stateSaver2);
+		// and that's it for the (control and) output
+
+		continuator = checkpoint;
+	}
+	
 	/////////////////////////////////////////
 	// the algorithm
 	////////////////////////////////////////
   // Easy EA requires
   // selection, transformation, eval, replacement, and stopping criterion
+	
 	eoEasyEA<Indi> gga( continuator, eval, select, transform, replace, tournament );
 
 	// Apply algo to pop - that's it!
