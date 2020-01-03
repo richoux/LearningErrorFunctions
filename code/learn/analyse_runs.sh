@@ -35,7 +35,7 @@ sort -rn -k2)
 
 echo "${sorted_solutions[@]}"
 
-med=$(sort costfile | awk -f median.awk)
+med=$(sort -g costfile | awk -f median.awk)
 echo "Median: $med"
 rm -f costfile
 
