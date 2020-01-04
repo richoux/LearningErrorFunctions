@@ -271,6 +271,10 @@ given parameter $p$.
 To have  experimental evidences  of the efficiency  of our  method, we
 conducted several different experiments.
 
+All experiments have  been conducted on a computer with  a CPU Core i7
+6700K and  48GB of RAM,  running on  Ubuntu 18.04. Programs  have been
+compiled with GCC with the 03 optimization option.
+
 \subsubsection{Experiment 1: scaling}
 
 The first  one consists in  learning cost  functions on a  very small,
@@ -389,8 +393,11 @@ Like  written in  Section~\ref{sec:method}, our  loss function  is the
 absolute value of the difference  between the expected Hamming cost of
 a  configuration $c$  and  the  Hamming cost  estimated  for the  cost
 function on $c$. The loss function is then normalized with the size of
-the constraint  space used  for the learning,  giving us  the training
-error over all configurations used to train the cost function.
+the constraint space  used for training, giving us  the training error
+of the constraint space, \ie,  the average difference between expected
+and  estimated  Hamming costs.   Thus,  a  cost  function $f$  with  a
+training error  of 2  means that  $f$ estimations  on configurations
+used for training are in average +2 or -2 from the real Hamming cost.
 
 % In  this experiment,  we  learn 100  times a  cost  function for  each
 % constraint instance, and  we compute the mean of  their training error
@@ -405,15 +412,24 @@ In  this experiment,  we  learn 100  times a  cost  function for  each
 constraint instance. Table\ref{tab:cf_small} shows for each constraint
 instance the median  and mean training errors of the  100 learned cost
 functions,  as well  as  the  training error  of  the most  frequently
-learned  cost function,  and its  frequency in  parenthesis. The  most
-frequently  learned cost  function is  not necessarily  the best  one,
-although it  is usually  the case except  for minimum-4-5-3  where the
-best cost function was the second  most frequent, learned 23 times and
-making no mistakes (perfect estimation of the Hamming cost).
+learned  cost function,  and  its frequency  in  parenthesis. In  this
+experience,   the   most   frequently  learned   cost   function   was
+systematically the one with the lowest training error.
 
-Due to space  limitation, learned cost functions will  not be detailed
-in this  paper.  We  invite the  reader to  look at  them in  the code
-repository                                                          at
+Notice that the most frequent cost function for all\_diff-4-5, learned
+97 over 100 runs, is actually two equivalent functions $f_1$ and $f_2$
+expressed differently,  respectively learned 58  and 39 times.   For a
+configuration  $c =  (c_1, c_2,  \ldots,  c_n)$, $f_1$  and $f_2$  are
+defined as follows:
+\begin{align*}
+  f_1(c) &:= Count_{\geq 0}( Number\ of\ c_j\ s.t.\ i<j\ and\ c_i=c_j)\\
+  and&\\
+  f_2(c) &:= Count_{\geq 0}( Number\ of\ c_j\ s.t.\ i>j\ and\ c_i=c_j)
+\end{align*}
+
+Due  to space  limitation, other  learned cost  functions will  not be
+detailed in this paper.   We invite the reader to look  at them in the
+code                           repository                           at
 \href{https://anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef/}{anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef}
 by following the procedure described in the README file.
 
@@ -428,25 +444,65 @@ by following the procedure described in the README file.
 % \paragraph{minimum-4-5-3}
 
 \begin{table}
-\centering
+  \centering
 \begin{tabular}{|l|l|l|l|}
-\hline
-  Constraint instances & med. error & mean error & most freq.\\
   \hline
-all\_diff-4-5 & 0 & 0.13 & 0 (93)\\
-ordered-4-5 & 0.08 & 0.09 & 0.08 (87)\\
-linear\_sum-3-8-12 & 0.17 & 0.12 & 0.01 (34)\\
-no\_overlap-3-8-2 & 0.31 & 0.22 & 0.11 (30)\\
-minimum-4-5-3 & 0.44 & 0.34 & 0.44 (57)\\
-\hline
+  Constraints & median & mean & most freq.\\
+  \hline
+  all\_diff-4-5 & 0 & 0.03 & 0~~~~~~(97)\\
+  ordered-4-5 & 0.08 & 0.08 & 0.08~(100)\\
+  linear\_sum-3-8-12 & 0.01 & 0.05 & 0.01~(74)\\
+  no\_overlap-3-8-2 & 0.14 & 0.19 & 0.11~(50)\\
+  minimum-4-5-3 & 0 & 0.04 & 0~~~~~~(88)\\
+  \hline
 \end{tabular}
-\caption{Exp. 1: Median, mean and most frequent training error (with
-  frequency  in  parenthesis) of  learned  cost  functions over  small
+\caption{Median, mean and  most frequent training error  over 100 runs
+  (with frequency in parenthesis) of learned cost functions over small
   complete constraint spaces.}
 \label{tab:cf_small}
 \end{table}
 
+Learning cost functions over small complete constraint spaces of about
+500 configurations takes about 10 seconds on our hardware.
 
+Table~\ref{tab:cf_small} shows very good performances, but it might be
+due  to overfitting  on those  small constraint  spaces.  To  check if
+learned  cost functions  do not  overfit and  can scale  to constraint
+instances on higher dimensions, we use the most frequent cost function
+learned on each  constraint for estimating the Hamming  cost of 20,000
+random configurations sampled from high-dimensional constraint spaces.
+
+For AllDifferent, LinearSum and Minimum, it  is easy to define by hand
+a function computing the Hamming cost of any configuration $c$ without
+generating  the  whole constraint  space.  For  these constraints,  we
+tested the  corresponding cost function  on spaces with  100 variables
+and domains of size 100.
+
+For  Ordered   and  NoOverlap1D,  since  these   two  constraints  are
+intrinsically  combinatoric, finding  a function  computing the  exact
+Hamming  cost of  any  configuration is  not  trivial.  Therefore,  we
+sampled 10,000 solutions and 10,000 non-solutions in constraint spaces
+of   ordered-12-18   (so    $18^{12}$   configurations,   \ie,   about
+$1.15\times         10^{15}$)          and         no\_overlap-10-35-3
+($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    We  then
+approximate  the Hamming  cost of  each non-solution,  considering the
+closest solution among the 10,000 sampled solutions.
+
+\begin{table}
+  \centering
+\begin{tabular}{|r|r|r|r|r|}
+  \hline
+  all-diff & ord & lin-sum & no-ol & min\\
+  \hline
+  0 & 1.274 & 0.001 & 2.686 & 0\\
+  \hline
+\end{tabular}
+\caption{Mean error  over 20,000 configurations in  high dimensions of
+  learned cost functions over small complete constraint spaces.}
+\label{tab:cf_scale}
+\end{table}
+
+Table\ref{tab:cf_scale} ...
 
 \subsubsection{Experiment 2}
 
