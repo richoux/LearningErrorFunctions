@@ -416,10 +416,10 @@ learned  cost function,  and  its frequency  in  parenthesis. In  this
 experience,   the   most   frequently  learned   cost   function   was
 systematically the one with the lowest training error.
 
-Notice that the most frequent cost function for all\_diff-4-5, learned
-97 over 100 runs, is actually two equivalent functions $f_1$ and $f_2$
-expressed differently,  respectively learned 58  and 39 times.   For a
-configuration  $c =  (c_1, c_2,  \ldots,  c_n)$, $f_1$  and $f_2$  are
+Notice that  the most  frequent cost function  for all\_different-4-5,
+learned 97 over  100 runs, is actually two  equivalent functions $f_1$
+and $f_2$ expressed differently, respectively learned 58 and 39 times.
+For a configuration $c = (c_1, c_2, \ldots, c_n)$, $f_1$ and $f_2$ are
 defined as follows:
 \begin{align*}
   f_1(c) &:= Count_{\geq 0}( Number\ of\ c_j\ s.t.\ i<j\ and\ c_i=c_j)\\
@@ -433,7 +433,7 @@ code                           repository                           at
 \href{https://anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef/}{anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef}
 by following the procedure described in the README file.
 
-% \paragraph{all\_diff-4-5} Two cost functions were 
+% \paragraph{all\_different-4-5} Two cost functions were 
 
 % \paragraph{ordered-4-5} 
 
@@ -449,7 +449,7 @@ by following the procedure described in the README file.
   \hline
   Constraints & median & mean & most freq.\\
   \hline
-  all\_diff-4-5 & 0 & 0.03 & 0~~~~~~(97)\\
+  all\_different-4-5 & 0 & 0.03 & 0~~~~~~(97)\\
   ordered-4-5 & 0.08 & 0.08 & 0.08~(100)\\
   linear\_sum-3-8-12 & 0.01 & 0.05 & 0.01~(74)\\
   no\_overlap-3-8-2 & 0.14 & 0.19 & 0.11~(50)\\
@@ -480,19 +480,20 @@ and domains of size 100.
 
 For  Ordered   and  NoOverlap1D,  since  these   two  constraints  are
 intrinsically  combinatoric, finding  a function  computing the  exact
-Hamming  cost of  any  configuration is  not  trivial.  Therefore,  we
-sampled 10,000 solutions and 10,000 non-solutions in constraint spaces
-of   ordered-12-18   (so    $18^{12}$   configurations,   \ie,   about
+Hamming cost  of any configuration  is not trivial.   Therefore, using
+Latin hypercube sampling  to have a good  diversity of configurations,
+we  sampled 10,000  solutions and  10,000 non-solutions  in constraint
+spaces  of  ordered-12-18  (so $18^{12}$  configurations,  \ie,  about
 $1.15\times         10^{15}$)          and         no\_overlap-10-35-3
-($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    We  then
+($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    Then  we
 approximate  the Hamming  cost of  each non-solution,  considering the
 closest solution among the 10,000 sampled solutions.
 
 \begin{table}
   \centering
-\begin{tabular}{|r|r|r|r|r|}
+\begin{tabular}{|c|c|c|c|c|}
   \hline
-  all-diff & ord & lin-sum & no-ol & min\\
+  all\_diff & ord & lin\_sum & no\_ol & min\\
   \hline
   0 & 1.274 & 0.001 & 2.686 & 0\\
   \hline
