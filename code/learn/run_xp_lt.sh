@@ -2,7 +2,7 @@
 
 cd spaces
 
-for file in $(ls ad*-la.txt lt*-la.txt le*-la.txt cm*-la.txt ol*-la.txt ); do
+for file in $(ls lt*-la.txt ); do
     parse=(${file//-/ })
     constraint=${parse[0]}
     vars=${parse[1]}
