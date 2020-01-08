@@ -108,75 +108,27 @@ Motivation : pas forcément facile ni intuitif de trouver une bonne CF.
 
 
 \subsection{Of the interest of \cfn over classic CSP}
-As shown in  [previous studies], using a cost function  to guide a CSP
-solver, even for a satisfaction problem, generally greatly improve the
-convergence speed to a solution.  It is important to note that using a
-\cfn with  a manual input of  the cost functions (that  is the current
-general usage of such solvers) greatly increase the difficulty for the
-user.
+As shown in  [previous studies], using a cost function to guide a CSP solver, even for a satisfaction problem, generally significantly improve the convergence speed to a solution.  It is important to note that using a \cfn with manual input of  the cost functions (that  is the current
+general usage of such solvers) significantly increases the difficulty for the user.
 
-The aim of  this research is to  provide a set of tools  to compute or
-estimate those  cost functions  in a  way that  provides the  user the
-following guarantees: CSP $<$ CFN-auto $\leq$ CFN-manual.
+This research aims to provide a set of tools to compute or estimate those cost functions in a  way that provides the user with the following guarantees: CSP $<$ CFN-auto $\leq$ CFN-manual.
 
-We hope  to eventually  provides methods that  can lead  to CFN-manual
-$\leq$ CFN-auto for some (if not not most) families of constraints.
+We hope to provide methods that can lead to "CFN-manual $\leq$ CFN-auto"  eventually for some (if not most) families of constraints.
 
 \section{Preliminaries}\label{sec:preliminaries}
 Topo sur CPPN \jf \cite{CPPN}.
 
-In the  literature, Cost  Function Networks  (\cfn) and  Weighted \csp
-(\wcsp)  are  synonyms~\cite{Zytnicki2009,Bessiere2011}.  Some  papers
-like~\cite{Allouche2012} present  \cfn to  be the formalism  and \wcsp
-the  problem of  finding an  assignment minimizing  the combined  cost
-function of a given \cfn instance. Since  it is rarely a good think in
-Science to have two different names for the same notion, we start this
-paper by proposing clear, distinct definitions of \cfn and \wcsp.
+In the  literature, Cost  Function Networks  (\cfn) and  Weighted \csp (\wcsp)  are  synonyms~\cite{Zytnicki2009,Bessiere2011}.  Some papers like~\cite{Allouche2012} present  \cfn to be the formalism and \wcsp the problem of finding an assignment minimizing the combined cost function of a given \cfn instance. Since it is rarely a good thing in Science to have two different names for the same notion, we start this paper by proposing clear, distinct definitions of \cfn and \wcsp.
 
 \subsection{Definitions of \wcsp and \cfn} 
 
-We propose  to keep the definition  of a \wcsp from  the literature: a
-\textbf{\wcsp} is a tuple ($V$,$D$,$C$,$F$)  where $V$ is a finite set
-of variables,  $D$ a finite set  of domains, one for  each variable in
-$V$, each domain  being the set of  values a variable can  take, $C$ a
-finite set  of constraints  over variables  in $V$,  determining which
-combinations of values in $D$ are allowed or forbidden to describe our
-problem, and finally a finite set  $F$ composed of cost functions, one
-for  each constraint  in $C$.   Let's  denote by  $D_c$ the  Cartesian
-product of  the domain of  variables involved  in a constraint  $c \in
-C$. The cost function $f_c \in  F$ associated to the constraint $c$ is
-a     function     $f_c:     D_c    \rightarrow     \{0,k\}$     where
-$k \in \mathbb{N} \cup \{\infty\}$ is the special cost for assignments
-violating the  constraint $c$. Thus, an  assignment $\alpha$ satisfies
-the constraint  $c$ iff  $f_c(\alpha) < k$  holds. The  function $f_c$
-allows  us to  rank assignments  and  to express  softness within  the
-constraint~$c$.
+We propose to keep the definition of a \wcsp from the literature: a \textbf{\wcsp} is a tuple ($V$,$D$,$C$,$F$) where $V$ is a finite set of variables, $D$ a finite set of domains, one for each variable in $V$, each domain being the set of values a variable can take, $C$ a finite set of constraints over variables in $V$, determining which combinations of values in $D$ are allowed or forbidden to describe our problem, and finally a finite set $F$ composed of cost functions, one for each constraint in $C$. Let us denote by $D_c$ the Cartesian product of the domain of variables involved in a constraint $c \in C$. The cost function $f_c \in F$ associated to the constraint $c$ is a function $f_c: D_c \rightarrow \{0,k\}$ where $k \in \mathbb{N} \cup \{\infty\}$ is the special cost for assignments violating the constraint $c$. Thus, an assignment $\alpha$ satisfies the constraint $c$ iff $f_c(\alpha) < k$ holds. The function $f_c$ allows us to rank assignments and to express softness within the constraint~$c$.
 
-A \textbf{\cfn} is also defined  by a tuple ($V$,$D$,$C$,$F$) with the
-same  sets  as   \wcsp.   The  difference  we  propose   lies  in  the
-interpretation of cost functions $f_c$.  In this paper, cost functions
-defined   in   a   \cfn    are   functions   $f_c:   D_c   \rightarrow
-\mathbb{R}^+$. An assignment $\alpha$ satisfies the constraint $c$ iff
-$f_c(\alpha) = 0$ holds. All  other strictly positive outputs of $f_c$
-lead to forbidden assignments. Therefore, \cfn is considering hard (or
-crisp) constraints  only, unlike  \wcsp. Strictly positive  outputs of
-$f_c$ are then interpreted  like preferences over invalid assignments:
-the closer $f_c(\alpha)$ is to 0, the closer $\alpha$ is to be a valid
-assignment.
+A \textbf{\cfn} is also defined by a tuple ($V$,$D$,$C$,$F$) with the same sets as \wcsp. The difference we propose lies in the interpretation of cost functions $f_c$. In this paper, cost functions defined in a \cfn are functions $f_c: D_c \rightarrow \mathbb{R}^+$. An assignment $\alpha$ satisfies the constraint $c$ iff $f_c(\alpha) = 0$ holds. All other strictly positive outputs of $f_c$ lead to forbidden assignments. Therefore, \cfn is considering hard (or crisp) constraints only, unlike \wcsp. Strictly positive outputs of $f_c$ are then interpreted like preferences over invalid assignments: the closer $f_c(\alpha)$ is to 0, the closer $\alpha$ is to be a valid assignment.
 
-In the same  way a \csp instance  is a network of  constraints, \ie, a
-networks of  predicates expressing if  an assignment satisfies  or not
-each constraint, a \cfn instance  is a network of functions expressing
-if  an assignment  satisfies the  constraints or  how close  it is  to
-satisfy them. Thus,  this formalism \cfn allows us to  express a finer
-structure about the  problem, since we furnish with  cost functions an
-ordered  structure  over  invalid  assignment  a  solver  can  exploit
-efficiently   to   improve  the   search.   We   illustrate  this   in
-Section~\ref{sec:xp}.
+In the same way, a \csp instance is a network of constraints, \ie, a network of predicates expressing if an assignment satisfies or not each constraint, a \cfn instance is a network of functions expressing if an assignment satisfies the constraints or how close it is to satisfy them. Thus, this formalism \cfn allows us to express a finer structure about the problem, since we furnish with cost functions an ordered structure over invalid assignments, a solver can exploit efficiently to improve the search. We illustrate this in Section~\ref{sec:xp}.
 
-Observe we  can also deal  with optimization  problems with a  \cfn by
-adding  to  the  tuple  ($V$,$D$,$C$,$F$)  an  objective  function  to
-optimize.
+Observe we can also deal with optimization problems with a \cfn by adding to the tuple ($V$,$D$,$C$,$F$) an objective function to optimize.
 
 % \wcsp and \cfn are defined by close but different flavors throughout
 % the litterature. To make the most  of both, we chose to consider the
@@ -211,7 +163,8 @@ Modèles (qui n'ont pas marché) :
 \item CF comme combinaison linéaire de sinus
 \item CF en CPPN de fonctions simples (sinus, tanh, sigmoid, ...)
 \item CF apprise par CFN (lol) avec smoothness comme fonction objectif.
-\item Relaxation du SL en regardant seulement l'ordre de Hamming avec le modèle CPPN.
+\item Relaxation du SL en regardant seulement l'ordre  de Hamming  avec
+le modèle CPPN.
 \end{itemize}
 
 \flo: insister  sur le  fait que, malgrè  le fait  que l'apprentissage
@@ -224,104 +177,43 @@ cette   production   peut   être   automatisée   dans   la   procédure
 d'apprentissage, et est donc transparente à l'utilisateur.
 
 \subsection{Scaling Issues}\label{subsec:issues}
-Scaling  our  results  on  small instances  is  challenging.  In  this
-subsection we cover 4 possible approaches that are either unsuccessful
-or not yet efficient.
+Scaling our  results on small instances is challenging.  In this subsection, we cover four possible approaches that are either unsuccessful or not yet efficient.
 
 \paragraph{Learning a cost function on small space}
-For general constraints, there is no generic idea to extend a known cost
-function from a small space to a higher dimension one.
+For general constraints, there is no generic idea to extend a known cost function from a small space to a higher dimension one.
 
 \section{Experiments}\label{sec:xp}
+To show the versatility of our method, we tested it on five very different constraints:  AllDifferent, Ordered,  LinearSum, NoOverlap1D, and Minimum.   According to XCSP specifications~\cite{xcsp}  (see also \href{http://xcsp.org/specifications}{xcsp.org/specifications}), those global  constraints   below  to  four different   families:  Comparison (AllDifferent    and     Ordered),    Counting/Summing    (LinearSum), Packing/Scheduling  (NoOverlap1D)  and Connection  (Minimum).   Always according to XCSP specifications, these five constraints are among the twenty most popular and common constraints.  We give a  brief description of those five constraints below:
 
-To  show  the versatility  of  our  method, we  tested  it  on 5  very
-different constraints:  AllDifferent, Ordered,  LinearSum, NoOverlap1D
-and Minimum.   According to XCSP specifications~\cite{xcsp}  (see also
-\href{http://xcsp.org/specifications}{xcsp.org/specifications}), those
-global  constraints   below  to   4  different   families:  Comparison
-(AllDifferent    and     Ordered),    Counting/Summing    (LinearSum),
-Packing/Scheduling  (NoOverlap1D)  and Connection  (Minimum).   Always
-according to XCSP specifications, these 5 constraints are among the 20
-most popular and  common constraints.  We give a  brief description of
-those 5 constraints below:
+\paragraph{AllDifferent} ensures that variables must all be assigned to different values.
 
-\paragraph{AllDifferent} ensures  that variables must all  be assigned
-to different values.
-\paragraph{Ordered} ensures  that an  assignment of variables  must be
-ordered, given a total order. In this paper, we choose the total order
-$\leq$. Thus, for all indexes $i,j \in \{1,n\}$ with $n$ the number of
-variables, $i < j$ implies $x_i \leq x_j$.
-\paragraph{LinearSum}       ensures       that      the       equation
-$x_1 + x_2 +  \ldots + x_n = p$ holds, with the  parameter $p$ a given
-integer.
-\paragraph{NoOverlap1D}  is considering  variables as  tasks, starting
-from a  certain time (their  value) and each  with a given  length $p$
-(their  parameter).    The  constraint  ensures  that   no  tasks  are
-overlapping,  \ie, for  all indexes  $i,j  \in \{1,n\}$  with $n$  the
-number   of   variables,  we   have   $x_i   +   p_i  \leq   x_j$   or
-$x_j + p_j \leq  x_i$.  To have a simpler code,  we have considered in
-this paper that all tasks have the same length $p$.
-\paragraph{Minimum} ensures  that the  minimum value of  an assignment
-verifies  a given  numerical condition.  In this  paper, we  choose to
-consider that  the minimum value must  be greater than or  equals to a
-given parameter $p$.
+\paragraph{Ordered} ensures  that an  assignment of variables  must be ordered, given a total order. In this paper, we choose the total order $\leq$. Thus, for all indexes $i,j \in \{1,n\}$ with $n$ the number of variables, $i < j$ implies $x_i \leq x_j$.
+
+\paragraph{LinearSum}       ensures       that      the       equation $x_1 + x_2 +  \ldots + x_n = p$ holds, with the  parameter $p$ a given integer.
+
+\paragraph{NoOverlap1D}  is considering  variables as  tasks, starting from a  certain time (their  value) and each  with a given  length $p$ (their  parameter).    The  constraint  ensures  that   no  tasks  are overlapping,  \ie, for  all indexes  $i,j  \in \{1,n\}$  with $n$  the number   of   variables,  we   have   $x_i   +   p_i  \leq   x_j$   or $x_j + p_j \leq  x_i$.  To have a simpler code,  we have considered in this paper that all tasks have the same length $p$.
+
+\paragraph{Minimum} ensures that the minimum value of an assignment verifies a given numerical condition.  In this paper, we choose to consider that the minimum value must be greater than or equals to a given parameter $p$.
 
 \subsection{Experimental protocols}
 
-To have  experimental evidences  of the efficiency  of our  method, we
-conducted several different experiments.
+To have experimental evidence of the efficiency of our method, we conducted several different experiments.
 
-All experiments have  been conducted on a computer with  a CPU Core i7
-6700K and  48GB of RAM,  running on  Ubuntu 18.04. Programs  have been
-compiled with GCC with the 03 optimization option.
+All experiments have been conducted on a computer with a CPU Core i7 6700K and  48GB of RAM,  running on  Ubuntu 18.04. Programs have been compiled with GCC with the 03 optimization option.
 
 \subsubsection{Experiment 1: scaling}
 
-The first  one consists in  learning cost  functions on a  very small,
-complete  constraint  space  (\flo:  on doit  définir  ce  qu'est  cet
-espace), composed  of about 500  configurations (\flo: être  clair sur
-les définitions de configuration et solution).  It is then possible to
-compute  the  Hamming distance  between  each  configuration with  its
-closest  solution,  \ie, the  solution  that  requires to  modify  the
-smallest number  of variables  from the considered  configuration. The
-goal of this  experiment is to show that learned  cost functions scale
-to  high-dimensional constraints,  making  sufficient the  use of  our
-method on small  constraint instances to get  efficient cost functions
-on any number of variables.
+The first one consists in learning cost functions on a tiny, complete  constraint space  (\flo:  on doit  définir  ce  qu'est  cet espace), composed of about 500  configurations (\flo: être  clair sur les définitions de configuration et solution).  It is then possible to compute the  Hamming distance between each configuration with its closest solution,  \ie, the solution that requires to modify the smallest number of variables from the considered configuration. The goal of this experiment is to show that learned cost functions scale to high-dimensional constraints,  making sufficient the use of our method on small constraint instances to get efficient cost functions on any number of variables.
 
-We run  100 cost  function learnings on  the same  complete constraint
-space, for  each of  the 5 constraints  presented above  (\flo: écrire
-dans  la section  3 que  la loss  est la  différence entre  le Hamming
-estimé et le Hamming réel). We then analyze
-the frequency of  cost functions we get and  compute the discrepancies
-of the  most frequent ones to  the Hamming distance, over  100 sampled
-configurations  composed of  100  variables on  domains  of size  100,
-belonging  to  constraint  spaces   of  size  $10^{200}$  (compare  to
-constraint spaces of size around 500 used to learn cost functions).
+We run  100 cost function learnings on the same complete constraint space, for each of the five constraints presented above  (\flo: écrire dans  la section  3 que  la loss  est la  différence entre  le Hamming estimé et le Hamming réel). We then analyze the frequency of cost functions we get and compute the discrepancies of the most frequent ones to the Hamming distance, over  100 sampled configurations composed of  100  variables on domains of size  100, belonging to constraint  spaces of size  $10^{200}$  (compare to constraint spaces of size around 500 used to learn cost functions).
 
-\flo: Apprendre une CF sur une petit instance, et la comparer avec 1. les
-métriques  sur cette  même instance,  2.  les métriques  sur une  plus
-grande instance et 3. Une CF apprise sur une plus grande instance.
+\flo: Apprendre une CF sur une petit instance, et la comparer avec 1. les métriques  sur cette  même instance,  2.  les métriques  sur une  plus grande instance et 3. Une CF apprise sur une plus grande instance.
 
 \subsubsection{Experiment 2: learning over incomplete spaces}
 
-If, for any reasons, it is not possible to build a complete constraint
-space, a robust system must be  able to learn effective cost functions
-on  large,  incomplete spaces  where  the  exact Hamming  cost  (\flo:
-Hamming cost of config $c$ =  Hamming distance of $c$ with its closest
-solution) of their configurations is unknown.
+If for any reasons, it is not possible to build a complete constraint space, a robust system must be able to learn effective cost functions on large,  incomplete spaces where the exact Hamming cost  (\flo: Hamming cost of config $c$ =  Hamming distance of $c$ with its closest solution) of their configurations is unknown.
 
-In this experiment,  we sample $k$ solutions and  $k$ non-solutions on
-large  constraint  spaces,  approximate   the  Hamming  cost  of  each
-non-solution  by computing  their  Hamming distance  with the  closest
-solution among  the $k$ ones, and  learn cost functions on  these $2k$
-configurations and their estimated Hamming  cost. Then, we compare the
-frequency of cost  functions we obtain this way with  the frequency of
-cost functions  learned on  small and  complete constraint  spaces, as
-well as the discrepancies of the most frequent cost functions obtained
-both ways to the real Hamming  distance. \flo: pas super clair ; faire
-un  effort pour  mieux  présenter  la métrique  de  réussite de  cette
-expérimentation. 
+In this experiment,  we sample $k$ solutions and  $k$ non-solutions on large constraint spaces,  approximate the  Hamming cost of each non-solution by computing their  Hamming distance with the closest solution among the $k$ ones, and learn cost functions on these $2k$ configurations and their estimated Hamming cost. Then, we compare the frequency of cost functions we obtain this way with the frequency of cost functions learned on small and complete constraint spaces, as well as the discrepancies of the most common cost functions obtained both ways to the real Hamming distance. \flo: pas super clair ; faire un  effort pour  mieux  présenter  la métrique  de  réussite de  cette expérimentation. 
 
 \flo:  Comparaison  des  CF  obtenues avec  différent  pourcentage  de
 l'espace des configurations samplée.
@@ -332,46 +224,13 @@ tailles aussi)
 
 \subsubsection{Experiment 3: using learned $\cf$s to solve problems}
 
-Here, we use learned cost  functions for AllDifferent and LinearSum in
-\cfn modeling  3 problems:  Sudoku (using AllDifferent),  Magic Square
-(using  LinearSum)  and Killer  Sudoku  (using  both AllDifferent  and
-LinearSum). We use  a local search solver to solve  these problems and
-consider the mean run-time as a metric to compare pure \csp models (so
-without cost functions),  \cfn models with learned  cost functions and
-\cfn models with handmade cost functions.
+Here, we use learned cost functions for AllDifferent and LinearSum in \cfn modeling  3 problems:  Sudoku (using AllDifferent),  Magic Square (using  LinearSum), and Killer  Sudoku  (using both AllDifferent and LinearSum). We use a local search solver to solve these problems and consider the mean run-time as a metric to compare pure \csp models (so without cost functions),  \cfn models with learned cost functions, and \cfn models with handmade cost functions.
 
-\paragraph{Sudoku} is a puzzle game presented like a $9 \times 9$ grid
-where each cell of the grid must be  filled up with a number from 1 to
-9,  such that  each row  and each  column contains  exactly once  each
-number. In addition, the grid is composed of 9 smaller squares of size
-$3  \times 3$  which  must also  be filled  with  each number  exactly
-once. In other words, all numbers  of each row, column and square must
-be  different,   which  is  perfectly  modeled   by  the  AllDifferent
-constraint.   Usually, the  grid  is pre-filled  with  a few  numbers,
-preventing from  finding a trivial  solution.  In this paper,  to have
-randomly  generated Sudoku  instances, we  have pre-filled  the entire
-grid randomly with the expected total number of 1s, 2s, and so on, and
-ask  the solver  to  find a  permutation  satisfying all  AllDifferent
-constraints described above.
+\paragraph{Sudoku} is a puzzle game presented like a $9 \times 9$ grid where each cell of the grid must be filled up with a number from 1 to 9,  such that each row and each column contains precisely once each number. In addition, the grid is composed of 9 smaller squares of size $3  \times 3$  which must also be filled with each number exactly once. In other words, all numbers of each row, column, and square must be different,   which is correctly modeled by the  AllDifferent constraint.   Usually, the grid is pre-filled with a few numbers, preventing from finding a trivial solution.  In this paper,  to have randomly generated Sudoku instances, we have pre-filled the entire grid randomly with the expected total number of 1s, 2s, etc., and ask the solver to find a  permutation satisfying all  AllDifferent constraints described above.
 
-\paragraph{Magic Square} is a $n \times n$ grid that must be filled up
-with all number from 1 to $n^2$ (thus, all numbers must appear exactly
-once in the grid), such that the  sum of each row, each column and the
-two diagonals must be equal to a constant $c$.  We can avoid using the
-AllDifferent  constraint by  randomly  filling up  the  grid with  all
-expected numbers and ask the solver to find a correct permutation. The
-constraints over  the rows, columns  and the two diagonal  are modeled
-with LinearSum,  since the  value of  $c$ only depends  on $n$  and is
-known to be $c = n(n^2 + 1)/2$.
+\paragraph{Magic Square} is a $n \times n$ grid that must be filled up with all number from 1 to $n^2$ (thus, all numbers must appear exactly once in the grid), such that the sum of each row, each column, and the two diagonals must be equal to a constant $c$.  We can avoid using the AllDifferent constraint by randomly filling up the grid with all expected numbers and ask the solver to find a correct permutation. The constraints over the rows, columns, and the two diagonal are modeled with LinearSum since the value of  $c$ only depends on $n$  and is known to be $c = n(n^2 + 1)/2$.
 
-\paragraph{Killer Sudoku}  is the same than  Sudoku but in such  a way
-that the  grid is  paved with  blocks of  cells, named  cages, usually
-composed of 2, 3  or 4 cells.  To each cage  is associated an integer,
-and  the sum  of  numbers in  theirs  cells must  be  equals to  their
-integer. A  killer Sudoku  instance starts with  an empty  grid, cages
-preventing from  trivial solutions. AllDifferent constraints  are used
-to model  the regular Sudoku rules  of this puzzle game  and LinearSum
-constraints are modeling cages.
+\paragraph{Killer Sudoku}  is the same as Sudoku but in such a way that the grid is paved with blocks of cells, named cages, usually composed of 2, 3, or 4 cells.  Each cage is associated an integer, and the sum  of numbers in their cells must be equals to their integer. A  killer Sudoku instance starts with an empty grid, cages preventing from trivial solutions. AllDifferent constraints are used to model the regular Sudoku rules of this puzzle game, and LinearSum constraints are modeling cages.
 
 \flo: Comparaison des  CF obtenues sur des  benchs avec des CF  handmades et
 sans CF
@@ -379,9 +238,7 @@ sans CF
 \subsection{Results}
 Figure et tableaux \jf.
 
-In this part, we  will denote by $n$ the number  of variables, $d$ the
-domain size  and $p$  the value of  an eventual  parameter. Constraint
-instances are denoted by \textit{name-n-d[-p]}.
+In this part, we denote by $n$ the number of variables, $d$ the domain size, and $p$  the value of an eventual parameter. Constraint instances are denoted by \textit{name-n-d[-p]}.
 
 \subsubsection{Experiment 1}
 
@@ -389,15 +246,7 @@ instances are denoted by \textit{name-n-d[-p]}.
 % same constraint instance, we will only consider cost functions learned
 % at least 10\% of the time.
 
-Like  written in  Section~\ref{sec:method}, our  loss function  is the
-absolute value of the difference  between the expected Hamming cost of
-a  configuration $c$  and  the  Hamming cost  estimated  for the  cost
-function on $c$. The loss function is then normalized with the size of
-the constraint space  used for training, giving us  the training error
-of the constraint space, \ie,  the average difference between expected
-and  estimated  Hamming costs.   Thus,  a  cost  function $f$  with  a
-training error  of 2  means that  $f$ estimations  on configurations
-used for training are in average +2 or -2 from the real Hamming cost.
+As written in  Section~\ref{sec:method}, our loss function is the absolute value of the difference between the expected Hamming cost of a  configuration $c$  and the  Hamming cost estimated for the cost function on $c$. The loss function is then normalized with the size of the constraint space used for training, giving us the training error of the constraint space, \ie,  the average difference between expected and estimated  Hamming costs.   Thus,  a  cost function $f$  with a training error of 2  means that  $f$ estimations on configurations used for training are on average +2 or -2 from the real Hamming cost.
 
 % In  this experiment,  we  learn 100  times a  cost  function for  each
 % constraint instance, and  we compute the mean of  their training error
@@ -427,11 +276,7 @@ defined as follows:
   f_2(c) &:= Count_{\geq 0}( Number\ of\ c_j\ s.t.\ i>j\ and\ c_i=c_j)
 \end{align*}
 
-Due  to space  limitation, other  learned cost  functions will  not be
-detailed in this paper.   We invite the reader to look  at them in the
-code                           repository                           at
-\href{https://anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef/}{anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef}
-by following the procedure described in the README file.
+Due to space limitations, other learned cost functions are not detailed in this paper.   We invite the reader to look  at them in the code                           repository                           at \href{https://anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef/}{anonymous.4open.science/r/50ffb3e8-8918-4f59-9b8d-ef80060585ef} by following the procedure described in the README file.
 
 % \paragraph{all\_different-4-5} Two cost functions were 
 
@@ -462,6 +307,7 @@ by following the procedure described in the README file.
 \label{tab:cf_small}
 \end{table}
 
+<<<<<<< HEAD
 Learning cost functions over small complete constraint spaces of about
 500 configurations takes about 10 seconds on our hardware.
 
@@ -488,6 +334,15 @@ $1.15\times         10^{15}$)          and         no\_overlap-10-35-3
 ($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    Then  we
 approximate  the Hamming  cost of  each non-solution,  considering the
 closest solution among the 10,000 sampled solutions.
+=======
+Learning cost functions over small complete constraint spaces of about 500 configurations takes about 10 seconds on our hardware.
+
+Table~\ref{tab:cf_small} shows excellent performances, but it might be due to overfitting on those small constraint spaces.  To check if learned cost functions do not overfit and can scale to constraint instances on higher dimensions, we use the most frequent cost function learned on each constraint for estimating the Hamming cost of 20,000 random configurations sampled from high-dimensional constraint spaces.
+
+For AllDifferent, LinearSum and Minimum, it is easy to define by hand a function computing the Hamming cost of any configuration $c$ without generating the whole constraint space.  For these constraints,  we tested the corresponding cost function on spaces with  100 variables and domains of size 100.
+
+For  Ordered and  NoOverlap1D,  since these two constraints are intrinsically combinatoric, finding a function computing the exact Hamming cost of any configuration is not trivial.  Therefore,  we sampled 10,000 solutions and 10,000 non-solutions in constraint spaces of   ordered-12-18   (so    $18^{12}$   configurations,   \ie,   about $1.15\times         10^{15}$)          and         no\_overlap-10-35-3 ($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    We then approximate the Hamming cost of each non-solution,  considering the closest solution among the 10,000 sampled solutions.
+>>>>>>> d8966d39d92aa3a4fdceebf3697c7e881eb6830f
 
 \begin{table}
   \centering
