@@ -224,13 +224,17 @@ tailles aussi)
 
 \subsubsection{Experiment 3: using learned $\cf$s to solve problems}
 
-Here, we use learned cost functions for AllDifferent and LinearSum in \cfn modeling  3 problems:  Sudoku (using AllDifferent),  Magic Square (using  LinearSum), and Killer  Sudoku  (using both AllDifferent and LinearSum). We use a local search solver to solve these problems and consider the mean run-time as a metric to compare pure \csp models (so without cost functions),  \cfn models with learned cost functions, and \cfn models with handmade cost functions.
+% Here, we use learned cost functions for AllDifferent and LinearSum in \cfn modeling  3 problems:  Sudoku (using AllDifferent),  Magic Square (using  LinearSum), and Killer  Sudoku  (using both AllDifferent and LinearSum). We use a local search solver to solve these problems and consider the mean run-time as a metric to compare pure \csp models (so without cost functions),  \cfn models with learned cost functions, and \cfn models with handmade cost functions.
+
+The goal of this experiment is to assess ...
+
+We use a local search solver to solve these problems and consider the mean and median run-time, as well as other metrics, to compare a pure \csp model (so without cost functions),  a \cfn model with the most frequently learned cost function from Experiment 1, and a \cfn model with an efficient, hand-crafted cost function.
 
 \paragraph{Sudoku} is a puzzle game presented like a $9 \times 9$ grid where each cell of the grid must be filled up with a number from 1 to 9,  such that each row and each column contains precisely once each number. In addition, the grid is composed of 9 smaller squares of size $3  \times 3$  which must also be filled with each number exactly once. In other words, all numbers of each row, column, and square must be different,   which is correctly modeled by the  AllDifferent constraint.   Usually, the grid is pre-filled with a few numbers, preventing from finding a trivial solution.  In this paper,  to have randomly generated Sudoku instances, we have pre-filled the entire grid randomly with the expected total number of 1s, 2s, etc., and ask the solver to find a  permutation satisfying all  AllDifferent constraints described above.
 
-\paragraph{Magic Square} is a $n \times n$ grid that must be filled up with all number from 1 to $n^2$ (thus, all numbers must appear exactly once in the grid), such that the sum of each row, each column, and the two diagonals must be equal to a constant $c$.  We can avoid using the AllDifferent constraint by randomly filling up the grid with all expected numbers and ask the solver to find a correct permutation. The constraints over the rows, columns, and the two diagonal are modeled with LinearSum since the value of  $c$ only depends on $n$  and is known to be $c = n(n^2 + 1)/2$.
+% \paragraph{Magic Square} is a $n \times n$ grid that must be filled up with all number from 1 to $n^2$ (thus, all numbers must appear exactly once in the grid), such that the sum of each row, each column, and the two diagonals must be equal to a constant $c$.  We can avoid using the AllDifferent constraint by randomly filling up the grid with all expected numbers and ask the solver to find a correct permutation. The constraints over the rows, columns, and the two diagonal are modeled with LinearSum since the value of  $c$ only depends on $n$  and is known to be $c = n(n^2 + 1)/2$.
 
-\paragraph{Killer Sudoku}  is the same as Sudoku but in such a way that the grid is paved with blocks of cells, named cages, usually composed of 2, 3, or 4 cells.  Each cage is associated an integer, and the sum  of numbers in their cells must be equals to their integer. A  killer Sudoku instance starts with an empty grid, cages preventing from trivial solutions. AllDifferent constraints are used to model the regular Sudoku rules of this puzzle game, and LinearSum constraints are modeling cages.
+% \paragraph{Killer Sudoku}  is the same as Sudoku but in such a way that the grid is paved with blocks of cells, named cages, usually composed of 2, 3, or 4 cells.  Each cage is associated an integer, and the sum  of numbers in their cells must be equals to their integer. A  killer Sudoku instance starts with an empty grid, cages preventing from trivial solutions. AllDifferent constraints are used to model the regular Sudoku rules of this puzzle game, and LinearSum constraints are modeling cages.
 
 \flo: Comparaison des  CF obtenues sur des  benchs avec des CF  handmades et
 sans CF
@@ -348,14 +352,32 @@ closest solution among the 10,000 sampled solutions.
 \label{tab:cf_scale}
 \end{table}
 
-Table\ref{tab:cf_scale} ...
+Table~\ref{tab:cf_scale} presents the mean error of the most frequently learned cost function for each constraint type, over 20,000 configurations sampled from constraint instances previously introduced. The perfect score of 0 for AllDifferent and Minimum shows that our system has been able to learn the exact Hamming cost over a small constraint space of about 500 configurations. For LinearSum, the cost function only has an error of 26 over 20,000 configuration, giving a mean error of 0.001 on a given configuration. As written previously, we only choose general operations in our neural network and describing perfectly the Hamming cost for LinearSum requires a very specific operation: computing the difference of the smallest value among variables with the highest value in the domain (or the opposite), test if this difference is sufficient to reach to expected sum, and if not, iterate with the second (and third, etc) smallest value among variables.
+
+Ordered and NoOverlap1D do not show such good results. For Ordered, a mean error of 1.274 on configurations with 12 variables is still honorable: it means that in average, the difference between the expected and estimated Hamming cost over 12 variables is a bit more than one variable. However, the mean error of 2.686 for NoOverlap1D, considering the constraint instance has 10 variables, is not so good and is overfitting the training constraint space. NoOverlap1D is certainly the most intrinsically combinatoric over our 5 constraints, partly explaining why it is harder to learn a correct cost function for it. Another reason is that we certainly need more than 3 variables, as well as a parameter $p$ higher than 2, to have a constraint instance with a large variety of possible situations and overlaps, and the domain cardinality must be significantly higher than the number of variables (at least $p$ times higher) to have solutions. This leads to constraint space becoming quickly large, and restricting it to about 500 configurations implies too few possible situations/overlaps to allow learning a general-enough cost function.
 
 \subsubsection{Experiment 2}
 
 \subsubsection{Experiment 3}
-\flo:  dire que  le but  ici  n'est pas  de  casser du  bench mais  de
-comparer, même avec un solver  pas optimisé, les temps de résolutions
-sans \cf, avec \cf apprise et avec \cf maison.
+
+The goal of this experiment is not to be state-of-the-art in terms of run-times for solving Sudoku, but to compare the average run-times of the same solver on 3 nearly identical Sudoku models, where the only difference is no cost functions for the first model, the most frequently learned cost function in Experiment 1 for the second model, and a hand-crafted cost function for the third model. For this last model, we implemented the \textit{primal graph based violation cost} of AllDifferent from~\cite{Petit2001}. This function simply outputs the number of couples with identical values within a given configuration. To run this experiment, we used the framework \ghost~\cite{GHOST} which includes a local search algorithm able to handle both \csp and \cfn models.
+
+\begin{table}
+  \centering
+\begin{tabular}{|c|r|r|r|r|r|}
+  \hline
+  \cf & mean & median & std dev & min & max\\
+  \hline
+  no \cf & 1044 & 764 & 727 & 250 & 3546\\
+  learned & 383 & 330 & 268 & 57 & 1812\\
+  hand-crafted & 149 & 125 & 107 & 26 & 608\\
+  \hline
+\end{tabular}
+\caption{Run-times metrics in milliseconds over 100 runs to solve Sudoku with a local search solver using no cost functions (pure \csp), the most frequently learned cost function for AllDifferent in Experiment 1, and a hand-crafted cost function.}
+\label{tab:sudoku}
+\end{table}
+
+
 
 \section{Discussions}
 
