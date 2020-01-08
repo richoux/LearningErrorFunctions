@@ -307,7 +307,6 @@ Due to space limitations, other learned cost functions are not detailed in this 
 \label{tab:cf_small}
 \end{table}
 
-<<<<<<< HEAD
 Learning cost functions over small complete constraint spaces of about
 500 configurations takes about 10 seconds on our hardware.
 
@@ -334,15 +333,6 @@ $1.15\times         10^{15}$)          and         no\_overlap-10-35-3
 ($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    Then  we
 approximate  the Hamming  cost of  each non-solution,  considering the
 closest solution among the 10,000 sampled solutions.
-=======
-Learning cost functions over small complete constraint spaces of about 500 configurations takes about 10 seconds on our hardware.
-
-Table~\ref{tab:cf_small} shows excellent performances, but it might be due to overfitting on those small constraint spaces.  To check if learned cost functions do not overfit and can scale to constraint instances on higher dimensions, we use the most frequent cost function learned on each constraint for estimating the Hamming cost of 20,000 random configurations sampled from high-dimensional constraint spaces.
-
-For AllDifferent, LinearSum and Minimum, it is easy to define by hand a function computing the Hamming cost of any configuration $c$ without generating the whole constraint space.  For these constraints,  we tested the corresponding cost function on spaces with  100 variables and domains of size 100.
-
-For  Ordered and  NoOverlap1D,  since these two constraints are intrinsically combinatoric, finding a function computing the exact Hamming cost of any configuration is not trivial.  Therefore,  we sampled 10,000 solutions and 10,000 non-solutions in constraint spaces of   ordered-12-18   (so    $18^{12}$   configurations,   \ie,   about $1.15\times         10^{15}$)          and         no\_overlap-10-35-3 ($35^{10}  \simeq   2.75\times  10^{15}$  configurations).    We then approximate the Hamming cost of each non-solution,  considering the closest solution among the 10,000 sampled solutions.
->>>>>>> d8966d39d92aa3a4fdceebf3697c7e881eb6830f
 
 \begin{table}
   \centering
