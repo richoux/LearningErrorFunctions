@@ -1,0 +1,800 @@
+############
+SATISFACTION run
+Elapsed time: 25.1486ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 174
+Satisfaction post-processing time: 0.000164
+
+############
+SATISFACTION run
+Elapsed time: 43.7074ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 465
+Satisfaction post-processing time: 0.000153
+
+############
+SATISFACTION run
+Elapsed time: 21.8801ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 311
+Satisfaction post-processing time: 0.000134
+
+############
+SATISFACTION run
+Elapsed time: 139.31ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 3214
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 25.8781ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 569
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 78.923ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1171
+Satisfaction post-processing time: 0.000111
+
+############
+SATISFACTION run
+Elapsed time: 112.799ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2033
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 24.4404ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 572
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 33.015ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 467
+Satisfaction post-processing time: 7.4e-05
+
+############
+SATISFACTION run
+Elapsed time: 12.7759ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 184
+Satisfaction post-processing time: 7.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 14.6696ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 207
+Satisfaction post-processing time: 7.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 106.137ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2247
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 42.8978ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 605
+Satisfaction post-processing time: 8.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 153.351ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2255
+Satisfaction post-processing time: 5.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 94.2209ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1428
+Satisfaction post-processing time: 8.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 9.93896ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 176
+Satisfaction post-processing time: 6.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 1.52774ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 22
+Satisfaction post-processing time: 7.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 25.493ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 370
+Satisfaction post-processing time: 7.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 118.449ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1282
+Satisfaction post-processing time: 0.000128
+
+############
+SATISFACTION run
+Elapsed time: 95.3013ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1000
+Satisfaction post-processing time: 0.000596
+
+############
+SATISFACTION run
+Elapsed time: 13.7595ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 169
+Satisfaction post-processing time: 0.00013
+
+############
+SATISFACTION run
+Elapsed time: 104.68ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 901
+Satisfaction post-processing time: 0.000165
+
+############
+SATISFACTION run
+Elapsed time: 56.8422ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 866
+Satisfaction post-processing time: 6.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 13.8509ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 179
+Satisfaction post-processing time: 7.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 25.9247ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 465
+Satisfaction post-processing time: 6.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 22.4717ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 429
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 3.92029ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 84
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 20.4586ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 313
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 29.9723ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 443
+Satisfaction post-processing time: 7.2e-05
+
+############
+SATISFACTION run
+Elapsed time: 44.241ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 932
+Satisfaction post-processing time: 5.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 16.2409ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 248
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 86.1373ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1352
+Satisfaction post-processing time: 5.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 22.2443ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 480
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 232.683ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 3310
+Satisfaction post-processing time: 6.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 16.3596ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 225
+Satisfaction post-processing time: 0.000139
+
+############
+SATISFACTION run
+Elapsed time: 14.2778ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 214
+Satisfaction post-processing time: 7.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 11.2346ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 208
+Satisfaction post-processing time: 6.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 17.7928ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 237
+Satisfaction post-processing time: 7.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 87.136ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1919
+Satisfaction post-processing time: 7.2e-05
+
+############
+SATISFACTION run
+Elapsed time: 126.866ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2169
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 102.08ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1592
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 21.6642ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 463
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 13.5576ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 179
+Satisfaction post-processing time: 7.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 41.6602ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 803
+Satisfaction post-processing time: 5.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 52.8703ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1109
+Satisfaction post-processing time: 0.000111
+
+############
+SATISFACTION run
+Elapsed time: 101.903ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1638
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 23.3979ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 338
+Satisfaction post-processing time: 7e-05
+
+############
+SATISFACTION run
+Elapsed time: 59.7235ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1317
+Satisfaction post-processing time: 5.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 26.3105ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 521
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 52.7905ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 753
+Satisfaction post-processing time: 8.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 181.228ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 3300
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 6.82064ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 100
+Satisfaction post-processing time: 0.000121
+
+############
+SATISFACTION run
+Elapsed time: 14.2043ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 286
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 7.7693ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 119
+Satisfaction post-processing time: 7.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 112.656ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1172
+Satisfaction post-processing time: 8.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 169.944ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1053
+Satisfaction post-processing time: 0.0001
+
+############
+SATISFACTION run
+Elapsed time: 78.2291ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 720
+Satisfaction post-processing time: 0.00037
+
+############
+SATISFACTION run
+Elapsed time: 25.2988ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 316
+Satisfaction post-processing time: 0.000149
+
+############
+SATISFACTION run
+Elapsed time: 124.28ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2853
+Satisfaction post-processing time: 0.000106
+
+############
+SATISFACTION run
+Elapsed time: 38.1591ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 529
+Satisfaction post-processing time: 0.000131
+
+############
+SATISFACTION run
+Elapsed time: 30.1695ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 447
+Satisfaction post-processing time: 6.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 54.4194ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 776
+Satisfaction post-processing time: 6.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 117.17ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1742
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 62.2347ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1334
+Satisfaction post-processing time: 5.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 6.90394ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 97
+Satisfaction post-processing time: 7.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 23.446ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 358
+Satisfaction post-processing time: 7.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 18.3736ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 411
+Satisfaction post-processing time: 5.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 48.9113ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 809
+Satisfaction post-processing time: 5.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 8.85709ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 124
+Satisfaction post-processing time: 8.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 107.323ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1501
+Satisfaction post-processing time: 8.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 17.7729ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 256
+Satisfaction post-processing time: 7.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 7.47842ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 168
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 29.9131ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 703
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 60.6725ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1349
+Satisfaction post-processing time: 6.3e-05
+
+############
+SATISFACTION run
+Elapsed time: 74.1034ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1299
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 28.1711ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 576
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 47.5197ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1037
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 46.5241ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 883
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 59.1071ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 863
+Satisfaction post-processing time: 8e-05
+
+############
+SATISFACTION run
+Elapsed time: 20.128ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 296
+Satisfaction post-processing time: 7.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 102.33ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1684
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 106.842ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1688
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 7.15782ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 101
+Satisfaction post-processing time: 7.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 24.1582ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 322
+Satisfaction post-processing time: 0.000137
+
+############
+SATISFACTION run
+Elapsed time: 44.4835ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 797
+Satisfaction post-processing time: 5.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 115.604ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2467
+Satisfaction post-processing time: 6.7e-05
+
+############
+SATISFACTION run
+Elapsed time: 25.5262ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 374
+Satisfaction post-processing time: 7.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 20.0153ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 354
+Satisfaction post-processing time: 5.6e-05
+
+############
+SATISFACTION run
+Elapsed time: 21.3876ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 313
+Satisfaction post-processing time: 7.2e-05
+
+############
+SATISFACTION run
+Elapsed time: 104.476ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 2298
+Satisfaction post-processing time: 6e-05
+
+############
+SATISFACTION run
+Elapsed time: 68.5516ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1121
+Satisfaction post-processing time: 6.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 80.04ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1848
+Satisfaction post-processing time: 5.8e-05
+
+############
+SATISFACTION run
+Elapsed time: 53.1578ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1138
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 13.5419ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 227
+Satisfaction post-processing time: 5.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 11.0584ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 162
+Satisfaction post-processing time: 7.5e-05
+
+############
+SATISFACTION run
+Elapsed time: 89.2818ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1244
+Satisfaction post-processing time: 7.9e-05
+
+############
+SATISFACTION run
+Elapsed time: 7.99372ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 112
+Satisfaction post-processing time: 7e-05
+
+############
+SATISFACTION run
+Elapsed time: 82.9191ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1894
+Satisfaction post-processing time: 0.000117
+
+############
+SATISFACTION run
+Elapsed time: 108.894ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1565
+Satisfaction post-processing time: 8.1e-05
+
+############
+SATISFACTION run
+Elapsed time: 90.4402ms
+Satisfaction cost: 0
+Number of optization loops: 1
+Number of satisfaction loops: 1939
+Satisfaction post-processing time: 5.6e-05
+
