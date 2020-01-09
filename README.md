@@ -32,6 +32,8 @@ $> ./run_sudoku_xp.sh (then relax and wait for 10 minutes or so)
 
 8. Analyse result files from Experiments 1 and 2\
 $> (in learn folder)\
+/* Compile first the program printing models */\
+$> ./compile_print_model.sh
 $> ./analyse_runs.sh results/the_file_you_want
 
 9. Analyse result files from Experiment 3\
