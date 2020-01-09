@@ -11,6 +11,8 @@
 
 #if defined HANDMADE
 #include "../../constraints/linear-eq_handmade.hpp"
+#elif defined NOCFN
+#include "../../constraints/linear-eq_no-cfn.hpp"
 #else
 #include "../../constraints/linear-eq.hpp"
 #endif
@@ -185,8 +187,8 @@ int main( int argc, char **argv )
              constraint_diagonals.end(),
              std::back_inserter( constraints ) );
 
-  cout << "Constraint size: " << constraints.size() << "\n"
-       << "Magic Square constant: " << constant << "\n";
+  // cout << "Constraint size: " << constraints.size() << "\n"
+  //      << "Magic Square constant: " << constant << "\n";
   
   // true means it is a permutation problem
   Solver solver( variables, constraints, true );
@@ -195,18 +197,18 @@ int main( int argc, char **argv )
 	vector<int> solution( variables.size(), 0 );
 
 	// 2min
-	solver.solve( cost, solution, 500000, 120000000 );
+	//solver.solve( cost, solution, 500000, 120000000 );
 
 	// 30s
 	// solver.solve( cost, solution, 1000000, 30000000 );
 	
   // 5s
-	// solver.solve( cost, solution, 1000000, 5000000 );
+	solver.solve( cost, solution, 10000, 5000000 );
 
 	// 0.5s
 	//solver.solve( cost, solution, 100000, 500000 );
 
-	cout << "Cost: " << cost << "\n";
+	// cout << "Cost: " << cost << "\n";
 	print_solution( solution );
 	check_solution( solution, constant );
 	

@@ -11,6 +11,8 @@
 
 #if defined HANDMADE
 #include "../../constraints/all-diff_handmade.hpp"
+#elif defined NOCFN
+#include "../../constraints/all-diff_no-cfn.hpp"
 #else
 #include "../../constraints/all-diff.hpp"
 #endif
@@ -207,7 +209,7 @@ int main( int argc, char **argv )
              constraint_squares.end(),
              std::back_inserter( constraints ) );
 
-  cout << "Constraint size: " << constraints.size() << "\n";
+  //cout << "Constraint size: " << constraints.size() << "\n";
   
   // true means it is a permutation problem
   Solver solver( variables, constraints, true );
@@ -227,9 +229,9 @@ int main( int argc, char **argv )
 	// 0.5s
 	//solver.solve( cost, solution, 100000, 500000 );
 
-	cout << "Cost: " << cost << "\n";
-	print_solution( solution );
-	check_solution( solution );
+	//cout << "Cost: " << cost << "\n";
+	//print_solution( solution );
+	//check_solution( solution );
 	
   return EXIT_SUCCESS;
 }
