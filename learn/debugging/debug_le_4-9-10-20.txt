@@ -1,0 +1,1010 @@
+number of solutions: 36, density = 5.7971
+6 2 8 4 
+
+Transfo number: 0
+Transfo inputs: 6 2 8 4 
+Transfo ouputs: 6 2 8 4 
+Arith number: 0
+Arith inputs: 6 2 8 4 
+Arith ouputs: 6 2 8 4 
+Agreg number: 1
+Agreg inputs: 6 2 8 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 5 7 1 
+
+Transfo number: 0
+Transfo inputs: 7 5 7 1 
+Transfo ouputs: 7 5 7 1 
+Arith number: 0
+Arith inputs: 7 5 7 1 
+Arith ouputs: 7 5 7 1 
+Agreg number: 1
+Agreg inputs: 7 5 7 1 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+1 8 3 8 
+
+Transfo number: 0
+Transfo inputs: 1 8 3 8 
+Transfo ouputs: 1 8 3 8 
+Arith number: 0
+Arith inputs: 1 8 3 8 
+Arith ouputs: 1 8 3 8 
+Agreg number: 1
+Agreg inputs: 1 8 3 8 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 1 7 5 
+
+Transfo number: 0
+Transfo inputs: 7 1 7 5 
+Transfo ouputs: 7 1 7 5 
+Arith number: 0
+Arith inputs: 7 1 7 5 
+Arith ouputs: 7 1 7 5 
+Agreg number: 1
+Agreg inputs: 7 1 7 5 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 7 2 4 
+
+Transfo number: 0
+Transfo inputs: 7 7 2 4 
+Transfo ouputs: 7 7 2 4 
+Arith number: 0
+Arith inputs: 7 7 2 4 
+Arith ouputs: 7 7 2 4 
+Agreg number: 1
+Agreg inputs: 7 7 2 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+4 1 7 8 
+
+Transfo number: 0
+Transfo inputs: 4 1 7 8 
+Transfo ouputs: 4 1 7 8 
+Arith number: 0
+Arith inputs: 4 1 7 8 
+Arith ouputs: 4 1 7 8 
+Agreg number: 1
+Agreg inputs: 4 1 7 8 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+2 9 1 8 
+
+Transfo number: 0
+Transfo inputs: 2 9 1 8 
+Transfo ouputs: 2 9 1 8 
+Arith number: 0
+Arith inputs: 2 9 1 8 
+Arith ouputs: 2 9 1 8 
+Agreg number: 1
+Agreg inputs: 2 9 1 8 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 2 6 5 
+
+Transfo number: 0
+Transfo inputs: 7 2 6 5 
+Transfo ouputs: 7 2 6 5 
+Arith number: 0
+Arith inputs: 7 2 6 5 
+Arith ouputs: 7 2 6 5 
+Agreg number: 1
+Agreg inputs: 7 2 6 5 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+6 1 7 6 
+
+Transfo number: 0
+Transfo inputs: 6 1 7 6 
+Transfo ouputs: 6 1 7 6 
+Arith number: 0
+Arith inputs: 6 1 7 6 
+Arith ouputs: 6 1 7 6 
+Agreg number: 1
+Agreg inputs: 6 1 7 6 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+8 1 7 4 
+
+Transfo number: 0
+Transfo inputs: 8 1 7 4 
+Transfo ouputs: 8 1 7 4 
+Arith number: 0
+Arith inputs: 8 1 7 4 
+Arith ouputs: 8 1 7 4 
+Agreg number: 1
+Agreg inputs: 8 1 7 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+5 5 4 6 
+
+Transfo number: 0
+Transfo inputs: 5 5 4 6 
+Transfo ouputs: 5 5 4 6 
+Arith number: 0
+Arith inputs: 5 5 4 6 
+Arith ouputs: 5 5 4 6 
+Agreg number: 1
+Agreg inputs: 5 5 4 6 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+1 9 7 3 
+
+Transfo number: 0
+Transfo inputs: 1 9 7 3 
+Transfo ouputs: 1 9 7 3 
+Arith number: 0
+Arith inputs: 1 9 7 3 
+Arith ouputs: 1 9 7 3 
+Agreg number: 1
+Agreg inputs: 1 9 7 3 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+6 1 4 9 
+
+Transfo number: 0
+Transfo inputs: 6 1 4 9 
+Transfo ouputs: 6 1 4 9 
+Arith number: 0
+Arith inputs: 6 1 4 9 
+Arith ouputs: 6 1 4 9 
+Agreg number: 1
+Agreg inputs: 6 1 4 9 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+8 5 5 2 
+
+Transfo number: 0
+Transfo inputs: 8 5 5 2 
+Transfo ouputs: 8 5 5 2 
+Arith number: 0
+Arith inputs: 8 5 5 2 
+Arith ouputs: 8 5 5 2 
+Agreg number: 1
+Agreg inputs: 8 5 5 2 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+3 4 4 9 
+
+Transfo number: 0
+Transfo inputs: 3 4 4 9 
+Transfo ouputs: 3 4 4 9 
+Arith number: 0
+Arith inputs: 3 4 4 9 
+Arith ouputs: 3 4 4 9 
+Agreg number: 1
+Agreg inputs: 3 4 4 9 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 7 2 4 
+
+Transfo number: 0
+Transfo inputs: 7 7 2 4 
+Transfo ouputs: 7 7 2 4 
+Arith number: 0
+Arith inputs: 7 7 2 4 
+Arith ouputs: 7 7 2 4 
+Agreg number: 1
+Agreg inputs: 7 7 2 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+8 1 4 7 
+
+Transfo number: 0
+Transfo inputs: 8 1 4 7 
+Transfo ouputs: 8 1 4 7 
+Arith number: 0
+Arith inputs: 8 1 4 7 
+Arith ouputs: 8 1 4 7 
+Agreg number: 1
+Agreg inputs: 8 1 4 7 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+5 9 2 4 
+
+Transfo number: 0
+Transfo inputs: 5 9 2 4 
+Transfo ouputs: 5 9 2 4 
+Arith number: 0
+Arith inputs: 5 9 2 4 
+Arith ouputs: 5 9 2 4 
+Agreg number: 1
+Agreg inputs: 5 9 2 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+1 2 9 8 
+
+Transfo number: 0
+Transfo inputs: 1 2 9 8 
+Transfo ouputs: 1 2 9 8 
+Arith number: 0
+Arith inputs: 1 2 9 8 
+Arith ouputs: 1 2 9 8 
+Agreg number: 1
+Agreg inputs: 1 2 9 8 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+6 4 3 7 
+
+Transfo number: 0
+Transfo inputs: 6 4 3 7 
+Transfo ouputs: 6 4 3 7 
+Arith number: 0
+Arith inputs: 6 4 3 7 
+Arith ouputs: 6 4 3 7 
+Agreg number: 1
+Agreg inputs: 6 4 3 7 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+3 6 7 4 
+
+Transfo number: 0
+Transfo inputs: 3 6 7 4 
+Transfo ouputs: 3 6 7 4 
+Arith number: 0
+Arith inputs: 3 6 7 4 
+Arith ouputs: 3 6 7 4 
+Agreg number: 1
+Agreg inputs: 3 6 7 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+2 7 6 5 
+
+Transfo number: 0
+Transfo inputs: 2 7 6 5 
+Transfo ouputs: 2 7 6 5 
+Arith number: 0
+Arith inputs: 2 7 6 5 
+Arith ouputs: 2 7 6 5 
+Agreg number: 1
+Agreg inputs: 2 7 6 5 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+5 5 4 6 
+
+Transfo number: 0
+Transfo inputs: 5 5 4 6 
+Transfo ouputs: 5 5 4 6 
+Arith number: 0
+Arith inputs: 5 5 4 6 
+Arith ouputs: 5 5 4 6 
+Agreg number: 1
+Agreg inputs: 5 5 4 6 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+5 3 9 3 
+
+Transfo number: 0
+Transfo inputs: 5 3 9 3 
+Transfo ouputs: 5 3 9 3 
+Arith number: 0
+Arith inputs: 5 3 9 3 
+Arith ouputs: 5 3 9 3 
+Agreg number: 1
+Agreg inputs: 5 3 9 3 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+6 3 2 9 
+
+Transfo number: 0
+Transfo inputs: 6 3 2 9 
+Transfo ouputs: 6 3 2 9 
+Arith number: 0
+Arith inputs: 6 3 2 9 
+Arith ouputs: 6 3 2 9 
+Agreg number: 1
+Agreg inputs: 6 3 2 9 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+4 5 7 4 
+
+Transfo number: 0
+Transfo inputs: 4 5 7 4 
+Transfo ouputs: 4 5 7 4 
+Arith number: 0
+Arith inputs: 4 5 7 4 
+Arith ouputs: 4 5 7 4 
+Agreg number: 1
+Agreg inputs: 4 5 7 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+2 7 2 9 
+
+Transfo number: 0
+Transfo inputs: 2 7 2 9 
+Transfo ouputs: 2 7 2 9 
+Arith number: 0
+Arith inputs: 2 7 2 9 
+Arith ouputs: 2 7 2 9 
+Agreg number: 1
+Agreg inputs: 2 7 2 9 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 2 7 4 
+
+Transfo number: 0
+Transfo inputs: 7 2 7 4 
+Transfo ouputs: 7 2 7 4 
+Arith number: 0
+Arith inputs: 7 2 7 4 
+Arith ouputs: 7 2 7 4 
+Agreg number: 1
+Agreg inputs: 7 2 7 4 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+2 7 4 7 
+
+Transfo number: 0
+Transfo inputs: 2 7 4 7 
+Transfo ouputs: 2 7 4 7 
+Arith number: 0
+Arith inputs: 2 7 4 7 
+Arith ouputs: 2 7 4 7 
+Agreg number: 1
+Agreg inputs: 2 7 4 7 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+1 8 8 3 
+
+Transfo number: 0
+Transfo inputs: 1 8 8 3 
+Transfo ouputs: 1 8 8 3 
+Arith number: 0
+Arith inputs: 1 8 8 3 
+Arith ouputs: 1 8 8 3 
+Agreg number: 1
+Agreg inputs: 1 8 8 3 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+5 5 4 6 
+
+Transfo number: 0
+Transfo inputs: 5 5 4 6 
+Transfo ouputs: 5 5 4 6 
+Arith number: 0
+Arith inputs: 5 5 4 6 
+Arith ouputs: 5 5 4 6 
+Agreg number: 1
+Agreg inputs: 5 5 4 6 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+4 5 9 2 
+
+Transfo number: 0
+Transfo inputs: 4 5 9 2 
+Transfo ouputs: 4 5 9 2 
+Arith number: 0
+Arith inputs: 4 5 9 2 
+Arith ouputs: 4 5 9 2 
+Agreg number: 1
+Agreg inputs: 4 5 9 2 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+4 6 8 2 
+
+Transfo number: 0
+Transfo inputs: 4 6 8 2 
+Transfo ouputs: 4 6 8 2 
+Arith number: 0
+Arith inputs: 4 6 8 2 
+Arith ouputs: 4 6 8 2 
+Agreg number: 1
+Agreg inputs: 4 6 8 2 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+2 7 2 9 
+
+Transfo number: 0
+Transfo inputs: 2 7 2 9 
+Transfo ouputs: 2 7 2 9 
+Arith number: 0
+Arith inputs: 2 7 2 9 
+Arith ouputs: 2 7 2 9 
+Agreg number: 1
+Agreg inputs: 2 7 2 9 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+3 9 6 2 
+
+Transfo number: 0
+Transfo inputs: 3 9 6 2 
+Transfo ouputs: 3 9 6 2 
+Arith number: 0
+Arith inputs: 3 9 6 2 
+Arith ouputs: 3 9 6 2 
+Agreg number: 1
+Agreg inputs: 3 9 6 2 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+4 6 5 5 
+
+Transfo number: 0
+Transfo inputs: 4 6 5 5 
+Transfo ouputs: 4 6 5 5 
+Arith number: 0
+Arith inputs: 4 6 5 5 
+Arith ouputs: 4 6 5 5 
+Agreg number: 1
+Agreg inputs: 4 6 5 5 
+Compar number: 4
+Compar inputs: 20
+Network output: 0
+Hamming: 0
+7 8 5 4 
+
+Transfo number: 0
+Transfo inputs: 7 8 5 4 
+Transfo ouputs: 7 8 5 4 
+Arith number: 0
+Arith inputs: 7 8 5 4 
+Arith ouputs: 7 8 5 4 
+Agreg number: 1
+Agreg inputs: 7 8 5 4 
+Compar number: 4
+Compar inputs: 24
+Network output: 1
+Hamming: 2
+1 1 8 8 
+
+Transfo number: 0
+Transfo inputs: 1 1 8 8 
+Transfo ouputs: 1 1 8 8 
+Arith number: 0
+Arith inputs: 1 1 8 8 
+Arith ouputs: 1 1 8 8 
+Agreg number: 1
+Agreg inputs: 1 1 8 8 
+Compar number: 4
+Compar inputs: 18
+Network output: 1
+Hamming: 2
+6 6 6 6 
+
+Transfo number: 0
+Transfo inputs: 6 6 6 6 
+Transfo ouputs: 6 6 6 6 
+Arith number: 0
+Arith inputs: 6 6 6 6 
+Arith ouputs: 6 6 6 6 
+Agreg number: 1
+Agreg inputs: 6 6 6 6 
+Compar number: 4
+Compar inputs: 24
+Network output: 1
+Hamming: 2
+9 5 1 3 
+
+Transfo number: 0
+Transfo inputs: 9 5 1 3 
+Transfo ouputs: 9 5 1 3 
+Arith number: 0
+Arith inputs: 9 5 1 3 
+Arith ouputs: 9 5 1 3 
+Agreg number: 1
+Agreg inputs: 9 5 1 3 
+Compar number: 4
+Compar inputs: 18
+Network output: 1
+Hamming: 3
+5 4 9 1 
+
+Transfo number: 0
+Transfo inputs: 5 4 9 1 
+Transfo ouputs: 5 4 9 1 
+Arith number: 0
+Arith inputs: 5 4 9 1 
+Arith ouputs: 5 4 9 1 
+Agreg number: 1
+Agreg inputs: 5 4 9 1 
+Compar number: 4
+Compar inputs: 19
+Network output: 1
+Hamming: 2
+2 7 3 5 
+
+Transfo number: 0
+Transfo inputs: 2 7 3 5 
+Transfo ouputs: 2 7 3 5 
+Arith number: 0
+Arith inputs: 2 7 3 5 
+Arith ouputs: 2 7 3 5 
+Agreg number: 1
+Agreg inputs: 2 7 3 5 
+Compar number: 4
+Compar inputs: 17
+Network output: 1
+Hamming: 1
+4 9 7 9 
+
+Transfo number: 0
+Transfo inputs: 4 9 7 9 
+Transfo ouputs: 4 9 7 9 
+Arith number: 0
+Arith inputs: 4 9 7 9 
+Arith ouputs: 4 9 7 9 
+Agreg number: 1
+Agreg inputs: 4 9 7 9 
+Compar number: 4
+Compar inputs: 29
+Network output: 2
+Hamming: 2
+3 2 2 2 
+
+Transfo number: 0
+Transfo inputs: 3 2 2 2 
+Transfo ouputs: 3 2 2 2 
+Arith number: 0
+Arith inputs: 3 2 2 2 
+Arith ouputs: 3 2 2 2 
+Agreg number: 1
+Agreg inputs: 3 2 2 2 
+Compar number: 4
+Compar inputs: 9
+Network output: 2
+Hamming: 2
+8 3 4 7 
+
+Transfo number: 0
+Transfo inputs: 8 3 4 7 
+Transfo ouputs: 8 3 4 7 
+Arith number: 0
+Arith inputs: 8 3 4 7 
+Arith ouputs: 8 3 4 7 
+Agreg number: 1
+Agreg inputs: 8 3 4 7 
+Compar number: 4
+Compar inputs: 22
+Network output: 1
+Hamming: 1
+3 7 6 1 
+
+Transfo number: 0
+Transfo inputs: 3 7 6 1 
+Transfo ouputs: 3 7 6 1 
+Arith number: 0
+Arith inputs: 3 7 6 1 
+Arith ouputs: 3 7 6 1 
+Agreg number: 1
+Agreg inputs: 3 7 6 1 
+Compar number: 4
+Compar inputs: 17
+Network output: 1
+Hamming: 2
+5 6 8 5 
+
+Transfo number: 0
+Transfo inputs: 5 6 8 5 
+Transfo ouputs: 5 6 8 5 
+Arith number: 0
+Arith inputs: 5 6 8 5 
+Arith ouputs: 5 6 8 5 
+Agreg number: 1
+Agreg inputs: 5 6 8 5 
+Compar number: 4
+Compar inputs: 24
+Network output: 1
+Hamming: 2
+9 9 4 2 
+
+Transfo number: 0
+Transfo inputs: 9 9 4 2 
+Transfo ouputs: 9 9 4 2 
+Arith number: 0
+Arith inputs: 9 9 4 2 
+Arith ouputs: 9 9 4 2 
+Agreg number: 1
+Agreg inputs: 9 9 4 2 
+Compar number: 4
+Compar inputs: 24
+Network output: 1
+Hamming: 2
+7 3 5 6 
+
+Transfo number: 0
+Transfo inputs: 7 3 5 6 
+Transfo ouputs: 7 3 5 6 
+Arith number: 0
+Arith inputs: 7 3 5 6 
+Arith ouputs: 7 3 5 6 
+Agreg number: 1
+Agreg inputs: 7 3 5 6 
+Compar number: 4
+Compar inputs: 21
+Network output: 1
+Hamming: 3
+2 4 9 8 
+
+Transfo number: 0
+Transfo inputs: 2 4 9 8 
+Transfo ouputs: 2 4 9 8 
+Arith number: 0
+Arith inputs: 2 4 9 8 
+Arith ouputs: 2 4 9 8 
+Agreg number: 1
+Agreg inputs: 2 4 9 8 
+Compar number: 4
+Compar inputs: 23
+Network output: 1
+Hamming: 2
+6 2 1 7 
+
+Transfo number: 0
+Transfo inputs: 6 2 1 7 
+Transfo ouputs: 6 2 1 7 
+Arith number: 0
+Arith inputs: 6 2 1 7 
+Arith ouputs: 6 2 1 7 
+Agreg number: 1
+Agreg inputs: 6 2 1 7 
+Compar number: 4
+Compar inputs: 16
+Network output: 1
+Hamming: 2
+4 8 3 3 
+
+Transfo number: 0
+Transfo inputs: 4 8 3 3 
+Transfo ouputs: 4 8 3 3 
+Arith number: 0
+Arith inputs: 4 8 3 3 
+Arith ouputs: 4 8 3 3 
+Agreg number: 1
+Agreg inputs: 4 8 3 3 
+Compar number: 4
+Compar inputs: 18
+Network output: 1
+Hamming: 2
+1 1 7 9 
+
+Transfo number: 0
+Transfo inputs: 1 1 7 9 
+Transfo ouputs: 1 1 7 9 
+Arith number: 0
+Arith inputs: 1 1 7 9 
+Arith ouputs: 1 1 7 9 
+Agreg number: 1
+Agreg inputs: 1 1 7 9 
+Compar number: 4
+Compar inputs: 18
+Network output: 1
+Hamming: 2
+8 5 2 4 
+
+Transfo number: 0
+Transfo inputs: 8 5 2 4 
+Transfo ouputs: 8 5 2 4 
+Arith number: 0
+Arith inputs: 8 5 2 4 
+Arith ouputs: 8 5 2 4 
+Agreg number: 1
+Agreg inputs: 8 5 2 4 
+Compar number: 4
+Compar inputs: 19
+Network output: 1
+Hamming: 2
+9 3 4 8 
+
+Transfo number: 0
+Transfo inputs: 9 3 4 8 
+Transfo ouputs: 9 3 4 8 
+Arith number: 0
+Arith inputs: 9 3 4 8 
+Arith ouputs: 9 3 4 8 
+Agreg number: 1
+Agreg inputs: 9 3 4 8 
+Compar number: 4
+Compar inputs: 24
+Network output: 1
+Hamming: 3
+8 1 3 3 
+
+Transfo number: 0
+Transfo inputs: 8 1 3 3 
+Transfo ouputs: 8 1 3 3 
+Arith number: 0
+Arith inputs: 8 1 3 3 
+Arith ouputs: 8 1 3 3 
+Agreg number: 1
+Agreg inputs: 8 1 3 3 
+Compar number: 4
+Compar inputs: 15
+Network output: 1
+Hamming: 2
+7 7 2 1 
+
+Transfo number: 0
+Transfo inputs: 7 7 2 1 
+Transfo ouputs: 7 7 2 1 
+Arith number: 0
+Arith inputs: 7 7 2 1 
+Arith ouputs: 7 7 2 1 
+Agreg number: 1
+Agreg inputs: 7 7 2 1 
+Compar number: 4
+Compar inputs: 17
+Network output: 1
+Hamming: 1
+5 8 9 5 
+
+Transfo number: 0
+Transfo inputs: 5 8 9 5 
+Transfo ouputs: 5 8 9 5 
+Arith number: 0
+Arith inputs: 5 8 9 5 
+Arith ouputs: 5 8 9 5 
+Agreg number: 1
+Agreg inputs: 5 8 9 5 
+Compar number: 4
+Compar inputs: 27
+Network output: 1
+Hamming: 2
+1 5 1 2 
+
+Transfo number: 0
+Transfo inputs: 1 5 1 2 
+Transfo ouputs: 1 5 1 2 
+Arith number: 0
+Arith inputs: 1 5 1 2 
+Arith ouputs: 1 5 1 2 
+Agreg number: 1
+Agreg inputs: 1 5 1 2 
+Compar number: 4
+Compar inputs: 9
+Network output: 2
+Hamming: 2
+4 6 7 6 
+
+Transfo number: 0
+Transfo inputs: 4 6 7 6 
+Transfo ouputs: 4 6 7 6 
+Arith number: 0
+Arith inputs: 4 6 7 6 
+Arith ouputs: 4 6 7 6 
+Agreg number: 1
+Agreg inputs: 4 6 7 6 
+Compar number: 4
+Compar inputs: 23
+Network output: 1
+Hamming: 2
+3 4 6 4 
+
+Transfo number: 0
+Transfo inputs: 3 4 6 4 
+Transfo ouputs: 3 4 6 4 
+Arith number: 0
+Arith inputs: 3 4 6 4 
+Arith ouputs: 3 4 6 4 
+Agreg number: 1
+Agreg inputs: 3 4 6 4 
+Compar number: 4
+Compar inputs: 17
+Network output: 1
+Hamming: 2
+6 9 8 7 
+
+Transfo number: 0
+Transfo inputs: 6 9 8 7 
+Transfo ouputs: 6 9 8 7 
+Arith number: 0
+Arith inputs: 6 9 8 7 
+Arith ouputs: 6 9 8 7 
+Agreg number: 1
+Agreg inputs: 6 9 8 7 
+Compar number: 4
+Compar inputs: 30
+Network output: 2
+Hamming: 2
+2 2 5 9 
+
+Transfo number: 0
+Transfo inputs: 2 2 5 9 
+Transfo ouputs: 2 2 5 9 
+Arith number: 0
+Arith inputs: 2 2 5 9 
+Arith ouputs: 2 2 5 9 
+Agreg number: 1
+Agreg inputs: 2 2 5 9 
+Compar number: 4
+Compar inputs: 18
+Network output: 1
+Hamming: 2
+4 7 9 1 
+
+Transfo number: 0
+Transfo inputs: 4 7 9 1 
+Transfo ouputs: 4 7 9 1 
+Arith number: 0
+Arith inputs: 4 7 9 1 
+Arith ouputs: 4 7 9 1 
+Agreg number: 1
+Agreg inputs: 4 7 9 1 
+Compar number: 4
+Compar inputs: 21
+Network output: 1
+Hamming: 2
+6 5 3 9 
+
+Transfo number: 0
+Transfo inputs: 6 5 3 9 
+Transfo ouputs: 6 5 3 9 
+Arith number: 0
+Arith inputs: 6 5 3 9 
+Arith ouputs: 6 5 3 9 
+Agreg number: 1
+Agreg inputs: 6 5 3 9 
+Compar number: 4
+Compar inputs: 23
+Network output: 1
+Hamming: 2
+2 3 4 4 
+
+Transfo number: 0
+Transfo inputs: 2 3 4 4 
+Transfo ouputs: 2 3 4 4 
+Arith number: 0
+Arith inputs: 2 3 4 4 
+Arith ouputs: 2 3 4 4 
+Agreg number: 1
+Agreg inputs: 2 3 4 4 
+Compar number: 4
+Compar inputs: 13
+Network output: 1
+Hamming: 2
+1 1 8 6 
+
+Transfo number: 0
+Transfo inputs: 1 1 8 6 
+Transfo ouputs: 1 1 8 6 
+Arith number: 0
+Arith inputs: 1 1 8 6 
+Arith ouputs: 1 1 8 6 
+Agreg number: 1
+Agreg inputs: 1 1 8 6 
+Compar number: 4
+Compar inputs: 16
+Network output: 1
+Hamming: 2
+8 6 7 8 
+
+Transfo number: 0
+Transfo inputs: 8 6 7 8 
+Transfo ouputs: 8 6 7 8 
+Arith number: 0
+Arith inputs: 8 6 7 8 
+Arith ouputs: 8 6 7 8 
+Agreg number: 1
+Agreg inputs: 8 6 7 8 
+Compar number: 4
+Compar inputs: 29
+Network output: 2
+Hamming: 2
+3 9 2 2 
+
+Transfo number: 0
+Transfo inputs: 3 9 2 2 
+Transfo ouputs: 3 9 2 2 
+Arith number: 0
+Arith inputs: 3 9 2 2 
+Arith ouputs: 3 9 2 2 
+Agreg number: 1
+Agreg inputs: 3 9 2 2 
+Compar number: 4
+Compar inputs: 16
+Network output: 1
+Hamming: 1
+7 8 6 5 
+
+Transfo number: 0
+Transfo inputs: 7 8 6 5 
+Transfo ouputs: 7 8 6 5 
+Arith number: 0
+Arith inputs: 7 8 6 5 
+Arith ouputs: 7 8 6 5 
+Agreg number: 1
+Agreg inputs: 7 8 6 5 
+Compar number: 4
+Compar inputs: 26
+Network output: 1
+Hamming: 1
+9 2 5 3 
+
+Transfo number: 0
+Transfo inputs: 9 2 5 3 
+Transfo ouputs: 9 2 5 3 
+Arith number: 0
+Arith inputs: 9 2 5 3 
+Arith ouputs: 9 2 5 3 
+Agreg number: 1
+Agreg inputs: 9 2 5 3 
+Compar number: 4
+Compar inputs: 19
+Network output: 1
+Hamming: 3
+5 4 1 7 
+
+Transfo number: 0
+Transfo inputs: 5 4 1 7 
+Transfo ouputs: 5 4 1 7 
+Arith number: 0
+Arith inputs: 5 4 1 7 
+Arith ouputs: 5 4 1 7 
+Agreg number: 1
+Agreg inputs: 5 4 1 7 
+Compar number: 4
+Compar inputs: 17
+Network output: 1
+Hamming: 2
+Handmade individual: 30.1  17 10000000000100001
