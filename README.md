@@ -26,8 +26,8 @@ $> ./run_xp.sh (then relax and wait for two weeks or so)
 
 7. Re-run Experiment 3\
 $> (in problems/sudoku folder)\
-/* Compile the three models first */\
-$> ./compile_sudoku_nocfn.sh ; ./compile_sudoku.sh ; ./compile_sudoku_handmade.sh\
+/* Compile the four models first */\
+$> ./compile_sudoku_nocfn.sh ; ./compile_sudoku.sh ; ./compile_sudoku_hardcoded.sh ; ./compile_sudoku_handmade.sh\
 $> ./run_sudoku_xp.sh (then relax and wait for 10 minutes or so)
 
 8. Analyse result files from Experiments 1 and 2\
