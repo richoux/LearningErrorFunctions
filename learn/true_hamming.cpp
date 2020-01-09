@@ -270,13 +270,15 @@ void ad()
 		std::iota( start_config.begin(), start_config.end(), 1 );
 		output_file.open( output_file_path );
 
-		for( int i = 0; i < 25; ++i )
+		output_file << "20000\n";
+		
+		for( int i = 0; i < 10000; ++i )
 		{
 			rng.shuffle( start_config );
 			write( 0, start_config );
 		}
 
-		for( int i = 0; i < 75; ++i )
+		for( int i = 0; i < 10000; ++i )
 		{
 			rng.shuffle( start_config );
 			std::copy( start_config.begin(), start_config.end(), config.begin() );
@@ -313,9 +315,10 @@ void le()
 		params_value = std::accumulate( config.begin(), config.end(), 0 );
 
 		output_file.open( output_file_path );
+		output_file << "20000\n";
 		write( 0, config );
 
-		for( int i = 0; i < 24; ++i )
+		for( int i = 0; i < 9999; ++i )
 		{
 			int index = rng.uniform( 0, nb_vars - 2 );
 			if( config[ index ] < max_value && config[ index + 1 ] > 1 )
@@ -326,7 +329,7 @@ void le()
 			write( 0, config );
 		}
 
-		for( int i = 0; i < 75; ++i )
+		for( int i = 0; i < 10000; ++i )
 		{
 			int nb_changes = rng.uniform( 1, 30 );
 			for( int j = 0; j < nb_changes; ++j )
@@ -564,8 +567,9 @@ void cm()
 		vector<int> config( nb_vars );
 
 		output_file.open( output_file_path );
+		output_file << "20000\n";
 
-		for( int i = 0; i < 25; ++i )
+		for( int i = 0; i < 10000; ++i )
 		{
 			rng.generate( config, 1, max_value );
 			std::transform( config.begin(),
@@ -575,7 +579,7 @@ void cm()
 			write( 0, config );
 		}
 
-		for( int i = 0; i < 75; ++i )
+		for( int i = 0; i < 10000; ++i )
 		{
 			rng.generate( config, 1, max_value );
 			int nb_changes = rng.uniform( 1, 30 );

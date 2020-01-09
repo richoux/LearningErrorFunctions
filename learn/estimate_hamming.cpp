@@ -150,6 +150,8 @@ int main(int argc, char **argv)
 	cout << "Estimation done. Writing it in " << output_file_path << "\n";
 	output_file.open( output_file_path );
 
+	output_file << number_samplings << "\n";
+	
 	for( auto tuple : cost_map )
 	{
 		auto config = revert( tuple.first );
