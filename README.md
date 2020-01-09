@@ -12,29 +12,29 @@ $> ./bin/learn_cf_ga (and many options, type -h first to have them)
 $> (in learn folder)\
 $> ./bin/learn_cf_ga -i spaces/the_file_you_want (plus many other options, type -h first to have them)
 
-3bis. Run the main program to learn Cost Functions using precomputed **complete** constraint spaces.\
+4. Run the main program to learn Cost Functions using precomputed **complete** constraint spaces.\
 $> (in learn folder)\
 $> ./bin/learn_cf_ga -ci spaces/complete_the_file_you_want (plus many other options, type -h first to have them)
 
-4. Re-run Experiment 1\
+5. Re-run Experiment 1\
 $> (in learn folder)\
 $> ./run_complete_space_xp.sh (then relax and wait for one hour or so)
 
-5. Re-run Experiment 2\
+6. Re-run Experiment 2\
 $> (in learn folder)\
 $> ./run_xp.sh (then relax and wait for two weeks or so)
 
-6. Re-run Experiment 3\
+7. Re-run Experiment 3\
 $> (in problems/sudoku folder)\
 /* Compile the three models first */\
 $> ./compile_sudoku_nocfn.sh ; ./compile_sudoku.sh ; ./compile_sudoku_handmade.sh\
 $> ./run_sudoku_xp.sh (then relax and wait for 10 minutes or so)
 
-7. Analyse result files from Experiments 1 and 2\
+8. Analyse result files from Experiments 1 and 2\
 $> (in learn folder)\
 $> ./analyse_runs.sh results/the_file_you_want
 
-8. Analyse result files from Experiment 3\
+9. Analyse result files from Experiment 3\
 $> (in problems/sudoku folder)\
 $> ./analyse_results.rb results/the_file_you_want
 
