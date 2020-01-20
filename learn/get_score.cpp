@@ -284,11 +284,16 @@ int main(int argc, char **argv)
 		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
 		input_file.open( input_file_path );
 
+		getline( input_file, line );
+		stringstream line_stream( line );
+		int number_samplings;
+		line_stream >> number_samplings;
+
 		int number;
 		int index = 0;
 		
 		// loading solutions
-		for( int i = 0; i < 100; ++i )
+		for( int i = 0; i < number_samplings; ++i )
 		{
 			getline( input_file, line );
 			auto delimiter = line.find(" : ");

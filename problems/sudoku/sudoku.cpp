@@ -13,6 +13,8 @@
 #include "../../constraints/all-diff_handmade.hpp"
 #elif defined NOCFN
 #include "../../constraints/all-diff_no-cfn.hpp"
+#elif defined HARDCODED
+#include "../../constraints/all-diff_hardcoded.hpp"
 #else
 #include "../../constraints/all-diff.hpp"
 #endif
