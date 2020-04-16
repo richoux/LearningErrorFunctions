@@ -1,9 +1,9 @@
 #include <algorithm>
 
 #include "linear-eq.hpp"
-#include "../learn/function_to_learn_cppn.hpp" // for number_functions
+#include "../learn/function_to_learn_icn.hpp" // for number_functions
 
-// defined in cfn/function_to_learn_cppn.cpp
+// defined in cfn/function_to_learn_icn.cpp
 double intermediate_g( const vector<double>& inputs,
                        const vector<double>& params,
                        const vector<int>& weights,
