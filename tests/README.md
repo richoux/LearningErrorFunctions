@@ -1,0 +1,1 @@
+Be aware that many tests in this folder are obsolete and won't even compile: these tests were used during development but do not necessarily fit the final version of the code.

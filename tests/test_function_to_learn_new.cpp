@@ -5,14 +5,14 @@
 #include <vector>
 #include <random>
 
-#include "../learn/function_to_learn_cppn.hpp"
+#include "../learn/function_to_learn_icn.hpp"
 #include "../utils/convert.hpp"
 
 #include "../utils/randutils.hpp"
 
 using namespace std;
 
-// in function_to_learn_cppn.cpp
+// in function_to_learn_icn.cpp
 void interpreter_transformation( int number, const vector<double>& inputs, vector<double>& outputs );
 void interpreter_comparison( int number, const vector<double>& inputs, vector<double>& outputs, double parameter );
 void interpreter_comparison( int number, const vector<double>& inputs, vector<double>& outputs, double parameter_1, double parameter_2 );

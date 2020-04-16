@@ -7,7 +7,7 @@
 // #include <iostream>
 // #include <iterator>
 
-#include "function_to_learn_cppn.hpp"
+#include "function_to_learn_icn.hpp"
 
 void interpreter_transformation( const int& number,
                                  const vector<double>& inputs,
