@@ -3,12 +3,12 @@
 
 #include <ghost/variable.hpp>
 
-#include "../learn/function_to_learn_cppn.hpp"
+#include "../learn/function_to_learn_icn.hpp"
 
 using namespace std;
 using namespace ghost;
 
-// in function_to_learn_cppn.cpp
+// in function_to_learn_icn.cpp
 void interpreter( int number, const vector<double>& inputs, vector<double>& outputs, int );
 void compute( int LO, const vector<double>& inputs, const vector<int>& weights, vector<double>& outputs, int );
 double sigmoid( double x );

@@ -14,7 +14,7 @@
 
 // code from the CFN version
 //-----------------------------------------------------------------------------
-#include "function_to_learn_cppn.hpp" // for number_functions
+#include "function_to_learn_icn.hpp" // for number_functions
 
 #include "../utils/randutils.hpp"
 #include "../utils/metrics.hpp"

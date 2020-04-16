@@ -28,8 +28,8 @@ BINDIR=bin
 # Files
 #SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
 SOURCES=sudoku.cpp ../../constraints/all-diff.cpp
-ifeq ($(MYFLAGS),-DCPPN)
-	SOURCES+=../../learn/function_to_learn_cppn.cpp
+ifeq ($(MYFLAGS),-DICN)
+	SOURCES+=../../learn/function_to_learn_icn.cpp
 endif
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
