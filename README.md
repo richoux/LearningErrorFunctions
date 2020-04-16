@@ -109,7 +109,7 @@ This will output the sum of test errors over the 20,000 test configurations. In 
 
 ## root
 
-* learn: main folder (CPPN learned via GA)
+* learn: main folder (ICN learned via GA)
 * constraints: different constraints to study
 * tests: handmade test files (not well-defined unit tests)
 * utils: get next configuration, random lib, Latin Hypercube Sampling, ...
