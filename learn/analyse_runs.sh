@@ -26,7 +26,7 @@ do
 				solutions[$to_consider]=1
 		fi
 done < "$1"
-
+		
 sorted_solutions=$(for k in "${!solutions[@]}"
 do
     echo $k ${solutions[$k]}
@@ -35,12 +35,35 @@ sort -rn -k2)
 
 echo "${sorted_solutions[@]}"
 
+filename=${1%.*}
+
+IFS=- read var1 var2 var3 var4 <<< $filename
+
+if [[ $var1 == *"complete"* ]]; then
+		nb_var=${var3}
+		domain_size=${var4}
+else
+		nb_var=${var2}
+		domain_size=${var3}
+fi
+space_size=$((domain_size ** nb_var))
+
 med=$(sort -g costfile | awk -f median.awk)
-echo "Median: $med"
+med_int=${med%.*}
+# med_int=$(($med_int / $space_size))
+med_int=$(bc <<<"scale=3;$med_int/$space_size")
+
+echo "Median: $med_int"
+
+std_dev=$(cat costfile | awk -F' ' '{sum+=$1; sumsq+=$1*$1} END {print sqrt(sumsq/NR - (sum/NR)^2)}')
+
 rm -f costfile
 
 cost=$(echo "scale=3; $sum/100" | bc)
-echo "Mean: $cost"
+cost_int=${cost%.*}
+cost_int=$(bc <<<"scale=3;$cost_int/$space_size")
+echo "Mean: $cost_int"
+echo "Standard deviation: $std_dev"
 
 split=(${sorted_solutions[@]})
 echo 
