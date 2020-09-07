@@ -37,16 +37,16 @@ echo "${sorted_solutions[@]}"
 
 filename=${1%.*}
 
-IFS=- read var1 var2 var3 var4 <<< $filename
+IFS=- read var1 var2 var3 var4 var5 <<< $filename
 
 if [[ $var1 == *"complete"* ]]; then
 		nb_var=${var3}
 		domain_size=${var4}
+		space_size=$((domain_size ** nb_var))
 else
-		nb_var=${var2}
-		domain_size=${var3}
+		space_size=200
 fi
-space_size=$((domain_size ** nb_var))
+echo "space_size = $space_size"
 
 med=$(sort -g costfile | awk -f median.awk)
 med_int=${med%.*}
@@ -55,15 +55,17 @@ med_int=$(bc <<<"scale=3;$med_int/$space_size")
 
 echo "Median: $med_int"
 
-std_dev=$(cat costfile | awk -F' ' '{sum+=$1; sumsq+=$1*$1} END {print sqrt(sumsq/NR - (sum/NR)^2)}')
-
-rm -f costfile
+# plop=$(cat costfile)
+# echo $plop | tr " " ", "
 
 cost=$(echo "scale=3; $sum/100" | bc)
 cost_int=${cost%.*}
 cost_int=$(bc <<<"scale=3;$cost_int/$space_size")
+std_dev=$(cat costfile | awk -F' ' '{sum+=$1; sumsq+=$1*$1} END {print sqrt(($med*$med*NR - $med*sum + sumsq)/(NR-1))}')
+std_dev=$(bc <<<"scale=3;$std_dev/$space_size")
 echo "Mean: $cost_int"
-echo "Standard deviation: $std_dev"
+echo "Sample standard deviation: $std_dev"
+rm -f costfile
 
 split=(${sorted_solutions[@]})
 echo 
