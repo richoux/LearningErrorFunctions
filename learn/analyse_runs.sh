@@ -46,7 +46,7 @@ if [[ $var1 == *"complete"* ]]; then
 		domain_size=${var4}
 		space_size=$((domain_size ** nb_var))
 else
-		space_size=200
+		space_size=$((2*$var4))
 fi
 echo "space_size = $space_size"
 
@@ -88,18 +88,18 @@ echo "Model of the most commun cost function ${split[0]}:"
 echo 
 ./bin/print_model "${split[0]}"
 
-if [[ ${split[2]} ]]; then
-		echo 
-		echo "//////////"
-		echo "Model of the second most commun cost function ${split[2]}:"
-		echo 
-		./bin/print_model "${split[2]}"
-fi
+# if [[ ${split[2]} ]]; then
+# 		echo 
+# 		echo "//////////"
+# 		echo "Model of the second most commun cost function ${split[2]}:"
+# 		echo 
+# 		./bin/print_model "${split[2]}"
+# fi
 
-if [[ ${split[4]} ]]; then
-		echo 
-		echo "//////////"
-		echo "Model of the third most commun cost function ${split[4]}:"
-		echo 
-		./bin/print_model "${split[4]}"
-fi
+# if [[ ${split[4]} ]]; then
+# 		echo 
+# 		echo "//////////"
+# 		echo "Model of the third most commun cost function ${split[4]}:"
+# 		echo 
+# 		./bin/print_model "${split[4]}"
+# fi
