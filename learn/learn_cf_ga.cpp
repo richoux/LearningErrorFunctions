@@ -573,22 +573,59 @@ int main_function(int argc, char **argv)
 	if( !xp )
 		cout << "FINAL Population\n" << pop << "\n";
 
-	eval(pop[0]);
+	auto best_fitness = pop[0].fitness();
+	int number_ex_aequo;
+	for( number_ex_aequo = 0 ; pop[number_ex_aequo].fitness() == best_fitness ; ++number_ex_aequo ) ; // empty loop
+
+	std::map<std::string,int> count_vectors;
+	for( int i = 0; i < number_ex_aequo ; ++i )
+	{
+		std::ostringstream vector_stream;
+		std::copy(pop[i].begin(), pop[i].end(), std::ostream_iterator<bool>(vector_stream, ""));
+		++count_vectors[ vector_stream.str() ];
+	}
+
+	// cout << "Map:\n";
+	// for( auto& m : count_vectors )
+	// 	cout << m.first << " " << m.second << "\n";
+	// cout << "----------\n";
+
+	std::string more_frequent_vector;
+	int highest_frequency = 0;
+	
+	for( auto& m : count_vectors )
+		if( highest_frequency < m.second )
+		{
+			highest_frequency = m.second;
+			more_frequent_vector = m.first;
+		}
+
+	//eval(pop[0]);
 	
 	if( !xp )
 	{
-		cout << "Best individual: " << pop[0]
+		cout << "Best individual: " << more_frequent_vector << " (" << highest_frequency << ")"
 		     << "\nHas parameters: " << has_parameters
 		     << "\nNumber of variables: " << nb_vars
 		     << "\nMax domain value: " << max_value
 		     << "\nNumber samplings: " << samplings
 		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
-	
-		print_model( pop[0] );
+
+		int index;
+		for( index = 0; index < number_ex_aequo ; ++index )
+		{
+			std::ostringstream vector_stream;
+			std::copy(pop[index].begin(), pop[index].end(), std::ostream_iterator<bool>(vector_stream, ""));
+			if( vector_stream.str().compare( more_frequent_vector ) == 0 )
+				break;
+		}
+		
+		
+		print_model( pop[index] );
 	}
 	else
-		cout << pop[0] << "\n";
+		cout << more_frequent_vector << " (" << highest_frequency << ")\n";
 
 	return EXIT_SUCCESS;
 }
