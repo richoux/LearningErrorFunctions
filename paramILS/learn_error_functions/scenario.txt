@@ -1,0 +1,25 @@
+# algorithm path
+execdir = .
+# any output is put in the "output" folder
+outdir = output
+
+# algorithm command line
+algo = ruby wrapper.rb
+# parameters are detailed here
+paramfile = parameters.txt
+
+# instance files
+instance_file = training_set.txt
+test_instance_file = validation_set.txt
+# if the algorithm is not deterministic, seeding is used
+# 1=true ; 0=false
+deterministic = 0
+
+# quality | time
+run_obj = quality
+# use arithmetic mean
+overall_obj = mean
+# target algorithms maximum runtime
+cutoff_time = 1
+# configurator stops after 60 seconds
+tunerTimeout = 60
