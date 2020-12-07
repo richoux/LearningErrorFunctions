@@ -1,2 +1,5 @@
--c ol -n 3 -d 11 -p 3 -ci ../spaces/complete_ol-3-11-3.txt --xp
--c lt -n 7 -d 8 -ci spaces/complete_lt-7-8.txt --xp
+../../learn/spaces/complete_ad-6-6.txt
+../../learn/spaces/complete_cm-6-6-3.txt
+../../learn/spaces/complete_le-5-8-28.txt
+../../learn/spaces/complete_lt-5-8.txt
+../../learn/spaces/complete_ol-4-15-3.txt

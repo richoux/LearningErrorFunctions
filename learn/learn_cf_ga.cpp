@@ -5,6 +5,8 @@
 #include <sstream>
 
 #include <ctime>
+#include <chrono>
+#include <cmath>
 #include <vector>
 #include <string>
 #include <map>
@@ -51,8 +53,20 @@ bool latin_sampling;
 string input_file_path;
 ifstream input_file;
 string line, string_number;
+int number_configurations_in_file;
 bool xp;
 bool debug;
+bool hyperparameters_tuning;
+
+// GA hyper-parameters
+unsigned int SEED;
+unsigned int T_SIZE;   // size for tournament selection
+unsigned int VEC_SIZE; // Number of bits in genotypes
+unsigned int POP_SIZE; // Size of population
+unsigned int MAX_GEN;  // Maximum number of generation before STOP
+float CROSS_RATE;      // Crossover rate
+float MUT_RATE;        // mutation rate
+float REP_RATE;				 // replacement rate
 
 randutils::mt19937_rng rng_utils;
 
@@ -71,6 +85,14 @@ void usage( char **argv )
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n"
+	     << "--paramILS to print on the screen hyperparameters tuning with paramILS.\n"
+	     << "--tournament T_SIZE, size for tournament selection.\n"
+	     << "--pop POP_SIZE, size of the population.\n"
+	     << "--maxgen MAX_GEN, maximum number of generation before stopping the learning.\n"
+	     << "--crossover CROSS_RATE, the crossover rate in [0,1].\n"
+	     << "--mutation MUT_RATE, the mutation rate in [0,1]\n"
+	     << "--replacement REP_RATE, the replacement rate in [0,1].\n"
+	     << "--seed SEED, the seed for the pseudo-random generator.\n"
 	     << "--debug.\n";
 }
 
@@ -187,7 +209,10 @@ void fix( Indi& indi )
 //-----------------------------------------------------------------------------
 int main_function(int argc, char **argv)
 {
-	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-ci", "--complete_input", "-p", "--params" } );
+	auto start = std::chrono::steady_clock::now();
+	number_configurations_in_file = 0;
+	
+	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-ci", "--complete_input", "-p", "--params", "--tournament", "--pop", "--maxgen", "--crossover", "--mutation", "--replacement", "--seed" } );
 	cmdl.parse( argc, argv );
 	
 	if( cmdl[ { "-h", "--help"} ] )
@@ -224,11 +249,16 @@ int main_function(int argc, char **argv)
 		xp = true;
 	else
 		xp = false;
-
+		
 	if( cmdl[ { "--debug" } ] )
 		debug = true;
 	else
 		debug = false;
+
+	if( cmdl[ { "--paramILS" } ] )
+		hyperparameters_tuning = true;
+	else
+		hyperparameters_tuning = false;
 
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
 	    ||
@@ -246,35 +276,35 @@ int main_function(int argc, char **argv)
 	{
 		if( constraint.compare("ad") == 0 )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Constraint: AllDiff.\n";
 			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("le") == 0 )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Constraint: Linear equation.\n";
 			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Constraint: Less than.\n";
 			concept = make_unique<LessThanConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("ol") == 0 )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Constraint: Overlap 1D.\n";
 			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
 		}
 		
 		if( constraint.compare("cm") == 0 )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Constraint: Connection Minimum (greater-than version).\n";
 			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
@@ -287,7 +317,7 @@ int main_function(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
-		if( !xp )
+		if( !xp && !hyperparameters_tuning )
 			cout << "Loading data from " << input_file_path << "\n";
 
 		cmdl( {"i", "input"} ) >> input_file_path;
@@ -295,12 +325,11 @@ int main_function(int argc, char **argv)
 
 		getline( input_file, line );
 		stringstream line_stream( line );
-		int number_samplings;
 		int number;
-		line_stream >> number_samplings;
+		line_stream >> number_configurations_in_file;
 
 		// loading solutions
-		for( int i = 0; i < number_samplings; ++i )
+		for( int i = 0; i < number_configurations_in_file; ++i )
 		{
 			getline( input_file, line );
 			stringstream line_stream( line );
@@ -313,7 +342,7 @@ int main_function(int argc, char **argv)
 		}
 		
 		// loading not solutions
-		for( int i = 0; i < number_samplings; ++i )
+		for( int i = 0; i < number_configurations_in_file; ++i )
 		{
 			getline( input_file, line );
 			stringstream line_stream( line );
@@ -329,7 +358,7 @@ int main_function(int argc, char **argv)
 	}
 	else if( cmdl( {"ci", "complete_input"} ) )
 	{
-		if( !xp )
+		if( !xp && !hyperparameters_tuning )
 			cout << "Loading data from " << input_file_path << "\n";
 
 		cmdl( {"ci", "complete_input"} ) >> input_file_path;
@@ -347,6 +376,7 @@ int main_function(int argc, char **argv)
 			stringstream line_stream( line );
 			while( line_stream >> string_number )
 			{
+				++number_configurations_in_file;
 				stringstream number_stream( string_number );
 				number_stream >> number;
 				if( solution_token.compare("1") == 0 )
@@ -362,44 +392,47 @@ int main_function(int argc, char **argv)
 	{
 		if( latin_sampling )
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Perform Latin Hypercube sampling.\n";
 			cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
 		else
 		{
-			if( !xp )
+			if( !xp && !hyperparameters_tuning )
 				cout << "Perform Monte Carlo sampling.\n";
 			cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
 	}
 
-	
-	// all parameters are hard-coded!
-	const unsigned int SEED = time(0);
-	const unsigned int T_SIZE = 2;        // size for tournament selection
-	const unsigned int VEC_SIZE = number_units_transfo + number_units_compar + number_units_aggreg + number_units_arith;    // Number of bits in genotypes
-	const unsigned int POP_SIZE = debug ? 10 : 100;  // Size of population
-	const unsigned int MAX_GEN = debug ? 100 : 400;  // Maximum number of generation before STOP
-	const float CROSS_RATE = 0.8;          // Crossover rate
-	const float MUT_RATE = 1.0;              // mutation rate
-	const float REP_RATE = 0.05;				// replacement rate
+	cmdl( {"tournament"}, 2) >> T_SIZE;
+	cmdl( {"pop"}, 100) >> POP_SIZE;
+	cmdl( {"maxgen"}, 400) >> MAX_GEN;
+	cmdl( {"crossover"}, 0.8) >> CROSS_RATE;
+	cmdl( {"mutation"}, 1.0) >> MUT_RATE;
+	cmdl( {"replacement"}, 0.05) >> REP_RATE;
+	cmdl( {"seed"}, time(0)) >> SEED;
+	////////////////////////////
+	//  Arguments parsing over
+	////////////////////////////
 
-	//////////////////////////
-	//  Random seed
-	//////////////////////////
-	//reproducible random seed: if you don't change SEED above, 
-	// you'll aways get the same result, NOT a random run
+	VEC_SIZE = number_units_transfo + number_units_compar + number_units_aggreg + number_units_arith;
 	rng.reseed(SEED);
 	
 	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
-	if( !xp )
+	if( !xp && !hyperparameters_tuning )
+	{
 		cout << "Number of variables: " << nb_vars
-		     << "\nMax domain value: " << max_value
-		     << "\nSampling samplings: " << samplings
-		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
+		     << "\nMax domain value: " << max_value;
+
+		if( number_configurations_in_file == 0 )
+			cout << "\nNumber of training samplings: " << samplings;
+		else
+			cout << "\nNumber of configurations in the training set: " << number_configurations_in_file;
+
+		cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
+	}
 
 /////////////////
 #if defined DEBUG
@@ -447,7 +480,7 @@ int main_function(int argc, char **argv)
 	{
 		Indi v;                    // void individual, to be filled
 
-		for (unsigned ivar=0; ivar<VEC_SIZE; ivar++)
+		for( unsigned ivar = 0; ivar < VEC_SIZE; ++ivar )
 		{
 			bool r = rng.flip(); // new value, random in {0,1}
 			v.push_back(r);          // append that random value to v
@@ -457,21 +490,23 @@ int main_function(int argc, char **argv)
 		eval(v);                                // evaluate it
 		pop.push_back(v);              // and put it in the population
 	}
+	
 	// sort pop before printing it!
 	pop.sort();
-	// Print (sorted) intial population (raw printout)
-	if( !xp )
+
+  // print (sorted) intial population (raw printout)
+	if( !xp && !hyperparameters_tuning )
 		cout << "Initial Population\n" << pop;
 
 	/////////////////////////////////////
 	// selection and replacement
 	////////////////////////////////////
 	// The robust tournament selection
-	eoDetTournamentSelect<Indi> selectOne(T_SIZE);            // T_SIZE in [2,POP_SIZE]
+	eoDetTournamentSelect<Indi> selectOne( T_SIZE );            // T_SIZE in [2,POP_SIZE]
 	// is now encapsulated in a eoSelectPerc (entage)
 	eoSelectPerc<Indi> select( selectOne );// by default rate==1
 	eoElitism<Indi> replace( REP_RATE );
-	eoDetTournamentTruncate<Indi> tournament(T_SIZE);
+	eoDetTournamentTruncate<Indi> tournament( T_SIZE );
 	
 	//////////////////////////////////////
 	// The variation operators
@@ -502,24 +537,24 @@ int main_function(int argc, char **argv)
 		eoCheckPoint<Indi> checkpoint(continuator);
 
 		// Create a counter parameter
-		eoValueParam<unsigned> generationCounter(0, "Gen.");
+		eoValueParam<unsigned> generationCounter( 0, "Gen." );
 
 		// Create an incrementor (sub-class of eoUpdater). Note that the 
 		// parameter's value is passed by reference, 
 		// so every time the incrementer is updated (every generation),
 		// the data in generationCounter will change.
-		eoIncrementor<unsigned> increment(generationCounter.value());
+		eoIncrementor<unsigned> increment( generationCounter.value() );
 		// Add it to the checkpoint, 
 		// so the counter is updated (here, incremented) every generation
-		checkpoint.add(increment);
+		checkpoint.add( increment );
 		// now some statistics on the population:
 		// Best fitness in population
 		eoBestFitnessStat<Indi> bestStat;
 		// Second moment stats: average and stdev
 		eoSecondMomentStats<Indi> SecondStat;
 		// Add them to the checkpoint to get them called at the appropriate time
-		checkpoint.add(bestStat);
-		checkpoint.add(SecondStat);
+		checkpoint.add( bestStat );
+		checkpoint.add( SecondStat );
 		// // The Stdout monitor will print parameters to the screen ...
 		// eoStdoutMonitor monitor();
 
@@ -531,27 +566,27 @@ int main_function(int argc, char **argv)
 		// monitor.add(bestStat);
 		// monitor.add(SecondStat);
 		// A file monitor: will print parameters to ... a File, yes, you got it!
-		eoFileMonitor fileMonitor("stats.xg", " ");
+		eoFileMonitor fileMonitor( "stats.xg", " " );
 
 		// the checkpoint mechanism can handle multiple monitors
-		checkpoint.add(fileMonitor);
+		checkpoint.add( fileMonitor );
 		// the fileMonitor can monitor parameters, too, but you must tell it!
-		fileMonitor.add(generationCounter);
-		fileMonitor.add(bestStat);
-		fileMonitor.add(SecondStat);
+		fileMonitor.add( generationCounter );
+		fileMonitor.add( bestStat );
+		fileMonitor.add( SecondStat );
 		// Last type of item the eoCheckpoint can handle: state savers:
 		eoState outState;
 		// Register the algorithm into the state
-		outState.registerObject(pop);
-		outState.registerObject(rng);
+		outState.registerObject( pop );
+		outState.registerObject( rng );
 		// and feed the state to state savers
     // save state every 40th  generation
-		eoCountedStateSaver stateSaver1(50, outState, "generation"); 
+		eoCountedStateSaver stateSaver1( 50, outState, "generation" ); 
 		// save state every 1 seconds 
-		eoTimedStateSaver    stateSaver2(1, outState, "time"); 
+		eoTimedStateSaver stateSaver2( 1, outState, "time" ); 
 		// Don't forget to add the two savers to the checkpoint
-		checkpoint.add(stateSaver1);
-		checkpoint.add(stateSaver2);
+		checkpoint.add( stateSaver1 );
+		checkpoint.add( stateSaver2 );
 		// and that's it for the (control and) output
 
 		continuator = checkpoint;
@@ -562,15 +597,14 @@ int main_function(int argc, char **argv)
 	////////////////////////////////////////
   // Easy EA requires
   // selection, transformation, eval, replacement, and stopping criterion
-	
 	eoEasyEA<Indi> gga( continuator, eval, select, transform, replace, tournament );
 
 	// Apply algo to pop - that's it!
-	gga(pop);
+	gga( pop );
  
 	// Print (sorted) intial population
 	pop.sort();
-	if( !xp )
+	if( !xp && !hyperparameters_tuning )
 		cout << "FINAL Population\n" << pop << "\n";
 
 	auto best_fitness = pop[0].fitness();
@@ -585,11 +619,6 @@ int main_function(int argc, char **argv)
 		++count_vectors[ vector_stream.str() ];
 	}
 
-	// cout << "Map:\n";
-	// for( auto& m : count_vectors )
-	// 	cout << m.first << " " << m.second << "\n";
-	// cout << "----------\n";
-
 	std::string more_frequent_vector;
 	int highest_frequency = 0;
 	
@@ -600,49 +629,61 @@ int main_function(int argc, char **argv)
 			more_frequent_vector = m.first;
 		}
 
-	//eval(pop[0]);
+	int training_size = number_configurations_in_file == 0 ? samplings : number_configurations_in_file;
+	int fitness_integer = static_cast<int>( floor( best_fitness ) );
+	double regularization_term = best_fitness - fitness_integer;
 	
-	if( !xp )
-	{
-		cout << "Best individual: " << more_frequent_vector << " (" << highest_frequency << ")"
-		     << "\nHas parameters: " << has_parameters
-		     << "\nNumber of variables: " << nb_vars
-		     << "\nMax domain value: " << max_value
-		     << "\nNumber samplings: " << samplings
-		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
-
-		int index;
-		for( index = 0; index < number_ex_aequo ; ++index )
-		{
-			std::ostringstream vector_stream;
-			std::copy(pop[index].begin(), pop[index].end(), std::ostream_iterator<bool>(vector_stream, ""));
-			if( vector_stream.str().compare( more_frequent_vector ) == 0 )
-				break;
-		}
-		
-		
-		print_model( pop[index] );
-	}
+	if( xp )
+		cout << more_frequent_vector << " " << highest_frequency << " " << static_cast<double>( fitness_integer ) / training_size << "\n";
 	else
-		cout << more_frequent_vector << " (" << highest_frequency << ")\n";
+		if( hyperparameters_tuning )
+		{
+			auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>( std::chrono::steady_clock::now() - start ).count();
+
+			cout << "final quality is " << static_cast<double>( fitness_integer ) / training_size << "\n"
+			     << "runtime is " << elapsed_time << "\n"
+			     << "seed is " << SEED << "\n"
+			     << "SUCCESS\n";
+		}
+		else
+		{
+			cout << "Best individual (frequency): " << more_frequent_vector << " (" << highest_frequency << ")"
+			     << "\nFitness on the whole training set: " << fitness_integer
+			     << "\nNormalized fitness: " << static_cast<double>( fitness_integer ) / training_size
+			     << "\nRegularization term: " << regularization_term
+			     << "\nHas parameters: " << ( has_parameters ? "true" : "false" )
+			     << "\nNumber of variables: " << nb_vars
+			     << "\nMax domain value: " << max_value;
+
+			if( number_configurations_in_file == 0 )
+				cout << "\nNumber of training samplings: " << samplings;
+			else
+				cout << "\nNumber of configurations in the training set: " << number_configurations_in_file;
+
+			cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
+			     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
+			
+			int index;
+			for( index = 0; index < number_ex_aequo ; ++index )
+			{
+				std::ostringstream vector_stream;
+				std::copy(pop[index].begin(), pop[index].end(), std::ostream_iterator<bool>(vector_stream, ""));
+				if( vector_stream.str().compare( more_frequent_vector ) == 0 )
+					break;
+			}
+		
+			print_model( pop[index] );
+		}
 
 	return EXIT_SUCCESS;
 }
+
 // A main that catches the exceptions
 int main(int argc, char **argv)
 {
-#ifdef _MSC_VER
-	//  rng.reseed(42);
-	int flag = _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF);
-	flag |= _CRTDBG_LEAK_CHECK_DF;
-	_CrtSetDbgFlag(flag);
-//    _CrtSetBreakAlloc(100);
-#endif
-	
 	try
 	{
-		return main_function(argc, argv);
+		return main_function( argc, argv );
 	}
 	catch(exception& e)
 	{

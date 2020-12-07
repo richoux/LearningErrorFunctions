@@ -1,0 +1,17 @@
+#size for tournament selection
+tournament {2, 3}[2]
+
+#population size 
+pop {30, 100}[100]
+
+#maximal number of generations
+maxgen {100, 400}[400]
+
+#crossover rate
+crossover {0.3, 0.8}[0.8]
+
+#mutation rate
+mutation {0.3, 1.0}[1.0]
+
+#replacement rate
+replacement {0.05, 0.15}[0.05]
