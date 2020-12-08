@@ -19,7 +19,5 @@ deterministic = 0
 run_obj = quality
 # use arithmetic mean
 overall_obj = mean
-# target algorithms maximum runtime
-cutoff_time = 1000
-# configurator stops after 60 seconds
-tunerTimeout = 60
+# configurator stops after 3 days and a half
+tunerTimeout = 302400
