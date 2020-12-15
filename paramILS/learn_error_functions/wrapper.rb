@@ -16,9 +16,13 @@ if params.key?("pop")
   cmd += " --pop #{params['pop']}"
 end
 
-if params.key?("maxgen")
-  cmd += " --maxgen #{params['maxgen']}"
+if params.key?("steady")
+  cmd += " --steady #{params['steady']}"
 end
+
+# if params.key?("maxgen")
+#   cmd += " --maxgen #{params['maxgen']}"
+# end
 
 if params.key?("crossover")
   cmd += " --crossover #{params['crossover']}"

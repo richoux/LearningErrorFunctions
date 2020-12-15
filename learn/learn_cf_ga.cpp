@@ -63,7 +63,8 @@ unsigned int SEED;
 unsigned int T_SIZE;   // size for tournament selection
 unsigned int VEC_SIZE; // Number of bits in genotypes
 unsigned int POP_SIZE; // Size of population
-unsigned int MAX_GEN;  // Maximum number of generation before STOP
+unsigned int STEADY_GEN;  // Number of generations with no improvements before STOP
+//unsigned int MAX_GEN;  // Maximum number of generation before STOP
 float CROSS_RATE;      // Crossover rate
 float MUT_RATE;        // mutation rate
 float REP_RATE;				 // replacement rate
@@ -88,7 +89,8 @@ void usage( char **argv )
 	     << "--paramILS to print on the screen hyperparameters tuning with paramILS.\n"
 	     << "--tournament T_SIZE, size for tournament selection.\n"
 	     << "--pop POP_SIZE, size of the population.\n"
-	     << "--maxgen MAX_GEN, maximum number of generation before stopping the learning.\n"
+	     << "--steady STEADY_GEN, number of generations with no improvements before stopping the learning.\n"
+		// << "--maxgen MAX_GEN, maximum number of generation before stopping the learning.\n"
 	     << "--crossover CROSS_RATE, the crossover rate in [0,1].\n"
 	     << "--mutation MUT_RATE, the mutation rate in [0,1]\n"
 	     << "--replacement REP_RATE, the replacement rate in [0,1].\n"
@@ -212,7 +214,7 @@ int main_function(int argc, char **argv)
 	auto start = std::chrono::steady_clock::now();
 	number_configurations_in_file = 0;
 	
-	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-ci", "--complete_input", "-p", "--params", "--tournament", "--pop", "--maxgen", "--crossover", "--mutation", "--replacement", "--seed" } );
+	argh::parser cmdl( { "-c", "--constraint", "-n", "--nb_vars", "-d", "--max_domain", "-s", "--sampling", "-i", "--input", "-ci", "--complete_input", "-p", "--params", "--tournament", "--pop", "--steady", "--crossover", "--mutation", "--replacement", "--seed" } );
 	cmdl.parse( argc, argv );
 	
 	if( cmdl[ { "-h", "--help"} ] )
@@ -406,7 +408,7 @@ int main_function(int argc, char **argv)
 
 	cmdl( {"tournament"}, 2) >> T_SIZE;
 	cmdl( {"pop"}, 100) >> POP_SIZE;
-	cmdl( {"maxgen"}, 400) >> MAX_GEN;
+	cmdl( {"steady"}, 5) >> STEADY_GEN;
 	cmdl( {"crossover"}, 0.8) >> CROSS_RATE;
 	cmdl( {"mutation"}, 1.0) >> MUT_RATE;
 	cmdl( {"replacement"}, 0.05) >> REP_RATE;
@@ -524,8 +526,11 @@ int main_function(int argc, char **argv)
 	// termination conditions: use more than one
 	/////////////////////////////////////
 	// stop after MAX_GEN generations
-	eoGenContinue<Indi> genCont( MAX_GEN );
-	eoCombinedContinue<Indi> continuator( genCont );
+	// eoGenContinue<Indi> genCont( MAX_GEN );
+
+	// does a minimum number of generations, then stops whenever a given number of generations takes place without improvement.
+	eoSteadyFitContinue<Indi> steadyFit( 50, STEADY_GEN); 
+	eoCombinedContinue<Indi> continuator( steadyFit );
 
 	if( debug )
 	{

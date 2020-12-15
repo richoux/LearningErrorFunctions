@@ -19,5 +19,5 @@ deterministic = 0
 run_obj = quality
 # use arithmetic mean
 overall_obj = mean
-# configurator stops after 60 seconds
-tunerTimeout = 1200
+# configurator stops after 300 seconds
+tunerTimeout = 300
