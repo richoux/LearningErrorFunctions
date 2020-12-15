@@ -639,7 +639,7 @@ int main_function(int argc, char **argv)
 	double regularization_term = best_fitness - fitness_integer;
 	
 	if( xp )
-		cout << more_frequent_vector << " " << highest_frequency << " " << static_cast<double>( fitness_integer ) / training_size << "\n";
+		cout << static_cast<double>( fitness_integer ) / training_size << " " << highest_frequency << " " << more_frequent_vector << "\n";
 	else
 		if( hyperparameters_tuning )
 		{
