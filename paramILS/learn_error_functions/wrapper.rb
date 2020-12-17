@@ -1,5 +1,14 @@
 #!/usr/bin/ruby
 
+# if we are using an older version of Ruby than 2.1 
+unless [].respond_to? :to_h
+  class Array
+    def to_h
+      Hash[self]
+    end
+  end
+end
+
 # parse all parameters
 instance = ARGV[0]
 runtime = ARGV[2].to_f
