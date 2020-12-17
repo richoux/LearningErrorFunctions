@@ -1,0 +1,5 @@
+../../learn/spaces/complete_ad-5-5.txt
+../../learn/spaces/complete_cm-3-11-8.txt
+../../learn/spaces/complete_le-3-11-23.txt
+../../learn/spaces/complete_lt-5-5.txt
+../../learn/spaces/complete_ol-3-8-3.txt
