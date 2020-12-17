@@ -20,9 +20,9 @@ if params.key?("steady")
   cmd += " --steady #{params['steady']}"
 end
 
-# if params.key?("maxgen")
-#   cmd += " --maxgen #{params['maxgen']}"
-# end
+if params.key?("mingen")
+  cmd += " --mingen #{params['mingen']}"
+end
 
 if params.key?("crossover")
   cmd += " --crossover #{params['crossover']}"
