@@ -7,8 +7,8 @@ pop {30, 100}[100]
 #maximal number of generations with plateau
 steady {2, 10}[10]
 
-##maximal number of generations
-##maxgen {100, 400}[400]
+#minimum number of generations
+mingen {200, 400}[400]
 
 #crossover rate
 crossover {0.3, 0.8}[0.8]
