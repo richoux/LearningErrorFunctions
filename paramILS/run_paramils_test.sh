@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./paramils --scenario-file test/scenario_test.txt --validation-runs 10
+./paramils --scenario-file test/scenario_test.txt --validation-runs 1
