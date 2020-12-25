@@ -1,0 +1,1 @@
+-crossover '0.4' -mingen '600' -mutation '0.6' -pop '200' -replacement '0.03' -steady '25' -tournament '2'

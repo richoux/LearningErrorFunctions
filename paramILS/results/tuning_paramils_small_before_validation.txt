@@ -1,0 +1,1652 @@
+[INFO ] Logging to: /home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_small/log-run627418322.txt
+[INFO ] Version of ParamILS is 3.0.0, running on OpenJDK 64-Bit Server VM (11.0.6) and Linux 3.10.0-862.el7.x86_64 (amd64) 
+[INFO ] Call String: paramils --scenario-file learn_error_functions/scenario_small.txt --validation-runs 100 
+[INFO ] ParamILS started at: Dec 17, 2020, 5:58:44 PM. Minimizing mean quality.
+[INFO ] Intensifying #1 (incumbent) ... 1  bonus run
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  ∞ -> 0 (based on 0 and 1 runs)
+[INFO ] Looking for random initial solutions better than the initial incumbent
+[INFO ] Intensifying #1 (incumbent) ... 2  bonus runs
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0 -> 0.0273 (based on 1 and 4 runs)
+[INFO ] == Starting Iteration 1 ==
+[INFO ] Tuner time: 6m8.00s elapsed
+[INFO ] Initial configuration (#1 (incumbent))
+[INFO ]  -> 0.0273 (based on 4 runs)
+[INFO ] Intensifying #1 (incumbent) ... 1  bonus run
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0.0273 -> 0.0259 (based on 4 and 5 runs)
+[INFO ] Intensifying #1 (incumbent) ... 4  bonus runs
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0.0259 -> 0.0359 (based on 5 and 10 runs)
+[INFO ] Local optima #1 (incumbent) accepted
+[INFO ]  0.0359 -> 0.0359 (based on 10 and 10 runs)
+[INFO ] == Starting Iteration 2 ==
+[INFO ] Tuner time: 42m14.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.8 -> 0.9 ; pop: 100 -> 160
+[INFO ] Intensifying #77 ... 1  bonus run
+[INFO ] Initial configuration (#77)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #78 ... 2  bonus runs
+[INFO ] Intensifying #78 ... 2  bonus runs
+[INFO ] Intensifying #78 ... 2  bonus runs
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0.0359 -> 0.0316 (based on 10 and 12 runs)
+[INFO ] New incumbent! (#78)
+[INFO ]  crossover: 0.8 -> 0.7 ; pop: 100 -> 160
+[INFO ]  0.0316 -> 0.0123 (based on 12 and 12 runs)
+[INFO ] Local optima #78 (incumbent) accepted
+[INFO ]  0.0316 -> 0.0123 (based on 12 and 12 runs)
+[INFO ] == Starting Iteration 3 ==
+[INFO ] Tuner time: 1h39m8.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.7 -> 0.6 ; pop: 160 -> 180 ; tournament: 2 -> 5
+[INFO ] Intensifying #142 ... 2  bonus runs
+[INFO ] Initial configuration (#142)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #142 ... 2  bonus runs
+[INFO ] Intensifying #152 ... 1  bonus run
+[INFO ] Intensifying #152 ... 5  bonus runs
+[INFO ] Intensifying #78 (incumbent) ... 2  bonus runs
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0123 -> 0.0133 (based on 12 and 14 runs)
+[INFO ] Local optima #152 discarded
+[INFO ]  0.0133 -/-> 0.0814 (based on 14 and 12 runs)
+[INFO ] == Starting Iteration 4 ==
+[INFO ] Tuner time: 2h32m32.00s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.05 -> 0.18 ; tournament: 2 -> 4
+[INFO ] Intensifying #215 ... 1  bonus run
+[INFO ] Initial configuration (#215)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #215 ... 3  bonus runs
+[INFO ] Intensifying #215 ... 1  bonus run
+[INFO ] Local optima #215 discarded
+[INFO ]  0.0133 -/-> 0.0419 (based on 14 and 7 runs)
+[INFO ] == Starting Iteration 5 ==
+[INFO ] Tuner time: 3h25m3.00s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 200 ; replacement: 0.05 -> 0.2
+[INFO ] Intensifying #280 ... 1  bonus run
+[INFO ] Initial configuration (#280)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #281 ... 2  bonus runs
+[INFO ] Intensifying #281 ... 2  bonus runs
+[INFO ] Local optima #281 discarded
+[INFO ]  0.0133 -/-> 0.0091 (based on 14 and 7 runs)
+[INFO ] == Starting Iteration 6 ==
+[INFO ] Tuner time: 4h36m40.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.7 -> 0.2 ; pop: 160 -> 40 ; replacement: 0.05 -> 0.19
+[INFO ] Intensifying #345 ... 1  bonus run
+[INFO ] Initial configuration (#345)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #346 ... 2  bonus runs
+[INFO ] Intensifying #346 ... 2  bonus runs
+[INFO ] Local optima #346 discarded
+[INFO ]  0.0133 -/-> 0.0091 (based on 14 and 7 runs)
+[INFO ] == Starting Iteration 7 ==
+[INFO ] Tuner time: 5h41m37.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.8 ; pop: 160 -> 120 ; replacement: 0.05 -> 0.01
+[INFO ] Intensifying #412 ... 1  bonus run
+[INFO ] Initial configuration (#412)
+[INFO ]  -> 0.29 (based on 2 runs)
+[INFO ] Intensifying #413 ... 2  bonus runs
+[INFO ] Intensifying #417 ... 2  bonus runs
+[INFO ] Intensifying #417 ... 3  bonus runs
+[INFO ] Local optima #417 discarded
+[INFO ]  0.0133 -/-> 0.0304 (based on 14 and 10 runs)
+[INFO ] == Starting Iteration 8 ==
+[INFO ] Tuner time: 6h45m5.00s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.05 -> 0.15 ; steady: 5 -> 40
+[INFO ] Intensifying #483 ... 1  bonus run
+[INFO ] Initial configuration (#483)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #483 ... 2  bonus runs
+[INFO ] Intensifying #83 ... 2  bonus runs
+[INFO ] Intensifying #78 (incumbent) ... 1  bonus run
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0133 -> 0.0127 (based on 14 and 15 runs)
+[INFO ] Intensifying #78 (incumbent) ... 1  bonus run
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0127 -> 0.0122 (based on 15 and 16 runs)
+[INFO ] Intensifying #78 (incumbent) ... 1  bonus run
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0122 -> 0.0167 (based on 16 and 18 runs)
+[INFO ] Local optima #78 (incumbent) accepted
+[INFO ]  0.0167 -> 0.0167 (based on 18 and 18 runs)
+[INFO ] Intensifying #78 (incumbent) ... 4  bonus runs
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0167 -> 0.0165 (based on 18 and 23 runs)
+[INFO ] == Starting Iteration 9 ==
+[INFO ] Tuner time: 8h14m18.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 400 -> 800 ; mutation: 1.0 -> 0.2 ; replacement: 0.05 -> 0.19
+[INFO ] Intensifying #561 ... 5  bonus runs
+[INFO ] Initial configuration (#561)
+[INFO ]  -> 0.036 (based on 6 runs)
+[INFO ] Intensifying #562 ... 1  bonus run
+[INFO ] Intensifying #562 ... 2  bonus runs
+[INFO ] Local optima #562 discarded
+[INFO ]  0.0165 -/-> 0.0127 (based on 23 and 10 runs)
+[INFO ] Intensifying #78 (incumbent) ... 1  bonus run
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0165 -> 0.0154 (based on 23 and 25 runs)
+[INFO ] == Starting Iteration 10 ==
+[INFO ] Tuner time: 9h58m12.00s elapsed
+[INFO ] Restarting
+[INFO ]  crossover: 0.7 -> 0.4 ; mingen: 400 -> 800 ; mutation: 1.0 -> 0.4 ; replacement: 0.05 -> 0.04 ; steady: 5 -> 30 ; tournament: 2 -> 6
+[INFO ] Intensifying #626 ... 1  bonus run
+[INFO ] Initial configuration (#626)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #626 ... 3  bonus runs
+[INFO ] Intensifying #626 ... 1  bonus run
+[INFO ] Intensifying #626 ... 5  bonus runs
+[INFO ] Local optima #626 accepted
+[INFO ]  0.047 -> 0.047 (based on 12 and 12 runs)
+[INFO ] == Starting Iteration 11 ==
+[INFO ] Tuner time: 10h49m54.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.3 ; mutation: 0.4 -> 0.6 ; replacement: 0.04 -> 0.2
+[INFO ] Intensifying #693 ... 4  bonus runs
+[INFO ] Initial configuration (#693)
+[INFO ]  -> 0.0529 (based on 5 runs)
+[INFO ] Intensifying #726 ... 1  bonus run
+[INFO ] Intensifying #726 ... 3  bonus runs
+[INFO ] Local optima #726 discarded
+[INFO ]  0.0516 -/-> 0.0691 (based on 13 and 10 runs)
+[INFO ] == Starting Iteration 12 ==
+[INFO ] Tuner time: 11h51m9.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.4 -> 0.3 ; replacement: 0.04 -> 0.1 ; steady: 30 -> 10
+[INFO ] Intensifying #789 ... 3  bonus runs
+[INFO ] Initial configuration (#789)
+[INFO ]  -> 0.0689 (based on 4 runs)
+[INFO ] Intensifying #793 ... 1  bonus run
+[INFO ] Intensifying #795 ... 1  bonus run
+[INFO ] Intensifying #806 ... 1  bonus run
+[INFO ] Intensifying #806 ... 2  bonus runs
+[INFO ] Intensifying #806 ... 2  bonus runs
+[INFO ] Local optima #806 accepted
+[INFO ]  0.0609 -> 0.0157 (based on 14 and 16 runs)
+[INFO ] Intensifying #806 ... 1  bonus run
+[INFO ] Config #78 (incumbent) updated!
+[INFO ]  0.0154 -> 0.0148 (based on 25 and 26 runs)
+[INFO ] New incumbent! (#806)
+[INFO ]  crossover: 0.7 -> 0.4 ; mingen: 400 -> 800 ; replacement: 0.05 -> 0.1 ; steady: 5 -> 50
+[INFO ]  0.0148 -> 0.0144 (based on 26 and 26 runs)
+[INFO ] == Starting Iteration 13 ==
+[INFO ] Tuner time: 13h59m8.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.7 ; replacement: 0.1 -> 0.13 ; tournament: 2 -> 3
+[INFO ] Intensifying #871 ... 1  bonus run
+[INFO ] Initial configuration (#871)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #871 ... 2  bonus runs
+[INFO ] Intensifying #871 ... 3  bonus runs
+[INFO ] Local optima #871 discarded
+[INFO ]  0.0144 -/-> 0.0728 (based on 26 and 8 runs)
+[INFO ] == Starting Iteration 14 ==
+[INFO ] Tuner time: 15h49m0.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.2 ; replacement: 0.1 -> 0.15
+[INFO ] Intensifying #938 ... 1  bonus run
+[INFO ] Initial configuration (#938)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #939 ... 2  bonus runs
+[INFO ] Intensifying #939 ... 2  bonus runs
+[INFO ] Local optima #939 discarded
+[INFO ]  0.0144 -/-> 0.0091 (based on 26 and 7 runs)
+[INFO ] == Starting Iteration 15 ==
+[INFO ] Tuner time: 17h35m56.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.5 ; replacement: 0.1 -> 0.13
+[INFO ] Intensifying #1003 ... 1  bonus run
+[INFO ] Initial configuration (#1003)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1004 ... 2  bonus runs
+[INFO ] Intensifying #1004 ... 2  bonus runs
+[INFO ] Local optima #1004 discarded
+[INFO ]  0.0144 -/-> 0.0091 (based on 26 and 7 runs)
+[INFO ] == Starting Iteration 16 ==
+[INFO ] Tuner time: 19h50m39.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.9 ; steady: 50 -> 35 ; tournament: 2 -> 7
+[INFO ] Intensifying #1070 ... 4  bonus runs
+[INFO ] Initial configuration (#1070)
+[INFO ]  -> 0.0477 (based on 5 runs)
+[INFO ] Intensifying #1124 ... 1  bonus run
+[INFO ] Intensifying #1124 ... 1  bonus run
+[INFO ] Local optima #1124 discarded
+[INFO ]  0.0144 -/-> 0.0128 (based on 26 and 8 runs)
+[INFO ] == Starting Iteration 17 ==
+[INFO ] Tuner time: 22h53m12.00s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.1 -> 0.2 ; tournament: 2 -> 6
+[INFO ] Intensifying #1182 ... 3  bonus runs
+[INFO ] Initial configuration (#1182)
+[INFO ]  -> 0.0693 (based on 4 runs)
+[INFO ] Intensifying #1183 ... 1  bonus run
+[INFO ] Intensifying #1183 ... 1  bonus run
+[INFO ] Local optima #1183 discarded
+[INFO ]  0.0144 -/-> 0.0423 (based on 26 and 7 runs)
+[INFO ] == Starting Iteration 18 ==
+[INFO ] Tuner time: 24h34m35.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 800 -> 400 ; steady: 50 -> 15 ; tournament: 2 -> 3
+[INFO ] Intensifying #1249 ... 1  bonus run
+[INFO ] Initial configuration (#1249)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1249 ... 3  bonus runs
+[INFO ] Intensifying #1249 ... 1  bonus run
+[INFO ] Local optima #1249 discarded
+[INFO ]  0.0144 -/-> 0.017 (based on 26 and 7 runs)
+[INFO ] == Starting Iteration 19 ==
+[INFO ] Tuner time: 25h31m0.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.3 ; steady: 50 -> 5 ; tournament: 2 -> 9
+[INFO ] Intensifying #1316 ... 2  bonus runs
+[INFO ] Initial configuration (#1316)
+[INFO ]  -> 0.0888 (based on 3 runs)
+[INFO ] Intensifying #1318 ... 2  bonus runs
+[INFO ] Intensifying #1319 ... 1  bonus run
+STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[INFO ] Intensifying #1319 ... 4  bonus runs
+[INFO ] Local optima #1319 discarded
+[INFO ]  0.0144 -/-> 0.052 (based on 26 and 11 runs)
+[INFO ] == Starting Iteration 20 ==
+[INFO ] Tuner time: 26h17m44.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.6 ; replacement: 0.1 -> 0.18
+[INFO ] Intensifying #1385 ... 2  bonus runs
+[INFO ] Initial configuration (#1385)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #1386 ... 1  bonus run
+[INFO ] Intensifying #1386 ... 2  bonus runs
+[INFO ] Intensifying #860 ... 1  bonus run
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0141 (based on 26 and 28 runs)
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0141 -> 0.0146 (based on 28 and 30 runs)
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0146 -> 0.0164 (based on 30 and 33 runs)
+[INFO ] Local optima #806 (incumbent) accepted
+[INFO ]  0.0164 -> 0.0164 (based on 33 and 33 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0164 -> 0.0162 (based on 33 and 35 runs)
+[INFO ] == Starting Iteration 21 ==
+[INFO ] Tuner time: 28h40m5.00s elapsed
+[INFO ] Perturbing
+[INFO ]  tournament: 2 -> 10
+[INFO ] Intensifying #822 ... 2  bonus runs
+[INFO ] Initial configuration (#822)
+[INFO ]  -> 0.0368 (based on 5 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0162 -> 0.0159 (based on 35 and 36 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0159 -> 0.0154 (based on 36 and 37 runs)
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0154 -> 0.0158 (based on 37 and 40 runs)
+[INFO ] Local optima #806 (incumbent) accepted
+[INFO ]  0.0158 -> 0.0158 (based on 40 and 40 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0158 -> 0.0157 (based on 40 and 44 runs)
+[INFO ] == Starting Iteration 22 ==
+[INFO ] Tuner time: 30h6m57.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.5 ; replacement: 0.1 -> 0.15
+[INFO ] Intensifying #1484 ... 1  bonus run
+[INFO ] Initial configuration (#1484)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1485 ... 2  bonus runs
+[INFO ] Intensifying #859 ... 1  bonus run
+[INFO ] Intensifying #943 ... 1  bonus run
+[INFO ] Intensifying #943 ... 1  bonus run
+[INFO ] Intensifying #943 ... 3  bonus runs
+[INFO ] Local optima #943 discarded
+[INFO ]  0.0157 -/-> 0.0143 (based on 44 and 13 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0157 -> 0.0151 (based on 44 and 46 runs)
+[INFO ] == Starting Iteration 23 ==
+[INFO ] Tuner time: 31h51m55.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 1.0 ; mingen: 800 -> 400 ; mutation: 1.0 -> 0.5
+[INFO ] Intensifying #1539 ... 4  bonus runs
+[INFO ] Initial configuration (#1539)
+[INFO ]  -> 0.0498 (based on 5 runs)
+[INFO ] Intensifying #1540 ... 1  bonus run
+[INFO ] Intensifying #1540 ... 6  bonus runs
+[INFO ] Local optima #1540 discarded
+[INFO ]  0.0151 -/-> 0.0513 (based on 46 and 13 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0151 -> 0.0151 (based on 46 and 50 runs)
+[INFO ] == Starting Iteration 24 ==
+[INFO ] Tuner time: 32h37m10.00s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.1 -> 0.07 ; tournament: 2 -> 7
+[INFO ] Intensifying #1606 ... 2  bonus runs
+[INFO ] Initial configuration (#1606)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #1607 ... 2  bonus runs
+[INFO ] Intensifying #1622 ... 1  bonus run
+[INFO ] Intensifying #1622 ... 1  bonus run
+[INFO ] Local optima #1622 discarded
+[INFO ]  0.0151 -/-> 0.0211 (based on 50 and 8 runs)
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0151 -> 0.0147 (based on 50 and 53 runs)
+[INFO ] == Starting Iteration 25 ==
+[INFO ] Tuner time: 34h36m49.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 800 -> 400 ; pop: 160 -> 80 ; replacement: 0.1 -> 0.18
+[INFO ] Intensifying #1684 ... 3  bonus runs
+[INFO ] Initial configuration (#1684)
+[INFO ]  -> 0.0625 (based on 4 runs)
+[INFO ] Intensifying #1686 ... 1  bonus run
+[INFO ] Intensifying #1686 ... 1  bonus run
+[INFO ] Local optima #1686 discarded
+[INFO ]  0.0147 -/-> 0.0165 (based on 53 and 7 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0147 -> 0.0149 (based on 53 and 55 runs)
+[INFO ] == Starting Iteration 26 ==
+[INFO ] Tuner time: 35h12m14.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.7 ; pop: 160 -> 140 ; tournament: 2 -> 7
+[INFO ] Intensifying #1752 ... 4  bonus runs
+[INFO ] Initial configuration (#1752)
+[INFO ]  -> 0.0423 (based on 5 runs)
+[INFO ] Intensifying #1756 ... 1  bonus run
+[INFO ] Intensifying #1756 ... 4  bonus runs
+[INFO ] Local optima #1756 discarded
+[INFO ]  0.0149 -/-> 0.043 (based on 55 and 11 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0149 -> 0.0153 (based on 55 and 59 runs)
+[INFO ] == Starting Iteration 27 ==
+[INFO ] Tuner time: 36h58m4.00s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 180 ; replacement: 0.1 -> 0.15
+[INFO ] Intensifying #1820 ... 1  bonus run
+[INFO ] Initial configuration (#1820)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1820 ... 2  bonus runs
+[INFO ] Intensifying #841 ... 1  bonus run
+[INFO ] Intensifying #860 ... 3  bonus runs
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0153 -> 0.0151 (based on 59 and 60 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0151 -> 0.0149 (based on 60 and 61 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0149 -> 0.0144 (based on 61 and 63 runs)
+[INFO ] Local optima #806 (incumbent) accepted
+[INFO ]  0.0144 -> 0.0144 (based on 63 and 63 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0148 (based on 63 and 67 runs)
+[INFO ] == Starting Iteration 28 ==
+[INFO ] Tuner time: 38h59m35.00s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.9 ; steady: 50 -> 10 ; tournament: 2 -> 5
+[INFO ] Intensifying #1851 ... 3  bonus runs
+[INFO ] Initial configuration (#1851)
+[INFO ]  -> 0.0688 (based on 4 runs)
+[INFO ] Intensifying #1852 ... 1  bonus run
+[INFO ] Intensifying #1898 ... 1  bonus run
+[INFO ] Intensifying #1898 ... 1  bonus run
+[INFO ] Local optima #1898 discarded
+[INFO ]  0.0148 -/-> 0.0128 (based on 67 and 8 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0148 -> 0.0144 (based on 67 and 69 runs)
+[INFO ] == Starting Iteration 29 ==
+[INFO ] Tuner time: 41h46m5.00s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 20 ; replacement: 0.1 -> 0.09
+[INFO ] Intensifying #1955 ... 1  bonus run
+[INFO ] Initial configuration (#1955)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1955 ... 3  bonus runs
+[INFO ] Intensifying #866 ... 1  bonus run
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0145 (based on 69 and 71 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0145 -> 0.0143 (based on 71 and 72 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0144 (based on 72 and 76 runs)
+[INFO ] Local optima #806 (incumbent) accepted
+[INFO ]  0.0144 -> 0.0144 (based on 76 and 76 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0141 (based on 76 and 78 runs)
+[INFO ] == Starting Iteration 30 ==
+[INFO ] Tuner time: 43h38m44.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 800 -> 600 ; replacement: 0.1 -> 0.12
+[INFO ] Intensifying #1997 ... 1  bonus run
+[INFO ] Initial configuration (#1997)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #1998 ... 2  bonus runs
+[INFO ] Intensifying #1998 ... 2  bonus runs
+[INFO ] Local optima #1998 discarded
+[INFO ]  0.0141 -/-> 0.0091 (based on 78 and 7 runs)
+[INFO ] Intensifying #806 (incumbent) ... 2  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0141 -> 0.0143 (based on 78 and 81 runs)
+[INFO ] == Starting Iteration 31 ==
+[INFO ] Tuner time: 45h18m52.00s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.1 ; steady: 50 -> 20
+[INFO ] Intensifying #2063 ... 2  bonus runs
+[INFO ] Initial configuration (#2063)
+[INFO ]  -> 0.0951 (based on 3 runs)
+[INFO ] Intensifying #2064 ... 1  bonus run
+[INFO ] Intensifying #2068 ... 1  bonus run
+STOP in eoSteadyFitContinue: Done 5 generations without improvement
+STOP in eoSteadyFitContinue: Done 5 generations without improvement
+STOP in eoSteadyFitContinue: Done 5 generations without improvement
+STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[INFO ] Intensifying #2077 ... 1  bonus run
+[INFO ] Intensifying #604 ... 1  bonus run
+[INFO ] Intensifying #604 ... 2  bonus runs
+[INFO ] Intensifying #562 ... 2  bonus runs
+[INFO ] Intensifying #562 ... 2  bonus runs
+[INFO ] Local optima #562 discarded
+[INFO ]  0.0143 -/-> 0.0153 (based on 81 and 29 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0143 (based on 81 and 83 runs)
+[INFO ] == Starting Iteration 32 ==
+[INFO ] Tuner time: 47h24m44.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.7 ; replacement: 0.1 -> 0.02 ; steady: 50 -> 40
+[INFO ] Intensifying #2125 ... 1  bonus run
+[INFO ] Initial configuration (#2125)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #543 ... 2  bonus runs
+[INFO ] Intensifying #83 ... 5  bonus runs
+[INFO ] Intensifying #78 ... 2  bonus runs
+[INFO ] Intensifying #78 ... 2  bonus runs
+[INFO ] Local optima #78 discarded
+[INFO ]  0.0143 -/-> 0.0151 (based on 83 and 31 runs)
+[INFO ] Intensifying #806 (incumbent) ... 3  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0143 (based on 83 and 87 runs)
+[INFO ] == Starting Iteration 33 ==
+[INFO ] Tuner time: 48h3m0.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.4 ; pop: 160 -> 200 ; steady: 50 -> 25
+[INFO ] Intensifying #2133 ... 3  bonus runs
+[INFO ] Initial configuration (#2133)
+[INFO ]  -> 0.0688 (based on 4 runs)
+[INFO ] Intensifying #2135 ... 2  bonus runs
+[INFO ] Intensifying #2135 ... 1  bonus run
+[INFO ] Local optima #2135 discarded
+[INFO ]  0.0143 -/-> 0.0215 (based on 87 and 8 runs)
+[INFO ] Intensifying #806 (incumbent) ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0143 -> 0.014 (based on 87 and 89 runs)
+[INFO ] == Starting Iteration 34 ==
+[INFO ] Tuner time: 50h3m32.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.2 ; replacement: 0.1 -> 0.16
+[INFO ] Intensifying #2201 ... 3  bonus runs
+[INFO ] Initial configuration (#2201)
+[INFO ]  -> 0.0689 (based on 4 runs)
+[INFO ] Intensifying #2202 ... 1  bonus run
+[INFO ] Intensifying #2202 ... 1  bonus run
+[INFO ] Intensifying #2208 ... 1  bonus run
+[INFO ] Intensifying #842 ... 2  bonus runs
+[INFO ] Intensifying #842 ... 3  bonus runs
+[INFO ] Intensifying #806 (incumbent) ... 4  bonus runs
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.014 -> 0.0145 (based on 89 and 93 runs)
+[INFO ] Intensifying #860 ... 1  bonus run
+[INFO ] Config #806 (incumbent) updated!
+[INFO ]  0.0145 -> 0.0144 (based on 93 and 94 runs)
+[INFO ] New incumbent! (#860)
+[INFO ]  replacement: 0.1 -> 0.17
+[INFO ]  0.0144 -> 0.0139 (based on 94 and 94 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0139 -> 0.0138 (based on 94 and 95 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0138 -> 0.0137 (based on 95 and 96 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0142 -> 0.0137 (based on 95 and 96 runs)
+[INFO ] == Starting Iteration 35 ==
+[INFO ] Tuner time: 53h8m33.20s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.17 -> 0.06 ; steady: 50 -> 25 ; tournament: 2 -> 7
+[INFO ] Intensifying #2235 ... 1  bonus run
+[INFO ] Initial configuration (#2235)
+[INFO ]  -> 0.2348 (based on 2 runs)
+[INFO ] Intensifying #2236 ... 2  bonus runs
+[INFO ] Intensifying #2241 ... 1  bonus run
+[INFO ] Intensifying #1314 ... 1  bonus run
+[INFO ] Intensifying #1314 ... 4  bonus runs
+[INFO ] Intensifying #1314 ... 1  bonus run
+[INFO ] Local optima #1314 discarded
+[INFO ]  0.0137 -/-> 0.0311 (based on 96 and 13 runs)
+[INFO ] == Starting Iteration 36 ==
+[INFO ] Tuner time: 54h13m6.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.7 ; replacement: 0.17 -> 0.15 ; tournament: 2 -> 5
+[INFO ] Intensifying #2306 ... 4  bonus runs
+[INFO ] Initial configuration (#2306)
+[INFO ]  -> 0.0514 (based on 5 runs)
+[INFO ] Intensifying #2307 ... 1  bonus run
+[INFO ] Intensifying #841 ... 3  bonus runs
+[INFO ] Intensifying #819 ... 2  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0137 -> 0.0135 (based on 96 and 97 runs)
+[INFO ] Intensifying #860 (incumbent) ... 3  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0135 -> 0.0137 (based on 97 and 100 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0137 -> 0.0135 (based on 100 and 102 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0135 -> 0.0135 (based on 102 and 102 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0135 -> 0.0136 (based on 102 and 104 runs)
+[INFO ] == Starting Iteration 37 ==
+[INFO ] Tuner time: 56h23m50.20s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 100 ; tournament: 2 -> 5
+[INFO ] Intensifying #2354 ... 3  bonus runs
+[INFO ] Initial configuration (#2354)
+[INFO ]  -> 0.0693 (based on 4 runs)
+[INFO ] Intensifying #2356 ... 1  bonus run
+[INFO ] Intensifying #1846 ... 1  bonus run
+[INFO ] Intensifying #2228 ... 1  bonus run
+[INFO ] Intensifying #2228 ... 2  bonus runs
+[INFO ] Intensifying #842 ... 1  bonus run
+[INFO ] Intensifying #819 ... 2  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0136 -> 0.0136 (based on 104 and 106 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0136 -> 0.0137 (based on 106 and 108 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0137 -> 0.0137 (based on 108 and 110 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0137 -> 0.0137 (based on 110 and 110 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0137 -> 0.0134 (based on 110 and 112 runs)
+[INFO ] == Starting Iteration 38 ==
+[INFO ] Tuner time: 57h52m34.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 800 -> 200 ; steady: 50 -> 10
+[INFO ] Intensifying #2412 ... 1  bonus run
+[INFO ] Initial configuration (#2412)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2413 ... 3  bonus runs
+[INFO ] Intensifying #1454 ... 1  bonus run
+[INFO ] Intensifying #1448 ... 2  bonus runs
+[INFO ] Intensifying #867 ... 3  bonus runs
+[INFO ] Intensifying #806 ... 3  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0134 -> 0.014 (based on 112 and 114 runs)
+[INFO ] Intensifying #860 (incumbent) ... 4  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.014 -> 0.0142 (based on 114 and 118 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0142 -> 0.014 (based on 118 and 120 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.014 -> 0.014 (based on 120 and 120 runs)
+[INFO ] Intensifying #860 (incumbent) ... 3  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.014 -> 0.0141 (based on 120 and 124 runs)
+[INFO ] == Starting Iteration 39 ==
+[INFO ] Tuner time: 61h48m5.20s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 40 ; replacement: 0.17 -> 0.2
+[INFO ] Intensifying #2347 ... 2  bonus runs
+[INFO ] Initial configuration (#2347)
+[INFO ]  -> 0.0238 (based on 5 runs)
+[INFO ] Intensifying #2228 ... 1  bonus run
+[INFO ] Intensifying #842 ... 2  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0141 -> 0.014 (based on 124 and 125 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.014 -> 0.0138 (based on 125 and 126 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0138 -> 0.0144 (based on 126 and 129 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0144 -> 0.0144 (based on 129 and 129 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0145 (based on 129 and 132 runs)
+[INFO ] == Starting Iteration 40 ==
+[INFO ] Tuner time: 63h15m50.20s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 180 ; replacement: 0.17 -> 0.16
+[INFO ] Intensifying #2551 ... 1  bonus run
+[INFO ] Initial configuration (#2551)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2552 ... 3  bonus runs
+[INFO ] Intensifying #866 ... 1  bonus run
+[INFO ] Intensifying #849 ... 2  bonus runs
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Local optima #845 discarded
+[INFO ]  0.0145 -/-> 0.014 (based on 132 and 107 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0145 -> 0.0144 (based on 132 and 134 runs)
+[INFO ] == Starting Iteration 41 ==
+[INFO ] Tuner time: 66h51m27.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.1 ; pop: 160 -> 80 ; steady: 50 -> 45
+[INFO ] Intensifying #2621 ... 1  bonus run
+[INFO ] Initial configuration (#2621)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2621 ... 2  bonus runs
+[INFO ] Intensifying #2621 ... 1  bonus run
+[INFO ] Local optima #2621 discarded
+[INFO ]  0.0144 -/-> 0.0216 (based on 134 and 6 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0146 (based on 134 and 137 runs)
+[INFO ] == Starting Iteration 42 ==
+[INFO ] Tuner time: 67h52m21.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.5 ; mutation: 1.0 -> 0.9
+[INFO ] Intensifying #2688 ... 1  bonus run
+[INFO ] Initial configuration (#2688)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2689 ... 2  bonus runs
+[INFO ] Intensifying #2689 ... 2  bonus runs
+[INFO ] Local optima #2689 discarded
+[INFO ]  0.0146 -/-> 0.0091 (based on 137 and 7 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0146 -> 0.0144 (based on 137 and 139 runs)
+[INFO ] == Starting Iteration 43 ==
+[INFO ] Tuner time: 69h23m53.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.6 ; pop: 160 -> 40 ; steady: 50 -> 15
+[INFO ] Intensifying #2755 ... 1  bonus run
+[INFO ] Initial configuration (#2755)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2756 ... 2  bonus runs
+[INFO ] Intensifying #1840 ... 2  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0144 (based on 139 and 141 runs)
+[INFO ] Intensifying #860 (incumbent) ... 3  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0146 (based on 141 and 144 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0146 -> 0.0144 (based on 144 and 147 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0144 -> 0.0144 (based on 147 and 147 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0143 (based on 147 and 149 runs)
+[INFO ] == Starting Iteration 44 ==
+[INFO ] Tuner time: 70h52m33.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.5 ; steady: 50 -> 30
+[INFO ] Intensifying #2782 ... 1  bonus run
+[INFO ] Initial configuration (#2782)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2783 ... 2  bonus runs
+[INFO ] Intensifying #2783 ... 2  bonus runs
+[INFO ] Local optima #2783 discarded
+[INFO ]  0.0143 -/-> 0.0091 (based on 149 and 7 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0144 (based on 149 and 151 runs)
+[INFO ] == Starting Iteration 45 ==
+[INFO ] Tuner time: 72h36m20.20s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 160 -> 200 ; replacement: 0.17 -> 0.06 ; steady: 50 -> 35
+[INFO ] Intensifying #2847 ... 1  bonus run
+[INFO ] Initial configuration (#2847)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2848 ... 2  bonus runs
+[INFO ] Intensifying #2848 ... 2  bonus runs
+[INFO ] Local optima #2848 discarded
+[INFO ]  0.0144 -/-> 0.0091 (based on 151 and 7 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0144 -> 0.0142 (based on 151 and 154 runs)
+[INFO ] == Starting Iteration 46 ==
+[INFO ] Tuner time: 74h44m6.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.1 ; pop: 160 -> 200 ; replacement: 0.17 -> 0.03
+[INFO ] Intensifying #2912 ... 5  bonus runs
+[INFO ] Initial configuration (#2912)
+[INFO ]  -> 0.0487 (based on 6 runs)
+[INFO ] Intensifying #2915 ... 1  bonus run
+[INFO ] Intensifying #2608 ... 2  bonus runs
+[INFO ] Intensifying #2608 ... 2  bonus runs
+[INFO ] Intensifying #845 ... 1  bonus run
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Local optima #845 discarded
+[INFO ]  0.0142 -/-> 0.0138 (based on 154 and 111 runs)
+[INFO ] Intensifying #860 (incumbent) ... 3  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0142 -> 0.0145 (based on 154 and 158 runs)
+[INFO ] == Starting Iteration 47 ==
+[INFO ] Tuner time: 77h5m49.20s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.4 -> 0.9 ; pop: 160 -> 120 ; replacement: 0.17 -> 0.15
+[INFO ] Intensifying #2959 ... 1  bonus run
+[INFO ] Initial configuration (#2959)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #2960 ... 2  bonus runs
+[INFO ] Intensifying #1665 ... 2  bonus runs
+[INFO ] Intensifying #1622 ... 1  bonus run
+[INFO ] Intensifying #821 ... 2  bonus runs
+[INFO ] Intensifying #849 ... 1  bonus run
+[INFO ] Intensifying #845 ... 1  bonus run
+[INFO ] Intensifying #845 ... 2  bonus runs
+[INFO ] Local optima #845 discarded
+[INFO ]  0.0145 -/-> 0.0144 (based on 158 and 115 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0145 -> 0.0143 (based on 158 and 160 runs)
+[INFO ] == Starting Iteration 48 ==
+[INFO ] Tuner time: 79h54m34.20s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 1.0 -> 0.4 ; steady: 50 -> 15 ; tournament: 2 -> 7
+[INFO ] Intensifying #3014 ... 3  bonus runs
+[INFO ] Initial configuration (#3014)
+[INFO ]  -> 0.0714 (based on 4 runs)
+[INFO ] Intensifying #2770 ... 1  bonus run
+[INFO ] Intensifying #2781 ... 1  bonus run
+[INFO ] Intensifying #1840 ... 2  bonus runs
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0143 (based on 160 and 161 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0142 (based on 161 and 163 runs)
+[INFO ] Intensifying #860 (incumbent) ... 1  bonus run
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0142 -> 0.0143 (based on 163 and 165 runs)
+[INFO ] Local optima #860 (incumbent) accepted
+[INFO ]  0.0143 -> 0.0143 (based on 165 and 165 runs)
+[INFO ] Intensifying #860 (incumbent) ... 2  bonus runs
+[INFO ] Config #860 (incumbent) updated!
+[INFO ]  0.0143 -> 0.0143 (based on 165 and 168 runs)
+[INFO ] == Starting Iteration 49 ==
+[INFO ] Tuner time: 81h45m38.20s elapsed
+[INFO ] Restarting
+[INFO ]  crossover: 0.4 -> 0.7 ; mingen: 800 -> 200 ; mutation: 1.0 -> 0.4 ; pop: 160 -> 80 ; replacement: 0.17 -> 0.2 ; steady: 50 -> 35 ; tournament: 2 -> 6
+[INFO ] Intensifying #3069 ... 3  bonus runs
+[INFO ] Initial configuration (#3069)
+[INFO ]  -> 0.0778 (based on 4 runs)
+[INFO ] Intensifying #3073 ... 2  bonus runs
+[INFO ] Intensifying #3073 ... 3  bonus runs
+[INFO ] Intensifying #3089 ... 2  bonus runs
+[INFO ] Intensifying #3089 ... 1  bonus run
+[INFO ] Intensifying #3089 ... 7  bonus runs
+[INFO ] Local optima #3089 accepted
+[INFO ]  0.1654 -> 0.0613 (based on 5 and 19 runs)
+[INFO ] == Starting Iteration 50 ==
+[INFO ] Tuner time: 81h56m53.40s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.7 -> 0.9 ; replacement: 0.17 -> 0.12
+[INFO ] Intensifying #3148 ... 3  bonus runs
+[INFO ] Initial configuration (#3148)
+[INFO ]  -> 0.0776 (based on 4 runs)
+[INFO ] Intensifying #3150 ... 1  bonus run
+[INFO ] Intensifying #3151 ... 2  bonus runs
+[INFO ] Intensifying #3158 ... 1  bonus run
+[INFO ] Intensifying #3179 ... 2  bonus runs
+[INFO ] Intensifying #3195 ... 1  bonus run
+[INFO ] Intensifying #3200 ... 1  bonus run
+[INFO ] Intensifying #3200 ... 7  bonus runs
+[INFO ] Intensifying #3200 ... 1  bonus run
+[INFO ] Local optima #3200 accepted
+[INFO ]  0.0592 -> 0.0552 (based on 20 and 21 runs)
+[INFO ] == Starting Iteration 51 ==
+[INFO ] Tuner time: 83h1m54.40s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 400 -> 800 ; replacement: 0.12 -> 0.2 ; tournament: 6 -> 4
+[INFO ] Intensifying #3266 ... 3  bonus runs
+[INFO ] Initial configuration (#3266)
+[INFO ]  -> 0.0688 (based on 4 runs)
+[INFO ] Intensifying #3270 ... 1  bonus run
+[INFO ] Intensifying #3270 ... 1  bonus run
+[INFO ] Local optima #3270 discarded
+[INFO ]  0.0574 -/-> 0.0383 (based on 22 and 7 runs)
+[INFO ] == Starting Iteration 52 ==
+[INFO ] Tuner time: 84h22m26.40s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 120 -> 80 ; replacement: 0.12 -> 0.19
+[INFO ] Intensifying #3336 ... 1  bonus run
+[INFO ] Initial configuration (#3336)
+[INFO ]  -> 0.2852 (based on 2 runs)
+[INFO ] Intensifying #3337 ... 2  bonus runs
+[INFO ] Intensifying #3340 ... 1  bonus run
+[INFO ] Intensifying #3344 ... 1  bonus run
+[INFO ] Intensifying #3377 ... 1  bonus run
+[INFO ] Intensifying #3377 ... 5  bonus runs
+[INFO ] Local optima #3377 discarded
+[INFO ]  0.0549 -/-> 0.0451 (based on 23 and 13 runs)
+[INFO ] == Starting Iteration 53 ==
+[INFO ] Tuner time: 84h54m12.40s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.12 -> 0.2 ; steady: 20 -> 35
+[INFO ] Intensifying #3439 ... 3  bonus runs
+[INFO ] Initial configuration (#3439)
+[INFO ]  -> 0.0873 (based on 4 runs)
+[INFO ] Intensifying #3440 ... 1  bonus run
+[INFO ] Intensifying #3448 ... 1  bonus run
+[INFO ] Intensifying #3448 ... 1  bonus run
+[INFO ] Intensifying #3448 ... 2  bonus runs
+[INFO ] Local optima #3448 accepted
+[INFO ]  0.0572 -> 0.0254 (based on 24 and 26 runs)
+[INFO ] == Starting Iteration 54 ==
+[INFO ] Tuner time: 85h47m56.40s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.9 -> 0.2 ; pop: 120 -> 100 ; replacement: 0.07 -> 0.18
+[INFO ] Intensifying #3514 ... 3  bonus runs
+[INFO ] Initial configuration (#3514)
+[INFO ]  -> 0.0434 (based on 4 runs)
+[INFO ] Intensifying #3515 ... 2  bonus runs
+[INFO ] Intensifying #3515 ... 1  bonus run
+[INFO ] Local optima #3515 discarded
+[INFO ]  0.0252 -/-> 0.0218 (based on 27 and 8 runs)
+[INFO ] == Starting Iteration 55 ==
+[INFO ] Tuner time: 86h39m47.40s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.9 -> 0.6 ; mingen: 400 -> 800 ; pop: 120 -> 140
+[INFO ] Intensifying #3581 ... 1  bonus run
+[INFO ] Initial configuration (#3581)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #3581 ... 2  bonus runs
+[INFO ] Intensifying #3581 ... 2  bonus runs
+[INFO ] Intensifying #3581 ... 2  bonus runs
+[INFO ] Local optima #3581 accepted
+[INFO ]  0.0277 -> 0.0154 (based on 28 and 30 runs)
+[INFO ] == Starting Iteration 56 ==
+[INFO ] Tuner time: 88h22m58.40s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.6 -> 0.1 ; mutation: 0.9 -> 0.7 ; tournament: 2 -> 4
+[INFO ] Intensifying #3648 ... 3  bonus runs
+[INFO ] Initial configuration (#3648)
+[INFO ]  -> 0.0683 (based on 4 runs)
+[INFO ] Intensifying #3649 ... 1  bonus run
+[INFO ] Intensifying #3649 ... 2  bonus runs
+[INFO ] Local optima #3649 discarded
+[INFO ]  0.0149 -/-> 0.09 (based on 31 and 8 runs)
+[INFO ] == Starting Iteration 57 ==
+[INFO ] Tuner time: 89h34m17.40s elapsed
+[INFO ] Restarting
+[INFO ]  crossover: 0.6 -> 0.3 ; mingen: 800 -> 200 ; mutation: 0.9 -> 0.4 ; pop: 140 -> 20 ; steady: 35 -> 40 ; tournament: 2 -> 9
+[INFO ] Intensifying #3715 ... 4  bonus runs
+[INFO ] Initial configuration (#3715)
+[INFO ]  -> 0.0423 (based on 5 runs)
+[INFO ] Intensifying #3715 ... 2  bonus runs
+[INFO ] Intensifying #3715 ... 1  bonus run
+[INFO ] Intensifying #3715 ... 2  bonus runs
+[INFO ] Local optima #3715 accepted
+[INFO ]  0.1101 -> 0.1101 (based on 11 and 11 runs)
+[INFO ] == Starting Iteration 58 ==
+[INFO ] Tuner time: 89h36m15.50s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 20 -> 120 ; replacement: 0.07 -> 0.1 ; tournament: 9 -> 8
+[INFO ] Intensifying #3782 ... 3  bonus runs
+[INFO ] Initial configuration (#3782)
+[INFO ]  -> 0.0773 (based on 4 runs)
+[INFO ] Intensifying #3783 ... 1  bonus run
+[INFO ] Intensifying #3798 ... 1  bonus run
+[INFO ] Intensifying #3819 ... 4  bonus runs
+[INFO ] Intensifying #3819 ... 1  bonus run
+[INFO ] Intensifying #3819 ... 6  bonus runs
+[INFO ] Local optima #3819 accepted
+[INFO ]  0.1009 -> 0.0521 (based on 12 and 18 runs)
+[INFO ] == Starting Iteration 59 ==
+[INFO ] Tuner time: 90h13m52.50s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.2 ; pop: 120 -> 20
+[INFO ] Intensifying #3883 ... 2  bonus runs
+[INFO ] Initial configuration (#3883)
+[INFO ]  -> 0.1048 (based on 3 runs)
+[INFO ] Intensifying #3886 ... 2  bonus runs
+[INFO ] Intensifying #3925 ... 1  bonus run
+[INFO ] Intensifying #3925 ... 1  bonus run
+[INFO ] Intensifying #3819 ... 1  bonus run
+[INFO ] Local optima #3925 discarded
+[INFO ]  0.0479 -/-> 0.0732 (based on 20 and 19 runs)
+[INFO ] == Starting Iteration 60 ==
+[INFO ] Tuner time: 90h29m59.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 120 -> 180 ; replacement: 0.2 -> 0.14
+[INFO ] Intensifying #3990 ... 2  bonus runs
+[INFO ] Initial configuration (#3990)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #3991 ... 2  bonus runs
+[INFO ] Intensifying #3991 ... 1  bonus run
+[INFO ] Intensifying #3991 ... 2  bonus runs
+[INFO ] Local optima #3991 accepted
+[INFO ]  0.0466 -> 0.0379 (based on 21 and 23 runs)
+[INFO ] == Starting Iteration 61 ==
+[INFO ] Tuner time: 92h2m29.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 200 ; mutation: 0.9 -> 1.0
+[INFO ] Intensifying #4057 ... 2  bonus runs
+[INFO ] Initial configuration (#4057)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #4062 ... 1  bonus run
+[INFO ] Intensifying #4062 ... 2  bonus runs
+[INFO ] Local optima #4062 discarded
+[INFO ]  0.0363 -/-> 0.0277 (based on 24 and 7 runs)
+[INFO ] == Starting Iteration 62 ==
+[INFO ] Tuner time: 92h37m45.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.14 -> 0.16 ; steady: 40 -> 15 ; tournament: 3 -> 7
+[INFO ] Intensifying #4128 ... 3  bonus runs
+[INFO ] Initial configuration (#4128)
+[INFO ]  -> 0.0521 (based on 4 runs)
+[INFO ] Intensifying #4129 ... 2  bonus runs
+[INFO ] Intensifying #4129 ... 1  bonus run
+[INFO ] Intensifying #4129 ... 1  bonus run
+[INFO ] Local optima #4129 accepted
+[INFO ]  0.0372 -> 0.0175 (based on 25 and 26 runs)
+[INFO ] == Starting Iteration 63 ==
+[INFO ] Tuner time: 94h11m27.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 180 -> 20 ; steady: 15 -> 35 ; tournament: 2 -> 9
+[INFO ] Intensifying #4195 ... 3  bonus runs
+[INFO ] Initial configuration (#4195)
+[INFO ]  -> 0.0891 (based on 4 runs)
+[INFO ] Intensifying #4199 ... 1  bonus run
+[INFO ] Intensifying #4199 ... 1  bonus run
+[INFO ] Intensifying #4204 ... 3  bonus runs
+[INFO ] Intensifying #4212 ... 3  bonus runs
+[INFO ] Intensifying #4176 ... 2  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 2  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Local optima #4143 accepted
+[INFO ]  0.017 -> 0.015 (based on 28 and 31 runs)
+[INFO ] == Starting Iteration 64 ==
+[INFO ] Tuner time: 97h21m39.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 1.0 ; mutation: 0.9 -> 0.6 ; tournament: 2 -> 10
+[INFO ] Intensifying #4323 ... 2  bonus runs
+[INFO ] Initial configuration (#4323)
+[INFO ]  -> 0.0795 (based on 3 runs)
+[INFO ] Intensifying #4324 ... 1  bonus run
+[INFO ] Intensifying #4333 ... 1  bonus run
+[INFO ] Intensifying #4370 ... 1  bonus run
+[INFO ] Intensifying #4414 ... 3  bonus runs
+[INFO ] Intensifying #4414 ... 1  bonus run
+[INFO ] Local optima #4414 discarded
+[INFO ]  0.0163 -/-> 0.057 (based on 32 and 11 runs)
+[INFO ] == Starting Iteration 65 ==
+[INFO ] Tuner time: 98h53m38.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.2 ; pop: 180 -> 160 ; replacement: 0.16 -> 0.19
+[INFO ] Intensifying #4473 ... 1  bonus run
+[INFO ] Initial configuration (#4473)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #4474 ... 2  bonus runs
+[INFO ] Intensifying #4474 ... 2  bonus runs
+[INFO ] Local optima #4474 discarded
+[INFO ]  0.0159 -/-> 0.0115 (based on 33 and 7 runs)
+[INFO ] == Starting Iteration 66 ==
+[INFO ] Tuner time: 100h7m31.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.7 ; replacement: 0.16 -> 0.12 ; tournament: 2 -> 5
+[INFO ] Intensifying #4540 ... 1  bonus run
+[INFO ] Initial configuration (#4540)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #4540 ... 2  bonus runs
+[INFO ] Intensifying #4540 ... 2  bonus runs
+[INFO ] Local optima #4540 discarded
+[INFO ]  0.016 -/-> 0.0326 (based on 34 and 7 runs)
+[INFO ] == Starting Iteration 67 ==
+[INFO ] Tuner time: 101h17m33.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 180 -> 160
+[INFO ] Intensifying #4318 ... 2  bonus runs
+[INFO ] Initial configuration (#4318)
+[INFO ]  -> 0.0273 (based on 4 runs)
+[INFO ] Intensifying #4284 ... 1  bonus run
+[INFO ] Intensifying #4319 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 2  bonus runs
+[INFO ] Intensifying #4143 ... 3  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 2  bonus runs
+[INFO ] Local optima #4143 accepted
+[INFO ]  0.0192 -> 0.0192 (based on 44 and 44 runs)
+[INFO ] == Starting Iteration 68 ==
+[INFO ] Tuner time: 104h57m1.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.8 ; replacement: 0.16 -> 0.12 ; tournament: 2 -> 6
+[INFO ] Intensifying #4702 ... 3  bonus runs
+[INFO ] Initial configuration (#4702)
+[INFO ]  -> 0.0621 (based on 4 runs)
+[INFO ] Intensifying #4711 ... 1  bonus run
+[INFO ] Intensifying #4718 ... 1  bonus run
+[INFO ] Intensifying #4735 ... 4  bonus runs
+[INFO ] Intensifying #4735 ... 1  bonus run
+[INFO ] Local optima #4735 discarded
+[INFO ]  0.0188 -/-> 0.038 (based on 45 and 12 runs)
+[INFO ] == Starting Iteration 69 ==
+[INFO ] Tuner time: 107h4m7.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 1.0 ; replacement: 0.16 -> 0.04
+[INFO ] Intensifying #4799 ... 1  bonus run
+[INFO ] Initial configuration (#4799)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #4800 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4288 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 4  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Local optima #4143 accepted
+[INFO ]  0.0199 -> 0.0199 (based on 53 and 53 runs)
+[INFO ] == Starting Iteration 70 ==
+[INFO ] Tuner time: 108h37m0.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.16 -> 0.19 ; steady: 40 -> 20
+[INFO ] Intensifying #4841 ... 1  bonus run
+[INFO ] Initial configuration (#4841)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #4842 ... 2  bonus runs
+[INFO ] Intensifying #4842 ... 1  bonus run
+[INFO ] Local optima #4842 discarded
+[INFO ]  0.0202 -/-> 0.0216 (based on 54 and 6 runs)
+[INFO ] == Starting Iteration 71 ==
+[INFO ] Tuner time: 109h59m45.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.6 ; pop: 180 -> 60 ; replacement: 0.16 -> 0.02
+[INFO ] Intensifying #4906 ... 1  bonus run
+[INFO ] Initial configuration (#4906)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #4906 ... 3  bonus runs
+[INFO ] Intensifying #4906 ... 1  bonus run
+[INFO ] Local optima #4906 discarded
+[INFO ]  0.0199 -/-> 0.0356 (based on 55 and 7 runs)
+[INFO ] == Starting Iteration 72 ==
+[INFO ] Tuner time: 110h34m56.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.2 ; pop: 180 -> 60 ; replacement: 0.16 -> 0.13
+[INFO ] Intensifying #4972 ... 1  bonus run
+[INFO ] Initial configuration (#4972)
+[INFO ]  -> 0.23 (based on 2 runs)
+[INFO ] Intensifying #4973 ... 3  bonus runs
+[INFO ] Intensifying #4664 ... 4  bonus runs
+[INFO ] Intensifying #4304 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 3  bonus runs
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 2  bonus runs
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Local optima #4311 accepted
+[INFO ]  0.0204 -> 0.0189 (based on 60 and 63 runs)
+[INFO ] == Starting Iteration 73 ==
+[INFO ] Tuner time: 112h58m34.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 1.0 ; replacement: 0.16 -> 0.03
+[INFO ] Intensifying #5072 ... 1  bonus run
+[INFO ] Initial configuration (#5072)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5072 ... 2  bonus runs
+[INFO ] Intensifying #5072 ... 2  bonus runs
+[INFO ] Local optima #5072 discarded
+[INFO ]  0.0189 -/-> 0.0091 (based on 64 and 7 runs)
+[INFO ] == Starting Iteration 74 ==
+[INFO ] Tuner time: 114h7m42.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.7 ; pop: 140 -> 200 ; replacement: 0.16 -> 0.09
+[INFO ] Intensifying #5137 ... 1  bonus run
+[INFO ] Initial configuration (#5137)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5137 ... 3  bonus runs
+[INFO ] Intensifying #5137 ... 1  bonus run
+[INFO ] Local optima #5137 discarded
+[INFO ]  0.0195 -/-> 0.0244 (based on 65 and 7 runs)
+[INFO ] == Starting Iteration 75 ==
+[INFO ] Tuner time: 115h25m48.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.9 ; replacement: 0.16 -> 0.1 ; steady: 40 -> 20
+[INFO ] Intensifying #5204 ... 2  bonus runs
+[INFO ] Initial configuration (#5204)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #5205 ... 2  bonus runs
+[INFO ] Intensifying #4528 ... 1  bonus run
+[INFO ] Intensifying #4536 ... 1  bonus run
+[INFO ] Intensifying #4536 ... 1  bonus run
+[INFO ] Intensifying #4536 ... 3  bonus runs
+[INFO ] Local optima #4536 discarded
+[INFO ]  0.0195 -/-> 0.0177 (based on 66 and 17 runs)
+[INFO ] == Starting Iteration 76 ==
+[INFO ] Tuner time: 117h14m17.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.9 ; mutation: 0.9 -> 0.6 ; pop: 140 -> 20
+[INFO ] Intensifying #5291 ... 1  bonus run
+[INFO ] Initial configuration (#5291)
+[INFO ]  -> 0.2348 (based on 2 runs)
+[INFO ] Intensifying #5292 ... 2  bonus runs
+[INFO ] Intensifying #5294 ... 1  bonus run
+[INFO ] Intensifying #5304 ... 2  bonus runs
+[INFO ] Intensifying #5320 ... 3  bonus runs
+[INFO ] Intensifying #5320 ... 1  bonus run
+[INFO ] Local optima #5320 discarded
+[INFO ]  0.0202 -/-> 0.049 (based on 67 and 12 runs)
+[INFO ] == Starting Iteration 77 ==
+[INFO ] Tuner time: 118h58m11.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 140 -> 120 ; replacement: 0.16 -> 0.17 ; steady: 40 -> 45
+[INFO ] Intensifying #5384 ... 1  bonus run
+[INFO ] Initial configuration (#5384)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5384 ... 3  bonus runs
+[INFO ] Intensifying #5384 ... 1  bonus run
+[INFO ] Local optima #5384 discarded
+[INFO ]  0.0199 -/-> 0.0264 (based on 68 and 7 runs)
+[INFO ] == Starting Iteration 78 ==
+[INFO ] Tuner time: 119h58m52.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.7 ; replacement: 0.16 -> 0.17 ; steady: 40 -> 15
+[INFO ] Intensifying #5451 ... 3  bonus runs
+[INFO ] Initial configuration (#5451)
+[INFO ]  -> 0.0515 (based on 4 runs)
+[INFO ] Intensifying #5452 ... 2  bonus runs
+[INFO ] Intensifying #5452 ... 1  bonus run
+[INFO ] Local optima #5452 discarded
+[INFO ]  0.0196 -/-> 0.0168 (based on 69 and 8 runs)
+[INFO ] == Starting Iteration 79 ==
+[INFO ] Tuner time: 121h10m13.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 140 -> 200
+[INFO ] Intensifying #4296 ... 3  bonus runs
+[INFO ] Initial configuration (#4296)
+[INFO ]  -> 0.0166 (based on 12 runs)
+[INFO ] Intensifying #4296 ... 2  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 2  bonus runs
+[INFO ] Local optima #4311 accepted
+[INFO ]  0.0203 -> 0.0203 (based on 75 and 75 runs)
+[INFO ] == Starting Iteration 80 ==
+[INFO ] Tuner time: 122h47m20.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.8 ; pop: 140 -> 180 ; replacement: 0.16 -> 0.11
+[INFO ] Intensifying #5550 ... 1  bonus run
+[INFO ] Initial configuration (#5550)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5551 ... 2  bonus runs
+[INFO ] Intensifying #5551 ... 1  bonus run
+[INFO ] Intensifying #4268 ... 3  bonus runs
+[INFO ] Intensifying #4288 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 4  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Local optima #4314 accepted
+[INFO ]  0.0201 -> 0.0183 (based on 76 and 77 runs)
+[INFO ] == Starting Iteration 81 ==
+[INFO ] Tuner time: 124h39m23.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 200 ; steady: 40 -> 10 ; tournament: 2 -> 5
+[INFO ] Intensifying #5610 ... 3  bonus runs
+[INFO ] Initial configuration (#5610)
+[INFO ]  -> 0.0868 (based on 4 runs)
+[INFO ] Intensifying #5612 ... 1  bonus run
+[INFO ] Intensifying #5616 ... 1  bonus run
+[INFO ] Intensifying #5618 ... 4  bonus runs
+[INFO ] Intensifying #5618 ... 1  bonus run
+[INFO ] Intensifying #5647 ... 1  bonus run
+[INFO ] Intensifying #5647 ... 7  bonus runs
+[INFO ] Local optima #5647 discarded
+[INFO ]  0.018 -/-> 0.0515 (based on 78 and 20 runs)
+[INFO ] == Starting Iteration 82 ==
+[INFO ] Tuner time: 125h30m21.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 1.0 ; replacement: 0.04 -> 0.09 ; tournament: 2 -> 6
+[INFO ] Intensifying #5709 ... 4  bonus runs
+[INFO ] Initial configuration (#5709)
+[INFO ]  -> 0.0477 (based on 5 runs)
+[INFO ] Intensifying #5716 ... 1  bonus run
+[INFO ] Intensifying #5716 ... 4  bonus runs
+[INFO ] Local optima #5716 discarded
+[INFO ]  0.019 -/-> 0.0456 (based on 79 and 11 runs)
+[INFO ] == Starting Iteration 83 ==
+[INFO ] Tuner time: 127h15m45.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.7 ; mutation: 0.9 -> 1.0 ; replacement: 0.04 -> 0.03
+[INFO ] Intensifying #5782 ... 1  bonus run
+[INFO ] Initial configuration (#5782)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5783 ... 2  bonus runs
+[INFO ] Intensifying #5783 ... 2  bonus runs
+[INFO ] Local optima #5783 discarded
+[INFO ]  0.019 -/-> 0.0091 (based on 80 and 7 runs)
+[INFO ] == Starting Iteration 84 ==
+[INFO ] Tuner time: 128h47m29.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 800 ; mutation: 0.9 -> 0.2 ; replacement: 0.04 -> 0.16
+[INFO ] Intensifying #5848 ... 1  bonus run
+[INFO ] Initial configuration (#5848)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5848 ... 3  bonus runs
+[INFO ] Intensifying #4277 ... 1  bonus run
+[INFO ] Intensifying #4277 ... 2  bonus runs
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Intensifying #4311 ... 1  bonus run
+[INFO ] Local optima #4311 discarded
+[INFO ]  0.0187 -/-> 0.0198 (based on 81 and 79 runs)
+[INFO ] == Starting Iteration 85 ==
+[INFO ] Tuner time: 130h55m52.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.07 ; steady: 40 -> 30 ; tournament: 2 -> 7
+[INFO ] Intensifying #5907 ... 3  bonus runs
+[INFO ] Initial configuration (#5907)
+[INFO ]  -> 0.0683 (based on 4 runs)
+[INFO ] Intensifying #5908 ... 1  bonus run
+[INFO ] Intensifying #5908 ... 1  bonus run
+[INFO ] Local optima #5908 discarded
+[INFO ]  0.0188 -/-> 0.0368 (based on 82 and 7 runs)
+[INFO ] == Starting Iteration 86 ==
+[INFO ] Tuner time: 132h41m0.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.14 ; steady: 40 -> 10
+[INFO ] Intensifying #5974 ... 1  bonus run
+[INFO ] Initial configuration (#5974)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #5975 ... 2  bonus runs
+[INFO ] Intensifying #5566 ... 2  bonus runs
+[INFO ] Intensifying #4268 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 3  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Local optima #4314 accepted
+[INFO ]  0.018 -> 0.018 (based on 89 and 89 runs)
+[INFO ] == Starting Iteration 87 ==
+[INFO ] Tuner time: 134h42m6.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.15 ; steady: 40 -> 25 ; tournament: 2 -> 6
+[INFO ] Intensifying #6042 ... 3  bonus runs
+[INFO ] Initial configuration (#6042)
+[INFO ]  -> 0.0683 (based on 4 runs)
+[INFO ] Intensifying #6044 ... 1  bonus run
+[INFO ] Intensifying #6044 ... 1  bonus run
+[INFO ] Local optima #6044 discarded
+[INFO ]  0.019 -/-> 0.0381 (based on 90 and 7 runs)
+[INFO ] == Starting Iteration 88 ==
+[INFO ] Tuner time: 136h7m30.10s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.16 ; steady: 40 -> 50
+[INFO ] Intensifying #4175 ... 1  bonus run
+[INFO ] Initial configuration (#4175)
+[INFO ]  -> 0.0292 (based on 7 runs)
+[INFO ] Intensifying #6106 ... 2  bonus runs
+[INFO ] Intensifying #6106 ... 1  bonus run
+[INFO ] Intensifying #6106 ... 1  bonus run
+[INFO ] Local optima #6106 discarded
+[INFO ]  0.0194 -/-> 0.0229 (based on 91 and 12 runs)
+[INFO ] == Starting Iteration 89 ==
+[INFO ] Tuner time: 136h47m39.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 180 -> 40 ; tournament: 2 -> 9
+[INFO ] Intensifying #6164 ... 4  bonus runs
+[INFO ] Initial configuration (#6164)
+[INFO ]  -> 0.0565 (based on 5 runs)
+[INFO ] Intensifying #6173 ... 1  bonus run
+[INFO ] Intensifying #6173 ... 1  bonus run
+[INFO ] Local optima #6173 discarded
+[INFO ]  0.0194 -/-> 0.0363 (based on 92 and 8 runs)
+[INFO ] == Starting Iteration 90 ==
+[INFO ] Tuner time: 137h19m13.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 400 ; pop: 180 -> 20 ; steady: 40 -> 5
+[INFO ] Intensifying #6238 ... 3  bonus runs
+[INFO ] Initial configuration (#6238)
+[INFO ]  -> 0.0759 (based on 4 runs)
+[INFO ] Intensifying #6240 ... 1  bonus run
+[INFO ] Intensifying #6247 ... 2  bonus runs
+[INFO ] Intensifying #6247 ... 2  bonus runs
+[INFO ] Local optima #6247 discarded
+[INFO ]  0.0192 -/-> 0.0726 (based on 93 and 10 runs)
+[INFO ] == Starting Iteration 91 ==
+[INFO ] Tuner time: 137h33m13.50s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 180 -> 40 ; replacement: 0.04 -> 0.07 ; tournament: 2 -> 10
+[INFO ] Intensifying #6312 ... 2  bonus runs
+[INFO ] Initial configuration (#6312)
+[INFO ]  -> 0.1057 (based on 3 runs)
+[INFO ] Intensifying #6313 ... 1  bonus run
+[INFO ] Intensifying #6315 ... 1  bonus run
+[INFO ] Intensifying #6343 ... 3  bonus runs
+[INFO ] Intensifying #6343 ... 1  bonus run
+[INFO ] Local optima #6343 discarded
+[INFO ]  0.0191 -/-> 0.1009 (based on 94 and 10 runs)
+[INFO ] == Starting Iteration 92 ==
+[INFO ] Tuner time: 138h11m36.90s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.1 ; replacement: 0.04 -> 0.14
+[INFO ] Intensifying #6407 ... 1  bonus run
+[INFO ] Initial configuration (#6407)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #6408 ... 2  bonus runs
+[INFO ] Intensifying #6408 ... 1  bonus run
+[INFO ] Local optima #6408 discarded
+[INFO ]  0.0189 -/-> 0.0212 (based on 95 and 6 runs)
+[INFO ] == Starting Iteration 93 ==
+[INFO ] Tuner time: 139h20m57.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.5 ; replacement: 0.04 -> 0.05
+[INFO ] Intensifying #6474 ... 3  bonus runs
+[INFO ] Initial configuration (#6474)
+[INFO ]  -> 0.0627 (based on 4 runs)
+[INFO ] Intensifying #6476 ... 1  bonus run
+[INFO ] Intensifying #6492 ... 1  bonus run
+[INFO ] Intensifying #6492 ... 4  bonus runs
+[INFO ] Local optima #6492 discarded
+[INFO ]  0.0187 -/-> 0.0513 (based on 96 and 11 runs)
+[INFO ] == Starting Iteration 94 ==
+[INFO ] Tuner time: 140h28m51.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.3 ; replacement: 0.04 -> 0.15 ; steady: 40 -> 5
+[INFO ] Intensifying #6554 ... 1  bonus run
+[INFO ] Initial configuration (#6554)
+[INFO ]  -> 0.001 (based on 2 runs)
+[INFO ] Intensifying #6554 ... 4  bonus runs
+[INFO ] Intensifying #6561 ... 6  bonus runs
+[INFO ] Intensifying #6561 ... 7  bonus runs
+[INFO ] Local optima #6561 discarded
+[INFO ]  0.0185 -/-> 0.0539 (based on 97 and 20 runs)
+[INFO ] == Starting Iteration 95 ==
+[INFO ] Tuner time: 141h12m10.90s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.18 ; steady: 40 -> 25
+[INFO ] Intensifying #6626 ... 1  bonus run
+[INFO ] Initial configuration (#6626)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #6626 ... 2  bonus runs
+[INFO ] Intensifying #5578 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Local optima #4314 accepted
+[INFO ]  0.0189 -> 0.0189 (based on 104 and 104 runs)
+[INFO ] == Starting Iteration 96 ==
+[INFO ] Tuner time: 142h8m37.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 200 ; replacement: 0.04 -> 0.1 ; steady: 40 -> 25
+[INFO ] Intensifying #6641 ... 4  bonus runs
+[INFO ] Initial configuration (#6641)
+[INFO ]  -> 0.0498 (based on 5 runs)
+[INFO ] Intensifying #6642 ... 1  bonus run
+[INFO ] Intensifying #6642 ... 4  bonus runs
+[INFO ] Local optima #6642 discarded
+[INFO ]  0.0189 -/-> 0.03 (based on 105 and 11 runs)
+[INFO ] == Starting Iteration 97 ==
+[INFO ] Tuner time: 142h43m43.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.2 ; replacement: 0.04 -> 0.08
+[INFO ] Intensifying #6707 ... 2  bonus runs
+[INFO ] Initial configuration (#6707)
+[INFO ]  -> 0.081 (based on 3 runs)
+[INFO ] Intensifying #4301 ... 1  bonus run
+[INFO ] Intensifying #6716 ... 2  bonus runs
+[INFO ] Intensifying #6717 ... 3  bonus runs
+[INFO ] Intensifying #4999 ... 1  bonus run
+[INFO ] Intensifying #4304 ... 2  bonus runs
+[INFO ] Intensifying #4309 ... 1  bonus run
+[INFO ] Intensifying #4143 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Local optima #4314 accepted
+[INFO ]  0.0189 -> 0.0189 (based on 112 and 112 runs)
+[INFO ] == Starting Iteration 98 ==
+[INFO ] Tuner time: 145h7m4.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 1.0 ; replacement: 0.04 -> 0.17
+[INFO ] Intensifying #6766 ... 1  bonus run
+[INFO ] Initial configuration (#6766)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #6767 ... 2  bonus runs
+[INFO ] Intensifying #6767 ... 1  bonus run
+[INFO ] Local optima #6767 discarded
+[INFO ]  0.0197 -/-> 0.0216 (based on 113 and 6 runs)
+[INFO ] == Starting Iteration 99 ==
+[INFO ] Tuner time: 146h37m30.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.6 ; pop: 180 -> 60 ; replacement: 0.04 -> 0.17
+[INFO ] Intensifying #6833 ... 1  bonus run
+[INFO ] Initial configuration (#6833)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #6833 ... 4  bonus runs
+[INFO ] Intensifying #6833 ... 6  bonus runs
+[INFO ] Local optima #6833 discarded
+[INFO ]  0.0195 -/-> 0.0462 (based on 114 and 13 runs)
+[INFO ] == Starting Iteration 100 ==
+[INFO ] Tuner time: 147h3m6.90s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.04 -> 0.01 ; steady: 40 -> 5
+[INFO ] Intensifying #6899 ... 1  bonus run
+[INFO ] Initial configuration (#6899)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #6899 ... 2  bonus runs
+[INFO ] Intensifying #6899 ... 1  bonus run
+[INFO ] Intensifying #5993 ... 2  bonus runs
+[INFO ] Intensifying #5993 ... 1  bonus run
+[INFO ] Local optima #5993 discarded
+[INFO ]  0.0195 -/-> 0.0122 (based on 115 and 16 runs)
+[INFO ] == Starting Iteration 101 ==
+[INFO ] Tuner time: 148h48m22.90s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 600 -> 200 ; mutation: 0.9 -> 0.4 ; tournament: 2 -> 10
+[INFO ] Intensifying #6968 ... 4  bonus runs
+[INFO ] Initial configuration (#6968)
+[INFO ]  -> 0.0583 (based on 5 runs)
+[INFO ] Intensifying #6987 ... 1  bonus run
+[INFO ] Intensifying #7015 ... 1  bonus run
+[INFO ] Intensifying #7015 ... 6  bonus runs
+[INFO ] Intensifying #7015 ... 2  bonus runs
+[INFO ] Local optima #7015 discarded
+[INFO ]  0.0195 -/-> 0.1078 (based on 116 and 16 runs)
+[INFO ] == Starting Iteration 102 ==
+[INFO ] Tuner time: 149h23m3.10s elapsed
+[INFO ] Perturbing
+[INFO ]  steady: 40 -> 20 ; tournament: 2 -> 3
+[INFO ] Intensifying #7076 ... 1  bonus run
+[INFO ] Initial configuration (#7076)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #7076 ... 3  bonus runs
+[INFO ] Intensifying #5600 ... 1  bonus run
+[INFO ] Intensifying #6790 ... 2  bonus runs
+[INFO ] Intensifying #6790 ... 3  bonus runs
+[INFO ] Local optima #6790 discarded
+[INFO ]  0.0197 -/-> 0.0244 (based on 117 and 13 runs)
+[INFO ] == Starting Iteration 103 ==
+[INFO ] Tuner time: 150h45m46.10s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.3 -> 0.6 ; mutation: 0.9 -> 0.8 ; tournament: 2 -> 9
+[INFO ] Intensifying #7128 ... 2  bonus runs
+[INFO ] Initial configuration (#7128)
+[INFO ]  -> 0.0868 (based on 3 runs)
+[INFO ] Intensifying #7129 ... 2  bonus runs
+[INFO ] Intensifying #7130 ... 1  bonus run
+[INFO ] Intensifying #7130 ... 6  bonus runs
+[INFO ] Local optima #7130 discarded
+[INFO ]  0.0195 -/-> 0.0474 (based on 118 and 13 runs)
+[INFO ] == Starting Iteration 104 ==
+[INFO ] Tuner time: 152h7m0.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.6 ; steady: 40 -> 50
+[INFO ] Intensifying #7196 ... 2  bonus runs
+[INFO ] Initial configuration (#7196)
+[INFO ]  -> 0.0498 (based on 3 runs)
+[INFO ] Intensifying #7201 ... 2  bonus runs
+[INFO ] Intensifying #7116 ... 1  bonus run
+[INFO ] Intensifying #5605 ... 2  bonus runs
+[INFO ] Intensifying #5605 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 1  bonus run
+[INFO ] Intensifying #4314 ... 2  bonus runs
+[INFO ] Local optima #4314 accepted
+[INFO ]  0.0196 -> 0.0196 (based on 124 and 124 runs)
+[INFO ] == Starting Iteration 105 ==
+[INFO ] Tuner time: 153h48m26.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 1.0 ; pop: 180 -> 120 ; steady: 40 -> 35
+[INFO ] Intensifying #7247 ... 1  bonus run
+[INFO ] Initial configuration (#7247)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #7248 ... 3  bonus runs
+[INFO ] Intensifying #7248 ... 1  bonus run
+[INFO ] Local optima #7248 discarded
+[INFO ]  0.0195 -/-> 0.0265 (based on 125 and 7 runs)
+[INFO ] == Starting Iteration 106 ==
+[INFO ] Tuner time: 154h49m1.10s elapsed
+[INFO ] Perturbing
+[INFO ]  mutation: 0.9 -> 0.4 ; replacement: 0.04 -> 0.05
+[INFO ] Intensifying #7314 ... 4  bonus runs
+[INFO ] Initial configuration (#7314)
+[INFO ]  -> 0.0493 (based on 5 runs)
+[INFO ] Intensifying #7317 ... 1  bonus run
+[INFO ] Intensifying #7317 ... 3  bonus runs
+[INFO ] Intensifying #7317 ... 2  bonus runs
+[INFO ] Local optima #7317 discarded
+[INFO ]  0.0193 -/-> 0.033 (based on 126 and 12 runs)
+[INFO ] == Starting Iteration 107 ==
+[INFO ] Tuner time: 155h32m2.10s elapsed
+[INFO ] Perturbing
+[INFO ]  pop: 180 -> 60 ; replacement: 0.04 -> 0.18 ; tournament: 2 -> 6
+[INFO ] Intensifying #7377 ... 3  bonus runs
+[INFO ] Initial configuration (#7377)
+[INFO ]  -> 0.0788 (based on 4 runs)
+[INFO ] Intensifying #7381 ... 1  bonus run
+[INFO ] Intensifying #7381 ... 2  bonus runs
+[INFO ] Intensifying #4647 ... 3  bonus runs
+[INFO ] Intensifying #4647 ... 2  bonus runs
+[INFO ] Intensifying #4647 ... 1  bonus run
+[INFO ] Local optima #4647 discarded
+[INFO ]  0.0192 -/-> 0.0224 (based on 127 and 16 runs)
+[INFO ] == Starting Iteration 108 ==
+[INFO ] Tuner time: 156h0m23.10s elapsed
+[INFO ] Restarting
+[INFO ]  crossover: 0.3 -> 0.7 ; mingen: 600 -> 200 ; mutation: 0.9 -> 0.7 ; pop: 180 -> 140 ; replacement: 0.04 -> 0.12 ; steady: 40 -> 50 ; tournament: 2 -> 9
+[INFO ] Intensifying #7426 ... 2  bonus runs
+[INFO ] Initial configuration (#7426)
+[INFO ]  -> 0.0738 (based on 3 runs)
+[INFO ] Intensifying #7430 ... 2  bonus runs
+[INFO ] Intensifying #7465 ... 2  bonus runs
+[INFO ] Intensifying #7465 ... 1  bonus run
+[INFO ] Intensifying #7465 ... 1  bonus run
+[INFO ] Local optima #7465 accepted
+[INFO ]  0.0703 -> 0.0926 (based on 4 and 9 runs)
+[INFO ] == Starting Iteration 109 ==
+[INFO ] Tuner time: 156h19m25.60s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.7 -> 0.6 ; replacement: 0.12 -> 0.01 ; steady: 50 -> 30
+[INFO ] Intensifying #7526 ... 1  bonus run
+[INFO ] Initial configuration (#7526)
+[INFO ]  -> 0.3362 (based on 2 runs)
+[INFO ] Intensifying #7527 ... 2  bonus runs
+[INFO ] Intensifying #7528 ... 1  bonus run
+[INFO ] Intensifying #7528 ... 1  bonus run
+[INFO ] Intensifying #7530 ... 3  bonus runs
+[INFO ] Intensifying #7533 ... 1  bonus run
+[INFO ] Intensifying #7580 ... 1  bonus run
+[INFO ] Intensifying #7580 ... 1  bonus run
+[INFO ] Intensifying #7580 ... 3  bonus runs
+[INFO ] Local optima #7580 accepted
+[INFO ]  0.1235 -> 0.0301 (based on 11 and 15 runs)
+[INFO ] == Starting Iteration 110 ==
+[INFO ] Tuner time: 157h21m13.60s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.6 -> 0.1 ; replacement: 0.01 -> 0.02 ; steady: 15 -> 50
+[INFO ] Intensifying #7639 ... 1  bonus run
+[INFO ] Initial configuration (#7639)
+[INFO ]  -> 0 (based on 2 runs)
+[INFO ] Intensifying #7639 ... 3  bonus runs
+[INFO ] Intensifying #7639 ... 1  bonus run
+[INFO ] Local optima #7639 discarded
+[INFO ]  0.0285 -/-> 0.0198 (based on 16 and 7 runs)
+[INFO ] == Starting Iteration 111 ==
+[INFO ] Tuner time: 157h57m23.60s elapsed
+[INFO ] Perturbing
+[INFO ]  mingen: 200 -> 600 ; tournament: 2 -> 6
+[INFO ] Intensifying #7706 ... 3  bonus runs
+[INFO ] Initial configuration (#7706)
+[INFO ]  -> 0.0688 (based on 4 runs)
+[INFO ] Intensifying #7707 ... 1  bonus run
+[INFO ] Intensifying #7714 ... 1  bonus run
+[INFO ] Intensifying #7725 ... 5  bonus runs
+[INFO ] Intensifying #7725 ... 1  bonus run
+[INFO ] Local optima #7725 discarded
+[INFO ]  0.0322 -/-> 0.0493 (based on 17 and 13 runs)
+[INFO ] == Starting Iteration 112 ==
+[INFO ] Tuner time: 159h40m35.60s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.6 -> 0.5 ; pop: 180 -> 80 ; steady: 15 -> 30
+[INFO ] Intensifying #7786 ... 3  bonus runs
+[INFO ] Initial configuration (#7786)
+[INFO ]  -> 0.0434 (based on 4 runs)
+[INFO ] Intensifying #7790 ... 1  bonus run
+[INFO ] Intensifying #7790 ... 2  bonus runs
+[INFO ] Local optima #7790 discarded
+[INFO ]  0.0365 -/-> 0.0797 (based on 18 and 8 runs)
+[INFO ] == Starting Iteration 113 ==
+[INFO ] Tuner time: 159h57m47.60s elapsed
+[INFO ] Perturbing
+[INFO ]  crossover: 0.6 -> 1.0 ; replacement: 0.01 -> 0.07
+[INFO ] Intensifying #7856 ... 3  bonus runs
+[INFO ] Initial configuration (#7856)
+[INFO ]  -> 0.0688 (based on 4 runs)
+[INFO ] ParamILS completed
+[INFO ] ========================================================================
+[INFO ] ParamILS has finished. Reason: total CPU time limit (576000.0 s) has been reached.   
+[INFO ] Total number of runs performed: 20418 (20418), total configurations tried: 7861
+[INFO ] Total CPU time used: 576006 s, total wallclock time used: 587536 s
+[INFO ] ParamILS's final incumbent found iteration 34, ID #860
+[INFO ] Estimated mean quality of final incumbent on training set: 0.0143
+[INFO ] Estimation based on 168 runs on 5 training instances
+[INFO ] ------------------------------------------------------------------------
+[INFO ] Differences with initial configuration: 
+ crossover: 0.8 -> 0.4
+ mingen: 400 -> 800
+ pop: 100 -> 160
+ replacement: 0.05 -> 0.17
+ steady: 5 -> 50

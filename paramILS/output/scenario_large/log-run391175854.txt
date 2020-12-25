@@ -1,0 +1,1165 @@
+18:24:19.970 [main] INFO  c.u.c.b.a.l.ComplexLoggingOptions - Logging to: /home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large/log-run391175854.txt
+18:24:19.980 [main] INFO  c.u.c.b.a.m.version.VersionTracker - Version of Java Runtime Environment is OpenJDK 64-Bit Server VM (11.0.6) 
+18:24:19.980 [main] INFO  c.u.c.b.a.m.version.VersionTracker - Version of OS is Linux 3.10.0-862.el7.x86_64 (amd64) 
+18:24:19.980 [main] INFO  c.u.c.b.a.m.version.VersionTracker - Version of ParamILS is 3.0.0 
+18:24:19.980 [main] INFO  c.u.c.b.a.m.version.VersionTracker - Version of Random Forest Library is v1.05.01-master-106 (7fba58fe4271) 
+18:24:19.980 [main] INFO  c.u.c.b.a.m.version.VersionTracker - Version of SMAC is ERROR LOADING VERSION INFORMATION 
+18:24:19.980 [main] INFO  c.u.c.b.a.m.j.JCommanderHelper - Call String: paramils --scenario-file learn_error_functions/scenario_large.txt --validation-runs 100 
+18:24:19.980 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ********** The next bit of output can be ignored, it is merely useful for debugging **********
+18:24:19.981 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ==========Environment Variables===========
+ARC=lx-amd64
+CPATH=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/include:/apps/gcc/7.4.0/include
+ENVIRONMENT=BATCH
+HOME=/home/aac13029tx
+HOSTNAME=g0007
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64
+JOB_ID=4693057
+JOB_NAME=tuning_paramils_large
+JOB_SCRIPT=/var/spool/uge/execd/g0007/job_scripts/4693057
+LANG=en_US.UTF-8
+LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/lib:/apps/gcc/7.4.0/lib64
+LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/lib:/apps/gcc/7.4.0/lib64
+LOADEDMODULES=gcc/7.4.0:openjdk/11.0.6.10
+LOGNAME=aac13029tx
+MANPATH=/apps/gcc/7.4.0/share/man:/usr/share/man:/usr/local/share/man
+MODULEPATH=/apps/modules/modulefiles/compilers:/apps/modules/modulefiles/devtools:/apps/modules/modulefiles/gpgpu:/apps/modules/modulefiles/mpi:/apps/modules/modulefiles/runtimes:/apps/modules/modulefiles/utils
+MODULESHOME=/usr/share/Modules
+NHOSTS=1
+NQUEUES=1
+NSLOTS=10
+PATH=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin:/apps/gcc/7.4.0/bin:/tmp/4693057.1.gpu:/usr/local/bin:/bin:/usr/bin
+PE=perack01
+PE_HOSTFILE=/var/spool/uge/execd/g0007/active_jobs/4693057.1/pe_hostfile
+PWD=/home/aac13029tx/LearningErrorFunctions/paramILS
+QUEUE=gpu
+REQNAME=tuning_paramils_large
+REQUEST=tuning_paramils_large
+RESTARTED=0
+SGE_ACCOUNT=gac50518
+SGE_ARCH=lx-amd64
+SGE_BINARY_PATH=/bb/system/uge/latest/bin/lx-amd64
+SGE_CELL=abci
+SGE_CLIENT_NAME=qsub
+SGE_CWD_PATH=/home/aac13029tx
+SGE_DEDICATED_NAME=NONE
+SGE_EXECD_PORT=16455
+SGE_HGR_TASK_rt_Csmall=1
+SGE_HGR_rt_Csmall=1
+SGE_JOB_HOSTLIST=/var/spool/uge/execd/g0007/active_jobs/4693057.1/hostlist
+SGE_JOB_SERVICE_TYPE=Spot
+SGE_JOB_SPOOL_DIR=/var/spool/uge/execd/g0007/active_jobs/4693057.1
+SGE_LOCALDIR=/local/4693057.1.gpu
+SGE_O_HOME=/home/aac13029tx
+SGE_O_HOST=es2
+SGE_O_LOGNAME=aac13029tx
+SGE_O_MAIL=/var/spool/mail/aac13029tx
+SGE_O_PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/home/aac13029tx/bin:/usr/local/sbin:/usr/sbin:/bb/system/uge/latest/bin/lx-amd64:/home/aac13029tx/bin
+SGE_O_SHELL=/bin/zsh
+SGE_O_WORKDIR=/home/aac13029tx
+SGE_POSIX_PRIORITY=-500
+SGE_QMASTER_PORT=16454
+SGE_RERUN_JOB=0
+SGE_RERUN_REQUESTED=2
+SGE_RESOURCE_NUM=1
+SGE_RESOURCE_TYPE=rt_C.small
+SGE_ROOT=/bb/system/uge/latest
+SGE_RSH_COMMAND=builtin
+SGE_STDERR_PATH=/home/aac13029tx/tuning_paramils_large.e4693057
+SGE_STDIN_PATH=/dev/null
+SGE_STDOUT_PATH=/home/aac13029tx/tuning_paramils_large.o4693057
+SGE_TASK_FIRST=undefined
+SGE_TASK_ID=undefined
+SGE_TASK_LAST=undefined
+SGE_TASK_STEPSIZE=undefined
+SGE_WALLTIME_SEC=603000
+SHELL=/bin/sh
+SHLVL=3
+TMP=/tmp/4693057.1.gpu
+TMPDIR=/tmp/4693057.1.gpu
+USER=aac13029tx
+_LMFILES_=/apps/modules/modulefiles/compilers/gcc/7.4.0:/apps/modules/modulefiles/devtools/openjdk/11.0.6.10
+
+18:24:19.981 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - Hostname:g0007.abci.local
+18:24:19.981 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ==========System Properties==============
+ERRLOG=/home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large/log-err391175854.txt
+NUMRUN=391175854
+OUTPUTDIR=/home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large
+ROOT-LEVEL=INFO
+RUNLOG=/home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large/log-run391175854.txt
+STDOUT-LEVEL=INFO
+WARNLOG=/home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large/log-warn391175854.txt
+awt.toolkit=sun.awt.X11.XToolkit
+file.encoding=UTF-8
+file.separator=/
+java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+java.awt.printerjob=sun.print.PSPrinterJob
+java.class.path=./lib/aeatk.jar:./lib/numerics4j-1.3.jar:./lib/logback-access-1.1.2.jar:./lib/jackson-core-2.3.1.jar:./lib/commons-io-2.1.jar:./lib/jcommander.jar:./lib/logback-core-1.1.2.jar:./lib/smac.jar:./lib/commons-math3-3.2.jar:./lib/slf4j-api-1.7.5.jar:./lib/guava-14.0.1.jar:./lib/spi-0.2.4.jar:./lib/logback-classic-1.1.2.jar:./lib/exp4j-0.3.10.jar:./lib/commons-math-2.2.jar:./lib/DomainInter.jar:./lib/fastrf.jar:./lib/Jama-1.0.2.jar:./lib/commons-collections-3.2.1.jar:./lib/jackson-databind-2.3.1.jar:./lib/paramils.jar:./lib/opencsv-2.3.jar:./lib/jcip-annotations.jar:./lib/jmatharray.jar:./lib/jackson-annotations-2.3.1.jar
+java.class.version=55.0
+java.home=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64
+java.io.tmpdir=/tmp
+java.library.path=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/lib:/apps/gcc/7.4.0/lib64:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+java.runtime.name=OpenJDK Runtime Environment
+java.runtime.version=11.0.6+10-LTS
+java.specification.name=Java Platform API Specification
+java.specification.vendor=Oracle Corporation
+java.specification.version=11
+java.vendor=Oracle Corporation
+java.vendor.url=http://java.oracle.com/
+java.vendor.url.bug=http://bugreport.java.com/bugreport/
+java.vendor.version=18.9
+java.version=11.0.6
+java.version.date=2020-01-14
+java.vm.compressedOopsMode=32-bit
+java.vm.info=mixed mode, sharing
+java.vm.name=OpenJDK 64-Bit Server VM
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.specification.vendor=Oracle Corporation
+java.vm.specification.version=11
+java.vm.vendor=Oracle Corporation
+java.vm.version=11.0.6+10-LTS
+jdk.debug=release
+line.separator=
+
+logback.configurationFile=ca/ubc/cs/beta/aeatk/logging/complex-logback.xml
+os.arch=amd64
+os.name=Linux
+os.version=3.10.0-862.el7.x86_64
+path.separator=:
+sun.arch.data.model=64
+sun.boot.library.path=/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/lib
+sun.cpu.endian=little
+sun.cpu.isalist=
+sun.io.unicode.encoding=UnicodeLittle
+sun.java.command=ca.ubc.cs.beta.aeatk.ant.execscript.Launcher ca.ubc.cs.beta.paramils.executors.ParamILSExecutor --scenario-file learn_error_functions/scenario_large.txt --validation-runs 100
+sun.java.launcher=SUN_STANDARD
+sun.jnu.encoding=UTF-8
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level=unknown
+user.country=US
+user.dir=/home/aac13029tx/LearningErrorFunctions/paramILS
+user.home=/home/aac13029tx
+user.language=en
+user.name=aac13029tx
+user.timezone=Asia/Tokyo
+
+18:24:19.982 [main] INFO  c.u.c.b.a.m.j.JCommanderHelper - ==========Configuration Options==========
+[ParamILSOptions]
+ multiObjective = false
+ initialIncumbent = DEFAULT
+ initialIncumbentFile = 
+ minRuns = 1
+ maxRuns = 2000
+ R = 10
+ perturbationLength = 3
+ randomRestartProbability = 0.05
+ approach = FOCUSED
+ bonusRunsMode = INTENSIFY
+ cappingMode = AUTO
+ aggressiveCapping = true
+ aggressiveCappingFactor = 2.0
+ cutoffThreshold = 0.1
+ cappingMinValue = 0.0
+ doValidation = true
+ validationRuns = 100
+ compareInitialConfiguration = false
+ validateOnTrainingSet = false
+ logDetails = false
+ alwaysRunInitialConfiguration = false
+ deterministicInstanceOrdering = false
+ experimentDir = /home/aac13029tx/LearningErrorFunctions/paramILS/
+help = [HelpOptions]
+		 showHiddenParameters = false
+		 showHelp = false
+		 helpLevel = BASIC
+		 showVersion = false
+		 helpDefaults = /home/aac13029tx/.aeatk/help.opt
+
+logOptions = [ComplexLoggingOptions]
+		 consoleLogLevel = INFO
+		 logLevel = INFO
+
+ optionFile = null
+ optionFile2 = null
+runGroupOptions = [RunGroupOptions]
+		 runGroupName = %SCENARIO_NAME
+		 runGroupExit = false
+		 replacementChar = %
+
+scenarioConfig = [ScenarioOptions]
+		 _runObj = QUALITY
+		 intraInstanceObj = MEAN
+		 interInstanceObj = MEAN
+		limitOptions = [TerminationCriteriaOptions]
+				 tunerTimeout = 576000
+				 numIterations = 2147483647
+				 runtimeLimit = 2147483647
+				 totalNumRunsLimit = 9223372036854775807
+				 countSMACTimeAsTunerTime = false
+				 challengeIncumbentAttempts = 1000
+				 fileToWatch = null
+
+		instanceOptions = [ProblemInstanceOptions]
+				 instanceFile = training_set_large.txt
+				 instanceFeatureFile = null
+				 testInstanceFile = validation_set_large.txt
+				 checkInstanceFilesExist = false
+				 useInstances = true
+				 instanceSuffix = null
+				 testInstanceSuffix = null
+				 ignoreFeatures = false
+
+		 scenarioFile = /home/aac13029tx/LearningErrorFunctions/paramILS/learn_error_functions/scenario_large.txt
+		 outputDirectory = output
+		 invalidScenarioReason = null
+		algoExecOptions = [AlgorithmExecutionOptions]
+				 algoExec = ruby wrapper.rb
+				 algoExecDir = learn_error_functions
+				 deterministic = false
+				 cutoffTime = 1.7976931348623157E308
+				 cutoffLength = -1.0
+				 additionalContext = {}
+				taeOpts = [TargetAlgorithmEvaluatorOptions]
+						 targetAlgorithmEvaluator = CLI
+						 abortOnCrash = false
+						 abortOnFirstRunCrash = true
+						 retryCount = 0
+						 cacheRuns = false
+						 cacheDebug = false
+						 useDynamicCappingExclusively = false
+						 reportStrictlyIncreasingRuntimes = false
+						 boundRuns = false
+						 maxConcurrentAlgoExecs = 1
+						 exitOnFailure = false
+						 runHashCodeFile = null
+						 leakMemory = false
+						 leakMemoryAmount = 1024
+						 verifySAT = null
+						 checkSATConsistency = true
+						 checkSATConsistencyException = true
+						 callObserverBeforeCompletion = true
+						prePostOptions = [PrePostCommandOptions]
+								 preCommand = null
+								 postCommand = null
+								 exceptionOnError = false
+								 logOutput = true
+								 directory = /home/aac13029tx/LearningErrorFunctions/paramILS/.
+
+						 checkResultOrderConsistent = false
+						 skipOutstandingEvaluationsTAE = false
+						 logRequestResponses = false
+						 logRequestResponsesRCOnly = false
+						 trackRunsScheduled = false
+						 trackRunsScheduledResolution = 1.0
+						 uncleanShutdownCheck = true
+						 killCaptimeExceedingRun = true
+						 killCaptimeExceedingRunFactor = 10.0
+						 checkRunConfigsUnique = true
+						 checkRunConfigsUniqueException = true
+						 observeWalltimeIfNoRuntime = true
+						 observeWalltimeScale = 0.95
+						 observeWalltimeDelay = 5.0
+						 synchronousObserver = true
+						 taeDefaults = /home/aac13029tx/.aeatk/tae.opt
+						ttaedo = [TransformTargetAlgorithmEvaluatorDecoratorOptions]
+								 transform = false
+								 transformValidValuesOnly = true
+								 SAT_runtime_transform = R
+								 SAT_quality_transform = Q
+								 UNSAT_runtime_transform = R
+								 UNSAT_quality_transform = Q
+								 TIMEOUT_runtime_transform = R
+								 TIMEOUT_quality_transform = Q
+								 other_runtime_transform = R
+								 other_quality_transform = Q
+
+						tForkOptions = [ForkingTargetAlgorithmEvaluatorDecoratorOptions]
+								 forkToTAE = null
+								fPolicyOptions = [ForkingTargetAlgorithmEvaluatorDecoratorPolicyOptions]
+										 fPolicy = null
+										 duplicateOnSlaveQuickTimeout = 5
+
+
+						 fileToWatch = null
+						 warnIfNoResponseFromTAE = 120
+						 taeStopProcessingOnShutdown = true
+						 filecache = false
+						 fileCacheSource = null
+						 fileCacheOutput = null
+						 fileCacheCrashOnMiss = false
+
+				paramFileDelegate = [ParamConfigurationSpaceOptions]
+						 paramFile = parameters.txt
+						 searchSubspace = null
+						 searchSubspaceFile = null
+						 continuousNeighbours = 4
+
+
+
+seedOptions = [SeedOptions]
+		 seedOffset = 0
+		 numRun = 391175854
+		 initialSeedMap = {}
+
+ paramilsDefaults = /home/aac13029tx/.aeatk/paramils.opt
+trackingOptions = [ParamConfigurationOriginTrackingOptions]
+		 configTracking = false
+
+ validationSeed = 0
+
+[AnalyticTargetAlgorithmEvaluatorOptions]
+ simulateDelay = false
+ cores = 0
+ observerFrequency = 100
+ func = CAMELBACK
+ scaleDelay = 1.0
+
+[BlackHoleTargetAlgorithmEvaluatorOptions]
+ warnings = true
+
+[CommandLineTargetAlgorithmEvaluatorOptions]
+ observerFrequency = 500
+ concurrentExecution = true
+ cores = 1
+ logAllCallStrings = false
+ logAllResultLines = false
+ logAllCallsAndResultLines = false
+ logAllProcessOutput = false
+ listenForUpdates = true
+ paramArgumentsContainQuotes = false
+ pgEnvKillCommand = null
+ pgNiceKillCommand = bash -c "kill -s TERM -%pid"
+ pgForceKillCommand = bash -c "kill -s KILL -%pid"
+ procNiceKillCommand = kill -s TERM %pid
+ procForceKillCommand = kill -s KILL %pid
+ smacDefaults = /home/aac13029tx/.aeatk/cli-tae.opt
+
+[IPCTargetAlgorithmEvaluatorOptions]
+ persistent = false
+ ipcMechanism = UDP
+ encodingMechanism = CALL_STRING
+ remoteHost = 127.0.0.1
+ remotePort = 5050
+ udpPacketSize = 4096
+ localPort = 0
+ execScript = null
+ execScriptOutput = false
+ poolConnections = false
+ ipcDefaults = /home/aac13029tx/.aeatk/ipc-tae.opt
+ asyncThreads = 11
+
+[PreloadedResponseTargetAlgorithmEvaluatorOptions]
+ preloadedResponses = 
+ runLength = -1.0
+ quality = 0.0
+ additionalRunData = 
+
+[RandomResponseTargetAlgorithmEvaluatorOptions]
+ simulateDelay = false
+ additionalRunData = 
+ cores = 0
+ maxResponse = 10.0
+ minResponse = 0.0
+ observerFrequency = 500
+ trendCoefficient = 0.0
+ seed = 1608197059700
+ persistent = false
+ scaleDelay = 1.0
+
+
+18:24:20.042 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - ParamILS started at: Dec 17, 2020, 6:24:20 PM. Minimizing mean quality.
+18:42:55.355 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:43:11.666 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+18:43:11.678 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #1 (incumbent) ... 1  bonus run
+18:43:11.681 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #1 (incumbent) updated!
+18:43:11.681 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  ∞ -> 0.0606 (based on 0 and 1 runs)
+18:43:11.681 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Looking for random initial solutions better than the initial incumbent
+19:19:18.694 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:20:48.773 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:15:30.134 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:17:49.317 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:45:51.004 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:46:16.047 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+21:21:55.557 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:23:24.674 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:17:24.715 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:19:36.836 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:19:36.839 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #2 ... 2  bonus runs
+22:19:36.841 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #1 (incumbent) updated!
+22:19:36.841 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0606 -> 0.0303 (based on 1 and 2 runs)
+22:37:26.973 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:37:43.010 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+23:06:15.175 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:06:39.785 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+23:06:39.788 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #1 (incumbent) updated!
+23:06:39.789 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0303 -> 0.038 (based on 2 and 4 runs)
+23:06:39.789 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - New incumbent! (#2)
+23:06:39.789 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  crossover: 0.8 -> 0.4 ; mingen: 400 -> 600 ; mutation: 1.0 -> 0.6 ; pop: 100 -> 200 ; replacement: 0.05 -> 0.01 ; steady: 5 -> 25
+23:06:39.789 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.038 -> 0.038 (based on 4 and 4 runs)
+23:06:39.790 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - New incumbent! (#1)
+23:06:39.790 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  crossover: 0.4 -> 0.8 ; mingen: 600 -> 400 ; mutation: 0.6 -> 1.0 ; pop: 200 -> 100 ; replacement: 0.01 -> 0.05 ; steady: 25 -> 5
+23:06:39.790 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.038 -> 0.038 (based on 4 and 4 runs)
+23:06:39.791 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - New incumbent! (#2)
+23:06:39.791 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  crossover: 0.8 -> 0.4 ; mingen: 400 -> 600 ; mutation: 1.0 -> 0.6 ; pop: 100 -> 200 ; replacement: 0.05 -> 0.01 ; steady: 5 -> 25
+23:06:39.791 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.038 -> 0.038 (based on 4 and 4 runs)
+23:53:18.533 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:55:14.991 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:30:02.413 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:31:30.375 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:25:05.881 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:27:20.597 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:27:20.599 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #2 (incumbent) ... 2  bonus runs
+01:27:20.605 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #2 (incumbent) updated!
+01:27:20.605 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.038 -> 0.0452 (based on 4 and 7 runs)
+01:52:41.603 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:53:56.675 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+02:30:41.299 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:32:31.093 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 40 generations without improvement
+02:39:03.645 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:39:10.874 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+02:50:01.314 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:50:12.058 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+02:54:36.052 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:54:43.484 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 5 generations without improvement
+03:00:51.758 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:01:02.508 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+03:03:58.981 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:04:04.752 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+03:09:30.274 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:09:40.669 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+03:21:48.274 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:24:34.641 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+03:42:30.201 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:46:26.298 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+03:49:55.921 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:50:36.638 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 40 generations without improvement
+03:56:09.791 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:57:13.227 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+04:16:13.107 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:17:24.709 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:47:41.548 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:49:35.397 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:51:16.060 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:51:23.091 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 30 generations without improvement
+04:54:12.473 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:54:25.933 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+04:54:25.934 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - == Starting Iteration 1 ==
+04:54:25.934 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Tuner time: 10h29m52.00s elapsed
+04:54:25.934 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Initial configuration (#2 (incumbent))
+04:54:25.935 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  -> 0.0452 (based on 7 runs)
+05:29:01.840 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:30:29.492 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:27:21.628 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:29:47.449 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:52:02.543 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:53:01.404 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:29:58.748 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:31:36.986 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:05:39.100 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:07:02.352 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:00:04.761 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:02:19.460 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:23:37.385 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:24:32.754 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:57:00.606 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:58:22.373 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:32:49.054 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:34:14.640 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:26:36.750 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:28:53.783 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:39:39.822 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:40:05.150 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:02:31.476 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:03:31.522 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:34:50.645 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:36:09.464 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:30:18.451 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:32:37.587 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:07:03.647 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:08:31.764 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:03:13.047 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:05:28.420 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:37:18.418 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:38:43.950 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:32:23.287 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:34:37.128 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:08:27.716 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:09:55.795 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:02:16.010 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:04:32.299 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:38:25.240 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:39:52.128 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+19:34:21.830 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:36:38.965 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:09:04.920 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:10:29.302 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:58:51.781 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:00:51.490 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:35:46.282 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:38:44.128 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+22:32:03.819 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:36:28.135 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+22:53:20.905 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:54:06.931 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:24:58.522 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:26:18.580 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:32:43.148 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:32:59.297 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:44:56.527 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:45:34.674 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:26:00.729 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:27:41.449 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:28:10.268 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:30:44.281 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:02:29.030 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:03:48.710 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:00:39.680 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:03:10.756 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:36:55.564 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:38:25.503 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:32:31.376 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:34:47.299 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:28:01.988 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:30:14.303 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:04:26.192 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:05:54.189 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:59:03.206 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:01:18.785 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:35:54.237 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:37:15.409 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:30:47.059 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:33:01.149 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:33:01.150 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #27 ... 2  bonus runs
+09:07:46.951 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:09:18.324 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:04:16.409 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:06:34.288 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:06:34.303 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #2 (incumbent) updated!
+10:06:34.303 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0452 -> 0.058 (based on 7 and 9 runs)
+10:06:34.304 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - New incumbent! (#27)
+10:06:34.304 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  replacement: 0.01 -> 0.03
+10:06:34.304 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.058 -> 0.0419 (based on 9 and 9 runs)
+10:36:44.098 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:38:02.003 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:28:22.381 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:30:30.009 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:48:03.263 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:48:47.386 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:20:02.333 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:21:22.919 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:55:18.307 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:56:44.126 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:48:49.951 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:51:02.044 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:27:10.077 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:28:40.035 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:31:35.777 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:34:05.549 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:01:24.670 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:02:32.645 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:44:02.716 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:45:48.330 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:19:00.808 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:20:26.964 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:09:25.435 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:11:32.027 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:46:13.197 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:49:08.510 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 50 generations without improvement
+19:42:32.040 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:46:52.162 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+20:21:47.671 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:23:17.023 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:16:12.420 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:18:27.397 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:53:23.919 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:54:52.112 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:46:56.171 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:49:06.354 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:22:59.078 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:24:59.699 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 35 generations without improvement
+00:16:39.907 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:19:42.470 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 35 generations without improvement
+01:01:55.320 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:03:42.086 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:00:07.975 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:02:29.264 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:37:16.137 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:38:46.653 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:35:42.727 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:38:11.385 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:44:59.578 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:45:17.499 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:56:02.425 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:56:30.885 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:41:55.682 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:43:23.728 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:52:54.229 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:55:04.177 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:29:41.631 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:31:10.948 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:24:26.163 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:26:34.075 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:57:39.485 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:59:00.516 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:46:33.358 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:48:32.228 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:23:00.840 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:24:27.342 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:15:40.266 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:17:51.067 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:41:01.602 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:42:28.437 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:19:41.802 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:22:04.257 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:38:56.631 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:39:40.516 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:06:38.538 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:07:47.330 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:42:53.968 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:43:31.954 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 10 generations without improvement
+13:36:11.778 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:37:08.567 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+14:07:39.471 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:08:59.482 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:57:33.994 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:59:38.414 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:34:20.627 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:36:04.592 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+16:29:35.469 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:32:19.178 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+16:54:51.267 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:55:47.761 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:32:08.462 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:33:46.372 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:07:23.632 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:08:49.667 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+19:01:31.817 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:03:44.112 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+19:38:22.678 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:39:15.939 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+20:31:11.186 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:32:36.182 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+21:06:48.706 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:08:16.135 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:02:12.679 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:04:30.571 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:58:43.117 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:01:02.321 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:23:21.996 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:26:49.793 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:59:11.370 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:00:36.616 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:49:30.648 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:51:36.133 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:26:31.452 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:28:00.416 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:19:22.836 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:21:32.400 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:54:36.410 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:56:02.214 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:45:24.176 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:47:30.938 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:22:20.963 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:24:58.060 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 45 generations without improvement
+06:18:13.436 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:22:15.018 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+06:35:57.529 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:36:34.096 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:57:51.075 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:58:44.443 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:32:33.668 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:32:53.344 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 5 generations without improvement
+08:27:32.012 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:28:05.115 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+08:56:22.809 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:57:35.463 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:42:46.158 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:44:43.489 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:30:52.171 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:32:49.936 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:40:04.037 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:42:54.526 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:32:54.098 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:35:03.054 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:49:36.263 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:52:46.502 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:26:46.024 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:28:13.790 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:19:42.552 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:21:57.352 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:32:07.435 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:32:33.040 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:48:23.628 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:49:04.053 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:21:02.584 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:22:24.813 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:11:54.794 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:14:01.220 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:47:57.940 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:49:23.829 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:41:34.436 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:43:45.397 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+19:18:46.286 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:20:15.552 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:17:12.550 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:19:36.824 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:23:01.882 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:23:09.867 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:28:20.338 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:28:34.487 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:53:15.696 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:54:19.731 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:32:11.214 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:33:46.234 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:54:05.115 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:54:58.016 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:26:18.017 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:27:37.858 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:02:53.582 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:04:20.843 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:03:07.421 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:05:32.504 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:17:03.905 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:17:30.510 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:39:47.121 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:40:45.475 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:12:45.232 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:14:13.120 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:03:40.727 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:05:45.664 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:45:33.427 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:47:15.569 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:48:06.858 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:50:41.481 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:24:55.508 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:26:22.073 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:17:30.913 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:19:43.199 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:53:30.800 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:54:56.979 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:49:48.059 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:52:04.801 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:04:15.083 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:05:44.192 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:24:36.161 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:26:52.043 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:00:49.326 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:03:04.356 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+08:55:51.949 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:59:19.703 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+09:35:45.800 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:37:15.515 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:37:49.027 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:40:30.959 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:13:03.411 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:14:27.642 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:03:20.896 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:05:25.305 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:36:17.196 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:37:37.524 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:27:07.036 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:29:13.007 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:04:15.360 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:05:26.456 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 20 generations without improvement
+14:58:06.700 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:59:55.583 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 20 generations without improvement
+15:06:01.300 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:06:14.895 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:17:54.551 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:18:14.831 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+15:52:29.901 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:53:59.083 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:46:30.738 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:48:46.086 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:23:29.107 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:24:59.232 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:17:50.047 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:20:02.856 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:50:46.385 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:52:05.748 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+19:53:08.787 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:55:47.110 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:47:01.052 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:49:15.564 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:49:15.615 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #27 (incumbent) ... 1  bonus run
+20:49:15.623 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #27 (incumbent) updated!
+20:49:15.623 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0419 -> 0.0417 (based on 9 and 10 runs)
+21:41:03.922 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:43:19.738 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:19:18.155 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:20:46.080 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:11:39.822 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:13:46.916 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:13:46.968 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #27 (incumbent) ... 2  bonus runs
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Config #27 (incumbent) updated!
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0417 -> 0.0398 (based on 10 and 12 runs)
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Local optima #27 (incumbent) accepted
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  0.0563 -> 0.0398 (based on 10 and 12 runs)
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - == Starting Iteration 2 ==
+23:13:46.988 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Tuner time: 124h47m37.00s elapsed
+23:13:46.989 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Perturbing
+23:13:46.990 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  replacement: 0.03 -> 0.16 ; tournament: 2 -> 3
+23:46:26.917 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:47:51.388 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:36:32.445 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:38:36.375 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:08:23.285 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:09:38.827 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:06:25.842 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:08:36.440 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:55:59.869 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:57:59.114 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:57:59.165 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #88 ... 4  bonus runs
+02:57:59.165 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Initial configuration (#88)
+02:57:59.165 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS -  -> 0.0844 (based on 5 runs)
+03:31:35.882 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:33:02.115 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:26:31.995 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:28:47.638 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+04:51:47.801 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:52:46.644 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:28:42.503 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:30:10.304 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:52:26.919 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:53:23.464 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+06:31:46.204 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:33:25.966 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:06:54.972 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:08:22.543 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:29:59.783 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:30:56.081 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:30:56.132 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Intensifying #90 ... 1  bonus run
+07:53:38.354 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:54:35.493 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:39:40.350 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:41:26.439 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:02:06.214 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:02:59.700 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:37:45.085 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:39:13.793 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:54:46.329 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:55:24.642 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:25:55.854 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:27:13.306 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:50:44.177 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:51:44.609 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:29:28.946 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:31:05.268 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:53:28.423 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:54:23.964 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:38:57.780 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:40:54.748 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:01:13.016 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:01:57.550 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:30:57.523 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:32:12.529 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:56:20.686 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:57:19.585 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:35:33.457 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+14:37:10.271 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+14:59:58.897 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:01:51.246 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+15:40:27.183 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+15:43:42.008 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+16:07:07.918 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:08:10.059 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+16:46:36.407 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+16:48:14.685 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:11:04.442 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:12:04.563 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+17:49:11.258 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+17:50:45.891 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+18:13:30.706 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:14:50.266 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 35 generations without improvement
+18:52:05.049 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+18:54:15.684 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 35 generations without improvement
+19:17:42.537 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+19:18:42.492 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:01:55.062 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:03:43.699 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+20:26:41.280 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+20:27:38.519 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:05:17.107 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:06:53.745 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:11:35.899 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:11:47.680 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:19:06.087 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:19:25.710 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+21:50:17.289 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+21:51:18.845 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+22:41:43.780 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+22:43:19.241 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:05:28.187 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:06:23.884 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+23:44:15.747 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+23:45:51.157 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:10:29.731 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:11:21.773 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+00:50:31.974 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+00:52:11.793 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:16:42.856 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:17:43.519 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+01:55:53.934 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+01:57:27.349 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:13:28.394 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:14:29.843 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:40:33.022 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:42:08.431 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+02:53:56.984 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+02:54:25.847 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:13:46.461 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:14:35.073 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+03:38:53.000 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+03:39:16.163 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+04:16:15.338 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:16:55.376 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+04:39:03.372 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+04:40:00.068 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:15:24.139 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:17:00.011 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+05:39:28.496 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+05:40:36.754 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+06:21:53.590 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:23:59.250 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+06:51:44.641 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+06:52:54.645 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+07:36:58.201 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+07:38:50.842 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:00:36.818 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:01:31.647 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+08:37:47.939 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+08:39:17.399 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:03:33.432 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:04:34.247 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+09:43:21.012 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+09:45:00.945 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:16:15.111 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:17:32.889 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:44:13.058 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:44:54.903 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 15 generations without improvement
+10:44:54.954 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - ParamILS completed
+10:44:54.954 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ========================================================================
+10:44:54.954 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ParamILS has finished. Reason: total CPU time limit (576000.0 s) has been reached.   
+10:44:54.955 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Total number of runs performed: 261 (261), total configurations tried: 116
+10:44:54.955 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Total CPU time used: 577085 s, total wallclock time used: 577235 s
+10:44:54.955 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - ParamILS's final incumbent found iteration 1, ID #27
+10:44:54.955 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Estimated mean quality of final incumbent on training set: 0.0398
+10:44:54.955 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Estimation based on 12 runs on 5 training instances
+10:44:54.959 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - ------------------------------------------------------------------------
+10:44:54.960 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Differences with initial configuration: 
+ crossover: 0.8 -> 0.4
+ mingen: 400 -> 600
+ mutation: 1.0 -> 0.6
+ pop: 100 -> 200
+ replacement: 0.05 -> 0.03
+ steady: 5 -> 25
+10:44:54.960 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ========================================================================
+10:44:54.960 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - Now starting offline validation.
+10:44:54.969 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Testing final incumbent
+10:48:22.853 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:48:31.437 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:49:45.055 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:49:48.370 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:50:46.946 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:50:49.408 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:54:10.522 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:54:18.958 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:54:42.034 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:54:42.988 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:58:03.230 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:58:11.565 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+10:59:10.476 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+10:59:12.985 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:00:09.502 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:00:11.964 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:03:34.010 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:03:42.495 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:04:06.386 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:04:07.390 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:07:26.199 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:07:34.336 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:08:45.384 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:08:48.598 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:09:48.815 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:09:51.276 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:13:17.722 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:13:26.607 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:13:52.014 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:13:53.068 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:17:23.302 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:17:31.941 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:18:41.252 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:18:44.516 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:19:42.037 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:19:44.498 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:23:09.141 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:23:17.875 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:23:42.370 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:23:43.324 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:27:17.465 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:27:26.845 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:28:32.755 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:28:35.719 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:29:34.549 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:29:37.110 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:32:35.183 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:32:42.515 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:33:06.052 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:33:07.056 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:36:27.329 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:36:36.012 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:37:45.221 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:37:48.133 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:38:45.291 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:38:47.752 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:42:08.192 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:42:16.734 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:42:42.305 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:42:43.310 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:46:03.069 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:46:11.353 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:47:17.362 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:47:20.276 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:48:21.153 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:48:23.763 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:51:44.534 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:51:53.159 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:52:15.356 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:52:16.310 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:55:30.121 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:55:38.261 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:56:45.780 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:56:48.544 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+11:57:46.904 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+11:57:49.413 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:01:10.789 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:01:19.321 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:01:43.135 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:01:44.139 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:05:14.863 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:05:23.947 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:06:32.916 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:06:35.926 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:07:36.179 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:07:38.841 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:11:00.089 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:11:08.720 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:11:29.901 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:11:30.805 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:14:53.882 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:15:02.022 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:16:16.753 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:16:20.016 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:17:20.659 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:17:23.168 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:20:49.814 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:20:58.457 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:21:22.236 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:21:23.291 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:24:55.184 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:25:03.768 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:26:18.146 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:26:21.159 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:27:19.849 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:27:22.360 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:30:42.635 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:30:50.924 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:31:13.078 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:31:14.033 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:34:28.938 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:34:36.874 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:35:43.870 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:35:46.683 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:36:45.892 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:36:48.402 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:40:11.043 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:40:19.578 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:40:44.495 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:40:45.500 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:44:11.986 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:44:20.619 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:45:34.917 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:45:38.280 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:46:38.766 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:46:41.529 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:50:06.744 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:50:15.532 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:50:37.134 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:50:38.037 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:54:06.742 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:54:14.523 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:55:21.697 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:55:24.655 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:56:23.809 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:56:26.319 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+12:59:46.655 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+12:59:55.142 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:00:20.513 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:00:21.618 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:03:54.237 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:04:03.120 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:05:14.957 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:05:18.224 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:06:18.459 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:06:21.020 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:09:48.462 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:09:57.394 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:10:19.238 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:10:20.241 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:13:30.000 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:13:37.783 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:14:34.392 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:14:36.803 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:15:34.896 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:15:37.305 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:18:58.620 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:19:07.157 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:19:29.995 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:19:30.948 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:22:53.252 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:23:02.144 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:24:15.931 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:24:18.944 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:25:17.910 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:25:20.421 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:28:47.302 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:28:55.887 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:29:20.757 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:29:21.862 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:32:41.155 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:32:49.445 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:33:58.710 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:34:01.823 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:35:01.593 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:35:04.103 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:38:24.734 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:38:33.367 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:38:58.017 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:38:59.121 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:42:17.837 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:42:26.217 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:43:22.953 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:43:25.313 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:44:25.794 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:44:28.402 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:47:54.945 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:48:03.637 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:48:28.036 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:48:29.091 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:51:48.210 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:51:56.551 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:53:04.711 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:53:07.673 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:54:06.681 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:54:09.190 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:57:29.144 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:57:37.783 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:58:01.722 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+13:58:02.876 [CLI TAE (STDERR Thread - #0)] WARN  c.u.c.b.a.t.b.c.CommandLineAlgorithmRun - [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+13:58:02.877 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ========================================================================
+13:58:02.877 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - Validation has finished. Time used: 11588 s.
+13:58:02.877 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Estimated mean quality of final incumbent on test set: 0.0903
+13:58:02.877 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Estimation based on 100 runs on 5 test instances
+13:58:02.878 [main] INFO  c.u.c.b.p.configurator.SOFocusedILS - Sample call for final incumbent:
+cd /home/aac13029tx/LearningErrorFunctions/paramILS/learn_error_functions; ruby wrapper.rb ../../learn/spaces/complete_lt-5-8.txt 0 1.7976931348623157E308 2147483647 953632 -crossover '0.4' -mingen '600' -mutation '0.6' -pop '200' -replacement '0.03' -steady '25' -tournament '2' 
+13:58:02.878 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - ========================================================================
+13:58:02.878 [main] INFO  c.u.c.b.p.executors.ParamILSExecutor - Additional information about run 391175854 in: /home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large
