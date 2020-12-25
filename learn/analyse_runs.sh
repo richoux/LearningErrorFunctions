@@ -41,12 +41,15 @@ filename=${1%.*}
 IFS=- read var1 var2 var3 var4 var5 <<< $filename
 unset IFS
 
+IFS=_ read var4_number dumb <<< $var4
+unset IFS
+
 if [[ $var1 == *"complete"* ]]; then
 		nb_var=${var3}
-		domain_size=${var4}
+		domain_size=${var4_number}
 		space_size=$((domain_size ** nb_var))
 else
-		space_size=$((2*$var4))
+		space_size=$((2*$var4_number))
 fi
 echo "space_size = $space_size"
 
