@@ -1,40 +1,40 @@
 #!/bin/bash
 
-ad_n=5
-ad_d=5
-
-cm_n=3
-cm_d=11
-cm_p=8
-
-lt_n=5
-lt_d=5
-
-le_n=3
-le_d=11
-le_p=23
-
-ol_n=3
-ol_d=8
-ol_p=3
-
-# ad_n=4
+# ad_n=5
 # ad_d=5
 
-# cm_n=4
-# cm_d=5
-# cm_p=3
+# cm_n=3
+# cm_d=11
+# cm_p=8
 
-# lt_n=4
+# lt_n=5
 # lt_d=5
 
 # le_n=3
-# le_d=8
-# le_p=12
+# le_d=11
+# le_p=23
 
 # ol_n=3
 # ol_d=8
-# ol_p=2
+# ol_p=3
+
+ad_n=4
+ad_d=5
+
+cm_n=4
+cm_d=5
+cm_p=3
+
+lt_n=4
+lt_d=5
+
+le_n=3
+le_d=8
+le_p=12
+
+ol_n=3
+ol_d=8
+ol_p=2
 
 for i in {1..12}
 do

@@ -109,6 +109,11 @@ bool no_parameter_operations( const vector<int>& weights )
 	return weights[7] == 0 && weights[8] == 0 && weights[9] == 0 && weights[10] == 0 && weights[11] == 0 && weights[17] == 0 && weights[21] == 0 && weights[22] == 0 && weights[23] == 0 && weights[24] == 0; 
 }
 
+// The fitness outputs a cost corresponding to the sum of the difference between
+// the expected Hamming distance and the predicted Hamming distance for each configuration
+// of the training set (solutions + non-solutions)
+// This is NOT an average. This cost is normalized latter in the program.
+// A penalty in [0,1[ to favor shorter models is also added just before returning the cost. 
 eoMinimizingFitness fitness( const Indi& indi )
 {
 	// set< pair<double, double> > costs;
@@ -170,7 +175,7 @@ eoMinimizingFitness fitness( const Indi& indi )
 	if( ( has_parameters && no_parameter_operations( weights ) ) || ( !has_parameters && !no_parameter_operations( weights ) ) )
 		cost += 1000;
 
-	// favor models with random operations
+	// favor models with fewer operations
 	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
 	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
 
@@ -355,7 +360,8 @@ int main_function(int argc, char **argv)
 				random_configurations.push_back( number );
 			}
 		}
-		
+
+		number_configurations_in_file *= 2;
 		input_file.close();
 	}
 	else if( cmdl( {"ci", "complete_input"} ) )
@@ -371,6 +377,7 @@ int main_function(int argc, char **argv)
 		// loading solutions/configurations
 		while( getline( input_file, line ) )
 		{
+			++number_configurations_in_file;
 			auto delimiter = line.find(" : ");
 			std::string solution_token = line.substr( 0, delimiter );
 			line.erase(0, delimiter + 3 );
@@ -378,7 +385,6 @@ int main_function(int argc, char **argv)
 			stringstream line_stream( line );
 			while( line_stream >> string_number )
 			{
-				++number_configurations_in_file;
 				stringstream number_stream( string_number );
 				number_stream >> number;
 				if( solution_token.compare("1") == 0 )
@@ -420,7 +426,8 @@ int main_function(int argc, char **argv)
 
 	VEC_SIZE = number_units_transfo + number_units_compar + number_units_aggreg + number_units_arith;
 	rng.reseed(SEED);
-	
+
+	// TODO: pre-compute this cost_map if the training set is coming from a file
 	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
 	if( !xp && !hyperparameters_tuning )
@@ -429,9 +436,9 @@ int main_function(int argc, char **argv)
 		     << "\nMax domain value: " << max_value;
 
 		if( number_configurations_in_file == 0 )
-			cout << "\nNumber of training samplings: " << samplings;
+			cout << "\nTotal number of training samplings: " << samplings*2;
 		else
-			cout << "\nNumber of configurations in the training set: " << number_configurations_in_file;
+			cout << "\nTotal number of configurations in the training set: " << number_configurations_in_file;
 
 		cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
@@ -635,13 +642,16 @@ int main_function(int argc, char **argv)
 			more_frequent_vector = m.first;
 		}
 
-	int training_size = number_configurations_in_file == 0 ? samplings : number_configurations_in_file;
+	int training_size = number_configurations_in_file == 0 ? samplings*2 : number_configurations_in_file;	
 	int fitness_integer = static_cast<int>( floor( best_fitness ) );
 	double regularization_term = best_fitness - fitness_integer;
 	
 	if( xp )
 		cout << static_cast<double>( fitness_integer ) / training_size << " " << highest_frequency << " " << more_frequent_vector << "\n";
 	else
+		// Warning: for hyperparameter tuning experiments done in December 2020, training_size had not been doubled.
+		// But this didn't impact those experiments since it didn't change the fitness ordering. However, fitness training
+		// were actually better than the one in those experiments result files (recall: for hyperparameter tuning only)
 		if( hyperparameters_tuning )
 		{
 			auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>( std::chrono::steady_clock::now() - start ).count();
@@ -662,9 +672,9 @@ int main_function(int argc, char **argv)
 			     << "\nMax domain value: " << max_value;
 
 			if( number_configurations_in_file == 0 )
-				cout << "\nNumber of training samplings: " << samplings;
+				cout << "\nNumber of training samplings: " << training_size;
 			else
-				cout << "\nNumber of configurations in the training set: " << number_configurations_in_file;
+				cout << "\nNumber of configurations in the training set: " << training_size;
 
 			cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 			     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";
