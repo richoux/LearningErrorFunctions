@@ -1,48 +1,48 @@
 #!/bin/bash
 
-ad_n=5
-ad_d=5
-
-cm_n=3
-cm_d=11
-cm_p=8
-
-lt_n=5
-lt_d=5
-
-le_n=3
-le_d=11
-le_p=23
-
-ol_n=3
-ol_d=8
-ol_p=3
-
-# ad_n=4
+# ad_n=5
 # ad_d=5
 
-# cm_n=4
-# cm_d=5
-# cm_p=3
+# cm_n=3
+# cm_d=11
+# cm_p=8
 
-# lt_n=4
+# lt_n=5
 # lt_d=5
 
 # le_n=3
-# le_d=8
-# le_p=12
+# le_d=11
+# le_p=23
 
 # ol_n=3
 # ol_d=8
-# ol_p=2
+# ol_p=3
+
+ad_n=4
+ad_d=5
+
+cm_n=4
+cm_d=5
+cm_p=3
+
+lt_n=4
+lt_d=5
+
+le_n=3
+le_d=8
+le_p=12
+
+ol_n=3
+ol_d=8
+ol_p=2
 
 #large
-# hyperparameter="--tournament 2 --pop 200 --steady 25 --mingen 600 --crossover 0.4 --mutation 0.6 --replacement 0.03"
-# suffix="_paramils_large_2-200-25-600-0.4-0.6-0.03"
+hyperparameter="--tournament 2 --pop 200 --steady 25 --mingen 600 --crossover 0.4 --mutation 0.6 --replacement 0.03"
+suffix="_paramils_large_2-200-25-600-0.4-0.6-0.03"
 
 #small
-hyperparameter="--tournament 2 --pop 160 --steady 50 --mingen 800 --crossover 0.4 --mutation 1.0 --replacement 0.17"
-suffix="_paramils_small_2-160-50-800-0.4-1.0-0.17"
+# hyperparameter="--tournament 2 --pop 160 --steady 50 --mingen 800 --crossover 0.4 --mutation 1.0 --replacement 0.17"
+# suffix="_paramils_small_2-160-50-800-0.4-1.0-0.17"
 
 for i in {1..12}
 do

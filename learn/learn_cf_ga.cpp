@@ -52,6 +52,7 @@ double params_value;
 bool latin_sampling;
 string input_file_path;
 ifstream input_file;
+ifstream input_costs_file;
 string line, string_number;
 int number_configurations_in_file;
 bool xp;
@@ -324,10 +325,11 @@ int main_function(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
+		cmdl( {"i", "input"} ) >> input_file_path;
+
 		if( !xp && !hyperparameters_tuning )
 			cout << "Loading data from " << input_file_path << "\n";
 
-		cmdl( {"i", "input"} ) >> input_file_path;
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
@@ -366,10 +368,11 @@ int main_function(int argc, char **argv)
 	}
 	else if( cmdl( {"ci", "complete_input"} ) )
 	{
+		cmdl( {"ci", "complete_input"} ) >> input_file_path;
+
 		if( !xp && !hyperparameters_tuning )
 			cout << "Loading data from " << input_file_path << "\n";
-
-		cmdl( {"ci", "complete_input"} ) >> input_file_path;
+		
 		input_file.open( input_file_path );
 
 		int number;
@@ -427,8 +430,27 @@ int main_function(int argc, char **argv)
 	VEC_SIZE = number_units_transfo + number_units_compar + number_units_aggreg + number_units_arith;
 	rng.reseed(SEED);
 
-	// TODO: pre-compute this cost_map if the training set is coming from a file
-	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+
+	if( cmdl( {"i", "input"} ) || cmdl( {"ci", "complete_input"} ) )
+	{
+		int number;
+		std::string input_costs_file_path = input_file_path.substr( 0, input_file_path.length() - 4 ) + std::string("_costs.txt");
+
+		input_costs_file.open( input_costs_file_path );
+		while( getline( input_costs_file, line ) )
+		{
+			auto delimiter = line.find(" ");
+			std::string solution_token = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 1 );
+			stringstream line_stream( line );
+			line_stream >> number;
+			cost_map.emplace( solution_token, number );
+		}
+		
+		input_costs_file.close();
+	}
+	else
+		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
 	if( !xp && !hyperparameters_tuning )
 	{
