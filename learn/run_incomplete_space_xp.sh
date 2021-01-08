@@ -1,5 +1,7 @@
 #!/bin/bash
 
+samples=1000
+
 ad_n=6
 ad_d=6
 
@@ -17,8 +19,6 @@ le_p=12
 ol_n=6
 ol_d=18
 ol_p=2
-
-samples=1000
 
 # ad_n=4
 # ad_d=5
