@@ -63,8 +63,8 @@ void usage( char **argv )
 	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take.\n"
 	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
 	     << "-f, --function FUNCTION, the series of bits representing a cost function.\n"
-	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
-	     << "-hi, --hamming_input HAMMING_INPUT_FILE containing sampled configurations with their true Hamming cost.\n"
+	     << "-i, --input INPUT_FILE containing sampled configurations from the 'spaces' folder.\n"
+	     << "-hi, --hamming_input HAMMING_INPUT_FILE containing sampled configurations with their Hamming cost from the 'hamming' folder.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n"
@@ -236,10 +236,11 @@ int main(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
+		cmdl( {"i", "input"} ) >> input_file_path;
+
 		if( !xp )
 			cout << "Loading data from " << input_file_path << "\n";
 
-		cmdl( {"i", "input"} ) >> input_file_path;
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
@@ -247,7 +248,7 @@ int main(int argc, char **argv)
 		int number_samplings;
 		int number;
 		line_stream >> number_samplings;
-
+		samplings = number_samplings * 2;
 		// loading solutions
 		for( int i = 0; i < number_samplings; ++i )
 		{
@@ -278,16 +279,18 @@ int main(int argc, char **argv)
 	}
 	else if( cmdl( {"hi", "hamming_input"} ) )
 	{
+		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
+
 		if( !xp )
 			cout << "Loading data from " << input_file_path << "\n";
-
-		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
+		
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
 		stringstream line_stream( line );
 		int number_samplings;
 		line_stream >> number_samplings;
+		samplings = number_samplings;
 
 		int number;
 		int index = 0;
@@ -328,19 +331,33 @@ int main(int argc, char **argv)
 				cout << "Perform Monte Carlo sampling.\n";
 			cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
+
+		samplings *= 2; // n solutions + n non-solutions 
 	}
 
 	if( !cmdl( {"hi", "hamming_input"} ) )
-	    cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 	
 	if( !xp )
 	{
-		cout << "Cost: " << fitness( cost_function )
+		int number_solutions, number_non_solutions;
+		if( cmdl( {"hi", "hamming_input"} ) )
+		{
+			number_solutions = random_solutions.size() / ( 2 * nb_vars );
+			number_non_solutions = number_solutions;
+		}
+		else
+		{
+			number_solutions = random_solutions.size() / nb_vars;
+			number_non_solutions = random_configurations.size() / nb_vars;
+		}
+		
+		cout << "Normalized cost: " << fitness( cost_function ) / samplings
 		     << "\nNumber of variables: " << nb_vars
 		     << "\nMax domain value: " << max_value
 		     << "\nSampling samplings: " << samplings
-		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
+		     << "\nNumber of solutions: " << number_solutions << ", density = "
+		     << static_cast<double>( number_solutions ) / samplings << "\n";
 
 		print_model( cost_function );
 	}
