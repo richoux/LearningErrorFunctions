@@ -1,0 +1,8 @@
+Constraint: Linear equation.
+12-12-42
+Perform Monte Carlo sampling.
+Number of solutions: 1000
+Space size: 8916100448256
+Percent solutions: 0.0318092
+Percent explored space: 2.24313e-08
+Elapsed time: 628.727ms
