@@ -65,7 +65,7 @@ void write( int cost, const vector<int>& config )
 int cost_ad( vector<int> input )
 {
 	int cost = 0;
-	for( int i =0; i < nb_vars; ++i )
+	for( int i =0; i < max_value; ++i )
 	{
 		std::transform( input.begin(), input.end(), input.begin(), [](auto& v){ return --v; } );
 		cost += std::max<int>( 0, std::count( input.begin(), input.end(), 0 ) - 1 );
