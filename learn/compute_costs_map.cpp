@@ -1,3 +1,5 @@
+// To produce _costs.txt files
+
 #include <vector>
 #include <string>
 #include <map>

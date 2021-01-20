@@ -1,3 +1,5 @@
+// To compute the score on test sets of a specific function
+
 //-----------------------------------------------------------------------------
 // standard includes
 #include <stdexcept>  // runtime_error 

@@ -1,3 +1,5 @@
+// To create files in the hamming folder
+
 //-----------------------------------------------------------------------------
 // standard includes
 #include <stdexcept>  // runtime_error 
