@@ -42,6 +42,8 @@ using namespace std;
 string constraint;
 int nb_vars, max_value;
 int samplings;
+bool do_samplings = false;
+int training_size;
 bool has_parameters;
 vector<int> random_solutions;
 vector<int> random_configurations;
@@ -167,14 +169,14 @@ eoMinimizingFitness fitness( const Indi& indi )
 	
 	// penalize a network vector full of zeros
 	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
-		cost += 10;
+		cost += ( 10 * training_size );
 	// penalty if no unique agregation function
 	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
-		cost += 10;	
+		cost += ( 10 * training_size );	
 	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some),
 	// or if there is at least one operation with parameters although the user did not provide any.
 	if( ( has_parameters && no_parameter_operations( weights ) ) || ( !has_parameters && !no_parameter_operations( weights ) ) )
-		cost += 1000;
+		cost += ( 1000 * training_size );
 
 	// favor models with fewer operations
 	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
@@ -401,6 +403,7 @@ int main_function(int argc, char **argv)
 	}
 	else
 	{
+		do_samplings = true;
 		if( latin_sampling )
 		{
 			if( !xp && !hyperparameters_tuning )
@@ -452,16 +455,16 @@ int main_function(int argc, char **argv)
 	else
 		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 
+	training_size = number_configurations_in_file == 0 ? samplings*2 : number_configurations_in_file;	
+
 	if( !xp && !hyperparameters_tuning )
 	{
 		cout << "Number of variables: " << nb_vars
 		     << "\nMax domain value: " << max_value;
 
-		if( number_configurations_in_file == 0 )
-			cout << "\nTotal number of training samplings: " << samplings*2;
-		else
-			cout << "\nTotal number of configurations in the training set: " << number_configurations_in_file;
-
+		cout << "\nTotal number of training configurations: " << training_size;
+		if( do_samplings )
+			cout << " (sampled)";
 		cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
 	}
@@ -499,7 +502,7 @@ int main_function(int argc, char **argv)
 	// Fitness function
 	////////////////////////////
 	// Evaluation: from a plain C++ fn to an EvalFunc Object
-	eoEvalFuncPtr<Indi> eval(  fitness );
+	eoEvalFuncPtr<Indi> eval( fitness );
 
 	////////////////////////////////
 	// Initilisation of population
@@ -664,7 +667,6 @@ int main_function(int argc, char **argv)
 			more_frequent_vector = m.first;
 		}
 
-	int training_size = number_configurations_in_file == 0 ? samplings*2 : number_configurations_in_file;	
 	int fitness_integer = static_cast<int>( floor( best_fitness ) );
 	double regularization_term = best_fitness - fitness_integer;
 	
@@ -687,16 +689,15 @@ int main_function(int argc, char **argv)
 		{
 			cout << "Best individual (frequency): " << more_frequent_vector << " (" << highest_frequency << ")"
 			     << "\nFitness on the whole training set: " << fitness_integer
-			     << "\nNormalized fitness: " << static_cast<double>( fitness_integer ) / training_size
 			     << "\nRegularization term: " << regularization_term
+			     << "\nMean fitness: " << static_cast<double>( fitness_integer ) / training_size
+			     << "\nNormalized mean fitness: " << ( static_cast<double>( fitness_integer ) / training_size ) / nb_vars
 			     << "\nHas parameters: " << ( has_parameters ? "true" : "false" )
 			     << "\nNumber of variables: " << nb_vars
-			     << "\nMax domain value: " << max_value;
-
-			if( number_configurations_in_file == 0 )
-				cout << "\nNumber of training samplings: " << training_size;
-			else
-				cout << "\nNumber of configurations in the training set: " << training_size;
+			     << "\nMax domain value: " << max_value
+			     << "\nNumber of training configurations: " << training_size;
+			if( do_samplings )
+				cout << " (sampled)";
 
 			cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
 			     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nModel:\n";

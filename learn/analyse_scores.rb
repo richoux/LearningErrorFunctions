@@ -48,7 +48,7 @@ lines.each do |line|
     #puts score_lines
     
     score_lines.each do |score_line|
-      if score_line.start_with?("Normalized cost")
+      if score_line.start_with?("Mean error")
         words_score = score_line.split(': ')
         score = words_score[1].to_f
         functions[score] = function
