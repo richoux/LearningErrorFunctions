@@ -113,6 +113,7 @@ file.close
 
 scores_diff.sort!
 stats = DescriptiveStatistics::Stats.new(scores_diff)
+puts "Global: #{scores_diff.sum}"
 puts "Median: #{stats.median}"
 puts "Mean: #{stats.mean}"
 puts "Sample standard deviation: #{stats.standard_deviation.round(4)}"

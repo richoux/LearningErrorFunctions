@@ -42,7 +42,7 @@ ol_p=2
 
 #small
 hyperparameter="--tournament 2 --pop 160 --steady 50 --mingen 800 --crossover 0.4 --mutation 1.0 --replacement 0.17"
-suffix="_paramils_small_2-160-50-800-0.4-1.0-0.17_2"
+suffix="_paramils_small_2-160-50-800-0.4-1.0-0.17"
 
 for i in {1..6}
 do

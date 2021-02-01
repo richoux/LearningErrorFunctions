@@ -14,7 +14,7 @@ if ARGV.length == 0
 end
 
 sum = 0
-costs = Array.new
+costs = Hash.new(0)
 solutions = Hash.new(0)
 
 # Open file
@@ -24,7 +24,7 @@ file = File.open(filename)
 # For each line in file
 file.each do |line|		
   words = line.split(' ')
-  costs.push(words[0].to_f)
+  costs[words[0]] = costs[words[0]] + 1
   sum = sum + words[0].to_f
   beginning_sol = words[2][0..17]
   nb_ones = beginning_sol.count "1"
@@ -40,11 +40,20 @@ file.each do |line|
   solutions[to_consider] = solutions[to_consider] + 1
 end
 
+sorted_costs = costs.sort_by{|k, v| v}.reverse
 sorted_solutions = solutions.sort_by{|k, v| v}.reverse
 
 sorted_solutions.each do |model, number|
   puts "#{model} #{number}"
 end
+
+costs_array = Array.new
+costs.each do |cost, number|
+  for i in 1..number
+    costs_array.push( cost.to_f )
+  end
+end
+sorted_costs_array = costs_array.sort
 
 filename = filename.split('/')[-1]
 
@@ -60,12 +69,11 @@ end
 
 puts "space_size = #{space_size}"
 
-sorted_costs = costs.sort
 
 # puts "costs: #{costs}"
 # puts "sorted costs: #{sorted_costs}"
 
-stats = DescriptiveStatistics::Stats.new(sorted_costs)
+stats = DescriptiveStatistics::Stats.new(sorted_costs_array)
 puts "Median: #{stats.median}"
 puts "Mean: #{stats.mean}"
 puts "Sample standard deviation: #{stats.standard_deviation}"
@@ -87,7 +95,7 @@ puts "Sample standard deviation: #{stats.standard_deviation}"
 # std_dev = Math.sqrt( difference / ( sorted_costs.length - 1) )
 # puts "Sample standard deviation: #{std_dev}"
   
-most_found_cost = sorted_costs[0]
+most_found_cost = sorted_costs[0][0]
 most_found_model = sorted_solutions[0][0]
 
 puts "\n//////////\nCost of the most commun cost function #{most_found_model}: #{most_found_cost}\nModel of the most commun cost function #{most_found_model}:\n\n"
