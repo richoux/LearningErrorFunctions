@@ -1,0 +1,800 @@
+[INFO ] Logging to: /home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large/log-run391175854.txt
+[INFO ] Version of ParamILS is 3.0.0, running on OpenJDK 64-Bit Server VM (11.0.6) and Linux 3.10.0-862.el7.x86_64 (amd64) 
+[INFO ] Call String: paramils --scenario-file learn_error_functions/scenario_large.txt --validation-runs 100 
+[INFO ] ParamILS started at: Dec 17, 2020, 6:24:20 PM. Minimizing mean quality.
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[INFO ] Intensifying #1 (incumbent) ... 1  bonus run
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  ∞ -> 0.0606 (based on 0 and 1 runs)
+[INFO ] Looking for random initial solutions better than the initial incumbent
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #2 ... 2  bonus runs
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0.0606 -> 0.0303 (based on 1 and 2 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[INFO ] Config #1 (incumbent) updated!
+[INFO ]  0.0303 -> 0.038 (based on 2 and 4 runs)
+[INFO ] New incumbent! (#2)
+[INFO ]  crossover: 0.8 -> 0.4 ; mingen: 400 -> 600 ; mutation: 1.0 -> 0.6 ; pop: 100 -> 200 ; replacement: 0.05 -> 0.01 ; steady: 5 -> 25
+[INFO ]  0.038 -> 0.038 (based on 4 and 4 runs)
+[INFO ] New incumbent! (#1)
+[INFO ]  crossover: 0.4 -> 0.8 ; mingen: 600 -> 400 ; mutation: 0.6 -> 1.0 ; pop: 200 -> 100 ; replacement: 0.01 -> 0.05 ; steady: 25 -> 5
+[INFO ]  0.038 -> 0.038 (based on 4 and 4 runs)
+[INFO ] New incumbent! (#2)
+[INFO ]  crossover: 0.8 -> 0.4 ; mingen: 400 -> 600 ; mutation: 1.0 -> 0.6 ; pop: 100 -> 200 ; replacement: 0.05 -> 0.01 ; steady: 5 -> 25
+[INFO ]  0.038 -> 0.038 (based on 4 and 4 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #2 (incumbent) ... 2  bonus runs
+[INFO ] Config #2 (incumbent) updated!
+[INFO ]  0.038 -> 0.0452 (based on 4 and 7 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[INFO ] == Starting Iteration 1 ==
+[INFO ] Tuner time: 10h29m52.00s elapsed
+[INFO ] Initial configuration (#2 (incumbent))
+[INFO ]  -> 0.0452 (based on 7 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #27 ... 2  bonus runs
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Config #2 (incumbent) updated!
+[INFO ]  0.0452 -> 0.058 (based on 7 and 9 runs)
+[INFO ] New incumbent! (#27)
+[INFO ]  replacement: 0.01 -> 0.03
+[INFO ]  0.058 -> 0.0419 (based on 9 and 9 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 35 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 35 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 15 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 45 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 45 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 5 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 40 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 20 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 20 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #27 (incumbent) ... 1  bonus run
+[INFO ] Config #27 (incumbent) updated!
+[INFO ]  0.0419 -> 0.0417 (based on 9 and 10 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #27 (incumbent) ... 2  bonus runs
+[INFO ] Config #27 (incumbent) updated!
+[INFO ]  0.0417 -> 0.0398 (based on 10 and 12 runs)
+[INFO ] Local optima #27 (incumbent) accepted
+[INFO ]  0.0563 -> 0.0398 (based on 10 and 12 runs)
+[INFO ] == Starting Iteration 2 ==
+[INFO ] Tuner time: 124h47m37.00s elapsed
+[INFO ] Perturbing
+[INFO ]  replacement: 0.03 -> 0.16 ; tournament: 2 -> 3
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #88 ... 4  bonus runs
+[INFO ] Initial configuration (#88)
+[INFO ]  -> 0.0844 (based on 5 runs)
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] Intensifying #90 ... 1  bonus run
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 50 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 35 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 35 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 10 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 30 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 15 generations without improvement
+[INFO ] ParamILS completed
+[INFO ] ========================================================================
+[INFO ] ParamILS has finished. Reason: total CPU time limit (576000.0 s) has been reached.   
+[INFO ] Total number of runs performed: 261 (261), total configurations tried: 116
+[INFO ] Total CPU time used: 577085 s, total wallclock time used: 577235 s
+[INFO ] ParamILS's final incumbent found iteration 1, ID #27
+[INFO ] Estimated mean quality of final incumbent on training set: 0.0398
+[INFO ] Estimation based on 12 runs on 5 training instances
+[INFO ] ------------------------------------------------------------------------
+[INFO ] Differences with initial configuration: 
+ crossover: 0.8 -> 0.4
+ mingen: 400 -> 600
+ mutation: 1.0 -> 0.6
+ pop: 100 -> 200
+ replacement: 0.05 -> 0.03
+ steady: 5 -> 25
+[INFO ] ========================================================================
+[INFO ] Now starting offline validation.
+[INFO ] Testing final incumbent
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR]  STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[WARN ] [PROCESS-ERR]  eoSteadyFitContinue: Done the minimum number of generations
+[WARN ] [PROCESS-ERR] STOP in eoSteadyFitContinue: Done 25 generations without improvement
+[INFO ] ========================================================================
+[INFO ] Validation has finished. Time used: 11588 s.
+[INFO ] Estimated mean quality of final incumbent on test set: 0.0903
+[INFO ] Estimation based on 100 runs on 5 test instances
+[INFO ] Sample call for final incumbent:
+cd /home/aac13029tx/LearningErrorFunctions/paramILS/learn_error_functions; ruby wrapper.rb ../../learn/spaces/complete_lt-5-8.txt 0 1.7976931348623157E308 2147483647 953632 -crossover '0.4' -mingen '600' -mutation '0.6' -pop '200' -replacement '0.03' -steady '25' -tournament '2' 
+[INFO ] ========================================================================
+[INFO ] Additional information about run 391175854 in: /home/aac13029tx/LearningErrorFunctions/paramILS/output/scenario_large

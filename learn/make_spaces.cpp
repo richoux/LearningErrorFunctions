@@ -125,21 +125,29 @@ int main( int argc, char** argv )
 			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
 	}
+
+	cout << nb_vars << "-" << max_value;	
+	if( constraint.compare("le") == 0 || constraint.compare("ol") == 0 || constraint.compare("cm") == 0 )
+		cout << "-" << params_value;
+	cout << "\n";
+
 	
 	if( cmdl[ { "-l", "--latin" } ] )
 		latin_sampling = true;
 	else
 		latin_sampling = false;
 
+	int number_draws;
+	
 	if( latin_sampling )
 	{
 		cout << "Perform Latin Hypercube sampling.\n";
-		cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		number_draws = cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 	else
 	{
 		cout << "Perform Monte Carlo sampling.\n";
-		cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		number_draws = cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 
 	if( (int)random_solutions.size() == 0 )
@@ -147,14 +155,8 @@ int main( int argc, char** argv )
 		cerr << "No solutions. Abort.\n";
 		return EXIT_FAILURE;
 	}
-
-	cout << "Number of solutions: " << samplings << "\n";
 	
 	unsigned long long int space_size = static_cast<unsigned long long int>( std::pow( max_value, nb_vars ) );
-	cout << "Space size: " << space_size << "\n";
-
-	cout << "Percent solutions: " << ( static_cast<double>( samplings ) * 100 ) / space_size << "\n";
-	cout << "Percent explored space: " << ( static_cast<double>( samplings ) * 200 ) / space_size << "\n";
 	
 	output_file.open( output_file_path );
 	output_file << (int)random_solutions.size() / nb_vars << "\n";
@@ -178,6 +180,12 @@ int main( int argc, char** argv )
 	}
 
 	output_file.close();
+
+	cout << "Number of solutions: " << samplings << "\n";
+	cout << "Space size: " << space_size << "\n";
+
+	cout << "Percent solutions: " << ( static_cast<double>( samplings ) * 100 ) / number_draws << "\n";
+	cout << "Percent explored space: " << ( static_cast<double>( samplings ) * 200 ) / space_size << "\n";
 
 	elapsedTime = chrono::steady_clock::now() - start;
 	cout << "Elapsed time: " << elapsedTime.count() << "ms\n";

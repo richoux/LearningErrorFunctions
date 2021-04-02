@@ -1,3 +1,5 @@
+// To compute the score on test sets of a specific function
+
 //-----------------------------------------------------------------------------
 // standard includes
 #include <stdexcept>  // runtime_error 
@@ -44,8 +46,11 @@ double params_value;
 bool latin_sampling;
 string input_file_path;
 ifstream input_file;
+ifstream input_costs_file;
 string line, string_number;
 bool xp;
+bool verbose;
+int near_solution;
 bool debug;
 string function_representation;
 vector<int> cost_function;
@@ -63,11 +68,12 @@ void usage( char **argv )
 	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take.\n"
 	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
 	     << "-f, --function FUNCTION, the series of bits representing a cost function.\n"
-	     << "-i, --input INPUT_FILE containing sampled configurations.\n"
-	     << "-hi, --hamming_input HAMMING_INPUT_FILE containing sampled configurations with their true Hamming cost.\n"
+	     << "-i, --input INPUT_FILE containing sampled configurations from the 'spaces' folder.\n"
+	     << "-hi, --hamming_input HAMMING_INPUT_FILE containing sampled configurations with their Hamming cost from the 'hamming' folder.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n"
+	     << "-v, --verbose"
 	     << "--debug.\n";
 }
 
@@ -94,9 +100,16 @@ double fitness( const vector<int>& weights )
 
 		cost += std::abs( f - s );
 
-		// costs.emplace( f, s );
-
-		//sum_seconds += s;
+		if( verbose && f != s )
+		{
+			if( std::abs( f - s ) == 1 )
+				++near_solution;
+			
+			cout << s << " (" << f << ") : ";
+			std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+			cout << "\n";
+		}
+		
 		if( debug )
 		{
 			cout << "Hamming: " << f << "\n"
@@ -117,7 +130,15 @@ double fitness( const vector<int>& weights )
 
 		cost += std::abs( f - s );
 
-		// costs.emplace( f, s );
+		if( verbose && f != s )
+		{
+			if( std::abs( f - s ) == 1 )
+				++near_solution;
+			
+			cout << s << " (" << f << ") : ";
+			std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
+			cout << "\n";
+		}
 
 		if( debug )
 		{
@@ -153,6 +174,12 @@ int main(int argc, char **argv)
 		usage( argv );
 		return EXIT_FAILURE;
 	}
+
+	if( cmdl[ {"-v", "--verbose"} ] )
+		verbose = true;
+	else
+		verbose = false;
+	near_solution = 0;
 	
 	cmdl( {"n", "nb_vars"}, 9) >> nb_vars;
 	cmdl( {"d", "max_domain"}, 9) >> max_value;
@@ -236,10 +263,11 @@ int main(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) )
 	{
+		cmdl( {"i", "input"} ) >> input_file_path;
+
 		if( !xp )
 			cout << "Loading data from " << input_file_path << "\n";
 
-		cmdl( {"i", "input"} ) >> input_file_path;
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
@@ -247,7 +275,7 @@ int main(int argc, char **argv)
 		int number_samplings;
 		int number;
 		line_stream >> number_samplings;
-
+		samplings = number_samplings * 2;
 		// loading solutions
 		for( int i = 0; i < number_samplings; ++i )
 		{
@@ -275,19 +303,35 @@ int main(int argc, char **argv)
 		}
 		
 		input_file.close();
+
+		std::string input_costs_file_path = input_file_path.substr( 0, input_file_path.length() - 4 ) + std::string("_costs.txt");
+		input_costs_file.open( input_costs_file_path );
+		while( getline( input_costs_file, line ) )
+		{
+			auto delimiter = line.find(" ");
+			std::string solution_token = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 1 );
+			stringstream line_stream( line );
+			line_stream >> number;
+			cost_map.emplace( solution_token, number );
+		}
+		
+		input_costs_file.close();
 	}
 	else if( cmdl( {"hi", "hamming_input"} ) )
 	{
+		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
+
 		if( !xp )
 			cout << "Loading data from " << input_file_path << "\n";
-
-		cmdl( {"hi", "hamming_input"} ) >> input_file_path;
+		
 		input_file.open( input_file_path );
 
 		getline( input_file, line );
 		stringstream line_stream( line );
 		int number_samplings;
 		line_stream >> number_samplings;
+		samplings = number_samplings;
 
 		int number;
 		int index = 0;
@@ -328,20 +372,41 @@ int main(int argc, char **argv)
 				cout << "Perform Monte Carlo sampling.\n";
 			cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
 		}
+
+		samplings *= 2; // n solutions + n non-solutions 
 	}
 
-	if( !cmdl( {"hi", "hamming_input"} ) )
-	    cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+	if( !cmdl( {"hi", "hamming_input"} ) && !cmdl( {"i", "input"} ) )
+		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
 	
 	if( !xp )
 	{
-		cout << "Cost: " << fitness( cost_function )
+		int number_solutions, number_non_solutions;
+		if( cmdl( {"hi", "hamming_input"} ) )
+		{
+			number_solutions = random_solutions.size() / ( 2 * nb_vars );
+			number_non_solutions = number_solutions;
+		}
+		else
+		{
+			number_solutions = random_solutions.size() / nb_vars;
+			number_non_solutions = random_configurations.size() / nb_vars;
+		}
+
+		auto errors = fitness( cost_function );
+		
+		cout << "Cumulative error: " << errors
+		     << "\nMean error: " << errors / samplings
+		     << "\nNormalized mean error: " << ( errors / samplings ) / nb_vars
 		     << "\nNumber of variables: " << nb_vars
 		     << "\nMax domain value: " << max_value
 		     << "\nSampling samplings: " << samplings
-		     << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
-		     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n";
+		     << "\nNumber of solutions: " << number_solutions << ", density = "
+		     << static_cast<double>( number_solutions ) / samplings << "\n";
 
+		if( verbose )
+			cout << "Estimations off by 1: " << near_solution << "\n";
+		
 		print_model( cost_function );
 	}
 	else

@@ -1,0 +1,13 @@
+"CPU Time Used","Estimated Training Performance","Wallclock Time","Incumbent ID","Automatic Configurator (CPU) Time","Configuration..."
+0.0, 1.7976931348623157E308, 0.0, 1, 0.0,  crossover='0.8', mingen='400', mutation='1.0', pop='100', replacement='0.05', steady='5', tournament='2'
+1131.0, 0.060644, 1131.649, 1, 3.9377498170000007,  crossover='0.8', mingen='400', mutation='1.0', pop='100', replacement='0.05', steady='5', tournament='2'
+14114.0, 0.030322, 14116.81, 1, 45.663792116,  crossover='0.8', mingen='400', mutation='1.0', pop='100', replacement='0.05', steady='5', tournament='2'
+16936.0, 0.037991250000000004, 16939.757, 1, 53.037271837999995,  crossover='0.8', mingen='400', mutation='1.0', pop='100', replacement='0.05', steady='5', tournament='2'
+16936.0, 0.037991250000000004, 16939.76, 2, 53.038510096,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.01', steady='25', tournament='2'
+16936.0, 0.037991250000000004, 16939.761, 1, 53.039456689999994,  crossover='0.8', mingen='400', mutation='1.0', pop='100', replacement='0.05', steady='5', tournament='2'
+16936.0, 0.037991250000000004, 16939.761, 2, 53.040330358999995,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.01', steady='25', tournament='2'
+25376.0, 0.045196, 25380.57, 2, 75.790218887,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.01', steady='25', tournament='2'
+142896.0, 0.058021222222222224, 142934.26, 2, 358.407521973,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.01', steady='25', tournament='2'
+142896.0, 0.041853666666666664, 142934.274, 27, 358.41842023300006,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.03', steady='25', tournament='2'
+440587.0, 0.041749800000000004, 440695.587, 27, 1063.603011926,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.03', steady='25', tournament='2'
+449257.0, 0.03984516666666667, 449366.939, 27, 1086.313900506,  crossover='0.4', mingen='600', mutation='0.6', pop='200', replacement='0.03', steady='25', tournament='2'

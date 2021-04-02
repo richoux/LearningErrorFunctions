@@ -1,3 +1,5 @@
+// Better use compute_costs_map.cpp now
+
 //-----------------------------------------------------------------------------
 // standard includes
 #include <stdexcept>  // runtime_error 
