@@ -4,7 +4,6 @@
 
 #include <ghost/variable.hpp>
 
-using namespace std;
 using namespace ghost;
 
 class Concept
@@ -12,11 +11,11 @@ class Concept
 public:
 	int nb_vars;
 	int max_value;
-	double max_cost;
+	double max_error;
 
 	Concept( int nb_vars, int max_value );
 	
-	bool concept( const vector<int>& var ) const;
-	virtual bool concept( const vector<int>& var, int start, int end ) const = 0;
-	virtual bool concept( const vector< reference_wrapper<Variable> >& var ) const = 0;
+	bool concept_( const std::vector<int>& var ) const;
+	virtual bool concept_( const std::vector<int>& var, int start, int end ) const = 0;
+	virtual bool concept_( const std::vector< Variable >& var ) const = 0;
 };

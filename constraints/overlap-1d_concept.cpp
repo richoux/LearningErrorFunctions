@@ -14,7 +14,7 @@ Overlap1DConcept::Overlap1DConcept( vector<double> params )
 	  _params( params )	  
 { }
 
-bool Overlap1DConcept::concept( const vector<int>& var, int start, int end ) const
+bool Overlap1DConcept::concept_( const vector<int>& var, int start, int end ) const
 {
 	for( int i = start; i < end; ++i )
 		for( int j = start; j < end; ++j )
@@ -24,7 +24,7 @@ bool Overlap1DConcept::concept( const vector<int>& var, int start, int end ) con
 	return true;
 }
 
-bool Overlap1DConcept::concept( const vector< reference_wrapper<Variable> >& var ) const
+bool Overlap1DConcept::concept_( const vector< reference_wrapper<Variable> >& var ) const
 {
 	for( int i = 0; i < (int)var.size(); ++i )
 		for( int j = 0; i < (int)var.size(); ++j )

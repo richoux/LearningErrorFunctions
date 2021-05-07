@@ -39,7 +39,7 @@ int main( int argc, char** argv )
 	int nb_vars, max_value;
 	int samplings;
 	int nb_solutions;
-	unique_ptr<Concept> concept;
+	unique_ptr<Concept> concept_;
 	vector<double> params;
 	double params_value;
 
@@ -86,31 +86,31 @@ int main( int argc, char** argv )
 		if( constraint.compare("ad") == 0 )
 		{
 			cout << "Constraint: AllDiff.\n";
-			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
+			concept_ = make_unique<AllDiffConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("le") == 0 )
 		{
 			cout << "Constraint: Linear equation.\n";
-			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
 		{
 			cout << "Constraint: Less than.\n";
-			concept = make_unique<LessThanConcept>( nb_vars, max_value );
+			concept_ = make_unique<LessThanConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("ol") == 0 )
 		{
 			cout << "Constraint: Overlap 1D.\n";
-			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
+			concept_ = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
 		}
 		
 		if( constraint.compare("cm") == 0 )
 		{
 			cout << "Constraint: Connection Minimum (greater-than version).\n";
-			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
 	}
 
@@ -120,7 +120,7 @@ int main( int argc, char** argv )
 	for( int s = 0; s < samplings; ++s )
 	{
 		rng.generate( sample, 1, max_value );
-		if( concept->concept( sample ) )
+		if( concept_->concept_( sample ) )
 			++nb_solutions;
 	}
 	

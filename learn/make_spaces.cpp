@@ -48,7 +48,7 @@ int main( int argc, char** argv )
 	int samplings;
 	vector<int> random_solutions;
 	vector<int> random_configurations;
-	unique_ptr<Concept> concept;
+	unique_ptr<Concept> concept_;
 	map<string, double> cost_map;
 	vector<double> params;
 	double params_value;
@@ -98,31 +98,31 @@ int main( int argc, char** argv )
 		if( constraint.compare("ad") == 0 )
 		{
 			cout << "Constraint: AllDiff.\n";
-			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
+			concept_ = make_unique<AllDiffConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("le") == 0 )
 		{
 			cout << "Constraint: Linear equation.\n";
-			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
 		{
 			cout << "Constraint: Less than.\n";
-			concept = make_unique<LessThanConcept>( nb_vars, max_value );
+			concept_ = make_unique<LessThanConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("ol") == 0 )
 		{
 			cout << "Constraint: Overlap 1D.\n";
-			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
+			concept_ = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
 		}
 		
 		if( constraint.compare("cm") == 0 )
 		{
 			cout << "Constraint: Connection Minimum (greater-than version).\n";
-			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
 	}
 
@@ -142,12 +142,12 @@ int main( int argc, char** argv )
 	if( latin_sampling )
 	{
 		cout << "Perform Latin Hypercube sampling.\n";
-		number_draws = cap_draw( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		number_draws = cap_draw( concept_, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 	else
 	{
 		cout << "Perform Monte Carlo sampling.\n";
-		number_draws = cap_draw_monte_carlo( concept, nb_vars, max_value, random_solutions, random_configurations, samplings );
+		number_draws = cap_draw_monte_carlo( concept_, nb_vars, max_value, random_solutions, random_configurations, samplings );
 	}
 
 	if( (int)random_solutions.size() == 0 )

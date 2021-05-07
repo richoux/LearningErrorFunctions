@@ -13,8 +13,8 @@ class AllDiff : public Constraint
 	mutable vector<int> _count;
 	mutable vector<int> _values;
 	
-	double required_cost() const override;
+	double required_error( const vector< Variable >& variables ) const override;
 
 public:
-	AllDiff( const vector< reference_wrapper<Variable> >& variables );
+	AllDiff( const vector< Variable >& variables );
 };

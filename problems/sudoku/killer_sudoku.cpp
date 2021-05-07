@@ -65,10 +65,10 @@ void check_solution( const vector<int>& solution,
                      const vector< vector< reference_wrapper<Variable> > >& cages,
                      const vector<int>& rhs_eq )
 {
-	unique_ptr<Concept> ad_concept = make_unique<AllDiffConcept>();
-	vector< unique_ptr<Concept> > vec_le_concept( 29 );
+	unique_ptr<Concept> ad_concept_ = make_unique<AllDiffConcept>();
+	vector< unique_ptr<Concept> > vec_le_concept_( 29 );
 	for( int i = 0; i < 29; ++i )
-		vec_le_concept[i] = make_unique<LinearEqConcept>( rhs_eq[i] );
+		vec_le_concept_[i] = make_unique<LinearEqConcept>( rhs_eq[i] );
 	
 	int nb_vars = solution.size();
 	int size_side = static_cast<int>( std::sqrt( nb_vars ) );
@@ -83,7 +83,7 @@ void check_solution( const vector<int>& solution,
 		           solution.begin() + ( ( i + 1 ) * size_side ),
 		           partial_sol.begin() );
 
-		if( !ad_concept->concept( partial_sol ) )
+		if( !ad_concept_->concept_( partial_sol ) )
 		{
 			// std::transform( partial_sol.begin(),
 			//                 partial_sol.end(),
@@ -104,7 +104,7 @@ void check_solution( const vector<int>& solution,
 		for( int j = 0; j < size_side; ++j )
 			partial_sol[j] = solution[ j * size_side + i ];
 
-		if( !ad_concept->concept( partial_sol ) )
+		if( !ad_concept_->concept_( partial_sol ) )
 		{
 			cout << "Problem in column " << i+1 << ": ";
 			std::copy( partial_sol.begin(),
@@ -122,7 +122,7 @@ void check_solution( const vector<int>& solution,
 				for( int l = 0; l < size_side_small_square; ++l )
 				partial_sol[ k * size_side_small_square + l ] = solution[ i * ( size_side_small_square * size_side ) + j * size_side_small_square + k * size_side + l ];
 			
-			if( !ad_concept->concept( partial_sol ) )
+			if( !ad_concept_->concept_( partial_sol ) )
 			{
 				cout << "Problem in square (" << i+1 << "," << j+1 << "): ";
 				std::copy( partial_sol.begin(),
@@ -139,7 +139,7 @@ void check_solution( const vector<int>& solution,
 		for( int j = 0; j < (int)cages[i].size(); ++j )
 			partial_cage[j] = cages[i][j].get().get_value();
 			
-		if( !vec_le_concept[i]->concept( partial_cage ) )
+		if( !vec_le_concept_[i]->concept_( partial_cage ) )
 		{
 			std::transform( partial_cage.begin(),
 			                partial_cage.end(),

@@ -12,15 +12,15 @@ double intermediate_g( const vector<double>& inputs,
                        const int& max_domain_value,
                        const int& nb_vars );
 
-AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
+AllDiff::AllDiff( const vector< Variable >& variables )
 	: Constraint( variables ),
 	  _weights{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
+	  _ad_concept_{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
-double AllDiff::required_cost() const
+double AllDiff::required_error( const vector< Variable >& variables ) const
 {
-	if( _ad_concept.concept( variables ) )
+	if( _ad_concept_.concept_( variables ) )
 		return 0.;
 
 	//auto weights = make_weights( _weights );
@@ -30,11 +30,11 @@ double AllDiff::required_cost() const
 	std::transform( variables.begin(),
 	                variables.end(),
 	                inputs.begin(),
-	                []( const auto& v ){ return v.get().get_value(); } );
+	                []( const auto& v ){ return v.get_value(); } );
 
 	vector<double> param{ 1 };
-	int nb_vars = _ad_concept.nb_vars;
-	int max_domain_value = _ad_concept.max_value;
+	int nb_vars = _ad_concept_.nb_vars;
+	int max_domain_value = _ad_concept_.max_value;
 	
 	return intermediate_g( inputs, param, weights, max_domain_value, nb_vars );
 }

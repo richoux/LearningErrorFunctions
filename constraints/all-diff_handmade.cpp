@@ -14,21 +14,21 @@ double binomial_with_2( int value )
 }
 
 
-AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
+AllDiff::AllDiff( const vector< Variable >& variables )
 	: Constraint( variables ),
 	  _count( vector<int>( variables.size() ) ),
 	  _values( vector<int>( variables.size() ) )
 { }
 
 // SOFT_ALLDIFF cost function (Petit et al. 2001)
-double AllDiff::required_cost() const
+double AllDiff::required_error( const vector< Variable >& variables ) const
 {
 	double counter = 0;
 
 	std::transform( variables.begin(),
 	                variables.end(),
 	                _values.begin(),
-	                []( const auto& v ){ return v.get().get_value(); } );
+	                []( const auto& v ){ return v.get_value(); } );
 
 	std::fill( _count.begin(), _count.end(), 0 );
 
@@ -41,7 +41,7 @@ double AllDiff::required_cost() const
 
 	// for( int i = 0 ; i < variables.size() - 1 ; ++i )
 	// 	for( int j = i + 1 ; j < variables.size() ; ++j )
-	// 		if( variables[i].get().get_value() == variables[j].get().get_value() )
+	// 		if( variables[i].get_value() == variables[j].get_value() )
 	// 			++counter;
 	
 	return counter;

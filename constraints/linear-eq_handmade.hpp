@@ -14,7 +14,7 @@ class LinearEq : public Constraint
 	int _rhs;
 	int _max_diff;
 	
-	double required_cost() const override;
+	double required_error() const override;
 
 public:
 	LinearEq( const vector< reference_wrapper<Variable> >& variables, int max_value, int rhs );

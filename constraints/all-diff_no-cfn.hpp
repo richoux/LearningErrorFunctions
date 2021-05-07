@@ -12,10 +12,10 @@ using namespace ghost;
 
 class AllDiff : public Constraint
 {
-	AllDiffConcept _ad_concept;
+	AllDiffConcept _ad_concept_;
 	
-	double required_cost() const override;
+	double required_error( const vector< Variable >& variables ) const override;
 
 public:
-	AllDiff( const vector< reference_wrapper<Variable> >& variables );
+	AllDiff( const vector< Variable >& variables );
 };

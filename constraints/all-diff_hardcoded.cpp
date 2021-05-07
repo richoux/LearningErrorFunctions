@@ -3,14 +3,14 @@
 
 #include "all-diff_hardcoded.hpp"
 
-AllDiff::AllDiff( const vector< reference_wrapper<Variable> >& variables )
+AllDiff::AllDiff( const vector< Variable >& variables )
 	: Constraint( variables ),
-	  _ad_concept{ (int)variables.size(), (int)variables.size() - 1 }
+	  _ad_concept_{ (int)variables.size(), (int)variables.size() - 1 }
 { }
 
-double AllDiff::required_cost() const
+double AllDiff::required_error( const vector< Variable >& variables ) const
 {
-	if( _ad_concept.concept( variables ) )
+	if( _ad_concept_.concept_( variables ) )
 		return 0.;
 
 	int cost = 0;
@@ -19,7 +19,7 @@ double AllDiff::required_cost() const
 	{
 		auto number_equals_on_the_right = std::count_if( variables.begin() + i + 1,
 		                                                 variables.end(),
-		                                                 [&]( auto v ){ return v.get().get_value() == variables[i].get().get_value(); } );
+		                                                 [&]( auto v ){ return v.get_value() == variables[i].get_value(); } );
 		if( number_equals_on_the_right > 0 )
 			++cost;
 	}

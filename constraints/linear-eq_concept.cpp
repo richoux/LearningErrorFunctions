@@ -12,12 +12,12 @@ LinearEqConcept::LinearEqConcept( int rhs )
 	  _rhs( rhs )	  
 { }
 
-bool LinearEqConcept::concept( const vector<int>& var, int start, int end ) const
+bool LinearEqConcept::concept_( const vector<int>& var, int start, int end ) const
 {
 	return accumulate( var.begin() + start, var.begin() + end, 0 ) == _rhs;
 }
 
-bool LinearEqConcept::concept( const vector< reference_wrapper<Variable> >& var ) const
+bool LinearEqConcept::concept_( const vector< reference_wrapper<Variable> >& var ) const
 {
 	int sum = 0;
 	

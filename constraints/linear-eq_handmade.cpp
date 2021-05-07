@@ -16,7 +16,7 @@ LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int 
 	_max_diff = std::max( diff_min_val, diff_max_val );
 }
 
-double LinearEq::required_cost() const
+double LinearEq::required_error() const
 {
 	int sum = 0;
 	

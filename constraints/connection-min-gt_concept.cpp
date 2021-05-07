@@ -10,12 +10,12 @@ ConnectionMinGTConcept::ConnectionMinGTConcept( double param )
 	  _param( param )
 { }
 
-bool ConnectionMinGTConcept::concept( const vector<int>& var, int start, int end ) const
+bool ConnectionMinGTConcept::concept_( const vector<int>& var, int start, int end ) const
 {
 	return *(std::min_element( var.begin() + start, var.begin() + start + end )) >= _param;
 }
 
-bool ConnectionMinGTConcept::concept( const vector< reference_wrapper<Variable> >& var ) const
+bool ConnectionMinGTConcept::concept_( const vector< reference_wrapper<Variable> >& var ) const
 {
 	return (*std::min_element( var.begin(),
 	                           var.end(),
