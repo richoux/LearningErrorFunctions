@@ -23,7 +23,7 @@ void random_draw( unique_ptr<Concept>& concept,
   for( unsigned long long int i = 0; i < sampling_size; i += max_value )
   {
 	  for( int j = 0; j < max_value; ++j )
-		  if( concept->concept( latin_draws, j * nb_vars, (j + 1) * nb_vars ) )
+		  if( concept->concept_( latin_draws, j * nb_vars, (j + 1) * nb_vars ) )
 		  {
 			  //++counter;
 			  solutions.insert( solutions.end(),
@@ -54,7 +54,7 @@ void random_draw_monte_carlo( unique_ptr<Concept>& concept,
   for( unsigned long long int i = 0; i < sampling_size; i += max_value )
   {
 	  rng.generate( sample, 1, max_value );
-	  if( concept->concept( sample ) )
+	  if( concept->concept_( sample ) )
 		  solutions.insert( solutions.end(), sample.begin(), sample.end() );
 	  else
 		  not_solutions.insert( not_solutions.end(), sample.begin(), sample.end() );
@@ -81,7 +81,7 @@ int cap_draw( unique_ptr<Concept>& concept,
 	  for( int j = 0; j < max_value; ++j )
 	  {
 		  ++count_draw;
-		  if( concept->concept( latin_draws, j * nb_vars, (j + 1) * nb_vars ) )
+		  if( concept->concept_( latin_draws, j * nb_vars, (j + 1) * nb_vars ) )
 		  {
 			  if( count_sol < number_sol )
 			  {
@@ -126,7 +126,7 @@ int cap_draw_monte_carlo( unique_ptr<Concept>& concept,
 	  ++count_draw;
 	  rng.generate( sample, 1, max_value );
 
-	  if( concept->concept( sample ) )
+	  if( concept->concept_( sample ) )
 	  {
 		  if( count_sol < number_sol )
 		  {

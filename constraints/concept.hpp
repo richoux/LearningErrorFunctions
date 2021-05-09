@@ -4,6 +4,7 @@
 
 #include <ghost/variable.hpp>
 
+using namespace std;
 using namespace ghost;
 
 class Concept

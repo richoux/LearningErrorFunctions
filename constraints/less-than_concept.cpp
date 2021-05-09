@@ -17,10 +17,10 @@ bool LessThanConcept::concept_( const vector<int>& var, int start, int end ) con
 	return true;
 }
 
-bool LessThanConcept::concept_( const vector< reference_wrapper<Variable> >& var ) const
+bool LessThanConcept::concept_( const vector< Variable >& var ) const
 {
 	for( int i = 0 ; i < var.size() - 1 ; ++i )
-		if( var[i].get().get_value() > var[i+1].get().get_value() )
+		if( var[i].get_value() > var[i+1].get_value() )
 			return false;
 	
 	return true;

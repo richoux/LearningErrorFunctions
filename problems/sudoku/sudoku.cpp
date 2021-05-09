@@ -225,8 +225,11 @@ int main( int argc, char **argv )
 	// 30s
 	// solver.solve( error, solution, 30000000 );
 	
-  // 5s
-	solver.solve( error, solution, 5000000 );
+  // 10s
+	solver.solve( error, solution, 10000000 );
+
+	// 5s
+	// solver.solve( error, solution, 5000000 );
 
 	// 0.5s
 	//solver.solve( error, solution, 500000 );

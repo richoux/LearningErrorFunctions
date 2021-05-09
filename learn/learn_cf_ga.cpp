@@ -170,7 +170,7 @@ eoMinimizingFitness fitness( const Indi& indi )
 	// penalize a network vector full of zeros
 	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
 		cost += ( 10 * training_size );
-	// penalty if no unique agregation function
+	// penalty if no unique comparison function
 	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
 		cost += ( 10 * training_size );	
 	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some),

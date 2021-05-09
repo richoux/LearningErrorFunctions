@@ -46,8 +46,8 @@ file.each do |line|
 end
 
 if not success == 100
-  puts "Warning: we do not have 100 solutions.\n"
-  exit
+  puts "Warning: we do not have 100 solutions but only #{success}.\n"
+  #exit
 end
 
 mean = ( times.sum(0.0) / times.length ).round(2)                
