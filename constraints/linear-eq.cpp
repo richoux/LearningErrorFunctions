@@ -14,12 +14,12 @@ LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int 
 	: Constraint( variables ),
 	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0},
 	  _rhs( rhs ),
-	  _le_concept{ (int)variables.size(), max_value, rhs }
+	  _le_concept_{ (int)variables.size(), max_value, rhs }
 { }
 
-double LinearEq::required_cost() const
+double LinearEq::required_error() const
 {
-	if( _le_concept.concept( variables ) )
+	if( _le_concept_.concept_( variables ) )
 		return 0.;
 
 	vector<double> inputs( variables.size() );
@@ -30,5 +30,5 @@ double LinearEq::required_cost() const
 
 	vector<double> param{ static_cast<double>( _rhs ) };
 
-	return intermediate_g( inputs, param, _weights, _le_concept.max_value, _le_concept.nb_vars );
+	return intermediate_g( inputs, param, _weights, _le_concept_.max_value, _le_concept_.nb_vars );
 }

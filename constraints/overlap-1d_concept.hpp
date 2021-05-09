@@ -10,6 +10,6 @@ public:
 	Overlap1DConcept( int nb_vars, int max_value, vector<double> params );
 	Overlap1DConcept( vector<double> params );
 	
-	bool concept( const vector<int>& var, int start, int end ) const override;
-	bool concept( const vector< reference_wrapper<Variable> >& var ) const override;
+	bool concept_( const vector<int>& var, int start, int end ) const override;
+	bool concept_( const vector< Variable >& var ) const override;
 };

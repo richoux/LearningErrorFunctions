@@ -36,7 +36,7 @@ int main( int argc, char** argv )
 {
 	string constraint;
 	int nb_vars, max_value;
-	unique_ptr<Concept> concept;
+	unique_ptr<Concept> concept_;
 	vector<double> params;
 	double params_value;
 	string output_file_path;
@@ -83,31 +83,31 @@ int main( int argc, char** argv )
 		if( constraint.compare("ad") == 0 )
 		{
 			cout << "Constraint: AllDiff.\n";
-			concept = make_unique<AllDiffConcept>( nb_vars, max_value );
+			concept_ = make_unique<AllDiffConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("le") == 0 )
 		{
 			cout << "Constraint: Linear equation.\n";
-			concept = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
 		{
 			cout << "Constraint: Less than.\n";
-			concept = make_unique<LessThanConcept>( nb_vars, max_value );
+			concept_ = make_unique<LessThanConcept>( nb_vars, max_value );
 		}
 		
 		if( constraint.compare("ol") == 0 )
 		{
 			cout << "Constraint: Overlap 1D.\n";
-			concept = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
+			concept_ = make_unique<Overlap1DConcept>( nb_vars, max_value, params );
 		}
 		
 		if( constraint.compare("cm") == 0 )
 		{
 			cout << "Constraint: Connection Minimum (greater-than version).\n";
-			concept = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
+			concept_ = make_unique<ConnectionMinGTConcept>( nb_vars, max_value, params[0] );
 		}
 	}
 
@@ -116,7 +116,7 @@ int main( int argc, char** argv )
 	vector<int> configurations( nb_vars, 1 );
 	do
 	{
-		output_file << concept->concept( configurations ) << " : ";
+		output_file << concept_->concept_( configurations ) << " : ";
 		
 		std::copy( configurations.begin(),
 		           configurations.end(),
@@ -127,7 +127,7 @@ int main( int argc, char** argv )
 	} while( std::any_of( configurations.begin(), configurations.end(), [&max_value](auto& c){ return c != max_value; } ) );
 
 	// last round
-	output_file << concept->concept( configurations ) << " : ";
+	output_file << concept_->concept_( configurations ) << " : ";
 	
 	std::copy( configurations.begin(),
 	           configurations.end(),

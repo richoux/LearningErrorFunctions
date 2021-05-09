@@ -16,6 +16,7 @@ end
 sum = 0
 costs = Hash.new(0)
 solutions = Hash.new(0)
+cost_solutions = Hash.new(0)
 
 # Open file
 filename = ARGV[0]
@@ -33,14 +34,11 @@ file.each do |line|
   else
     to_consider = words[2]
   end
-
-  # puts "original:    #{words[2]}"
-  # puts "transformed: #{to_consider}"
   
   solutions[to_consider] = solutions[to_consider] + 1
+  cost_solutions[to_consider] = words[0]
 end
 
-sorted_costs = costs.sort_by{|k, v| v}.reverse
 sorted_solutions = solutions.sort_by{|k, v| v}.reverse
 
 sorted_solutions.each do |model, number|
@@ -58,45 +56,33 @@ sorted_costs_array = costs_array.sort
 filename = filename.split('/')[-1]
 
 arguments = filename.split('-')
+nb_var = 0
 
 if arguments[0].start_with?("complete")
   nb_var = arguments[2].to_i
   domain_size = (arguments[3].split('_'))[0].to_i
   space_size = domain_size ** nb_var
 else
+  nb_var = arguments[1].to_i
   space_size = 2 * ((arguments[3].split('_'))[0].to_i)
 end
 
 puts "space_size = #{space_size}"
-
-
-# puts "costs: #{costs}"
-# puts "sorted costs: #{sorted_costs}"
 
 stats = DescriptiveStatistics::Stats.new(sorted_costs_array)
 puts "Median: #{stats.median}"
 puts "Mean: #{stats.mean}"
 puts "Sample standard deviation: #{stats.standard_deviation}"
 
-# if sorted_costs.length.odd?
-#   median = sorted_costs[sorted_costs.length / 2]
-# else
-#   median = ( sorted_costs[sorted_costs.length / 2 - 1] + sorted_costs[sorted_costs.length / 2] ) / 2
-# end
-# puts "Median: #{median}"
+normalized_sorted_costs_array = sorted_costs_array.map{ |s| s/nb_var }
+normalized_stats = DescriptiveStatistics::Stats.new(normalized_sorted_costs_array)
+puts "Normalized median: #{normalized_stats.median}"
+puts "Normalized mean: #{normalized_stats.mean}"
+puts "Normalized sample standard deviation: #{normalized_stats.standard_deviation}"
 
-# mean = sorted_costs.sum(0.0) / sorted_costs.length
-# puts "Mean: #{mean}"
-
-# difference = 0
-# sorted_costs.each do |cost|
-#   difference = difference + (mean - cost)**2
-# end
-# std_dev = Math.sqrt( difference / ( sorted_costs.length - 1) )
-# puts "Sample standard deviation: #{std_dev}"
-  
-most_found_cost = sorted_costs[0][0]
 most_found_model = sorted_solutions[0][0]
-
-puts "\n//////////\nCost of the most commun cost function #{most_found_model}: #{most_found_cost}\nModel of the most commun cost function #{most_found_model}:\n\n"
+most_found_cost = cost_solutions[most_found_model].to_f
+most_found_cost_normalized = most_found_cost / nb_var
+  
+puts "\n//////////\nCost of the most commun cost function #{most_found_model}: #{most_found_cost} (norm. #{most_found_cost_normalized})\nModel of the most commun cost function #{most_found_model}:\n\n"
 puts %x[ ./bin/print_model #{most_found_model} ]

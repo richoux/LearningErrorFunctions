@@ -10,6 +10,6 @@ public:
 	LinearEqConcept( int nb_vars, int max_value, int rhs );
 	LinearEqConcept( int rhs );
 	
-	bool concept( const vector<int>& var, int start, int end ) const override;
-	bool concept( const vector< reference_wrapper<Variable> >& var ) const override;
+	bool concept_( const vector<int>& var, int start, int end ) const override;
+	bool concept_( const vector< Variable >& var ) const override;
 };

@@ -32,11 +32,11 @@ success = 0
 file.each do |line|
   words = line.split(':')
   if not words[0] == nil
-    if words[0].include? "Satisfaction cost"
+    if words[0].include? "Satisfaction error"
       if words[1].to_f == 0
         success += 1
       end
-    elsif words[0].include? "Elapsed time"
+    elsif words[0].include? "Search time"
       get_rid_of_ms = words[1].split('ms')
       runtime = get_rid_of_ms[0].to_f
       time += runtime
@@ -46,8 +46,8 @@ file.each do |line|
 end
 
 if not success == 100
-  puts "Warning: we do not have 100 solutions.\n"
-  exit
+  puts "Warning: we do not have 100 solutions but only #{success}.\n"
+  #exit
 end
 
 mean = ( times.sum(0.0) / times.length ).round(2)                

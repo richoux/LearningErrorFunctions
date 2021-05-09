@@ -12,6 +12,6 @@ public:
 	ConnectionMinGTConcept( int nb_vars, int max_value, double param );
 	ConnectionMinGTConcept( double param );
 	
-	bool concept( const vector<int>& var, int start, int end ) const override;
-	bool concept( const vector< reference_wrapper<Variable> >& var ) const override;
+	bool concept_( const vector<int>& var, int start, int end ) const override;
+	bool concept_( const vector< Variable >& var ) const override;
 };
