@@ -5,12 +5,12 @@
 
 #if defined HANDMADE
 #include "../../constraints/all-diff_handmade.hpp"
-#elif defined NOCFN
-#include "../../constraints/all-diff_no-cfn.hpp"
+#elif defined FASTFORWARD
+#include "../../constraints/all-diff.hpp"
 #elif defined HARDCODED
 #include "../../constraints/all-diff_hardcoded.hpp"
 #else
-#include "../../constraints/all-diff.hpp"
+#include "../../constraints/all-diff_no-cfn.hpp"
 #endif
 
 using namespace ghost;
