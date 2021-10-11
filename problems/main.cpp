@@ -3,6 +3,7 @@
 
 #include <ghost/solver.hpp>
 
+#include "check.hpp"
 #include "builder.hpp"
 #include "user_print.hpp"
 
@@ -28,8 +29,10 @@ int main( int argc, char **argv )
   double error = 0.;
   std::vector<int> solution( builder.get_number_variables(), 0 );
 
-  solver.solve( error, solution, 10s, options );
+  solver.solve( error, solution, 1s, options );
 
+  check_solution( solution );
+  
   return EXIT_SUCCESS;
 }
 
