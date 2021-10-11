@@ -21,6 +21,8 @@
 
 #include "../../constraints/all-diff_concept.hpp"
 
+#include "factory_sudoku.hpp"
+
 using namespace ghost;
 using namespace std;
 
@@ -148,73 +150,75 @@ int main( int argc, char **argv )
   for( int i = 0; i < nb_vars; ++i )
 	  variables[i].set_value( ( i % size_side ) + 1 );
 	  
-  vector< vector< Variable > > rows( size_side );
-  vector< vector< Variable > > columns( size_side );
-  vector< vector< Variable > > squares( size_side );
+  // vector< vector< Variable > > rows( size_side );
+  // vector< vector< Variable > > columns( size_side );
+  // vector< vector< Variable > > squares( size_side );
 
-  // Prepare row variables
-  for( int r = 0; r < size_side; ++r )
-	  std::copy_n( variables.begin() + ( r * size_side ),
-	               size_side,
-	               std::back_inserter( rows[r] ) );
+  // // Prepare row variables
+  // for( int r = 0; r < size_side; ++r )
+	//   std::copy_n( variables.begin() + ( r * size_side ),
+	//                size_side,
+	//                std::back_inserter( rows[r] ) );
   
-  // Prepare column variables
-  for( int c = 0; c < size_side; ++c )
-	  for( int line = 0; line < size_side; ++line )
-		  columns[c].push_back( variables[ c + ( line * size_side ) ] );
+  // // Prepare column variables
+  // for( int c = 0; c < size_side; ++c )
+	//   for( int line = 0; line < size_side; ++line )
+	// 	  columns[c].push_back( variables[ c + ( line * size_side ) ] );
 	  
-  // Prepare square variables
-  for( int s_r = 0; s_r < size_side_small_square; ++s_r )
-	  for( int s_c = 0; s_c < size_side_small_square; ++s_c )
-		  for( int line = 0; line < size_side_small_square; ++line )
-			  std::copy_n( variables.begin() + ( ( s_r * size_side * size_side_small_square )
-			                                     + ( s_c * size_side_small_square )
-			                                     + ( line * size_side ) ),
-			               size_side_small_square,
-			               std::back_inserter( squares[ ( s_r * size_side_small_square ) + s_c ] ) );
+  // // Prepare square variables
+  // for( int s_r = 0; s_r < size_side_small_square; ++s_r )
+	//   for( int s_c = 0; s_c < size_side_small_square; ++s_c )
+	// 	  for( int line = 0; line < size_side_small_square; ++line )
+	// 		  std::copy_n( variables.begin() + ( ( s_r * size_side * size_side_small_square )
+	// 		                                     + ( s_c * size_side_small_square )
+	// 		                                     + ( line * size_side ) ),
+	// 		               size_side_small_square,
+	// 		               std::back_inserter( squares[ ( s_r * size_side_small_square ) + s_c ] ) );
   
-  vector< AllDiff > constraint_rows;
-  vector< AllDiff > constraint_columns;
-  vector< AllDiff > constraint_squares;
+  // vector< AllDiff > constraint_rows;
+  // vector< AllDiff > constraint_columns;
+  // vector< AllDiff > constraint_squares;
   
-  for( int i = 0; i < size_side; ++i )
-  {
-	  //cout << rows[i].size() << " " << columns[i].size() << " " << squares[i].size() << "\n";
-	  // for( auto& v : rows[i] )
-		//   cout << v.get().get_name() << " ";
-	  // cout << "\n";
+  // for( int i = 0; i < size_side; ++i )
+  // {
+	//   //cout << rows[i].size() << " " << columns[i].size() << " " << squares[i].size() << "\n";
+	//   // for( auto& v : rows[i] )
+	// 	//   cout << v.get().get_name() << " ";
+	//   // cout << "\n";
 	  
-	  // for( auto& v : columns[i] )
-		//   cout << v.get().get_name() << " ";
-	  // cout << "\n";
+	//   // for( auto& v : columns[i] )
+	// 	//   cout << v.get().get_name() << " ";
+	//   // cout << "\n";
 
-	  // for( auto& v : squares[i] )
-		//   cout << v.get().get_name() << " ";
-	  // cout << "\n";
+	//   // for( auto& v : squares[i] )
+	// 	//   cout << v.get().get_name() << " ";
+	//   // cout << "\n";
 
-	  constraint_rows.emplace_back( rows[i] );
-	  constraint_columns.emplace_back( columns[i] );
-	  constraint_squares.emplace_back( squares[i] );
-  }
+	//   constraint_rows.emplace_back( rows[i] );
+	//   constraint_columns.emplace_back( columns[i] );
+	//   constraint_squares.emplace_back( squares[i] );
+  // }
   
-  vector< variant<AllDiff>> constraints;
+  // vector< variant<AllDiff>> constraints;
 
-  std::copy( constraint_rows.begin(),
-             constraint_rows.end(),
-             std::back_inserter( constraints ) );
+  // std::copy( constraint_rows.begin(),
+  //            constraint_rows.end(),
+  //            std::back_inserter( constraints ) );
 
-  std::copy( constraint_columns.begin(),
-             constraint_columns.end(),
-             std::back_inserter( constraints ) );
+  // std::copy( constraint_columns.begin(),
+  //            constraint_columns.end(),
+  //            std::back_inserter( constraints ) );
 
-  std::copy( constraint_squares.begin(),
-             constraint_squares.end(),
-             std::back_inserter( constraints ) );
+  // std::copy( constraint_squares.begin(),
+  //            constraint_squares.end(),
+  //            std::back_inserter( constraints ) );
 
+  FactorySudoku factory( variables, size_side_small_square );
+  
   //cout << "Constraint size: " << constraints.size() << "\n";
   
   // true means it is a permutation problem
-  Solver solver( variables, constraints, true );
+  Solver solver( factory, true );
 
   double error = 0.;
 	vector<int> solution( variables.size(), 0 );

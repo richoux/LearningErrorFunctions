@@ -9,5 +9,5 @@ public:
 	AllDiffConcept();
 	
 	bool concept_( const std::vector<int>& var, int start, int end ) const override;
-	bool concept_( const std::vector< Variable >& var ) const override;
+	bool concept_( const std::vector<Variable*>& var ) const override;
 };

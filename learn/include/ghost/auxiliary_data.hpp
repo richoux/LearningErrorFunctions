@@ -30,57 +30,39 @@
 #pragma once
 
 #include <vector>
-#include <memory>
-#include <algorithm>
 
 #include "variable.hpp"
-#include "constraint.hpp"
-#include "objective.hpp"
-#include "auxiliary_data.hpp"
 
 namespace ghost
 {
-	/***********/
-	/** Model **/
-	/***********/
-	struct Model final
+	/*******************/
+	/** AuxiliaryData **/
+	/*******************/
+	class AuxiliaryData
 	{
-		std::vector<Variable> variables; 
-		std::vector<std::shared_ptr<Constraint>> constraints; 
-		std::shared_ptr<Objective> objective;
-		std::shared_ptr<AuxiliaryData> auxiliary_data;
-
-		Model( std::vector<Variable>&& variables, 
-		       const std::vector<std::shared_ptr<Constraint>>&	constraints,
-		       const std::shared_ptr<Objective>& objective,
-		       const std::shared_ptr<AuxiliaryData>& auxiliary_data );
-	};
-
-	/******************/
-	/** FactoryModel **/
-	/******************/
-	class FactoryModel
-	{
-		template<typename FactoryModelType> friend class Solver;
-
-		std::vector<Variable> _variables_origin; 
-		std::vector<Variable> _variables_copy; 
-		
-		Model make_model();
-		inline int get_number_variables() { return static_cast<int>( _variables_origin.size() ); }
-
 	protected:
-		std::vector<Variable*> ptr_variables; 
-		std::vector<std::shared_ptr<Constraint>> constraints; 
-		std::shared_ptr<Objective> objective;
-		std::shared_ptr<AuxiliaryData> auxiliary_data;
-
+		std::vector<Variable*> ptr_variables;
+		
 	public:
-		FactoryModel( const std::vector<Variable>& variables );
-		virtual ~FactoryModel() = default;
+		AuxiliaryData( const std::vector<Variable*>& variables );
+		
+		virtual ~AuxiliaryData() = default;
 
-		virtual void declare_constraints() = 0;
-		virtual void declare_objective();
-		virtual void declare_auxiliary_data();
+		void update();		
+		virtual void update( int index, int new_value ) = 0;
+	};
+	
+	/***********************/
+	/** NullAuxiliaryData **/
+	/***********************/
+  //! NullAuxiliaryData is used when no auxiliary data are necessary in the model.
+	class NullAuxiliaryData : public AuxiliaryData
+	{
+	public:
+		NullAuxiliaryData( const std::vector<Variable*>& variables )
+			: AuxiliaryData( variables )
+		{ }
+		
+		void update( int index, int new_value ) override { }
 	};
 }

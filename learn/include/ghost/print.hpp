@@ -32,7 +32,7 @@
 #include <sstream>
 #include <vector>
 
-#include "../variable.hpp"
+#include "variable.hpp"
 
 namespace ghost
 {

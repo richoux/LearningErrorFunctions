@@ -35,7 +35,7 @@
 #include <string>
 #include <algorithm>
 
-#include "misc/randutils.hpp"
+#include "thirdparty/randutils.hpp"
 
 namespace ghost
 {
@@ -55,18 +55,16 @@ namespace ghost
 	 */
 	class Variable final
 	{
-		template <typename ObjectiveType, typename ... ConstraintType> friend class Solver;
-		template <typename ObjectiveType, typename ... ConstraintType> friend class SearchUnit;
+		friend class SearchUnit;
 
 		std::string _name;	//!< String to give a name to the variable, helpful to debug/trace.
 		std::vector<int> _domain; //!< The domain, i.e., the vector of values the variable can take.
-		unsigned int _id; //!< Unique ID integer
+		int _id; //!< Unique ID integer
 
-		static unsigned int NBER_VAR; // Static counter that increases each time one instanciates a Variable object.
 		int	_current_value;	// Current value assigned to the variable.
 		int _min_value; // minimal value in the domain
 		int _max_value; // maximal value in the domain
-		randutils::mt19937_rng _rng; 	// Neat random generator from misc/randutils.hpp.
+		randutils::mt19937_rng _rng; 	// Neat random generator implemented in thirdparty/randutils.hpp, see https://www.pcg-random.org/posts/ease-of-use-without-loss-of-power.html
 				
 		struct valueException : std::exception
 		{
