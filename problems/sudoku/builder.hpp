@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <ghost/model.hpp>
+#include <ghost/model_builder.hpp>
 
 #if defined HANDMADE
 #include "../../constraints/all-diff_handmade.hpp"
@@ -16,17 +16,18 @@
 using namespace ghost;
 using namespace std;
 
-class FactorySudoku : public FactoryModel
+class Builder : public ModelBuilder
 {
 	int _instance_size;
 	int _side_size;
+	int _nb_vars;
 	vector< vector<int> > _rows;
   vector< vector<int> > _columns;
   vector< vector<int> > _squares;
 
 public:
-	FactorySudoku( const std::vector<Variable>& variables, 
-	               int instance_size );
+	Builder( int instance_size );
 	
+	void declare_variables() override;
 	void declare_constraints() override;
 };
