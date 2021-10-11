@@ -29,31 +29,27 @@
 
 #pragma once
 
+#include <sstream>
 #include <vector>
-#include <memory>
-#include <algorithm>
 
 #include "variable.hpp"
-#include "constraint.hpp"
-#include "objective.hpp"
-#include "auxiliary_data.hpp"
 
 namespace ghost
 {
-	struct Model final
+	/*!
+	 * ghost::Print is a class users can derive from to write their own way of printing candidates
+	 * and solutions, when the macro GHOST_BENCH is given to the compiler.
+	 */
+	class Print
 	{
-		std::vector<Variable> variables;
-		std::vector<std::shared_ptr<Constraint>> constraints;
-		std::shared_ptr<Objective> objective;
-		std::shared_ptr<AuxiliaryData> auxiliary_data;
-		bool permutation_problem;
-
-		Model() = default;
-		
-		Model( std::vector<Variable>&& variables,
-		       const std::vector<std::shared_ptr<Constraint>>&	constraints,
-		       const std::shared_ptr<Objective>& objective,
-		       const std::shared_ptr<AuxiliaryData>& auxiliary_data,
-		       bool permutation_problem );
+	public:
+		/*!
+		 * The unique method to override for defining how to print candidates and solutions
+		 * on the screen.
+		 *
+		 * \param variables a const reference to the vector of variables containing values to print.
+		 * \return A std::stringstream.
+		 */
+		virtual std::stringstream print_candidate( const std::vector<Variable>& variables ) const;
 	};
 }

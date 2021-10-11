@@ -18,5 +18,5 @@ public:
 	
 	bool concept_( const std::vector<int>& var ) const;
 	virtual bool concept_( const std::vector<int>& var, int start, int end ) const = 0;
-	virtual bool concept_( const std::vector< Variable >& var ) const = 0;
+	virtual bool concept_( const std::vector<Variable*>& var ) const = 0;
 };
