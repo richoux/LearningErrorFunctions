@@ -14,6 +14,8 @@
 #include "../constraints/concept.hpp"
 #include "../constraints/all-diff_concept.hpp"
 #include "../constraints/linear-eq_concept.hpp"
+#include "../constraints/linear-leq_concept.hpp"
+#include "../constraints/linear-geq_concept.hpp"
 #include "../constraints/less-than_concept.hpp"
 #include "../constraints/connection-min-gt_concept.hpp"
 #include "../constraints/overlap-1d_concept.hpp"
@@ -22,10 +24,10 @@ using namespace std;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -o OUTPUT_FILE [-p PARAMETERS]\n"
+	cout << "Usage: " << argv[0] << " -c {ad|le|ll|lg|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -o OUTPUT_FILE [-p PARAMETERS]\n"
 	     << "Arguments:\n"
 	     << "-h, --help\n"
-	     << "-c, --constraint {ad|le|lt|ol|cm}\n"
+	     << "-c, --constraint {ad|le|ll|lg|lt|ol|cm}\n"
 	     << "-n, --nb_vars NB_VARIABLES\n"
 	     << "-d, --max_domain MAX_VALUE_DOMAIN\n"
 	     << "-o, --output OUTPUT_FILE\n"
@@ -70,11 +72,13 @@ int main( int argc, char** argv )
 	    ||
 	    ( constraint.compare("ad") != 0
 	      && constraint.compare("le") != 0
+	      && constraint.compare("ll") != 0
+	      && constraint.compare("lg") != 0
 	      && constraint.compare("lt") != 0
 	      && constraint.compare("ol") != 0
 	      && constraint.compare("cm") != 0 ) )
 	{
-		cerr << "Must provide a valid constraint among ad, le, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
+		cerr << "Must provide a valid constraint among ad, le, ll, lg, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
 		usage( argv );
 		return EXIT_FAILURE;
 	}
@@ -91,7 +95,19 @@ int main( int argc, char** argv )
 			cout << "Constraint: Linear equation.\n";
 			concept_ = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
 		}
-		
+
+		if( constraint.compare("ll") == 0 )
+		{
+			cout << "Constraint: Linear inequation <=.\n";
+			concept_ = make_unique<LinearLeqConcept>( nb_vars, max_value, params[0] );
+		}
+
+		if( constraint.compare("lg") == 0 )
+		{
+			cout << "Constraint: Linear inequation >=.\n";
+			concept_ = make_unique<LinearGeqConcept>( nb_vars, max_value, params[0] );
+		}
+
 		if( constraint.compare("lt") == 0 )
 		{
 			cout << "Constraint: Less than.\n";

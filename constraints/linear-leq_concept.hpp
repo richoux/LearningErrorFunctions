@@ -2,11 +2,13 @@
 
 #include "concept.hpp"
 
-class LessThanConcept : public Concept
+class LinearLeqConcept : public Concept
 {
+	int _rhs;
+	
 public:
-	LessThanConcept( int nb_vars, int max_value );
-	LessThanConcept();
+	LinearLeqConcept( int nb_vars, int max_value, int rhs );
+	LinearLeqConcept( int rhs );
 	
 	bool concept_( const vector<int>& var, int start, int end ) const override;
 	bool concept_( const vector<Variable*>& var ) const override;
