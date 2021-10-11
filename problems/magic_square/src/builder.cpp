@@ -4,7 +4,7 @@ Builder::Builder( int instance_size )
 	: ModelBuilder( true ),
 	  _instance_size( instance_size ),
 	  _nb_vars( _instance_size * _instance_size ),
-	  _constant( _instance_size * ( _nb_vars - 1 ) / 2 ),
+	  _constant( _instance_size * ( _nb_vars + 1 ) / 2 ),
 	  _rows( vector< vector<int> >( _instance_size ) ),
 	  _columns( vector< vector<int> >( _instance_size ) ),
 	  _diagonals( vector< vector<int> >( 2 ) )
