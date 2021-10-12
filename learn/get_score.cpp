@@ -27,6 +27,8 @@
 #include "../constraints/concept.hpp"
 #include "../constraints/all-diff_concept.hpp"
 #include "../constraints/linear-eq_concept.hpp"
+#include "../constraints/linear-leq_concept.hpp"
+#include "../constraints/linear-geq_concept.hpp"
 #include "../constraints/less-than_concept.hpp"
 #include "../constraints/connection-min-gt_concept.hpp"
 #include "../constraints/overlap-1d_concept.hpp"
@@ -59,11 +61,11 @@ randutils::mt19937_rng rng_utils;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS -f FUNCTION [-p PARAMETERS] [-l] [--xp]\n"
-	     << "   OR: " << argv[0] << " -c {ad|le|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -f FUNCTION -i INPUT_FILE -hi HAMMING_INPUT_FILE [-p PARAMETERS] [--xp]\n"
+	cout << "Usage: " << argv[0] << " -c {ad|le|ll|lg|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -s NUMBER_SAMPLINGS -f FUNCTION [-p PARAMETERS] [-l] [--xp]\n"
+	     << "   OR: " << argv[0] << " -c {ad|le|ll|lg|lt|ol|cm} -n NB_VARIABLES -d MAX_VALUE_DOMAIN -f FUNCTION -i INPUT_FILE -hi HAMMING_INPUT_FILE [-p PARAMETERS] [--xp]\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
-	     << "-c, --constraint {ad|le|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
+	     << "-c, --constraint {ad|le|ll|lg|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
 	     << "-n, --nb_vars NB_VARIABLES, the number of variables in the constraint.\n"
 	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take.\n"
 	     << "-s, --sampling NUMBER_SAMPLINGS, the number of required solutions and non-solutions.\n"
@@ -210,11 +212,13 @@ int main(int argc, char **argv)
 	    ||
 	    ( constraint.compare("ad") != 0
 	      && constraint.compare("le") != 0
+	      && constraint.compare("ll") != 0
+	      && constraint.compare("lg") != 0
 	      && constraint.compare("lt") != 0
 	      && constraint.compare("ol") != 0
 	      && constraint.compare("cm") != 0 ) )
 	{
-		cerr << "Must provide a valid constraint among ad, le, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
+		cerr << "Must provide a valid constraint among ad, le, ll, lg, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
 		usage( argv );
 		return EXIT_FAILURE;
 	}
@@ -232,6 +236,20 @@ int main(int argc, char **argv)
 			if( !xp )
 				cout << "Constraint: Linear equation.\n";
 			concept_ = make_unique<LinearEqConcept>( nb_vars, max_value, params[0] );
+		}
+		
+		if( constraint.compare("ll") == 0 )
+		{
+			if( !xp )
+				cout << "Constraint: Linear inequation <=.\n";
+			concept_ = make_unique<LinearLeqConcept>( nb_vars, max_value, params[0] );
+		}
+		
+		if( constraint.compare("lg") == 0 )
+		{
+			if( !xp )
+				cout << "Constraint: Linear inequation >=.\n";
+			concept_ = make_unique<LinearGeqConcept>( nb_vars, max_value, params[0] );
 		}
 		
 		if( constraint.compare("lt") == 0 )
