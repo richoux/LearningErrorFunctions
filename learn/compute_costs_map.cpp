@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <utility>
 #include <algorithm>
 
 #include <iostream>
@@ -19,7 +20,7 @@ using namespace std;
 int nb_vars;
 vector<int> random_solutions;
 vector<int> random_configurations;
-map<string, double> cost_map;
+map<string, pair<double,double>> cost_map;
 string input_file_path;
 ifstream input_file;
 string line, string_number;
@@ -135,13 +136,13 @@ int main( int argc, char** argv )
 		input_file.close();
 	}
 
-	cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+	cost_map = compute_metric_hamming_and_manhattan( random_solutions, random_configurations, nb_vars );
 
 	cmdl( {"o", "output"} ) >> output_file_path;	
 	output_file.open( output_file_path );
 
 	for( auto cost : cost_map )
-		output_file << cost.first << " " << cost.second << "\n";
+		output_file << cost.first << " " << cost.second.first << " " << cost.second.second << "\n";
 	output_file.close();
 	
 	return EXIT_SUCCESS;
