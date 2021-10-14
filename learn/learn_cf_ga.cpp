@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <utility>
 #include <algorithm>
 #include <set>
 
@@ -50,7 +51,7 @@ bool has_parameters;
 vector<int> random_solutions;
 vector<int> random_configurations;
 unique_ptr<Concept> concept_;
-map<string, double> cost_map;
+map<string, pair<double,double>> cost_map;
 vector<double> params;
 double params_value;
 bool latin_sampling;
@@ -114,15 +115,21 @@ bool no_parameter_operations( const vector<int>& weights )
 	return weights[7] == 0 && weights[8] == 0 && weights[9] == 0 && weights[10] == 0 && weights[11] == 0 && weights[17] == 0 && weights[21] == 0 && weights[22] == 0 && weights[23] == 0 && weights[24] == 0; 
 }
 
-// The fitness outputs a cost corresponding to the sum of the difference between
+// The fitness outputs a cost corresponding to the best of these two metrics:
+// 1. the Hamming metric, i.e., the sum of the difference between
 // the expected Hamming distance and the predicted Hamming distance for each configuration
-// of the training set (solutions + non-solutions)
-// This is NOT an average. This cost is normalized latter in the program.
+// of the training set (solutions + non-solutions),
+// 2. or the Manhattan metrics, i.e., the sum of the difference between
+// the expected Manhattan distance and the predicted Manhattan distance for each configuration
+// of the training set (solutions + non-solutions).
+// 
+// Those are the sums, NOT the averages. Individual costs are normalized in [0,1], but the final cost
+// is normalized latter in the program.
 // A penalty in [0,1[ to favor shorter models is also added just before returning the cost. 
 eoMinimizingFitness fitness( const Indi& indi )
 {
-	// set< pair<double, double> > costs;
-	double cost = 0.0;
+	double sum_costs_hamming = 0.0;
+	double sum_costs_manhattan = 0.0;
 	
 	vector<int> weights( indi.size(), 0 );
 	for( int i = 0; i < (int)indi.size(); ++i )
@@ -139,13 +146,11 @@ eoMinimizingFitness fitness( const Indi& indi )
 		auto f = cost_map.at( convert( random_solutions, i, i + nb_vars ) );
 		auto s = g( weights, params, random_solutions, max_value, i, nb_vars );
 
-		cost += std::abs( f - s );
+		sum_costs_hamming += std::abs( f.first - s );
+		sum_costs_manhattan += std::abs( f.second - s );
 
-		// costs.emplace( f, s );
-
-		//sum_seconds += s;
 #if defined DEBUG
-		cout << "Hamming: " << f << "\n";
+		cout << "Hamming: " << f.first << ", Manhattan: " << f.second << "\n";
 #endif
 	}
 	
@@ -159,32 +164,40 @@ eoMinimizingFitness fitness( const Indi& indi )
 		auto f = cost_map.at( convert( random_configurations, i, i + nb_vars ) );
 		auto s = g( weights, params, random_configurations, max_value, i, nb_vars );
 
-		cost += std::abs( f - s );
-
-		// costs.emplace( f, s );
+		sum_costs_hamming += std::abs( f.first - s );
+		sum_costs_manhattan += std::abs( f.second - s );
 
 #if defined DEBUG
-		cout << "Hamming: " << f << "\n";
+		cout << "Hamming: " << f.first << ", Manhattan: " << f.second << "\n";
 #endif
 	}
+
+	// Normalizing individual cost (after computing the sums, but it doesn't matter)
+	// This is to have a fair comparison between Hamming and Manhattan costs,
+	// otherwise Hamming would always be the smallest one.
+	// Normalization for Hamming: division by the number of variables
+	// Normalization for Manhattan: division by the number of variables times the maximal gap of values (here, max_value - min_value = max_value - 1)
+	sum_costs_hamming /= nb_vars;
+	sum_costs_manhattan /= ( nb_vars * ( max_value - 1 ) );
 	
+	double final_cost = std::min( sum_costs_hamming, sum_costs_manhattan );
 	
 	// penalize a network vector full of zeros
 	if( std::count( weights.begin(), weights.begin() + number_units_transfo, 1 ) == 0 )
-		cost += ( 10 * training_size );
+		final_cost += ( 10 * training_size );
 	// penalty if no unique comparison function
 	if( std::count( std::prev( weights.end(), number_units_compar ), weights.end(), 1 ) != 1 )
-		cost += ( 10 * training_size );	
+		final_cost += ( 10 * training_size );	
 	// Huge penalty if the network does not use any operations with parameters although the user provides one (or some),
 	// or if there is at least one operation with parameters although the user did not provide any.
 	if( ( has_parameters && no_parameter_operations( weights ) ) || ( !has_parameters && !no_parameter_operations( weights ) ) )
-		cost += ( 1000 * training_size );
+		final_cost += ( 1000 * training_size );
 
 	// favor models with fewer operations
 	auto number_active_transfo_units = std::count( weights.begin(), weights.begin() + number_units_transfo, 1 );
-	cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
+	final_cost += ( static_cast<double>( number_active_transfo_units ) / number_units_transfo );
 
-	return cost;
+	return final_cost;
 }
 
 // fix uncorrectly generated individuals
@@ -454,7 +467,7 @@ int main_function(int argc, char **argv)
 
 	if( cmdl( {"i", "input"} ) || cmdl( {"ci", "complete_input"} ) )
 	{
-		int number;
+		double manhattan_cost;
 		std::string input_costs_file_path = input_file_path.substr( 0, input_file_path.length() - 4 ) + std::string("_costs.txt");
 
 		input_costs_file.open( input_costs_file_path );
@@ -463,15 +476,18 @@ int main_function(int argc, char **argv)
 			auto delimiter = line.find(" ");
 			std::string solution_token = line.substr( 0, delimiter );
 			line.erase(0, delimiter + 1 );
+			delimiter = line.find(" ");
+			std::string hamming_cost = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 1 );
 			stringstream line_stream( line );
-			line_stream >> number;
-			cost_map.emplace( solution_token, number );
+			line_stream >> manhattan_cost;
+			cost_map.emplace( solution_token, std::pair<double,double>( std::stod( hamming_cost ), manhattan_cost ) );
 		}
 		
 		input_costs_file.close();
 	}
 	else
-		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
+		cost_map = compute_metric_hamming_and_manhattan( random_solutions, random_configurations, nb_vars );
 
 	training_size = number_configurations_in_file == 0 ? samplings*2 : number_configurations_in_file;	
 

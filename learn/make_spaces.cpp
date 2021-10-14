@@ -87,6 +87,8 @@ int main( int argc, char** argv )
 	    ||
 	    ( constraint.compare("ad") != 0
 	      && constraint.compare("le") != 0
+	      && constraint.compare("ll") != 0
+	      && constraint.compare("lg") != 0
 	      && constraint.compare("lt") != 0
 	      && constraint.compare("ol") != 0
 	      && constraint.compare("cm") != 0 ) )
