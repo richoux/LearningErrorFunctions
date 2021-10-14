@@ -159,10 +159,10 @@ wait
 
 wait
 
-(cd results/complete ; cat complete-ad*_0?.txt complete-ad*_1?.txt > complete-ad-${ad_n}-${ad_d}${suffix}.txt ; rm -f complete-ad*_0?.txt complete-ad*_1?.txt)
-(cd results/complete ; cat complete-cm*_0?.txt complete-cm*_1?.txt > complete-cm-${cm_n}-${cm_d}-${cm_p}${suffix}.txt ; rm -f complete-cm*_0?.txt complete-cm*_1?.txt)
-(cd results/complete ; cat complete-lt*_0?.txt complete-lt*_1?.txt > complete-lt-${lt_n}-${lt_d}${suffix}.txt ; rm -f complete-lt*_0?.txt complete-lt*_1?.txt)
-(cd results/complete ; cat complete-le*_0?.txt complete-le*_1?.txt > complete-le-${le_n}-${le_d}-${le_p}${suffix}.txt ; rm -f complete-le*_0?.txt complete-le*_1?.txt)
-(cd results/complete ; cat complete-ll*_0?.txt complete-ll*_1?.txt > complete-ll-${ll_n}-${ll_d}-${ll_p}${suffix}.txt ; rm -f complete-ll*_0?.txt complete-ll*_1?.txt)
-(cd results/complete ; cat complete-lg*_0?.txt complete-lg*_1?.txt > complete-lg-${lg_n}-${lg_d}-${lg_p}${suffix}.txt ; rm -f complete-lg*_0?.txt complete-lg*_1?.txt)
-(cd results/complete ; cat complete-ol*_0?.txt complete-ol*_1?.txt > complete-ol-${ol_n}-${ol_d}-${ol_p}${suffix}.txt ; rm -f complete-ol*_0?.txt complete-ol*_1?.txt)
+(cd results/complete ; cat complete-ad*_0?.txt > complete-ad-${ad_n}-${ad_d}${suffix}.txt ; rm -f complete-ad*_0?.txt)
+(cd results/complete ; cat complete-cm*_0?.txt > complete-cm-${cm_n}-${cm_d}-${cm_p}${suffix}.txt ; rm -f complete-cm*_0?.txt)
+(cd results/complete ; cat complete-lt*_0?.txt > complete-lt-${lt_n}-${lt_d}${suffix}.txt ; rm -f complete-lt*_0?.txt)
+(cd results/complete ; cat complete-le*_0?.txt > complete-le-${le_n}-${le_d}-${le_p}${suffix}.txt ; rm -f complete-le*_0?.txt)
+(cd results/complete ; cat complete-ll*_0?.txt > complete-ll-${ll_n}-${ll_d}-${ll_p}${suffix}.txt ; rm -f complete-ll*_0?.txt)
+(cd results/complete ; cat complete-lg*_0?.txt > complete-lg-${lg_n}-${lg_d}-${lg_p}${suffix}.txt ; rm -f complete-lg*_0?.txt)
+(cd results/complete ; cat complete-ol*_0?.txt > complete-ol-${ol_n}-${ol_d}-${ol_p}${suffix}.txt ; rm -f complete-ol*_0?.txt)

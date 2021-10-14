@@ -144,10 +144,10 @@ done
 
 wait
 
-(cd results ; cat ad*_0?.txt ad*_1?.txt > ad-${ad_n}-${ad_d}-${samples}-la${suffix}.txt ; rm -f ad*_0?.txt ad*_1?.txt)
-(cd results ; cat lt*_0?.txt lt*_1?.txt > lt-${lt_n}-${lt_d}-${samples}-la${suffix}.txt ; rm -f lt*_0?.txt lt*_1?.txt)
-(cd results ; cat le*_0?.txt le*_1?.txt > le-${le_n}-${le_d}-${samples}-${le_p}-la${suffix}.txt ; rm -f le*_0?.txt le*_1?.txt)
-(cd results ; cat ol*_0?.txt ol*_1?.txt > ol-${ol_n}-${ol_d}-${samples}-${ol_p}-la${suffix}.txt ; rm -f ol*_0?.txt ol*_1?.txt)
+(cd results ; cat ad*_0?.txt > ad-${ad_n}-${ad_d}-${samples}-la${suffix}.txt ; rm -f ad*_0?.txt)
+(cd results ; cat lt*_0?.txt > lt-${lt_n}-${lt_d}-${samples}-la${suffix}.txt ; rm -f lt*_0?.txt)
+(cd results ; cat le*_0?.txt > le-${le_n}-${le_d}-${samples}-${le_p}-la${suffix}.txt ; rm -f le*_0?.txt)
+(cd results ; cat ol*_0?.txt > ol-${ol_n}-${ol_d}-${samples}-${ol_p}-la${suffix}.txt ; rm -f ol*_0?.txt)
 
 wait
 
@@ -168,6 +168,6 @@ wait
 
 wait
 
-(cd results ; cat cm*_0?.txt cm*_1?.txt > cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}.txt ; rm -f cm*_0?.txt cm*_1?.txt)
-(cd results ; cat ll*_0?.txt ll*_1?.txt > ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la${suffix}.txt ; rm -f ll*_0?.txt ll*_1?.txt)
-(cd results ; cat lg*_0?.txt lg*_1?.txt > lg-${lg_n}-${lg_d}-${samples}-${lg_p}-la${suffix}.txt ; rm -f lg*_0?.txt lg*_1?.txt)
+(cd results ; cat cm*_0?.txt > cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}.txt ; rm -f cm*_0?.txt)
+(cd results ; cat ll*_0?.txt > ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la${suffix}.txt ; rm -f ll*_0?.txt)
+(cd results ; cat lg*_0?.txt > lg-${lg_n}-${lg_d}-${samples}-${lg_p}-la${suffix}.txt ; rm -f lg*_0?.txt)
