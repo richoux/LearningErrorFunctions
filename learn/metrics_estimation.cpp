@@ -38,6 +38,7 @@ ofstream output_file;
 void usage( char **argv )
 {
 	cout << "Usage: " << argv[0] << "-n NB_VARIABLES -i INPUT_FILE -o OUTPUT_FILE\n"
+	     << "This program aims to estimate metrics over large spaces of constraints for which we don't know how to exactly compute the metrics (like Overlap for instance).\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
 	     << "-n, --nb_vars NB_VARIABLES, the number of variables in the constraint.\n"

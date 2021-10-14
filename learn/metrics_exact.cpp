@@ -34,20 +34,18 @@ ifstream input_file;
 string line, string_number;
 vector<int> random_solutions;
 vector<int> random_configurations;
-map<string, double> cost_map;
+map<string, pair<double,double>> cost_map;
 bool test;
-bool hamming;
 
 randutils::mt19937_rng rng;
 
 void usage( char **argv )
 {
-	cout << "Usage: " << argv[0] << " --hamming/--manhattan -c {ad|le|ll|lg|lt|ol|cm} -o OUTPUT_FILE [-n NB_VARIABLES = 100] [-d MAX_VALUE_DOMAIN = NB_VARIABLES] [-p PARAMETERS] [-t COMPLETE_INPUT_FILE]\n"
+	cout << "Usage: " << argv[0] << " -c {ad|le|ll|lg|cm} -o OUTPUT_FILE [-n NB_VARIABLES = 100] [-d MAX_VALUE_DOMAIN = NB_VARIABLES] [-p PARAMETERS] [-t COMPLETE_INPUT_FILE]\n"
+	     << "This program aims to compute metrics over large spaces of constraints for which we know how to exactly compute the metrics (like AllDifferent for instance).\n"
 	     << "Arguments:\n"
 	     << "-h, --help, printing this message.\n"
-	     << "--hamming, to compute the hamming cost.\n"
-	     << "--manhattan, to compute the hamming cost.\n"
-	     << "-c, --constraint {ad|le|ll|lg|lt|ol|cm}, respectively for AllDiff, Linear equation, Less than, Overlap 1D and Connection minimum.\n"
+	     << "-c, --constraint {ad|le|ll|lg|cm}, respectively for AllDiff, Linear equation, Linear inequation <=, Linear inequation >= and Connection minimum.\n"
 	     << "-n, --nb_vars NB_VARIABLES, the number of variables in the constraint. Default is 100.\n"
 	     << "-d, --max_domain MAX_VALUE_DOMAIN, the maximal value variables can take. Default is NB_VARIABLES.\n"
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
@@ -55,9 +53,9 @@ void usage( char **argv )
 	     << "-t, --test COMPLETE_INPUT_FILE containing the full configuration space.\n";
 }
 
-void write( int cost, const vector<int>& config )
+void write( int cost_hamming, int cost_manhattan, const vector<int>& config )
 {
-	output_file << cost << " : ";
+	output_file << cost_hamming << " " << cost_manhattan << " : ";
 	std::copy( config.begin(), config.end(), ostream_iterator<int>( output_file, " " ) );
 	output_file << "\n";
 }
@@ -153,116 +151,116 @@ int cost_hamming_lg( vector<int> input )
 }
 
 // Warning! This is an approximation.
-int cost_hamming_lt( vector<int> input )
-{
-	int cost = 0;
+// int cost_hamming_lt( vector<int> input )
+// {
+// 	int cost = 0;
 	
-	for( int i = 0; i < (int)input.size() - 1; ++i )
-	{
-		int cost_hamming_left = 0;
-		int cost_right = 0;
+// 	for( int i = 0; i < (int)input.size() - 1; ++i )
+// 	{
+// 		int cost_hamming_left = 0;
+// 		int cost_right = 0;
 
-		int min_val = 0;
-		int max_val = 0;
+// 		int min_val = 0;
+// 		int max_val = 0;
 
-		int min_j = 0;
-		int max_j = 0;
-		int cascade_j = 0;
+// 		int min_j = 0;
+// 		int max_j = 0;
+// 		int cascade_j = 0;
 		
-		if( input[i] > input[i+1] )
-		{
-			int j = i+1;
-			while( j <= nb_vars - 1 && input[j-1] >= input[j] )
-				++j;
-			cascade_j = j;
+// 		if( input[i] > input[i+1] )
+// 		{
+// 			int j = i+1;
+// 			while( j <= nb_vars - 1 && input[j-1] >= input[j] )
+// 				++j;
+// 			cascade_j = j;
 
-			j = i+1;
-			while( j <= nb_vars - 1 && input[i] > input[j] )
-			{
-				++j;
-				++cost_right;
-			}
+// 			j = i+1;
+// 			while( j <= nb_vars - 1 && input[i] > input[j] )
+// 			{
+// 				++j;
+// 				++cost_right;
+// 			}
 
-			if( j > nb_vars - 1 )
-				max_val = max_value;
-			else
-				max_val = input[j];
+// 			if( j > nb_vars - 1 )
+// 				max_val = max_value;
+// 			else
+// 				max_val = input[j];
 
-			max_j = j;
-			if( !test )
-				cout << "j right=" << j;
+// 			max_j = j;
+// 			if( !test )
+// 				cout << "j right=" << j;
 			
-			j = i;
-			while( j >= 0 && input[j] > input[i+1] )
-			{
-				--j;
-				++cost_hamming_left;
-			}
+// 			j = i;
+// 			while( j >= 0 && input[j] > input[i+1] )
+// 			{
+// 				--j;
+// 				++cost_hamming_left;
+// 			}
 
-			if( j < 0 )
-				min_val = 1;
-			else
-				min_val = input[j];
+// 			if( j < 0 )
+// 				min_val = 1;
+// 			else
+// 				min_val = input[j];
 
-			min_j = j;			
-			if( !test )
-			{
-				cout << ", j left=" << j << "\n";
+// 			min_j = j;			
+// 			if( !test )
+// 			{
+// 				cout << ", j left=" << j << "\n";
 				
-				cout << "Config: ";
-				std::copy( input.begin(), input.end(), std::ostream_iterator<int>( cout, " ") );
-				cout << "\nconfig[" << i << "]=" << input[i]
-				     << ", config[" << i+1 << "]=" << input[i+1]
-				     << ", cost_right=" << cost_right << ", cost_hamming_left=" << cost_hamming_left
-				     << ", min_val=" << min_val << ", max_val=" << max_val
-				     << ", min_j=" << min_j << ", max_j=" << max_j << ", cascade_j=" << cascade_j << "\n";
-			}
+// 				cout << "Config: ";
+// 				std::copy( input.begin(), input.end(), std::ostream_iterator<int>( cout, " ") );
+// 				cout << "\nconfig[" << i << "]=" << input[i]
+// 				     << ", config[" << i+1 << "]=" << input[i+1]
+// 				     << ", cost_right=" << cost_right << ", cost_hamming_left=" << cost_hamming_left
+// 				     << ", min_val=" << min_val << ", max_val=" << max_val
+// 				     << ", min_j=" << min_j << ", max_j=" << max_j << ", cascade_j=" << cascade_j << "\n";
+// 			}
 
-			if( cost_right == cost_hamming_left )
-			{
-				if( max_j >= nb_vars - 1 )
-				{
-					for( j = 0; j < cost_right; ++j )
-						input[ i + 1 + j ] = max_val;
-					cost += cost_right;
-				}
-				else if( min_j <= 0 )
-				{
-					for( j = 0; j < cost_hamming_left; ++j )
-						input[ i - j ] = min_val;
-					cost += cost_hamming_left;
-				}
-				else 
-				{
-					for( j = 0; j < cost_right; ++j )
-						input[ i + 1 + j ] = max_val;
-					cost += cost_right;
-				}
-			}
-			else if( cost_right < cost_hamming_left || ( max_j >= nb_vars - 1 && cascade_j == max_j ) )
-			{
-				for( j = 0; j < cost_right; ++j )
-					input[ i + 1 + j ] = max_val;
-				cost += cost_right;
-			}
-			else
-			{
-				for( j = 0; j < cost_hamming_left; ++j )
-					input[ i - j ] = min_val;
-				cost += cost_hamming_left;
-			}
+// 			if( cost_right == cost_hamming_left )
+// 			{
+// 				if( max_j >= nb_vars - 1 )
+// 				{
+// 					for( j = 0; j < cost_right; ++j )
+// 						input[ i + 1 + j ] = max_val;
+// 					cost += cost_right;
+// 				}
+// 				else if( min_j <= 0 )
+// 				{
+// 					for( j = 0; j < cost_hamming_left; ++j )
+// 						input[ i - j ] = min_val;
+// 					cost += cost_hamming_left;
+// 				}
+// 				else 
+// 				{
+// 					for( j = 0; j < cost_right; ++j )
+// 						input[ i + 1 + j ] = max_val;
+// 					cost += cost_right;
+// 				}
+// 			}
+// 			else if( cost_right < cost_hamming_left || ( max_j >= nb_vars - 1 && cascade_j == max_j ) )
+// 			{
+// 				for( j = 0; j < cost_right; ++j )
+// 					input[ i + 1 + j ] = max_val;
+// 				cost += cost_right;
+// 			}
+// 			else
+// 			{
+// 				for( j = 0; j < cost_hamming_left; ++j )
+// 					input[ i - j ] = min_val;
+// 				cost += cost_hamming_left;
+// 			}
 
-			if( !test )
-			{
-				cout << "new Config: ";
-				std::copy( input.begin(), input.end(), std::ostream_iterator<int>( cout, " ") );
-				cout << "\n\n";
-			}
-		}
-	}
+// 			if( !test )
+// 			{
+// 				cout << "new Config: ";
+// 				std::copy( input.begin(), input.end(), std::ostream_iterator<int>( cout, " ") );
+// 				cout << "\n\n";
+// 			}
+// 		}
+// 	}
 
-	return cost;
-}
+// 	return cost;
+// }
 
 int cost_hamming_cm( const vector<int>& input )
 {
@@ -270,21 +268,21 @@ int cost_hamming_cm( const vector<int>& input )
 }
 
 // Warning! This is an approximation.
-int cost_hamming_ol( const vector<int>& input )
-{
-	int cost = 0;
+// int cost_hamming_ol( const vector<int>& input )
+// {
+// 	int cost = 0;
 
-	for( int i = 0; i < (int)input.size(); ++i )
-		for( int j = 0; j < (int)input.size(); ++j )
-			if( i != j && input[j] >= input[i] + params_value  )
-				++cost;
+// 	for( int i = 0; i < (int)input.size(); ++i )
+// 		for( int j = 0; j < (int)input.size(); ++j )
+// 			if( i != j && input[j] >= input[i] + params_value  )
+// 				++cost;
 
-	int series = 0;
-	for( int i = 1; i < nb_vars; ++i )
-		series += i;
+// 	int series = 0;
+// 	for( int i = 1; i < nb_vars; ++i )
+// 		series += i;
 	
-	return std::abs( cost - series );	
-}
+// 	return std::abs( cost - series );	
+// }
 
 //////////////////
 // Manhattan costs
@@ -370,32 +368,27 @@ void ad()
 {
 	if( test )
 	{
+		int cost;
 		for( auto tuple : cost_map )
 		{
 			auto config = revert( tuple.first );
-			int cost;
-			if( hamming )
-			{
-				cost = cost_hamming_ad( config );
+			cost = cost_hamming_ad( config );
 
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-				}
-			}
-			else
+			if( cost != static_cast<int>( tuple.second.first ) )
 			{
-				cost = cost_manhattan_ad( config );
-
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second ) << ", computed Manhattan=" << cost << "\n\n";
-				}				
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second.first ) << ", computed Hamming=" << cost << "\n\n";
 			}
+
+			cost = cost_manhattan_ad( config );
+			
+			if( cost != static_cast<int>( tuple.second.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second.second ) << ", computed Manhattan=" << cost << "\n\n";
+			}				
 		}
 	}
 	else
@@ -411,7 +404,7 @@ void ad()
 		for( int i = 0; i < 10000; ++i )
 		{
 			rng.shuffle( start_config );
-			write( 0, start_config );
+			write( 0, 0, start_config );
 		}
 
 		for( int i = 0; i < 10000; ++i )
@@ -423,11 +416,8 @@ void ad()
 			for( int j = 0; j < nb_changes; ++j )
 				config[ rng.uniform( 0, nb_vars - 1 ) ] = rng.uniform( 1, nb_vars );
 
-			if( hamming )
-				write( cost_hamming_ad( config ), config );
-			else
-				write( cost_manhattan_ad( config ), config );				
-		}	
+			write( cost_hamming_ad( config ), cost_manhattan_ad( config ), config );
+		}
 	}
 }
 
@@ -435,32 +425,27 @@ void le()
 {
 	if( test )
 	{
+		int cost;
 		for( auto tuple : cost_map )
 		{
 			auto config = revert( tuple.first );
-			int cost;
 
-			if( hamming )
+			cost = cost_hamming_le( config );
+			
+			if( cost != static_cast<int>( tuple.second.first ) )
 			{
-				cost = cost_hamming_le( config );
-
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-				}
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second.first ) << ", computed Hamming=" << cost << "\n\n";
 			}
-			else
-			{
-				cost = cost_manhattan_le( config );
 
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second ) << ", computed Manhattan=" << cost << "\n\n";
-				}
+			cost = cost_manhattan_le( config );
+			
+			if( cost != static_cast<int>( tuple.second.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second.second ) << ", computed Manhattan=" << cost << "\n\n";
 			}
 		}
 	}
@@ -472,7 +457,7 @@ void le()
 
 		output_file.open( output_file_path );
 		output_file << "20000\n";
-		write( 0, config );
+		write( 0, 0, config );
 
 		for( int i = 0; i < 9999; ++i )
 		{
@@ -482,7 +467,7 @@ void le()
 				++config[ index ];
 				--config[ index + 1 ];
 			}
-			write( 0, config );
+			write( 0, 0, config );
 		}
 
 		for( int i = 0; i < 10000; ++i )
@@ -491,10 +476,7 @@ void le()
 			for( int j = 0; j < nb_changes; ++j )
 				config[ rng.uniform( 0, nb_vars - 1 ) ] = rng.uniform( 1, nb_vars );
 
-			if( hamming )
-				write( cost_hamming_le( config ), config );
-			else
-				write( cost_manhattan_le( config ), config );
+			write( cost_hamming_le( config ), cost_manhattan_le( config ), config );
 		}
 	}
 }
@@ -503,32 +485,27 @@ void ll()
 {
 	if( test )
 	{
+		int cost;
 		for( auto tuple : cost_map )
 		{
 			auto config = revert( tuple.first );
-			int cost;
 
-			if( hamming )
+			cost = cost_hamming_ll( config );
+			
+			if( cost != static_cast<int>( tuple.second.first ) )
 			{
-				cost = cost_hamming_ll( config );
-
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-				}
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second.first ) << ", computed Hamming=" << cost << "\n\n";
 			}
-			else
-			{
-				cost = cost_manhattan_ll( config );
 
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second ) << ", computed Manhattan=" << cost << "\n\n";
-				}
+			cost = cost_manhattan_ll( config );
+			
+			if( cost != static_cast<int>( tuple.second.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second.second ) << ", computed Manhattan=" << cost << "\n\n";
 			}
 		}
 	}
@@ -556,7 +533,7 @@ void ll()
 				config[ index ] = rng.uniform( 1, config[ index ] );
 			}
 			
-			write( 0, config );
+			write( 0, 0, config );
 		}
 
 		for( int i = 0; i < 10000; ++i )
@@ -577,10 +554,7 @@ void ll()
 				config[ index ] = rng.uniform( config[ index ] + 1, max_value );
 			}
 			
-			if( hamming )
-				write( cost_hamming_ll( config ), config );
-			else
-				write( cost_manhattan_ll( config ), config );
+			write( cost_hamming_ll( config ), cost_manhattan_ll( config ), config );
 		}
 	}
 }
@@ -589,32 +563,27 @@ void lg()
 {
 	if( test )
 	{
+		int cost;
 		for( auto tuple : cost_map )
 		{
 			auto config = revert( tuple.first );
-			int cost;
 
-			if( hamming )
+			cost = cost_hamming_lg( config );
+			
+			if( cost != static_cast<int>( tuple.second.first ) )
 			{
-				cost = cost_hamming_lg( config );
-
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-				}
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second.first ) << ", computed Hamming=" << cost << "\n\n";
 			}
-			else
-			{
-				cost = cost_manhattan_lg( config );
 
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second ) << ", computed Manhattan=" << cost << "\n\n";
-				}
+			cost = cost_manhattan_lg( config );
+			
+			if( cost != static_cast<int>( tuple.second.second ) )
+			{
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second.second ) << ", computed Manhattan=" << cost << "\n\n";
 			}
 		}
 	}
@@ -642,7 +611,7 @@ void lg()
 				config[ index ] = rng.uniform( config[ index ], max_value );
 			}
 			
-			write( 0, config );
+			write( 0, 0, config );
 		}
 
 		for( int i = 0; i < 10000; ++i )
@@ -663,250 +632,242 @@ void lg()
 				config[ index ] = rng.uniform( 1, config[ index ] - 1 );
 			}
 			
-			if( hamming )
-				write( cost_hamming_lg( config ), config );
-			else
-				write( cost_manhattan_lg( config ), config );
+			write( cost_hamming_lg( config ), cost_manhattan_lg( config ), config );
 		}
 	}
 }
 
-void lt()
-{
-	if( test )
-	{
-		for( auto tuple : cost_map )
-		{
-			auto config = revert( tuple.first );
-			auto cost = cost_hamming_lt( config );
-			if( cost != static_cast<int>( tuple.second ) )
-			{
-				cout << "config: ";
-				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-			}
-		}
-	}
-	else
-	{
-		vector<int> start_config( nb_vars );
-		vector<int> config( nb_vars );
+// void lt()
+// {
+// 	if( test )
+// 	{
+// 		for( auto tuple : cost_map )
+// 		{
+// 			auto config = revert( tuple.first );
+// 			auto cost = cost_hamming_lt( config );
+// 			if( cost != static_cast<int>( tuple.second ) )
+// 			{
+// 				cout << "config: ";
+// 				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
+// 			}
+// 		}
+// 	}
+// 	else
+// 	{
+// 		vector<int> start_config( nb_vars );
+// 		vector<int> config( nb_vars );
 
-		std::iota( start_config.begin(), start_config.end(), 1 );
-		output_file.open( output_file_path );
-		write( 0, start_config );
+// 		std::iota( start_config.begin(), start_config.end(), 1 );
+// 		output_file.open( output_file_path );
+// 		write( 0, start_config );
 
-		for( int i = 0; i < 24; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
-			int nb_changes = rng.uniform( 2, 30 );
-			for( int j = 0; j < nb_changes; ++j )
-			{
-				int index = rng.uniform( 0, nb_vars - 2 );
-				config[ index ] = config[ index + 1 ];
-			}
-			write( 0, config );
-		}
+// 		for( int i = 0; i < 24; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 			int nb_changes = rng.uniform( 2, 30 );
+// 			for( int j = 0; j < nb_changes; ++j )
+// 			{
+// 				int index = rng.uniform( 0, nb_vars - 2 );
+// 				config[ index ] = config[ index + 1 ];
+// 			}
+// 			write( 0, config );
+// 		}
 
-		// cost 1
- 		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 1
+//  		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 2 );
-			config[ index ] = config[ index + 1 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 2 );
+// 			config[ index ] = config[ index + 1 ] + 1;
 
-			write( 1, config );
-		}
+// 			write( 1, config );
+// 		}
 
-		// cost 2
- 		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 2
+//  		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 4 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 4 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
 
-			write( 2, config );
-		}
+// 			write( 2, config );
+// 		}
 
-		// cost 3
- 		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 3
+//  		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 6 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 6 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
 
-			write( 3, config );
-		}
+// 			write( 3, config );
+// 		}
 
-		// cost 4
- 		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 4
+//  		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 8 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
-			config[ index + 6 ] = config[ index + 7 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 8 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			config[ index + 6 ] = config[ index + 7 ] + 1;
 
-			write( 4, config );
-		}
+// 			write( 4, config );
+// 		}
 
-		// cost 5
- 		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 5
+//  		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 10 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
-			config[ index + 6 ] = config[ index + 7 ] + 1;
-			config[ index + 8 ] = config[ index + 9 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 10 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			config[ index + 6 ] = config[ index + 7 ] + 1;
+// 			config[ index + 8 ] = config[ index + 9 ] + 1;
 
-			write( 5, config );
-		}
+// 			write( 5, config );
+// 		}
 
-		// cost 6
-		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 6
+// 		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 12 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
-			config[ index + 6 ] = config[ index + 7 ] + 1;
-			config[ index + 8 ] = config[ index + 9 ] + 1;
-			config[ index + 10 ] = config[ index + 11 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 12 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			config[ index + 6 ] = config[ index + 7 ] + 1;
+// 			config[ index + 8 ] = config[ index + 9 ] + 1;
+// 			config[ index + 10 ] = config[ index + 11 ] + 1;
 
-			write( 6, config );
-		}
+// 			write( 6, config );
+// 		}
 
-		// cost 7
-		for( int i = 0; i < 10; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 7
+// 		for( int i = 0; i < 10; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 14 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
-			config[ index + 6 ] = config[ index + 7 ] + 1;
-			config[ index + 8 ] = config[ index + 9 ] + 1;
-			config[ index + 10 ] = config[ index + 11 ] + 1;
-			config[ index + 12 ] = config[ index + 13 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 14 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			config[ index + 6 ] = config[ index + 7 ] + 1;
+// 			config[ index + 8 ] = config[ index + 9 ] + 1;
+// 			config[ index + 10 ] = config[ index + 11 ] + 1;
+// 			config[ index + 12 ] = config[ index + 13 ] + 1;
 
-			write( 7, config );
-		}
+// 			write( 7, config );
+// 		}
 
-		// cost 8
-		for( int i = 0; i < 5; ++i )
-		{
-			std::copy( start_config.begin(), start_config.end(), config.begin() );
+// 		// cost 8
+// 		for( int i = 0; i < 5; ++i )
+// 		{
+// 			std::copy( start_config.begin(), start_config.end(), config.begin() );
 		
-			int index = rng.uniform( 0, nb_vars - 16 );
-			config[ index ] = config[ index + 1 ] + 1;
-			config[ index + 2 ] = config[ index + 3 ] + 1;
-			config[ index + 4 ] = config[ index + 5 ] + 1;
-			config[ index + 6 ] = config[ index + 7 ] + 1;
-			config[ index + 8 ] = config[ index + 9 ] + 1;
-			config[ index + 10 ] = config[ index + 11 ] + 1;
-			config[ index + 12 ] = config[ index + 13 ] + 1;
-			config[ index + 14 ] = config[ index + 15 ] + 1;
+// 			int index = rng.uniform( 0, nb_vars - 16 );
+// 			config[ index ] = config[ index + 1 ] + 1;
+// 			config[ index + 2 ] = config[ index + 3 ] + 1;
+// 			config[ index + 4 ] = config[ index + 5 ] + 1;
+// 			config[ index + 6 ] = config[ index + 7 ] + 1;
+// 			config[ index + 8 ] = config[ index + 9 ] + 1;
+// 			config[ index + 10 ] = config[ index + 11 ] + 1;
+// 			config[ index + 12 ] = config[ index + 13 ] + 1;
+// 			config[ index + 14 ] = config[ index + 15 ] + 1;
 
-			write( 8, config );
-		}
+// 			write( 8, config );
+// 		}
 
-		// cout << "/////////////////\n";
-		// config = {8,8,8,7,7,5,6};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// cout << "/////////////////\n";
+// 		// config = {8,8,8,7,7,5,6};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {2,1,8,6,7,3,4,2,1};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {2,1,8,6,7,3,4,2,1};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {4,3,1,1,2};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {4,3,1,1,2};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 	
-		// config = {2,2,1,3,1};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {2,2,1,3,1};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {4,1,4,2,3};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {4,1,4,2,3};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {3,4,2,1,5};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {3,4,2,1,5};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {1,3,3,2,1};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {1,3,3,2,1};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {2,1,8,1,1};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {2,1,8,1,1};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {3,3,2,1,3};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
+// 		// config = {3,3,2,1,3};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
 
-		// config = {4,4,3,2,1};
-		// cout << cost_hamming_lt( config ) << " : ";
-		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-		// cout << "\n";
-	}
-}
+// 		// config = {4,4,3,2,1};
+// 		// cout << cost_hamming_lt( config ) << " : ";
+// 		// std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 		// cout << "\n";
+// 	}
+// }
 
 void cm()
 {
 	if( test )
 	{
+		int cost;
 		for( auto tuple : cost_map )
 		{
 			auto config = revert( tuple.first );
-			int cost;
 
-			if( hamming )
+			cost = cost_hamming_cm( config );
+			
+			if( cost != static_cast<int>( tuple.second.first ) )
 			{
-				cost = cost_hamming_cm( config );
-				
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-				}
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second.first ) << ", computed Hamming=" << cost << "\n\n";
 			}
-			else
+
+			cost = cost_manhattan_cm( config );
+			
+			if( cost != static_cast<int>( tuple.second.second ) )
 			{
-				cost = cost_manhattan_cm( config );
-				
-				if( cost != static_cast<int>( tuple.second ) )
-				{
-					cout << "config: ";
-					std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-					cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second ) << ", computed Manhattan=" << cost << "\n\n";
-				}
+				cout << "config: ";
+				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+				cout << "\ncompared Manhattan=" << static_cast<int>( tuple.second.second ) << ", computed Manhattan=" << cost << "\n\n";
 			}
 		}
 	}
@@ -924,7 +885,7 @@ void cm()
 			                config.end(),
 			                config.begin(),
 			                [&](auto& c){ return c < params_value ? rng.uniform( params_value, max_value ) : c; } );
-			write( 0, config );
+			write( 0, 0, config );
 		}
 
 		for( int i = 0; i < 10000; ++i )
@@ -934,35 +895,32 @@ void cm()
 			for( int j = 0; j < nb_changes; ++j )
 				config[ rng.uniform( 0, nb_vars - 1 ) ] = rng.uniform( 1, params_value - 1 );
 
-			if( hamming )
-				write( cost_hamming_cm( config ), config );
-			else
-				write( cost_manhattan_cm( config ), config );
+			write( cost_hamming_cm( config ), cost_manhattan_cm( config ), config );
 		}
 	}
 }
 
-void ol()
-{
-	if( test )
-	{
-		for( auto tuple : cost_map )
-		{
-			auto config = revert( tuple.first );
-			auto cost = cost_hamming_ol( config );
-			if( cost != static_cast<int>( tuple.second ) )
-			{
-				cout << "config: ";
-				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
-				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
-			}
-		}
-	}
-	else
-	{
+// void ol()
+// {
+// 	if( test )
+// 	{
+// 		for( auto tuple : cost_map )
+// 		{
+// 			auto config = revert( tuple.first );
+// 			auto cost = cost_hamming_ol( config );
+// 			if( cost != static_cast<int>( tuple.second ) )
+// 			{
+// 				cout << "config: ";
+// 				std::copy( config.begin(), config.end(), std::ostream_iterator<int>( cout, " ") );
+// 				cout << "\ncompared Hamming=" << static_cast<int>( tuple.second ) << ", computed Hamming=" << cost << "\n\n";
+// 			}
+// 		}
+// 	}
+// 	else
+// 	{
 		
-	}
-}
+// 	}
+// }
 
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv)
@@ -976,7 +934,7 @@ int main(int argc, char **argv)
 		return EXIT_SUCCESS;
 	}
 
-	if( !cmdl( {"o", "output"} ) || ( !cmdl( {"hamming"} ) && !cmdl( {"manhattan"} ) ) || ( cmdl( {"hamming"} ) && cmdl( {"manhattan"} ) ) )
+	if( !cmdl( {"o", "output"} ) )
 	{
 		usage( argv );
 		return EXIT_FAILURE;
@@ -986,11 +944,6 @@ int main(int argc, char **argv)
 		test = true;
 	else
 		test = false;
-
-	if( cmdl( {"hamming"} ) )
-		hamming = true;
-	else
-		hamming = false;
 
 	cmdl( {"o", "output"} ) >> output_file_path;	
 	cmdl( {"n", "nb_vars"}, 100 ) >> nb_vars;
@@ -1026,10 +979,7 @@ int main(int argc, char **argv)
 		}		
 
 		input_file.close();
-		if( hamming )
-			cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
-		else
-			cost_map = compute_metric_manhattan_only( random_solutions, random_configurations, nb_vars );
+		cost_map = compute_metric_hamming_and_manhattan( random_solutions, random_configurations, nb_vars );
 	}
 	
 	if( !( cmdl( {"c", "constraint"} ) >> constraint )
@@ -1038,11 +988,11 @@ int main(int argc, char **argv)
 	      && constraint.compare("le") != 0
 	      && constraint.compare("ll") != 0
 	      && constraint.compare("lg") != 0
-	      && constraint.compare("lt") != 0
-	      && constraint.compare("ol") != 0
+	      // && constraint.compare("lt") != 0
+	      // && constraint.compare("ol") != 0
 	      && constraint.compare("cm") != 0 ) )
 	{
-		cerr << "Must provide a valid constraint among ad, le, ll, lg, lt, ol and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
+		cerr << "Must provide a valid constraint among ad, le, ll, lg and cm. You provided '" << cmdl( {"c", "constraint"} ).str() << "'\n";
 		usage( argv );
 		return EXIT_FAILURE;
 	}
@@ -1072,17 +1022,17 @@ int main(int argc, char **argv)
 			lg();
 		}
 		
-		if( constraint.compare("lt") == 0 )
-		{
-			cout << "Constraint: Less than.\n";
-			lt();
-		}
+		// if( constraint.compare("lt") == 0 )
+		// {
+		// 	cout << "Constraint: Less than.\n";
+		// 	lt();
+		// }
 		
-		if( constraint.compare("ol") == 0 )
-		{
-			cout << "Constraint: Overlap 1D.\n";
-			ol();
-		}
+		// if( constraint.compare("ol") == 0 )
+		// {
+		// 	cout << "Constraint: Overlap 1D.\n";
+		// 	ol();
+		// }
 		
 		if( constraint.compare("cm") == 0 )
 		{
