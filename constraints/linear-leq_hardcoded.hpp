@@ -18,4 +18,5 @@ class LinearLeq : public Constraint
 
 public:
 	LinearLeq( const vector<int>& variables, int max_value, int rhs );
+	LinearLeq( vector<int>&& variables, int max_value, int rhs );
 };

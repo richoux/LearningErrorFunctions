@@ -1,6 +1,6 @@
 #include <algorithm>
 
-#include "linear-leq.hpp"
+#include "linear-geq.hpp"
 #include "../learn/function_to_learn_icn.hpp" // for number_functions
 
 // defined in cfn/function_to_learn_icn.cpp
@@ -10,21 +10,14 @@ double intermediate_g( const vector<double>& inputs,
                        const int& max_domain_value,
                        const int& nb_vars );
 
-LinearLeq::LinearLeq( const vector<int>& variables, int max_value, int rhs )
+LinearGeq::LinearGeq( const vector<int>& variables, int max_value, int rhs )
 	: Constraint( variables ),
-	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 	  _rhs( rhs ),
 	  _le_concept_{ (int)variables.size(), max_value, rhs }
 { }
 
-LinearLeq::LinearLeq( vector<int>&& variables, int max_value, int rhs )
-	: Constraint( std::move( variables ) ),
-	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-	  _rhs( rhs ),
-	  _le_concept_{ (int)variables.size(), max_value, rhs }
-{ }
-
-double LinearLeq::required_error( const vector<Variable*>& variables ) const
+double LinearGeq::required_error( const vector<Variable*>& variables ) const
 {
 	if( _le_concept_.concept_( variables ) )
 		return 0.;
