@@ -12,7 +12,10 @@ double intermediate_g( const vector<double>& inputs,
 
 LinearEq::LinearEq( const vector<int>& variables, int max_value, int rhs )
 	: Constraint( variables ),
-	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+	  // Hamming
+    // _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+	  // Manhattan
+	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
 	  _rhs( rhs ),
 	  _le_concept_{ (int)variables.size(), max_value, rhs }
 { }

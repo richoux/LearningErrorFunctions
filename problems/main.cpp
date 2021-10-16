@@ -19,15 +19,15 @@ int main( int argc, char **argv )
 	}
 	else
 		instance_size = std::stoi( argv[1] );
-	
+
   Builder builder( instance_size );
-  
+
   ghost::Solver solver( builder );
   ghost::Options options;
   options.print = std::make_shared<UserPrint>();
   
   double error = 0.;
-  std::vector<int> solution( builder.get_number_variables(), 0 );
+  std::vector<int> solution;
 
   solver.solve( error, solution, 1s, options );
 

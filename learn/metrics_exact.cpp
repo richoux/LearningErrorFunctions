@@ -453,7 +453,39 @@ void le()
 	{
 		vector<int> config( nb_vars );
 		rng.generate( config, 1, max_value );
-		params_value = std::accumulate( config.begin(), config.end(), 0 );
+		auto sum = std::accumulate( config.begin(), config.end(), 0 );
+		double diff = std::abs( sum - params_value );
+		auto mean = std::ceil( diff / nb_vars );
+		bool need_to_increase = ( sum < params_value );
+		
+		while( sum != params_value )
+		{
+			auto index = rng.uniform( 0, nb_vars - 1 );
+			if( need_to_increase )
+			{
+				if( config[ index ] < max_value - ( mean * 2 ) )
+					config[ index ] += ( mean * 2 );
+				else
+					if( config[ index ] < max_value - mean )
+						config[ index ] += mean;
+					else
+						if( config[ index ] < max_value )
+							++config[ index ];
+			}
+			else
+			{
+				if( config[ index ] > mean * 2 )
+					config[ index ] -= ( mean * 2 );
+				else
+					if( config[ index ] > mean )
+						config[ index ] -= mean;
+					else
+						if( config[ index ] > 1 )
+							--config[ index ];
+			}
+			sum = std::accumulate( config.begin(), config.end(), 0 );
+			need_to_increase = ( sum < params_value );				
+		}
 
 		output_file.open( output_file_path );
 		output_file << "20000\n";
@@ -514,9 +546,29 @@ void ll()
 		vector<int> config( nb_vars );
 		vector<int> copy_config( nb_vars );
 		rng.generate( config, 1, max_value );
+
+		auto sum = std::accumulate( config.begin(), config.end(), 0 );
+		double diff = std::abs( sum - params_value );
+		auto mean = std::ceil( diff / nb_vars );
+		
+		while( sum > params_value )
+		{
+			auto index = rng.uniform( 0, nb_vars - 1 );
+
+			if( config[ index ] > mean * 2 )
+				config[ index ] -= ( mean * 2 );
+			else
+				if( config[ index ] > mean )
+					config[ index ] -= mean;
+				else
+					if( config[ index ] > 1 )
+						--config[ index ];
+
+			sum = std::accumulate( config.begin(), config.end(), 0 );
+		}
+
 		std::copy( config.begin(), config.end(), copy_config.begin() );
-		params_value = std::accumulate( config.begin(), config.end(), 0 );
-				
+
 		output_file.open( output_file_path );
 		output_file << "20000\n";
 
@@ -592,9 +644,29 @@ void lg()
 		vector<int> config( nb_vars );
 		vector<int> copy_config( nb_vars );
 		rng.generate( config, 1, max_value );
-		std::copy( config.begin(), config.end(), copy_config.begin() );
-		params_value = std::accumulate( config.begin(), config.end(), 0 );
 				
+		auto sum = std::accumulate( config.begin(), config.end(), 0 );
+		double diff = std::abs( sum - params_value );
+		auto mean = std::ceil( diff / nb_vars );
+		
+		while( sum < params_value )
+		{
+			auto index = rng.uniform( 0, nb_vars - 1 );
+
+			if( config[ index ] < max_value - ( mean * 2 ) )
+				config[ index ] += ( mean * 2 );
+			else
+				if( config[ index ] < max_value - mean )
+					config[ index ] += mean;
+				else
+					if( config[ index ] < max_value )
+						++config[ index ];
+
+			sum = std::accumulate( config.begin(), config.end(), 0 );
+		}
+
+		std::copy( config.begin(), config.end(), copy_config.begin() );
+
 		output_file.open( output_file_path );
 		output_file << "20000\n";
 

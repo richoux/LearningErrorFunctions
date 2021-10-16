@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <utility>
 #include <algorithm>
 
 // Command line arguments manager
@@ -42,7 +43,7 @@ bool has_parameters;
 vector<int> random_solutions;
 vector<int> random_configurations;
 unique_ptr<Concept> concept_;
-map<string, double> cost_map;
+map<string, pair<double,double>> cost_map;
 vector<double> params;
 double params_value;
 bool latin_sampling;
@@ -85,9 +86,10 @@ bool no_parameter_operations( const vector<int>& weights )
 	return weights[7] == 0 && weights[8] == 0 && weights[9] == 0 && weights[10] == 0 && weights[11] == 0 && weights[17] == 0 && weights[21] == 0 && weights[22] == 0 && weights[23] == 0 && weights[24] == 0; 
 }
 
-double fitness( const vector<int>& weights )
+double fitness( const vector<int>& weights, bool& hamming )
 {
-	double cost = 0.0;
+	double cost_hamming = 0.0;
+	double cost_manhattan = 0.0;
 	
 	for( int i = 0; i < (int)random_solutions.size(); i += nb_vars )
 	{
@@ -100,22 +102,24 @@ double fitness( const vector<int>& weights )
 			cout << "\n";
 		}
 
-		cost += std::abs( f - s );
+		cost_hamming += std::abs( f.first - s );
+		cost_manhattan += std::abs( f.second - s );
 
-		if( verbose && f != s )
+		if( verbose && ( f.first != s || f.second != s ) )
 		{
-			if( std::abs( f - s ) == 1 )
+			if( std::abs( f.first - s ) == 1 )
 				++near_solution;
 			
-			cout << s << " (" << f << ") : ";
+			cout << s << " (" << f.first << "," << f.second << ") : ";
 			std::copy( random_solutions.begin() + i, random_solutions.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
 			cout << "\n";
 		}
 		
 		if( debug )
 		{
-			cout << "Hamming: " << f << "\n"
-			     << "Score:   " << s << "\n\n";
+			cout << "Hamming:   " << f.first << "\n"
+			     << "Manhattan: " << f.second << "\n"
+			     << "Score:     " << s << "\n\n";
 		}
 	}
 	
@@ -130,26 +134,48 @@ double fitness( const vector<int>& weights )
 			cout << "\n";
 		}
 
-		cost += std::abs( f - s );
+		cost_hamming += std::abs( f.first - s );
+		cost_manhattan += std::abs( f.second - s );
 
-		if( verbose && f != s )
+		if( verbose && ( f.first != s || f.second != s ) )
 		{
-			if( std::abs( f - s ) == 1 )
+			if( std::abs( f.first - s ) == 1 )
 				++near_solution;
 			
-			cout << s << " (" << f << ") : ";
+			cout << s << " (" << f.first << "," << f.second << ") : ";
 			std::copy( random_configurations.begin() + i, random_configurations.begin() + i + nb_vars, ostream_iterator<int>( cout, " "));
 			cout << "\n";
 		}
 
 		if( debug )
 		{
-			cout << "Hamming: " << f << "\n"
-			     << "Score:   " << s << "\n\n";
+			cout << "Hamming:   " << f.first << "\n"
+			     << "Manhattan: " << f.second << "\n"
+			     << "Score:     " << s << "\n\n";
 		}
 	}
+
+	// Normalizing individual cost (after computing the sums, but it doesn't matter)
+	// This is to have a fair comparison between Hamming and Manhattan costs,
+	// otherwise Hamming would always be the smallest one.
+	// Normalization for Hamming: division by the number of variables
+	// Normalization for Manhattan: division by the number of variables times the maximal gap of values (here, max_value - min_value = max_value - 1)
+	cost_hamming /= nb_vars;
+	cost_manhattan /= ( nb_vars * ( max_value - 1 ) );
 	
-	return cost;
+	double final_cost;
+	if( cost_hamming <= cost_manhattan )
+	{
+		final_cost = cost_hamming;
+		hamming = true;
+	}
+	else
+	{
+		final_cost = cost_manhattan;
+		hamming = false;
+	}
+
+	return final_cost;
 }
 
 //-----------------------------------------------------------------------------
@@ -322,6 +348,7 @@ int main(int argc, char **argv)
 		
 		input_file.close();
 
+		double manhattan_cost;
 		std::string input_costs_file_path = input_file_path.substr( 0, input_file_path.length() - 4 ) + std::string("_costs.txt");
 		input_costs_file.open( input_costs_file_path );
 		while( getline( input_costs_file, line ) )
@@ -329,9 +356,12 @@ int main(int argc, char **argv)
 			auto delimiter = line.find(" ");
 			std::string solution_token = line.substr( 0, delimiter );
 			line.erase(0, delimiter + 1 );
+			delimiter = line.find(" ");
+			std::string hamming_cost = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 1 );
 			stringstream line_stream( line );
-			line_stream >> number;
-			cost_map.emplace( solution_token, number );
+			line_stream >> manhattan_cost;
+			cost_map.emplace( solution_token, std::pair<double,double>( std::stod( hamming_cost ), manhattan_cost ) );
 		}
 		
 		input_costs_file.close();
@@ -358,8 +388,11 @@ int main(int argc, char **argv)
 		for( int i = 0; i < number_samplings; ++i )
 		{
 			getline( input_file, line );
-			auto delimiter = line.find(" : ");
-			std::string cost_token = line.substr( 0, delimiter );
+			auto delimiter = line.find(" ");
+			std::string cost_hamming = line.substr( 0, delimiter );
+			line.erase(0, delimiter + 1 );
+			delimiter = line.find(" : ");
+			std::string cost_manhattan = line.substr( 0, delimiter );			
 			line.erase(0, delimiter + 3 );
 			
 			stringstream line_stream( line );
@@ -370,7 +403,7 @@ int main(int argc, char **argv)
 				random_solutions.push_back( number );
 			}
 
-			cost_map.insert({ convert( random_solutions, index, index + nb_vars ), std::stod( cost_token ) });
+			cost_map.insert({ convert( random_solutions, index, index + nb_vars ), std::pair<double,double>(std::stod( cost_hamming ), std::stod( cost_manhattan ) ) });
 			index += nb_vars;
 		}		
 
@@ -395,8 +428,10 @@ int main(int argc, char **argv)
 	}
 
 	if( !cmdl( {"hi", "hamming_input"} ) && !cmdl( {"i", "input"} ) )
-		cost_map = compute_metric_hamming_only( random_solutions, random_configurations, nb_vars );
-	
+		cost_map = compute_metric_hamming_and_manhattan( random_solutions, random_configurations, nb_vars );
+
+	bool hamming;
+
 	if( !xp )
 	{
 		int number_solutions, number_non_solutions;
@@ -411,7 +446,7 @@ int main(int argc, char **argv)
 			number_non_solutions = random_configurations.size() / nb_vars;
 		}
 
-		auto errors = fitness( cost_function );
+		auto errors = fitness( cost_function, hamming );
 		
 		cout << "Cumulative error: " << errors
 		     << "\nMean error: " << errors / samplings
@@ -421,6 +456,11 @@ int main(int argc, char **argv)
 		     << "\nSampling samplings: " << samplings
 		     << "\nNumber of solutions: " << number_solutions << ", density = "
 		     << static_cast<double>( number_solutions ) / samplings << "\n";
+		
+		if( hamming )
+			cout << "Hamming error function\n";
+		else
+			cout << "Manhattan error function\n";
 
 		if( verbose )
 			cout << "Estimations off by 1: " << near_solution << "\n";
@@ -428,7 +468,7 @@ int main(int argc, char **argv)
 		print_model( cost_function );
 	}
 	else
-		cout << fitness( cost_function ) << "\n";
+		cout << fitness( cost_function, hamming ) << "\n";
 
 	return EXIT_SUCCESS;
 }
