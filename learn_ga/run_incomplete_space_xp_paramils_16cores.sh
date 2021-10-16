@@ -54,22 +54,22 @@ done
 
 for i in {1..6}
 do
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_01.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_02.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_03.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_04.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_05.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_06.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_07.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_08.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_09.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_10.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_11.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_12.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_13.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_14.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_15.txt &
-    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_16.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_01.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_02.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_03.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_04.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_05.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_06.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_07.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_08.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_09.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_10.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_11.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_12.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_13.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_14.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_15.txt &
+    ./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_16.txt &
 		wait
 done
 
@@ -207,10 +207,10 @@ wait
 
 wait
 
-./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_01.txt &
-./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_02.txt &
-./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_03.txt &
-./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}_04.txt &
+./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_01.txt &
+./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_02.txt &
+./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_03.txt &
+./bin/learn_cf_ga -c cm -n $cm_n -d $cm_d -p $cm_p -i spaces/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la.txt --xp "$hyperparameter" >> ./results/cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}_04.txt &
 
 ./bin/learn_cf_ga -c ll -n $ll_n -d $ll_d -p $ll_p -i spaces/ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la.txt --xp "$hyperparameter" >> ./results/ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la${suffix}_01.txt &
 ./bin/learn_cf_ga -c ll -n $ll_n -d $ll_d -p $ll_p -i spaces/ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la.txt --xp "$hyperparameter" >> ./results/ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la${suffix}_02.txt &
@@ -224,6 +224,6 @@ wait
 
 wait
 
-(cd results ; cat cm*_0?.txt cm*_1?.txt > cm-${cm_n}-${cm_d}-${samples}-${cm_p}-mc${suffix}.txt ; rm -f cm*_0?.txt cm*_1?.txt)
+(cd results ; cat cm*_0?.txt cm*_1?.txt > cm-${cm_n}-${cm_d}-${samples}-${cm_p}-la${suffix}.txt ; rm -f cm*_0?.txt cm*_1?.txt)
 (cd results ; cat ll*_0?.txt ll*_1?.txt > ll-${ll_n}-${ll_d}-${samples}-${ll_p}-la${suffix}.txt ; rm -f ll*_0?.txt ll*_1?.txt)
 (cd results ; cat lg*_0?.txt lg*_1?.txt > lg-${lg_n}-${lg_d}-${samples}-${lg_p}-la${suffix}.txt ; rm -f lg*_0?.txt lg*_1?.txt)
