@@ -353,10 +353,61 @@ int main( int argc, char **argv )
   double error = 0.;
   std::vector<int> solution;
 
+  bool successful_run;
+  
   if( long_run )
-	  solver.solve( error, solution, 1min, options );
+	  successful_run = solver.solve( error, solution, 30s, options );
   else
-	  solver.solve( error, solution, 100ms, options );
+	  successful_run = solver.solve( error, solution, 100ms, options );
 
+  int fitness_integer = static_cast<int>( floor( error ) );
+  double regularization_term = error - fitness_integer;
+  
+	if( xp )
+	{
+		if( successful_run )
+			cout << "1 ";
+		else
+			cout << "0 ";		    
+		cout << static_cast<double>( fitness_integer ) / training_size << " ";
+		for( auto val : solution )
+			cout << val;
+		cout << "\n";
+	}
+	else
+	{
+		if( successful_run )
+			cout << "SUCCESS\n";
+		else
+			cout << "FAILURE\n";		    
+
+		if( hyperparameters_tuning )
+		{
+			auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>( std::chrono::steady_clock::now() - start ).count();
+			
+			cout << "final quality is " << static_cast<double>( fitness_integer ) / training_size << "\n"
+			     << "runtime is " << elapsed_time << "\n";
+		}
+		else
+		{
+			cout << "Fitness on the whole training set: " << fitness_integer
+			     << "\nRegularization term: " << regularization_term
+			     << "\nMean fitness: " << static_cast<double>( fitness_integer ) / training_size
+			     << "\nHas parameters: " << std::boolalpha << has_parameters
+			     << "\nNumber of variables: " << nb_vars
+			     << "\nMax domain value: " << max_value
+			     << "\nNumber of training configurations: " << training_size;
+			if( do_samplings )
+				cout << " (sampled)";
+			
+			cout << "\nNumber of solutions: " << random_solutions.size() / nb_vars << ", density = "
+			     << static_cast<double>( random_solutions.size() ) / ( random_configurations.size() + random_solutions.size() ) << "\n\nFunction: ";
+			for( auto val : solution )
+				cout << val;
+			cout << "\n\nModel:\n";
+			print_model( solution );
+		}
+	}
+  
   return EXIT_SUCCESS;
 }
