@@ -63,12 +63,12 @@ arguments = filename.split('-')
 nb_var = 0
 
 if arguments[0].start_with?("complete")
-  nb_var = arguments[2].to_i
-  domain_size = (arguments[3].split('_'))[0].to_i
+  nb_var = arguments[1].to_i
+  domain_size = arguments[2].to_i
   space_size = domain_size ** nb_var
 else
   nb_var = arguments[1].to_i
-  space_size = 2 * ((arguments[3].split('_'))[0].to_i)
+  space_size = 2 * arguments[3].to_i
 end
 
 success_rate = success.to_f * 100 / count;
