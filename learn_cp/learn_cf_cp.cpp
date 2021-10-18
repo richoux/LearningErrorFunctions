@@ -56,6 +56,7 @@ void usage( char **argv )
 	     << "-p, --params PARAMETERS, the list of parameters required.\n"
 	     << "-l, --latin for performing Latin Hypercube samplings instead of Monte Carlo samplings.\n"
 	     << "--xp to print on the screen results for experiments only.\n"
+	     << "--long to search for 1 minute instead of 100ms.\n"
 	     << "--debug.\n";
 }
 
@@ -71,6 +72,7 @@ int main( int argc, char **argv )
 	vector<double> params;
 	bool xp;
 	bool debug;
+	bool long_run;
 	bool hyperparameters_tuning;
 	bool latin_sampling;
 	string input_file_path;
@@ -128,6 +130,11 @@ int main( int argc, char **argv )
 		debug = true;
 	else
 		debug = false;
+
+	if( cmdl[ { "--long" } ] )
+		long_run = true;
+	else
+		long_run = false;
 
 	if( cmdl[ { "--paramILS" } ] )
 		hyperparameters_tuning = true;
@@ -346,7 +353,10 @@ int main( int argc, char **argv )
   double error = 0.;
   std::vector<int> solution;
 
-  solver.solve( error, solution, 10s, options );
+  if( long_run )
+	  solver.solve( error, solution, 1min, options );
+  else
+	  solver.solve( error, solution, 100ms, options );
 
   return EXIT_SUCCESS;
 }
