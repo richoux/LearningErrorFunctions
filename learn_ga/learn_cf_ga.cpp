@@ -23,7 +23,7 @@
 
 // code from the CFN version
 //-----------------------------------------------------------------------------
-#include "function_to_learn_icn.hpp" // for number_functions
+#include "function_to_learn_icn.hpp" // for number_functions and g-functions
 
 #include "../utils/randutils.hpp"
 #include "../utils/metrics.hpp"

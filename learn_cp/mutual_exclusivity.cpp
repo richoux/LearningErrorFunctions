@@ -1,7 +1,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include "mutial_exclusivity.hpp"
+#include "mutual_exclusivity.hpp"
 
 
 MutualExclusivity::MutualExclusivity( const vector<int>& variables )

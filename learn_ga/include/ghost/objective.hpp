@@ -126,6 +126,8 @@ namespace ghost
 		 * of the current values of the variables. GHOST will search for variable values that will
 		 * minimize or maximize the output of this method.
 		 *
+		 * Like any methods prefixed by 'required_', overriding this method is mandatory.
+		 *
 		 * \param variables a const reference of the vector of raw pointers to variables in the
 		 * scope of the constraint. The solver is actually calling this method with the vector 
 		 * of variables that has been given to the constructor.
@@ -138,10 +140,11 @@ namespace ghost
 		/*!
 		 * Update user-defined data structures in the objective function.
 		 *
-		 * If some inner data structures are defined in derived objective classes and need
-		 * to be updated while variable values change (i.e., when the solver asssign 'new_value'
-		 * to variables[index]), this method must be implemented to define how data structures 
-		 * must be updated.
+		 * Like any methods prefixed by 'conditional_', this method must be overriden under
+		 * some conditions: if some inner data structures are defined in derived objective classes
+		 * and need to be updated while variable values change (i.e., when the solver asssign
+		 * 'new_value' to variables[index]), this method must be implemented to define how data
+		 * structures  must be updated.
 		 *
 		 * \param variables a const reference of the vector of raw pointers to variables of the 
 		 * objective function.
@@ -203,12 +206,13 @@ namespace ghost
 		                                                const std::vector<int>& bad_variables ) const;
 
 		/*!
-		 * Virtual method to perform optimization post-processing.
+		 * Virtual method to perform post-processing optimization.
 		 *
-		 * This method is called by the solver after all optimization runs to apply human-knowledge
-		 * optimization, allowing to improve the optimization cost.
+		 * This method is called by the solver once it has found a solution. Its purpose is to apply
+		 * human-knowledge optimization.
 		 *
-		 * It does nothing by default. Users need to override it to have an optimization postprocess.
+		 * By default, it simply returns best_cost given as input, without modifying the variables.
+		 * Users need to override it to have their own post-processing optimization.
 		 *
 		 * Like any methods prefixed by 'expert_', users should override this method only if
 		 * they know what they are doing.
@@ -219,7 +223,9 @@ namespace ghost
 		 *
 		 * \param variables a const reference of the vector of raw pointers of variables in the
 		 * scope of the objective function. The solver is calling this method with the vector 
-		 * of variables that has been given to the constructor.
+		 * of variables that has been given to the constructor. If users must change some variables 
+		 * values, they must do it on variables from this vector, otherwise the modified solution
+		 * won't be taken into account by the solver. 
 		 * \param best_cost a double representing the best optimization cost found by the solver
 		 * so far. This helps users be sure that their post-processing leads to actual improvements.
 		 * \return The new error after post-processing.
