@@ -74,11 +74,12 @@ puts "Median: #{stats.median}"
 puts "Mean: #{stats.mean}"
 puts "Sample standard deviation: #{stats.standard_deviation}"
 
-normalized_sorted_costs_array = sorted_costs_array.map{ |s| s/nb_var }
-normalized_stats = DescriptiveStatistics::Stats.new(normalized_sorted_costs_array)
-puts "Normalized median: #{normalized_stats.median}"
-puts "Normalized mean: #{normalized_stats.mean}"
-puts "Normalized sample standard deviation: #{normalized_stats.standard_deviation}"
+# Since Hamming/Manhattan fitness (2021-10), outputed scores are already normalized
+# normalized_sorted_costs_array = sorted_costs_array.map{ |s| s/nb_var }
+# normalized_stats = DescriptiveStatistics::Stats.new(normalized_sorted_costs_array)
+# puts "Normalized median: #{normalized_stats.median}"
+# puts "Normalized mean: #{normalized_stats.mean}"
+# puts "Normalized sample standard deviation: #{normalized_stats.standard_deviation}"
 
 most_found_model = sorted_solutions[0][0]
 most_found_cost = cost_solutions[most_found_model].to_f

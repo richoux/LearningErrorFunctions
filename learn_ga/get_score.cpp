@@ -450,7 +450,8 @@ int main(int argc, char **argv)
 		
 		cout << "Cumulative error: " << errors
 		     << "\nMean error: " << errors / samplings
-		     << "\nNormalized mean error: " << ( errors / samplings ) / nb_vars
+			// Since Hamming/Manhattan fitness (2021-10), outputed scores are already normalized
+		     // << "\nNormalized mean error: " << ( errors / samplings ) / nb_vars
 		     << "\nNumber of variables: " << nb_vars
 		     << "\nMax domain value: " << max_value
 		     << "\nSampling samplings: " << samplings
