@@ -1,0 +1,4200 @@
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 134 156   6  82  16 111  81 104 105  96 196 132  69 209 198
+  90  98  73 222 218 211  37  65   3  76  31 203 176 177  15
+   7 110 186 131  12 160 214 184 223  49 153 142 106   4  14
+ 145  42 166  51  48 139 151 123  39 208 102 189  43 193  56
+ 129 224  26  50 192   8 101 215  57  17 133  34 212 167 130
+  79 161 121 154 135  41  22 163 199 141 210  24 158  55  32
+ 201  19  72 124 171 140 120   1 173 178 194  67  78  21 136
+ 122 127 100 138 126 113 165 144  58 114 125 115  54 108  86
+ 202  64 172 103 195  74 116 216  33  95  18 162  61 107  77
+  68 204 220 179  70  62  88  94   2 213  99   5 149  85 157
+  71  66  80 143  59 182  28 146 217 152  75 188 128  97  63
+ 159 175  38  89  25  53 148   9 137 191 118  84 197 155 117
+ 109  10  45  23 147 200 174  92 150 112 164  44  35 207 183
+ 168  52 205  36 190  20  29  93 119  40  47 219 169  83 225
+  11 187 185 170  91 181 221  46 180  13  30  87  60  27 206
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 309745us (= 309.745ms, 0.309745s)
+Wall-clock time (full program): 314000us (= 314ms, 0.314s)
+Satisfaction error: 0
+Number of search iterations: 1492
+Number of local moves: 1179 (including on plateau: 1149)
+Number of local minimum: 21 (including on plateau: 141)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 203 218  66 111 221  25 149 182  20  86 104  39  96 168   7
+ 135 155 120  48   6 216  59 131  75   1 219  71 210 205  44
+  92  45 224 125  57   3  15 171  19 133  61 185 175 199 191
+ 206  18  49 222 183  90  56  99 112  64 145 132  84 193  42
+ 198 194  67  60  68 209 207 115 153 102 129  26  16   9 142
+ 117 176 160 123  43 127 147  40 138  80  73 136  50  65 220
+  27  81 161   2 124 184  63  52 212  13 195 163 100 177 141
+ 101 122 208 121 179  21  51  32 215 139 119 162  97  94  34
+  98   5 108  10  31 200 157  89  23 181 174 211 134 105 169
+  53  70 152  93 144 164 214 130  76 116  83  77  78 190  55
+ 143 202  22 113 128  37  30  88 103 148 137 172 186  72 114
+  11 151 159 223 197 110 165  33 196  36 106  62  17  79 150
+ 126 204  14 192  87 118  47 201  74 213  91  41  95   4 188
+ 156   8  12  85  69 109 189 154 225 217  35 180 170  28  58
+  29  46 173 167 158  82 146 178  54 166  24  38 187 107 140
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 508129us (= 508.129ms, 0.508129s)
+Wall-clock time (full program): 510537us (= 510.537ms, 0.510537s)
+Satisfaction error: 0
+Number of search iterations: 2357
+Number of local moves: 1555 (including on plateau: 1498)
+Number of local minimum: 74 (including on plateau: 175)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  76  77 104 186 225 106  33 216 144  14 204 182  24  89  15
+ 188 165   8 181  10 197 217  27  34  65  69 218 145 131  40
+ 193 210   9  28  86   6 164  23 191 206 163  87 138  19 172
+  51 201  62 173 162  54 190 110  93  16  66 178 105 196  38
+ 158  41 153 154  78 167 171 123  72 141  31  85 152   3 166
+ 126 148 184   5  32 150  36 133 211 127 135 151  45 137  75
+  63  95 169 224  49   7 103  83 130 194 120  82  22 180 174
+ 125  88 116 128 102 111 100 129 139 114 115  97 121  67 143
+ 189  90 118  59 215  94 101 119  39  91  71  96 214 107  92
+  73 198  56 124  25 134 108 183  68 140 136 208  55 117  70
+ 168  11 160  47  99 176  20 170 221 202  58  53  81 155  74
+  42  21 219 149 220 213  26  57  84  37  64  18 187 159 199
+ 200  98  80   2 175  60 195 109  44 122 161   1 203 132 113
+  13 223  50  43  12 185  52   4 177 147 156 222 157 142 112
+  30  29 207 192 205  35 179 209  48  79 146  17  46  61 212
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 768092us (= 768.092ms, 0.768092s)
+Wall-clock time (full program): 770509us (= 770.509ms, 0.770509s)
+Satisfaction error: 0
+Number of search iterations: 3634
+Number of local moves: 2630 (including on plateau: 2600)
+Number of local minimum: 78 (including on plateau: 336)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 128  97 190  38  83  32 104  42 194 109 224 180  72 114  88
+  65 173   9 106  68  35 162 139  12 191 217  16 171 113 218
+  94 208 107  11 121   1 147 158 197 166 192  15  79  48 151
+ 148  26 175  82 152  87  98 203 100 143  44  63  28 201 145
+ 111  29  84  67  50 119 170 150 142 136  33 225  99 157 123
+ 179 176  19 193  40 103  70 112 116  57   4 153 185 134 154
+ 125 198  75  55 188 131 133  45  21 155 137 132  73 174  53
+  62 118 108  74 110  80 205 156  46 126 122 159  61 212  56
+ 140  92  47 120  41 211 124  95 202  71  66  64 186 219  17
+  18 172 177  91  96 199  58 183 102  51 200  31 105  25 187
+  37 215   8 164 168  81  90  43  52  69 129 223 189 141  86
+ 115 165 222 207 163 181  54 130  85  22  77 138  89  13  34
+ 209   7 178 146  39 196  93 210  24 206  23 149  10  36 169
+  60   5 195 214 160 161  20  27 220 117 221   3 213  49  30
+ 204  14 101 127 216  78 167   2 182  76   6 144 135  59 184
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 278149us (= 278.149ms, 0.278149s)
+Wall-clock time (full program): 280595us (= 280.595ms, 0.280595s)
+Satisfaction error: 0
+Number of search iterations: 1282
+Number of local moves: 1067 (including on plateau: 1037)
+Number of local minimum: 14 (including on plateau: 102)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  39 168 202  14  16 166 193 187 222  59  70 212  48  80  19
+ 116  52 113 179 201   5 105  63 219  81 117  26 203  92 123
+  21  42 108  54 180  55  61  13 155 218 210 145 204 178  51
+ 183   8 115 141 165 138  30 100 149 106 223  35 195  10  97
+ 152 118  60 181  95 148 101 170  24 221 121  11  57 205  31
+ 209 103  49 133  69 189 177  43  28  96   4 196 135 198  66
+  79 161 140 194  76 146  72 213  82  15 174  22  73  23 225
+ 206  45 167   6  12  58 160 150 128 132  37 111 220  78 185
+  41 171 104 214 182  64  87  93  86 216  62 173  27  68 107
+ 112 211  91 151   1 137  53 162 136  40  98 143 157  94 109
+   2 156 122  34 119 102 190  89 134  74 147  83  77 142 224
+ 129  50  65 199 153 110  46 131 163 127 192 175  56   9  90
+  36 172 130  29 215 191 169  17  20  75  88 114 126 188 125
+ 184  38  71   7 208  47  44 197 124 217 120  85  33 176 144
+ 186 200 158 159   3 139 207  67  25  18  32 164  84 154  99
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 834766us (= 834.766ms, 0.834766s)
+Wall-clock time (full program): 837193us (= 837.193ms, 0.837193s)
+Satisfaction error: 0
+Number of search iterations: 4132
+Number of local moves: 2970 (including on plateau: 2941)
+Number of local minimum: 87 (including on plateau: 355)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+   4 150 110 170 166  60  81 113 215  13  92 156 165 157  43
+  58 126 134  84 203  14  50 141 121  98 198  18  20 213 217
+  61  19  64 183 101 163 178 137  21 169 133 117  52 118 179
+  95  97  69 190 127  35 104  85  83  48 205 187 189 149  32
+  28 197 140  82 168 107 195  87  73 123 130  91  78 108  88
+ 208 100 194   9  30  33  71  93  70 155 129 211 167  24 201
+ 105 206 164 106 219 186 153  40  46  37  39  41 207 143   3
+  10 188 192  79 175  51 209  31  90  16 184  94  74 182 120
+ 114 174 119 103  27 144   5 221 200 131  96  66  29  75 191
+ 199  63 171 225  86  65 220   8 151 139  76 196  38  47  11
+ 202  36  57 158 159 214   1 154   6 223  67  59 122 112 125
+ 212  26 138  72  23 224  44 161 185  54  45 177 147  25 162
+ 115 102 111 145  53 181 180 124 160 172   2  77 135 116  22
+  62 204  15  55 109  42  68 148 142  99  89 193 216  80 173
+ 222   7  17  34  49 176 136 152 132 218 210  12  56 146 128
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.12394e+06us (= 1123.94ms, 1.12394s)
+Wall-clock time (full program): 1.12632e+06us (= 1126.32ms, 1.12632s)
+Satisfaction error: 0
+Number of search iterations: 5559
+Number of local moves: 3743 (including on plateau: 3655)
+Number of local minimum: 166 (including on plateau: 411)
+Number of resets: 2
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  19 220 126  73 209 208  81 219  32  54  27  16  33 214 164
+ 144  47 119 175 186 159 204   7 123   4  56 111  75 129 156
+ 108  78  21 211   2 222  95  37 103  93 100 153 206  43 223
+ 225  26 189 197 130 221  98  90 162  69  17  24 106 133   8
+  35 205  22 105 140   6 187 174  48 165  51 118 207  77 155
+  89 138  46  40  68 125 167 149 193 215 114 132   9 196  14
+  41  28 148 195 161  23  80 101  79 152 216 213 120  96  42
+  60 150 183 143  63 131  94 171 147  12 172 169  99  70  31
+ 217  45 107 146 102 185  10 177 109  30 201 181  39 145   1
+ 163 160 166  20 112  55 115  53 194 158  50   3 154  82 210
+ 135  25 136 184 128  62  59 142 141 192  71  57 180  44 139
+  74 168  65  83 110  66  86  67 127 218 188 190  85 157  11
+  72 202  64  34 122  92 134 176  97  58 191  13 179  88 173
+ 113 116 182  84 124  49 224 117  36  76  29 178 151  18 198
+ 200  87 121   5  38  91  61  15 104 199 212 137  52 203 170
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.02445e+06us (= 1024.45ms, 1.02445s)
+Wall-clock time (full program): 1.02701e+06us (= 1027.01ms, 1.02701s)
+Satisfaction error: 0
+Number of search iterations: 4859
+Number of local moves: 3218 (including on plateau: 3160)
+Number of local minimum: 160 (including on plateau: 396)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  88 195  18  53  30 220  21 113 126  72  46 217 223 216  57
+  87 209 123 127  45 137 143  12 151 190 155  97  16   3 200
+  33 189 210  52 212 178  68  14 197   2  49  51 156 119 165
+ 104  22  11  54 136 179 157 182 201 161 221  60  59  28 120
+ 162  92 103 105 187 214 153   5  36 107 169  89  90  61 122
+ 198  95 101   8   9 154 167 208 160 163  82   7 135 112  96
+  80  79  84 177 129  26  42 204  85 193 213  29 121  41 192
+ 158 219  25 124 225  13 125  39  19 115  69 215  43 118 188
+  94  17 185  76  66 110 117 211 130  44 116 168 180  73 108
+ 149  24 132 138   6 140 218 106  63  27 205 100 128 222  37
+  50 183  74 196 206  71  93 131  86 194  81 134  35 146  15
+ 150  34 148 142 171  40  23 173 166   4 159  70 172  98 145
+ 152  58 114  38 147  64 176  75  99 133  62 175 141  77 184
+ 170 224 181 202  78  47 109  31  65 199   1 139  32 207  10
+  20  55 186 203  48 102  83 191 111  91  67 144 164 174  56
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 455307us (= 455.307ms, 0.455307s)
+Wall-clock time (full program): 457952us (= 457.952ms, 0.457952s)
+Satisfaction error: 0
+Number of search iterations: 2174
+Number of local moves: 1681 (including on plateau: 1652)
+Number of local minimum: 40 (including on plateau: 202)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 195  44  91 219  23  97  58  75 217  81  88 190 211  69  37
+ 225 198 149   6 171  34 184 181   4  31  56   9  11 213 223
+ 101  85   3 100 210 185 154  80 186 122  90   5 179  83 112
+  41 208 180  38  89  35 168 152 138 202   8 182  21 113 120
+ 212  46  12  10 170  54 222 144 108 169 172  67  59  47 203
+   2 188 103 164   1  29  14 139 153 145 196 132  55 158 216
+ 143  70 207 128 173 133  39 110 117  17 125 137  68 109 119
+ 114 106 121 115 124 130 111 131  84 105 127 102 141 135  49
+  18 174 129 178  20 157  71  72 187 194  63  64 166 142  60
+ 221 107 200  33 150 104  78 159  98  82  86  76 167  16 118
+  15 163  48 148  30 160 209  61  26  19 206  99 147 189 175
+  13 156 161  42 136 134  53  95  52  25 176 205 224 191  32
+ 151  50  36 192 177 197  62  93 204 165  22  45  96 140  65
+  51  43 215 199   7 218 126 116  27 155 201 162  77  24  74
+ 193  57  40 123 214  28 146  87  94 183  79 220  73  66  92
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 384712us (= 384.712ms, 0.384712s)
+Wall-clock time (full program): 387186us (= 387.186ms, 0.387186s)
+Satisfaction error: 0
+Number of search iterations: 1788
+Number of local moves: 1379 (including on plateau: 1348)
+Number of local minimum: 21 (including on plateau: 175)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 161 115 117 112 204   5  85 221  68 199   1  69   2 157 179
+ 212 207  58   3  99 145  39  79  11 118 166 178 177 150  53
+ 140  88   9  34  28 208 156  65  22 172  12 225 153 191 192
+ 188  31  87 154 202  50 104  96 136   8 174 211  74  78 102
+ 106 164  40 142 195 224 193   7   4 165 132  29 219  56  19
+  35 133 197  95  57 147 135 201 175 103  46 113 146  61  51
+  94  44 160 126  30 144 130 206  77 141 170 131  76  32 134
+  17  81  25 107 162 119 125 123 105  98 182 218 196  26 111
+ 128 159  62 148 114 173  36  27 124 120 139  93 109 200  63
+ 198 127 108  73  45  43 167 101  90  70 116  72 220 183  82
+  20  59 152  52 176  83 169  21 110  54 222 100 151 171 155
+  66 217 122  38 189  48  67  92 194  91 158  60  97  41 215
+ 138 205 185 216  33  55   6 129 180  84  16 168  42 149  89
+ 121  18 210 181 137 187  80 184 190  49  75  13  23  14 213
+  71  47 163 214  24  64 203 143 209 223  86  15  10 186  37
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 208560us (= 208.56ms, 0.20856s)
+Wall-clock time (full program): 210984us (= 210.984ms, 0.210984s)
+Satisfaction error: 0
+Number of search iterations: 945
+Number of local moves: 767 (including on plateau: 737)
+Number of local minimum: 6 (including on plateau: 94)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+   6 174 202 121  38 222 223 154  42 125   2  60 147  37 142
+  56 204  47 183  48  23  62 113  85  65 198  31 215 203 162
+  34  51 197  33  45 118 110  75 171  11 123 190 177 144 216
+ 175  63  20 100 205 221 187  49 130 186  79 168  24  74  14
+ 132 134 139  97  10  94 180 108  50 122 145 157  66 102 159
+ 184 172 148  30 213 151 135 103  18 138  35   1  36 182 149
+ 167  69   5  81   4 137  59 218 143 173 124 192 128 117  78
+ 200 150   8 176 219 114  21  88 133  27 152  86 201 104  16
+  73 106 169 206 107   7  95  84 217  92 191 129  68  58  93
+ 109  83  98  52 101  53  91  43 164 146 225 166  72 210  82
+  13 193 160  70  54  80  90 185  71 220  77 211 127  25 119
+ 214  99  57  40  89 208 209 189  55  76 126  39 111  87  96
+ 179  12 105 212 188 195  44 156 194  17  28   9 155  61 140
+  41  32 199 163 178  26  19 115 158 181  29 120   3 224 207
+ 112 153 141 131 196  46 170  15  64 116 161 136 165  67  22
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 407055us (= 407.055ms, 0.407055s)
+Wall-clock time (full program): 409446us (= 409.446ms, 0.409446s)
+Satisfaction error: 0
+Number of search iterations: 1999
+Number of local moves: 1529 (including on plateau: 1499)
+Number of local minimum: 28 (including on plateau: 154)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224  25  41 157  13 134  57 165  78  51  11 177 148 205 209
+  58  46 133 132 193  96 191  16 185  30 162 197 195  54   7
+ 117 129 152  81 163  67 225  76  85 125 121 156  60  48  90
+  70 138  72  40 181 190 135 136 172 123 139   1 120  99  79
+  43 188 175  83 146  59  93  38 137 102  68  49 222 168 124
+ 166   9  64  91 147 128  19  24 189 210 130 200  42 173 103
+  21  74 206 213   5  63 214 221 164  20 179 202  77  22  14
+ 199 217 194 159 223  44  36  27  26  50  32 207  61 140  80
+ 122  62  47 192  17 141 204 201 111 104  69 114   2 101 208
+  45 196  12  98 203 110 151 174 218  53  92  71  34  94 144
+ 116  55 127 100 150 176  28 186  33 145  56  15 215 109 184
+ 180 169  73  87 212 115  37 105  88 153 171 149 107  18  31
+ 183 126  66  52   3 170 112  84   4 131 161   6 219 211 167
+   8 142 178  23  29 113 154  82  97 216 198  65  75  95 220
+ 143 119 155 187  10  89  39 160 108 182 106  86 118 158  35
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.05921e+06us (= 1059.21ms, 1.05921s)
+Wall-clock time (full program): 1.06162e+06us (= 1061.62ms, 1.06162s)
+Satisfaction error: 0
+Number of search iterations: 5271
+Number of local moves: 3684 (including on plateau: 3624)
+Number of local minimum: 148 (including on plateau: 426)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 139 105   3 167  17  84 207  23 138   4 188 170  27 205 218
+  28 179  70  34  81 100 203 102  55 225 176 177  20 219  26
+ 140 163 171  80  72  24  10 173  53 211  29 136 198 159  76
+ 221 125 183  52 182 195   6 197 126  11 123   2   9 145 118
+  96 149  13 209  59 184  79  33   5 201 146  43 117 161 200
+  30 150 112 156 129  39  31 165 135 151 113 193 162  15 114
+  69  82  95  73  94 119 116 154 141 127  71 191 110 152 101
+ 208  68 186  44 224  98  49 122  12  74 120 222 187  36  45
+ 131 153  99  86  92 107  89 104 103 142  88  77 166  38 220
+ 216 128  50  90 172  25 160  19 121 217  93  85 144 115  60
+  78  63 164  91  56 158 185 175 206  32  35 189  83  37 143
+   1 106 132 124 181  46 147  65 202   7 204  48 178 213  41
+  67 155  22 169  51 215 134  16 210 109 180  57 214  21  75
+  97   8 199 212  62 133  87 157 148 130  18  47  66 137 194
+ 174  61 196 108 223 168 192 190  40  54 111  58  14  42  64
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 290469us (= 290.469ms, 0.290469s)
+Wall-clock time (full program): 293668us (= 293.668ms, 0.293668s)
+Satisfaction error: 0
+Number of search iterations: 1173
+Number of local moves: 928 (including on plateau: 899)
+Number of local minimum: 14 (including on plateau: 94)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  61  21  92 222 171 187 223 146  53  10  38  57  19 183 212
+ 173 210 224  43 208 193  17  58  35  77  24  91  18 184 140
+  85 107  34 185  68 206 198 110  95  16 215 217 150   7   2
+  74 211 213 181  13   6  65 163 155 120 115 142  26  76 135
+  63  59 174 103 191 220  55  88  33  46 143 123 186  12 199
+ 131 170  25  29  42  71 180  70 159 134 112 147  94 175 156
+  75 203 122  69 111 164  41 137  98 130  20 121 216 136  52
+ 109 197 139 108 102  96 116  93 114 118  47 124 132 113  87
+  64   1 157 205 162  40  89 100 168 126 225  50  28 128 152
+  14  27 176 178  15  79 202  44  23 179 127 204  36 201 190
+ 138 129  83 166  45  30 165  97 195 148 117 144  90  82  66
+ 218   5  32  39  37  72 158 214 196 200 192  67 119  86  60
+ 172 125  62   3 104  81   4 189 161 188  54 169 209 101  73
+ 141  48  78 153 207 145 133 106  56   9 167  31 221  51 149
+ 177 182  84  11 219 105  49  80 154 194  99   8 151 160  22
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 457892us (= 457.892ms, 0.457892s)
+Wall-clock time (full program): 460376us (= 460.376ms, 0.460376s)
+Satisfaction error: 0
+Number of search iterations: 2133
+Number of local moves: 1547 (including on plateau: 1517)
+Number of local minimum: 40 (including on plateau: 210)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  84 124 154 119 164 113  62  42 161  17  77 213 172  68 125
+  21 123 225  65 163 116  80  56 221 215 127 110  78  57  38
+   1  10 198  55 186 190  12 210 180 214  25 146 106  90  72
+ 160  29 102 121 196  71 101  98 134  73  19  27 191 169 204
+  87 150  16  41 132  44 222 168 128  53 185  85 178  48 158
+  32  74  91 223 126 181 220  47   5  94 203 218 100  66  15
+ 156 212  31 145  70   9 144 195 104  86  26  69 159 192  97
+ 117  75 129 217 131 224 122   6  82 133 141  61   8 142 107
+ 193 207  35  33  60  11 165 166  92  22 177  36 174 136 188
+ 137 183 140  54  88 152   2 197  30 115  99 111  28 216 143
+ 130  64  67 147 109  50 148  52  95 189 151 187 206  63  37
+  18 167 202 208  89  76 182 114  45  46  96  34 209   4 205
+ 219 118  83   7 108 103 173  20 149 176  79 175  40 194  51
+ 201 135  23 179  14 200  49 171 211 105 120  39  43 112  93
+ 139  24 199  81  59 155  13 153  58 157 170 184   3 138 162
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.40779e+06us (= 1407.79ms, 1.40779s)
+Wall-clock time (full program): 1.41016e+06us (= 1410.16ms, 1.41016s)
+Satisfaction error: 0
+Number of search iterations: 7030
+Number of local moves: 5196 (including on plateau: 5111)
+Number of local minimum: 155 (including on plateau: 665)
+Number of resets: 2
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  39  65 116 210   6  99 152 170 188  79  35 219  31  70 216
+ 153 209  28  32  24 129 131 212 197  68  15 137  48 184 128
+ 114 192 181  30  20 203 206  61  62 107  29  19 199 154 118
+ 183 223 218 190 141  22 180  41 143  23  93  64  14 109  51
+ 202  77 162   1 150  66  73 178 179   8 163  36 108  84 208
+  71 165  60 147 225  80 213  43 160 158  16 138  10  75 134
+  90 146 122 136 103 123  33 132 130 144 127  50 120 133 106
+  13   9  85 198 201 125 105 102   7 117 196 193 166 119  59
+ 124 104  89  98 111 222 112 113  95  83  72 101 174 100  97
+  56 171 217 121  82 145  38  87  17 224 168  58 126 151  34
+ 204  44  42  86  88 187 161 189  53 164  63 177  21  81 135
+ 155 167  92  67 139  11  57  55 140 194 214 148 207  46   3
+ 221  94  45 220 156  26  12  91  40   5 149 205  76 186 169
+  52   4 191 157 175 142  37  49  69 211 173  54 195  27 159
+  18  25  47   2  74 115 185 172 215 110 182  96 200 176  78
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 320631us (= 320.631ms, 0.320631s)
+Wall-clock time (full program): 323080us (= 323.08ms, 0.32308s)
+Satisfaction error: 0
+Number of search iterations: 1562
+Number of local moves: 1176 (including on plateau: 1146)
+Number of local minimum: 26 (including on plateau: 168)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 191 195  57  95 181 157 137 223  77  19  10   1 159 108  85
+  81 105  92 183 131 102  39 170  15 125  97 188 168  55 144
+ 171 138 213  62  45  61  12 158 177  36 104 128 132 192  66
+   9  51  37 216 210  73 207 164  91 212  16  83   8 100 218
+ 130   2  59  76  48  24 156 214 203  96 206  49 179  54 199
+ 196  93  14  13 225  20 221 165  65 126 121 178  53 149  56
+ 200  70 197 124 109 129 116  90  80  88 155 211  74  17  35
+  79 204  33 150 117 187   3  47  41  46 169 173  11 220 215
+ 143 186  87  58 160 167 180  28 103  60  75  43 106 101 198
+   6 172 141 194 119  99  78  52 139 193 182  29 123  50 118
+ 152  26 153  67  94 142 127 146 122 219  72  21 189 133  32
+ 190 136 135 151  42 134  82  64 175 107 120  22 115 217   5
+  25  86 205  98 176 184  31  44  89  30 154 145 209  71 148
+  38  68 161 185  34  69 140  18 110 224 174 222 162  27  63
+  84 163 111  23   4 147 166 112 208 114  40 202   7 201 113
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 918951us (= 918.951ms, 0.918951s)
+Wall-clock time (full program): 921934us (= 921.934ms, 0.921934s)
+Satisfaction error: 0
+Number of search iterations: 4536
+Number of local moves: 3126 (including on plateau: 3067)
+Number of local minimum: 96 (including on plateau: 371)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 159 178  17 196  39   4  31  59 141  95  99 184 132 146 215
+ 198 155 224  10  62  84 175  45  94  11 114 100 182 187  54
+  20 191 193 195 181  25  69 133   9 199 192  47  38 157  46
+ 138  51  67  55 208 180  32   2 134  89 202 167 111  40 219
+  52  68 201  92 154  66 169 106 211  81 162  30  78  82 143
+ 214  15 120 163 103  72 113 186 212 168   6  37  36  44 206
+ 125 109 107 117 112 124 101 135 164 140 136 137  24  91  73
+ 216 139  23   5 119 225 194 115  65  43  83 207  93 161   7
+  96 156 160  86  74 197 104  85  87 145 209  41 130  90  35
+ 131  70 123 153  61 144  60  19 221 105  98 126 158   8 218
+  88 223  12 204  58 165 147 217  16  22  29 222  57 108 127
+  18 128  75 110 220   1 213 151  27 170 116  49 183 200  34
+  42 118  28  56 149 179  76 205 189 166  33  48 121 188  97
+ 177  14 173 176 102 150  26  63   3  71 203 148 210 129  50
+  21  80 172  77  53  79 185 174 122 190  13 152 142  64 171
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 249184us (= 249.184ms, 0.249184s)
+Wall-clock time (full program): 251470us (= 251.47ms, 0.25147s)
+Satisfaction error: 0
+Number of search iterations: 1171
+Number of local moves: 931 (including on plateau: 902)
+Number of local minimum: 12 (including on plateau: 83)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224  61  89 221  52  81 220 123 193  19   1   7 225  66 113
+  46 212 153 183   4   5  33  84  95 207  56  36 197 196 188
+ 154  71 192 109 121  90  51 189 181  23   2  26 104 198 184
+  12 158  92 182  83 222 200  70 191  10  55 139  17 127 137
+ 111 165  75  57 171 114  60  80 180  43 217 155  21  37 209
+  54  86 223 142 108 172 163 152  82 148 151  62  18 120  14
+ 166 215  42 125  91 131 122  53 136 140 205  96  93  35  45
+ 129 128  98 124 133 101  97 112  88 208 100 138 116  24  99
+  41 213 110   6 219 130  78  20  87 144 160 119  32 210 126
+  39  58  72 135 211  15 103 149  34  49 157 145 146 204 178
+ 199  79  63  29  76 179 105 185  67 141  69 159 186  94  64
+ 102  74 132   3  50 206 170 214 107  77  85  40 203 173  59
+ 134  44 176 147  22 202  27  68 175 117 187 218  25  47 106
+ 115  13 167 216 190   9  65 168  31 174  73 161 162   8 143
+ 169 118  11  16 164  38 201  28  48 195 177 194 150 156  30
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 297562us (= 297.562ms, 0.297562s)
+Wall-clock time (full program): 300023us (= 300.023ms, 0.300023s)
+Satisfaction error: 0
+Number of search iterations: 1307
+Number of local moves: 992 (including on plateau: 962)
+Number of local minimum: 17 (including on plateau: 117)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 190  48  89  53  87  49 129  62 192 191 220   2  61 124 198
+ 162  85  76  26 200 133 105 165   7  58  63 138 213 212  52
+ 203 172   8 132   5  50  74 146 196  66 143 149 184  19 148
+ 210  82 120  37 187  12 207  20  95 173  70  94  17 182 189
+  83 205 137  60  86 101 217  72 180  39 154 157 140  29  35
+  18  92 204 195 160 114  73 153 122 225  43  65  11  59 161
+ 127  28 156 166 150  23 111 135 123 131 178  40 107  21 199
+ 126 141  90 117 100 125 139 119  96 103  98 104 115 116 106
+  91  13  69 176 219 214  45  16 175 186  64 142  54 110 121
+ 167 130   6  93  55 179  56 202  47  67 201 197 155 108  32
+ 118 224 183 170  34  51  80 164 109 102   1 221 185  44   9
+  27 211 158  71 171 206  15 215  33  31  97 177  99 181   3
+  84  68  25 136 169  14  88  38  46 209 145 128 163 159 223
+  79  22 152 112  30 208 188 147 193  36  24  77 134 218  75
+  10 174 222 151  42 216 168  41  81  78 194   4  57 113 144
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 316638us (= 316.638ms, 0.316638s)
+Wall-clock time (full program): 319720us (= 319.72ms, 0.31972s)
+Satisfaction error: 0
+Number of search iterations: 1436
+Number of local moves: 1131 (including on plateau: 1103)
+Number of local minimum: 13 (including on plateau: 133)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 225 117 171  22 182   9   2  37 195 172  46  95 168  34 220
+ 149   1  12  85 213 184  92  31 180 217  60  82 190  29 170
+ 186  83  76 214  48 203 113 162 161   7  43 156  49  94 100
+  50  17 181 122 174  39 187 197 178  10  71 200  15 185  69
+  13 218   4 173 209 105 221 167   5 106 223  80  11 137  23
+  58 205 224 207  27  47  32  66  20  35 202 165 183 198  26
+ 136 119 153 139 133  59   8 123 129 131  68 126 143 125 103
+ 130 115 102  87 127 128 104 109 132 116 121 114 120  99  91
+ 155  52 164 135  38 160 107   6  67  81 110 189 146 141 144
+  98 201 145  18  24 124  78 192  75 175 147  79 142 108  89
+ 179 208  33 194 138  65 163  88  56  84 193  62  70  28 134
+ 159 177  93  42  30 176 211  21 222  54 148 112  72  77 101
+  97  96 210  55  51 118  36 111 157 151  14 216 140  74 169
+  41  61  64  44 215  90 150 166  45 204  53   3 206 154 199
+  19  25  63 158  86 188 191 219  73 152 196  16  40 212  57
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 446675us (= 446.675ms, 0.446675s)
+Wall-clock time (full program): 449813us (= 449.813ms, 0.449813s)
+Satisfaction error: 0
+Number of search iterations: 1985
+Number of local moves: 1561 (including on plateau: 1531)
+Number of local minimum: 23 (including on plateau: 205)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  68  50  34  84 163  95 138  19 193 196 149  41 136 118 211
+ 126  56 161  52  47 150 159  35 152 130 207 204 114  31  71
+   4 145 174 140 216  86  42 186 155 190  10  99  53 175  20
+ 176  72 212  77 218 194 157 177  18  57  51  54  23 142  67
+ 105 127  59  82  17 209 180  45 146  38 210 133  76 115 153
+  49 183  28 166 120  46  63 113 221 208 185  48   7 169  89
+  36 187  32 167   1 225  27 213 106 131 165 182  83 128  12
+  43  75 104  24 100  58 141 173  92 134 148  85 158 172 188
+ 200  33 151 110 179 135 214 191  73  26  22 103  61  88 109
+ 132 124 189 170  87   9  93  81  44 162 101  62 184  79 178
+ 139 222 171  55  69  39   6 147  25  98 215 220 107  60 122
+ 224  65   5 117  78 116  64 160 125  66  80 197 203  14 181
+  96 143  37 168  70  94  11 112 199 156  40 123 201 108 137
+ 102   8 121 119 111  16 198  30 144  74  91 129 192 206 154
+ 195 205 217 164 219 223 202  13   2  29  21  15  97  90   3
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 709488us (= 709.488ms, 0.709488s)
+Wall-clock time (full program): 711965us (= 711.965ms, 0.711965s)
+Satisfaction error: 0
+Number of search iterations: 3477
+Number of local moves: 2370 (including on plateau: 2311)
+Number of local minimum: 81 (including on plateau: 298)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 223  29  46  42 123 129  81 108 136 137 141 218 146   1 135
+ 215 216  63   4  84 213 111  73  49 202  60  90  43 166 106
+ 155  66 178 224  76  25 196 204   9  15 117 105 152 121  52
+   5 225 173 192  62  14 118  92  30 161 186  75 184 168  10
+  21 128  94  51 158 201 163  74 203   7 159  38  12 206 180
+ 140 179 133  54  33 139 164 110 138 190 109  41  57  31 177
+  40  88  56 148 205 217  83  37  53 142  95 189 101 170  71
+  28  58 107 102 132 200  19 165 116 131 114  97 150 100 176
+  85  64  67  98 197  45 167 199 104 220 120  89  93  65  82
+ 122 156   6 175  11  78 198 154 210  61   3 143 174  91 113
+  59  87 222 145  47  27  79  35  99  50  80 194 209 151 211
+ 188 153 144  20   2  69  23 219 182 115 119  44  39 157 221
+  72  86  32 207 195  26  16 171 147 162 172  77  17 191 124
+ 134  48 214 130 187 127 181  18  70  34 212 169 125  22  24
+ 208 112 160 103 183 185  96  36 149  68   8 126 193  55  13
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 305895us (= 305.895ms, 0.305895s)
+Wall-clock time (full program): 308294us (= 308.294ms, 0.308294s)
+Satisfaction error: 0
+Number of search iterations: 1469
+Number of local moves: 1112 (including on plateau: 1082)
+Number of local minimum: 21 (including on plateau: 115)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 107  18 188  66 222  28  45 179  85 135 215  92  42  80 193
+ 201  38  93  16 139 195  67  53 203  49  74 186 156 220   5
+  34  86 196  29  43  83 177  21 221 191 146  11 205  77 175
+ 200 155 137 144  87 128 126  39 138  24 114 142   4 116 141
+ 105 190 134 217  14  33 150 148  40 111 157  25 206 158   7
+ 152 163 209  65 140 218 169  63  15 119 112 102  69   8  91
+ 170 109 161 149 115  94  90  55  96 160  89 129 123  58  97
+ 147   3  44 185 219  79 176 211  70  26 108 159  71  32 165
+  73 106 171 133 213 182 104  76 103  50  64  12 110 100 198
+  56 225  30 166 121  46  72 117 167 207  35 143  68 118 124
+ 154 184 127  47  54   6  57 224 181 173  82 136 130  81  59
+ 216  84 101  88 212  51  41  61  13 113 194 125 168 180  48
+  17 202  23  31   1 189 174  98 223  52  99 151  60 192 183
+  36  10  19 214  95 164  37 172 131 153 204 120  75  78 187
+  27 122  62 145  20 199 210 178   9 132   2 162 208 197  22
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 249041us (= 249.041ms, 0.249041s)
+Wall-clock time (full program): 251426us (= 251.426ms, 0.251426s)
+Satisfaction error: 0
+Number of search iterations: 1076
+Number of local moves: 832 (including on plateau: 803)
+Number of local minimum: 12 (including on plateau: 115)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  91  57  55  89 203 114  52  16 200 219  48 213  19 156 163
+ 152 167  50 102 218  63 204  12 140  30 117  51 133 178  78
+ 225 211  84 220  15 101  69 182 103  20 126 172 107  29  31
+  38  39 191 160  27 147 128 122  40 199   7 209 216 164   8
+  18  79 195  13  34 193 189 177 165   1 183  73 188  66 121
+ 119  77  85 190  25 146 105 139  95  80 179 104  64 155 132
+  10 123 141 142 166 143 118 108  71  98  43  87 148 129 168
+ 210  32   6 145 170  37  97  59  17 221 135  49 159 185 173
+ 100  35 111 124 115 184 134  76 186  93  58 120  99 116 144
+  82 196  75 206 136  81  33 208  23 138  61  42 207  56 151
+ 197 222 125  47 202  74 113 201 137 110 187   2   9  24  45
+ 154 157 149   5  26  92  96  62  67 130 198 171 131  65 192
+ 161  90  60  28 175 205  54 217   4 158 212  83  68  86  94
+  11  36 153 180 162 112 109  70 224  22  88 169 106  72 181
+ 127 174 215  44  21   3 194  46 223 176  53 150  41 214  14
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 564381us (= 564.381ms, 0.564381s)
+Wall-clock time (full program): 566748us (= 566.748ms, 0.566748s)
+Satisfaction error: 0
+Number of search iterations: 2708
+Number of local moves: 2023 (including on plateau: 1992)
+Number of local minimum: 38 (including on plateau: 245)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 216  78  30  89 158  11 147  20 155  12 139  80 207 168 185
+ 129 217  35 192  79 201 219   9  50  63  40 199  47 179  36
+  99 206 113 173  56 116 223 107  67 125  65  21 214  86  24
+  34   8 224  32  75 194  38 189 188 204  26  31  43 198 211
+  58  85 166  16 131 164  90 170  70 101 177 115 191  27 134
+ 156 193  41 124 165  46  53 176  44  14 149 221 151  96  66
+ 197  23 196  39  81   6 127 190 215  28 205   3 114 171 100
+ 186 153  19 105 159 209 220  69  42  93  59  91 119 122  49
+  18 146 210  62 208 167  76  71  95 213  54 169  68 133   5
+ 141 222  94 157  10  98  77 172 130 163 128 120   4  37 142
+   1 152 109 162 110 140 117 102 181  51  72 183  55  60 200
+ 150  29 136  13 202   7 108  92 175 212 203  22  61 148 137
+  33  82 123 218   2 180 112  25 138 106 111 161 160  57 187
+ 103  17  45 225 195 104  73 121  48 132 184 144 143  87  74
+ 174  84 154  88  64  52  15 182  97 178  83 135 118 126 145
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.23577e+06us (= 1235.77ms, 1.23577s)
+Wall-clock time (full program): 1.23816e+06us (= 1238.16ms, 1.23816s)
+Satisfaction error: 0
+Number of search iterations: 5940
+Number of local moves: 3955 (including on plateau: 3899)
+Number of local minimum: 166 (including on plateau: 468)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224  97  33 177 111  26 186  63 196 194 104  92 106  54  32
+ 133 206  56 149 204 201 169 184  15   4  91 142  10 102  29
+ 161  28  21 122  49 136  55  38 195 180  85  98 172 174 181
+  81  70  86 163 120  22  46  61 217 110 137 159 203  77 143
+  17 167  50   3 144  43  52 219  37 146 185 188 157 147 140
+ 154  67 165  31 158 160  11 220  20 113 107 138 139 155  57
+  68  90 205 208  13 218 131 130   1 215  73 129   8 141  65
+ 118 124 112  96 132 125 135  24 100  79 119  94 121 126 190
+  30  53 171 101  34  51  78 176  83 156 183 221  80  64 214
+ 134 114 166  47 213 168  60 182  39  99 145   6 105  18 199
+   7 223 212  88 109  72 207 151  71  45  44  23 117 210 116
+ 209 170 211  69   5 173  48  59 216 150 198  14  82  25  66
+  58  87  93 192  16 123 103  84 152  42 164 153 191  75 162
+ 108 197  74  27 187  62 189  95 178 127  19  36 128 179  89
+ 193   2  40 222 200 115 225   9 175  35  41 202  76 148  12
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 244975us (= 244.975ms, 0.244975s)
+Wall-clock time (full program): 247572us (= 247.572ms, 0.247572s)
+Satisfaction error: 0
+Number of search iterations: 1128
+Number of local moves: 884 (including on plateau: 854)
+Number of local minimum: 16 (including on plateau: 87)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+   4  73  78 215  39 220 162  66 214  76  23  27 108 179 211
+   1 161   7 146 223 129 189 222 193 107  79  38  26  71 103
+ 102  87  69  96  91  10 131 201  74 109 133  95 184 213 100
+  49 181 217  43 195  82  14  17 158 206  29 192 180  88  44
+ 207 170  35 122 163  64  30  62 186  63 130 138 116  52 157
+ 182 164  41 187 148 175  40  20  33  57  60 190  84 159 155
+ 147  19 144 196 208 139  11  34  12 156 178  70 153 183  45
+ 119 120  93 112 118 114  47 117  98 176 172 137  99  31 142
+  59  65 188  85  68 166 145 191 216 140  94  53  28 173  24
+  90  77 177  16  25  54  86 224  72 202 198 110 149   3 212
+ 128 127 151 123  58  81 113 136 199   2 165  92  80 143  97
+ 209  22 169 160  51 197 105 104 154   6 167  36  46 135 134
+ 152 203 168  61  89 150 219  75  13  42  56 141 200   5 121
+ 225 115  32   9 204 106 185 125  18 132 174 205  48  50  67
+  21 111 126 124  15   8 218 101  55 221  37 171 194 210  83
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 530737us (= 530.737ms, 0.530737s)
+Wall-clock time (full program): 533200us (= 533.2ms, 0.5332s)
+Satisfaction error: 0
+Number of search iterations: 2537
+Number of local moves: 1798 (including on plateau: 1741)
+Number of local minimum: 65 (including on plateau: 198)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 213   3  48 199 126 189 217 165  63 121  42  80  81 107  41
+ 182 170  27  52 171 185  31  10 146 148  51 195  40 128 159
+ 106 188 173 205 214  28 135  97  61  75  12 102  65  66 168
+ 110 160 140 109   4  11 200  78 225 219  45 174 116  88  16
+ 224  43  91 132  58 111  92 149   7  79 177  70 192  83 187
+ 157 147  54  17  53  89  35 221 207 134 143  15 196 167  60
+ 152  59  20  37  73 198 130  49 125 175  46 127 129 155 220
+  57 161 124 223  50   9  24 108  68  34 210 204 162 123 138
+ 166  19  93  14 197 178 114 117  33 218 202  29 156 103  56
+   8 176 222  82  94 164 151 163 203  85 119  90  18  99  21
+  32  96 209 133 118  39  30 212 194   2 112 120 201 172  25
+  64   5 169  38 154 153 215  84 115  98 186  67  72  69 206
+   6 181  95 191 139 211   1 113 190  23 101 216  26  71 131
+ 141 137  47 158 100  44 184  74  36 208 145  13 179 142  87
+  77 150 183 105 144  86 136  55  22  76 104 193  62 122 180
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.29281e+06us (= 1292.81ms, 1.29281s)
+Wall-clock time (full program): 1.29517e+06us (= 1295.17ms, 1.29517s)
+Satisfaction error: 0
+Number of search iterations: 6419
+Number of local moves: 4595 (including on plateau: 4537)
+Number of local minimum: 147 (including on plateau: 551)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 148 125 159 112 140 202  19 178  76  30 124 147  84 111  40
+ 115 209  55 171  47  68  42  60  63 214  83  35 158 199 176
+ 204 118 191  24 134 106 157  21  44  96 104  56 142 168 130
+ 223  81  26 165 100 172 173 121 116 200  75 137  34  10  62
+  20  18  99 151 162 180 206   4 182 102   2 212 123 145  89
+  88 221  57   9 110 136 103 215 219  72 160 138  50 109   8
+  27  46  92  49 185 153 120 207 192  43 194  11 122 167  87
+  39   6 133  85  32  80  54 119 217 186 126 184 139 108 187
+ 188 131 208  91  25  74  98 114   5 135   7 205 190 154  70
+  67 174 181 211 210 141  14  31 196  12 169 198  59   3  29
+  97 152  58  33 183 107  77 163  37  93  69  86 166 218 156
+  52  82 224 132  22 164 179  48  38 144 149  53 216  64 128
+ 146  41  66 195  15  28 161 220 101 170 189  65  61  36 201
+ 203  94  17 222 225  71 213 143  16  23 127  73   1  90 177
+  78 197 129  45 105  13  79  51 193 175 117  95 150 113 155
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 413001us (= 413.001ms, 0.413001s)
+Wall-clock time (full program): 415483us (= 415.483ms, 0.415483s)
+Satisfaction error: 0
+Number of search iterations: 1951
+Number of local moves: 1425 (including on plateau: 1395)
+Number of local minimum: 39 (including on plateau: 185)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 218 130 183  26  63   3 110  60 128 214   6 115 172  46 221
+ 168  28 169 175 211   4 104 145 114  35  50 216  14  42 220
+  51 179  17   2 156 147 125  37  94 203  77 177 200 219  11
+ 122  49 205   5 171  87 198  69  85  61 136 159 120 210  18
+  27  71  89 167  96  80  76 127 197 191  86 180  75 212  21
+ 129  98 178 185 174 188  41 143  73 140 153  38  25  19 111
+  43 133  68 102  55 126 173 187 118 135 204 176  54  12 109
+ 213 144 112 158  92 165 189 105 142  62  91  84  95  36   7
+ 107  31  15 217  67 113  90 196 157 103 154  24 194  78 149
+ 184 123  23 225 163 101 100  45  57 108 139 164  93  39 131
+  47 160 224 166  20  70  59 132  65 146  44  52 117 192 201
+ 141 150  74  33 151 124  53  64 202  72 170  88 162 181  30
+   9 195 161 223  22 186 209 148  56  29  13  34 134  83 193
+ 155 138  40  10  48 222  16 121 199  97 182  82 208 119  58
+  81  66 137   1 206  79 152 116   8  99 190 106  32 207 215
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 782618us (= 782.618ms, 0.782618s)
+Wall-clock time (full program): 785098us (= 785.098ms, 0.785098s)
+Satisfaction error: 0
+Number of search iterations: 3783
+Number of local moves: 2531 (including on plateau: 2472)
+Number of local minimum: 107 (including on plateau: 288)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 111  59   9  32 206 197 175 211  48  31 125  80 136  93 182
+  86 222 107 186   4 138 192 128  10  53  79  88 166  96 140
+  38  83 108 196  97 213  61 224 162  19 156   3  40 219  76
+ 203 142 135 112  43  18  70 165  13 221  77 115 158 114 109
+ 149 118 159  98   5   2 163  54 209  82 210 137  73 180  56
+  63  65  74 123 214 220  15  37 225  35 207  81 141 129  66
+ 113 218 133  33 132 144  27 103  20  89 131  92 104 177 179
+ 215   8 105 146 164  14 161  30 121  62 120  51 212  78 208
+  45  87 143  11 147  94 223 122 148 117  57  69 134 168 130
+ 181 174  47 119  34 151 199  72 172 157  21 169  12 145  42
+ 184  64 171 160   6  95  36  25 190 124 100 176 193  16 155
+  50  99  91  67 194 183  24  68  17 195 216 173 152  60 106
+  28  55 204 188 101  84 126 139 205 217  46  85  58 110  49
+  29 116 202  26 170  90 201 150 154 191  23 187  41  71  44
+ 200 185   7 198 178  52  22 167   1 102 127 189  75  39 153
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 820939us (= 820.939ms, 0.820939s)
+Wall-clock time (full program): 823514us (= 823.514ms, 0.823514s)
+Satisfaction error: 0
+Number of search iterations: 3995
+Number of local moves: 2790 (including on plateau: 2732)
+Number of local minimum: 90 (including on plateau: 338)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 204  33  19   6 169 163  96 108 194  63 213  36  80 179 132
+ 197  47 141 109  60  95 224  54 168  98  28  51 114  99 210
+ 102  93 200 134 116  18 176 167 178  83  32  73 144  37 142
+ 139  64  24  62 212 192   8 208 220  86 185  84  34 112  65
+ 198 122  50  70 205  41 161  79   3 158 143 202  25  66 172
+ 121 170 155  81  13 100 206 162  68   2  94  85 191 199  48
+ 118 106 138  15 150  89   4 115 154 188 171  10 137  82 218
+ 113 149 133 151 119 136  44 117  49  39  90 216 105 165  69
+ 182 126 219 217   1  12  56  22 130 183 181  14  59 215  78
+  77 174  31 111 148 195 103  55   7 186 180 201  46 107  74
+  23 110  67 189 127 209 214  72 160  97  17 135 129  26 120
+  20 128  27 101  29 196 175 157   5  11 140 187 225  91 203
+  87 123 222  53 164  45  61 184 131 190  35 193  40 125  42
+  38  43 211 173  16 147  21 124  75 159 177 156 221 104  30
+  76 207  58 223 166  57 146  71 153 152   9  52 145  88  92
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.70148e+06us (= 1701.48ms, 1.70148s)
+Wall-clock time (full program): 1.70395e+06us (= 1703.95ms, 1.70395s)
+Satisfaction error: 0
+Number of search iterations: 8383
+Number of local moves: 5655 (including on plateau: 5540)
+Number of local minimum: 236 (including on plateau: 695)
+Number of resets: 3
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  10 166 214  29 211  32 134  13  67 215 222 217  19 142   4
+ 200 157 208   2 138 195  63  40 216  24  25 152  83  74 118
+  18 204  88  37 209  59 120  94  23 174 182 178  34 156 119
+ 103  15  84  86 136 220 130 154  79  61 179  58 106  72 212
+  46  93  54 144 187  44  85  60 169 202  68 126 189  66 162
+ 149 219 104 175  27  11  38 131  21 164  17 132 113 201 193
+ 168  92  22  20 205 185 111 197 101 146  30 123 213  26  56
+ 108 170 137 176  16 128 129  71 148 139 124  87  97  90  75
+  62 167  99 153  50  36 181 218 173  65 161   8  53 192  77
+ 112   9 206 188  81 155 121 171  33  28 116  91 172  49 163
+  69   1  57 196 183   7   3  70 203 177 158 221 199  42 109
+ 186 140 117 207  35 125 151  14 143  78  89 150 110  98  52
+ 223  51 180 102  55 224 165 127  12   5  43 105  76 194 133
+ 141 115  80 107  48  64 225 145 147  82 122   6 184 198  31
+ 100  96  45  73 114 210  39 190 160 135 159  41  47  95 191
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 385208us (= 385.208ms, 0.385208s)
+Wall-clock time (full program): 387633us (= 387.633ms, 0.387633s)
+Satisfaction error: 0
+Number of search iterations: 1875
+Number of local moves: 1371 (including on plateau: 1341)
+Number of local minimum: 31 (including on plateau: 193)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 115 225 183   7  50 116  15 145 102 157 155 178  19  13 215
+ 144 203  56  12 206  24 193  32  38   1 161 133 220 209  63
+  57 159 192 123 147  14 222 142  29  88  44  21 166 117 174
+  17  78 223 210  45  46  33  62 105 200 141 153 129 214  39
+ 156   2   4 158  25 135  87 201 182  10 154  96 137 221 127
+ 130 196 175 197 164  37 107 131  60 177  26  23  11  94 167
+ 149  85  80 163  89 152 205  51  66 211  55 173 112  68  36
+  83  93 111 103  49  77 128 126 186 104 169 195  99  58 114
+ 198 138  84 139  92 170 119 212  16 120  91  18 109 108  81
+ 124  34  28 187 168 140  31  59 125 136 217  75  30 150 191
+  22  72 208 146  54 162 110  48  52 188  76 106 190 171  90
+ 218 207 151  61 189  98 113 101 219   9  64  47 185   6  27
+ 199  73   5   3 148 121  40 180 181 184 176 118  53  20 194
+  41   8 160  86 204 224  79  71 202  43  97 143  70 172  95
+  42 122  35 100  65 179 213 134 132  67  69 216 165  74  82
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 321144us (= 321.144ms, 0.321144s)
+Wall-clock time (full program): 323656us (= 323.656ms, 0.323656s)
+Satisfaction error: 0
+Number of search iterations: 1549
+Number of local moves: 1197 (including on plateau: 1166)
+Number of local minimum: 33 (including on plateau: 136)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  43 210  61 145 111 124 186  85  14  90 155 199  21 196  55
+ 225  75 141 143  36  62 147  51 208 101 192  86 201  26   1
+ 123  66 119  57 105  19  67 215   2  76 154 220  59 194 219
+ 166  24 209  44 135 206 113 162 153 179 121  15  81  65  22
+  94 108 149 165 190 222 183 131  17  92  27  54 207  25  31
+ 177 117  46  38 156  68 100 151 170  58  20 167  93 175 159
+ 197  84   3 218 138   9  34 158 118 122 160 198  39 137  80
+  49  52 107  18 157 116  10 216 176 180 132 112  73 115 182
+ 103 120  63  95  87  97  71 148 140 133 150 136 174  64 114
+   4 142  23 202 129 125 224   8  70 184 109  88 213  96  78
+  32  41 110 134 152  12  45  82  33 161 139 181 187 191 195
+  99 171  47 203 106 200 127  69 193  11  48  79 126  28 188
+  42 212 223 128   7 146 214  29 211  37  53  56  98 204  35
+ 163 169 205  89 173  72   6  60   5 221 144  74  40 102 172
+ 178 104 189  16  13 217 168 130 185  50  91  30  83  77 164
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 244550us (= 244.55ms, 0.24455s)
+Wall-clock time (full program): 246996us (= 246.996ms, 0.246996s)
+Satisfaction error: 0
+Number of search iterations: 1164
+Number of local moves: 867 (including on plateau: 838)
+Number of local minimum: 17 (including on plateau: 125)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  44 194 219   9 126  86 204  51  78  47  32  99  92 200 214
+ 203  67  48 157   4 122  26 107 207  17  69 217  62 196 193
+ 175  88 134 224  19  85  94  73 156 152 186   1 170  82  56
+ 142 145 212   2  63 143 112  28 188 159  74 177 114  15 121
+ 153  45 141  61 169 218  52  29 133 189 183  50 150 115   7
+ 202 118 160  58  97 146 178 113 116 148 139  36  14  46 124
+  64   5   6 206 181  57 197 140   3 138 129 158 223 164  24
+ 108 171 123 135 119  35 110  65 105 120 125 117  37 198 127
+ 100  68 172 191  98  96  30 109  75  77  91  84 211 210  83
+  90 225  21 162  20 106  16  34 179 151 213 130 154  12 182
+  66 155 166  27  87 222  95 205  71  11 190  93  80 187  40
+  22 201 168  38 209 137 215 180  33 221  13  41  76  10 131
+ 103  43  53 101 208 128  18 165 104 167  70 161 185  42 147
+  79  81  49 192 184  54 149 220 216  39   8 195 102  55  72
+ 144  89  23 132 111  60 199 176  31  59 173 136  25 163 174
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 258953us (= 258.953ms, 0.258953s)
+Wall-clock time (full program): 261340us (= 261.34ms, 0.26134s)
+Satisfaction error: 0
+Number of search iterations: 1136
+Number of local moves: 890 (including on plateau: 860)
+Number of local minimum: 16 (including on plateau: 114)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  80 129 216 172 150 120 141 200  41  69 126 105 109  15  22
+ 217  19 149   4  92 118 143 182 185 101 152  89  47 121  76
+  95 208  39 199 115 186  26 127  49 146 187  52   9  34 223
+ 145  18 180 153  65  84 116  90  61 197  64 189 123 170  40
+  23  33 111  88 104 117   1 164 133 218 102 201 203  13 184
+  93  59  36 114   2 136 212 160 107   3 207 159  91 165 151
+  73 190 122 161  87 183 204  63  85 156  48 188 106  21   8
+  99  20  54 211 110  55 100 181 213 169  66  67  43 224  83
+ 209  38  94 119  57 144 137  24 148  81 135  12 112 171 214
+  46 215 195 147 158 113  16  53  70  56  28  30 221 219 128
+ 140  79   6 206 220 225  32  77  27   5 166  71 177 130 134
+ 210 157 124  11 108  82 191  96  86  98 131 154  44  25 178
+  60 176 125   7 163  29  10  37 193 174  75 142 167 175 162
+  50 222 202  72 196  58 198  62 103  17 173 139  51  74  78
+ 155 132  42  31  68  45 168 179 194 205  35  97 192 138  14
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 390707us (= 390.707ms, 0.390707s)
+Wall-clock time (full program): 393034us (= 393.034ms, 0.393034s)
+Satisfaction error: 0
+Number of search iterations: 1941
+Number of local moves: 1406 (including on plateau: 1378)
+Number of local minimum: 41 (including on plateau: 173)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 204 214 185 108   3  68 209  56  36 163  38 206  39  23 143
+ 112 105 114  20  64  47  21  85 167 170   9 215 220 152 194
+ 181 193  90  96 166 161  11  81 109 147  57  13 207 171  12
+  25  17 122 182 146 222  53 186  40 117  63 102 221 150  49
+  15 203  65 162 165  50  54  44  74 197 104 212 141 205   4
+ 137 125 113 154  26  71 132  79 153  89 179 188  87   6 156
+ 145 100  42  60  84 128 184  95  99 115 135  69 118 210 111
+  94  34 130 103  41  93 176 136  83 148  78 189  76 142 172
+ 110   8 101 127 140  48 126 173  51 216 155  86 131 157  66
+ 129 123  82 195 190 124  75  98  10 139 134  70  97  52 177
+  31 198 106 138  24  91 144  88 225   2 175  62  29 199 183
+  35  80 149 120 164  30 151 213 224  16 119  77 223  33  61
+ 208 133  27  37 219 169  72  92  55 168  32 160  43 159 121
+  73  46 178  19 218 192 180  67 211   7 217  28  58  14 187
+ 196 116 191 174  45 201 107 202 158   1 200  18   5  22  59
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 260241us (= 260.241ms, 0.260241s)
+Wall-clock time (full program): 263611us (= 263.611ms, 0.263611s)
+Satisfaction error: 0
+Number of search iterations: 1004
+Number of local moves: 768 (including on plateau: 739)
+Number of local minimum: 15 (including on plateau: 84)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 190 185 163 161 191  11 126  40 110 200  25   4  63 105 121
+  96 162 167  73   9  86  41 173 189  47  67 106 130 224 125
+  76 112 201 194   7  99 175  16 188  20  12 198 166 153  78
+ 103  55 225 206 157  81 120 171   5 215 176  29  24  13 115
+  28  61  31  79 165 221  53  56 213 196  66 102 192 144  88
+  59  74 164  38 117 147 223  33  42 131 149 208 127   1 182
+ 123 114 107 129 151 100  50  68 133  89 111 145 152 132  91
+ 203 177  22  45  10  35  26 178 140  72 172 181 180 218  36
+ 209 119 109  62 135 160  49 154  71 113 139  43 104  58 170
+   3 159 219  14 179 137  83  17  23  64 220 169  65 136 207
+ 205  44  54 168  77  95 183 195 210   8  90  51 197  70  48
+ 134 124  39 184 155  19 156 118  30 138  32  57 193 142 174
+ 101 222  94  97  21  85 146 148 211  82  34 214  15 150  75
+ 128  69   2  87 122 217 212 187  46 204 216  80  27   6  92
+  37  18  98 158 199 202  52 141  84 116 186 108  60 143  93
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 287235us (= 287.235ms, 0.287235s)
+Wall-clock time (full program): 290260us (= 290.26ms, 0.29026s)
+Satisfaction error: 0
+Number of search iterations: 1362
+Number of local moves: 996 (including on plateau: 967)
+Number of local minimum: 23 (including on plateau: 143)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  11  91  92 220 223 104 189   8  25 213 137 133   3  53 193
+  36 212  83   9 171 160  27 216   6 208  52 191  44 144 136
+  37 183 185  47  72 111 168 148 108  15 174 120 198  45  84
+ 209 122 215 127  28 125 132  69  94 194  90 118  85  12  75
+ 159 182 169 121  26  62 158  95  10  63 177   1 221 190  61
+ 219  98 157   2 166  64  70  16 172  49  35 205  60 207 175
+ 114  22 103 203  54 163 143 154 167  87 151  18  58 176  82
+ 197 146  19 105 138  89 101 141 170  86 186  38 123  56 100
+  88  65  74 195  43 202  80  42 188  23 200 184 135 142  34
+  68  48 201 179 192  59  30  33  73  81  67 106 181 199 178
+ 225   4 131  13 152  96 214  99 128 164 116  14  50  78 211
+  97 165 173  41  55 113  31 161 210  66  93 129 130 180  51
+   7 224  17 149 112 153 218 140  29 109  40 204  39 147 107
+ 126  57  71 134 139 117  24 156 196 222 145  79 162  46  21
+ 102  76   5 150 124  77 110 217 119 115  32 155 206  20 187
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 490970us (= 490.97ms, 0.49097s)
+Wall-clock time (full program): 493408us (= 493.408ms, 0.493408s)
+Satisfaction error: 0
+Number of search iterations: 2446
+Number of local moves: 1798 (including on plateau: 1769)
+Number of local minimum: 47 (including on plateau: 212)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 210  94 152  12 204 221 189 148  22  34  30  13 199 111  56
+ 108 161 183  16 136 114 225  78 160   3  52 116  23 124 196
+ 197  88  45  99  20 166 168  77  62 143 211  76  55  93 195
+ 157 137 181  18  53 130  73 153 107  37 177  14 219 188  51
+ 145  57  61 115 202   8 151  80  25 192 184 118 194   9 154
+ 140  64 167  96  84  47  42 109 135 218  69 158 129 103 134
+  70  92  31 187  50  29  83 206 198 224  86  27 180 200  32
+   4 222  91 159 205  15 128   6 131  79 120  87 171 104 173
+ 122  21 212 162  90 150  24  65 176 144  33 174 139 125  58
+  95 133  75 208 156  98  54  35 215  49  66 220  44 141 106
+  63 175 142 113 185  38 126  89  36 169 223 191  39   5 101
+ 216  68 102 147  59 119 146 213  46  67 112 121  82 190   7
+ 123  41 186 127 117 179  71  10 155  74  85 182 100  81 164
+  17 172  48 193   2 178   1 217 201 165  40 138  11 149 163
+  28 170  19  43 132 203 214 209  26  97 207  60 110  72 105
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 372534us (= 372.534ms, 0.372534s)
+Wall-clock time (full program): 374908us (= 374.908ms, 0.374908s)
+Satisfaction error: 0
+Number of search iterations: 1751
+Number of local moves: 1372 (including on plateau: 1343)
+Number of local minimum: 13 (including on plateau: 172)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 105  47 175  75  11 110  85  50 121 157 143 197 127 131 161
+ 160 170 101 129 159 135  81  79 107 134  83  63 100  14 180
+ 158 224 117  74 215 203  51 142 210   5  22  32  36 172  34
+  40 179 212  69  70  52 208  62 162 155   3 178  44 146 115
+ 154  43 207  29 185 156  56   4 166  77  82 173  13 187 163
+   1 106  86 206  89  72 201 126 144 152 204  10  60 218  20
+ 108   6  41 125 177  95 103 217  54  46 164 167 149 222  21
+ 116  84 104 109 118 209 123  98 132  92 133  78 141  19 139
+ 124  99 181 189  30 176 111  90   8  67 137  65 214  35 169
+ 205 193 151  26  80  45 150 168  76 191  23  57  71  88 171
+  53 120  68  27 198 219 113 184  97  49  91  96  42 216 122
+   7  37 136 165 128 148  16 202  61 102  64 200 196 114 119
+  58 211  33 153  38  48  39  55 140 188 213 112 190  18 199
+ 183 145  17  94   2  12 220 194  25 221 147  93 182  87  73
+ 223  31  66 225 195  15 138  24 192  59 186 174 130  28   9
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 505839us (= 505.839ms, 0.505839s)
+Wall-clock time (full program): 508200us (= 508.2ms, 0.5082s)
+Satisfaction error: 0
+Number of search iterations: 2371
+Number of local moves: 1845 (including on plateau: 1816)
+Number of local minimum: 39 (including on plateau: 221)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 220  62  67 108 122 111  53 159   9 213 124 214  57 142  34
+ 160 225 166  61  30 114 201  17 156 164  13  76 206  42  64
+  22 176 184  24 188  70 185  63  71 210 153 212  31   2 104
+ 129  49 218 174   1  60  73 192 105  81  38 187 217  51 120
+  39 167 131  18  41  16 161 138 222  14 162 154 182  55 195
+  45  74  48 136 113 146 157  91 145 112 197   3  88 141 199
+  28 165  99   8 168 101 137  83 215   6  40 191 149 130 175
+ 135 115 133 126  84 100 116 107 127 103 123  98 106  72 150
+  35 152  78 224  52 169  87 163 125 179  69  25 121 204  12
+ 198  15  90 200 117  36  47  79 171  50 205  54 143 196  94
+  89   7  29 208  92 180 207 216 158 118  95  75   5  43 173
+  96 221 109 194 189 151  82 134  33  37  68  19 139 202  21
+ 209  85 144 132 110  32  66  11  26  44 178 140 148 223 147
+ 193 155  80  23 177 219  58  56  46 183 102 170  10  20 203
+  97  27 119  59 211 190  65 186  86 181 128  77  93 172   4
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 453703us (= 453.703ms, 0.453703s)
+Wall-clock time (full program): 456120us (= 456.12ms, 0.45612s)
+Satisfaction error: 0
+Number of search iterations: 2228
+Number of local moves: 1699 (including on plateau: 1668)
+Number of local minimum: 36 (including on plateau: 211)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  28  53  57 182 170 174 155  84 212  71 139   8  14 177 171
+ 183 131  52  75 208 178 172  35 107  67  44 206  89  68  80
+  64 129 175  15  72 184  18 215  74 176  79 153  26 218  97
+ 204 193  32 199 194  43  60 117  25   3  63 152 213 195   2
+   9 191 156 151 160   6  87 148  20 224  82   1 188 161 111
+  51  24 115 217 110  27 127  36 219 123 221  45  13 164 203
+ 144   7 223 162 130 112 132  33 120 105 138 109 116  23 141
+ 140 135 128 100 102  91 124 121  99  98  85 125 118 126 103
+ 197  40  96  42   5 222  76 146  88  90   4 216 214  59 200
+  70  93 166  48  34 205  21  83 136 225 196 207  92  58  61
+ 187 119  17 114  94  50 113 158  65 190  77 134 150  46 181
+  78 180  73  66 143  22 163 108 192 133 211  49 185  55  37
+ 145 189 165  31  47 202  54 154 179  11 209 104  29 137  39
+  38  69  81  95 210 149 173 201 147  10 106 167  62  86 101
+ 157 142 159 198  16  30 220  56  12 169  41  19 186 122 168
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 305736us (= 305.736ms, 0.305736s)
+Wall-clock time (full program): 308174us (= 308.175ms, 0.308175s)
+Satisfaction error: 0
+Number of search iterations: 1499
+Number of local moves: 1127 (including on plateau: 1097)
+Number of local minimum: 26 (including on plateau: 135)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 225  62  13   3 143  11 104  15 212 215 135 103 153  90 211
+ 111  85 201  23 177  96 186 204 134  74  88 195  54  18  49
+   1 179 182   5  19 203 184 138  79  42  53 209 198  27 176
+ 101  66 128 124  76 213 146  93  41  43  94 164 199 125  82
+ 133 190  99  92 107  17 140  68 219 161  81   2 169  39 178
+  86 196 168 167 189  12 109  65  16 149  40 202  24 181  91
+  52 205  44 113  10  70 116  58 142 191 165  63  98 216 152
+ 118  60 120 112 110 114 136 171 119 117  33  87 105 185 108
+ 121  61 163 162 192 217  46 221  25  14 137  95  21  69 151
+  55  20  50  32 174  73 218 156 187 183 166   4 154 175  48
+  80 159  37 208  57 144  36  29 194 172  77 131 122 147 102
+ 207  38 145  51 157  47  67  30 158 126 188  78 206  56 141
+ 160  22 106 180  83 224  75 115   6  26 173 222  28 148 127
+ 214 197 150 200  71  84  35 193  34  59  45 132  64 210   7
+  31 155  89 223 130 170  97 139 129 123 220   8 100   9  72
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 245461us (= 245.461ms, 0.245461s)
+Wall-clock time (full program): 247918us (= 247.918ms, 0.247918s)
+Satisfaction error: 0
+Number of search iterations: 1186
+Number of local moves: 895 (including on plateau: 865)
+Number of local minimum: 28 (including on plateau: 104)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+   7  72 211 222 121 206  27 122  46 111 142   4  91 224  89
+ 143  52 141 205 135  33  10  63  38 179  67 152 188 100 189
+ 160  76 106 116 131  37  82  60  59 172 220 195  99 148  34
+  51  74 190  53 219 165  48  21 120 154  79 130  19 198 174
+ 191 223 113  25  75  36 110 101 194 218  94  78  55  58 124
+ 119  86   9 184 207 204 158 145 185  18  73  14  50 128 115
+  20 151 202  12 193  65 200 214 169  26  64  83  40 149 107
+ 137  17 136 155 162  43  97 170 215   8  41 182 112   3 217
+  77  44 146  92  49  62 123 161 163 132 104 164 173  71 134
+   6 210 150 221  42 159  84  31  35  47 127 192 187 176  28
+ 180 125 109   2  61 153 126  11  56 197 225   1 216 140  93
+ 168 166   5 118  13 114 209 186  24  29  54 208 212 108  81
+ 196 175  68  69  39 203 199  80 129  85 213 103  16 105  15
+ 144 201  87 133 178  98  45 147  95 181 102  32  66  30 156
+  96  23  22  88  70 117 177 183 167 138  90 157 171  57 139
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 2.28094e+06us (= 2280.94ms, 2.28094s)
+Wall-clock time (full program): 2.28333e+06us (= 2283.33ms, 2.28333s)
+Satisfaction error: 0
+Number of search iterations: 11127
+Number of local moves: 7342 (including on plateau: 7167)
+Number of local minimum: 405 (including on plateau: 812)
+Number of resets: 5
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  66 224  16 114 140  19  23 191 149 171  68 209 163  90  52
+ 212 214 151 189   2 118 123  78  36  57  11 122  63 194 125
+ 186  14 203 210  87  55  53 100 147  24 168 201 208  31   8
+ 103 130  82 160 180  72 184 215 183   7  12 162  48  96  61
+ 170  99 181  94 146 159   1  62  89 156 169  74  67 152  76
+  58 124  77  60  34 157  79 104 195 164 205  10 207 176  45
+ 150  51  88 158 133  56  25 153 161 108  69 141  95  86 221
+ 132 107  85  40  80 105 127  70 202 111 106 165  18 216 131
+ 155  28 138 192  81 113 145 148  91 185  30 136  75  59 119
+  32 190 117 220  43  71 193 204   5 101 112  22  98 120 167
+  17  97  26  54  73 218 177 154  84 196  65  37 211 142 144
+ 225  38 222  39  92 166 200  21   6 109 129 126  93  42 187
+  29 188  64   4 179 173 174 172  83  49 199 197  35  33 116
+  50  13 143 134 219 198 182  20  41  44 217  46 139 121 128
+ 110 178 102  27 206  15   9   3 223 213 135  47 175 137 115
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 197345us (= 197.345ms, 0.197345s)
+Wall-clock time (full program): 200730us (= 200.73ms, 0.20073s)
+Satisfaction error: 0
+Number of search iterations: 817
+Number of local moves: 653 (including on plateau: 623)
+Number of local minimum: 13 (including on plateau: 61)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 159 138   1  31 179  17 141  48 175 146  62  80 180 165 173
+  12 106 148 142  38  40 172 161 150  18 222 194 223  60   9
+ 206  28 209  30 115 185  44 202  76  79  39 143  78  70 191
+  27 203   3 205 127 169  11 176 192  93  90 149 208  10  32
+  66 224  22  50  64 182 131  34  56  82 218 153 164 158  91
+ 199 136  26 181  63 125 212 144  84  96 103  87   6  13 220
+ 128  98 162 135  61 104  29 129  33 216  23 195 152 177  53
+  59 114 221  43  94 113  69  16 147 207 112 139   4 132 225
+ 204  73  47  65 151 145 134 111 119  68 163 154 133   5 123
+ 100  86 101 140 217  71 188 102 121 109 197   8  14 166  75
+  55 168 210 213  97  74 108  19 184  24 171  15  36 211 110
+  54 122 120 193  20 215  99 219  51  46  49  52 178  88 189
+ 155  83 170  77 116 126 160  89 117 190  57 167 105  41  42
+  85  21 174 118 157  37 130  45   7 214 187 124  58 201 137
+ 186  95  81  72 196  92  67 200 183 107   2  35 156 198  25
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.2455e+06us (= 1245.5ms, 1.2455s)
+Wall-clock time (full program): 1.24803e+06us (= 1248.03ms, 1.24803s)
+Satisfaction error: 0
+Number of search iterations: 6168
+Number of local moves: 3973 (including on plateau: 3859)
+Number of local minimum: 209 (including on plateau: 432)
+Number of resets: 3
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 125 165   1 186  27  20 166 202 145 208  53 120   7 122 148
+ 222 114  79 196 203  84 179  64  40  65  23 134 175  62  55
+  41  86 128 121 169 152 147  11  24 211 106 161 178  18 142
+ 151 155  83  96 104  74 149 111 206 184 107  14  87 164  10
+ 205 210  46 214  29 124  50 118 110  15  42 192  81  78 181
+  39 113 139  99 132 176 112 141  25 173 126  48  13 144 215
+  12   5 167  28  98  80 102 219  58 130 156 194 171 223  52
+ 123 172 170  94  19 197  36 101  70 143 168 119   6  88 189
+ 133  72 160  92 198 216 146  34  95   3  63  61 129 200  93
+  59  66   8 154  51 225 212 127 201   9 131  75 157 153  67
+ 138 116 159  31  56  21  35 207 220 183 162 135 105  82  45
+  76  90 190  17  91  71 100  44 163 204  68 195  89 115 182
+  57  43 193  37 221  54 224 136  16  77 187 177  97 150  26
+ 140 108  69 213 188   2  33 158 137  60 218  38 209  49  73
+ 174 180 103 117 109 199   4  22 185  30  85  32 191  47 217
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.04259e+06us (= 1042.59ms, 1.04259s)
+Wall-clock time (full program): 1.04498e+06us (= 1044.98ms, 1.04498s)
+Satisfaction error: 0
+Number of search iterations: 4864
+Number of local moves: 3436 (including on plateau: 3376)
+Number of local minimum: 127 (including on plateau: 427)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  17 117  99 111 101  70 177  60 172 214  43 190  74 224  26
+ 162 178  11 222  61  12 176  59 180  27  40  55 195 192 125
+  71  72 187 200   9 141  51 183  34  41  90 215 201  57 143
+ 108 158  66 173 198  46 122  21   7 189 105 203 167  37  95
+   3 100  22 145 161  15  80 130 196 146 160 136 165 142  94
+ 216  38 175 140  13 139 152 119 221 148  92   4  36 133  69
+  84  50 131  56 114   5 219  78 127 208 197   2 102 168 154
+  91  23 212  30 199 150 206  93  53  89  52  73 124 217  83
+ 113 211  31  32 103 179  75 188   8 120 205  19  97 144 170
+ 104 115 116 202  85  81 118 129  88  87 159 204  86  39  82
+  10 151  96 134  45 210  48  58 112 123 153 135 220   6 194
+ 149 225 191  18 218 223  16 169  63  33 185  67  77  47  14
+ 213 174  65 163  68 121  44 164 157  62  24 155  28 181  76
+ 147  54 137  20 182 193 132  35 171 166  64 109  98   1 186
+ 207  29 156  49 138 110  79 209 106  42 126 128  25 107 184
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 335991us (= 335.991ms, 0.335991s)
+Wall-clock time (full program): 338394us (= 338.394ms, 0.338394s)
+Satisfaction error: 0
+Number of search iterations: 1637
+Number of local moves: 1275 (including on plateau: 1244)
+Number of local minimum: 22 (including on plateau: 135)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 225  34 184  83 139 170  29  78   8 132  99  24 216  59 215
+  73 120 178 194  40  16  48  36 133 148 115 161 152  86 195
+ 196 144 190 208  53   1 151  32  51   7  33 210  63 207 149
+ 164 191  15  70  42 134 174  28 219 199   6 167 197  31  58
+  71 141  19  52  85  68  27  84 179 183 157 218 116 103 192
+ 185  94 200 163  72  81 214 166  12 173  76 113   2  65  79
+  47 223 123   4 127 205 217  17  64  62 131  69 175 206  25
+ 111 129 118   3 107 108 124 160 105 126 114  97 125 100 168
+ 101 135  50 140 220  92  91 104  95  93 121  82  96 158 117
+  43  87 106  45 171  88  55 211  75  98 203 186  90 198  39
+ 181 147  49 212  67 143 201 130 109 128  54  46  41 150  37
+ 153  60  44  23  18 119 137 146 209 122 138  77 142 162 145
+  22 155 222 221 159  74 177 102  80  14 204  66 156   5  38
+  13   9 136 112 202 224  30 188 176  21 187 169  35  11 182
+ 110  26  61 165 193 172  20 213 180 189  57  10  89 154  56
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 321022us (= 321.022ms, 0.321022s)
+Wall-clock time (full program): 323487us (= 323.487ms, 0.323487s)
+Satisfaction error: 0
+Number of search iterations: 1482
+Number of local moves: 1212 (including on plateau: 1182)
+Number of local minimum: 12 (including on plateau: 119)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  11  49 153 210 176 121 207  66  94 221  55  26 224  32  50
+ 165 222 219  23 194  85  76 206  15 110  41  89 151  46  53
+ 195  64  22  16 200  35 149  74 162  25 107 188  71 170 217
+ 148 122  40 186 106 196  75 116 114 128  36  92  10 203 123
+ 104 105 183 129 134   9  63 109 138  62  70  19 177 168 225
+  99 190  61  59  54 180 173 143  95 144   3 212 193  20  69
+  87  17  14 100 197  60  21 146 120 205 214 147 156   7 204
+ 136  82  81 184 130 161  13 178 182  86  65  84  90 112 111
+ 216  78 192  80 127 185 119  31 220  67  97  73  45  93  72
+  91  44 117 139   2 150  58 132  34 166 181 158 201 124  98
+  79  83 152 154  39 131 126  52  28 113 172 115 137 135 179
+ 102 155 160 159  88 103 213  18  24  96 142   5 175 198  57
+   6 157 108  29  38 141 164 189  77 174 133 163  56 218  42
+  47 140 145  12 167  37 211  33 223  30 208 125   8 118 191
+ 209 187  48 215  43 101  27 202 169  68 171 199   1  51   4
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 224498us (= 224.498ms, 0.224498s)
+Wall-clock time (full program): 226948us (= 226.948ms, 0.226948s)
+Satisfaction error: 0
+Number of search iterations: 991
+Number of local moves: 798 (including on plateau: 768)
+Number of local minimum: 7 (including on plateau: 87)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  28  61  93 119 220 108  97  25 195 194 141 192  72 126  24
+   1 171  68  95  51 107  62 172 199  29 204 114 170  54 198
+ 214 161 157 120 216 210 127  56  42  41  12  57  15 118 149
+  36  85   2  80  44 151  94 143 122 128 166  96 223 191 134
+ 222  78 176   9  73 201  98 138 102 225  55  60 125 117  16
+ 181  45  90 131  14  40  26 154  91 215 133 111 189 110 165
+ 148 104 200  82  87  35 139  30  47 158 155 150 168 153  39
+  81 163  77 208  48   6  79 207 211 100  84 205   3  38 185
+ 144 103 159 190  59 202 217 123  63  32  46  10  22 147 178
+  58 130 129   8 193  19 218  76 136  52 212 152 173  75  64
+  89 115 169  34 221   4  88 196  50 188 197  70  66  92 116
+ 142 182  99 162  67 184 135 177  83  23  49   5 160  53 174
+ 145  86 146  65 219 164 187  13 105 132  21 224  71 106  11
+  20  31  17 179 156 140 121 167 175 109  37 206 101 203  33
+ 186 180 113 213  27 124   7  18  74  69 183  43 137 112 209
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 435864us (= 435.864ms, 0.435864s)
+Wall-clock time (full program): 439122us (= 439.122ms, 0.439122s)
+Satisfaction error: 0
+Number of search iterations: 1909
+Number of local moves: 1386 (including on plateau: 1356)
+Number of local minimum: 33 (including on plateau: 177)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 161 113 125  60  61 133 184 186 198  21  63 138  36   8 208
+ 225 183  53  27  48 209 203   7  25 164  31 106 181 190  43
+ 104  38  91 213 163  26 154   3  15 189 201 178  97  32 191
+  47  77 182  17 160  85  59  82 175 172 156 168  30 145 140
+  64 118  79 218 120  34 205 165  18 214 167  37  70 157  29
+ 174  56  11  92  65  98  49  35 188 116 207 212 166 176  50
+  67 137  19  52  58 187   5 139 144 103 152  10 195 211 216
+ 199 121 215 130 131  87  16 110 100 107   9 217  83 129  41
+ 109 124  84 115  39 108  88 180 193  75  96 105 171 114  94
+  81 151 192 150 149  73 173  78  93  14 196  55  69  89 132
+ 111 147 122 123 169 143 128 162  22 142   4  74 223  13 112
+  51  72 219  71  99 224  44 134 127  76  68 206  23 146 135
+ 210 170  42  28 221  46 202 177 153  45 185   1 155  54   6
+  80  40 159 179 117  20 119 204  86  57 136  62 194 141 101
+  12 148 102 220  95 222  66  33 158 200  24 126   2  90 197
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 220177us (= 220.177ms, 0.220177s)
+Wall-clock time (full program): 222578us (= 222.578ms, 0.222578s)
+Satisfaction error: 0
+Number of search iterations: 1028
+Number of local moves: 798 (including on plateau: 768)
+Number of local minimum: 19 (including on plateau: 85)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  35  31 197 180 176 107  85 159 122 212  19  45  25 137 165
+  82 170 128 211 200 190  24  32  26   8 154  86 198  33 153
+  62   1 119  72  63 139 157 163 196  61  44 151 178 183 106
+  92 204 167 209  23 174 214 125  15  11 175   4 185   7  90
+  54  96 140  49 221 160 207   3 191  76  64 171  34 208  21
+ 120 161 141  12 113  95  56 225  77 187 103  10 158  99 138
+ 155 127 148  30  57  14 130 164 115  80 199 136 117  37 186
+ 124 111  20 206  89  39  97  40  50 169 188  83 101 216 162
+ 102 132 194  16  55 121 219 133  74  67  47  91 220  42 182
+   6  69 195  93  79 215 181 114  73  87 166   9  43 172 193
+ 131  70  81  75  88 205  28  51 217 144 129 192 105 152  27
+ 224 223  52  41 108  46  48  36 203 149 210 177 110  66   2
+ 150 123  78 179  58  38 126 173  13 201  59 213  22 168  94
+ 202 112  17 100 218  84 118 135 134  98 109 184  53  71  60
+ 156  65  18 222 147  68   5 142 189 145  29 143 146 104 116
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 769544us (= 769.544ms, 0.769544s)
+Wall-clock time (full program): 772048us (= 772.048ms, 0.772048s)
+Satisfaction error: 0
+Number of search iterations: 3733
+Number of local moves: 2663 (including on plateau: 2604)
+Number of local minimum: 103 (including on plateau: 327)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 222 177  45 159   9 174  15 121  24 176  11 107 112 161 182
+ 194 158  53 199  28 207 211  62   2  39  19 224  70  21 208
+ 108 146  76 215  13  49  41  67 205 221 202 131 127  74  20
+   1  83  36 184  79  29 160 178 214  27 150   6 168 213 167
+  44 104 219  75 201 209  65  88 116  18 225  55 110 135  31
+  12 141 154  71 152  59 132  89 147 113 140  78 151 138 118
+ 137 203 148 155 134 133 126 119  50 103  86  60  10 122 109
+ 102 114 162 165  52 120 117 124 130 101 129 188   4 115  72
+ 220  84  90  97 189  64 171 106  91  92  99  98 149  58  87
+   3  51 216  96 204  57  66 143  73 144 180  94 206  77  85
+  42 198 172  80 185  82  54  34  68 100  47  48 166 196 223
+ 145  61  35  81  16 139  33 193 163  30  23 210 179 195 192
+ 125  43  46  17 175 111 200  93 156 164 169 191  14   5 186
+ 128  95  26  38 218 105 123 136 187 170 190 183  56  32   8
+ 212  37 217  63  40 157 181 142  69 197  25  22 173 153   7
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 334908us (= 334.908ms, 0.334908s)
+Wall-clock time (full program): 337280us (= 337.28ms, 0.33728s)
+Satisfaction error: 0
+Number of search iterations: 1588
+Number of local moves: 1284 (including on plateau: 1253)
+Number of local minimum: 14 (including on plateau: 148)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  26 195  48 219 205 130 159  31 200  33  14  23   3 222 187
+ 220  19 172   6 213  47  86  12 180 212 206  57  40 216   9
+ 196 123  18 149 165  49  71 154 198 209 214   5  78  42  24
+  35 158 103 182  50 194  65 176 173  32  63 177  73  51 163
+  64  30  84 174  81 189 112 107 211  39 148  53 191 146  66
+ 170 147 144  85 153 168  60  77  20  46 132 210   8 142 133
+ 169 120 203 109 161   7 124 164  95  27 118 166  80   1 151
+ 105 125  94  99 113 122 136 121 108 129 106 128  88 110 111
+ 100  92 126  90  15 218  75 202 104 167  69  96 102 160  79
+  97  93  89  98  58 157 101  67 117 185  74 140 217 115  87
+ 179  62 225  56  36  29 139  28 197  44  83 224 201   4 188
+  38 221  55 137  54  52 134  21  37 175 199 171 131 114 156
+ 138  59  13 190 152 135 150 215  11 208  43 162  72   2 145
+  17  68 178  25 223  82 192 193  10  70 181  22 207 186  41
+ 141 183 143  76  16 116  91 127  34 119  45  61 204 184 155
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 394096us (= 394.096ms, 0.394096s)
+Wall-clock time (full program): 396499us (= 396.499ms, 0.396499s)
+Satisfaction error: 0
+Number of search iterations: 1893
+Number of local moves: 1472 (including on plateau: 1442)
+Number of local minimum: 31 (including on plateau: 178)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  60  65 223  89 207  15  27  79  40 137 209 155 205 170  14
+  23 212  16 194  38  47 224  52 143  48 206  46 183 163 100
+  63  72  32  11  20 179 146 195 216 182  19 154  56 150 200
+ 149 125 217  76 219  61  53  35 103 172 199  24  59 169  34
+ 147 181 110  66 168  50  17   9 161 173 180  85 211  30 107
+  49 193 178 208  80  83  81 164  64  90   2 136 221  54  92
+  71 131 215 222 132  10 190  73 156 176  13 177  43  57  29
+  95  21  62 197 122 126 127  91 220 120 129   8  75 201 101
+ 184 144  82 158 116 148 218  36 105  55  88 167   3  77 114
+  74  58 157  42  94 121 198 203  44 185  26  97 152  69 175
+  99  31  78 123 165 104 162 118 112  25  39 192 145 128 174
+ 139 133  67 115  98 171  96 160 111   4 213 113 135   6 134
+ 151 130   7 119  84 196  51 117 186 102 191  45  12 166 138
+ 189  93  37   5 124 159  87 153   1 204  41 188  86 187 141
+ 202 106 214  70  28 225  18 210  33  22 140 108 109  68 142
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 547002us (= 547.002ms, 0.547002s)
+Wall-clock time (full program): 549509us (= 549.509ms, 0.549509s)
+Satisfaction error: 0
+Number of search iterations: 2682
+Number of local moves: 1856 (including on plateau: 1827)
+Number of local minimum: 49 (including on plateau: 249)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  70 112 193 115 139   4 138  72 195  14  71 148 160  59 205
+  40 126  73 206   9 104  53 128 221  97 207  60 132  84 155
+ 166  20 209   6 130  41 163 117  74 159 150 173  61 125 101
+ 182 136  54  67 185 183 204  42 224  50   5 131  35 190   7
+  46 157  90 176 167 174  18  78  88  57 151  30 189 141 133
+  24 134  79 153  64  55 177 149  80  75 106 219 198 165  17
+ 178  76 179  85 215 144 175 118  27 109  45 137  34  63 110
+ 168 208 108 162 129 140  22 120 111 119 121  43 123  19 102
+  49  87  91 124 103 181 213 146  23 172  44 107  65 143 147
+ 186  68   1 199  13 222  81  28 100 216 217 184  51  96  33
+ 180  16 187 105  77 220 145 169 158  86  56  99  66  38  93
+ 116  36 188  83  98  82  31  15 225 171 201  52 152 197  48
+ 192 202  21  47  39  25 122 196 164  37  89 212  11 211 127
+  29 156  12 135 113  94  58 114   3 142 170  92 200 154 223
+  69 161 210  32 214  26  95 203   2 191  62   8 218  10 194
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 664401us (= 664.401ms, 0.664401s)
+Wall-clock time (full program): 666899us (= 666.899ms, 0.666899s)
+Satisfaction error: 0
+Number of search iterations: 3162
+Number of local moves: 2076 (including on plateau: 2017)
+Number of local minimum: 89 (including on plateau: 246)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  99 170 220   5 102 159  59 141 124 157 195   8 114  84  58
+ 134 144  50  62 224  54 216 125 162  16  92  34 168  98 116
+ 160   2  13 223 191   6 110  47 131 176 120 150 103 112 151
+  68 196  32 184 219 197  33  51  75  72  18 209  97  56 188
+ 221 107 147   7 199 129   1 186 137  37  88  43 171 208  14
+ 206 121 222  53   9 126  52 204 155  42 128 182  49 111  35
+   4 130 201 123 153 122  20  31 100 136 178  29 205 145 118
+  17  57 113  94 115 218 213  90  46 127 163 203  12  95 132
+ 192  78 135 104  38  21 143 169 200 139  60  85 133 187  11
+  83  69  40 190 165 117 108 183  27  79 210 193  64  81  86
+ 149 177 211 106  80  66 181  48 158 179  15  74  70 140  41
+ 109 194  23  89  77 174  39  10 154 214 164  65 189  22 172
+  25  87 161 202  96  73 212 175  61  82  67 105  71  63 215
+  30 119  91  28   3 207 166 180  19 101  45 148 156 217 185
+ 198  44  36 225  24  26 142  55 146 138 152 167  93  76 173
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 661687us (= 661.687ms, 0.661687s)
+Wall-clock time (full program): 664176us (= 664.176ms, 0.664176s)
+Satisfaction error: 0
+Number of search iterations: 3369
+Number of local moves: 2293 (including on plateau: 2233)
+Number of local minimum: 99 (including on plateau: 283)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  80  71 176 222 193  86   7  10 172  18 169  45 192  65 189
+  30 107 140 154   8  57 220  52 201 146 163  79  83 206  49
+ 196  41 187 138 188  58  96  84  87  19 151 186   3 210  51
+ 173 197  24 182  36  59  61 165   2  42 209   1 204 179 161
+ 147  27  20  68 183  44 184 198 120 171  14  32 200  72 215
+  40 105   5 102   6 148 212 150  97 128  56 195 142  91 218
+ 117 129 127  55 137 143  13  85 126 119 123 121 149  92 159
+ 111  95 144 141  74  60 135 214 122 114 101 109  17 103 155
+ 118  90 115 110 125  77 112  25  99 213  12 162 168  75 194
+ 166  28 106  50 224 219  78  93 216 113  94  66 116  26 100
+ 208  37 153  63  35  73 180  76 191  67  34 174 199  81 124
+  62 164 170  33 205 211 185 207 145  53  38  64  21 133   4
+  69 178 181 158  23 131 157 136  47 202 139 132  31  89  22
+ 167 223  43  29 160 177   9  70  54 134 175 108  82 225  39
+  11 203 104 190  98 152  46 130  16 156 217 221  88  48  15
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 411455us (= 411.455ms, 0.411455s)
+Wall-clock time (full program): 413809us (= 413.809ms, 0.413809s)
+Satisfaction error: 0
+Number of search iterations: 1962
+Number of local moves: 1425 (including on plateau: 1395)
+Number of local minimum: 47 (including on plateau: 154)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  96 126 193   7 151 119  77 214  66 117  67  10 215  35 202
+ 138 212  69  41  64  31  45  52 125 170 142 198 175 221  12
+  37 190 189 183 130 194 200 152  22 163  24   8  16 153  34
+ 184   4   2  71  72 219  49  79 208 210 218  20 157  11 191
+ 166 186 160 154 167  38 181  29 172  43  30 179  46 135   9
+ 136 122 148 209 124   1 137 145  62  44 121  33 203 100 110
+  90 169  21 178 192  75 132  48 217 102 164  28 180  63  36
+ 106 115  17 105 131 116 114 207  82 107 103 133 104 109 146
+  91 224  85 113 134  42  92 101 112 174 143 128  86   5 165
+ 111  74 123 225  81 195  87  59  93  50 201  94  53 176  73
+ 206  25  27  58 140 177  57 155  13  61 162 196  80 220 118
+  84  54 150  76  97 171 156  95 139  88  55  83  98 144 205
+  47  70 173 222 149 188 204  19  32 168  23 185  15  18 182
+ 197  56 127  39  60  40  99 199 129 120  26 187 108 147 161
+   6  68 211  14   3  89  65 141 223  78 216 213 159 158  51
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 551902us (= 551.902ms, 0.551902s)
+Wall-clock time (full program): 554071us (= 554.071ms, 0.554071s)
+Satisfaction error: 0
+Number of search iterations: 2668
+Number of local moves: 2010 (including on plateau: 1980)
+Number of local minimum: 47 (including on plateau: 242)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 223 185 142 112   2  34 221  40 139 174 116  85  54  48 120
+  51 209 160  45  60 146 122  35 172 102 220  56  39 100 178
+  89 194  69  97   1 147  25 115  21 131  73 224 201 181 127
+  14  32 106 196 161 117 151 143  41 189 145  57 137  80 126
+  44  27 175 190 207 148   9 211  52  59  74 195  93  79 132
+   5  67 225  63 134  13 164 191 152  72 188  11 215 187   8
+  47 203 149  84 158 110  20  31 123 166  37 144 212  61 150
+ 217  62  66 114  78 199  26 141 222  43 176 118  36 109  88
+  64  71  55  75 121  28 206 156 105  82 200  53 129 167 183
+ 198   7  38  24 214  76 219 202 125 169  99  16  68  83 157
+ 103  10  49 210  87 179 204 177 180   4  58 208 184  23  19
+ 119 216 135  98  70 192 133  65 107  91   3  42 165 213  46
+ 197 111  15  77  92 140  96  90 205 159 104 218  17 168   6
+ 170 171 173 128 186 136  81  12  29 101 108 155  50  33 162
+ 154 130 138 182 124  30  18  86  22 153  94 113  95 163 193
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 660832us (= 660.832ms, 0.660832s)
+Wall-clock time (full program): 663295us (= 663.295ms, 0.663295s)
+Satisfaction error: 0
+Number of search iterations: 3334
+Number of local moves: 2397 (including on plateau: 2368)
+Number of local minimum: 59 (including on plateau: 305)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 213 107  58  28 208  67 119   9 124  53 194 161  88  44 222
+ 199  43 103  49 148 187  85  35 116 108  50 215  46 151 160
+  65  48  74  73 182  51  97 197 143  86  42 169 203  98 167
+ 141 133  30 206  61 109   8 125 158 145 156 110  12 154 147
+  32 181  54 198 185  40  41 165  24 225 134 202 101  29  84
+ 205 152 105   4 171 196  17 210  81 112  80  92  25 189  56
+  19 142 136 114  10 128 120 216  34 140 146 139 162  72 117
+  94 123 192 204 155  70 178  11 159  18 176  26 102 184   3
+ 138 201  52 150  45 195 113  55 118  99 131 111  59  96 132
+ 183 212 127 104  37 135 157   5 126  63   2  16 191 193 144
+ 100 180  95  82  71 175 200 177  75 174  64  76  87  79  60
+  66  77 164 172  31  14 115  91 224  89 188  90 173 163  38
+  21  57 220 207 219  78   7  83 170 137 122  27 168 166  13
+ 218   6 179  68  23  39 217 130 121 153  20 214  69  15 223
+   1  33 106  36 149 211 221 186  22  93 190  47 209  62 129
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 568369us (= 568.369ms, 0.568369s)
+Wall-clock time (full program): 572494us (= 572.494ms, 0.572494s)
+Satisfaction error: 0
+Number of search iterations: 2710
+Number of local moves: 1975 (including on plateau: 1946)
+Number of local minimum: 59 (including on plateau: 269)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 102 219   8 191  96   4 131 174 151  41 189   1  48 128 212
+ 108 216  25  47 184 204 105 224 118 122  77  74  28  40 123
+ 111 167 183  26 207 209  62 145 170  86 132  13 163  12   9
+ 150  70 121  80  68 115 176 187  67  71  66 199   2 103 220
+ 203  34 195  63  87 160 107  21 186 200  65 211   5 142  16
+  52 114 218  27 133 144   6 113 109  57 173 164  89 198  98
+   3 116  20 192 156  14 137  23  61  85 146 201 222 172 147
+  46  64 221  79 110  39  44 119  49 127 213 136 206 188  54
+  33  50  19 100 161  72  97  90 162 182  15 217 168 106 223
+ 148 154 175 112 101 152 225  37 139  76  95  75   7 140  59
+ 130 120 134 210  17  81  32  30 190 155  53  83  51 215 194
+ 197 158  29 205  99  56 165  88  36  38 196 135 181  18  94
+ 129 125 104  92  55 171 149 177  31 185  82  73 180  84  58
+ 124  45  35  78 179 214 166 126  69 153  24  91 202  11 178
+ 159  43 208 193  42  60  93 141 157 117 169  22 143 138  10
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 2.09801e+06us (= 2098.01ms, 2.09801s)
+Wall-clock time (full program): 2.10039e+06us (= 2100.39ms, 2.10039s)
+Satisfaction error: 0
+Number of search iterations: 10328
+Number of local moves: 6740 (including on plateau: 6625)
+Number of local minimum: 332 (including on plateau: 838)
+Number of resets: 3
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 161 156 138 192 184 173  34  54 168  17  55 202  11  84  66
+ 146  92 219  77   1 207 180  23 121   2 103  80 191  79 174
+ 217 116  29  76 187 123  90 213   3 208  25 125  82 154  47
+ 120   4 132 186 193  81 153  30 101 130  13 197  71 172 112
+  32 150 148  93 134  86  56 167 122  94 185 117 201  98  12
+  39  45 157 203  57 143 206 151 222  41 137  43 135  63  53
+  21 199  42  83 209 108 163 129 139 141 152  99 114  35  61
+  78 119  85 110 133 113 104 160  97  62 106 109 127  87 205
+ 142  91 102  36 155  49  95  69 165 216 189  89 221   9  67
+  24 198   6   8  51 196  50 220  14  73  26 211 210 225 183
+ 188 170 136 176  20  15 124 178  65  64  72 200  59 128 100
+ 190 166  38  44  16 214 159 164  74  40 181  10  88 140 171
+ 204   7 224 175  96  33  18  52 162 218 182  46  31  68 179
+ 111 145  70 105 115   5  48  27 223 212 194 107  28 158 147
+  22  37 169 131 144 149 215  58  19 177  75  60 126 195 118
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 351107us (= 351.107ms, 0.351107s)
+Wall-clock time (full program): 353506us (= 353.506ms, 0.353506s)
+Satisfaction error: 0
+Number of search iterations: 1680
+Number of local moves: 1315 (including on plateau: 1286)
+Number of local minimum: 26 (including on plateau: 147)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  78  16  29 183 225  60 221 139  38 121 177  14 137  44 213
+ 124 199 104  43 165  37  41  48 147 176  33 132  36 215 195
+  97 136 193 172  42   4 173  93 101 131  31 200 141 166  15
+ 184 150  68  45 208 138 117 217  94  20  50 162 159  65  18
+ 157 152 158  26 130  72 222 164  11 144 167  63  70  59 100
+ 123  35   8  51 106 216   5 194 153  47 205 170 156  66 160
+  10 224  32 115 129 206 204  34 110 109  39 219  77  88  99
+ 116 119 108 214 125 111  86  46 118  96 112 122 113  89 120
+ 207 196 134 209  22 151  75   3  95 201  56  87 198  49  12
+  67  62  76 190  21 181  84  74 102 103 149  30 175 161 220
+ 188  90 218 142  64 107  19  79 169 202 126   9  28  80 174
+ 128 148 163   7 168  27 154  83 203  54 140 135  23 210  52
+  81  57 179 114 146 189  98 191  85  55   1 155  61 192  91
+  53   6  92   2  71 171  69 185  58 223 197 180 178  24 186
+  82 105 133 182  73  25 127 145 211  13 212  17 143 187  40
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 489784us (= 489.784ms, 0.489784s)
+Wall-clock time (full program): 492190us (= 492.19ms, 0.49219s)
+Satisfaction error: 0
+Number of search iterations: 2314
+Number of local moves: 1808 (including on plateau: 1778)
+Number of local minimum: 34 (including on plateau: 196)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  38 218  39  54 175  61  26  80  13 219 152  29 210 164 217
+  84 123 197 148 139  58  46 119  16 161 143  50 113 178 120
+   8 162 201 155  97 126  31 213 183  27 118 150 129   5  90
+ 133  43  52 137 207 177  17 221  77 159  28 106  23 212 103
+ 158  11  37 147   3  36 211  87 215  92  78 202 204 142  72
+  64 222  48 127 182 203  45 136 138 167   4 104 184  57  14
+ 194 156 140  62  42 169 173 116  59 192 131   2 176  51  32
+ 134 146  19 196  91 187  71 109  20 114 199  96  35  53 225
+  24  81 193 163 198 214 220  65  70  40  86 188  12  56  85
+ 124  18 208  83 200  68 224 125  82  69  76 112  89  95 122
+ 121 135 223  30  10  55  74 107 157 144  15 149 179 168 128
+ 170  98  75  44 130  73 189  79 205 110  34 115 101 172 100
+ 102 108  99  93  41  33   7   1 185 154 209 160 171 191 141
+ 151  21  47 145 174 186 166 105 181  22 216  67  60  88  66
+ 190 153 117 111   6  49 195 132  94  25 206 165   9  63 180
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 747020us (= 747.02ms, 0.74702s)
+Wall-clock time (full program): 749478us (= 749.478ms, 0.749478s)
+Satisfaction error: 0
+Number of search iterations: 3816
+Number of local moves: 2472 (including on plateau: 2412)
+Number of local minimum: 107 (including on plateau: 306)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 222 145  64 183 123  41 224 134  78 104  45  36  63  56 177
+  39 206  10  87 181 161  42  30 215 132 169 195  65 114  49
+  19  54 200  23  71 157 126 178  59 101 158  93 170  77 209
+ 131  33 221 159 185  75  47  50  67  15  57  61 202 189 203
+ 197 207 136  46 102 118  43  83 165   1 137  66 191 176  27
+ 163  80  62  68 212  34 218 153 139 174  89 124  28 107  44
+  38 193  85  84  51  55  25  70  69  76 187 211 146 182 223
+  98 119   8 129 143 127 155 192  24 172  16 144  29 164 175
+  53 171 196 148  31 141  40 135  86 216 116  35  21 184 122
+ 154   6 125  22 198  97  58  92 100 138  72  91 220 162 160
+ 108 109  94 149   4  95 201 156 121 147  60 151  11 103 186
+ 152  81 111 120 180 130  74  48  96  79 204  73 219 115  13
+  99 173  26 133 179 214 225 188 142  37  20 128 105   9  17
+  14 106 190 194  32 110 210  18 117 213 166 205 113   5   2
+ 208  12 167 150   3 140   7 168 217  90 199  82 112  52  88
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.03436e+06us (= 1034.36ms, 1.03436s)
+Wall-clock time (full program): 1.03676e+06us (= 1036.76ms, 1.03676s)
+Satisfaction error: 0
+Number of search iterations: 5222
+Number of local moves: 3664 (including on plateau: 3604)
+Number of local minimum: 128 (including on plateau: 475)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 127  43  37 164  10 206 139 219 110 180 188   1 126  25 120
+ 185 125  94 147  18 122 112 133  68  50  63  92 216 141 129
+  83  67 212 213 184 220  46  19 211  12 124 189  40  53  22
+ 143  69  47  62  45  58 105 119  34 195 102 181 200 152 183
+ 137 210  27  96 199  95  39  29 150  33  26 144 205 118 187
+  74 172 197  23 208  30   3 128 166  72  17 173 132 142 158
+  60  85 123 116 111 145  76  82 140 175 201  66  80 174  61
+  36 108  54  91  77 148 218 154  32 222 215  78  42 161  59
+  93  97 176  75 207  73 192  35  64  55 130 151 155  86 106
+ 163 204 168  99  57  31 224   8   2 214 104  48 198 131  44
+ 107  15 101 113 162 196  88 167 225  84  13 193  14 138  79
+ 223   4  51   9  87 134   5 209  56 135 221 179  21 202 159
+  38 171 177 156 194 109 178 182 153  24  52  70 103   7  81
+ 136 160 203 217  65 117 170  20 115 146  49  89   6  16 186
+  90 165  28 114  71  11 100 191 169  98 190  41 157 149 121
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 532489us (= 532.489ms, 0.532489s)
+Wall-clock time (full program): 534992us (= 534.992ms, 0.534992s)
+Satisfaction error: 0
+Number of search iterations: 2470
+Number of local moves: 1845 (including on plateau: 1815)
+Number of local minimum: 45 (including on plateau: 222)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  92 200  10 185 131  21  31  33 150 101 124  88 104 222 203
+  93  11  63 141 218 201 165 213  97  70   6  15 163 196  43
+ 137 133  68 157 127 151  25 204 167 216 144   3  13  39 111
+ 223  60 170 179 183   2 128  42 134   5  34  69  81 195 190
+ 211 132 172  58  40  50  48 143 120  98 164  66 162  62 169
+  78 152 123  75 119 148 186   1 107 147 117 175  52 103 112
+  38  85 202   8  51  49 225  74  47 206 146 176  57 221 110
+  24 174 115  95 114 106  90 121  94  91 173 168 108  73 149
+  61 153 224 136 209 109 118   9  72  45  41 129 180 138  71
+ 125 171 219  56  44  87  84 105 139 122  27 126 102 158 130
+  79  14  20 194 193 189  65  80 142 156 181  89 199  76  18
+ 100 145 116  46  99 217 210  86 166 182  77 187  12  29  23
+ 192 197  67 135  22 159  59 208   7  19  36 212 188  17 177
+  82  64  96  16 113  28 207 215 198  53 205 155  83  26 154
+ 160   4  30 214  32 178  54 161  55 184 220  37 191 140  35
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 436808us (= 436.808ms, 0.436808s)
+Wall-clock time (full program): 439304us (= 439.304ms, 0.439304s)
+Satisfaction error: 0
+Number of search iterations: 1965
+Number of local moves: 1449 (including on plateau: 1419)
+Number of local minimum: 41 (including on plateau: 148)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 123  54 150 102 172  69  63 189  38 167  82  57 183 142 104
+  31  48 190 207 173  97 171   3 175 208  32 129  47 143  41
+ 176  64  95 168 180  78  84 114 119  39 141 151  24  68 194
+  61 162 212   8  27 181 193 163 170  80  44 209  94  56  35
+ 201 160  91 224  34 177 185 186  29 203  67  16  26  37  59
+  89 200  86 217 100  88  81  73 215  72  93  66 103  28 184
+ 166 134 113 110 118  75 115 111  10  96 161  79 125  71 211
+   1 159 199 101  17  85  11 223  60 120 178 108 204 105 124
+ 145  77  50  14 136 218 152 220  12  33   2 158 155 169 154
+  70  90 137  62 192 146 147 164 157   6 149 222  43  92  18
+  99  87  40 128 144  23  51   9 126 138 210 202 216 116 106
+ 196  21  13  53 132  20  55 156 153 195 206 121 131 198  45
+  25 148  22 219  30 139 122  15 197 191 205  76 174  58  74
+  98 112 109  46 221 117 135  65 127   7  83  52 165 225 133
+ 214 179 188  36  19 182 130   4 107 140  42  49   5 187 213
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 285827us (= 285.827ms, 0.285827s)
+Wall-clock time (full program): 288249us (= 288.249ms, 0.288249s)
+Satisfaction error: 0
+Number of search iterations: 1371
+Number of local moves: 1055 (including on plateau: 1025)
+Number of local minimum: 20 (including on plateau: 98)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 181 211 135 180  58 161   4 166 201  27   9  68  70 189  35
+  12  21 168 160  50 190  23 138 193  54 170 213 217  29  57
+ 143  22 202 196 210 173 128  10  32 139 104   3  36  97 200
+  45 100 162 184  69  30  74 171 209 169  48 172 123  31 108
+ 150 151  17  52   2  47 222  28 157  83  72  88 216 218 192
+ 207  19  51 146 205  60  62  99   8  78 144 195 220 112  89
+ 142 115  91  66  63  87 130 132 102 152 185 141  46  40 203
+ 109 103  85 114  92 156 117 154 133 121  80 110  73 147 101
+ 198  79 186  11 163  86  98 137 136  77 223 118  53   1 129
+  90 188  14 105 182 153 119  67  49 140 177  20 120 126 145
+  56 175 219 134 165  76  13  61  16  93  96 206 164 197  24
+  41 124 106  39 215 225 127  15 131 214  43 178  44 155  38
+   5 187 167 113  34  82 179  81  65 204 194 159   7 176  42
+  95 174  59  84  71  94 208 212  64 107 125   6 158  55 183
+ 221  26  33 111 116  75 191 224 199  37  25  18 148 122 149
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 180408us (= 180.408ms, 0.180408s)
+Wall-clock time (full program): 183368us (= 183.368ms, 0.183368s)
+Satisfaction error: 0
+Number of search iterations: 782
+Number of local moves: 637 (including on plateau: 608)
+Number of local minimum: 11 (including on plateau: 68)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 197  43  18   2 118 177  24 119 146  95 220 127 221  83 105
+  65 156   7 203 186  74  10 201  87 199  11  32 173 206  85
+  72  69 174  15 140 198 151 184  30  39 192  61 165  14 191
+  90 219  20  64 188  79   4  37 122 128 154 208  45 200 137
+ 116 121 172 138 109 125 171  31  42 142  75  94 150 141  68
+ 130 134 152 132  66  82 108  25 213 131 124 182  27  41 148
+ 217 176  86 144 169 100 129 224  21  56  57  58  97   8 153
+ 145  29  51 102  38 115 207  28  55 143 216  71 126 211 158
+ 120 204 166 183  49  47 180  19 147 223 112   6 170  35  34
+  23 195 222  36  40 101  73  59 159  81 157 196  26 194 133
+ 218  13  91 167 181 179  48 225 168   3  17 189  33 110  53
+  92  67 214  62 155  88  93 175  50  78   5 187  12 215 202
+ 113  76 161 103  63  60 178  22 185 163  46 164 209  54  98
+  96  70  44 139  89  77 212 136 190  52 160 111 106  99 114
+   1 123 117 205 104 193 107 210  80 162 149   9 135  84  16
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 933024us (= 933.024ms, 0.933024s)
+Wall-clock time (full program): 935513us (= 935.513ms, 0.935513s)
+Satisfaction error: 0
+Number of search iterations: 4711
+Number of local moves: 3014 (including on plateau: 2928)
+Number of local minimum: 149 (including on plateau: 347)
+Number of resets: 2
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+   9  34 199 173 222 223 106 108 147  63 201  48  30  12 120
+ 191 189 198   2  80  16 192  46  67 122   6  36 178 182 190
+  86 139 116  33  47 140 187 206  85 163  68  90 121 152  62
+ 202 183  17  49 204  73  57  58  93 186  56  18 162 203 134
+ 220 176  43   1 107 159 112  26  20  76  71 209 194 133 148
+  79  78 138 200 188 195  72 207 117   5   3 129 180  89  15
+  88 185 109 110 111  25  87 135 218  61  95 214  77 114  66
+ 154  97  60 215 205 155 142 113 127  22 146 130  51  55  23
+  59 166 181 158  50  13  39  19 211 193  27 225 149  38 167
+ 125 104 124 123  75  10 212 175  45 160 221  70  41  42 168
+  54 157   8  83 128 179  24 137 131 217 132  29 119 197 100
+  84  21 161 156  74 118 150 170 184 210 105   7 153  37  65
+  96  14 177 219  99 171  44  40 165  31 213 102  82  98 144
+  52 141  28  92 101 103 145 164  32  35 143 172  94 169 224
+ 196  11 136  81   4 115 126  91  53 151 208 216  64 174  69
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.13538e+06us (= 1135.38ms, 1.13538s)
+Wall-clock time (full program): 1.13777e+06us (= 1137.77ms, 1.13777s)
+Satisfaction error: 0
+Number of search iterations: 5523
+Number of local moves: 4122 (including on plateau: 4066)
+Number of local minimum: 103 (including on plateau: 499)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  46 114  26  65  28 209 219  88  44  76 165 214 138  61 202
+  11  35 210  85 225  55   2 200 147 206  34 120 162 188  15
+ 171 204  81 128 197  39  75 160 132  33 105  70 190  68  42
+  90 199 170 195  56  83  25  49  41 126  91 161 181 178  50
+ 182  24  29 180  45  30 167 216 217   3 156  13 118 215 100
+ 173 154   7  19 112 220 116 159  32  27 146 175 135  86 134
+  80 130 109  82 169  66 106   4 133 218  31 127  67 166 207
+ 141  93  79 131  21 153  96  84 117 102 192 107 172  97 110
+ 145 177 194 140 174  18  94  92  87  48  95  62 222 125  22
+ 155  89 119 208  38  98 203 101 139 193   1  37   6 129 179
+  77 223 205   9  69 122 121 176  74 103 108 142  52  23 191
+ 124  54 224  73 115 213 104  99 198 201  47  63  51  57  72
+   8  36  64 163 111 187 168  43 113 221 123 150 137  14 157
+ 148  12 158 164 186  17 183  40 211  78 212  58   5 152  71
+ 144 151  20  53 149 185  16 184  10  60 189 196  59 136 143
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 348970us (= 348.97ms, 0.34897s)
+Wall-clock time (full program): 351473us (= 351.473ms, 0.351473s)
+Satisfaction error: 0
+Number of search iterations: 1560
+Number of local moves: 1219 (including on plateau: 1189)
+Number of local minimum: 20 (including on plateau: 130)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224   8 100 183  71   1 110 219  47  45 111 119  70 220 167
+ 141 203  72 157 132  35 193 123 188 134  77  55  91  90   4
+ 121 136  23  57 150 177  88  93 195  17 124 202 173  63  76
+   9 158  21 199  50 171 140  87  31 163  74  29 217 174 172
+  34  16  28  58 165 216 186  85  75  44 181 212 211  67 117
+  68 153 154  80 145 139 205  24  53 120 201 179   3  82  89
+ 128  25 125  13 191 118 151 218 156 133 104  86 112  69  66
+ 166  48  96 122  18 215 116 130 115 225  73 192  37  99  43
+  26 106 221 107  98  97  52  42 137 108 206  38 170 138 149
+ 131  84  95  39 103  65 129  19 155  83 160 146 185 209  92
+ 223 114 164  60 197 182   5 144  46 127  56  59  36 180 102
+ 208 214 175 161  41  78  30  62 135 143  64  20  51 113 200
+ 190 162 101 204 105  11 187  94   7 178 210  27  15  10 194
+  14  61 152 176  40  81  54 196 213   6  22 184 126 148 222
+  12 207 168  79 189 109  49 159 142 169  32 147 198  33   2
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 904720us (= 904.72ms, 0.90472s)
+Wall-clock time (full program): 907131us (= 907.131ms, 0.907131s)
+Satisfaction error: 0
+Number of search iterations: 4484
+Number of local moves: 3244 (including on plateau: 3185)
+Number of local minimum: 109 (including on plateau: 394)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  92 218  69 124  98   4 213 166 107  63 199 114  52 108  68
+ 165 136 150 143  74  54   3 134 145 118  34 209 103 147  80
+ 201   6 206  67  75 168  41  28 115  48 221  73 189  65 192
+ 178 155   7  23 128 225 183  89  49 216 162  38  29  32 181
+  60 116  66 119 224 156  42 214  88  37 132 180 120 110  31
+ 149 130 169 140 190  97 202  12 100  99  59 195  33  94  26
+ 217 161  51   5 148  17 127 163 193  82 197  57  70  86 121
+  91 203 158  30 176 223 207  84  10  35  36  55 179  21 187
+   1 101 139 157  95 191 154 172  14 185  79 146 159  46  56
+  18  81 106 188  13  77 174 142 160 113  58 215 204 137   9
+ 173 112  44 126  47 205 135  64 222 151  61  72  16 196  71
+ 109  39 117 182 125  22  76  20 184 152 211  50 171 144  93
+  96 208 153 104  53 133 111  15 102 212  11 138  62 122 175
+  40  27  90  87  85  78  19 194 123  43 210 129 131 220 219
+ 105   2 170 200 164  45   8 198  83 141  25  24 177 167 186
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 929707us (= 929.707ms, 0.929707s)
+Wall-clock time (full program): 932130us (= 932.13ms, 0.93213s)
+Satisfaction error: 0
+Number of search iterations: 4481
+Number of local moves: 2846 (including on plateau: 2760)
+Number of local minimum: 144 (including on plateau: 352)
+Number of resets: 2
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 196  32   4  49  75 200 174  31  58 219 164  43 209  64 177
+  86  78 144  88 205  14  74 215 204 191  12 193  17  24 150
+  30  27 225 154 216 173 206  83  26 117  51  10  65 192 120
+ 180 147  47 166 155 211 176 171  40  55  70  81   6 188   2
+  29 162 184 134 165 160   9 143   7  84 163 159 148 125  23
+ 201 221  57  19  34 100  33  91 195  15  39 208 197 214  71
+  21 140  97 145  69  99  25 202 121 115 217 105 156   5 178
+ 127  35 158 109 114  94  38 129 207 102 116  80  92 199  95
+ 122 124 170  93 111  98 128 113 130  76 108  62  54 123 183
+ 137  22  66 136 187  16 138 141 153   3 168   8 131 203 186
+  85 189  67  56  59 223 104  44 157 175  37 218 169  52  60
+  68 132 172  96  90  73 151 149 101 222 181  48 139  45  28
+  63 119 212  20 133  50 110 112 106  89 167 182 179 142  11
+ 126 185  13 210  46  77 135  53  87 190 161 152  61   1 198
+ 224  82  79 220  36 107 194  18 103  42  41 146  72 118 213
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 491452us (= 491.452ms, 0.491452s)
+Wall-clock time (full program): 493879us (= 493.879ms, 0.493879s)
+Satisfaction error: 0
+Number of search iterations: 2336
+Number of local moves: 1725 (including on plateau: 1696)
+Number of local minimum: 46 (including on plateau: 198)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  68  21 156  39 223   6 220  49 210  93  48 216 114 106 126
+  24  60 116   1  52 172 151 195 175 196 123   9  78 203 140
+   4  43 225 222  77 107  63 142  40 138 167 101 170 146  50
+ 197 157   2 105  15 193 209 200  89  58 102  56  82  65 165
+ 224  76  30 119 192  42  26 174 113  27  85 134 154 144 155
+ 135  29 206 152  17 173 141  20  99 150  96  62 108  86 221
+ 120 207  25 132 104 130  55  36 133 181 137 124  88 136  87
+  32 112 117 103 131  57  80 122  79 143 204 128 100 160 127
+ 115  61  97 218 186 162  94  14 109 177  16  28  83 182 153
+ 163 194  66  64  18  73 201 215 184  13  11  69 214 179  31
+ 205 145 161  51 188 139  95  44  92  67 168 212   5  70  53
+  84  12 187  38  71  41 149 129 164 111 125 159 213  34 178
+ 147 217  59 166  33  22  47 183  23 208 219 185 121  19  46
+ 169 190 176  74 189 180 110  81 148  35 191  10  90   7  45
+   8 171  72 211 199 198  54  91  37  98   3 202  75 158 118
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 263931us (= 263.931ms, 0.263931s)
+Wall-clock time (full program): 266332us (= 266.332ms, 0.266332s)
+Satisfaction error: 0
+Number of search iterations: 1232
+Number of local moves: 1015 (including on plateau: 984)
+Number of local minimum: 10 (including on plateau: 104)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224  78 186  16 212 125 105 111 144 170  92  18  20 139  55
+  89 208 161  57 214  21  45  47  81 180   6 200  91 189 106
+  80 221   7 225  83  13 183  54  27  43  46 167 190 154 202
+  15 198  58  96  22 220 143 188  34  17 193 169 113 110 119
+ 165  51  77 174   2 177 101 182  23 132 158 130 215  44  64
+ 204 176 138 137  35 203  49  85  60  11 133 149 120 136  59
+ 123 156  28 140 187 126 118  63 135  33  12 210 127  31 206
+ 109 129  93  94 104 112 131 142 115 114 124 134  98 122  74
+ 150  32  38 181  99   8  73 217  90 163  84  19 178 162 201
+  53  29  14  97  42  61  56 194 216 207 191  70 211 192  62
+ 160  87 168  67 155 152  68 148 159  36 108  82  72  76 157
+ 141  48 205  69 222 103 185   9 196  66 151 100  25  30 145
+   5  95 213  41  39 179 121 175 184 209  50  75   3 218  88
+ 173  71  86 199 107  24 164  79  65 117 219 146 195  40  10
+   4 116 223 102 172 171 153   1 166 197 128  26  37  52 147
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 236606us (= 236.606ms, 0.236606s)
+Wall-clock time (full program): 239010us (= 239.01ms, 0.23901s)
+Satisfaction error: 0
+Number of search iterations: 1138
+Number of local moves: 878 (including on plateau: 848)
+Number of local minimum: 10 (including on plateau: 108)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 132  56  84 157  32 100 143  45  64 147 115 131 159 207 123
+ 168 182   5  28  41  22  97 217 213 146 189 106  27  90 164
+  36 192  72  59 117 224  87 109  70 183 169  46 184  92  55
+ 108 101 145 156  93  19 220  34 222  11  54 153  53 150 176
+ 211 128  79 136  73 155 118 105 202  62  69  18 148 160  31
+ 181  66  85  42 167 215 196  68 178  49   7 171  60 163  47
+  50 158  20 125  76  10 185 200   9 218 214 208 144  48  30
+ 210 177 162  65   3 142  67 129 121 104 199  38 138 124  16
+  29  13 190 212 204  24 140  99  52 173 149  61 223   6 120
+  35 201  95 194 203 126 130 114  57  94  43  14  40 195 154
+ 119  91 180 113  82  88  80 110 111   4 116 179 206  77 139
+  12 191 133 161 197 112  44  51   1  81  78 102  86 221 225
+  23  96 166   2 165 209  21 172 151 198  98 219  15   8 152
+ 193  26  63 170 107  74  33  37 103 186 137 122 187  83 174
+ 188  17 216  75 135 175 134 205 141  39  58 127  25  71  89
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.31761e+06us (= 1317.61ms, 1.31761s)
+Wall-clock time (full program): 1.31998e+06us (= 1319.98ms, 1.31998s)
+Satisfaction error: 0
+Number of search iterations: 5967
+Number of local moves: 4363 (including on plateau: 4304)
+Number of local minimum: 172 (including on plateau: 462)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 116  50 120 122 139  10 198  39 182  93 219 101  71  20 215
+  73 155  97  14 133 138  51 104 216  88   8 218 112 203  85
+  80 111  17  77 123  74 213 157  31 110  54 221 181 200  46
+ 189  59 220 224  13  56  27  29 206 107 109 160  90 168  38
+ 166  28  66 127 202 204  99  57   9  76 146 103  68 167 177
+  41 153  55 173 131  37 130 144 134 156 121 149   2 137 132
+  30 180 135  16  48 199 192  35 129 193  12 117 106 145 158
+  18 188 114  15 172 208 115 102 100  95 207  92 175  36  58
+  65 191 170 225   3  94  84 152  32  24 165   7 212 128 143
+ 223  33 214  79 194  63  81 196  96   5 197  49  64 140  61
+ 108 171  62 185 178  86  78 222  60  87 174 141  52  22  69
+ 211 161  70  25  40  45 163 169 154 184  89  23 183 125  53
+ 164 150  26 195  75 186  19 151 148  67  43 190 142  34 105
+ 205  21 210   1 126 159  83  47 187 209   4  42 124  98 179
+   6  44 119 217 118 136 162  91  11 201 147  82 113  72 176
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 316501us (= 316.501ms, 0.316501s)
+Wall-clock time (full program): 318968us (= 318.968ms, 0.318968s)
+Satisfaction error: 0
+Number of search iterations: 1536
+Number of local moves: 1134 (including on plateau: 1105)
+Number of local minimum: 37 (including on plateau: 125)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  93 204 213  39  41  87 175 189  54  65 103 166 215  24  27
+ 217 111 157 114  35 142 100 160 199 127   2  38  25 207  61
+  13 174 187 180  92  74 144  23 151  78   4 223  11 121 220
+   9 203 156  36 178  53  56 191  28 221 218 130  80  70  66
+ 154 109  58  69 186 179 197  20 182  12 172  63 216  14  64
+ 122  72 129  86  15  59  95 194  88 201  32  40 176 196 190
+ 133  51  22   1 152 162  30   7 124 123  98 225 198 150 219
+  68 184  77 137 139 108  81  50 167  55  49 119  82 206 173
+ 192  48 102 148 200 140 125 146  31 110  71  26  94  99 163
+  83  67 145 149 128  46 105 117  19 132 171 155  75 168 135
+ 224  90 104  96 138 205 131 188  62  57 210  37  76  44  33
+ 134 136 161 106   8  52  89  97 141 185 116 101 170 120  79
+   3  21  34 211 126 209 143 222 183  16  42 202 164   6 113
+  91 165 107 208 212  10  47  18 181 118 193 153  29 158   5
+ 159  60  43 115  45 169 177  73  85 195 214  17  84 112 147
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 277638us (= 277.638ms, 0.277638s)
+Wall-clock time (full program): 280060us (= 280.06ms, 0.28006s)
+Satisfaction error: 0
+Number of search iterations: 1286
+Number of local moves: 981 (including on plateau: 951)
+Number of local minimum: 22 (including on plateau: 125)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 214  29 164  18 122 213  45  35 168   4 107 181 203  50 142
+ 222 186  43 106 159  44 212 117 150 127  11 128  70  24  96
+ 210  30 153  60 157  68  67  28  66 179 211  57  40 195 174
+  15  81  20  34 188 225 193  16 217  37 175 120  75 187 112
+  32  17 158 194  92 147   6 208 207  61  52 102 125 114 180
+  55 140 131 189 219  77  33  47 115 200 116  72 108  74 119
+  22 110   8  58  76  93 162 123 167   7 184 101 209 223 152
+ 111 172  89  42  36 169 148 185 109 132  63  90 198  95  56
+  19 143  53 165 126 192 161 191   2 196  91 183   5  83  85
+ 205 156 218 155  46  73 100 154  38 134 215  59  12 104  26
+  65 171 177 197  39  25 129 178  82  79 176 133  23  84 137
+ 224  21 144  78 139 103  14  71 105  27 166  31 220 182 170
+ 145 130 124 190  49  80 121  94 113 138  41 216  54  64 136
+  87 221 204   3 199 135 141  99  10 173   1 160 151  98  13
+  69  88   9 206  48  51 163 149 146 201  86  62 202 118  97
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.23889e+06us (= 1238.89ms, 1.23889s)
+Wall-clock time (full program): 1.24138e+06us (= 1241.38ms, 1.24138s)
+Satisfaction error: 0
+Number of search iterations: 6186
+Number of local moves: 4037 (including on plateau: 3918)
+Number of local minimum: 210 (including on plateau: 476)
+Number of resets: 3
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  74 185  37 208  51 110  60 211 129  99  13 184  48  69 217
+ 162  55 209  90 225 161  81   1 113 151   2 214 149  54  28
+  39 222 171 126 202 191 104  35  93  97 109  53 102  50 101
+ 205  75   3  36 207 215 212  63  80  22 137 178  68  17 177
+  42 166  47 165 170   9 138 127 179 145 141  41 158  89  78
+ 156 172  66  33 120  40 188  59  26 117 150  67 160 152 189
+  52  96  38  87  23  86 221 164 133 200  72  98  56 210 159
+ 147 116  79 219  92  18 193 135  71  77 146  46 192 106  58
+ 157  19 139 195 115 218  16  34 180  21  49 173 182 124  73
+ 125  44 132 105 122 121  31 163  24 100 111 155 112 183 167
+ 134 142 190   5  62 198 224 194  15  94 108   4 107 186  32
+  20 103 201  83  82  45 175 128 216 168 213  11  95  25 130
+ 181 114 223  84  91 153   8 148  88  10 176  85 136 169  29
+ 131  43   6 119  57  12  30  27 144 220 203 187 123 197 196
+  70 143 154 140  76 118  14 206 204 174  65 199   7  64  61
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 371726us (= 371.726ms, 0.371726s)
+Wall-clock time (full program): 374166us (= 374.166ms, 0.374166s)
+Satisfaction error: 0
+Number of search iterations: 1643
+Number of local moves: 1331 (including on plateau: 1301)
+Number of local minimum: 22 (including on plateau: 164)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 200  31 192 124   8 161 143  56  73  19 206   9  89 175 209
+  87 129  61  86 191 150 202  88 126  25 137 101 160  60  92
+ 105 167 223 140 154  49 151  85  22 109  40  97 181  96  76
+ 224  93 107 164 220  50  46 179 153  11  66   1 221  78  82
+  57  53  80  65  67 184 174 190  75 155 204 189  14  29 159
+  74  13 139  64 193 176  18 169 103 135 203 144  72  27 165
+ 133 197 142   3 214 186   7  12 117  59  99  91 149 106 180
+ 147 113 104 119 108 123 112 131 127 111 118 121  58 134  69
+ 130  44 194  28 114 216  20 158  68 196  81 225 168   2  51
+  37 128 210   4  94  48  79 182 218 205  21 116  52 201 100
+  34 157 102 152  10  32 110 125 215 170  54 145  95 146 148
+ 166  63  42 183  26  30  84 211 195  71 122  38 141 185 138
+  45 177  47 136  41 212 171  98 162  70  83  90  55 120 188
+  39 132  36 219 178  43 222   6  17 172 199 213  33 163  23
+ 217 198  16 208  77  35 156   5  24 187  62 115 207 173  15
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 262937us (= 262.937ms, 0.262937s)
+Wall-clock time (full program): 265346us (= 265.346ms, 0.265346s)
+Satisfaction error: 0
+Number of search iterations: 1212
+Number of local moves: 952 (including on plateau: 921)
+Number of local minimum: 16 (including on plateau: 115)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 125  40 127 150 130  63  13 100  26  15 207 223 202 187  87
+ 177 189  70  28  95  92 140  93 133  16  48 124 138 205 147
+   9 214  55  30 173 186 197 154  91  71  98  21  62 159 175
+  39 167 176 209 210 111  32 157  60  25 163  23  64 192  67
+  66 117  57  44 188  35 139 206 211  46 128  65 168 148  77
+ 126  75   1 144 101 158 107  53   5 215  82 178 110 116 224
+ 166 200 221 123 118 104   7 121  86 198  29 146  37  83  56
+ 181  27 120  50  45 105  80 135 190 193  22 184 165 164  34
+  90  17 106 208 204  89 191  18 155 156   4 172 160  76  49
+  72 151 108 196  43 131 137  31  20 142 119 182 103  41 219
+ 134 161  94  79   6  12 203  38 136 222 153 145  81 122 109
+  61  59 185  52 180  97 194 216  96   3 213  73  69 112  85
+  42  11  74 113  19 199 217 225 171 162 141  10  84  58 169
+ 195  88 149 218  54 143   2  33 201 132  68  47 174   8 183
+ 212 179 152  51 129 170  36 115 114  99 220 102  78  24  14
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 713053us (= 713.053ms, 0.713053s)
+Wall-clock time (full program): 715456us (= 715.456ms, 0.715456s)
+Satisfaction error: 0
+Number of search iterations: 3521
+Number of local moves: 2395 (including on plateau: 2335)
+Number of local minimum: 102 (including on plateau: 283)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  80 139  56  79 142 209 177 197 149  38 102 110  31 132  54
+ 204 159  50   1  74 199 152 163  53 156  84  14 221  30 135
+ 216 185  48  77  97  39 172 193   5  15  57 100 168 194 129
+  98  90  86 175  36 123  82  96  28  59  11 186 222 178 225
+  17  19  61 174 119 118 188  44 182 223 116 212 184  12  26
+ 166 125 210  60  33 104  78  69 167 112  83  25 114 162 187
+  41  91   6  47 146 148  52 203 103  51 134 179 108 173 213
+ 214  22 191 171 218  16 121 158  46 157  65  87  23 117  89
+ 106 109  37 206  45  42  71 192 164 115 165 198 151  85   9
+ 144 131 190  93 202 195  55  92   2  63  67  58  29 220 154
+ 138 113  99 170 122  72  10  13 147 124 183 141  27 208 128
+  34  88 137  24  64 224   4  21 153 105 150 219 205 107 160
+  49 111 169  81 189  95 217 161 145 207 101  32  62   3  73
+ 181 180 155 126  68  76 120  75 136 127 201  94  20  66  70
+   7 133 200 211 140  35 196  18 215 143 176  40 130   8  43
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 1.02658e+06us (= 1026.58ms, 1.02658s)
+Wall-clock time (full program): 1.02901e+06us (= 1029.01ms, 1.02901s)
+Satisfaction error: 0
+Number of search iterations: 4882
+Number of local moves: 3391 (including on plateau: 3302)
+Number of local minimum: 146 (including on plateau: 421)
+Number of resets: 2
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 177 107  84 189 178   4  41  86 115 217 206  49  20  22 200
+ 203  74 100 222  76  48 102  16 224  90  83 149 199  88  21
+  62 119  70 221 110 166  40 163 211  91 137 120  92  61  32
+ 151  25 210  75 121  17 182   9 191 142 160  47 175 155  35
+  13 153  36 139  14 172  95 146  51  80 195  15 219 154 213
+ 218 101 129  98  28 181 202 136  63 125 150  23  77 122  42
+  96  37  99  71 168 208 169 215  29   3  31 138 192 105 134
+   1  57 118 106 216 159 132 207 165 116  11 185  38  10 174
+ 147 135  93  43 197 112  27  97  53 158 220   6  56 223 128
+ 104 108 133 171  12  73  34 196  94 111  46 225  68 193 127
+  85 201 114  55 162 161 113  26 141  33  54  24 176 183 167
+ 164 190  39   7 145 157 170  82 187   5  78 209  58  81 123
+ 143 103 180 156  19   8 144 130  67 126 212 131  64 140  72
+  66 198 117 124 205 179  30   2  45 204  60 188 109  89  79
+  65  87 173  18  44  50 214 184  59 194  52 186 152  69 148
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 3.1861e+06us (= 3186.1ms, 3.1861s)
+Wall-clock time (full program): 3.19e+06us (= 3190ms, 3.19s)
+Satisfaction error: 0
+Number of search iterations: 15866
+Number of local moves: 10662 (including on plateau: 10455)
+Number of local minimum: 520 (including on plateau: 1281)
+Number of resets: 6
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 222  94  92 102   7 159  95  75 165  36 153  49  23 211 212
+ 204 207 149  19  50   6  61  77  20  24 176 160 173 199 170
+ 191  98  39   9  30   4 201 188 163 136  47 171 181 116 121
+  40 133  78 184 223  88 143 139 126 161  46 151  81  57  45
+  62  37   8 208 146 202  89  16  97 205 172   2 192 144 115
+  67 134 185 169 190  96 124 200  11 122  83   5 137  31 141
+ 174 156  32 140 145 135 127 114  86 118 103  41  99  93 132
+  73  51 224  90 168  55  44 119 112 155 130 138  91 180  65
+ 106 183  87 109 100  43 107  84 179 105 189 110  79  21 193
+ 187  54 152 225  63 113  28  27 142  76  34 131 203  74 186
+ 123 194 215   1  38 220 150  10 177 101  60  53 219  70  64
+  58 125 182  72   3 164 221 214  25  52 128 196  33 166  56
+  15 158  68 120 206  35  66 195  71  13 198 197  14 210 129
+ 147  29 167 178 218 162  85  80 104 175  59 209  22  12  48
+  26  42  17  69 108 213 154 157 217 216 117  82 148 111  18
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 293272us (= 293.272ms, 0.293272s)
+Wall-clock time (full program): 295711us (= 295.711ms, 0.295711s)
+Satisfaction error: 0
+Number of search iterations: 1393
+Number of local moves: 1060 (including on plateau: 1030)
+Number of local minimum: 16 (including on plateau: 130)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 191  21  25 222 216  74 110 115 160 178  46 173  20  76  68
+  52  50 206  30 210 221 198 218  48  69 132  81   4 143  33
+ 215 224 195  57 141 158  36 128  41 137 209  11 108   8  27
+ 136 168  82 147 172  87  35  43 202  54  10 187 200 134  38
+  77 156  45  56 126 170   5  29  93 190  94 169 138 196 151
+  37 146 225  26  67 153 165  65  61 207  70 205  85   3 180
+  19  63 214  53 185 164  84 174  91  16 120 175  42 166 129
+ 107 121 139 116 122  97  99 131 111 106 118  92 125 102 109
+ 155  75 104 117  80   7 167  88 182 112  98 103 211  95 101
+  49  83  89  71  44 123 157  58 144  78 197 148  86 223 145
+ 162 213 127 161  64   9 217  79  51  32  17  62 201 114 186
+  72 184 159  40  96   2 181 189 140 130  59  28 199 194  22
+ 171  34  39 220   1 163 212 193 208  18 154  14  12  73 183
+ 152 133  31 176  47 177  23 119  13 219 192 105  60 113 135
+ 100  24  15 203 124  90   6  66 150 149 179 142 204  55 188
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 434089us (= 434.089ms, 0.434089s)
+Wall-clock time (full program): 436427us (= 436.427ms, 0.436427s)
+Satisfaction error: 0
+Number of search iterations: 2117
+Number of local moves: 1589 (including on plateau: 1559)
+Number of local minimum: 41 (including on plateau: 192)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 129  46 126   3 166 124  52 136 178 118 137  33 167  73 207
+   8 211 209  71  68 221 165 183 142  56  61  13  72 132  83
+ 164  17 204  27 120  22 190 101 152 195  45 213  29 201  15
+ 199  54  94  55  26  66 158 188  39  58 156 168 198 217  19
+ 104  60 145 140  70  32  44  79 210 189  91 131 216  37 147
+ 160 134 192 157 153  77 130  62  35 148 151   9  90 174  23
+   5 214 105 109  63 149 111  47  80  99 181 194 143   2 193
+ 119 141  57 162 115 139 122  14  92 110 206 186  76  21 135
+  96  95 102 127 100  89  87 108 103 171 170 112  74 197  64
+ 114  93 224  84  75  67  85 179 185 107  10  97  78  82 215
+ 200 187  59 205 176 191 203  12  20  31 106   1   7 159 138
+  18  43  38 161 222 154 218 180  86 177  36  51 173  40  98
+  42   4  34 123 150 182  24 225 169 175 155 113  30 125 144
+ 220 184  25  48 163  49  65 128  88  11 121 172 196 219   6
+ 117 212  81 223  28 133  41  53 116  50  69 202 146  16 208
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 520595us (= 520.595ms, 0.520595s)
+Wall-clock time (full program): 523045us (= 523.045ms, 0.523045s)
+Satisfaction error: 0
+Number of search iterations: 2583
+Number of local moves: 1691 (including on plateau: 1634)
+Number of local minimum: 63 (including on plateau: 215)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  46  97 216 199  33 218   2  69  61  80 214 124 189  85  62
+ 194 212  11  63 184  50 185 172 133  20 193  38  23 181  36
+  35 144   7  75 142  12 158 177 209 153  56 220 140 130  37
+ 225  66  70 163 122   5 146 167 125  53 213  68 223  30  19
+ 138  43  84 166  60 175  27 102 210  86  96 161  17 115 215
+  16   4 169 135 179  76 196  95 159 118 126  57 187  78 100
+  26  15 171  32 170 182 137 123 105  54 200 164 168 117  31
+ 111 162 108 165 127 136 131  22  71 148 120  39 174  99  82
+  40 204  91 176 116  44   8 155 119 186  52 113  88  98 205
+ 157  89 147  21 192  28  59  51 103 160  41 183  73 203 188
+ 211 208 150  25 151  81 143  34  24 197 206 106   9  58  92
+  14  64 201 207  10  77 152 149  94  90 156  49 195 109 128
+ 198 114 190  18  48 173 178 224  74  65  13  47 112 154  87
+ 145 180  79 121  29 221  72  45 141 202   3 107  55 104 191
+ 139  93   1 129 132 217 101 110  67  83   6 219  42 134 222
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 557861us (= 557.861ms, 0.557861s)
+Wall-clock time (full program): 560195us (= 560.195ms, 0.560195s)
+Satisfaction error: 0
+Number of search iterations: 2591
+Number of local moves: 1975 (including on plateau: 1945)
+Number of local minimum: 45 (including on plateau: 205)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 225 127 131  10 184  67  33 212  93   6 194 185  45  65 118
+  95  19  20 108 114 199 207 196  27 205 147  58  40 210  50
+ 141 186 188 183  44   1 173   5 202  29   9   8 189 200 137
+  83 209 203   7  73  75   4 143 179 170  68  90 157  56 178
+  25  63 222 223  76 220  77 133  31  48 162  51  38 152 174
+  72 144 126 105  35 187 156 161  30 130 190 201 145   2  11
+ 167 138 123 160 206  13 115  49 125  59 116 142 193  86   3
+ 129 113 120  92 110 119 106 168  99  98 139 121 107  89  85
+  91 215 122  96 169 128 117 101  79  78  82 140 100 135  42
+ 181 158  60 165  21 166 192  28 103  15  46  69 191 136 164
+ 124  18 146 134  84 149  14 175 195 180  41  66 109 112 148
+ 151  64  52  24 176 163  81  80  54 198  53 211 216  61 111
+ 104 159  32 208  12  36  71  55 171 214  23 155  34 197 224
+  70  43  88 154 219  22 132  87  94 218 221  16  57 177  97
+  37  39  62  26 172 150 217 102 213  47 204 182  74  17 153
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 175248us (= 175.248ms, 0.175248s)
+Wall-clock time (full program): 177617us (= 177.617ms, 0.177617s)
+Satisfaction error: 0
+Number of search iterations: 803
+Number of local moves: 631 (including on plateau: 601)
+Number of local minimum: 9 (including on plateau: 65)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 104 116 115 218 128 160 181  42 178  22 121  52  44  15 199
+ 190 211 125  64  95  10 132 198  11 138   6 135   9 171 200
+  45  53  16 179  86 169   5 217 209 126 202 164 101  31  92
+ 214  20 162 222  39  78  85  91  90  24 204 142  55 145 124
+ 156  75 206  37 166 108 139 114  84 117 170 103 109  93  18
+  89  26 102 186  21 165 161  63 151  99  38  73 215 172 134
+  19 223 133 100 153 182  88 106  57 191  47 174  12 149  61
+ 163 177   1   7 213  69 184  51  40  33 188  82 203 216  68
+ 220 120  25  43 196 212   8  94  28 219 187 144 147  23  29
+  13  76  71 131 207 189 158  14 137 130   4 112 152 146 155
+  30 192  62 194   3  60 167 122  35 123 113 175 168 154  97
+  98  50 129  96  54  65 176  81 205 110 136 185  72 127 111
+  80  27 150  79 208  70  66 105 193 221  48  34  77 180 157
+ 225 210 197  56  59 141  58 224 118   2  36  46 148  32 143
+  49 119 201  83  67  17  87 173 159 140 195  74 183  41 107
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 2.03868e+06us (= 2038.68ms, 2.03868s)
+Wall-clock time (full program): 2.04106e+06us (= 2041.06ms, 2.04106s)
+Satisfaction error: 0
+Number of search iterations: 10322
+Number of local moves: 6761 (including on plateau: 6617)
+Number of local minimum: 323 (including on plateau: 781)
+Number of resets: 4
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  68 166 108 185  63  19 177 194  41 219  25   4 137  75 214
+  67 191 223 143  86 112  28  76 130  73  97 187  26 203  53
+  62 114 173  92  14 152  50 210 171  81 213 101 182  47  33
+ 186  70  55  69 123  60 200  94  48 165  12 157 193 207  56
+ 175 135 111 178 170  31 146  32  51 201 215  24 153  43  30
+ 121 164  16 119  91 102 195  71 209  87 189  45  79  17 190
+ 120  22 140  54 149 205 125  20 109 118 139 117 127 124 126
+  85 100 134 116 133 122 105   3 222 198  90 104  77 110  96
+  21 144  84 221 199 184  36 142  15 141 208  80  46 161  13
+ 156  72 160  34  23  57 106 225   7  82 197  99 147 138 192
+ 162 204  83  29 128 217   1 131 129 159 113 218  42   5  74
+ 168  58  10  49 132 183 136 224 150   9  89  88  64 180 155
+ 174 158 103 163 206  18   2  66 211  40  61 154 179  65  95
+  37  59 188 216   6 181 176  11 167  44   8 115  98 169 220
+  93  38 107  27 172  52 212 196  35  78  39 202 145 151 148
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 445698us (= 445.698ms, 0.445698s)
+Wall-clock time (full program): 448049us (= 448.049ms, 0.448049s)
+Satisfaction error: 0
+Number of search iterations: 2213
+Number of local moves: 1406 (including on plateau: 1349)
+Number of local minimum: 76 (including on plateau: 159)
+Number of resets: 1
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+  34 150 194  57 122 187  88  83 147  55  92 181  79 214  12
+  67  26 137 190 219 159  13  54 134 109  38 116  87 157 189
+ 203   9 164 108  82  95  46 184 107  47 200 124 178  17 131
+  63  36  89 156 220  80 149  27 146 128 179 154   4 162 102
+ 225 209 192  44   6 210  48  29 204  30 138 135 104  37  84
+ 223 172 117 100 177  73 166  50   3 142  61  31 186 169  25
+  68  74  85 112  81 119 152 176 144  16  86 185 165  65 167
+  39  32 114 145  59 163  11 111 191 216 140  45  91 139 199
+  94 224  15  58  76  10 182   5 188 113 136 218  62 121 193
+ 215 127 208  98  66  43 207  72  42 196 133  21 129  78  60
+ 143 197  18  24 173  90 205 195 130  28  64 158 118  20 132
+ 120 125  77  97  53  35  41 153  69 212  40 198 211 168  96
+ 171  99  51 151  14 103 206 222  33 201 217   7  49  23 148
+  22 105 141 180 221 213  75 160  56 183   1  52 161 123   2
+   8 110  93 175 126 115 106 174 101  19 170  70  71 202 155
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 557385us (= 557.385ms, 0.557385s)
+Wall-clock time (full program): 559865us (= 559.865ms, 0.559865s)
+Satisfaction error: 0
+Number of search iterations: 2743
+Number of local moves: 2147 (including on plateau: 2116)
+Number of local minimum: 55 (including on plateau: 228)
+Number of resets: 0
+Number of restarts: 0
+
+@@@@@@@@@@@@
+Variable heuristic: Adaptive Search
+Value heuristic: Adaptive Search
+Started from a custom variables assignment: false
+Search resumed from a previous run: false
+Parallel search: false
+Number of threads (not used if no parallel search): 16
+Number of variable assignments samplings at start (if custom start and resume are set to false): 10
+Variables of local minimum are frozen for: 46 local moves
+Selected variables are frozen for: 0 local moves
+23 variables are reset when 46 variables are frozen
+Do a restart each time 225 resets are performed
+############
+Solution:
+ 224 114  83  32  44  64  55 216  46 153 149 158 130 128  99
+  30 210 199 173  20 181 112 138  52 170  41  96 167  72  34
+  61 192 196  17  15 212   6  39  87 180  54  84 109 222 221
+   3  59  45 174  71 160 156  78   7 214 215  42 211  81 179
+ 106  19   2   5 182 144  69  98 163 162 136 187  86 184 152
+ 213  56  97  66  43 151 185 148 145 164 159  33 110  35  90
+ 172 147 169 189 202  68  24  95  21  70  80   8  37 206 207
+ 108 101 121  93 150 122 115  65 143 137  94 103 104 113 126
+ 102  82 171  60 105 124 218 176 117  26  40 119  91 190  74
+   4 146   1 203  76  88 107 132 197  77 134 127  29 188 186
+ 208  49  89  16 131 133 198  25  51   9 140 166 204 111 165
+ 193  22 129 209  85  18 183 205 219 100  38  57 177  12  48
+ 161 225 139 135 157  31  75  13 154 195  27 178  53 116  36
+  63 155 175 123 223  58  50  73 201  28 220 120 125  14  67
+  47 118  79 200 191 141 142 194  92  10 168 217  62  23  11
+
+SATISFACTION run
+Permutation problem: true
+Time budget: 1e+07us (= 10000ms, 10s)
+Search time: 396864us (= 396.864ms, 0.396864s)
+Wall-clock time (full program): 399260us (= 399.26ms, 0.39926s)
+Satisfaction error: 0
+Number of search iterations: 1949
+Number of local moves: 1447 (including on plateau: 1416)
+Number of local minimum: 40 (including on plateau: 147)
+Number of resets: 0
+Number of restarts: 0
+
