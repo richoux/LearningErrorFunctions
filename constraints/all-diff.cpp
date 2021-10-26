@@ -2,7 +2,7 @@
 #include <algorithm>
 
 #include "all-diff.hpp"
-#include "../learn/function_to_learn_icn.hpp" // for number_functions
+#include "../learn_ga/function_to_learn_icn.hpp" // for number_functions
 #include "../utils/convert.hpp"
 
 // defined in cfn/function_to_learn_icn.cpp

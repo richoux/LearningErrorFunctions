@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "linear-leq.hpp"
-#include "../learn/function_to_learn_icn.hpp" // for number_functions
+#include "../learn_ga/function_to_learn_icn.hpp" // for number_functions
 
 // defined in cfn/function_to_learn_icn.cpp
 double intermediate_g( const vector<double>& inputs,

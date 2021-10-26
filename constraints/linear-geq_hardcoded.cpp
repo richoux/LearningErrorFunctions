@@ -10,6 +10,12 @@ LinearGeq::LinearGeq( const vector<int>& variables, int max_value, int rhs )
 	  _rhs( rhs )
 { }
 
+LinearGeq::LinearGeq( vector<int>&& variables, int max_value, int rhs )
+	: Constraint( std::move( variables ) ),
+	  _max_value( max_value ),
+	  _rhs( rhs )
+{ }
+
 double LinearGeq::required_error( const vector<Variable*>& variables ) const
 {
 	double sum = 0.;

@@ -37,7 +37,7 @@ file.each do |line|
         success += 1
       end
     elsif words[0].include? "Search time"
-      get_rid_of_ms = words[1].split('ms')
+      get_rid_of_ms = words[1].split('us')
       runtime = get_rid_of_ms[0].to_f
       time += runtime
       times.push( runtime )
@@ -52,10 +52,10 @@ end
 
 mean = ( times.sum(0.0) / times.length ).round(2)                
 
-puts "Mean time: #{mean}ms\n"
-puts "Median time: #{median(times).round(2)}ms\n"
-puts "Min time: #{times.min.round(2)}ms\n"
-puts "Max time: #{times.max.round(2)}ms\n"
-puts "Std dev: #{pop_standard_deviation(times).round(2)}ms\n"
+puts "Mean time: #{mean/1000}ms\n"
+puts "Median time: #{median(times).round(2)/1000}ms\n"
+puts "Min time: #{times.min.round(2)/1000}ms\n"
+puts "Max time: #{times.max.round(2)/1000}ms\n"
+puts "Std dev: #{pop_standard_deviation(times).round(2)/1000}ms\n"
 
 exit

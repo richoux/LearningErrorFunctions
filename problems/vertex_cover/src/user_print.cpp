@@ -12,11 +12,15 @@ stringstream UserPrint::print_candidate( const std::vector<Variable>& variables 
 	if( variables.size() != 20 )
 	{
 		stream << "Solution:\n";
+		int count = 0;
 		int max_element = std::numeric_limits<int>::min();
 		for( const auto& var : variables )
+		{
+			count += var.get_value();
 			if( max_element < var.get_value() )
 				max_element = var.get_value();
-
+		}
+		
 		int indent_values = std::ceil( std::log10( max_element ) ) + 1;
 		int indent_indexes = std::ceil( std::log10( static_cast<int>( variables.size() ) ) );
 		for( int i = 0 ; i < static_cast<int>( variables.size() ) ; ++i )
@@ -30,6 +34,7 @@ stringstream UserPrint::print_candidate( const std::vector<Variable>& variables 
 			else
 				stream << ", v[" << std::setw( indent_indexes ) << i << "]:" << std::setw( indent_values ) << variables[i].get_value();
 		}
+		stream << "\nCount=" << count << "(must be " << (91*2)+34 << ")\n";
 		stream << "\n";
 	}
 	else

@@ -19,4 +19,5 @@ class LinearGeq : public Constraint
 
 public:
 	LinearGeq( const vector<int>& variables, int max_value, int rhs );
+	LinearGeq( vector<int>&& variables, int max_value, int rhs );
 };

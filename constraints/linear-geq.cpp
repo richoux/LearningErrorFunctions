@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "linear-geq.hpp"
-#include "../learn/function_to_learn_icn.hpp" // for number_functions
+#include "../learn_ga/function_to_learn_icn.hpp" // for number_functions
 
 // defined in cfn/function_to_learn_icn.cpp
 double intermediate_g( const vector<double>& inputs,
@@ -12,6 +12,13 @@ double intermediate_g( const vector<double>& inputs,
 
 LinearGeq::LinearGeq( const vector<int>& variables, int max_value, int rhs )
 	: Constraint( variables ),
+	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+	  _rhs( rhs ),
+	  _le_concept_{ (int)variables.size(), max_value, rhs }
+{ }
+
+LinearGeq::LinearGeq( vector<int>&& variables, int max_value, int rhs )
+	: Constraint( std::move( variables ) ),
 	  _weights{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
 	  _rhs( rhs ),
 	  _le_concept_{ (int)variables.size(), max_value, rhs }
