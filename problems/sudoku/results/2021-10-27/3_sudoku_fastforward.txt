@@ -13,35 +13,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 9 3   6 2 1   8 5 4
 
- 3 6 8   9 5 2   1 7 4
+ 8 1 4   3 5 9   6 2 7
 
- 7 9 4   3 8 1   6 5 2
+ 6 2 5   4 8 7   9 1 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 8 9   7 1 3   5 4 6
 
- 1 4 2   5 9 3   8 6 7
+ 5 4 7   9 6 8   2 3 1
 
- 9 7 3   8 1 6   4 2 5
+ 1 3 6   5 4 2   7 9 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 5 8   1 9 6   3 7 2
 
- 6 5 9   4 2 8   7 1 3
+ 3 6 1   2 7 5   4 8 9
 
- 4 3 7   1 6 5   2 8 9
+ 9 7 2   8 3 4   1 6 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.35079e+06us (= 1350.79ms, 1.35079s)
-Wall-clock time (full program): 1.35302e+06us (= 1353.02ms, 1.35302s)
+Search time: 62856.2us (= 62.8562ms, 0.0628562s)
+Wall-clock time (full program): 65894.9us (= 65.8949ms, 0.0658949s)
 Satisfaction error: 0
-Number of search iterations: 8658
-Number of local moves: 2844 (including on plateau: 2248)
-Number of local minimum: 994 (including on plateau: 266)
-Number of resets: 35
+Number of search iterations: 181
+Number of local moves: 116 (including on plateau: 80)
+Number of local minimum: 8 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -59,35 +59,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 4 6 5   9 8 7   2 3 1
 
- 3 6 8   9 5 2   1 7 4
+ 3 7 9   2 1 4   8 5 6
 
- 7 9 4   3 8 1   6 5 2
+ 1 8 2   3 6 5   7 4 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 3 6   1 7 9   4 2 5
 
- 1 4 2   5 9 3   8 6 7
+ 9 5 1   4 2 3   6 7 8
 
- 9 7 3   8 1 6   4 2 5
+ 2 4 7   6 5 8   9 1 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 9 3   5 4 6   1 8 2
 
- 6 5 9   4 2 8   7 1 3
+ 6 2 8   7 3 1   5 9 4
 
- 4 3 7   1 6 5   2 8 9
+ 5 1 4   8 9 2   3 6 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.46436e+06us (= 1464.36ms, 1.46436s)
-Wall-clock time (full program): 1.46656e+06us (= 1466.56ms, 1.46656s)
+Search time: 80273.3us (= 80.2733ms, 0.0802733s)
+Wall-clock time (full program): 82371.1us (= 82.3711ms, 0.0823711s)
 Satisfaction error: 0
-Number of search iterations: 8591
-Number of local moves: 2747 (including on plateau: 2113)
-Number of local minimum: 998 (including on plateau: 242)
-Number of resets: 37
+Number of search iterations: 358
+Number of local moves: 230 (including on plateau: 193)
+Number of local minimum: 20 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -105,35 +105,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 2 6   3 1 5   4 8 7
 
- 3 6 8   9 5 2   1 7 4
+ 7 1 3   8 2 4   6 9 5
 
- 7 9 4   3 8 1   6 5 2
+ 5 8 4   6 7 9   1 2 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 7 9   4 5 1   8 3 6
 
- 1 4 2   5 9 3   8 6 7
+ 8 3 1   9 6 7   5 4 2
 
- 9 7 3   8 1 6   4 2 5
+ 6 4 5   2 3 8   9 7 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 6 8   1 9 2   7 5 4
 
- 6 5 9   4 2 8   7 1 3
+ 1 9 7   5 4 3   2 6 8
 
- 4 3 7   1 6 5   2 8 9
+ 4 5 2   7 8 6   3 1 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.3342e+06us (= 2334.2ms, 2.3342s)
-Wall-clock time (full program): 2.33614e+06us (= 2336.14ms, 2.33614s)
+Search time: 44789.8us (= 44.7898ms, 0.0447898s)
+Wall-clock time (full program): 46519us (= 46.519ms, 0.046519s)
 Satisfaction error: 0
-Number of search iterations: 14110
-Number of local moves: 5048 (including on plateau: 4262)
-Number of local minimum: 1497 (including on plateau: 514)
-Number of resets: 48
+Number of search iterations: 137
+Number of local moves: 87 (including on plateau: 53)
+Number of local minimum: 14 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -151,36 +151,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 5 8   4 2 6   1 9 3
 
- 3 6 8   9 5 2   1 7 4
+ 4 2 1   9 3 8   5 6 7
 
- 7 9 4   3 8 1   6 5 2
+ 6 9 3   5 7 1   2 8 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 1 5   6 4 2   3 7 9
 
- 1 4 2   5 9 3   8 6 7
+ 3 4 6   1 9 7   8 2 5
 
- 9 7 3   8 1 6   4 2 5
+ 9 7 2   3 8 5   4 1 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 6 7   2 5 3   9 4 8
 
- 6 5 9   4 2 8   7 1 3
+ 5 8 9   7 1 4   6 3 2
 
- 4 3 7   1 6 5   2 8 9
+ 2 3 4   8 6 9   7 5 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 3.92301e+06us (= 3923.01ms, 3.92301s)
-Wall-clock time (full program): 3.92522e+06us (= 3925.22ms, 3.92522s)
+Search time: 51369.4us (= 51.3694ms, 0.0513694s)
+Wall-clock time (full program): 53450.7us (= 53.4507ms, 0.0534507s)
 Satisfaction error: 0
-Number of search iterations: 41722
-Number of local moves: 13811 (including on plateau: 11511)
-Number of local minimum: 4469 (including on plateau: 1387)
-Number of resets: 141
-Number of restarts: 1
+Number of search iterations: 162
+Number of local moves: 87 (including on plateau: 50)
+Number of local minimum: 7 (including on plateau: 6)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -197,36 +197,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 4 1   7 2 8   5 6 9
 
- 3 6 8   9 5 2   1 7 4
+ 5 2 7   6 4 9   3 1 8
 
- 7 9 4   3 8 1   6 5 2
+ 8 9 6   1 3 5   4 2 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 5 4   3 8 6   7 9 2
 
- 1 4 2   5 9 3   8 6 7
+ 2 7 3   9 1 4   8 5 6
 
- 9 7 3   8 1 6   4 2 5
+ 9 6 8   5 7 2   1 3 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 1 2   4 9 3   6 8 5
 
- 6 5 9   4 2 8   7 1 3
+ 4 8 5   2 6 1   9 7 3
 
- 4 3 7   1 6 5   2 8 9
+ 6 3 9   8 5 7   2 4 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.70162e+06us (= 2701.62ms, 2.70162s)
-Wall-clock time (full program): 2.70388e+06us (= 2703.88ms, 2.70388s)
+Search time: 55395.3us (= 55.3953ms, 0.0553953s)
+Wall-clock time (full program): 57444.1us (= 57.4441ms, 0.0574441s)
 Satisfaction error: 0
-Number of search iterations: 21969
-Number of local moves: 6831 (including on plateau: 5158)
-Number of local minimum: 2555 (including on plateau: 576)
-Number of resets: 103
-Number of restarts: 1
+Number of search iterations: 175
+Number of local moves: 112 (including on plateau: 73)
+Number of local minimum: 5 (including on plateau: 8)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -243,35 +243,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 9 1   8 2 3   7 4 6
 
- 3 6 8   9 5 2   1 7 4
+ 4 8 6   7 9 5   2 3 1
 
- 7 9 4   3 8 1   6 5 2
+ 7 3 2   4 6 1   5 9 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 6 5   2 8 4   1 7 9
 
- 1 4 2   5 9 3   8 6 7
+ 2 4 7   5 1 9   6 8 3
 
- 9 7 3   8 1 6   4 2 5
+ 9 1 8   3 7 6   4 5 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 5 9   1 4 8   3 2 7
 
- 6 5 9   4 2 8   7 1 3
+ 8 7 4   6 3 2   9 1 5
 
- 4 3 7   1 6 5   2 8 9
+ 1 2 3   9 5 7   8 6 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.38375e+06us (= 2383.75ms, 2.38375s)
-Wall-clock time (full program): 2.38589e+06us (= 2385.89ms, 2.38589s)
+Search time: 40266.4us (= 40.2664ms, 0.0402664s)
+Wall-clock time (full program): 42233us (= 42.233ms, 0.042233s)
 Satisfaction error: 0
-Number of search iterations: 14612
-Number of local moves: 5486 (including on plateau: 4648)
-Number of local minimum: 1512 (including on plateau: 552)
-Number of resets: 48
+Number of search iterations: 129
+Number of local moves: 83 (including on plateau: 45)
+Number of local minimum: 3 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -289,35 +289,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 2 6   4 7 8   5 1 9
 
- 3 6 8   9 5 2   1 7 4
+ 1 5 7   3 9 2   4 6 8
 
- 7 9 4   3 8 1   6 5 2
+ 9 8 4   6 5 1   7 3 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 9 5   2 6 4   3 8 1
 
- 1 4 2   5 9 3   8 6 7
+ 4 6 3   8 1 9   2 7 5
 
- 9 7 3   8 1 6   4 2 5
+ 8 1 2   7 3 5   9 4 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 7 8   5 4 6   1 9 3
 
- 6 5 9   4 2 8   7 1 3
+ 5 4 9   1 8 3   6 2 7
 
- 4 3 7   1 6 5   2 8 9
+ 6 3 1   9 2 7   8 5 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 874849us (= 874.849ms, 0.874849s)
-Wall-clock time (full program): 876697us (= 876.697ms, 0.876697s)
+Search time: 31378.5us (= 31.3785ms, 0.0313785s)
+Wall-clock time (full program): 33672.1us (= 33.6721ms, 0.0336721s)
 Satisfaction error: 0
-Number of search iterations: 4878
-Number of local moves: 1911 (including on plateau: 1571)
-Number of local minimum: 592 (including on plateau: 189)
-Number of resets: 17
+Number of search iterations: 112
+Number of local moves: 76 (including on plateau: 38)
+Number of local minimum: 8 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -335,35 +335,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 3 6   8 4 5   2 1 7
 
- 3 6 8   9 5 2   1 7 4
+ 5 2 1   3 7 9   8 6 4
 
- 7 9 4   3 8 1   6 5 2
+ 4 7 8   2 1 6   3 5 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 9 5   7 6 2   1 4 3
 
- 1 4 2   5 9 3   8 6 7
+ 6 1 2   4 5 3   7 9 8
 
- 9 7 3   8 1 6   4 2 5
+ 7 4 3   9 8 1   6 2 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 6 9   5 2 8   4 7 1
 
- 6 5 9   4 2 8   7 1 3
+ 1 8 7   6 9 4   5 3 2
 
- 4 3 7   1 6 5   2 8 9
+ 2 5 4   1 3 7   9 8 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.31801e+06us (= 2318.01ms, 2.31801s)
-Wall-clock time (full program): 2.32017e+06us (= 2320.17ms, 2.32017s)
+Search time: 37800us (= 37.8ms, 0.0378s)
+Wall-clock time (full program): 40690.5us (= 40.6905ms, 0.0406905s)
 Satisfaction error: 0
-Number of search iterations: 17315
-Number of local moves: 5730 (including on plateau: 4625)
-Number of local minimum: 1908 (including on plateau: 527)
-Number of resets: 67
+Number of search iterations: 104
+Number of local moves: 63 (including on plateau: 25)
+Number of local minimum: 5 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -381,35 +381,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 4 6 7   3 9 8   5 1 2
 
- 3 6 8   9 5 2   1 7 4
+ 1 5 3   2 7 4   6 8 9
 
- 7 9 4   3 8 1   6 5 2
+ 2 9 8   6 5 1   4 3 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 4 9   8 2 5   3 6 1
 
- 1 4 2   5 9 3   8 6 7
+ 6 1 2   7 4 3   8 9 5
 
- 9 7 3   8 1 6   4 2 5
+ 8 3 5   1 6 9   7 2 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 8 4   9 3 2   1 7 6
 
- 6 5 9   4 2 8   7 1 3
+ 9 7 1   4 8 6   2 5 3
 
- 4 3 7   1 6 5   2 8 9
+ 3 2 6   5 1 7   9 4 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.09347e+06us (= 2093.47ms, 2.09347s)
-Wall-clock time (full program): 2.09561e+06us (= 2095.61ms, 2.09561s)
+Search time: 49253.8us (= 49.2538ms, 0.0492538s)
+Wall-clock time (full program): 51360.9us (= 51.3609ms, 0.0513609s)
 Satisfaction error: 0
-Number of search iterations: 14182
-Number of local moves: 4788 (including on plateau: 3883)
-Number of local minimum: 1687 (including on plateau: 454)
-Number of resets: 51
+Number of search iterations: 176
+Number of local moves: 98 (including on plateau: 60)
+Number of local minimum: 11 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -427,35 +427,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 8 7   4 5 6   2 3 1
 
- 3 6 8   9 5 2   1 7 4
+ 3 6 5   1 8 2   4 7 9
 
- 7 9 4   3 8 1   6 5 2
+ 4 1 2   7 3 9   5 8 6
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 4 1   2 9 5   3 6 7
 
- 1 4 2   5 9 3   8 6 7
+ 2 9 3   6 4 7   8 1 5
 
- 9 7 3   8 1 6   4 2 5
+ 5 7 6   8 1 3   9 4 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 3 8   5 2 1   7 9 4
 
- 6 5 9   4 2 8   7 1 3
+ 1 5 4   9 7 8   6 2 3
 
- 4 3 7   1 6 5   2 8 9
+ 7 2 9   3 6 4   1 5 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.04707e+06us (= 2047.07ms, 2.04707s)
-Wall-clock time (full program): 2.04917e+06us (= 2049.17ms, 2.04917s)
+Search time: 70246us (= 70.246ms, 0.070246s)
+Wall-clock time (full program): 72189.7us (= 72.1897ms, 0.0721897s)
 Satisfaction error: 0
-Number of search iterations: 11231
-Number of local moves: 3723 (including on plateau: 2847)
-Number of local minimum: 1336 (including on plateau: 353)
-Number of resets: 53
+Number of search iterations: 137
+Number of local moves: 88 (including on plateau: 53)
+Number of local minimum: 5 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -473,35 +473,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 2 1   5 3 7   4 9 8
 
- 3 6 8   9 5 2   1 7 4
+ 7 3 9   1 4 8   2 6 5
 
- 7 9 4   3 8 1   6 5 2
+ 4 5 8   9 2 6   1 3 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 6 5   2 9 1   7 4 3
 
- 1 4 2   5 9 3   8 6 7
+ 3 9 7   8 6 4   5 1 2
 
- 9 7 3   8 1 6   4 2 5
+ 1 4 2   3 7 5   9 8 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 8 6   4 5 2   3 7 1
 
- 6 5 9   4 2 8   7 1 3
+ 2 7 4   6 1 3   8 5 9
 
- 4 3 7   1 6 5   2 8 9
+ 5 1 3   7 8 9   6 2 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 660819us (= 660.819ms, 0.660819s)
-Wall-clock time (full program): 663058us (= 663.058ms, 0.663058s)
+Search time: 52742.1us (= 52.7421ms, 0.0527421s)
+Wall-clock time (full program): 54748.9us (= 54.7489ms, 0.0547489s)
 Satisfaction error: 0
-Number of search iterations: 3778
-Number of local moves: 1261 (including on plateau: 945)
-Number of local minimum: 481 (including on plateau: 101)
-Number of resets: 15
+Number of search iterations: 166
+Number of local moves: 92 (including on plateau: 57)
+Number of local minimum: 13 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -519,35 +519,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 2 8   4 1 5   7 6 9
 
- 3 6 8   9 5 2   1 7 4
+ 7 6 4   2 9 3   1 5 8
 
- 7 9 4   3 8 1   6 5 2
+ 1 9 5   8 7 6   4 2 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 4 1   7 5 9   2 3 6
 
- 1 4 2   5 9 3   8 6 7
+ 9 5 7   3 6 2   8 4 1
 
- 9 7 3   8 1 6   4 2 5
+ 6 3 2   1 8 4   9 7 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 8 3   9 4 7   6 1 2
 
- 6 5 9   4 2 8   7 1 3
+ 4 1 6   5 2 8   3 9 7
 
- 4 3 7   1 6 5   2 8 9
+ 2 7 9   6 3 1   5 8 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.30423e+06us (= 1304.23ms, 1.30423s)
-Wall-clock time (full program): 1.30648e+06us (= 1306.48ms, 1.30648s)
+Search time: 34509.7us (= 34.5097ms, 0.0345097s)
+Wall-clock time (full program): 36568.5us (= 36.5685ms, 0.0365685s)
 Satisfaction error: 0
-Number of search iterations: 9442
-Number of local moves: 3740 (including on plateau: 3100)
-Number of local minimum: 1060 (including on plateau: 367)
-Number of resets: 35
+Number of search iterations: 106
+Number of local moves: 71 (including on plateau: 34)
+Number of local minimum: 4 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -565,35 +565,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 2 6   8 5 3   7 4 9
 
- 3 6 8   9 5 2   1 7 4
+ 8 3 7   9 2 4   1 6 5
 
- 7 9 4   3 8 1   6 5 2
+ 5 4 9   6 1 7   2 3 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 8 5   2 7 6   4 1 3
 
- 1 4 2   5 9 3   8 6 7
+ 2 7 3   1 4 5   9 8 6
 
- 9 7 3   8 1 6   4 2 5
+ 4 6 1   3 9 8   5 2 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 1 4   5 8 9   6 7 2
 
- 6 5 9   4 2 8   7 1 3
+ 7 9 8   4 6 2   3 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 6 5 2   7 3 1   8 9 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 577341us (= 577.341ms, 0.577341s)
-Wall-clock time (full program): 579467us (= 579.467ms, 0.579467s)
+Search time: 82776.6us (= 82.7766ms, 0.0827766s)
+Wall-clock time (full program): 84761.1us (= 84.7611ms, 0.0847611s)
 Satisfaction error: 0
-Number of search iterations: 3154
-Number of local moves: 1090 (including on plateau: 747)
-Number of local minimum: 372 (including on plateau: 90)
-Number of resets: 16
+Number of search iterations: 318
+Number of local moves: 173 (including on plateau: 137)
+Number of local minimum: 12 (including on plateau: 17)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -611,35 +611,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 7 4   2 3 8   9 6 5
 
- 3 6 8   9 5 2   1 7 4
+ 8 2 6   5 7 9   1 3 4
 
- 7 9 4   3 8 1   6 5 2
+ 9 3 5   4 6 1   2 7 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 1 2   9 5 4   3 8 7
 
- 1 4 2   5 9 3   8 6 7
+ 7 8 3   1 2 6   5 4 9
 
- 9 7 3   8 1 6   4 2 5
+ 5 4 9   7 8 3   6 1 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 9 1   8 4 5   7 2 6
 
- 6 5 9   4 2 8   7 1 3
+ 4 6 7   3 9 2   8 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 2 5 8   6 1 7   4 9 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.11041e+06us (= 1110.41ms, 1.11041s)
-Wall-clock time (full program): 1.11221e+06us (= 1112.21ms, 1.11221s)
+Search time: 92122.5us (= 92.1225ms, 0.0921225s)
+Wall-clock time (full program): 94350.7us (= 94.3507ms, 0.0943507s)
 Satisfaction error: 0
-Number of search iterations: 6051
-Number of local moves: 2132 (including on plateau: 1721)
-Number of local minimum: 659 (including on plateau: 195)
-Number of resets: 23
+Number of search iterations: 354
+Number of local moves: 158 (including on plateau: 113)
+Number of local minimum: 28 (including on plateau: 14)
+Number of resets: 1
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -657,35 +657,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 3 1   2 6 7   5 4 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 7 4   5 3 1   8 2 6
 
- 7 9 4   3 8 1   6 5 2
+ 6 2 5   4 9 8   7 1 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 8 2   6 7 4   9 3 5
 
- 1 4 2   5 9 3   8 6 7
+ 3 9 7   8 5 2   1 6 4
 
- 9 7 3   8 1 6   4 2 5
+ 5 4 6   9 1 3   2 7 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 1 9   3 8 6   4 5 2
 
- 6 5 9   4 2 8   7 1 3
+ 2 5 3   7 4 9   6 8 1
 
- 4 3 7   1 6 5   2 8 9
+ 4 6 8   1 2 5   3 9 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 804834us (= 804.834ms, 0.804834s)
-Wall-clock time (full program): 807011us (= 807.011ms, 0.807011s)
+Search time: 55394.9us (= 55.3949ms, 0.0553949s)
+Wall-clock time (full program): 58319.2us (= 58.3192ms, 0.0583192s)
 Satisfaction error: 0
-Number of search iterations: 5387
-Number of local moves: 1736 (including on plateau: 1352)
-Number of local minimum: 587 (including on plateau: 180)
-Number of resets: 19
+Number of search iterations: 159
+Number of local moves: 94 (including on plateau: 59)
+Number of local minimum: 9 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -703,35 +703,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 6 4   8 1 9   5 3 2
 
- 3 6 8   9 5 2   1 7 4
+ 9 8 3   2 4 5   6 7 1
 
- 7 9 4   3 8 1   6 5 2
+ 5 2 1   6 3 7   9 4 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 9 6   1 7 3   8 5 4
 
- 1 4 2   5 9 3   8 6 7
+ 8 1 7   4 5 6   3 2 9
 
- 9 7 3   8 1 6   4 2 5
+ 3 4 5   9 8 2   7 1 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 5 8   3 9 1   2 6 7
 
- 6 5 9   4 2 8   7 1 3
+ 6 7 9   5 2 4   1 8 3
 
- 4 3 7   1 6 5   2 8 9
+ 1 3 2   7 6 8   4 9 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.67232e+06us (= 1672.32ms, 1.67232s)
-Wall-clock time (full program): 1.67447e+06us (= 1674.47ms, 1.67447s)
+Search time: 60350us (= 60.35ms, 0.06035s)
+Wall-clock time (full program): 62491.5us (= 62.4915ms, 0.0624915s)
 Satisfaction error: 0
-Number of search iterations: 9891
-Number of local moves: 3310 (including on plateau: 2535)
-Number of local minimum: 1130 (including on plateau: 357)
-Number of resets: 40
+Number of search iterations: 182
+Number of local moves: 100 (including on plateau: 64)
+Number of local minimum: 6 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -749,35 +749,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 4 8   3 7 6   9 2 1
 
- 3 6 8   9 5 2   1 7 4
+ 7 1 6   8 9 2   4 5 3
 
- 7 9 4   3 8 1   6 5 2
+ 2 9 3   1 5 4   8 6 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 7 2   4 6 1   3 9 5
 
- 1 4 2   5 9 3   8 6 7
+ 6 3 1   5 2 9   7 8 4
 
- 9 7 3   8 1 6   4 2 5
+ 9 5 4   7 8 3   6 1 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 2 5   9 3 8   1 7 6
 
- 6 5 9   4 2 8   7 1 3
+ 3 6 9   2 1 7   5 4 8
 
- 4 3 7   1 6 5   2 8 9
+ 1 8 7   6 4 5   2 3 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 721157us (= 721.157ms, 0.721157s)
-Wall-clock time (full program): 723100us (= 723.1ms, 0.7231s)
+Search time: 35243.9us (= 35.2439ms, 0.0352439s)
+Wall-clock time (full program): 37121.3us (= 37.1213ms, 0.0371213s)
 Satisfaction error: 0
-Number of search iterations: 3917
-Number of local moves: 1293 (including on plateau: 959)
-Number of local minimum: 484 (including on plateau: 129)
-Number of resets: 16
+Number of search iterations: 98
+Number of local moves: 70 (including on plateau: 35)
+Number of local minimum: 1 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -795,35 +795,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 5 2   6 3 8   4 7 9
 
- 3 6 8   9 5 2   1 7 4
+ 4 9 3   2 1 7   6 8 5
 
- 7 9 4   3 8 1   6 5 2
+ 6 8 7   4 5 9   3 2 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 4 1   7 9 3   5 6 8
 
- 1 4 2   5 9 3   8 6 7
+ 3 7 9   8 6 5   1 4 2
 
- 9 7 3   8 1 6   4 2 5
+ 5 6 8   1 2 4   7 9 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 2 5   3 4 6   9 1 7
 
- 6 5 9   4 2 8   7 1 3
+ 9 1 4   5 7 2   8 3 6
 
- 4 3 7   1 6 5   2 8 9
+ 7 3 6   9 8 1   2 5 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.0674e+06us (= 1067.4ms, 1.0674s)
-Wall-clock time (full program): 1.06969e+06us (= 1069.69ms, 1.06969s)
+Search time: 49840.4us (= 49.8404ms, 0.0498404s)
+Wall-clock time (full program): 51861.6us (= 51.8616ms, 0.0518616s)
 Satisfaction error: 0
-Number of search iterations: 6579
-Number of local moves: 2030 (including on plateau: 1434)
-Number of local minimum: 816 (including on plateau: 166)
-Number of resets: 33
+Number of search iterations: 169
+Number of local moves: 102 (including on plateau: 71)
+Number of local minimum: 6 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -841,35 +841,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 9 5   6 7 8   4 1 2
 
- 3 6 8   9 5 2   1 7 4
+ 7 2 4   3 5 1   8 9 6
 
- 7 9 4   3 8 1   6 5 2
+ 8 6 1   9 2 4   3 7 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 1 8   7 4 5   6 3 9
 
- 1 4 2   5 9 3   8 6 7
+ 9 5 6   1 8 3   2 4 7
 
- 9 7 3   8 1 6   4 2 5
+ 4 3 7   2 6 9   1 5 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 4 9   8 3 7   5 2 1
 
- 6 5 9   4 2 8   7 1 3
+ 5 7 2   4 1 6   9 8 3
 
- 4 3 7   1 6 5   2 8 9
+ 1 8 3   5 9 2   7 6 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 640489us (= 640.489ms, 0.640489s)
-Wall-clock time (full program): 642771us (= 642.771ms, 0.642771s)
+Search time: 96088.3us (= 96.0883ms, 0.0960883s)
+Wall-clock time (full program): 98124.8us (= 98.1248ms, 0.0981248s)
 Satisfaction error: 0
-Number of search iterations: 4334
-Number of local moves: 1535 (including on plateau: 1275)
-Number of local minimum: 452 (including on plateau: 163)
-Number of resets: 11
+Number of search iterations: 446
+Number of local moves: 246 (including on plateau: 211)
+Number of local minimum: 19 (including on plateau: 15)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -887,35 +887,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 4 8 7   5 6 1   3 9 2
 
- 3 6 8   9 5 2   1 7 4
+ 9 3 5   7 2 8   1 6 4
 
- 7 9 4   3 8 1   6 5 2
+ 6 1 2   3 9 4   5 8 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 2 8   6 5 9   4 3 1
 
- 1 4 2   5 9 3   8 6 7
+ 5 9 3   4 1 7   8 2 6
 
- 9 7 3   8 1 6   4 2 5
+ 1 6 4   2 8 3   9 7 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 5 9   1 7 6   2 4 3
 
- 6 5 9   4 2 8   7 1 3
+ 2 4 6   9 3 5   7 1 8
 
- 4 3 7   1 6 5   2 8 9
+ 3 7 1   8 4 2   6 5 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 294445us (= 294.445ms, 0.294445s)
-Wall-clock time (full program): 296573us (= 296.573ms, 0.296573s)
+Search time: 37438.9us (= 37.4389ms, 0.0374389s)
+Wall-clock time (full program): 39393.1us (= 39.3931ms, 0.0393931s)
 Satisfaction error: 0
-Number of search iterations: 1733
-Number of local moves: 677 (including on plateau: 548)
-Number of local minimum: 192 (including on plateau: 73)
-Number of resets: 4
+Number of search iterations: 120
+Number of local moves: 82 (including on plateau: 44)
+Number of local minimum: 5 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -933,35 +933,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 6 4   7 8 1   2 5 3
 
- 3 6 8   9 5 2   1 7 4
+ 2 5 7   9 3 6   8 1 4
 
- 7 9 4   3 8 1   6 5 2
+ 8 3 1   4 5 2   6 9 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 1 2   6 4 5   3 8 9
 
- 1 4 2   5 9 3   8 6 7
+ 6 9 3   1 2 8   7 4 5
 
- 9 7 3   8 1 6   4 2 5
+ 5 4 8   3 7 9   1 2 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 7 5   2 1 3   9 6 8
 
- 6 5 9   4 2 8   7 1 3
+ 1 8 6   5 9 7   4 3 2
 
- 4 3 7   1 6 5   2 8 9
+ 3 2 9   8 6 4   5 7 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 925576us (= 925.576ms, 0.925576s)
-Wall-clock time (full program): 927328us (= 927.328ms, 0.927328s)
+Search time: 62309.1us (= 62.3091ms, 0.0623091s)
+Wall-clock time (full program): 64403.6us (= 64.4036ms, 0.0644036s)
 Satisfaction error: 0
-Number of search iterations: 5125
-Number of local moves: 1562 (including on plateau: 1098)
-Number of local minimum: 601 (including on plateau: 147)
-Number of resets: 26
+Number of search iterations: 234
+Number of local moves: 116 (including on plateau: 81)
+Number of local minimum: 8 (including on plateau: 14)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -979,35 +979,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 9 2   7 6 5   3 4 1
 
- 3 6 8   9 5 2   1 7 4
+ 7 4 5   3 1 9   2 6 8
 
- 7 9 4   3 8 1   6 5 2
+ 6 3 1   8 2 4   9 5 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 1 8   4 5 2   7 3 6
 
- 1 4 2   5 9 3   8 6 7
+ 2 6 4   9 3 7   1 8 5
 
- 9 7 3   8 1 6   4 2 5
+ 3 5 7   6 8 1   4 9 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 8 6   1 7 3   5 2 9
 
- 6 5 9   4 2 8   7 1 3
+ 1 2 3   5 9 6   8 7 4
 
- 4 3 7   1 6 5   2 8 9
+ 5 7 9   2 4 8   6 1 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 949092us (= 949.092ms, 0.949092s)
-Wall-clock time (full program): 951293us (= 951.293ms, 0.951293s)
+Search time: 73920.5us (= 73.9205ms, 0.0739205s)
+Wall-clock time (full program): 76878.6us (= 76.8786ms, 0.0768786s)
 Satisfaction error: 0
-Number of search iterations: 6846
-Number of local moves: 2337 (including on plateau: 1819)
-Number of local minimum: 765 (including on plateau: 207)
-Number of resets: 29
+Number of search iterations: 221
+Number of local moves: 104 (including on plateau: 65)
+Number of local minimum: 14 (including on plateau: 4)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1025,35 +1025,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 4 8 2   9 1 5   6 7 3
 
- 3 6 8   9 5 2   1 7 4
+ 5 3 1   6 4 7   2 9 8
 
- 7 9 4   3 8 1   6 5 2
+ 6 9 7   2 3 8   5 4 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 4 9   3 7 6   1 2 5
 
- 1 4 2   5 9 3   8 6 7
+ 7 2 3   8 5 1   4 6 9
 
- 9 7 3   8 1 6   4 2 5
+ 1 5 6   4 2 9   3 8 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 7 4   5 8 3   9 1 6
 
- 6 5 9   4 2 8   7 1 3
+ 3 6 8   1 9 2   7 5 4
 
- 4 3 7   1 6 5   2 8 9
+ 9 1 5   7 6 4   8 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.94292e+06us (= 1942.92ms, 1.94292s)
-Wall-clock time (full program): 1.94504e+06us (= 1945.04ms, 1.94504s)
+Search time: 69615.8us (= 69.6158ms, 0.0696158s)
+Wall-clock time (full program): 71727.3us (= 71.7273ms, 0.0717273s)
 Satisfaction error: 0
-Number of search iterations: 11800
-Number of local moves: 4073 (including on plateau: 3164)
-Number of local minimum: 1445 (including on plateau: 401)
-Number of resets: 54
+Number of search iterations: 309
+Number of local moves: 183 (including on plateau: 146)
+Number of local minimum: 16 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1071,36 +1071,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 7 3   8 2 4   6 9 1
 
- 3 6 8   9 5 2   1 7 4
+ 4 2 6   7 1 9   5 8 3
 
- 7 9 4   3 8 1   6 5 2
+ 9 1 8   5 3 6   7 2 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 8 4   1 7 2   9 6 5
 
- 1 4 2   5 9 3   8 6 7
+ 1 9 2   3 6 5   4 7 8
 
- 9 7 3   8 1 6   4 2 5
+ 6 5 7   9 4 8   3 1 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 3 5   6 8 7   1 4 9
 
- 6 5 9   4 2 8   7 1 3
+ 8 6 1   4 9 3   2 5 7
 
- 4 3 7   1 6 5   2 8 9
+ 7 4 9   2 5 1   8 3 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 3.54987e+06us (= 3549.87ms, 3.54987s)
-Wall-clock time (full program): 3.55203e+06us (= 3552.03ms, 3.55203s)
+Search time: 29397us (= 29.397ms, 0.029397s)
+Wall-clock time (full program): 31303.7us (= 31.3037ms, 0.0313037s)
 Satisfaction error: 0
-Number of search iterations: 31426
-Number of local moves: 10579 (including on plateau: 8545)
-Number of local minimum: 3588 (including on plateau: 997)
-Number of resets: 120
-Number of restarts: 1
+Number of search iterations: 83
+Number of local moves: 65 (including on plateau: 29)
+Number of local minimum: 3 (including on plateau: 1)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -1117,35 +1117,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 6 1   4 9 7   2 8 3
 
- 3 6 8   9 5 2   1 7 4
+ 9 3 4   2 8 6   7 1 5
 
- 7 9 4   3 8 1   6 5 2
+ 2 7 8   1 3 5   4 9 6
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 8 7   9 6 4   5 2 1
 
- 1 4 2   5 9 3   8 6 7
+ 4 2 6   8 5 1   3 7 9
 
- 9 7 3   8 1 6   4 2 5
+ 1 5 9   7 2 3   6 4 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 9 3   6 4 8   1 5 2
 
- 6 5 9   4 2 8   7 1 3
+ 6 1 2   5 7 9   8 3 4
 
- 4 3 7   1 6 5   2 8 9
+ 8 4 5   3 1 2   9 6 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.17667e+06us (= 1176.67ms, 1.17667s)
-Wall-clock time (full program): 1.17889e+06us (= 1178.89ms, 1.17889s)
+Search time: 53347.2us (= 53.3472ms, 0.0533472s)
+Wall-clock time (full program): 55339.3us (= 55.3393ms, 0.0553393s)
 Satisfaction error: 0
-Number of search iterations: 7182
-Number of local moves: 2392 (including on plateau: 2016)
-Number of local minimum: 814 (including on plateau: 242)
-Number of resets: 19
+Number of search iterations: 165
+Number of local moves: 101 (including on plateau: 67)
+Number of local minimum: 6 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1163,35 +1163,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 3 4   5 1 6   2 9 7
 
- 3 6 8   9 5 2   1 7 4
+ 6 7 1   9 8 2   5 4 3
 
- 7 9 4   3 8 1   6 5 2
+ 2 9 5   3 7 4   6 8 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 4 8   7 6 5   3 2 9
 
- 1 4 2   5 9 3   8 6 7
+ 3 5 6   2 9 8   7 1 4
 
- 9 7 3   8 1 6   4 2 5
+ 9 2 7   1 4 3   8 6 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 8 3   4 2 1   9 7 6
 
- 6 5 9   4 2 8   7 1 3
+ 7 1 2   6 3 9   4 5 8
 
- 4 3 7   1 6 5   2 8 9
+ 4 6 9   8 5 7   1 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.80979e+06us (= 2809.79ms, 2.80979s)
-Wall-clock time (full program): 2.81205e+06us (= 2812.05ms, 2.81205s)
+Search time: 80617us (= 80.617ms, 0.080617s)
+Wall-clock time (full program): 82680.8us (= 82.6808ms, 0.0826808s)
 Satisfaction error: 0
-Number of search iterations: 23102
-Number of local moves: 7965 (including on plateau: 6728)
-Number of local minimum: 2361 (including on plateau: 792)
-Number of resets: 77
+Number of search iterations: 350
+Number of local moves: 195 (including on plateau: 160)
+Number of local minimum: 23 (including on plateau: 20)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1209,35 +1209,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 6 5   7 4 3   9 8 1
 
- 3 6 8   9 5 2   1 7 4
+ 7 4 9   1 6 8   5 3 2
 
- 7 9 4   3 8 1   6 5 2
+ 8 1 3   9 2 5   4 6 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 7 4   2 1 6   8 5 9
 
- 1 4 2   5 9 3   8 6 7
+ 6 5 1   8 9 7   3 2 4
 
- 9 7 3   8 1 6   4 2 5
+ 9 2 8   5 3 4   1 7 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 8 2   4 7 1   6 9 3
 
- 6 5 9   4 2 8   7 1 3
+ 1 3 7   6 5 9   2 4 8
 
- 4 3 7   1 6 5   2 8 9
+ 4 9 6   3 8 2   7 1 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.42788e+06us (= 2427.88ms, 2.42788s)
-Wall-clock time (full program): 2.43001e+06us (= 2430.01ms, 2.43001s)
+Search time: 32462.1us (= 32.4621ms, 0.0324621s)
+Wall-clock time (full program): 34378.1us (= 34.3781ms, 0.0343781s)
 Satisfaction error: 0
-Number of search iterations: 16444
-Number of local moves: 5395 (including on plateau: 4328)
-Number of local minimum: 1806 (including on plateau: 544)
-Number of resets: 67
+Number of search iterations: 103
+Number of local moves: 62 (including on plateau: 23)
+Number of local minimum: 6 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1255,35 +1255,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 5 3   8 4 2   9 7 6
 
- 3 6 8   9 5 2   1 7 4
+ 8 2 6   9 7 1   4 5 3
 
- 7 9 4   3 8 1   6 5 2
+ 7 4 9   5 3 6   2 8 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 9 8   7 6 3   1 4 2
 
- 1 4 2   5 9 3   8 6 7
+ 3 7 1   2 9 4   5 6 8
 
- 9 7 3   8 1 6   4 2 5
+ 4 6 2   1 5 8   7 3 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 1 4   3 8 5   6 9 7
 
- 6 5 9   4 2 8   7 1 3
+ 6 3 7   4 1 9   8 2 5
 
- 4 3 7   1 6 5   2 8 9
+ 9 8 5   6 2 7   3 1 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 459930us (= 459.93ms, 0.45993s)
-Wall-clock time (full program): 461539us (= 461.539ms, 0.461539s)
+Search time: 36268.4us (= 36.2684ms, 0.0362684s)
+Wall-clock time (full program): 38608.1us (= 38.6081ms, 0.0386081s)
 Satisfaction error: 0
-Number of search iterations: 2780
-Number of local moves: 909 (including on plateau: 620)
-Number of local minimum: 340 (including on plateau: 67)
-Number of resets: 15
+Number of search iterations: 132
+Number of local moves: 79 (including on plateau: 45)
+Number of local minimum: 10 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1301,35 +1301,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 3 8   7 2 6   4 1 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 6 2   4 1 5   7 8 3
 
- 7 9 4   3 8 1   6 5 2
+ 7 1 4   9 3 8   2 6 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 7 6   1 5 4   9 3 8
 
- 1 4 2   5 9 3   8 6 7
+ 4 8 1   3 9 7   5 2 6
 
- 9 7 3   8 1 6   4 2 5
+ 3 9 5   6 8 2   1 7 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 5 7   8 4 1   3 9 2
 
- 6 5 9   4 2 8   7 1 3
+ 8 4 3   2 7 9   6 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 1 2 9   5 6 3   8 4 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.21691e+06us (= 1216.91ms, 1.21691s)
-Wall-clock time (full program): 1.21911e+06us (= 1219.11ms, 1.21911s)
+Search time: 72018.5us (= 72.0185ms, 0.0720185s)
+Wall-clock time (full program): 74961us (= 74.961ms, 0.074961s)
 Satisfaction error: 0
-Number of search iterations: 8671
-Number of local moves: 2452 (including on plateau: 1799)
-Number of local minimum: 1009 (including on plateau: 227)
-Number of resets: 40
+Number of search iterations: 211
+Number of local moves: 102 (including on plateau: 68)
+Number of local minimum: 17 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1347,35 +1347,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 2 7   3 9 5   6 4 1
 
- 3 6 8   9 5 2   1 7 4
+ 3 5 4   8 1 6   7 9 2
 
- 7 9 4   3 8 1   6 5 2
+ 6 9 1   4 2 7   5 3 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 7 9   6 5 3   8 1 4
 
- 1 4 2   5 9 3   8 6 7
+ 5 3 8   1 7 4   2 6 9
 
- 9 7 3   8 1 6   4 2 5
+ 4 1 6   2 8 9   3 7 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 4 5   7 6 8   9 2 3
 
- 6 5 9   4 2 8   7 1 3
+ 9 6 3   5 4 2   1 8 7
 
- 4 3 7   1 6 5   2 8 9
+ 7 8 2   9 3 1   4 5 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.10249e+06us (= 1102.49ms, 1.10249s)
-Wall-clock time (full program): 1.10467e+06us (= 1104.67ms, 1.10467s)
+Search time: 44312.2us (= 44.3122ms, 0.0443122s)
+Wall-clock time (full program): 46443.5us (= 46.4435ms, 0.0464435s)
 Satisfaction error: 0
-Number of search iterations: 5445
-Number of local moves: 1737 (including on plateau: 1259)
-Number of local minimum: 697 (including on plateau: 174)
-Number of resets: 26
+Number of search iterations: 129
+Number of local moves: 81 (including on plateau: 46)
+Number of local minimum: 8 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1393,36 +1393,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 5 1   4 7 2   6 8 3
 
- 3 6 8   9 5 2   1 7 4
+ 2 6 8   1 9 3   5 7 4
 
- 7 9 4   3 8 1   6 5 2
+ 3 4 7   8 6 5   1 9 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 8 9   3 4 7   2 5 1
 
- 1 4 2   5 9 3   8 6 7
+ 4 7 5   6 2 1   9 3 8
 
- 9 7 3   8 1 6   4 2 5
+ 1 2 3   9 5 8   4 6 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 3 2   7 1 9   8 4 6
 
- 6 5 9   4 2 8   7 1 3
+ 8 9 6   2 3 4   7 1 5
 
- 4 3 7   1 6 5   2 8 9
+ 7 1 4   5 8 6   3 2 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 4.94329e+06us (= 4943.29ms, 4.94329s)
-Wall-clock time (full program): 4.94529e+06us (= 4945.29ms, 4.94529s)
+Search time: 45246.6us (= 45.2466ms, 0.0452466s)
+Wall-clock time (full program): 47302us (= 47.302ms, 0.047302s)
 Satisfaction error: 0
-Number of search iterations: 48951
-Number of local moves: 17797 (including on plateau: 15564)
-Number of local minimum: 4872 (including on plateau: 1802)
-Number of resets: 136
-Number of restarts: 1
+Number of search iterations: 136
+Number of local moves: 82 (including on plateau: 45)
+Number of local minimum: 8 (including on plateau: 5)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -1439,35 +1439,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 7 4   8 6 1   3 9 2
 
- 3 6 8   9 5 2   1 7 4
+ 1 3 6   4 2 9   7 5 8
 
- 7 9 4   3 8 1   6 5 2
+ 9 2 8   5 3 7   4 6 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 4 2   9 5 6   8 1 7
 
- 1 4 2   5 9 3   8 6 7
+ 6 8 9   7 1 4   2 3 5
 
- 9 7 3   8 1 6   4 2 5
+ 7 1 5   2 8 3   9 4 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 6 7   3 4 5   1 8 9
 
- 6 5 9   4 2 8   7 1 3
+ 4 9 1   6 7 8   5 2 3
 
- 4 3 7   1 6 5   2 8 9
+ 8 5 3   1 9 2   6 7 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 806258us (= 806.258ms, 0.806258s)
-Wall-clock time (full program): 808565us (= 808.565ms, 0.808565s)
+Search time: 77475us (= 77.475ms, 0.077475s)
+Wall-clock time (full program): 79517.2us (= 79.5172ms, 0.0795172s)
 Satisfaction error: 0
-Number of search iterations: 6292
-Number of local moves: 2083 (including on plateau: 1631)
-Number of local minimum: 636 (including on plateau: 209)
-Number of resets: 24
+Number of search iterations: 246
+Number of local moves: 123 (including on plateau: 82)
+Number of local minimum: 12 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1485,35 +1485,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 7 3   4 2 6   5 1 8
 
- 3 6 8   9 5 2   1 7 4
+ 4 8 5   9 3 1   6 2 7
 
- 7 9 4   3 8 1   6 5 2
+ 6 1 2   7 5 8   9 4 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 2 4   8 9 7   3 6 5
 
- 1 4 2   5 9 3   8 6 7
+ 3 6 8   5 1 2   4 7 9
 
- 9 7 3   8 1 6   4 2 5
+ 5 9 7   6 4 3   1 8 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 4 1   3 7 5   8 9 6
 
- 6 5 9   4 2 8   7 1 3
+ 8 3 9   2 6 4   7 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 7 5 6   1 8 9   2 3 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 894545us (= 894.545ms, 0.894545s)
-Wall-clock time (full program): 896816us (= 896.816ms, 0.896816s)
+Search time: 56556.8us (= 56.5568ms, 0.0565568s)
+Wall-clock time (full program): 58662.6us (= 58.6626ms, 0.0586626s)
 Satisfaction error: 0
-Number of search iterations: 5284
-Number of local moves: 2413 (including on plateau: 2009)
-Number of local minimum: 470 (including on plateau: 252)
-Number of resets: 19
+Number of search iterations: 183
+Number of local moves: 84 (including on plateau: 47)
+Number of local minimum: 12 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1531,35 +1531,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 9 6   3 2 8   5 4 1
 
- 3 6 8   9 5 2   1 7 4
+ 1 8 4   6 9 5   3 2 7
 
- 7 9 4   3 8 1   6 5 2
+ 2 3 5   7 4 1   9 8 6
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 7 1   2 8 6   4 5 3
 
- 1 4 2   5 9 3   8 6 7
+ 4 5 8   9 7 3   6 1 2
 
- 9 7 3   8 1 6   4 2 5
+ 3 6 2   5 1 4   8 7 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 2 9   4 6 7   1 3 8
 
- 6 5 9   4 2 8   7 1 3
+ 6 1 3   8 5 2   7 9 4
 
- 4 3 7   1 6 5   2 8 9
+ 8 4 7   1 3 9   2 6 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.07805e+06us (= 1078.05ms, 1.07805s)
-Wall-clock time (full program): 1.08026e+06us (= 1080.26ms, 1.08026s)
+Search time: 39000.1us (= 39.0001ms, 0.0390001s)
+Wall-clock time (full program): 41039.5us (= 41.0395ms, 0.0410395s)
 Satisfaction error: 0
-Number of search iterations: 5420
-Number of local moves: 2201 (including on plateau: 1881)
-Number of local minimum: 524 (including on plateau: 230)
-Number of resets: 16
+Number of search iterations: 151
+Number of local moves: 82 (including on plateau: 47)
+Number of local minimum: 8 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1577,35 +1577,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 8 2   6 4 5   1 9 3
 
- 3 6 8   9 5 2   1 7 4
+ 4 5 6   1 9 3   2 8 7
 
- 7 9 4   3 8 1   6 5 2
+ 9 1 3   7 8 2   5 6 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 7 1   4 5 6   9 2 8
 
- 1 4 2   5 9 3   8 6 7
+ 2 6 8   9 3 1   7 4 5
 
- 9 7 3   8 1 6   4 2 5
+ 5 9 4   8 2 7   3 1 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 3 5   2 6 8   4 7 9
 
- 6 5 9   4 2 8   7 1 3
+ 6 2 9   3 7 4   8 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 8 4 7   5 1 9   6 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.56184e+06us (= 2561.84ms, 2.56184s)
-Wall-clock time (full program): 2.56408e+06us (= 2564.08ms, 2.56408s)
+Search time: 71210.9us (= 71.2109ms, 0.0712109s)
+Wall-clock time (full program): 74200.7us (= 74.2007ms, 0.0742007s)
 Satisfaction error: 0
-Number of search iterations: 22229
-Number of local moves: 8316 (including on plateau: 7224)
-Number of local minimum: 2351 (including on plateau: 871)
-Number of resets: 66
+Number of search iterations: 212
+Number of local moves: 124 (including on plateau: 84)
+Number of local minimum: 14 (including on plateau: 9)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1623,35 +1623,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 2 6   8 5 3   4 7 9
 
- 3 6 8   9 5 2   1 7 4
+ 4 8 7   9 2 6   5 1 3
 
- 7 9 4   3 8 1   6 5 2
+ 9 3 5   7 4 1   6 2 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 5 8   1 3 4   7 9 2
 
- 1 4 2   5 9 3   8 6 7
+ 3 1 2   5 9 7   8 6 4
 
- 9 7 3   8 1 6   4 2 5
+ 7 9 4   2 6 8   1 3 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 6 9   4 1 5   3 8 7
 
- 6 5 9   4 2 8   7 1 3
+ 5 7 3   6 8 2   9 4 1
 
- 4 3 7   1 6 5   2 8 9
+ 8 4 1   3 7 9   2 5 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.14679e+06us (= 1146.79ms, 1.14679s)
-Wall-clock time (full program): 1.14898e+06us (= 1148.98ms, 1.14898s)
+Search time: 81503.9us (= 81.5039ms, 0.0815039s)
+Wall-clock time (full program): 83689us (= 83.689ms, 0.083689s)
 Satisfaction error: 0
-Number of search iterations: 6192
-Number of local moves: 1953 (including on plateau: 1577)
-Number of local minimum: 661 (including on plateau: 192)
-Number of resets: 21
+Number of search iterations: 371
+Number of local moves: 263 (including on plateau: 231)
+Number of local minimum: 19 (including on plateau: 16)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1669,35 +1669,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 8 4   6 5 7   2 1 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 5 7   2 3 1   6 8 4
 
- 7 9 4   3 8 1   6 5 2
+ 6 2 1   8 9 4   3 7 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 1 9   5 7 3   4 2 6
 
- 1 4 2   5 9 3   8 6 7
+ 7 4 5   9 2 6   1 3 8
 
- 9 7 3   8 1 6   4 2 5
+ 2 3 6   1 4 8   5 9 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 6 8   3 1 9   7 4 2
 
- 6 5 9   4 2 8   7 1 3
+ 4 9 3   7 6 2   8 5 1
 
- 4 3 7   1 6 5   2 8 9
+ 1 7 2   4 8 5   9 6 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.2916e+06us (= 1291.6ms, 1.2916s)
-Wall-clock time (full program): 1.29381e+06us (= 1293.81ms, 1.29381s)
+Search time: 58562.2us (= 58.5622ms, 0.0585622s)
+Wall-clock time (full program): 60587.7us (= 60.5877ms, 0.0605877s)
 Satisfaction error: 0
-Number of search iterations: 7763
-Number of local moves: 2619 (including on plateau: 2098)
-Number of local minimum: 920 (including on plateau: 242)
-Number of resets: 31
+Number of search iterations: 178
+Number of local moves: 90 (including on plateau: 54)
+Number of local minimum: 10 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1715,35 +1715,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 4 1   8 5 6   9 2 7
 
- 3 6 8   9 5 2   1 7 4
+ 9 5 2   7 4 3   6 8 1
 
- 7 9 4   3 8 1   6 5 2
+ 6 7 8   9 2 1   4 3 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 6 3   2 9 7   8 5 4
 
- 1 4 2   5 9 3   8 6 7
+ 5 2 4   6 3 8   1 7 9
 
- 9 7 3   8 1 6   4 2 5
+ 7 8 9   5 1 4   2 6 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 3 5   1 8 9   7 4 6
 
- 6 5 9   4 2 8   7 1 3
+ 4 1 6   3 7 2   5 9 8
 
- 4 3 7   1 6 5   2 8 9
+ 8 9 7   4 6 5   3 1 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 340738us (= 340.738ms, 0.340738s)
-Wall-clock time (full program): 342929us (= 342.929ms, 0.342929s)
+Search time: 63460.3us (= 63.4603ms, 0.0634603s)
+Wall-clock time (full program): 65476.1us (= 65.4761ms, 0.0654761s)
 Satisfaction error: 0
-Number of search iterations: 2278
-Number of local moves: 809 (including on plateau: 599)
-Number of local minimum: 243 (including on plateau: 85)
-Number of resets: 7
+Number of search iterations: 218
+Number of local moves: 128 (including on plateau: 89)
+Number of local minimum: 7 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1761,35 +1761,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 5 7   2 8 4   9 1 3
 
- 3 6 8   9 5 2   1 7 4
+ 1 3 9   5 6 7   8 4 2
 
- 7 9 4   3 8 1   6 5 2
+ 4 2 8   1 9 3   5 7 6
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 8 3   4 7 5   1 6 9
 
- 1 4 2   5 9 3   8 6 7
+ 7 6 5   8 1 9   3 2 4
 
- 9 7 3   8 1 6   4 2 5
+ 9 1 4   6 3 2   7 8 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 4 2   9 5 1   6 3 7
 
- 6 5 9   4 2 8   7 1 3
+ 3 9 1   7 4 6   2 5 8
 
- 4 3 7   1 6 5   2 8 9
+ 5 7 6   3 2 8   4 9 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.68674e+06us (= 1686.74ms, 1.68674s)
-Wall-clock time (full program): 1.68898e+06us (= 1688.98ms, 1.68898s)
+Search time: 62532.1us (= 62.5321ms, 0.0625321s)
+Wall-clock time (full program): 64586.8us (= 64.5868ms, 0.0645868s)
 Satisfaction error: 0
-Number of search iterations: 11953
-Number of local moves: 4414 (including on plateau: 3926)
-Number of local minimum: 1086 (including on plateau: 483)
-Number of resets: 26
+Number of search iterations: 198
+Number of local moves: 110 (including on plateau: 79)
+Number of local minimum: 11 (including on plateau: 9)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1807,35 +1807,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 7 4   1 8 2   5 9 3
 
- 3 6 8   9 5 2   1 7 4
+ 5 9 3   4 6 7   2 1 8
 
- 7 9 4   3 8 1   6 5 2
+ 1 8 2   9 5 3   4 7 6
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 5 6   2 3 4   1 8 9
 
- 1 4 2   5 9 3   8 6 7
+ 8 2 9   5 1 6   3 4 7
 
- 9 7 3   8 1 6   4 2 5
+ 4 3 1   7 9 8   6 2 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 1 7   3 2 5   8 6 4
 
- 6 5 9   4 2 8   7 1 3
+ 2 6 5   8 4 9   7 3 1
 
- 4 3 7   1 6 5   2 8 9
+ 3 4 8   6 7 1   9 5 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.30979e+06us (= 2309.79ms, 2.30979s)
-Wall-clock time (full program): 2.31203e+06us (= 2312.03ms, 2.31203s)
+Search time: 63846.5us (= 63.8465ms, 0.0638465s)
+Wall-clock time (full program): 65932.3us (= 65.9323ms, 0.0659323s)
 Satisfaction error: 0
-Number of search iterations: 16628
-Number of local moves: 5546 (including on plateau: 4582)
-Number of local minimum: 1796 (including on plateau: 530)
-Number of resets: 58
+Number of search iterations: 291
+Number of local moves: 175 (including on plateau: 139)
+Number of local minimum: 21 (including on plateau: 16)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1853,35 +1853,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 4 6 3   7 8 2   5 9 1
 
- 3 6 8   9 5 2   1 7 4
+ 7 1 5   9 6 3   2 8 4
 
- 7 9 4   3 8 1   6 5 2
+ 9 8 2   4 5 1   3 6 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 9 1   2 7 6   4 3 8
 
- 1 4 2   5 9 3   8 6 7
+ 8 7 4   3 1 9   6 5 2
 
- 9 7 3   8 1 6   4 2 5
+ 3 2 6   8 4 5   7 1 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 4 7   1 3 8   9 2 5
 
- 6 5 9   4 2 8   7 1 3
+ 1 5 9   6 2 4   8 7 3
 
- 4 3 7   1 6 5   2 8 9
+ 2 3 8   5 9 7   1 4 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 975420us (= 975.42ms, 0.97542s)
-Wall-clock time (full program): 977623us (= 977.623ms, 0.977623s)
+Search time: 45706.6us (= 45.7066ms, 0.0457066s)
+Wall-clock time (full program): 48713.1us (= 48.7131ms, 0.0487131s)
 Satisfaction error: 0
-Number of search iterations: 6371
-Number of local moves: 2258 (including on plateau: 1798)
-Number of local minimum: 716 (including on plateau: 210)
-Number of resets: 26
+Number of search iterations: 128
+Number of local moves: 82 (including on plateau: 48)
+Number of local minimum: 6 (including on plateau: 9)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1899,35 +1899,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 2 1   8 5 6   9 4 7
 
- 3 6 8   9 5 2   1 7 4
+ 9 6 5   4 3 7   1 2 8
 
- 7 9 4   3 8 1   6 5 2
+ 7 4 8   1 9 2   5 6 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 8 4   6 2 9   7 3 1
 
- 1 4 2   5 9 3   8 6 7
+ 2 1 9   3 7 4   8 5 6
 
- 9 7 3   8 1 6   4 2 5
+ 6 7 3   5 8 1   4 9 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 3 6   9 1 8   2 7 5
 
- 6 5 9   4 2 8   7 1 3
+ 8 5 7   2 4 3   6 1 9
 
- 4 3 7   1 6 5   2 8 9
+ 1 9 2   7 6 5   3 8 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.89344e+06us (= 1893.44ms, 1.89344s)
-Wall-clock time (full program): 1.89565e+06us (= 1895.65ms, 1.89565s)
+Search time: 58134.1us (= 58.1341ms, 0.058134s)
+Wall-clock time (full program): 60265.8us (= 60.2658ms, 0.0602658s)
 Satisfaction error: 0
-Number of search iterations: 11228
-Number of local moves: 4298 (including on plateau: 3573)
-Number of local minimum: 1151 (including on plateau: 430)
-Number of resets: 40
+Number of search iterations: 133
+Number of local moves: 89 (including on plateau: 54)
+Number of local minimum: 9 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1945,35 +1945,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 6 2   1 3 9   8 4 5
 
- 3 6 8   9 5 2   1 7 4
+ 9 8 4   5 2 7   3 1 6
 
- 7 9 4   3 8 1   6 5 2
+ 1 5 3   8 4 6   2 9 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 2 7   4 9 8   1 5 3
 
- 1 4 2   5 9 3   8 6 7
+ 3 1 8   6 7 5   4 2 9
 
- 9 7 3   8 1 6   4 2 5
+ 4 9 5   2 1 3   7 6 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 4 6   3 8 2   9 7 1
 
- 6 5 9   4 2 8   7 1 3
+ 2 3 9   7 6 1   5 8 4
 
- 4 3 7   1 6 5   2 8 9
+ 8 7 1   9 5 4   6 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.62897e+06us (= 1628.97ms, 1.62897s)
-Wall-clock time (full program): 1.63118e+06us (= 1631.18ms, 1.63118s)
+Search time: 35439.4us (= 35.4394ms, 0.0354394s)
+Wall-clock time (full program): 37372.4us (= 37.3724ms, 0.0373724s)
 Satisfaction error: 0
-Number of search iterations: 8621
-Number of local moves: 2826 (including on plateau: 2147)
-Number of local minimum: 1003 (including on plateau: 263)
-Number of resets: 40
+Number of search iterations: 97
+Number of local moves: 67 (including on plateau: 35)
+Number of local minimum: 2 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -1991,35 +1991,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 8 2   9 1 6   3 4 7
 
- 3 6 8   9 5 2   1 7 4
+ 4 7 1   2 5 3   8 9 6
 
- 7 9 4   3 8 1   6 5 2
+ 6 9 3   4 7 8   2 5 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 4 8   1 3 2   5 6 9
 
- 1 4 2   5 9 3   8 6 7
+ 3 5 9   8 6 7   1 2 4
 
- 9 7 3   8 1 6   4 2 5
+ 2 1 6   5 4 9   7 3 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 2 7   3 8 4   6 1 5
 
- 6 5 9   4 2 8   7 1 3
+ 8 3 5   6 9 1   4 7 2
 
- 4 3 7   1 6 5   2 8 9
+ 1 6 4   7 2 5   9 8 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.774e+06us (= 1774ms, 1.774s)
-Wall-clock time (full program): 1.77625e+06us (= 1776.25ms, 1.77625s)
+Search time: 53883.5us (= 53.8835ms, 0.0538835s)
+Wall-clock time (full program): 55870.4us (= 55.8704ms, 0.0558704s)
 Satisfaction error: 0
-Number of search iterations: 15456
-Number of local moves: 4952 (including on plateau: 3710)
-Number of local minimum: 1882 (including on plateau: 453)
-Number of resets: 77
+Number of search iterations: 169
+Number of local moves: 97 (including on plateau: 64)
+Number of local minimum: 6 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2037,35 +2037,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 5 6   9 4 3   1 2 7
 
- 3 6 8   9 5 2   1 7 4
+ 9 2 7   6 5 1   4 3 8
 
- 7 9 4   3 8 1   6 5 2
+ 4 1 3   7 8 2   6 5 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 6 5   1 9 4   7 8 3
 
- 1 4 2   5 9 3   8 6 7
+ 3 9 1   8 2 7   5 6 4
 
- 9 7 3   8 1 6   4 2 5
+ 7 8 4   5 3 6   9 1 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 4 9   3 1 8   2 7 6
 
- 6 5 9   4 2 8   7 1 3
+ 6 3 2   4 7 5   8 9 1
 
- 4 3 7   1 6 5   2 8 9
+ 1 7 8   2 6 9   3 4 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 485785us (= 485.785ms, 0.485785s)
-Wall-clock time (full program): 488078us (= 488.078ms, 0.488078s)
+Search time: 42905.5us (= 42.9055ms, 0.0429055s)
+Wall-clock time (full program): 44931.2us (= 44.9312ms, 0.0449312s)
 Satisfaction error: 0
-Number of search iterations: 3235
-Number of local moves: 998 (including on plateau: 792)
-Number of local minimum: 326 (including on plateau: 96)
-Number of resets: 10
+Number of search iterations: 161
+Number of local moves: 97 (including on plateau: 59)
+Number of local minimum: 10 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2083,35 +2083,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 6 9   7 4 2   8 5 3
 
- 3 6 8   9 5 2   1 7 4
+ 2 7 5   3 6 8   4 1 9
 
- 7 9 4   3 8 1   6 5 2
+ 4 8 3   5 9 1   7 6 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 9 8   1 2 3   5 4 6
 
- 1 4 2   5 9 3   8 6 7
+ 6 1 2   4 5 7   9 3 8
 
- 9 7 3   8 1 6   4 2 5
+ 3 5 4   9 8 6   2 7 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 2 7   6 1 5   3 9 4
 
- 6 5 9   4 2 8   7 1 3
+ 5 4 1   8 3 9   6 2 7
 
- 4 3 7   1 6 5   2 8 9
+ 9 3 6   2 7 4   1 8 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.19793e+06us (= 1197.93ms, 1.19793s)
-Wall-clock time (full program): 1.20006e+06us (= 1200.06ms, 1.20006s)
+Search time: 52849.8us (= 52.8498ms, 0.0528498s)
+Wall-clock time (full program): 54875us (= 54.875ms, 0.054875s)
 Satisfaction error: 0
-Number of search iterations: 6117
-Number of local moves: 2147 (including on plateau: 1635)
-Number of local minimum: 785 (including on plateau: 210)
-Number of resets: 28
+Number of search iterations: 228
+Number of local moves: 120 (including on plateau: 82)
+Number of local minimum: 5 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2129,35 +2129,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 1 3   4 6 5   7 8 2
 
- 3 6 8   9 5 2   1 7 4
+ 8 6 4   7 9 2   1 5 3
 
- 7 9 4   3 8 1   6 5 2
+ 5 7 2   1 8 3   9 6 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 5 9   3 2 6   4 1 8
 
- 1 4 2   5 9 3   8 6 7
+ 1 2 6   9 4 8   5 3 7
 
- 9 7 3   8 1 6   4 2 5
+ 3 4 8   5 1 7   2 9 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 3 5   6 7 9   8 2 1
 
- 6 5 9   4 2 8   7 1 3
+ 2 9 7   8 3 1   6 4 5
 
- 4 3 7   1 6 5   2 8 9
+ 6 8 1   2 5 4   3 7 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.95953e+06us (= 2959.53ms, 2.95953s)
-Wall-clock time (full program): 2.96173e+06us (= 2961.73ms, 2.96173s)
+Search time: 49426.8us (= 49.4268ms, 0.0494268s)
+Wall-clock time (full program): 52398.9us (= 52.3989ms, 0.0523989s)
 Satisfaction error: 0
-Number of search iterations: 26781
-Number of local moves: 9470 (including on plateau: 8290)
-Number of local minimum: 2739 (including on plateau: 987)
-Number of resets: 78
+Number of search iterations: 149
+Number of local moves: 87 (including on plateau: 45)
+Number of local minimum: 3 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2175,35 +2175,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 3 8   5 2 9   4 6 7
 
- 3 6 8   9 5 2   1 7 4
+ 2 7 5   4 3 6   9 8 1
 
- 7 9 4   3 8 1   6 5 2
+ 9 6 4   7 8 1   5 3 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 2 7   9 6 5   1 4 3
 
- 1 4 2   5 9 3   8 6 7
+ 4 5 1   2 7 3   6 9 8
 
- 9 7 3   8 1 6   4 2 5
+ 6 9 3   1 4 8   7 2 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 4 9   8 5 2   3 1 6
 
- 6 5 9   4 2 8   7 1 3
+ 5 8 6   3 1 4   2 7 9
 
- 4 3 7   1 6 5   2 8 9
+ 3 1 2   6 9 7   8 5 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 957771us (= 957.771ms, 0.957771s)
-Wall-clock time (full program): 959975us (= 959.975ms, 0.959975s)
+Search time: 44474.1us (= 44.4741ms, 0.0444741s)
+Wall-clock time (full program): 46591.6us (= 46.5916ms, 0.0465916s)
 Satisfaction error: 0
-Number of search iterations: 4804
-Number of local moves: 1801 (including on plateau: 1431)
-Number of local minimum: 502 (including on plateau: 187)
-Number of resets: 17
+Number of search iterations: 130
+Number of local moves: 83 (including on plateau: 46)
+Number of local minimum: 3 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2221,35 +2221,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 9 5   2 7 3   4 1 8
 
- 3 6 8   9 5 2   1 7 4
+ 2 4 3   1 8 9   7 5 6
 
- 7 9 4   3 8 1   6 5 2
+ 1 8 7   6 4 5   2 3 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 3 6   7 2 1   5 8 4
 
- 1 4 2   5 9 3   8 6 7
+ 5 2 1   4 3 8   6 9 7
 
- 9 7 3   8 1 6   4 2 5
+ 8 7 4   9 5 6   1 2 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 6 9   8 1 2   3 7 5
 
- 6 5 9   4 2 8   7 1 3
+ 7 5 2   3 9 4   8 6 1
 
- 4 3 7   1 6 5   2 8 9
+ 3 1 8   5 6 7   9 4 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.28609e+06us (= 2286.09ms, 2.28609s)
-Wall-clock time (full program): 2.28807e+06us (= 2288.07ms, 2.28807s)
+Search time: 57681.8us (= 57.6818ms, 0.0576818s)
+Wall-clock time (full program): 59597.3us (= 59.5973ms, 0.0595973s)
 Satisfaction error: 0
-Number of search iterations: 17017
-Number of local moves: 6046 (including on plateau: 4894)
-Number of local minimum: 1842 (including on plateau: 582)
-Number of resets: 67
+Number of search iterations: 174
+Number of local moves: 113 (including on plateau: 75)
+Number of local minimum: 6 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2267,35 +2267,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 1 8   7 2 4   6 3 5
 
- 3 6 8   9 5 2   1 7 4
+ 3 7 2   9 6 5   1 8 4
 
- 7 9 4   3 8 1   6 5 2
+ 6 5 4   1 3 8   2 7 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 3 5   6 7 9   4 2 8
 
- 1 4 2   5 9 3   8 6 7
+ 2 6 7   8 4 3   5 9 1
 
- 9 7 3   8 1 6   4 2 5
+ 4 8 9   2 5 1   7 6 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 9 1   4 8 2   3 5 6
 
- 6 5 9   4 2 8   7 1 3
+ 5 4 6   3 9 7   8 1 2
 
- 4 3 7   1 6 5   2 8 9
+ 8 2 3   5 1 6   9 4 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 780289us (= 780.289ms, 0.780289s)
-Wall-clock time (full program): 782574us (= 782.574ms, 0.782574s)
+Search time: 47474.2us (= 47.4742ms, 0.0474742s)
+Wall-clock time (full program): 49458.3us (= 49.4583ms, 0.0494583s)
 Satisfaction error: 0
-Number of search iterations: 5866
-Number of local moves: 2066 (including on plateau: 1687)
-Number of local minimum: 653 (including on plateau: 205)
-Number of resets: 19
+Number of search iterations: 218
+Number of local moves: 139 (including on plateau: 101)
+Number of local minimum: 11 (including on plateau: 18)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2313,35 +2313,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 4 5   8 7 9   1 6 3
 
- 3 6 8   9 5 2   1 7 4
+ 7 9 6   3 1 4   5 2 8
 
- 7 9 4   3 8 1   6 5 2
+ 1 8 3   6 5 2   4 9 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 2 4   7 8 6   9 1 5
 
- 1 4 2   5 9 3   8 6 7
+ 5 1 7   9 2 3   8 4 6
 
- 9 7 3   8 1 6   4 2 5
+ 8 6 9   1 4 5   3 7 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 3 1   5 6 7   2 8 9
 
- 6 5 9   4 2 8   7 1 3
+ 6 5 8   2 9 1   7 3 4
 
- 4 3 7   1 6 5   2 8 9
+ 9 7 2   4 3 8   6 5 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.96922e+06us (= 1969.22ms, 1.96922s)
-Wall-clock time (full program): 1.97148e+06us (= 1971.48ms, 1.97148s)
+Search time: 39706.7us (= 39.7067ms, 0.0397067s)
+Wall-clock time (full program): 41750.4us (= 41.7504ms, 0.0417504s)
 Satisfaction error: 0
-Number of search iterations: 12034
-Number of local moves: 3896 (including on plateau: 3172)
-Number of local minimum: 1227 (including on plateau: 406)
-Number of resets: 44
+Number of search iterations: 123
+Number of local moves: 81 (including on plateau: 48)
+Number of local minimum: 12 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2359,35 +2359,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 2 1   8 6 9   3 4 5
 
- 3 6 8   9 5 2   1 7 4
+ 3 8 5   7 4 2   9 6 1
 
- 7 9 4   3 8 1   6 5 2
+ 6 9 4   1 3 5   7 2 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 5 3   9 2 1   6 8 7
 
- 1 4 2   5 9 3   8 6 7
+ 2 6 8   5 7 4   1 9 3
 
- 9 7 3   8 1 6   4 2 5
+ 9 1 7   6 8 3   4 5 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 7 2   3 9 6   5 1 4
 
- 6 5 9   4 2 8   7 1 3
+ 5 4 6   2 1 7   8 3 9
 
- 4 3 7   1 6 5   2 8 9
+ 1 3 9   4 5 8   2 7 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.05636e+06us (= 1056.36ms, 1.05636s)
-Wall-clock time (full program): 1.05855e+06us (= 1058.55ms, 1.05855s)
+Search time: 61984.8us (= 61.9848ms, 0.0619848s)
+Wall-clock time (full program): 64041.5us (= 64.0415ms, 0.0640415s)
 Satisfaction error: 0
-Number of search iterations: 5389
-Number of local moves: 1755 (including on plateau: 1330)
-Number of local minimum: 700 (including on plateau: 174)
-Number of resets: 26
+Number of search iterations: 203
+Number of local moves: 113 (including on plateau: 76)
+Number of local minimum: 11 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2405,35 +2405,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 1 9   4 3 7   6 2 5
 
- 3 6 8   9 5 2   1 7 4
+ 6 3 7   2 5 8   4 1 9
 
- 7 9 4   3 8 1   6 5 2
+ 2 5 4   1 6 9   8 3 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 7 5   3 8 2   9 6 1
 
- 1 4 2   5 9 3   8 6 7
+ 1 6 3   9 4 5   7 8 2
 
- 9 7 3   8 1 6   4 2 5
+ 9 2 8   7 1 6   3 5 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 9 2   8 7 1   5 4 6
 
- 6 5 9   4 2 8   7 1 3
+ 5 8 1   6 9 4   2 7 3
 
- 4 3 7   1 6 5   2 8 9
+ 7 4 6   5 2 3   1 9 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.11092e+06us (= 2110.92ms, 2.11092s)
-Wall-clock time (full program): 2.11308e+06us (= 2113.08ms, 2.11308s)
+Search time: 64702.3us (= 64.7023ms, 0.0647023s)
+Wall-clock time (full program): 67591.9us (= 67.5919ms, 0.0675919s)
 Satisfaction error: 0
-Number of search iterations: 15372
-Number of local moves: 5221 (including on plateau: 4397)
-Number of local minimum: 1673 (including on plateau: 568)
-Number of resets: 48
+Number of search iterations: 225
+Number of local moves: 120 (including on plateau: 84)
+Number of local minimum: 19 (including on plateau: 15)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2451,35 +2451,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 2 9   1 6 8   7 4 3
 
- 3 6 8   9 5 2   1 7 4
+ 8 4 3   7 2 9   6 1 5
 
- 7 9 4   3 8 1   6 5 2
+ 6 7 1   3 4 5   8 2 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 5 8   9 1 7   2 6 4
 
- 1 4 2   5 9 3   8 6 7
+ 1 9 2   6 8 4   5 3 7
 
- 9 7 3   8 1 6   4 2 5
+ 4 6 7   2 5 3   9 8 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 1 4   8 9 2   3 5 6
 
- 6 5 9   4 2 8   7 1 3
+ 9 8 6   5 3 1   4 7 2
 
- 4 3 7   1 6 5   2 8 9
+ 2 3 5   4 7 6   1 9 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.01873e+06us (= 2018.73ms, 2.01873s)
-Wall-clock time (full program): 2.02097e+06us (= 2020.97ms, 2.02097s)
+Search time: 66143.6us (= 66.1436ms, 0.0661436s)
+Wall-clock time (full program): 68243.1us (= 68.2431ms, 0.0682431s)
 Satisfaction error: 0
-Number of search iterations: 14572
-Number of local moves: 5338 (including on plateau: 4427)
-Number of local minimum: 1540 (including on plateau: 542)
-Number of resets: 55
+Number of search iterations: 227
+Number of local moves: 136 (including on plateau: 101)
+Number of local minimum: 9 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2497,35 +2497,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 7 9   2 6 8   4 3 5
 
- 3 6 8   9 5 2   1 7 4
+ 8 4 5   7 9 3   2 1 6
 
- 7 9 4   3 8 1   6 5 2
+ 3 6 2   5 1 4   9 8 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 9 4   6 2 1   8 7 3
 
- 1 4 2   5 9 3   8 6 7
+ 7 1 8   3 5 9   6 2 4
 
- 9 7 3   8 1 6   4 2 5
+ 2 3 6   8 4 7   5 9 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 5 3   1 8 2   7 6 9
 
- 6 5 9   4 2 8   7 1 3
+ 6 8 1   9 7 5   3 4 2
 
- 4 3 7   1 6 5   2 8 9
+ 9 2 7   4 3 6   1 5 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.96451e+06us (= 1964.51ms, 1.96451s)
-Wall-clock time (full program): 1.96668e+06us (= 1966.68ms, 1.96668s)
+Search time: 61059.1us (= 61.0591ms, 0.0610591s)
+Wall-clock time (full program): 62966us (= 62.966ms, 0.062966s)
 Satisfaction error: 0
-Number of search iterations: 10641
-Number of local moves: 3495 (including on plateau: 2756)
-Number of local minimum: 1239 (including on plateau: 293)
-Number of resets: 46
+Number of search iterations: 188
+Number of local moves: 108 (including on plateau: 71)
+Number of local minimum: 4 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2543,35 +2543,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 9 7   3 6 2   1 5 4
 
- 3 6 8   9 5 2   1 7 4
+ 4 2 3   5 1 8   9 6 7
 
- 7 9 4   3 8 1   6 5 2
+ 5 1 6   7 4 9   2 8 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 4 5   9 7 3   8 2 6
 
- 1 4 2   5 9 3   8 6 7
+ 9 7 2   8 5 6   3 4 1
 
- 9 7 3   8 1 6   4 2 5
+ 3 6 8   4 2 1   5 7 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 5 9   6 3 7   4 1 8
 
- 6 5 9   4 2 8   7 1 3
+ 7 3 1   2 8 4   6 9 5
 
- 4 3 7   1 6 5   2 8 9
+ 6 8 4   1 9 5   7 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.04784e+06us (= 2047.84ms, 2.04784s)
-Wall-clock time (full program): 2.05009e+06us (= 2050.09ms, 2.05009s)
+Search time: 58021.1us (= 58.0211ms, 0.0580211s)
+Wall-clock time (full program): 59977.7us (= 59.9777ms, 0.0599777s)
 Satisfaction error: 0
-Number of search iterations: 18429
-Number of local moves: 5739 (including on plateau: 4600)
-Number of local minimum: 1978 (including on plateau: 588)
-Number of resets: 70
+Number of search iterations: 195
+Number of local moves: 93 (including on plateau: 57)
+Number of local minimum: 17 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2589,35 +2589,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 6 7   5 4 9   2 1 8
 
- 3 6 8   9 5 2   1 7 4
+ 8 2 5   7 3 1   4 9 6
 
- 7 9 4   3 8 1   6 5 2
+ 9 1 4   8 2 6   3 7 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 9 2   3 1 8   7 6 4
 
- 1 4 2   5 9 3   8 6 7
+ 7 8 1   9 6 4   5 2 3
 
- 9 7 3   8 1 6   4 2 5
+ 4 3 6   2 5 7   9 8 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 5 3   1 9 2   8 4 7
 
- 6 5 9   4 2 8   7 1 3
+ 2 4 8   6 7 3   1 5 9
 
- 4 3 7   1 6 5   2 8 9
+ 1 7 9   4 8 5   6 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.38412e+06us (= 1384.12ms, 1.38412s)
-Wall-clock time (full program): 1.38636e+06us (= 1386.36ms, 1.38636s)
+Search time: 62045.8us (= 62.0458ms, 0.0620458s)
+Wall-clock time (full program): 64017.8us (= 64.0178ms, 0.0640178s)
 Satisfaction error: 0
-Number of search iterations: 8151
-Number of local moves: 3063 (including on plateau: 2426)
-Number of local minimum: 907 (including on plateau: 290)
-Number of resets: 34
+Number of search iterations: 217
+Number of local moves: 138 (including on plateau: 100)
+Number of local minimum: 11 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2635,35 +2635,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 4 1   5 6 2   7 3 8
 
- 3 6 8   9 5 2   1 7 4
+ 8 5 2   7 1 3   4 6 9
 
- 7 9 4   3 8 1   6 5 2
+ 3 7 6   4 9 8   5 1 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 2 9   1 3 6   8 7 4
 
- 1 4 2   5 9 3   8 6 7
+ 4 6 3   8 2 7   9 5 1
 
- 9 7 3   8 1 6   4 2 5
+ 7 1 8   9 4 5   3 2 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 8 5   2 7 4   1 9 3
 
- 6 5 9   4 2 8   7 1 3
+ 1 3 4   6 5 9   2 8 7
 
- 4 3 7   1 6 5   2 8 9
+ 2 9 7   3 8 1   6 4 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.2938e+06us (= 1293.8ms, 1.2938s)
-Wall-clock time (full program): 1.29599e+06us (= 1295.99ms, 1.29599s)
+Search time: 34408.5us (= 34.4085ms, 0.0344085s)
+Wall-clock time (full program): 36427.8us (= 36.4278ms, 0.0364278s)
 Satisfaction error: 0
-Number of search iterations: 7081
-Number of local moves: 2429 (including on plateau: 1831)
-Number of local minimum: 855 (including on plateau: 207)
-Number of resets: 36
+Number of search iterations: 109
+Number of local moves: 66 (including on plateau: 35)
+Number of local minimum: 2 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2681,35 +2681,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 2 8   6 1 4   3 9 7
 
- 3 6 8   9 5 2   1 7 4
+ 9 1 3   7 8 5   4 6 2
 
- 7 9 4   3 8 1   6 5 2
+ 6 4 7   9 2 3   1 8 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 7 9   8 3 1   6 5 4
 
- 1 4 2   5 9 3   8 6 7
+ 1 8 5   4 6 7   9 2 3
 
- 9 7 3   8 1 6   4 2 5
+ 3 6 4   5 9 2   7 1 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 3 1   2 5 6   8 4 9
 
- 6 5 9   4 2 8   7 1 3
+ 4 9 2   1 7 8   5 3 6
 
- 4 3 7   1 6 5   2 8 9
+ 8 5 6   3 4 9   2 7 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 840542us (= 840.542ms, 0.840542s)
-Wall-clock time (full program): 842702us (= 842.702ms, 0.842702s)
+Search time: 78431.9us (= 78.4319ms, 0.0784319s)
+Wall-clock time (full program): 81370.2us (= 81.3702ms, 0.0813702s)
 Satisfaction error: 0
-Number of search iterations: 5654
-Number of local moves: 1889 (including on plateau: 1344)
-Number of local minimum: 659 (including on plateau: 159)
-Number of resets: 31
+Number of search iterations: 296
+Number of local moves: 128 (including on plateau: 100)
+Number of local minimum: 15 (including on plateau: 15)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2727,35 +2727,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 2 4   7 9 6   1 5 8
 
- 3 6 8   9 5 2   1 7 4
+ 9 8 7   1 4 5   3 2 6
 
- 7 9 4   3 8 1   6 5 2
+ 1 5 6   3 2 8   7 9 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 6 2   5 3 9   8 1 7
 
- 1 4 2   5 9 3   8 6 7
+ 7 3 9   4 8 1   5 6 2
 
- 9 7 3   8 1 6   4 2 5
+ 8 1 5   2 6 7   4 3 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 7 8   9 1 3   6 4 5
 
- 6 5 9   4 2 8   7 1 3
+ 6 9 1   8 5 4   2 7 3
 
- 4 3 7   1 6 5   2 8 9
+ 5 4 3   6 7 2   9 8 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.31437e+06us (= 1314.37ms, 1.31437s)
-Wall-clock time (full program): 1.31658e+06us (= 1316.58ms, 1.31658s)
+Search time: 39643.8us (= 39.6438ms, 0.0396438s)
+Wall-clock time (full program): 41750.6us (= 41.7506ms, 0.0417506s)
 Satisfaction error: 0
-Number of search iterations: 7797
-Number of local moves: 2698 (including on plateau: 2103)
-Number of local minimum: 937 (including on plateau: 306)
-Number of resets: 32
+Number of search iterations: 115
+Number of local moves: 66 (including on plateau: 30)
+Number of local minimum: 4 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2773,36 +2773,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 6 8   4 7 3   9 2 5
 
- 3 6 8   9 5 2   1 7 4
+ 2 7 5   6 9 1   4 8 3
 
- 7 9 4   3 8 1   6 5 2
+ 9 4 3   2 8 5   6 7 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 1 4   8 2 6   7 3 9
 
- 1 4 2   5 9 3   8 6 7
+ 8 9 6   7 3 4   5 1 2
 
- 9 7 3   8 1 6   4 2 5
+ 7 3 2   1 5 9   8 4 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 2 1   5 4 8   3 9 7
 
- 6 5 9   4 2 8   7 1 3
+ 4 5 9   3 1 7   2 6 8
 
- 4 3 7   1 6 5   2 8 9
+ 3 8 7   9 6 2   1 5 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.82709e+06us (= 2827.09ms, 2.82709s)
-Wall-clock time (full program): 2.82863e+06us (= 2828.63ms, 2.82863s)
+Search time: 83892.3us (= 83.8923ms, 0.0838923s)
+Wall-clock time (full program): 85638.5us (= 85.6385ms, 0.0856385s)
 Satisfaction error: 0
-Number of search iterations: 19890
-Number of local moves: 6618 (including on plateau: 5177)
-Number of local minimum: 2296 (including on plateau: 652)
-Number of resets: 89
-Number of restarts: 1
+Number of search iterations: 319
+Number of local moves: 158 (including on plateau: 119)
+Number of local minimum: 14 (including on plateau: 15)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -2819,35 +2819,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 8 3   5 1 6   4 9 2
 
- 3 6 8   9 5 2   1 7 4
+ 2 6 4   8 9 7   5 3 1
 
- 7 9 4   3 8 1   6 5 2
+ 1 9 5   3 4 2   6 7 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 1 9   7 5 4   2 8 6
 
- 1 4 2   5 9 3   8 6 7
+ 8 2 7   6 3 1   9 4 5
 
- 9 7 3   8 1 6   4 2 5
+ 4 5 6   9 2 8   3 1 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 3 1   2 8 9   7 5 4
 
- 6 5 9   4 2 8   7 1 3
+ 5 7 8   4 6 3   1 2 9
 
- 4 3 7   1 6 5   2 8 9
+ 9 4 2   1 7 5   8 6 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.79211e+06us (= 1792.11ms, 1.79211s)
-Wall-clock time (full program): 1.79436e+06us (= 1794.36ms, 1.79436s)
+Search time: 50775.7us (= 50.7757ms, 0.0507757s)
+Wall-clock time (full program): 52728.6us (= 52.7286ms, 0.0527286s)
 Satisfaction error: 0
-Number of search iterations: 14121
-Number of local moves: 5462 (including on plateau: 4505)
-Number of local minimum: 1644 (including on plateau: 581)
-Number of resets: 54
+Number of search iterations: 159
+Number of local moves: 93 (including on plateau: 59)
+Number of local minimum: 11 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2865,35 +2865,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 1 3   8 2 7   4 6 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 2 8   5 4 6   1 7 3
 
- 7 9 4   3 8 1   6 5 2
+ 4 6 7   3 9 1   2 5 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 4 5   2 1 3   6 9 7
 
- 1 4 2   5 9 3   8 6 7
+ 2 9 6   7 5 4   8 3 1
 
- 9 7 3   8 1 6   4 2 5
+ 7 3 1   9 6 8   5 2 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 5 4   1 3 9   7 8 2
 
- 6 5 9   4 2 8   7 1 3
+ 3 7 2   4 8 5   9 1 6
 
- 4 3 7   1 6 5   2 8 9
+ 1 8 9   6 7 2   3 4 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 771647us (= 771.647ms, 0.771647s)
-Wall-clock time (full program): 773899us (= 773.899ms, 0.773899s)
+Search time: 32914.4us (= 32.9144ms, 0.0329144s)
+Wall-clock time (full program): 34907.9us (= 34.9079ms, 0.0349079s)
 Satisfaction error: 0
-Number of search iterations: 5038
-Number of local moves: 1785 (including on plateau: 1359)
-Number of local minimum: 547 (including on plateau: 178)
-Number of resets: 20
+Number of search iterations: 100
+Number of local moves: 69 (including on plateau: 33)
+Number of local minimum: 3 (including on plateau: 4)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2911,35 +2911,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 8 1   5 4 3   6 9 7
 
- 3 6 8   9 5 2   1 7 4
+ 6 7 4   8 9 1   5 2 3
 
- 7 9 4   3 8 1   6 5 2
+ 9 3 5   2 6 7   8 4 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 9 6   7 5 2   3 1 8
 
- 1 4 2   5 9 3   8 6 7
+ 3 1 7   6 8 4   2 5 9
 
- 9 7 3   8 1 6   4 2 5
+ 8 5 2   1 3 9   4 7 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 4 9   3 2 8   1 6 5
 
- 6 5 9   4 2 8   7 1 3
+ 1 6 3   4 7 5   9 8 2
 
- 4 3 7   1 6 5   2 8 9
+ 5 2 8   9 1 6   7 3 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.34176e+06us (= 2341.76ms, 2.34176s)
-Wall-clock time (full program): 2.3439e+06us (= 2343.9ms, 2.3439s)
+Search time: 82240.9us (= 82.2409ms, 0.0822409s)
+Wall-clock time (full program): 84217.5us (= 84.2175ms, 0.0842175s)
 Satisfaction error: 0
-Number of search iterations: 13916
-Number of local moves: 4749 (including on plateau: 4009)
-Number of local minimum: 1515 (including on plateau: 531)
-Number of resets: 45
+Number of search iterations: 314
+Number of local moves: 186 (including on plateau: 146)
+Number of local minimum: 16 (including on plateau: 18)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -2957,35 +2957,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 5 8   1 3 9   2 6 4
 
- 3 6 8   9 5 2   1 7 4
+ 2 9 6   5 4 8   3 1 7
 
- 7 9 4   3 8 1   6 5 2
+ 1 4 3   2 7 6   8 5 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 8 2   9 1 4   6 7 3
 
- 1 4 2   5 9 3   8 6 7
+ 4 3 1   6 5 7   9 8 2
 
- 9 7 3   8 1 6   4 2 5
+ 6 7 9   8 2 3   1 4 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 6 5   4 8 2   7 3 1
 
- 6 5 9   4 2 8   7 1 3
+ 8 1 7   3 9 5   4 2 6
 
- 4 3 7   1 6 5   2 8 9
+ 3 2 4   7 6 1   5 9 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 728272us (= 728.272ms, 0.728272s)
-Wall-clock time (full program): 730468us (= 730.468ms, 0.730468s)
+Search time: 65256.5us (= 65.2565ms, 0.0652565s)
+Wall-clock time (full program): 68245.5us (= 68.2455ms, 0.0682455s)
 Satisfaction error: 0
-Number of search iterations: 4948
-Number of local moves: 1403 (including on plateau: 1015)
-Number of local minimum: 589 (including on plateau: 122)
-Number of resets: 25
+Number of search iterations: 245
+Number of local moves: 113 (including on plateau: 79)
+Number of local minimum: 8 (including on plateau: 15)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3003,35 +3003,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 6 7   9 3 1   5 4 8
 
- 3 6 8   9 5 2   1 7 4
+ 4 3 9   8 5 7   1 6 2
 
- 7 9 4   3 8 1   6 5 2
+ 8 5 1   4 2 6   3 9 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 8 3   6 4 9   7 2 5
 
- 1 4 2   5 9 3   8 6 7
+ 6 7 4   2 8 5   9 1 3
 
- 9 7 3   8 1 6   4 2 5
+ 9 2 5   1 7 3   6 8 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 1 2   5 6 8   4 7 9
 
- 6 5 9   4 2 8   7 1 3
+ 5 4 6   7 9 2   8 3 1
 
- 4 3 7   1 6 5   2 8 9
+ 7 9 8   3 1 4   2 5 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.06093e+06us (= 2060.93ms, 2.06093s)
-Wall-clock time (full program): 2.06309e+06us (= 2063.09ms, 2.06309s)
+Search time: 37294.9us (= 37.2949ms, 0.0372949s)
+Wall-clock time (full program): 39371.5us (= 39.3715ms, 0.0393715s)
 Satisfaction error: 0
-Number of search iterations: 12920
-Number of local moves: 4194 (including on plateau: 3411)
-Number of local minimum: 1506 (including on plateau: 378)
-Number of resets: 45
+Number of search iterations: 107
+Number of local moves: 71 (including on plateau: 37)
+Number of local minimum: 5 (including on plateau: 4)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3049,35 +3049,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 3 9   4 7 8   2 1 6
 
- 3 6 8   9 5 2   1 7 4
+ 6 7 4   2 9 1   8 5 3
 
- 7 9 4   3 8 1   6 5 2
+ 2 8 1   3 5 6   9 7 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 4 7   6 2 5   1 3 8
 
- 1 4 2   5 9 3   8 6 7
+ 8 1 5   7 3 9   4 6 2
 
- 9 7 3   8 1 6   4 2 5
+ 3 2 6   8 1 4   5 9 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 6 3   5 8 2   7 4 9
 
- 6 5 9   4 2 8   7 1 3
+ 4 5 8   9 6 7   3 2 1
 
- 4 3 7   1 6 5   2 8 9
+ 7 9 2   1 4 3   6 8 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.27461e+06us (= 2274.61ms, 2.27461s)
-Wall-clock time (full program): 2.27676e+06us (= 2276.76ms, 2.27676s)
+Search time: 97701.7us (= 97.7017ms, 0.0977017s)
+Wall-clock time (full program): 99219.5us (= 99.2195ms, 0.0992195s)
 Satisfaction error: 0
-Number of search iterations: 15411
-Number of local moves: 5457 (including on plateau: 4427)
-Number of local minimum: 1685 (including on plateau: 554)
-Number of resets: 60
+Number of search iterations: 321
+Number of local moves: 173 (including on plateau: 136)
+Number of local minimum: 30 (including on plateau: 18)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3095,35 +3095,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 5 3   1 7 2   4 9 8
 
- 3 6 8   9 5 2   1 7 4
+ 2 1 8   4 6 9   7 5 3
 
- 7 9 4   3 8 1   6 5 2
+ 4 7 9   5 8 3   1 6 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 4 6   9 1 8   3 2 7
 
- 1 4 2   5 9 3   8 6 7
+ 7 3 2   6 5 4   8 1 9
 
- 9 7 3   8 1 6   4 2 5
+ 8 9 1   2 3 7   5 4 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 2 7   8 4 5   6 3 1
 
- 6 5 9   4 2 8   7 1 3
+ 1 8 4   3 2 6   9 7 5
 
- 4 3 7   1 6 5   2 8 9
+ 3 6 5   7 9 1   2 8 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 917853us (= 917.853ms, 0.917853s)
-Wall-clock time (full program): 920047us (= 920.047ms, 0.920047s)
+Search time: 83280.5us (= 83.2805ms, 0.0832805s)
+Wall-clock time (full program): 85255.2us (= 85.2552ms, 0.0852552s)
 Satisfaction error: 0
-Number of search iterations: 6824
-Number of local moves: 2499 (including on plateau: 2008)
-Number of local minimum: 837 (including on plateau: 246)
-Number of resets: 25
+Number of search iterations: 364
+Number of local moves: 197 (including on plateau: 162)
+Number of local minimum: 20 (including on plateau: 20)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3141,35 +3141,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 2 5   3 4 6   7 1 9
 
- 3 6 8   9 5 2   1 7 4
+ 1 9 3   2 7 8   5 6 4
 
- 7 9 4   3 8 1   6 5 2
+ 7 4 6   5 9 1   3 2 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 1 9   4 2 5   8 7 6
 
- 1 4 2   5 9 3   8 6 7
+ 6 5 4   8 3 7   1 9 2
 
- 9 7 3   8 1 6   4 2 5
+ 2 7 8   1 6 9   4 3 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 6 2   7 8 3   9 4 1
 
- 6 5 9   4 2 8   7 1 3
+ 4 3 1   9 5 2   6 8 7
 
- 4 3 7   1 6 5   2 8 9
+ 9 8 7   6 1 4   2 5 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.36941e+06us (= 2369.41ms, 2.36941s)
-Wall-clock time (full program): 2.37165e+06us (= 2371.65ms, 2.37165s)
+Search time: 53062.6us (= 53.0626ms, 0.0530626s)
+Wall-clock time (full program): 55007.8us (= 55.0078ms, 0.0550078s)
 Satisfaction error: 0
-Number of search iterations: 20394
-Number of local moves: 7033 (including on plateau: 5807)
-Number of local minimum: 2351 (including on plateau: 724)
-Number of resets: 72
+Number of search iterations: 166
+Number of local moves: 107 (including on plateau: 75)
+Number of local minimum: 8 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3187,35 +3187,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 4 8   3 9 2   5 6 1
 
- 3 6 8   9 5 2   1 7 4
+ 6 2 1   5 8 7   3 4 9
 
- 7 9 4   3 8 1   6 5 2
+ 5 9 3   1 4 6   7 2 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 1 2   7 6 5   9 8 3
 
- 1 4 2   5 9 3   8 6 7
+ 9 8 7   2 3 4   1 5 6
 
- 9 7 3   8 1 6   4 2 5
+ 3 6 5   9 1 8   2 7 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 3 4   8 5 9   6 1 7
 
- 6 5 9   4 2 8   7 1 3
+ 1 5 6   4 7 3   8 9 2
 
- 4 3 7   1 6 5   2 8 9
+ 8 7 9   6 2 1   4 3 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.948e+06us (= 1948ms, 1.948s)
-Wall-clock time (full program): 1.95014e+06us (= 1950.14ms, 1.95014s)
+Search time: 29606.7us (= 29.6067ms, 0.0296067s)
+Wall-clock time (full program): 31595.7us (= 31.5957ms, 0.0315957s)
 Satisfaction error: 0
-Number of search iterations: 15911
-Number of local moves: 5037 (including on plateau: 4022)
-Number of local minimum: 1769 (including on plateau: 489)
-Number of resets: 62
+Number of search iterations: 93
+Number of local moves: 60 (including on plateau: 28)
+Number of local minimum: 3 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3233,35 +3233,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 9 8   3 4 6   5 7 1
 
- 3 6 8   9 5 2   1 7 4
+ 4 1 3   7 5 8   9 2 6
 
- 7 9 4   3 8 1   6 5 2
+ 7 5 6   9 2 1   4 8 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 1 2 5   8 9 4   3 6 7
 
- 1 4 2   5 9 3   8 6 7
+ 6 7 9   5 1 3   2 4 8
 
- 9 7 3   8 1 6   4 2 5
+ 8 3 4   2 6 7   1 9 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 4 7   6 3 5   8 1 2
 
- 6 5 9   4 2 8   7 1 3
+ 5 8 1   4 7 2   6 3 9
 
- 4 3 7   1 6 5   2 8 9
+ 3 6 2   1 8 9   7 5 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.65864e+06us (= 2658.64ms, 2.65864s)
-Wall-clock time (full program): 2.66084e+06us (= 2660.84ms, 2.66084s)
+Search time: 68390.3us (= 68.3903ms, 0.0683903s)
+Wall-clock time (full program): 71379.8us (= 71.3798ms, 0.0713798s)
 Satisfaction error: 0
-Number of search iterations: 23862
-Number of local moves: 8653 (including on plateau: 8110)
-Number of local minimum: 1966 (including on plateau: 1027)
-Number of resets: 31
+Number of search iterations: 215
+Number of local moves: 117 (including on plateau: 82)
+Number of local minimum: 4 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3279,35 +3279,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 7 8   1 6 2   9 5 4
 
- 3 6 8   9 5 2   1 7 4
+ 9 6 1   5 3 4   7 8 2
 
- 7 9 4   3 8 1   6 5 2
+ 2 4 5   8 9 7   3 6 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 2 3   6 7 5   8 1 9
 
- 1 4 2   5 9 3   8 6 7
+ 1 5 6   9 2 8   4 7 3
 
- 9 7 3   8 1 6   4 2 5
+ 8 9 7   3 4 1   6 2 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 8 2   4 1 9   5 3 6
 
- 6 5 9   4 2 8   7 1 3
+ 6 1 4   7 5 3   2 9 8
 
- 4 3 7   1 6 5   2 8 9
+ 5 3 9   2 8 6   1 4 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.11403e+06us (= 2114.03ms, 2.11403s)
-Wall-clock time (full program): 2.11621e+06us (= 2116.21ms, 2.11621s)
+Search time: 58906.9us (= 58.9069ms, 0.0589069s)
+Wall-clock time (full program): 60989.2us (= 60.9892ms, 0.0609892s)
 Satisfaction error: 0
-Number of search iterations: 13336
-Number of local moves: 4383 (including on plateau: 3452)
-Number of local minimum: 1613 (including on plateau: 411)
-Number of resets: 57
+Number of search iterations: 177
+Number of local moves: 82 (including on plateau: 46)
+Number of local minimum: 10 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3325,35 +3325,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 5 6   2 7 4   9 1 8
 
- 3 6 8   9 5 2   1 7 4
+ 9 7 8   5 6 1   4 2 3
 
- 7 9 4   3 8 1   6 5 2
+ 2 4 1   3 9 8   6 7 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 3 2   6 8 5   1 4 9
 
- 1 4 2   5 9 3   8 6 7
+ 1 6 5   7 4 9   8 3 2
 
- 9 7 3   8 1 6   4 2 5
+ 8 9 4   1 2 3   7 5 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 1 9   8 5 2   3 6 7
 
- 6 5 9   4 2 8   7 1 3
+ 5 8 7   4 3 6   2 9 1
 
- 4 3 7   1 6 5   2 8 9
+ 6 2 3   9 1 7   5 8 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.86348e+06us (= 1863.48ms, 1.86348s)
-Wall-clock time (full program): 1.86567e+06us (= 1865.67ms, 1.86567s)
+Search time: 98292.3us (= 98.2923ms, 0.0982923s)
+Wall-clock time (full program): 99932us (= 99.932ms, 0.099932s)
 Satisfaction error: 0
-Number of search iterations: 14173
-Number of local moves: 4985 (including on plateau: 3779)
-Number of local minimum: 1720 (including on plateau: 470)
-Number of resets: 63
+Number of search iterations: 254
+Number of local moves: 178 (including on plateau: 143)
+Number of local minimum: 9 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3371,35 +3371,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 8 3   5 6 4   1 7 9
 
- 3 6 8   9 5 2   1 7 4
+ 5 1 4   7 8 9   3 6 2
 
- 7 9 4   3 8 1   6 5 2
+ 7 9 6   1 2 3   8 4 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 5 8   4 7 2   6 9 1
 
- 1 4 2   5 9 3   8 6 7
+ 1 4 2   9 3 6   7 5 8
 
- 9 7 3   8 1 6   4 2 5
+ 9 6 7   8 5 1   4 2 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 3 1   2 9 7   5 8 6
 
- 6 5 9   4 2 8   7 1 3
+ 8 7 9   6 1 5   2 3 4
 
- 4 3 7   1 6 5   2 8 9
+ 6 2 5   3 4 8   9 1 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.17746e+06us (= 1177.46ms, 1.17746s)
-Wall-clock time (full program): 1.17965e+06us (= 1179.65ms, 1.17965s)
+Search time: 44803.5us (= 44.8035ms, 0.0448035s)
+Wall-clock time (full program): 46723.1us (= 46.7231ms, 0.0467231s)
 Satisfaction error: 0
-Number of search iterations: 7103
-Number of local moves: 2435 (including on plateau: 1968)
-Number of local minimum: 778 (including on plateau: 252)
-Number of resets: 24
+Number of search iterations: 140
+Number of local moves: 71 (including on plateau: 38)
+Number of local minimum: 12 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3417,35 +3417,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 7 1   5 4 9   6 2 3
 
- 3 6 8   9 5 2   1 7 4
+ 5 2 6   3 7 1   4 9 8
 
- 7 9 4   3 8 1   6 5 2
+ 3 9 4   6 8 2   7 5 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 5 2   4 3 6   8 1 9
 
- 1 4 2   5 9 3   8 6 7
+ 6 4 3   1 9 8   2 7 5
 
- 9 7 3   8 1 6   4 2 5
+ 1 8 9   2 5 7   3 6 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 3 7   9 2 5   1 8 6
 
- 6 5 9   4 2 8   7 1 3
+ 2 1 5   8 6 3   9 4 7
 
- 4 3 7   1 6 5   2 8 9
+ 9 6 8   7 1 4   5 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.62787e+06us (= 1627.87ms, 1.62787s)
-Wall-clock time (full program): 1.63012e+06us (= 1630.12ms, 1.63012s)
+Search time: 43598.1us (= 43.5981ms, 0.0435981s)
+Wall-clock time (full program): 45558us (= 45.558ms, 0.045558s)
 Satisfaction error: 0
-Number of search iterations: 9507
-Number of local moves: 2884 (including on plateau: 2160)
-Number of local minimum: 1181 (including on plateau: 271)
-Number of resets: 41
+Number of search iterations: 165
+Number of local moves: 120 (including on plateau: 83)
+Number of local minimum: 6 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3463,35 +3463,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 6 8 3   1 4 5   9 7 2
 
- 3 6 8   9 5 2   1 7 4
+ 9 5 7   3 2 6   4 1 8
 
- 7 9 4   3 8 1   6 5 2
+ 4 1 2   7 9 8   5 6 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 2 9   8 7 3   6 4 1
 
- 1 4 2   5 9 3   8 6 7
+ 1 7 4   2 6 9   8 3 5
 
- 9 7 3   8 1 6   4 2 5
+ 3 6 8   5 1 4   2 9 7
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 3 6   4 8 7   1 5 9
 
- 6 5 9   4 2 8   7 1 3
+ 8 9 5   6 3 1   7 2 4
 
- 4 3 7   1 6 5   2 8 9
+ 7 4 1   9 5 2   3 8 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.59521e+06us (= 1595.21ms, 1.59521s)
-Wall-clock time (full program): 1.59741e+06us (= 1597.41ms, 1.59741s)
+Search time: 43210.4us (= 43.2104ms, 0.0432104s)
+Wall-clock time (full program): 45203.6us (= 45.2036ms, 0.0452036s)
 Satisfaction error: 0
-Number of search iterations: 10266
-Number of local moves: 3439 (including on plateau: 2763)
-Number of local minimum: 1095 (including on plateau: 367)
-Number of resets: 39
+Number of search iterations: 149
+Number of local moves: 97 (including on plateau: 63)
+Number of local minimum: 5 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3509,35 +3509,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 6 8   5 7 2   3 4 1
 
- 3 6 8   9 5 2   1 7 4
+ 3 5 1   4 8 9   2 6 7
 
- 7 9 4   3 8 1   6 5 2
+ 2 4 7   1 3 6   9 5 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 8 2   9 1 5   4 3 6
 
- 1 4 2   5 9 3   8 6 7
+ 1 9 4   3 6 8   5 7 2
 
- 9 7 3   8 1 6   4 2 5
+ 6 3 5   2 4 7   1 8 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 1 6   8 2 3   7 9 4
 
- 6 5 9   4 2 8   7 1 3
+ 4 7 3   6 9 1   8 2 5
 
- 4 3 7   1 6 5   2 8 9
+ 8 2 9   7 5 4   6 1 3
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.28906e+06us (= 2289.06ms, 2.28906s)
-Wall-clock time (full program): 2.29125e+06us (= 2291.25ms, 2.29125s)
+Search time: 45872.2us (= 45.8722ms, 0.0458722s)
+Wall-clock time (full program): 48864.4us (= 48.8644ms, 0.0488644s)
 Satisfaction error: 0
-Number of search iterations: 19197
-Number of local moves: 6869 (including on plateau: 5708)
-Number of local minimum: 2060 (including on plateau: 657)
-Number of resets: 69
+Number of search iterations: 129
+Number of local moves: 68 (including on plateau: 32)
+Number of local minimum: 8 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3555,35 +3555,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 3 9   1 2 8   6 4 5
 
- 3 6 8   9 5 2   1 7 4
+ 1 6 2   4 7 5   8 3 9
 
- 7 9 4   3 8 1   6 5 2
+ 4 5 8   9 3 6   7 2 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 9 1   7 6 3   4 5 8
 
- 1 4 2   5 9 3   8 6 7
+ 6 4 5   2 8 9   1 7 3
 
- 9 7 3   8 1 6   4 2 5
+ 8 7 3   5 1 4   2 9 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 2 4   6 5 1   9 8 7
 
- 6 5 9   4 2 8   7 1 3
+ 9 8 6   3 4 7   5 1 2
 
- 4 3 7   1 6 5   2 8 9
+ 5 1 7   8 9 2   3 6 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.15771e+06us (= 1157.71ms, 1.15771s)
-Wall-clock time (full program): 1.15988e+06us (= 1159.88ms, 1.15988s)
+Search time: 33187.9us (= 33.1879ms, 0.0331879s)
+Wall-clock time (full program): 35280.8us (= 35.2808ms, 0.0352808s)
 Satisfaction error: 0
-Number of search iterations: 6436
-Number of local moves: 2006 (including on plateau: 1453)
-Number of local minimum: 837 (including on plateau: 176)
-Number of resets: 32
+Number of search iterations: 94
+Number of local moves: 66 (including on plateau: 31)
+Number of local minimum: 1 (including on plateau: 2)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3601,35 +3601,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 2 9   5 6 7   4 3 1
 
- 3 6 8   9 5 2   1 7 4
+ 5 4 1   9 3 8   2 6 7
 
- 7 9 4   3 8 1   6 5 2
+ 7 3 6   1 4 2   9 8 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 5 7   6 1 4   8 2 3
 
- 1 4 2   5 9 3   8 6 7
+ 3 6 4   8 2 5   7 1 9
 
- 9 7 3   8 1 6   4 2 5
+ 1 8 2   7 9 3   5 4 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 9 3   4 7 1   6 5 8
 
- 6 5 9   4 2 8   7 1 3
+ 4 7 5   3 8 6   1 9 2
 
- 4 3 7   1 6 5   2 8 9
+ 6 1 8   2 5 9   3 7 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 738618us (= 738.618ms, 0.738618s)
-Wall-clock time (full program): 740059us (= 740.059ms, 0.740059s)
+Search time: 32408.7us (= 32.4087ms, 0.0324087s)
+Wall-clock time (full program): 34196.3us (= 34.1963ms, 0.0341963s)
 Satisfaction error: 0
-Number of search iterations: 3601
-Number of local moves: 1040 (including on plateau: 651)
-Number of local minimum: 419 (including on plateau: 88)
-Number of resets: 19
+Number of search iterations: 93
+Number of local moves: 69 (including on plateau: 37)
+Number of local minimum: 5 (including on plateau: 5)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3647,35 +3647,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 9 6   7 2 4   5 1 3
 
- 3 6 8   9 5 2   1 7 4
+ 1 2 4   3 6 5   9 7 8
 
- 7 9 4   3 8 1   6 5 2
+ 3 7 5   1 9 8   6 2 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 6 3   4 5 2   1 8 7
 
- 1 4 2   5 9 3   8 6 7
+ 5 1 2   9 8 7   3 4 6
 
- 9 7 3   8 1 6   4 2 5
+ 7 4 8   6 3 1   2 9 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 3 7   2 4 9   8 5 1
 
- 6 5 9   4 2 8   7 1 3
+ 4 8 9   5 1 6   7 3 2
 
- 4 3 7   1 6 5   2 8 9
+ 2 5 1   8 7 3   4 6 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.22962e+06us (= 1229.62ms, 1.22962s)
-Wall-clock time (full program): 1.23177e+06us (= 1231.77ms, 1.23177s)
+Search time: 57101.2us (= 57.1012ms, 0.0571012s)
+Wall-clock time (full program): 59088.3us (= 59.0883ms, 0.0590883s)
 Satisfaction error: 0
-Number of search iterations: 7732
-Number of local moves: 3058 (including on plateau: 2577)
-Number of local minimum: 883 (including on plateau: 308)
-Number of resets: 26
+Number of search iterations: 194
+Number of local moves: 107 (including on plateau: 75)
+Number of local minimum: 9 (including on plateau: 7)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3693,36 +3693,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 8 7   1 2 5   6 3 4
 
- 3 6 8   9 5 2   1 7 4
+ 3 2 1   6 9 4   8 7 5
 
- 7 9 4   3 8 1   6 5 2
+ 6 4 5   3 7 8   1 9 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 9 6   5 4 7   2 1 3
 
- 1 4 2   5 9 3   8 6 7
+ 7 1 3   9 6 2   4 5 8
 
- 9 7 3   8 1 6   4 2 5
+ 2 5 4   8 3 1   7 6 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 6 2   7 5 9   3 8 1
 
- 6 5 9   4 2 8   7 1 3
+ 1 7 9   2 8 3   5 4 6
 
- 4 3 7   1 6 5   2 8 9
+ 5 3 8   4 1 6   9 2 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.98964e+06us (= 2989.64ms, 2.98964s)
-Wall-clock time (full program): 2.99182e+06us (= 2991.82ms, 2.99182s)
+Search time: 51057.1us (= 51.0571ms, 0.051057s)
+Wall-clock time (full program): 52998.9us (= 52.9989ms, 0.0529989s)
 Satisfaction error: 0
-Number of search iterations: 28040
-Number of local moves: 9852 (including on plateau: 7986)
-Number of local minimum: 3248 (including on plateau: 956)
-Number of resets: 110
-Number of restarts: 1
+Number of search iterations: 160
+Number of local moves: 106 (including on plateau: 70)
+Number of local minimum: 10 (including on plateau: 5)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -3739,36 +3739,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 9 2   5 7 4   3 1 6
 
- 3 6 8   9 5 2   1 7 4
+ 7 1 4   2 3 6   8 9 5
 
- 7 9 4   3 8 1   6 5 2
+ 5 3 6   1 8 9   7 4 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 6 7   3 2 8   4 5 1
 
- 1 4 2   5 9 3   8 6 7
+ 4 8 1   7 9 5   2 6 3
 
- 9 7 3   8 1 6   4 2 5
+ 3 2 5   4 6 1   9 7 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 7 8   9 1 2   5 3 4
 
- 6 5 9   4 2 8   7 1 3
+ 2 4 9   6 5 3   1 8 7
 
- 4 3 7   1 6 5   2 8 9
+ 1 5 3   8 4 7   6 2 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 3.59115e+06us (= 3591.15ms, 3.59115s)
-Wall-clock time (full program): 3.59331e+06us (= 3593.31ms, 3.59331s)
+Search time: 41328.4us (= 41.3284ms, 0.0413284s)
+Wall-clock time (full program): 43274.8us (= 43.2748ms, 0.0432748s)
 Satisfaction error: 0
-Number of search iterations: 36815
-Number of local moves: 12473 (including on plateau: 10301)
-Number of local minimum: 4037 (including on plateau: 1244)
-Number of resets: 134
-Number of restarts: 1
+Number of search iterations: 146
+Number of local moves: 83 (including on plateau: 44)
+Number of local minimum: 13 (including on plateau: 7)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -3785,35 +3785,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 4 7   2 6 8   1 5 3
 
- 3 6 8   9 5 2   1 7 4
+ 5 3 8   9 7 1   2 4 6
 
- 7 9 4   3 8 1   6 5 2
+ 1 6 2   3 4 5   8 9 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 7 9   5 1 4   3 8 2
 
- 1 4 2   5 9 3   8 6 7
+ 3 5 1   6 8 2   4 7 9
 
- 9 7 3   8 1 6   4 2 5
+ 8 2 4   7 9 3   5 6 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 9 5   4 3 6   7 1 8
 
- 6 5 9   4 2 8   7 1 3
+ 7 8 3   1 5 9   6 2 4
 
- 4 3 7   1 6 5   2 8 9
+ 4 1 6   8 2 7   9 3 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.00801e+06us (= 1008.01ms, 1.00801s)
-Wall-clock time (full program): 1.01019e+06us (= 1010.19ms, 1.01019s)
+Search time: 51009.5us (= 51.0095ms, 0.0510095s)
+Wall-clock time (full program): 53905.4us (= 53.9054ms, 0.0539054s)
 Satisfaction error: 0
-Number of search iterations: 6677
-Number of local moves: 2545 (including on plateau: 2123)
-Number of local minimum: 658 (including on plateau: 243)
-Number of resets: 21
+Number of search iterations: 144
+Number of local moves: 100 (including on plateau: 66)
+Number of local minimum: 6 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3831,35 +3831,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 5 8 6   9 3 2   4 7 1
 
- 3 6 8   9 5 2   1 7 4
+ 1 9 7   4 8 6   2 3 5
 
- 7 9 4   3 8 1   6 5 2
+ 2 4 3   1 7 5   8 6 9
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 3 4   7 6 9   1 5 2
 
- 1 4 2   5 9 3   8 6 7
+ 6 2 9   3 5 1   7 4 8
 
- 9 7 3   8 1 6   4 2 5
+ 7 5 1   2 4 8   6 9 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 9 6 8   5 2 4   3 1 7
 
- 6 5 9   4 2 8   7 1 3
+ 4 7 5   8 1 3   9 2 6
 
- 4 3 7   1 6 5   2 8 9
+ 3 1 2   6 9 7   5 8 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.56466e+06us (= 1564.66ms, 1.56466s)
-Wall-clock time (full program): 1.56677e+06us (= 1566.77ms, 1.56677s)
+Search time: 47769.2us (= 47.7692ms, 0.0477692s)
+Wall-clock time (full program): 49821.7us (= 49.8217ms, 0.0498217s)
 Satisfaction error: 0
-Number of search iterations: 8678
-Number of local moves: 3270 (including on plateau: 2789)
-Number of local minimum: 901 (including on plateau: 360)
-Number of resets: 29
+Number of search iterations: 153
+Number of local moves: 96 (including on plateau: 62)
+Number of local minimum: 5 (including on plateau: 6)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3877,35 +3877,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 9 5   1 3 2   4 6 7
 
- 3 6 8   9 5 2   1 7 4
+ 4 6 2   8 5 7   3 9 1
 
- 7 9 4   3 8 1   6 5 2
+ 7 3 1   6 9 4   8 5 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 3 8 6   9 1 5   7 2 4
 
- 1 4 2   5 9 3   8 6 7
+ 2 5 7   4 8 6   1 3 9
 
- 9 7 3   8 1 6   4 2 5
+ 9 1 4   2 7 3   6 8 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 7 9   5 6 8   2 4 3
 
- 6 5 9   4 2 8   7 1 3
+ 6 2 3   7 4 9   5 1 8
 
- 4 3 7   1 6 5   2 8 9
+ 5 4 8   3 2 1   9 7 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.42109e+06us (= 2421.09ms, 2.42109s)
-Wall-clock time (full program): 2.4225e+06us (= 2422.5ms, 2.4225s)
+Search time: 48968us (= 48.968ms, 0.048968s)
+Wall-clock time (full program): 50781.4us (= 50.7814ms, 0.0507814s)
 Satisfaction error: 0
-Number of search iterations: 13834
-Number of local moves: 4258 (including on plateau: 3120)
-Number of local minimum: 1748 (including on plateau: 395)
-Number of resets: 71
+Number of search iterations: 147
+Number of local moves: 107 (including on plateau: 69)
+Number of local minimum: 3 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3923,35 +3923,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 9 2   6 7 4   3 8 5
 
- 3 6 8   9 5 2   1 7 4
+ 7 6 4   8 5 3   2 1 9
 
- 7 9 4   3 8 1   6 5 2
+ 3 5 8   1 9 2   4 6 7
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 8 3   5 1 7   9 4 6
 
- 1 4 2   5 9 3   8 6 7
+ 4 7 9   2 8 6   1 5 3
 
- 9 7 3   8 1 6   4 2 5
+ 5 1 6   4 3 9   7 2 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 3 5   9 4 1   8 7 2
 
- 6 5 9   4 2 8   7 1 3
+ 8 4 7   3 2 5   6 9 1
 
- 4 3 7   1 6 5   2 8 9
+ 9 2 1   7 6 8   5 3 4
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 462338us (= 462.338ms, 0.462338s)
-Wall-clock time (full program): 464521us (= 464.521ms, 0.464521s)
+Search time: 79913.7us (= 79.9137ms, 0.0799137s)
+Wall-clock time (full program): 81825.3us (= 81.8253ms, 0.0818253s)
 Satisfaction error: 0
-Number of search iterations: 2846
-Number of local moves: 1153 (including on plateau: 926)
-Number of local minimum: 315 (including on plateau: 95)
-Number of resets: 10
+Number of search iterations: 267
+Number of local moves: 168 (including on plateau: 133)
+Number of local minimum: 9 (including on plateau: 15)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -3969,35 +3969,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 8 3   1 9 5   4 6 7
 
- 3 6 8   9 5 2   1 7 4
+ 9 7 5   2 6 4   3 1 8
 
- 7 9 4   3 8 1   6 5 2
+ 1 6 4   8 7 3   5 9 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 2 9   4 1 6   7 3 5
 
- 1 4 2   5 9 3   8 6 7
+ 7 4 6   5 3 2   1 8 9
 
- 9 7 3   8 1 6   4 2 5
+ 5 3 1   9 8 7   6 2 4
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 6 5 7   3 2 9   8 4 1
 
- 6 5 9   4 2 8   7 1 3
+ 4 9 8   6 5 1   2 7 3
 
- 4 3 7   1 6 5   2 8 9
+ 3 1 2   7 4 8   9 5 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.30678e+06us (= 2306.78ms, 2.30678s)
-Wall-clock time (full program): 2.30897e+06us (= 2308.97ms, 2.30897s)
+Search time: 54043.6us (= 54.0436ms, 0.0540436s)
+Wall-clock time (full program): 55984.8us (= 55.9848ms, 0.0559848s)
 Satisfaction error: 0
-Number of search iterations: 17188
-Number of local moves: 5378 (including on plateau: 4349)
-Number of local minimum: 2041 (including on plateau: 522)
-Number of resets: 67
+Number of search iterations: 170
+Number of local moves: 111 (including on plateau: 77)
+Number of local minimum: 7 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4015,36 +4015,36 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 8 4   6 1 5   3 7 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 1 5   7 3 4   8 6 2
 
- 7 9 4   3 8 1   6 5 2
+ 6 3 7   8 2 9   1 4 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 2 9   1 6 3   4 5 7
 
- 1 4 2   5 9 3   8 6 7
+ 3 4 6   9 5 7   2 1 8
 
- 9 7 3   8 1 6   4 2 5
+ 7 5 1   2 4 8   6 9 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 9 3   4 8 1   7 2 6
 
- 6 5 9   4 2 8   7 1 3
+ 1 7 2   3 9 6   5 8 4
 
- 4 3 7   1 6 5   2 8 9
+ 4 6 8   5 7 2   9 3 1
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 3.21239e+06us (= 3212.39ms, 3.21239s)
-Wall-clock time (full program): 3.21445e+06us (= 3214.45ms, 3.21445s)
+Search time: 37303.5us (= 37.3035ms, 0.0373035s)
+Wall-clock time (full program): 39248.6us (= 39.2486ms, 0.0392486s)
 Satisfaction error: 0
-Number of search iterations: 26539
-Number of local moves: 8822 (including on plateau: 6661)
-Number of local minimum: 3162 (including on plateau: 859)
-Number of resets: 132
-Number of restarts: 1
+Number of search iterations: 118
+Number of local moves: 86 (including on plateau: 51)
+Number of local minimum: 5 (including on plateau: 6)
+Number of resets: 0
+Number of restarts: 0
 
 @@@@@@@@@@@@
 Variable heuristic: Adaptive Search
@@ -4061,35 +4061,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 3 6   4 2 5   7 9 8
 
- 3 6 8   9 5 2   1 7 4
+ 7 4 8   1 6 9   5 3 2
 
- 7 9 4   3 8 1   6 5 2
+ 9 5 2   3 8 7   1 6 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 8 7   5 3 1   9 4 6
 
- 1 4 2   5 9 3   8 6 7
+ 5 1 4   6 9 8   2 7 3
 
- 9 7 3   8 1 6   4 2 5
+ 6 9 3   2 7 4   8 5 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 4 7 1   8 5 3   6 2 9
 
- 6 5 9   4 2 8   7 1 3
+ 8 6 5   9 4 2   3 1 7
 
- 4 3 7   1 6 5   2 8 9
+ 3 2 9   7 1 6   4 8 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.92192e+06us (= 1921.92ms, 1.92192s)
-Wall-clock time (full program): 1.92407e+06us (= 1924.07ms, 1.92407s)
+Search time: 66334.3us (= 66.3343ms, 0.0663343s)
+Wall-clock time (full program): 69221.2us (= 69.2212ms, 0.0692212s)
 Satisfaction error: 0
-Number of search iterations: 13639
-Number of local moves: 5068 (including on plateau: 4148)
-Number of local minimum: 1565 (including on plateau: 515)
-Number of resets: 52
+Number of search iterations: 274
+Number of local moves: 143 (including on plateau: 108)
+Number of local minimum: 14 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4107,35 +4107,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 7 3 4   9 1 2   5 6 8
 
- 3 6 8   9 5 2   1 7 4
+ 9 1 8   3 5 6   2 7 4
 
- 7 9 4   3 8 1   6 5 2
+ 2 5 6   8 4 7   1 9 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 8 9 5   1 3 4   6 2 7
 
- 1 4 2   5 9 3   8 6 7
+ 6 4 3   2 7 9   8 5 1
 
- 9 7 3   8 1 6   4 2 5
+ 1 7 2   6 8 5   3 4 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 6 7   4 2 1   9 8 5
 
- 6 5 9   4 2 8   7 1 3
+ 4 8 9   5 6 3   7 1 2
 
- 4 3 7   1 6 5   2 8 9
+ 5 2 1   7 9 8   4 3 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.3464e+06us (= 2346.4ms, 2.3464s)
-Wall-clock time (full program): 2.34846e+06us (= 2348.46ms, 2.34846s)
+Search time: 39534us (= 39.534ms, 0.039534s)
+Wall-clock time (full program): 41520us (= 41.52ms, 0.04152s)
 Satisfaction error: 0
-Number of search iterations: 17809
-Number of local moves: 6452 (including on plateau: 5863)
-Number of local minimum: 2067 (including on plateau: 631)
-Number of resets: 35
+Number of search iterations: 114
+Number of local moves: 69 (including on plateau: 32)
+Number of local minimum: 6 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4153,35 +4153,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 4 7   5 9 2   1 6 8
 
- 3 6 8   9 5 2   1 7 4
+ 2 1 6   3 8 7   9 4 5
 
- 7 9 4   3 8 1   6 5 2
+ 5 8 9   1 4 6   2 7 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 9 6 3   8 2 4   7 5 1
 
- 1 4 2   5 9 3   8 6 7
+ 8 7 2   6 1 5   3 9 4
 
- 9 7 3   8 1 6   4 2 5
+ 4 5 1   7 3 9   6 8 2
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 2 4   9 7 8   5 3 6
 
- 6 5 9   4 2 8   7 1 3
+ 6 9 8   2 5 3   4 1 7
 
- 4 3 7   1 6 5   2 8 9
+ 7 3 5   4 6 1   8 2 9
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.66889e+06us (= 2668.89ms, 2.66889s)
-Wall-clock time (full program): 2.67032e+06us (= 2670.32ms, 2.67032s)
+Search time: 67144.2us (= 67.1442ms, 0.0671442s)
+Wall-clock time (full program): 68651.1us (= 68.6511ms, 0.0686511s)
 Satisfaction error: 0
-Number of search iterations: 16875
-Number of local moves: 5538 (including on plateau: 4338)
-Number of local minimum: 1973 (including on plateau: 537)
-Number of resets: 73
+Number of search iterations: 149
+Number of local moves: 100 (including on plateau: 67)
+Number of local minimum: 3 (including on plateau: 13)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4199,35 +4199,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 3 8   5 2 6   7 4 1
 
- 3 6 8   9 5 2   1 7 4
+ 5 2 1   7 4 3   9 8 6
 
- 7 9 4   3 8 1   6 5 2
+ 6 7 4   8 1 9   3 2 5
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 7 1 6   9 5 2   8 3 4
 
- 1 4 2   5 9 3   8 6 7
+ 8 9 5   3 7 4   6 1 2
 
- 9 7 3   8 1 6   4 2 5
+ 2 4 3   6 8 1   5 7 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 5 7   4 6 8   2 9 3
 
- 6 5 9   4 2 8   7 1 3
+ 3 6 2   1 9 7   4 5 8
 
- 4 3 7   1 6 5   2 8 9
+ 4 8 9   2 3 5   1 6 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.35217e+06us (= 1352.17ms, 1.35217s)
-Wall-clock time (full program): 1.35432e+06us (= 1354.32ms, 1.35432s)
+Search time: 56723.3us (= 56.7233ms, 0.0567233s)
+Wall-clock time (full program): 58643.6us (= 58.6436ms, 0.0586436s)
 Satisfaction error: 0
-Number of search iterations: 13060
-Number of local moves: 5208 (including on plateau: 4833)
-Number of local minimum: 1141 (including on plateau: 585)
-Number of resets: 21
+Number of search iterations: 177
+Number of local moves: 108 (including on plateau: 69)
+Number of local minimum: 6 (including on plateau: 8)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4245,35 +4245,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 2 7 1   6 5 4   8 3 9
 
- 3 6 8   9 5 2   1 7 4
+ 8 4 5   7 9 3   6 2 1
 
- 7 9 4   3 8 1   6 5 2
+ 9 3 6   8 1 2   5 7 4
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 1 7   2 3 5   4 9 8
 
- 1 4 2   5 9 3   8 6 7
+ 3 8 4   1 6 9   7 5 2
 
- 9 7 3   8 1 6   4 2 5
+ 5 2 9   4 7 8   3 1 6
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 1 5 3   9 4 6   2 8 7
 
- 6 5 9   4 2 8   7 1 3
+ 4 9 2   5 8 7   1 6 3
 
- 4 3 7   1 6 5   2 8 9
+ 7 6 8   3 2 1   9 4 5
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.8592e+06us (= 1859.2ms, 1.8592s)
-Wall-clock time (full program): 1.8614e+06us (= 1861.4ms, 1.8614s)
+Search time: 61353.2us (= 61.3532ms, 0.0613532s)
+Wall-clock time (full program): 63223.2us (= 63.2232ms, 0.0632232s)
 Satisfaction error: 0
-Number of search iterations: 16695
-Number of local moves: 5076 (including on plateau: 3788)
-Number of local minimum: 2007 (including on plateau: 460)
-Number of resets: 78
+Number of search iterations: 195
+Number of local moves: 102 (including on plateau: 67)
+Number of local minimum: 15 (including on plateau: 9)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4291,35 +4291,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 7 4   2 6 1   3 5 9
 
- 3 6 8   9 5 2   1 7 4
+ 2 3 5   8 4 9   7 6 1
 
- 7 9 4   3 8 1   6 5 2
+ 1 6 9   7 5 3   2 4 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 5 2 7   4 8 6   9 1 3
 
- 1 4 2   5 9 3   8 6 7
+ 6 8 1   9 3 5   4 7 2
 
- 9 7 3   8 1 6   4 2 5
+ 4 9 3   1 2 7   6 8 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 1 6   3 9 8   5 2 4
 
- 6 5 9   4 2 8   7 1 3
+ 3 5 2   6 1 4   8 9 7
 
- 4 3 7   1 6 5   2 8 9
+ 9 4 8   5 7 2   1 3 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.77994e+06us (= 2779.94ms, 2.77994s)
-Wall-clock time (full program): 2.78197e+06us (= 2781.97ms, 2.78197s)
+Search time: 32531us (= 32.531ms, 0.032531s)
+Wall-clock time (full program): 34336.5us (= 34.3365ms, 0.0343365s)
 Satisfaction error: 0
-Number of search iterations: 22009
-Number of local moves: 8688 (including on plateau: 7465)
-Number of local minimum: 2224 (including on plateau: 863)
-Number of resets: 76
+Number of search iterations: 105
+Number of local moves: 73 (including on plateau: 37)
+Number of local minimum: 9 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4337,35 +4337,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 1 4 6   7 3 2   5 8 9
 
- 3 6 8   9 5 2   1 7 4
+ 9 2 5   8 1 4   6 7 3
 
- 7 9 4   3 8 1   6 5 2
+ 8 3 7   6 9 5   2 4 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 9 3   5 8 1   7 2 4
 
- 1 4 2   5 9 3   8 6 7
+ 5 8 4   3 2 7   9 1 6
 
- 9 7 3   8 1 6   4 2 5
+ 7 1 2   4 6 9   3 5 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 2 7 8   9 4 6   1 3 5
 
- 6 5 9   4 2 8   7 1 3
+ 4 6 1   2 5 3   8 9 7
 
- 4 3 7   1 6 5   2 8 9
+ 3 5 9   1 7 8   4 6 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 2.10067e+06us (= 2100.67ms, 2.10067s)
-Wall-clock time (full program): 2.10271e+06us (= 2102.71ms, 2.10271s)
+Search time: 68944.3us (= 68.9443ms, 0.0689443s)
+Wall-clock time (full program): 71951.7us (= 71.9517ms, 0.0719517s)
 Satisfaction error: 0
-Number of search iterations: 16807
-Number of local moves: 4735 (including on plateau: 3768)
-Number of local minimum: 1882 (including on plateau: 425)
-Number of resets: 60
+Number of search iterations: 200
+Number of local moves: 124 (including on plateau: 88)
+Number of local minimum: 11 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4383,35 +4383,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 8 3 9   4 6 5   2 1 7
 
- 3 6 8   9 5 2   1 7 4
+ 5 4 2   1 3 7   9 6 8
 
- 7 9 4   3 8 1   6 5 2
+ 1 7 6   8 9 2   5 4 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 5 3   6 2 1   8 7 9
 
- 1 4 2   5 9 3   8 6 7
+ 2 1 7   9 8 3   6 5 4
 
- 9 7 3   8 1 6   4 2 5
+ 6 9 8   7 5 4   3 2 1
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 6 1   2 7 9   4 8 5
 
- 6 5 9   4 2 8   7 1 3
+ 7 8 5   3 4 6   1 9 2
 
- 4 3 7   1 6 5   2 8 9
+ 9 2 4   5 1 8   7 3 6
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.33805e+06us (= 1338.05ms, 1.33805s)
-Wall-clock time (full program): 1.34004e+06us (= 1340.04ms, 1.34004s)
+Search time: 57285.3us (= 57.2853ms, 0.0572853s)
+Wall-clock time (full program): 59276.4us (= 59.2764ms, 0.0592764s)
 Satisfaction error: 0
-Number of search iterations: 8881
-Number of local moves: 2949 (including on plateau: 2152)
-Number of local minimum: 1103 (including on plateau: 280)
-Number of resets: 47
+Number of search iterations: 211
+Number of local moves: 100 (including on plateau: 67)
+Number of local minimum: 6 (including on plateau: 10)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4429,35 +4429,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 3 7   1 5 8   4 2 6
 
- 3 6 8   9 5 2   1 7 4
+ 6 4 1   2 9 3   5 7 8
 
- 7 9 4   3 8 1   6 5 2
+ 8 5 2   6 7 4   1 9 3
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 6 8   9 3 7   2 5 1
 
- 1 4 2   5 9 3   8 6 7
+ 3 1 9   5 4 2   8 6 7
 
- 9 7 3   8 1 6   4 2 5
+ 7 2 5   8 1 6   3 4 9
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 5 8 3   7 2 9   6 1 4
 
- 6 5 9   4 2 8   7 1 3
+ 2 7 4   3 6 1   9 8 5
 
- 4 3 7   1 6 5   2 8 9
+ 1 9 6   4 8 5   7 3 2
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 877256us (= 877.256ms, 0.877256s)
-Wall-clock time (full program): 879191us (= 879.191ms, 0.879191s)
+Search time: 69713.6us (= 69.7135ms, 0.0697135s)
+Wall-clock time (full program): 71648.2us (= 71.6482ms, 0.0716482s)
 Satisfaction error: 0
-Number of search iterations: 5068
-Number of local moves: 2136 (including on plateau: 1891)
-Number of local minimum: 448 (including on plateau: 221)
-Number of resets: 10
+Number of search iterations: 144
+Number of local moves: 81 (including on plateau: 49)
+Number of local minimum: 13 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4475,35 +4475,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 3 5 9   6 7 8   1 2 4
 
- 3 6 8   9 5 2   1 7 4
+ 2 7 8   3 1 4   9 6 5
 
- 7 9 4   3 8 1   6 5 2
+ 1 6 4   9 2 5   7 3 8
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 6 2 5   8 3 9   4 7 1
 
- 1 4 2   5 9 3   8 6 7
+ 4 3 1   5 6 7   8 9 2
 
- 9 7 3   8 1 6   4 2 5
+ 9 8 7   1 4 2   6 5 3
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 7 1 3   4 5 6   2 8 9
 
- 6 5 9   4 2 8   7 1 3
+ 8 4 2   7 9 3   5 1 6
 
- 4 3 7   1 6 5   2 8 9
+ 5 9 6   2 8 1   3 4 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 569703us (= 569.703ms, 0.569703s)
-Wall-clock time (full program): 571772us (= 571.772ms, 0.571772s)
+Search time: 23570.7us (= 23.5707ms, 0.0235707s)
+Wall-clock time (full program): 25403.4us (= 25.4034ms, 0.0254034s)
 Satisfaction error: 0
-Number of search iterations: 3632
-Number of local moves: 1190 (including on plateau: 936)
-Number of local minimum: 420 (including on plateau: 117)
-Number of resets: 12
+Number of search iterations: 68
+Number of local moves: 54 (including on plateau: 26)
+Number of local minimum: 1 (including on plateau: 3)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4521,35 +4521,35 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 2 1   4 5 7   8 6 3
 
- 3 6 8   9 5 2   1 7 4
+ 5 7 3   6 8 1   4 9 2
 
- 7 9 4   3 8 1   6 5 2
+ 4 8 6   2 9 3   5 7 1
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 2 3 8   1 7 9   6 5 4
 
- 1 4 2   5 9 3   8 6 7
+ 1 6 5   3 4 8   7 2 9
 
- 9 7 3   8 1 6   4 2 5
+ 7 9 4   5 2 6   3 1 8
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 8 1 9   7 3 5   2 4 6
 
- 6 5 9   4 2 8   7 1 3
+ 6 4 7   8 1 2   9 3 5
 
- 4 3 7   1 6 5   2 8 9
+ 3 5 2   9 6 4   1 8 7
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.91357e+06us (= 1913.57ms, 1.91357s)
-Wall-clock time (full program): 1.91568e+06us (= 1915.68ms, 1.91568s)
+Search time: 47929.1us (= 47.9291ms, 0.0479291s)
+Wall-clock time (full program): 49748.4us (= 49.7484ms, 0.0497484s)
 Satisfaction error: 0
-Number of search iterations: 11762
-Number of local moves: 3613 (including on plateau: 2780)
-Number of local minimum: 1337 (including on plateau: 332)
-Number of resets: 50
+Number of search iterations: 176
+Number of local moves: 90 (including on plateau: 59)
+Number of local minimum: 6 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
 @@@@@@@@@@@@
@@ -4567,34 +4567,34 @@ Do a restart each time 81 resets are performed
 ############
 Solution:
 -----------------------
- 2 1 5   6 4 7   3 9 8
+ 9 2 3   4 8 7   5 6 1
 
- 3 6 8   9 5 2   1 7 4
+ 5 8 6   2 1 3   7 9 4
 
- 7 9 4   3 8 1   6 5 2
+ 1 7 4   6 5 9   3 8 2
 -----------------------
- 5 8 6   2 7 4   9 3 1
+ 4 1 2   5 6 8   9 3 7
 
- 1 4 2   5 9 3   8 6 7
+ 8 9 5   3 7 2   1 4 6
 
- 9 7 3   8 1 6   4 2 5
+ 6 3 7   1 9 4   8 2 5
 -----------------------
- 8 2 1   7 3 9   5 4 6
+ 3 6 1   8 4 5   2 7 9
 
- 6 5 9   4 2 8   7 1 3
+ 7 5 8   9 2 6   4 1 3
 
- 4 3 7   1 6 5   2 8 9
+ 2 4 9   7 3 1   6 5 8
 -----------------------
 
 SATISFACTION run
 Permutation problem: true
 Time budget: 6e+07us (= 60000ms, 60s)
-Search time: 1.86663e+06us (= 1866.63ms, 1.86663s)
-Wall-clock time (full program): 1.86858e+06us (= 1868.58ms, 1.86858s)
+Search time: 68388.4us (= 68.3884ms, 0.0683884s)
+Wall-clock time (full program): 70192.7us (= 70.1927ms, 0.0701927s)
 Satisfaction error: 0
-Number of search iterations: 13292
-Number of local moves: 4195 (including on plateau: 3414)
-Number of local minimum: 1530 (including on plateau: 408)
-Number of resets: 46
+Number of search iterations: 247
+Number of local moves: 163 (including on plateau: 123)
+Number of local minimum: 9 (including on plateau: 11)
+Number of resets: 0
 Number of restarts: 0
 
