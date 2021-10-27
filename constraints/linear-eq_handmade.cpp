@@ -4,7 +4,7 @@
 #include "linear-eq_handmade.hpp"
 
 
-LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int max_value, int rhs )
+LinearEq::LinearEq( const vector<int>& variables, int max_value, int rhs )
 	: Constraint( variables ),
 	  _max_value( max_value ),
 	  _rhs( rhs )
@@ -16,12 +16,12 @@ LinearEq::LinearEq( const vector< reference_wrapper<Variable> >& variables, int 
 	_max_diff = std::max( diff_min_val, diff_max_val );
 }
 
-double LinearEq::required_error() const
+double LinearEq::required_error( const vector<Variable*>& variables ) const
 {
 	int sum = 0;
 	
 	for( auto& v : variables )
-		sum += v.get().get_value();
+		sum += v->get_value();
 
 	int diff = std::abs( _rhs - sum );
 

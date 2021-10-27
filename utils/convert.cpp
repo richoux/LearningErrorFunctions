@@ -1,5 +1,5 @@
 #include "convert.hpp"
-#include "../learn/function_to_learn_icn.hpp"
+#include "../learn_ga/function_to_learn_icn.hpp"
 
 std::string convert( const std::vector<int>& vec )
 {

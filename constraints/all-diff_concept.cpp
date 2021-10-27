@@ -23,7 +23,7 @@ bool AllDiffConcept::concept_( const std::vector<int>& var, int start, int end )
 	return true;	
 }
 
-bool AllDiffConcept::concept_( const std::vector< Variable >& var ) const
+bool AllDiffConcept::concept_( const std::vector<Variable*>& var ) const
 {
 	// We assume our k variables can take values in [1, k]
 	std::vector<bool> bitvec( var.size(), false );
@@ -33,7 +33,7 @@ bool AllDiffConcept::concept_( const std::vector< Variable >& var ) const
 	
 	for( int i = 0 ; i < var.size() ; ++i )
 	{
-		value = var[i].get_value() - 1;
+		value = var[i]->get_value() - 1;
 		if( !bitvec[ value ] )
 			bitvec[ value ] = true;
 		else

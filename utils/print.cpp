@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "print.hpp"
-#include "../learn/function_to_learn_icn.hpp" // for number_functions
+#include "../learn_ga/function_to_learn_icn.hpp" // for number_functions
 
 string transfo_operation( int number )
 {

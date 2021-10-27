@@ -3,12 +3,12 @@
 
 #include "all-diff_no-cfn.hpp"
 
-AllDiff::AllDiff( const vector< Variable >& variables )
-	: Constraint( variables ),
-	  _ad_concept_{ (int)variables.size(), (int)variables.size() - 1 }
+AllDiff::AllDiff( const vector<int>& index )
+	: Constraint( index ),
+	  _ad_concept_{ (int)index.size(), (int)index.size() - 1 }
 { }
 
-double AllDiff::required_error( const vector< Variable >& variables ) const
+double AllDiff::required_error( const vector<Variable*>& variables ) const
 {
 	if( _ad_concept_.concept_( variables ) )
 		return 0.;

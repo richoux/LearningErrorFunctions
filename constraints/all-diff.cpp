@@ -2,7 +2,7 @@
 #include <algorithm>
 
 #include "all-diff.hpp"
-#include "../learn/function_to_learn_icn.hpp" // for number_functions
+#include "../learn_ga/function_to_learn_icn.hpp" // for number_functions
 #include "../utils/convert.hpp"
 
 // defined in cfn/function_to_learn_icn.cpp
@@ -12,13 +12,13 @@ double intermediate_g( const vector<double>& inputs,
                        const int& max_domain_value,
                        const int& nb_vars );
 
-AllDiff::AllDiff( const vector< Variable >& variables )
-	: Constraint( variables ),
+AllDiff::AllDiff( const vector<int>& index )
+	: Constraint( index ),
 	  _weights{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-	  _ad_concept_{ (int)variables.size(), (int)variables.size() - 1 }
+	  _ad_concept_{ (int)index.size(), (int)index.size() - 1 }
 { }
 
-double AllDiff::required_error( const vector< Variable >& variables ) const
+double AllDiff::required_error( const vector<Variable*>& variables ) const
 {
 	if( _ad_concept_.concept_( variables ) )
 		return 0.;
@@ -30,7 +30,7 @@ double AllDiff::required_error( const vector< Variable >& variables ) const
 	std::transform( variables.begin(),
 	                variables.end(),
 	                inputs.begin(),
-	                []( const auto& v ){ return v.get_value(); } );
+	                []( const auto& v ){ return v->get_value(); } );
 
 	vector<double> param{ 1 };
 	int nb_vars = _ad_concept_.nb_vars;

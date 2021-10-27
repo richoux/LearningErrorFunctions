@@ -1,0 +1,8 @@
+Constraint: Linear inequation >=.
+12-12-42
+Perform Latin Hypercube sampling.
+Number of solutions: 10000
+Space size: 8916100448256
+Percent solutions: 0.0816907
+Percent explored space: 2.24313e-07
+Elapsed time: 1103.75ms

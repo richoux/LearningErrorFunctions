@@ -15,8 +15,8 @@ class LinearEq : public Constraint
 	int _rhs;
 	LinearEqConcept _le_concept_;
 	
-	double required_error() const override;
+	double required_error( const vector<Variable*>& variables ) const override;
 
 public:
-	LinearEq( const vector< reference_wrapper<Variable> >& variables, int max_value, int rhs );
+	LinearEq( const vector<int>& variables, int max_value, int rhs );
 };

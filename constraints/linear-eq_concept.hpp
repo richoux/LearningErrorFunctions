@@ -11,5 +11,5 @@ public:
 	LinearEqConcept( int rhs );
 	
 	bool concept_( const vector<int>& var, int start, int end ) const override;
-	bool concept_( const vector< Variable >& var ) const override;
+	bool concept_( const vector<Variable*>& var ) const override;
 };

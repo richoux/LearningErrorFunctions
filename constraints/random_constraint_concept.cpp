@@ -36,10 +36,10 @@ bool RandomConcept::concept_( const vector<int>& var, int start, int end ) const
 	return std::find( _solutions.begin(), _solutions.end(), config ) != _solutions.end();
 }
 
-bool RandomConcept::concept_( const vector< Variable >& var ) const
+bool RandomConcept::concept_( const vector<Variable*>& var ) const
 {
 	vector<int> var_int( var.size() );
-	std::transform( var.begin(), var.end(), var_int.begin(), []( auto& v ){ return v.get_value(); } );
+	std::transform( var.begin(), var.end(), var_int.begin(), []( auto& v ){ return v->get_value(); } );
 	
 	string config = convert( var_int );
 	return std::find( _solutions.begin(), _solutions.end(), config ) != _solutions.end();
