@@ -7,7 +7,11 @@ end
 def median(array)
   sorted = array.sort
   len = sorted.length
-  (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
+  if len % 2 == 0
+    sorted[len / 2]
+  else
+    (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
+  end
 end
 
 def pop_standard_deviation(array)
