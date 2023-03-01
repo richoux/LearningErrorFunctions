@@ -110,6 +110,7 @@ begin
 			line = .5,
 			xrotation = 90,
 			lab=nothing,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			ylabel="time (s)",
 			xticks=:all,
 			yscale=:log10,
@@ -125,6 +126,7 @@ begin
 			:time,
 			line = .5,
 			xrotation = 90,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			ylabel="time (s)",
 			xticks=nothing,
 			yscale=:log10,
@@ -147,6 +149,7 @@ begin
 			xrotation = 90,
 			xticks=nothing,
 			yscale=:log10,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			# minorgrid=true,
 			leg=:outerright,
 			# legend_columns=-1,
@@ -165,6 +168,7 @@ begin
 			:problem,
 			:time,
 			line = .5,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			xrotation = 90,
 			ylabel="time (s)",
 			xticks=nothing,
@@ -187,6 +191,7 @@ begin
 			line = .5,
 			xrotation = 90,
 			xticks=nothing,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			yscale=:log10,
 			# minorgrid=true,
 			title = "Killer sudoku 9×9",
@@ -205,6 +210,7 @@ begin
 			:problem,
 			:time,
 			line = .5,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			xrotation = 90,
 			xticks=nothing,
 			yscale=:log10,
@@ -223,6 +229,7 @@ begin
 		@df r violin!(
 			:problem,
 			:time,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
 			line = .5,
 			xrotation = 90,
 			xticks=nothing,
@@ -254,6 +261,36 @@ p
 
 # ╔═╡ 5b72b4d0-2c19-417b-b038-a37f50a67cf4
 savefig(p, "all_plots.pdf"); savefig(peach, "each_plot.pdf");
+
+# ╔═╡ f1378beb-6c2f-4320-882c-dfb77432e058
+begin
+	p2 = plot()
+		for (i, pr) in enumerate(df.problem[1:4])
+			r = results[results.problem .== pr,:]
+			@df r violin!(
+				:problem,
+				:time,
+				line = .5,
+				xrotation = 90,
+				xticks=nothing,
+				yscale=:log10,
+				yticks=[10^-2, 10^-1, 1, 10, 100],
+				# minorgrid=true,
+				leg=:topright,
+				ylabel = "time (seconds)",
+				# legend_columns=-1,
+				label=["naive", "automated", "semi-auto", "state-of-the-art"][i],
+				title = "Sudoku 16×16",
+				titlefontsize = 8,
+				labelfontsize = 7,
+				tickfontsize = 5,
+			)
+		end
+	p2
+end
+
+# ╔═╡ 579b6cac-70d5-45b7-bef6-1e0c4c1ec4f6
+savefig("Sudoku9x9.pdf")
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1608,8 +1645,10 @@ version = "1.4.1+0"
 # ╟─33f39626-2f9a-4b29-b197-c82ce495be30
 # ╟─d5fa1612-e392-4a22-a808-ad83473c609a
 # ╟─51fd8c53-f020-40cc-9f25-9037fe13d26e
-# ╟─1082019b-38d8-4a0a-816a-7173ecc93a72
+# ╠═1082019b-38d8-4a0a-816a-7173ecc93a72
 # ╟─18551c46-156d-48d6-916c-8685eb33d2f2
 # ╟─5b72b4d0-2c19-417b-b038-a37f50a67cf4
+# ╠═f1378beb-6c2f-4320-882c-dfb77432e058
+# ╠═579b6cac-70d5-45b7-bef6-1e0c4c1ec4f6
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
