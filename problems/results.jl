@@ -91,10 +91,7 @@ files = [
 ];
 
 # ╔═╡ 51fd8c53-f020-40cc-9f25-9037fe13d26e
-results = read_results(files)
-
-# ╔═╡ 19e4a1ad-03d9-4798-9bb1-1c65431d4700
-describe(results[results.problem .== "Sudoku 9×9 (csp)",:])
+results = read_results(files);
 
 # ╔═╡ 1082019b-38d8-4a0a-816a-7173ecc93a72
 begin
@@ -252,23 +249,11 @@ begin
 	peach = plot(p_sudoku_3, p_sudoku_4, p_sudoku_5, p_magic_square_25, p_killer_sudoku_3, p_magic_square_30; layout = (3,2))
 end
 
-# ╔═╡ 36e0d330-65d2-4383-88c5-01f34cdad8dd
-results[results.problem .== "Sudoku 9×9 (handmade)",:] |> describe
-
-# ╔═╡ 2cf60a0d-99bd-4775-83ef-929cc2e884dc
-@df results violin(:problem, :time, line = 0, xrotation = 90, lab=nothing, ylabel="time (s)", xticks=:all, palette = cgrad(:grays), fill=:blue)
-
-# ╔═╡ 46ab7c54-795a-4d79-afe2-5cd99da9d2b1
-df[df.problem .== "Sudoku 9×9 (handmade)",:solutions] .÷ 100.
-
-# ╔═╡ f97afec2-d12c-4e9d-8c4a-bab56c23ffaf
-palette[first(df[df.problem .== "Sudoku 25×25 (csp)",:solutions]) ÷ 100.]
-
 # ╔═╡ 18551c46-156d-48d6-916c-8685eb33d2f2
 p
 
 # ╔═╡ 5b72b4d0-2c19-417b-b038-a37f50a67cf4
-savefig(p, "all_plots.pdf"); savefig(peach, "each_plot.pdf")
+savefig(p, "all_plots.pdf"); savefig(peach, "each_plot.pdf");
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1617,19 +1602,14 @@ version = "1.4.1+0"
 # ╔═╡ Cell order:
 # ╠═c0564826-b7c4-11ed-0e17-bf1ae85879c9
 # ╠═baf6cb40-75c2-41c6-9456-09e4f00eb11e
-# ╠═d75062c3-17ec-4550-a508-91997e278c28
-# ╠═7ad571cc-8197-4a7e-be1c-5a8d57ee5e1f
-# ╠═8ebb7c33-abf6-4cc2-b76b-c1f97ad1e272
-# ╠═33f39626-2f9a-4b29-b197-c82ce495be30
-# ╠═d5fa1612-e392-4a22-a808-ad83473c609a
-# ╠═51fd8c53-f020-40cc-9f25-9037fe13d26e
-# ╠═19e4a1ad-03d9-4798-9bb1-1c65431d4700
-# ╠═1082019b-38d8-4a0a-816a-7173ecc93a72
-# ╠═36e0d330-65d2-4383-88c5-01f34cdad8dd
-# ╠═2cf60a0d-99bd-4775-83ef-929cc2e884dc
-# ╠═46ab7c54-795a-4d79-afe2-5cd99da9d2b1
-# ╠═f97afec2-d12c-4e9d-8c4a-bab56c23ffaf
-# ╠═18551c46-156d-48d6-916c-8685eb33d2f2
-# ╠═5b72b4d0-2c19-417b-b038-a37f50a67cf4
+# ╟─d75062c3-17ec-4550-a508-91997e278c28
+# ╟─7ad571cc-8197-4a7e-be1c-5a8d57ee5e1f
+# ╟─8ebb7c33-abf6-4cc2-b76b-c1f97ad1e272
+# ╟─33f39626-2f9a-4b29-b197-c82ce495be30
+# ╟─d5fa1612-e392-4a22-a808-ad83473c609a
+# ╟─51fd8c53-f020-40cc-9f25-9037fe13d26e
+# ╟─1082019b-38d8-4a0a-816a-7173ecc93a72
+# ╟─18551c46-156d-48d6-916c-8685eb33d2f2
+# ╟─5b72b4d0-2c19-417b-b038-a37f50a67cf4
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
