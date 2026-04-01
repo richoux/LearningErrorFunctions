@@ -2,15 +2,15 @@
  * GHOST (General meta-Heuristic Optimization Solving Tool) is a C++ framework
  * designed to help developers to model and implement optimization problem
  * solving. It contains a meta-heuristic solver aiming to solve any kind of
- * combinatorial and optimization real-time problems represented by a CSP/COP/EFSP/EFOP. 
+ * combinatorial and optimization real-time problems represented by a CSP/COP/EF-CSP/EF-COP. 
  *
- * First developped to solve game-related optimization problems, GHOST can be used for
+ * First developed to solve game-related optimization problems, GHOST can be used for
  * any kind of applications where solving combinatorial and optimization problems. In
  * particular, it had been designed to be able to solve not-too-complex problem instances
  * within some milliseconds, making it very suitable for highly reactive or embedded systems.
  * Please visit https://github.com/richoux/GHOST for further information.
  *
- * Copyright (C) 2014-2021 Florian Richoux
+ * Copyright (C) 2014-2025 Florian Richoux
  *
  * This file is part of GHOST.
  * GHOST is free software: you can redistribute it and/or
@@ -42,6 +42,15 @@
 
 namespace ghost
 {
+	namespace algorithms
+	{
+		class ValueHeuristicAdaptiveSearch;
+		class ValueHeuristicAntidoteSearch;
+		class ValueHeuristicOptimizationSpace;
+		class Regular;
+		class SwitchOptimization;
+	}
+	
 	/*!
 	 * This is the base class containing the logic of objective functions. However, users
 	 * would not derive their own Objective class directly from ghost::Objective, but
@@ -61,6 +70,12 @@ namespace ghost
 		friend class NullObjective;
 		friend class Minimize;
 		friend class Maximize;
+
+		friend class algorithms::ValueHeuristicAdaptiveSearch;
+		friend class algorithms::ValueHeuristicAntidoteSearch;
+		friend class algorithms::ValueHeuristicOptimizationSpace;
+		friend class algorithms::Regular;
+		friend class algorithms::SwitchOptimization;
 
 		std::vector<Variable*> _variables; // Vector of raw pointers to variables needed to compute the objective function.
 		std::vector<int> _variables_index; // To know where are the constraint's variables in the global variable vector.
@@ -104,20 +119,18 @@ namespace ghost
 		double cost() const;
 
 		// Call expert_heuristic_value on Objective::_variables.
-		inline int heuristic_value( int variable_index, const std::vector<int>& possible_values ) const
-		{ return expert_heuristic_value( _variables, _variables_position.at( variable_index ), possible_values ); }
+		inline int heuristic_value( int variable_index, const std::vector<int>& possible_values, randutils::mt19937_rng& rng ) const
+		{ return expert_heuristic_value( _variables, _variables_position.at( variable_index ), possible_values, rng ); }
 
 		// Call expert_heuristic_value_permutation on Objective::_variables.
-		inline int heuristic_value_permutation( int variable_index, const std::vector<int>& bad_variables ) const
-		{ return expert_heuristic_value_permutation( _variables, _variables_position.at( variable_index ), bad_variables ); }
+		inline int heuristic_value_permutation( int variable_index, const std::vector<int>& bad_variables, randutils::mt19937_rng& rng ) const
+		{ return expert_heuristic_value_permutation( _variables, _variables_position.at( variable_index ), bad_variables, rng ); }
 
 		// Call expert_postprocess on Objective::_variables.
 		inline double postprocess( double best_cost ) const
 		{ return expert_postprocess( _variables, best_cost ); }
 
 	protected:
-		mutable randutils::mt19937_rng rng; //!< A neat random generator implemented in thirdparty/randutils.hpp, see https://www.pcg-random.org/posts/ease-of-use-without-loss-of-power.html
-
 		/*!
 		 * Pure virtual method to compute the value of the objective function regarding the values of
 		 * variables given as input.
@@ -176,11 +189,13 @@ namespace ghost
 		 * Objective::_variables.
 		 * \param possible_values a const reference to the vector of possible values of the variable
 		 * to change.
+		 * \param rng a neat random generator implemented in thirdparty/randutils.hpp, see https://www.pcg-random.org/posts/ease-of-use-without-loss-of-power.html
 		 * \return The selected value according to the heuristic.
 		 */
 		virtual int expert_heuristic_value( const std::vector<Variable*>& variables,
 		                                    int variable_index,
-		                                    const std::vector<int>& possible_values ) const;
+		                                    const std::vector<int>& possible_values,
+		                                    randutils::mt19937_rng& rng ) const;
 
 		/*!
 		 * Virtual method to apply the value heuristic used by the solver for permutation problems.
@@ -188,7 +203,9 @@ namespace ghost
 		 * While dealing with permutation problems, the solver calls this method to apply an eventual
 		 * user-defined heuristic to choose a variable to swap the value with.
 		 *
-		 * By default, it returns a random variable from the bad_variables vector given as input.
+		 * By default, it returns the variable index for which switching with leads to the lowest objective cost.
+		 * If two or more variable indexes lead to configurations with the same lowest cost, one of them
+		 * is randomly returned.
 		 *
 		 * Like any methods prefixed by 'expert_', users should override this method only if
 		 * they know what they are doing.
@@ -197,13 +214,14 @@ namespace ghost
 		 * scope of the objective function. The solver is calling this method with the vector 
 		 * of variables that has been given to the constructor.
 		 * \param variable_index the index of the variable to change in the vector Objective::_variables.
-		 * \param bad_variables a const reference to the vector of candidate variables the solver
-		 * may swap the value with.
+		 * \param candidate_variables a const reference to the vector of candidate variables the solver may swap the value with.
+		 * \param rng a neat random generator implemented in thirdparty/randutils.hpp, see https://www.pcg-random.org/posts/ease-of-use-without-loss-of-power.html
 		 * \return The index of the selected variable to swap with, according to the heuristic.
 		 */
 		virtual int expert_heuristic_value_permutation( const std::vector<Variable*>& variables,
 		                                                int variable_index,
-		                                                const std::vector<int>& bad_variables ) const;
+		                                                const std::vector<int>& candidate_variables,
+		                                                randutils::mt19937_rng& rng ) const;
 
 		/*!
 		 * Virtual method to perform post-processing optimization.

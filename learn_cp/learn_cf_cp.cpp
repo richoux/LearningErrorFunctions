@@ -356,9 +356,9 @@ int main( int argc, char **argv )
   bool successful_run;
   
   if( long_run )
-	  successful_run = solver.solve( error, solution, 30s, options );
+	  successful_run = solver.fast_search( error, solution, 30s, options );
   else
-	  successful_run = solver.solve( error, solution, 200ms, options );
+	  successful_run = solver.fast_search( error, solution, 200ms, options );
 
   int fitness_integer = static_cast<int>( floor( error ) );
   double regularization_term = error - fitness_integer;

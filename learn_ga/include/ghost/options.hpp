@@ -2,15 +2,15 @@
  * GHOST (General meta-Heuristic Optimization Solving Tool) is a C++ framework
  * designed to help developers to model and implement optimization problem
  * solving. It contains a meta-heuristic solver aiming to solve any kind of
- * combinatorial and optimization real-time problems represented by a CSP/COP/EFSP/EFOP. 
+ * combinatorial and optimization real-time problems represented by a CSP/COP/EF-CSP/EF-COP. 
  *
- * First developped to solve game-related optimization problems, GHOST can be used for
+ * First developed to solve game-related optimization problems, GHOST can be used for
  * any kind of applications where solving combinatorial and optimization problems. In
  * particular, it had been designed to be able to solve not-too-complex problem instances
  * within some milliseconds, making it very suitable for highly reactive or embedded systems.
  * Please visit https://github.com/richoux/GHOST for further information.
  *
- * Copyright (C) 2014-2021 Florian Richoux
+ * Copyright (C) 2014-2025 Florian Richoux
  *
  * This file is part of GHOST.
  * GHOST is free software: you can redistribute it and/or
@@ -45,15 +45,20 @@ namespace ghost
 	{
 		bool custom_starting_point; //!< To force starting the search on a custom variables assignment.
 		bool resume_search; //!< Allowing stop-and-resume computation.
-		bool parallel_runs; //!< To enable parallel runs of the solver. Using all avaiable cores (including hyper-threaded cores) if number_threads is not specified.
+		bool parallel_runs; //!< To enable parallel runs of the solver. Using all available physical cores if number_threads is not specified.
+		bool enable_optimization_guidance; //!< For optimization problems, consider the optimization cost as a tie-breaker for satisfaction plateau.
 		int number_threads; //!< Number of threads the solver will use for the search.
 		std::shared_ptr<Print> print; //!< Allowing custom solution print (by derivating a class from ghost::Print)
 		int tabu_time_local_min; //!< Number of local moves a variable of a local minimum is marked tabu.
 		int tabu_time_selected; //!< Number of local moves a selected variable is marked tabu.
+		int percent_chance_force_trying_on_plateau; //!< Percentage of chance to force trying another variable rather than doing a move on a plateau.
+		int max_stay_on_plateau; //!< Maximal number of local moves in a row the solver does on a plateau.
+		int max_moves_in_opt_space; //!< Maximal number of local moves in an optimization space.
 		int reset_threshold; //!< Number of variables marked as tabu required to trigger a reset.
-		int restart_threshold; //!< Trigger a resart every 'restart_threshold' reset.
-		int percent_to_reset; //!< Percentage of variables to randomly change the value at each reset.
+		int restart_threshold; //!< Trigger a restart every 'restart_threshold' reset. Set to 0 to never trigger restarts.
+		int number_variables_to_reset; //!< Number of variables to randomly change the value at each reset.
 		int number_start_samplings; //!< Number of variable assignments the solver randomly draw, if custom_starting_point and resume_search are false.
+		int number_variables_to_sample; //!< Number of variables to consider during the search.
 
 		//! Unique constructor
 		Options();

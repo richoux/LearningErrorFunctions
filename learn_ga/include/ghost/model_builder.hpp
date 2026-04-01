@@ -2,15 +2,15 @@
  * GHOST (General meta-Heuristic Optimization Solving Tool) is a C++ framework
  * designed to help developers to model and implement optimization problem
  * solving. It contains a meta-heuristic solver aiming to solve any kind of
- * combinatorial and optimization real-time problems represented by a CSP/COP/EFSP/EFOP. 
+ * combinatorial and optimization real-time problems represented by a CSP/COP/EF-CSP/EF-COP. 
  *
- * First developped to solve game-related optimization problems, GHOST can be used for
+ * First developed to solve game-related optimization problems, GHOST can be used for
  * any kind of applications where solving combinatorial and optimization problems. In
  * particular, it had been designed to be able to solve not-too-complex problem instances
  * within some milliseconds, making it very suitable for highly reactive or embedded systems.
  * Please visit https://github.com/richoux/GHOST for further information.
  *
- * Copyright (C) 2014-2021 Florian Richoux
+ * Copyright (C) 2014-2025 Florian Richoux
  *
  * This file is part of GHOST.
  * GHOST is free software: you can redistribute it and/or
@@ -64,12 +64,12 @@ namespace ghost
 		template<typename ModelBuilderType> friend class Solver;
 
 		Model build_model();
-
+		
 	protected:
-		std::vector<Variable> variables; //! The global vector containing all variables of the problem instance.
-		std::vector<std::shared_ptr<Constraint>> constraints; //! The vector of shared pointers of each constraint composing the problem instance.
-		std::shared_ptr<Objective> objective; //! The shared pointer of the objective function of the problem instance. Is set to nullptr is declare_objective() is not overriden.
-		std::shared_ptr<AuxiliaryData> auxiliary_data; //! The shared pointer of the auxiliary data of the problem instance. Is set to nullptr is declare_auxiliary_data() is not overriden.
+		std::vector<Variable> variables; //!< The global vector containing all variables of the problem instance.
+		std::vector<std::shared_ptr<Constraint>> constraints; //!< The vector of shared pointers of each constraint composing the problem instance.
+		std::shared_ptr<Objective> objective; //!< The shared pointer of the objective function of the problem instance. Is set to nullptr is declare_objective() is not overriden.
+		std::shared_ptr<AuxiliaryData> auxiliary_data; //!< The shared pointer of the auxiliary data of the problem instance. Is set to nullptr is declare_auxiliary_data() is not overriden.
 		bool permutation_problem;
 		
 	public:
@@ -106,18 +106,18 @@ namespace ghost
 		virtual void declare_variables() = 0;
 
 		/*!
-		 * Mandatory method to declare the constraints of the problem instance.
+		 * Method to declare the constraints of the problem instance. If not declared, the problem is considered to be a pure optimization problem.
 		 *
 		 * The implementation should be like\n
 		 * void UserBuilder::declare_constraints()\n
 		 * {\n
-		 *   constraints.push_back( std::make_shared<UserConstraint-1>(parameters_of_Constraint-1_constructor ) );\n
-		 *   constraints.push_back( std::make_shared<UserConstraint-1>(parameters_of_Constraint-1_constructor ) ); // the model may need several constraints of the same type UserConstraint-1\n
+		 *   constraints.emplace_back( std::make_shared<UserConstraint-1>(parameters_of_Constraint-1_constructor ) );\n
+		 *   constraints.emplace_back( std::make_shared<UserConstraint-1>(parameters_of_Constraint-1_constructor ) ); // the model may need several constraints of the same type UserConstraint-1\n
 		 *   ...\n
-		 *   constraints.push_back( std::make_shared<UserConstraint-k>(parameters_of_Constraint-k_constructor ) );\n
+		 *   constraints.emplace_back( std::make_shared<UserConstraint-k>(parameters_of_Constraint-k_constructor ) );\n
 		 * }
 		 */
-		virtual void declare_constraints() = 0;
+		virtual void declare_constraints();
 
 		/*!
 		 * If working with an optimization problem, mandatory method to declare the objective function
@@ -168,8 +168,13 @@ namespace ghost
 
 		/*!
 		 * Inline method returning the number of declared variables. This may be helpful in some
-		 * specific cases to know how variables are composing the problem instance.
+		 * specific cases to know how many variables are composing the problem instance.
 		 */
 		inline int get_number_variables() { return static_cast<int>( variables.size() ); }
+
+		/*
+		 * Inline method returning the number of declared constraints.
+		 */
+		inline int get_number_constraints() { return static_cast<int>( constraints.size() ); }
 	};
 }
